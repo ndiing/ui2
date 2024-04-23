@@ -94,6 +94,7 @@ class MDDataTable extends MDElement {
                                 @onResizeStart="${this.handleDataTableColumnResizeStart}"
                                 @onResize="${this.handleDataTableColumnResize}"
                                 @onResizeEnd="${this.handleDataTableColumnResizeEnd}"
+                                @onDoubleTap="${this.handleDataTableColumnDoubleTap}"
                             >
                                 <md-data-table-container
                                     .label="${column.label}"
@@ -153,6 +154,24 @@ class MDDataTable extends MDElement {
         this.requestUpdate()
     }
     handleDataTableColumnResizeEnd(event){
+    }
+    
+    handleDataTableColumnDoubleTap(event){
+        const th=event.currentTarget
+        const data=th.data
+        const index=this.columns.indexOf(data)
+
+        const tds = Array.from(this.querySelectorAll('td:nth-child('+(index+1)+')'))
+        tds.forEach(td=>td.style.setProperty('max-width','100%'))
+        th.style.setProperty('min-width','0px')
+        th.style.setProperty('max-width','0px')
+        const width = Math.max(...tds.map(td=>td.scrollWidth))
+        th.style.setProperty('min-width',width+'px')
+        th.style.setProperty('max-width',width+'px')
+        tds.forEach(td=>td.style.setProperty('max-width','0px'))
+
+        data.width=width
+        this.requestUpdate()
     }
 
     handleDataTableKeydown(event) {
