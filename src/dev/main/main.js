@@ -7,6 +7,10 @@ class DevMain extends MDElement {
     constructor() {
         super();
         this.list = [
+            { label: "/localization", routerLink: "/localization" },
+            { label: "/element", routerLink: "/element" },
+            { label: "/router", routerLink: "/router" },
+            { label: "/store", routerLink: "/store" },
             { label: "/ripple", routerLink: "/ripple" },
             { label: "/gesture", routerLink: "/gesture" },
             { label: "/popper", routerLink: "/popper" },
@@ -71,14 +75,11 @@ class DevMain extends MDElement {
             <!-- <h1>${msg("Main")}</h1> -->
             <!-- <div class="md-layout"> -->
                 <div class="md-layout__border">
-                    <div class="md-layout__region md-layout__region--w" style="width:360px;">
-                        <md-list
-                            class="md-list--navigation-drawer"
-                            .list="${this.list}"
-                            .singleSelection="${true}"
-                            @onListContainerSelected="${this.handleListContainerSelected}"
-                        ></md-list>
-                    </div>
+                    <md-navigation-drawer
+                        class="md-layout__region md-layout__region--w"
+                        open
+                        .list="${this.list}"
+                    ></md-navigation-drawer>
                     <div class="md-layout__region md-layout__region--c" style="padding:24px;">
                         <md-outlet></md-outlet>
                     </div>
