@@ -1,0 +1,18 @@
+.md-extended-fab{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: calc((56px - 24px) / 2);//(56-24)/2=16
+    gap: 0 8px;
+    border-radius: 16px;
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    box-shadow: var(--md-sys-elevation-level3);
+}
+.md-extended-fab__icon{
+    @extend .md-icon;
+}
+.md-extended-fab__label{
+    @extend .md-typography--label-large;
+}

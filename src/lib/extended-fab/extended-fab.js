@@ -1,10 +1,12 @@
 import { MDElement } from "../element/element";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 
 class MDExtendedFab extends MDElement {
     static get properties() {
         return {
+            icon:{type:String},
+            label:{type:String},
         };
     }
 
@@ -15,6 +17,8 @@ class MDExtendedFab extends MDElement {
     render() {
         // prettier-ignore
         return html`
+            ${this.icon?html`<div class="md-extended-fab__icon">${this.icon}</div>`:nothing}
+            ${this.label?html`<div class="md-extended-fab__label">${this.label}</div>`:nothing}
         `
     }
 
