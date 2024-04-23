@@ -94,7 +94,7 @@ class MDDataTable extends MDElement {
                                 @onResizeStart="${this.handleDataTableColumnResizeStart}"
                                 @onResize="${this.handleDataTableColumnResize}"
                                 @onResizeEnd="${this.handleDataTableColumnResizeEnd}"
-                                @onDoubleTap="${this.handleDataTableColumnDoubleTap}"
+                                @onResizeHandleDoubleTap="${this.handleDataTableColumnResizeHandleDoubleTap}"
                             >
                                 <md-data-table-container
                                     .label="${column.label}"
@@ -156,7 +156,7 @@ class MDDataTable extends MDElement {
     handleDataTableColumnResizeEnd(event){
     }
     
-    handleDataTableColumnDoubleTap(event){
+    handleDataTableColumnResizeHandleDoubleTap(event){
         const th=event.currentTarget
         const data=th.data
         const index=this.columns.indexOf(data)

@@ -138,6 +138,9 @@ class Gesture {
         if (!this.longPress && !this.swipe) {
             if (Date.now() - this.lastTapTimestamp < 300) {
                 this.emit("onDoubleTap", event);
+                if(this.resize){
+                    this.emit("onResizeHandleDoubleTap", event);
+                }
             } else {
                 this.emit("onTap", event);
             }
