@@ -26,6 +26,8 @@ class MDSlider extends MDElement {
 
     constructor() {
         super();
+
+        this.ui='continuous'
     }
 
     render() {
@@ -76,7 +78,8 @@ class MDSlider extends MDElement {
         this.classList.remove("md-slider");
     }
 
-    firstUpdated() {
+    async firstUpdated() {
+        await this.updateComplete
         
         if(this.ui === 'centered'){
             this.min = this.min?? -100;
@@ -153,6 +156,11 @@ class MDSlider extends MDElement {
         this.emit("onSliderNativeBlur", event);
     }
     handleSliderNativeInput(event) {
+        if (this.sliderNative2) {
+            this.sliderNative1.value = Math.min(this.sliderNative1.value, this.value[1]);
+            this.sliderNative2.value = Math.max(this.value[0], this.sliderNative2.value);
+        }
+
         this.value = [this.sliderNative1.value, this.sliderNative2?.value].filter(Boolean);
 
         this.updateStyle();
@@ -175,6 +183,8 @@ class MDSlider extends MDElement {
     }
     handleSliderNativeReset(event) {
         this.value = this.defaultValue
+
+        this.updateStyle();
 
         this.emit("onSliderNativeReset", event);
     }
