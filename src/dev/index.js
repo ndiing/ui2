@@ -2,33 +2,6 @@ import { Router } from "../lib/router/router";
 
 // prettier-ignore
 Router.init([
-    // {path:'',load:() => import('./main/main.js').then(m=>m.default),children:[
-    //     // {path:'blogs',load:() => import('./blogs/blogs.js').then(m=>m.default),children:[
-    //     //     {path:':_id',load:() => import('./blog/blog.js').then(m=>m.default),children:[]},
-    //     // ]},
-    //     {path:'gesture',load:() => import('./gesture/gesture.js').then(m=>m.default),children:[]},
-    //     {path:'ripple',load:() => import('./ripple/ripple.js').then(m=>m.default),children:[]},
-    //     {path:'icon',load:() => import('./icon/icon.js').then(m=>m.default),children:[]},
-    //     {path:'emoji',load:() => import('./emoji/emoji.js').then(m=>m.default),children:[]},
-    //     {path:'button',load:() => import('./button/button.js').then(m=>m.default),children:[]},
-    //     {path:'list',load:() => import('./list/list.js').then(m=>m.default),children:[]},
-    //     {path:'data-table',load:() => import('./data-table/data-table.js').then(m=>m.default),children:[]},
-    //     {path:'form-field',load:() => import('./form-field/form-field.js').then(m=>m.default),children:[]},
-    //     {path:'text-field',load:() => import('./text-field/text-field.js').then(m=>m.default),children:[]},
-    //     {path:'range-field',load:() => import('./range-field/range-field.js').then(m=>m.default),children:[]},
-    // ]},
-    // // {path:'admin',load:() => import('./admin/admin.js').then(m=>m.default),children:[
-    // //     {path:'users',load:() => import('./users/users.js').then(m=>m.default),children:[
-    // //         {path:':_id',load:() => import('./user/user.js').then(m=>m.default),children:[]},
-    // //     ]},
-    // // ]},
-    // // {path:'auth',load:() => import('./auth/auth.js').then(m=>m.default),children:[
-    // //     {path:'login',load:() => import('./login/login.js').then(m=>m.default),children:[]},
-    // //     {path:'verify',load:() => import('./verify/verify.js').then(m=>m.default),children:[]},
-    // //     {path:'register',load:() => import('./register/register.js').then(m=>m.default),children:[]},
-    // // ]},
-    // {path:'*',load:() => import('./error/error.js').then(m=>m.default),children:[]},
-
     {path:'',load:() => import('./main/main.js').then(m=>m.default),children:[
 
         {path:'ripple',load:() => import('./ripple/ripple.js').then(m=>m.default)},

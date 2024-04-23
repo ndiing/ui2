@@ -30,7 +30,7 @@ class DevForm extends MDElement {
                         <md-tel-field label="tel" name="tel"></md-tel-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>date</label></div><div><input type="date" name="date"></div></div>
+                        <md-date-field label="date" name="date"></md-date-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                         <md-datetime-field label="datetime" name="datetime"></md-datetime-field>

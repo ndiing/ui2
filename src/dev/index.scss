@@ -1,4 +1,14 @@
 
+.dev-ripple{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-container);
+}
+
 .dev-gesture{
     display: flex;
     align-items: center;

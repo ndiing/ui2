@@ -1,6 +1,7 @@
 import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
+import { Ripple } from "../../lib/ripple/ripple";
 
 class DevRipple extends MDElement {
     render() {
@@ -8,11 +9,20 @@ class DevRipple extends MDElement {
         return html`
             <div class="md-layout__grid">
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="dev-ripple"></div>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
             </div>
         `;
+    }
+    firstUpdated(){
+        this.querySelectorAll('.dev-ripple')
+        .forEach(element => {
+            new Ripple(element,{
+                
+            })
+        })
     }
 }
 

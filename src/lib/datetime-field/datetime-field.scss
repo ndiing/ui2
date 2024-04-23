@@ -44,7 +44,7 @@
     }
     &::-webkit-datetime-edit-text {
     }
-    &[type="datetime-local" i]::-webkit-calendar-picker-indicator {
+    &::-webkit-calendar-picker-indicator {
         background: none;
         margin: 0;
         padding: 0;
