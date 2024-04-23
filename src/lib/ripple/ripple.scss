@@ -1,0 +1,96 @@
+@keyframes md-ripple {
+    0% {
+        width: 0;
+    }
+}
+@keyframes md-ripple-fadeout {
+    0% {
+        opacity: 10%;
+    }
+}
+
+.md-ripple {
+    position: relative;
+}
+
+.md-ripple--containment {
+    overflow: hidden;
+}
+
+.md-ripple--button {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.md-ripple::after {
+    content: "";
+    width: var(--md-ripple-size, 141.4213562373095%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: absolute;
+    left: var(--md-ripple-left, 50%);
+    top: var(--md-ripple-top, 50%);
+    z-index: 1;
+    transform: translate3d(-50%, -50%, 0) translate3d(var(--md-ripple-x, 0), var(--md-ripple-y, 0), 0);
+    background: var(--md-sys-color-on-background);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.md-ripple--inverted{
+    &::after{
+        background: var(--md-sys-color-background);
+    }
+}
+
+[selected],
+.md-ripple--selected {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+
+    &::after {
+        opacity: 0%;
+    }
+}
+
+.md-ripple--hover {
+    &::after {
+        opacity: 8%;
+    }
+}
+
+.md-ripple--focus {
+    &::after {
+        opacity: 10%;
+        animation-name: var(--md-ripple-animation,md-ripple);
+        animation-duration: var(--md-sys-motion-duration-short4);
+        animation-timing-function: var(--md-sys-motion-easing-standard);
+    }
+}
+
+.md-ripple--pressed {
+    &::after {
+        opacity: 10%;
+    }
+}
+
+.md-ripple--fadeout {
+    &.md-ripple--focus {
+        &::after {
+            opacity: 0;
+            animation-name: var(--md-ripple-animation,md-ripple),var(--md-ripple-animation,md-ripple-fadeout);
+            animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
+            animation-timing-function: var(--md-sys-motion-easing-standard), var(--md-sys-motion-easing-standard);
+        }
+    }
+}
+
+[disabled],
+.md-ripple--disabled {
+    opacity: 38%;
+
+    &::after {
+        opacity: 0%;
+    }
+}

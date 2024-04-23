@@ -1,0 +1,36 @@
+.md-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: calc(40px / 2);
+    padding: 0 12px;
+    position: relative;
+    background: transparent;
+    color: var(--md-sys-color-primary);
+}
+.md-button__native{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color:transparent;
+    color:transparent;
+}
+.md-button__label{
+    @extend .md-typography--label-large;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.md-button--filled-tonal{
+    padding: 0 24px;
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+.md-button--filled{
+    padding: 0 24px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}

@@ -1,0 +1,79 @@
+.md-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 52px;
+    height: 32px;
+    position: relative;
+}
+.md-switch__native {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    appearance: none;
+
+    &:checked {
+        + .md-switch__track {
+            background: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+            .md-switch__thumb {
+                height: 24px;
+                width: 24px;
+                border-radius: calc(24px / 2);
+                background: var(--md-sys-color-on-primary);
+                left: calc(52px - 24px - ((32px - 24px) / 2) - 2px);
+            }
+            
+        }
+        &:active{
+            + .md-switch__track {
+                .md-switch__thumb {
+                    height: 28px;
+                    width: 28px;
+                    border-radius: calc(28px / 2);
+                    background: var(--md-sys-color-on-primary);
+                    left: calc(52px - 28px - ((32px - 28px) / 2) - 2px);
+                }
+                
+            }
+            
+        }
+    }
+    &:not(:checked){
+        &:active{
+            +.md-switch__track{
+                .md-switch__thumb {
+                    height: 28px;
+                    width: 28px;
+                    border-radius: calc(28px / 2);
+                    left: calc(((32px - 28px) / 2) - 2px);
+                }
+                
+            }
+        }
+    }
+}
+.md-switch__track {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 32px;
+    border: 2px solid var(--md-sys-color-outline);
+    border-radius: calc(32px / 2);
+    background: var(--md-sys-color-surface-container-highest);
+    position: relative;
+}
+
+.md-switch__thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: calc(16px / 2);
+    background: var(--md-sys-color-outline);
+    position: absolute;
+    left: calc(((32px - 16px) / 2) - 2px);
+}

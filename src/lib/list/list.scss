@@ -1,0 +1,110 @@
+ul{
+    list-style-type: none;
+}
+
+.md-list{
+    display: flex;
+    align-items: center;
+
+    >ul{
+        width: 100%;
+        padding: 8px 0;
+        // >li{}
+    }
+}
+
+.md-list__container{
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    gap: 0 16px;
+}
+
+.md-list__icon{
+    @extend .md-icon;
+}
+
+.md-list__label{
+    @extend .md-typography--body-large;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// md-list--navigation-drawer
+.md-list--navigation-drawer{
+    >ul{
+        padding: 0;
+        >li{
+            padding: 0 12px;
+        }
+    }
+    .md-list__container{
+        gap: 0 12px;
+        border-radius: calc(56px / 2);
+    }
+    .md-list__label{
+        @extend .md-typography--label-large;
+    }
+}
+
+// md-list--navigation-rail
+.md-list--navigation-rail{
+    display: inline-flex;
+    >ul{
+        padding: 0;
+    }
+    .md-list__container{
+        flex-direction: column;
+        padding: 0 12px;
+        gap: 4px 0;
+        &[selected]{
+            background: inherit;
+            color: inherit;
+            .md-list__icon{
+                @extend .md-ripple--selected;
+            }
+        }
+    }
+    .md-list__icon{
+        width: 56px;
+        height: 32px;
+        border-radius: calc(32px / 2);
+    }
+    .md-list__label{
+        @extend .md-typography--label-medium;
+    }
+}
+
+// md-list--navigation-bar
+.md-list--navigation-bar{
+    >ul{
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .md-list__container{
+        flex-direction: column;
+        justify-content: center;
+        padding: 12px 0;
+        gap: 4px 0;
+        height: 80px;
+        &[selected]{
+            background: inherit;
+            color: inherit;
+            .md-list__icon{
+                @extend .md-ripple--selected;
+            }
+        }
+    }
+    .md-list__icon{
+        width: 64px;
+        height: 32px;
+        border-radius: calc(32px / 2);
+    }
+    .md-list__label{
+        @extend .md-typography--label-medium;
+        margin-bottom: 4px;
+    }
+}

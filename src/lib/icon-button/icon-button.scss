@@ -1,0 +1,34 @@
+.md-icon-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: transparent;
+    color: var(--md-sys-color-primary);
+}
+.md-icon-button__native{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color:transparent;
+    color:transparent;
+}
+.md-icon-button__icon{
+    @extend .md-icon;
+}
+.md-icon-button--filled-tonal{
+    height: 40px;
+    width: 40px;
+    border-radius: calc(40px / 2);
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+.md-icon-button--filled{
+    height: 40px;
+    width: 40px;
+    border-radius: calc(40px / 2);
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}

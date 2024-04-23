@@ -1,0 +1,77 @@
+.md-slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover{
+        .md-slider__label {
+            top: calc(0px - (((44px - 16px) / 2) + 44px + 4px));
+            transform: translate3d(-50%, 0%, 0) scale(1);
+        }
+    }
+
+    >div{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 6px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translate3d(0,-50%,0);
+        pointer-events: none;
+        >span{
+            width: 4px;
+            height: 4px;
+            border-radius: calc(4px / 2);
+            background: var(--md-sys-color-primary);
+            // &[selected]{
+            //     background: var(--md-sys-color-primary-container);
+            // }
+        }
+    }
+}
+.md-slider__native {
+    appearance: none;
+    width: 100%;
+    background: transparent;
+
+    &::-webkit-slider-container {
+        appearance: none;
+    }
+    &::-webkit-slider-runnable-track {
+        height: 16px;
+        border-radius: calc(16px / 2);
+        background: linear-gradient(to right, var(--md-sys-color-primary) 0 var(--md-slider-percentage), var(--md-sys-color-primary-container) var(--md-slider-percentage) 100%);
+    }
+    &::-webkit-slider-thumb {
+        appearance: none;
+        height: 56px;
+        width: 16px;
+        border-radius: calc(16px / 2);
+        margin-top: calc((16px - 56px) / 2);
+        border: 6px solid var(--md-sys-color-background);
+        background: var(--md-sys-color-primary);
+    }
+
+}
+.md-slider__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 44px;
+    padding: 0 8px;
+    border-radius: calc(44px / 2);
+    @extend .md-typography--label-medium;
+    background: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
+    position: absolute;
+    left: calc(var(--md-slider-decimal) * ((100% - 8px) - 8px) + 8px);
+    top: calc(0px - (((44px - 16px) / 2) + 44px));
+    transform: translate3d(-50%, 50%, 0) scale(0);
+}
+// .md-slider--centered{}
+// .md-slider--continuous{}
+// .md-slider--discrete{}
+// .md-slider--range-selection{}
