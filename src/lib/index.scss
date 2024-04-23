@@ -2,6 +2,7 @@
 
 @import "./gesture/gesture.scss";
 @import "./ripple/ripple.scss";
+@import "./popper/popper.scss";
 
 
 @import "./button/button.scss";
@@ -12,7 +13,7 @@
 @import "./badge/badge.scss";
 // @import "./progress-indicator/progress-indicator.scss";
 // @import "./snackbar/snackbar.scss";
-// @import "./tooltip/tooltip.scss";
+@import "./tooltip/tooltip.scss";
 
 @import "./dialog/dialog.scss";
 // @import "./bottom-sheet/bottom-sheet.scss";

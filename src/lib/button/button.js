@@ -36,7 +36,7 @@ class MDButton extends MDElement {
         await this.updateComplete
         this.ripple=new Ripple(this,{
             button:this.buttonNative,
-            inverted:this.ui==='filled'
+            inverse:this.ui==='filled'
         })
     }
 

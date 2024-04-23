@@ -4,7 +4,7 @@ class Ripple {
             button: host,
             containment: true,
             fadeout: false,
-            inverted: false,
+            inverse: false,
             size: undefined,
             ...options,
         };
@@ -46,10 +46,10 @@ class Ripple {
             this.host.classList.remove('md-ripple--fadeout')
         }
 
-        if(this.options.inverted){
-            this.host.classList.add('md-ripple--inverted')
+        if(this.options.inverse){
+            this.host.classList.add('md-ripple--inverse')
         }else{
-            this.host.classList.remove('md-ripple--inverted')
+            this.host.classList.remove('md-ripple--inverse')
         }
 
         this.options.button.setAttribute("tabIndex", 0);

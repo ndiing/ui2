@@ -32,6 +32,7 @@ class DevMain extends MDElement {
         this.list = [
             { label: "/ripple", routerLink: "/ripple" },
             { label: "/gesture", routerLink: "/gesture" },
+            { label: "/popper", routerLink: "/popper" },
             { label: "/button", routerLink: "/button" },
             { label: "/extended-fab", routerLink: "/extended-fab" },
             { label: "/fab", routerLink: "/fab" },

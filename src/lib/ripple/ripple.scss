@@ -38,7 +38,7 @@
     pointer-events: none;
 }
 
-.md-ripple--inverted{
+.md-ripple--inverse{
     &::after{
         background: var(--md-sys-color-background);
     }

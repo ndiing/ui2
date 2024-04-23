@@ -1,6 +1,32 @@
 
 .dev-gesture{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 280px;
     height: 280px;
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-container);
+}
+
+.dev-popper__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 224px;
+    height: 280px;
+    // width: 96px;
+    // height: 24px;
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-container);
+    opacity: 50%;
+}
+.dev-popper__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 56px;
     background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
 }
