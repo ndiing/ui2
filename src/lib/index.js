@@ -8,7 +8,6 @@ import "./gesture/gesture.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
 
-
 import "./button/button.js";
 import "./extended-fab/extended-fab.js";
 import "./fab/fab.js";
