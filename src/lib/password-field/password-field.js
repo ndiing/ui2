@@ -61,9 +61,9 @@ class MDPasswordField extends MDElement {
                     @invalid="${this.handlePasswordFieldNativeInvalid}"
                     @reset="${this.handlePasswordFieldNativeReset}"
                 >
-                <div class="md-text-field__actions">
+                <div class="md-password-field__actions">
                     <div 
-                        class="md-text-field__action"
+                        class="md-password-field__action"
                         @click="${this.handlePasswordFieldActionToggle}"
                     >${this.toggle?'visibility':'visibility_off'}</div>
                 </div>

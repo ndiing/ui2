@@ -9,19 +9,16 @@ class DevForm extends MDElement {
             <md-form>
                 <div class="md-layout__grid">
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>email</label></div><div><input type="email" name="email"></div></div> -->
                         <md-email-field label="email" name="email"></md-email-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>password</label></div><div><input type="password" name="password"></div></div> -->
                         <md-password-field label="password" name="password"></md-password-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>text</label></div><div><input type="text" name="text"></div></div> -->
                         <md-text-field label="text" name="text"></md-text-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>url</label></div><div><input type="url" name="url"></div></div>
+                        <md-url-field label="url" name="url"></md-url-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                         <div><div><label>search</label></div><div><input type="search" name="search"></div></div>
@@ -30,13 +27,13 @@ class DevForm extends MDElement {
                         <div><div><label>number</label></div><div><input type="number" name="number"></div></div>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>tel</label></div><div><input type="tel" name="tel"></div></div>
+                        <md-tel-field label="tel" name="tel"></md-tel-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                         <div><div><label>date</label></div><div><input type="date" name="date"></div></div>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>datetime</label></div><div><input type="datetime" name="datetime"></div></div>
+                        <md-datetime-field label="datetime" name="datetime"></md-datetime-field>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                         <div><div><label>month</label></div><div><input type="month" name="month"></div></div>
@@ -54,15 +51,12 @@ class DevForm extends MDElement {
                         <div><div><label>file</label></div><div><input type="file" name="file"></div></div>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>range</label></div><div><input type="range" name="range"></div></div> -->
                         <md-slider></md-slider>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>checkbox</label></div><div><input type="checkbox" name="checkbox"></div></div> -->
                         <md-checkbox></md-checkbox>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <!-- <div><div><label>radio</label></div><div><input type="radio" name="radio"></div></div> -->
                         <md-radio-button></md-radio-button>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
