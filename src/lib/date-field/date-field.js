@@ -54,7 +54,7 @@ class MDDateField extends MDElement {
                     <div 
                         class="md-date-field__action"
                         @click="${this.handleDateFieldActionClick}"
-                    >calendar_today</div>
+                    >today</div>
                 </div>
             </div>
             ${this.validationMessage??this.text?html`

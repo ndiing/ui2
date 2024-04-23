@@ -20,7 +20,10 @@
     top: 50%;
     left: 50%;
     z-index: 2;
-    transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0) scale(1);
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: var(--md-sys-motion-easing-standard);
 }
 .md-dialog__header {
     display: flex;
@@ -40,6 +43,7 @@
     padding: 0 24px;
     margin: 24px 0;
     @extend .md-typography--body-medium;
+    
     + .md-dialog__footer {
         padding-top: 0;
     }
@@ -59,12 +63,16 @@
     z-index: 1;
     background: var(--md-sys-color-scrim);
     opacity: 32%;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-long4);
+    transition-timing-function: var(--md-sys-motion-easing-standard);
 }
 
 .md-dialog{
     &:not([open]){
         pointer-events: none;
         .md-dialog__container{
+            transform: translate3d(-50%,-50%,0) scale(0.84);
             opacity: 0;
             pointer-events: none;
         }
