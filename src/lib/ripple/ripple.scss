@@ -1,14 +1,17 @@
+/* keyframes */
 @keyframes md-ripple {
     0% {
         width: 0;
     }
 }
+
 @keyframes md-ripple-fadeout {
     0% {
         opacity: 10%;
     }
 }
 
+/* ripple */
 .md-ripple {
     position: relative;
 }
@@ -38,8 +41,8 @@
     pointer-events: none;
 }
 
-.md-ripple--inverse{
-    &::after{
+.md-ripple--inverse {
+    &::after {
         background: var(--md-sys-color-background);
     }
 }
@@ -63,7 +66,7 @@
 .md-ripple--focus {
     &::after {
         opacity: 10%;
-        animation-name: var(--md-ripple-animation,md-ripple);
+        animation-name: var(--md-ripple-animation, md-ripple);
         animation-duration: var(--md-sys-motion-duration-short4);
         animation-timing-function: var(--md-sys-motion-easing-standard);
     }
@@ -79,7 +82,7 @@
     &.md-ripple--focus {
         &::after {
             opacity: 0;
-            animation-name: var(--md-ripple-animation,md-ripple),var(--md-ripple-animation,md-ripple-fadeout);
+            animation-name: var(--md-ripple-animation, md-ripple), var(--md-ripple-animation, md-ripple-fadeout);
             animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
             animation-timing-function: var(--md-sys-motion-easing-standard), var(--md-sys-motion-easing-standard);
         }

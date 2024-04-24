@@ -1,3 +1,4 @@
+/* dialog */
 .md-dialog {
     display: flex;
     flex-direction: column;
@@ -8,6 +9,7 @@
     left: 0;
     z-index: 1;
 }
+
 .md-dialog__container {
     display: flex;
     flex-direction: column;
@@ -20,34 +22,39 @@
     top: 50%;
     left: 50%;
     z-index: 2;
-    transform: translate3d(-50%,-50%,0) scale(1);
+    transform: translate3d(-50%, -50%, 0) scale(1);
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 }
+
 .md-dialog__header {
     display: flex;
     align-items: center;
     padding: 24px;
     padding-bottom: 16px;
+
     + .md-dialog__body {
         margin-top: 0px;
     }
 }
+
 .md-dialog__label {
     @extend .md-typography--headline-small;
 }
+
 .md-dialog__body {
     flex: 1;
     overflow: auto;
     padding: 0 24px;
     margin: 24px 0;
     @extend .md-typography--body-medium;
-    
+
     + .md-dialog__footer {
         padding-top: 0;
     }
 }
+
 .md-dialog__footer {
     display: flex;
     align-items: center;
@@ -55,6 +62,7 @@
     padding: 24px;
     gap: 0 8px;
 }
+
 .md-dialog__scrim {
     position: absolute;
     top: 0;
@@ -69,15 +77,17 @@
     transition-timing-function: var(--md-sys-motion-easing-standard);
 }
 
-.md-dialog{
-    &:not([open]){
+.md-dialog {
+    &:not([open]) {
         pointer-events: none;
-        .md-dialog__container{
-            transform: translate3d(-50%,-50%,0) scale(0.84);
+
+        .md-dialog__container {
+            transform: translate3d(-50%, -50%, 0) scale(0.84);
             opacity: 0;
             pointer-events: none;
         }
-        .md-dialog__scrim{
+
+        .md-dialog__scrim {
             opacity: 0;
             pointer-events: none;
         }

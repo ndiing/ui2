@@ -1,3 +1,4 @@
+/* checkbox */
 .md-checkbox {
     display: inline-flex;
     align-items: center;
@@ -7,6 +8,7 @@
     height: 24px;
     position: relative;
 }
+
 .md-checkbox__native {
     position: absolute;
     top: 0;
@@ -15,10 +17,12 @@
     left: 0;
     z-index: 1;
     appearance: none;
+
     &:indeterminate {
         + .md-checkbox__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);
+
             .md-checkbox__thumb {
                 height: 2px;
                 width: 10px;
@@ -26,10 +30,12 @@
             }
         }
     }
+
     &:checked {
         + .md-checkbox__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);
+
             .md-checkbox__thumb {
                 height: 5px;
                 width: 10px;
@@ -41,6 +47,7 @@
         }
     }
 }
+
 .md-checkbox__track {
     display: inline-flex;
     align-items: center;

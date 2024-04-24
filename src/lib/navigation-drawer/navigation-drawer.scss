@@ -1,7 +1,9 @@
+/* navigation-drawer */
 .md-navigation-drawer {
     display: flex;
     flex-direction: column;
 }
+
 .md-navigation-drawer__container {
     display: flex;
     flex-direction: column;
@@ -11,6 +13,7 @@
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 }
+
 .md-navigation-drawer__body {
     flex: 1;
     overflow: auto;
@@ -55,10 +58,12 @@
 // .md-navigation-drawer {
 //     &:not([open]) {
 //         pointer-events: none;
+
 //         .md-navigation-drawer__container {
 //             opacity: 0;
 //             pointer-events: none;
 //         }
+
 //         .md-navigation-drawer__scrim {
 //             opacity: 0;
 //             pointer-events: none;

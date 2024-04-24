@@ -1,13 +1,16 @@
+/* time-field */
 .md-time-field {
     display: flex;
     flex-direction: column;
 }
+
 .md-time-field__label {
     display: flex;
     align-items: center;
     height: 40px;
     padding: 0 16px;
 }
+
 .md-time-field__label-text {
     @extend .md-typography--body-large;
     white-space: nowrap;
@@ -16,6 +19,7 @@
     background: transparent;
     color: var(--md-sys-color-on-surface-variant);
 }
+
 .md-time-field__container {
     display: flex;
     align-items: center;
@@ -23,6 +27,7 @@
     background: var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface);
 }
+
 .md-time-field__native {
     @extend .md-typography--body-large;
     width: 100%;
@@ -30,20 +35,25 @@
     padding: 0 16px;
     background: transparent;
     color: inherit;
+
     &::placeholder {
         color: var(--md-sys-color-on-surface-variant);
     }
 
     &::-webkit-time-edit {
     }
+
     &::-webkit-time-edit-fields-wrapper {
         padding: 0;
     }
+
     &::-webkit-time-edit-day-field {
         padding: 0;
     }
+
     &::-webkit-time-edit-text {
     }
+
     &::-webkit-calendar-picker-indicator {
         background: none;
         margin: 0;
@@ -52,6 +62,7 @@
         height: 0;
     }
 }
+
 .md-time-field__text {
     display: flex;
     align-items: center;
@@ -59,14 +70,17 @@
     padding: 0 16px;
     margin: 4px 0 0 0;
 }
+
 .md-time-field__text-message {
     @extend .md-typography--body-small;
 }
+
 .md-time-field__actions {
     display: inline-flex;
     align-items: center;
     padding: 0 12px;
 }
+
 .md-time-field__action {
     @extend .md-icon;
     @extend .md-ripple;

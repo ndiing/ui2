@@ -1,19 +1,85 @@
-.md-gesture{
+/* gesture */
+.md-gesture {
     position: relative;
 }
-.md-gesture--start{
+
+.md-gesture--start {
     &,
-    & *{
+    & * {
         user-select: none;
     }
 }
-// .md-resize{}
-.md-resize__handle{position: absolute;z-index: 1;}
-.md-resize__handle--n{height: 16px;top: 0;right: 0;left: 0; cursor: n-resize;}
-.md-resize__handle--ne{height: 16px;width: 16px;top: 0;right: 0; z-index: 2;cursor: ne-resize;}
-.md-resize__handle--e{width: 16px;right: 0;top: 0;bottom: 0; cursor: e-resize;}
-.md-resize__handle--se{height: 16px;width: 16px;right: 0;bottom: 0; z-index: 2;cursor: se-resize;}
-.md-resize__handle--s{height: 16px;bottom: 0;right: 0;left: 0; cursor: s-resize;}
-.md-resize__handle--sw{height: 16px;width: 16px;bottom: 0;left: 0; z-index: 2;cursor: sw-resize;}
-.md-resize__handle--w{width: 16px;left: 0;top: 0;bottom: 0; cursor: w-resize;}
-.md-resize__handle--nw{height: 16px;width: 16px;top: 0;left: 0; z-index: 2;cursor: nw-resize;}
+
+/* resize */
+.md-resize__handle {
+    position: absolute;
+    z-index: 1;
+}
+
+.md-resize__handle--n {
+    height: 16px;
+    top: 0;
+    right: 0;
+    left: 0;
+    cursor: n-resize;
+}
+
+.md-resize__handle--ne {
+    height: 16px;
+    width: 16px;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    cursor: ne-resize;
+}
+
+.md-resize__handle--e {
+    width: 16px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: e-resize;
+}
+
+.md-resize__handle--se {
+    height: 16px;
+    width: 16px;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: se-resize;
+}
+
+.md-resize__handle--s {
+    height: 16px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    cursor: s-resize;
+}
+
+.md-resize__handle--sw {
+    height: 16px;
+    width: 16px;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    cursor: sw-resize;
+}
+
+.md-resize__handle--w {
+    width: 16px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    cursor: w-resize;
+}
+
+.md-resize__handle--nw {
+    height: 16px;
+    width: 16px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: nw-resize;
+}
