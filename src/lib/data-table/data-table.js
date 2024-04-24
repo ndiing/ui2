@@ -6,7 +6,10 @@ import { styleMap } from "lit/directives/style-map.js";
 
 class MDDataTableColumn extends HTMLTableCellElement {
     connectedCallback() {
-        this.gesture = new Gesture(this, { resizeHandles: ["e"] });
+        this.gesture = new Gesture(this, {
+            dragStartWaitForLongPress:true,
+            resizeHandles: ["e"],
+        });
     }
 
     disconnectedCallback() {
@@ -17,7 +20,10 @@ customElements.define("md-data-table-column", MDDataTableColumn, { extends: "th"
 
 class MDDataTableRow extends HTMLTableRowElement {
     connectedCallback() {
-        this.gesture = new Gesture(this, { resizeHandles: [] });
+        this.gesture = new Gesture(this, {
+            dragStartWaitForLongPress:true,
+            resizeHandles: [],
+        });
     }
 
     disconnectedCallback() {

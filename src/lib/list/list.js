@@ -4,17 +4,18 @@ import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
 import { Gesture } from "../gesture/gesture";
 
-class MDListItem extends HTMLLIElement{
-    connectedCallback(){
-        this.gesture=new Gesture(this,{
+class MDListItem extends HTMLLIElement {
+    connectedCallback() {
+        this.gesture = new Gesture(this, {
+            dragStartWaitForLongPress: true,
             resizeHandles: [],
-        })
+        });
     }
-    disconnectedCallback(){
-        this.gesture.destroy()
+    disconnectedCallback() {
+        this.gesture.destroy();
     }
 }
-customElements.define('md-list-item',MDListItem,{extends:'li'})
+customElements.define("md-list-item", MDListItem, { extends: "li" });
 
 class MDListContainer extends MDElement {
     static get properties() {
@@ -148,7 +149,6 @@ class MDList extends MDElement {
         this.requestUpdate();
     }
 
-
     handleListItemDragStart(event) {
         this.fromItem = event.currentTarget;
         this.fromItemRect = this.fromItem.children[0].getBoundingClientRect();
@@ -169,7 +169,7 @@ class MDList extends MDElement {
 
     handleListItemDrag(event) {
         // this.fromItemDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
-        this.fromItemDragged.style.setProperty('transform',`translate3d(0px,${event.detail.moveY}px,0)`)
+        this.fromItemDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
     }
 
     handleListItemDragEnd(event) {
