@@ -63,7 +63,7 @@ class DevForm extends MDElement {
                         <div><div><label>select</label></div><div><select name="select"></option></select></div></div>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>textarea</label></div><div><textarea name="textarea"></textarea></div></div>
+                        <md-textarea-field label="textarea" name="textarea"></md-textarea-field>
                     </div>
                     <div class="md-layout__column--expanded12 md-layout__column--medium4 md-layout__column--compact4">
 
