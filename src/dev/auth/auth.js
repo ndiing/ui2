@@ -6,7 +6,7 @@ class DevAuth extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Auth")}</h1>
+            <h1>${"Auth"}</h1>
             <md-outlet></md-outlet>
         `;
     }

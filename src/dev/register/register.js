@@ -6,7 +6,7 @@ class DevRegister extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Register")}</h1>
+            <h1>${"Register"}</h1>
             <md-outlet></md-outlet>
         `;
     }

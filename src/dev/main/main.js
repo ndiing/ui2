@@ -75,7 +75,7 @@ class DevMain extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <!-- <h1>${msg("Main")}</h1> -->
+            <!-- <h1>${"Main"}</h1> -->
             <!-- <div class="md-layout"> -->
                 <div class="md-layout__border">
                     <md-navigation-drawer

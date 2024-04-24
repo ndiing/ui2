@@ -6,7 +6,7 @@ class DevVerify extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Verify")}</h1>
+            <h1>${"Verify"}</h1>
             <md-outlet></md-outlet>
         `;
     }

@@ -6,7 +6,7 @@ class DevError extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Error")}</h1>
+            <h1>${"Error"}</h1>
             <md-outlet></md-outlet>
         `;
     }

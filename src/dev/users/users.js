@@ -6,7 +6,7 @@ class DevUsers extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Users")}</h1>
+            <h1>${"Users"}</h1>
             <md-outlet></md-outlet>
         `;
     }

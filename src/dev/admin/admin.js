@@ -6,7 +6,7 @@ class DevAdmin extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Admin")}</h1>
+            <h1>${"Admin"}</h1>
             <md-outlet></md-outlet>
         `;
     }

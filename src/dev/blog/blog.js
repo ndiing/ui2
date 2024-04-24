@@ -6,7 +6,7 @@ class DevBlog extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <h1>${msg("Blog")}</h1>
+            <h1>${"Blog"}</h1>
             <md-outlet></md-outlet>
         `;
     }
