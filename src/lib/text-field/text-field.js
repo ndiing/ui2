@@ -22,7 +22,6 @@ class MDTextField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "text";
     }
 
@@ -78,28 +77,27 @@ class MDTextField extends MDElement {
     handleTextFieldNativeFocus(event) {
         this.emit("onTextFieldNativeFocus", event);
     }
+
     handleTextFieldNativeBlur(event) {
         this.emit("onTextFieldNativeBlur", event);
     }
+
     handleTextFieldNativeInput(event) {
         this.emit("onTextFieldNativeInput", event);
     }
+
     handleTextFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.textFieldNative.validity.valid;
         this.validationMessage = this.textFieldNative.validationMessage;
-
         this.emit("onTextFieldNativeInvalid", event);
     }
+
     handleTextFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onTextFieldNativeReset", event);
     }
 }
-
 customElements.define("md-text-field", MDTextField);
-
 export { MDTextField };

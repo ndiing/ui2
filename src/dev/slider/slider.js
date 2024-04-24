@@ -15,7 +15,7 @@ class DevSlider extends MDElement {
                         <br><br><br><md-slider ui="centered" name="centered"></md-slider>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                        <br><br><br><md-slider ui="continuous" name="continuous"></md-slider>
+                        <br><br><br><md-slider ui="continuous" name="continuous" min="0" max="100000" value="50000" defaultValue="50000"></md-slider>
                     </div>
                     <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                         <br><br><br><md-slider ui="discrete" name="discrete" step="10"></md-slider>

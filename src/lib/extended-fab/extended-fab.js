@@ -4,10 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDExtendedFab extends MDElement {
     static get properties() {
-        return {
-            icon:{type:String},
-            label:{type:String},
-        };
+        return { icon: { type: String }, label: { type: String } };
     }
 
     constructor() {
@@ -32,10 +29,7 @@ class MDExtendedFab extends MDElement {
         this.classList.remove("md-extended-fab");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
-
 customElements.define("md-extended-fab", MDExtendedFab);
-
 export { MDExtendedFab };

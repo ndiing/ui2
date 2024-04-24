@@ -82,7 +82,7 @@ class Gesture {
         this.longPressTimeout = window.setTimeout(() => {
             this.longPress = true;
             this.emit("onLongPress", event);
-            if (this.resizeHandleElement&&this.options.resizeStartWaitForLongPress) {
+            if (this.resizeHandleElement && this.options.resizeStartWaitForLongPress) {
                 this.resize = true;
                 this.emit("onResizeStart", event);
             }
@@ -96,7 +96,7 @@ class Gesture {
         this.swipe = false;
 
         this.resize = false;
-        if (this.resizeHandleElement&&!this.options.resizeStartWaitForLongPress) {
+        if (this.resizeHandleElement && !this.options.resizeStartWaitForLongPress) {
             this.resize = true;
             this.emit("onResizeStart", event);
         }
@@ -138,7 +138,7 @@ class Gesture {
         if (!this.longPress && !this.swipe) {
             if (Date.now() - this.lastTapTimestamp < 300) {
                 this.emit("onDoubleTap", event);
-                if(this.resize){
+                if (this.resize) {
                     this.emit("onResizeHandleDoubleTap", event);
                 }
             } else {
@@ -147,7 +147,7 @@ class Gesture {
             this.lastTapTimestamp = Date.now();
         }
 
-        if (this.swipe&&!this.drag&&!this.resize) {
+        if (this.swipe && !this.drag && !this.resize) {
             this.emit("onSwipe" + this.swipeDirection, event);
         }
 

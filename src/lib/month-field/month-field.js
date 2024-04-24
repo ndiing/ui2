@@ -22,7 +22,6 @@ class MDMonthField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "month";
     }
 
@@ -84,31 +83,31 @@ class MDMonthField extends MDElement {
     handleMonthFieldNativeFocus(event) {
         this.emit("onMonthFieldNativeFocus", event);
     }
+
     handleMonthFieldNativeBlur(event) {
         this.emit("onMonthFieldNativeBlur", event);
     }
+
     handleMonthFieldNativeInput(event) {
         this.emit("onMonthFieldNativeInput", event);
     }
+
     handleMonthFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.monthFieldNative.validity.valid;
         this.validationMessage = this.monthFieldNative.validationMessage;
-
         this.emit("onMonthFieldNativeInvalid", event);
     }
+
     handleMonthFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onMonthFieldNativeReset", event);
     }
-    handleMonthFieldActionClick(event){
-        this.monthFieldNative.showPicker()
+
+    handleMonthFieldActionClick(event) {
+        this.monthFieldNative.showPicker();
     }
 }
-
 customElements.define("md-month-field", MDMonthField);
-
 export { MDMonthField };

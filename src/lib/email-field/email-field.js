@@ -22,7 +22,6 @@ class MDEmailField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "email";
     }
 
@@ -78,28 +77,27 @@ class MDEmailField extends MDElement {
     handleEmailFieldNativeFocus(event) {
         this.emit("onEmailFieldNativeFocus", event);
     }
+
     handleEmailFieldNativeBlur(event) {
         this.emit("onEmailFieldNativeBlur", event);
     }
+
     handleEmailFieldNativeInput(event) {
         this.emit("onEmailFieldNativeInput", event);
     }
+
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.EmailFieldNative.validity.valid;
         this.validationMessage = this.EmailFieldNative.validationMessage;
-
         this.emit("onEmailFieldNativeInvalid", event);
     }
+
     handleEmailFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onEmailFieldNativeReset", event);
     }
 }
-
 customElements.define("md-email-field", MDEmailField);
-
 export { MDEmailField };

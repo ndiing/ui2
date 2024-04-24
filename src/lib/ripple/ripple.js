@@ -34,22 +34,22 @@ class Ripple {
         }
         this.host.style.setProperty("--md-ripple-size", this.options.size + "%");
 
-        if(this.options.containment){
-            this.host.classList.add('md-ripple--containment')
-        }else{
-            this.host.classList.remove('md-ripple--containment')
+        if (this.options.containment) {
+            this.host.classList.add("md-ripple--containment");
+        } else {
+            this.host.classList.remove("md-ripple--containment");
         }
 
-        if(this.options.fadeout){
-            this.host.classList.add('md-ripple--fadeout')
-        }else{
-            this.host.classList.remove('md-ripple--fadeout')
+        if (this.options.fadeout) {
+            this.host.classList.add("md-ripple--fadeout");
+        } else {
+            this.host.classList.remove("md-ripple--fadeout");
         }
 
-        if(this.options.inverse){
-            this.host.classList.add('md-ripple--inverse')
-        }else{
-            this.host.classList.remove('md-ripple--inverse')
+        if (this.options.inverse) {
+            this.host.classList.add("md-ripple--inverse");
+        } else {
+            this.host.classList.remove("md-ripple--inverse");
         }
 
         this.options.button.setAttribute("tabIndex", 0);
@@ -83,7 +83,7 @@ class Ripple {
     handleMousedown(event) {
         window.addEventListener("mouseup", this.handleMouseup);
         this.host.classList.add("md-ripple--pressed");
-        this.host.style.setProperty("--md-ripple-animation",'none');
+        this.host.style.setProperty("--md-ripple-animation", "none");
         this.rect = this.host.getBoundingClientRect();
         const left = (event.clientX - this.rect.left) / this.rect.width;
         const top = (event.clientY - this.rect.top) / this.rect.height;

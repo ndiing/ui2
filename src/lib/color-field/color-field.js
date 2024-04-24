@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDColorField extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDColorField extends MDElement {
         this.classList.remove("md-color-field");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-color-field", MDColorField);

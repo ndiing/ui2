@@ -22,7 +22,6 @@ class MDWeekField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "week";
     }
 
@@ -84,31 +83,31 @@ class MDWeekField extends MDElement {
     handleWeekFieldNativeFocus(event) {
         this.emit("onWeekFieldNativeFocus", event);
     }
+
     handleWeekFieldNativeBlur(event) {
         this.emit("onWeekFieldNativeBlur", event);
     }
+
     handleWeekFieldNativeInput(event) {
         this.emit("onWeekFieldNativeInput", event);
     }
+
     handleWeekFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.weekFieldNative.validity.valid;
         this.validationMessage = this.weekFieldNative.validationMessage;
-
         this.emit("onWeekFieldNativeInvalid", event);
     }
+
     handleWeekFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onWeekFieldNativeReset", event);
     }
-    handleWeekFieldActionClick(event){
-        this.weekFieldNative.showPicker()
+
+    handleWeekFieldActionClick(event) {
+        this.weekFieldNative.showPicker();
     }
 }
-
 customElements.define("md-week-field", MDWeekField);
-
 export { MDWeekField };

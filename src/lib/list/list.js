@@ -46,7 +46,6 @@ class MDListContainer extends MDElement {
         }
     }
 }
-
 customElements.define("md-list-container", MDListContainer);
 
 class MDList extends MDElement {
@@ -58,7 +57,6 @@ class MDList extends MDElement {
 
     constructor() {
         super();
-
         this.list = [];
     }
 
@@ -85,35 +83,34 @@ class MDList extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-list");
-        this.addEventListener('keydown',this.handleListKeydown)
+        this.addEventListener("keydown", this.handleListKeydown);
     }
-    
+
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-list");
-        this.removeEventListener('keydown',this.handleListKeydown)
+        this.removeEventListener("keydown", this.handleListKeydown);
     }
 
     updated(changedProperties) {}
 
-    handleListKeydown(event){
-        // all selection
-        if(event.ctrlKey&&event.key==='a'){
-            event.preventDefault()
-            this.list.forEach(item=>{
-                item.selected=true
-            })
-            this.requestUpdate()
+    handleListKeydown(event) {
+        if (event.ctrlKey && event.key === "a") {
+            event.preventDefault();
+            this.list.forEach((item) => {
+                item.selected = true;
+            });
+            this.requestUpdate();
         }
     }
 
     handleListContainerClick(event) {
         const data = event.currentTarget.data;
-
         this.currentSelectedIndex = this.list.indexOf(data);
-        // range selection
+
         if (event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
+
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
                 [this.lastSelectedIndex, this.currentSelectedIndex] = [this.currentSelectedIndex, this.lastSelectedIndex];
             }
@@ -121,20 +118,15 @@ class MDList extends MDElement {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
         } else if (event.ctrlKey) {
-            // multi selection
             data.selected = !data.selected;
         } else {
-            // single selection
             this.list.forEach((item) => {
                 item.selected = item === data;
             });
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
-
         this.requestUpdate();
     }
 }
-
 customElements.define("md-list", MDList);
-
 export { MDList };

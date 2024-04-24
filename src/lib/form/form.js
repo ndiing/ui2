@@ -2,23 +2,16 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
-
 class MDForm extends MDElement {
     static get properties() {
-        return {
-            action: { type: String },
-            enctype: { type: String },
-            method: { type: String },
-        };
+        return { action: { type: String }, enctype: { type: String }, method: { type: String } };
     }
 
     constructor() {
         super();
-
         this.action = "/";
         this.enctype = "application/json";
         this.method = "post";
-
         this.childNodes_ = Array.from(this.childNodes);
     }
 
@@ -53,26 +46,22 @@ class MDForm extends MDElement {
     }
 
     handleFormNativeReset(event) {
-        for(const element of this.formNative.elements){
-            const event=new CustomEvent('reset',{
-                bubbles:true,
-                cancelable:true,
-                detail: event
-            })
-            element.dispatchEvent(event)
+        for (const element of this.formNative.elements) {
+            const event = new CustomEvent("reset", { bubbles: true, cancelable: true, detail: event });
+            element.dispatchEvent(event);
         }
-
         this.emit("onFormNativeReset", event);
     }
+
     handleFormNativeSubmit(event) {
         event.preventDefault();
-
         this.emit("onFormNativeSubmit", event);
     }
 
     reset() {
         this.formNative.reset();
     }
+
     submit(button) {
         let formNative = this.formNative;
 
@@ -87,7 +76,5 @@ class MDForm extends MDElement {
         }
     }
 }
-
 customElements.define("md-form", MDForm);
-
 export { MDForm };

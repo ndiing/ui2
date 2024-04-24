@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDDivider extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDDivider extends MDElement {
         this.classList.remove("md-divider");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-divider", MDDivider);

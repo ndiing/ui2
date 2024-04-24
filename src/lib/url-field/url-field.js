@@ -22,7 +22,6 @@ class MDUrlField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "url";
     }
 
@@ -78,28 +77,27 @@ class MDUrlField extends MDElement {
     handleUrlFieldNativeFocus(event) {
         this.emit("onUrlFieldNativeFocus", event);
     }
+
     handleUrlFieldNativeBlur(event) {
         this.emit("onUrlFieldNativeBlur", event);
     }
+
     handleUrlFieldNativeInput(event) {
         this.emit("onUrlFieldNativeInput", event);
     }
+
     handleUrlFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.urlFieldNative.validity.valid;
         this.validationMessage = this.urlFieldNative.validationMessage;
-
         this.emit("onUrlFieldNativeInvalid", event);
     }
+
     handleUrlFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onUrlFieldNativeReset", event);
     }
 }
-
 customElements.define("md-url-field", MDUrlField);
-
 export { MDUrlField };

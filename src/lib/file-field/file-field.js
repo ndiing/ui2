@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDFileField extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDFileField extends MDElement {
         this.classList.remove("md-file-field");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-file-field", MDFileField);

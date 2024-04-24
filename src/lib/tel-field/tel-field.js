@@ -22,7 +22,6 @@ class MDTelField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "tel";
     }
 
@@ -78,28 +77,27 @@ class MDTelField extends MDElement {
     handleTelFieldNativeFocus(event) {
         this.emit("onTelFieldNativeFocus", event);
     }
+
     handleTelFieldNativeBlur(event) {
         this.emit("onTelFieldNativeBlur", event);
     }
+
     handleTelFieldNativeInput(event) {
         this.emit("onTelFieldNativeInput", event);
     }
+
     handleTelFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.telFieldNative.validity.valid;
         this.validationMessage = this.telFieldNative.validationMessage;
-
         this.emit("onTelFieldNativeInvalid", event);
     }
+
     handleTelFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onTelFieldNativeReset", event);
     }
 }
-
 customElements.define("md-tel-field", MDTelField);
-
 export { MDTelField };

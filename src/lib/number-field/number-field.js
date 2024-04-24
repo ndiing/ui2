@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDNumberField extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDNumberField extends MDElement {
         this.classList.remove("md-number-field");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-number-field", MDNumberField);

@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDBottomSheet extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDBottomSheet extends MDElement {
         this.classList.remove("md-bottom-sheet");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-bottom-sheet", MDBottomSheet);

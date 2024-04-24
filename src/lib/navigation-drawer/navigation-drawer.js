@@ -4,15 +4,13 @@ import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
 
 class MDNavigationDrawer extends MDElement {
+
     static get properties() {
-        return Object.assign(MDList.properties,{
-            open:{type:Boolean,reflect:true},
-        });
+        return Object.assign(MDList.properties, { open: { type: Boolean, reflect: true } });
     }
 
     constructor() {
         super();
-
     }
 
     render() {
@@ -40,28 +38,26 @@ class MDNavigationDrawer extends MDElement {
         this.classList.remove("md-navigation-drawer");
     }
 
-    updated(changedProperties) {
+    updated(changedProperties) {}
+
+    close() {
+        this.open = false;
     }
 
-    close(){
-        this.open=false
-    }
-    show(){
-        this.open=true
-    }
-    showModal(){
+    show() {
+        this.open = true;
     }
 
-    handleNavigationDrawerScrimClick(event){
-        this.close()
-        this.emit('onNavigationDrawerScrimClick',event)
+    showModal() {}
+
+    handleNavigationDrawerScrimClick(event) {
+        this.close();
+        this.emit("onNavigationDrawerScrimClick", event);
     }
 
-    handleNavigationDrawerButtonClick(event){
-        this.emit('onNavigationDrawerButtonClick',event)
+    handleNavigationDrawerButtonClick(event) {
+        this.emit("onNavigationDrawerButtonClick", event);
     }
 }
-
 customElements.define("md-navigation-drawer", MDNavigationDrawer);
-
 export { MDNavigationDrawer };

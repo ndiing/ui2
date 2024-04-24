@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDTextareaField extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDTextareaField extends MDElement {
         this.classList.remove("md-textarea-field");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-textarea-field", MDTextareaField);

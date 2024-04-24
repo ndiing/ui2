@@ -1,11 +1,8 @@
-
 class Router {
-    
     static setRoutes(routes = [], parent = null) {
         return routes.reduce((p, c) => {
             c.parent = parent;
-            c.fullpath = `${c.parent?.fullpath ?? ""}/${c.path}` 
-                .replace(/\/+/g, "/");
+            c.fullpath = `${c.parent?.fullpath ?? ""}/${c.path}`.replace(/\/+/g, "/");
 
             p = p.concat(c);
 
@@ -17,21 +14,18 @@ class Router {
         }, []);
     }
 
-    
     static on(type, listener) {
         listener = listener.bind(this);
 
         window.addEventListener(type, listener);
     }
 
-    
     static off(type, listener) {
         listener = listener.bind(this);
 
         window.removeEventListener(type, listener);
     }
 
-    
     static emit(type, detail = { ...this }) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -42,24 +36,13 @@ class Router {
         window.dispatchEvent(event);
     }
 
-    
     static getQuery() {
-        return Object.fromEntries(
-            
-            new URLSearchParams(window.location.search) 
-                .entries(),
-        );
+        return Object.fromEntries(new URLSearchParams(window.location.search).entries());
     }
 
-    
     static getRoute(path) {
         return this.routes.find((route) => {
-            const pattern =
-                "^" +
-                route.fullpath 
-                    .replace(/\:(\w+)/g, "(?<$1>[^/]+)")
-                    .replace(/\*/, "(?:.*)") +
-                "(?:/?$)";
+            const pattern = "^" + route.fullpath.replace(/\:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
 
@@ -69,7 +52,6 @@ class Router {
         });
     }
 
-    
     static getRoutes(route = []) {
         return [route].reduce((p, c) => {
             if (c.parent) {
@@ -82,7 +64,6 @@ class Router {
         }, []);
     }
 
-    
     static async getOutlet(container) {
         return await new Promise((resolve) => {
             let observer;
@@ -113,7 +94,6 @@ class Router {
         });
     }
 
-    
     static async handleLoad(event) {
         this.path = window.location.pathname;
         this.params = {};
@@ -156,19 +136,12 @@ class Router {
 
             const outlet = await this.getOutlet(container);
 
-            
-
             if (!stack.component.isConnected) {
-                outlet.parentElement.insertBefore(
-                    
-                    stack.component,
-                    outlet.nextElementSibling,
-                );
+                outlet.parentElement.insertBefore(stack.component, outlet.nextElementSibling);
 
                 stack.component.isComponent = true;
             }
 
-            
             const outlets = Array.from(document.body.querySelectorAll("md-outlet"));
 
             for (const outlet of outlets) {
@@ -190,12 +163,10 @@ class Router {
         this.emit("onNavigateSuccess");
     }
 
-    
     static navigate(url) {
         window.history.pushState({}, null, url);
     }
 
-    
     static handleClick(event) {
         const routerLink = event.target.closest("[routerLink]");
 
@@ -206,7 +177,6 @@ class Router {
         }
     }
 
-    
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
 

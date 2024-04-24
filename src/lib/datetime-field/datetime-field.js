@@ -22,7 +22,6 @@ class MDDatetimeField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "datetime-local";
     }
 
@@ -84,31 +83,31 @@ class MDDatetimeField extends MDElement {
     handleDatetimeFieldNativeFocus(event) {
         this.emit("onDatetimeFieldNativeFocus", event);
     }
+
     handleDatetimeFieldNativeBlur(event) {
         this.emit("onDatetimeFieldNativeBlur", event);
     }
+
     handleDatetimeFieldNativeInput(event) {
         this.emit("onDatetimeFieldNativeInput", event);
     }
+
     handleDatetimeFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.datetimeFieldNative.validity.valid;
         this.validationMessage = this.datetimeFieldNative.validationMessage;
-
         this.emit("onDatetimeFieldNativeInvalid", event);
     }
+
     handleDatetimeFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onDatetimeFieldNativeReset", event);
     }
-    handleDatetimeFieldActionClick(event){
-        this.datetimeFieldNative.showPicker()
+
+    handleDatetimeFieldActionClick(event) {
+        this.datetimeFieldNative.showPicker();
     }
 }
-
 customElements.define("md-datetime-field", MDDatetimeField);
-
 export { MDDatetimeField };

@@ -22,7 +22,6 @@ class MDDateField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "date";
     }
 
@@ -84,31 +83,31 @@ class MDDateField extends MDElement {
     handleDateFieldNativeFocus(event) {
         this.emit("onDateFieldNativeFocus", event);
     }
+
     handleDateFieldNativeBlur(event) {
         this.emit("onDateFieldNativeBlur", event);
     }
+
     handleDateFieldNativeInput(event) {
         this.emit("onDateFieldNativeInput", event);
     }
+
     handleDateFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.dateFieldNative.validity.valid;
         this.validationMessage = this.dateFieldNative.validationMessage;
-
         this.emit("onDateFieldNativeInvalid", event);
     }
+
     handleDateFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onDateFieldNativeReset", event);
     }
-    handleDateFieldActionClick(event){
-        this.dateFieldNative.showPicker()
+
+    handleDateFieldActionClick(event) {
+        this.dateFieldNative.showPicker();
     }
 }
-
 customElements.define("md-date-field", MDDateField);
-
 export { MDDateField };

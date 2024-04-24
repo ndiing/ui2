@@ -21,7 +21,6 @@ class MDSwitch extends MDElement {
 
     constructor() {
         super();
-
         this.type = "checkbox";
     }
 
@@ -51,28 +50,11 @@ class MDSwitch extends MDElement {
         `
     }
 
-    get switchNative(){
-        return this.querySelector('.md-switch__native')
-    }
-
-    get switchTrack(){
-        return this.querySelector('.md-switch__track')
-    }
-
-    get switchThumb(){
-        return this.querySelector('.md-switch__thumb')
-    }
-
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-switch");
-        await this.updateComplete
-        this.ripple=new Ripple(this.switchThumb,{
-            button:this.switchNative,
-            containment: false,
-            fadeout: true,
-            size: 40/this.switchThumb.clientWidth*100,
-        })
+        await this.updateComplete;
+        this.ripple = new Ripple(this.switchThumb, { button: this.switchNative, containment: false, fadeout: true, size: (40 / this.switchThumb.clientWidth) * 100 });
     }
 
     disconnectedCallback() {
@@ -82,31 +64,38 @@ class MDSwitch extends MDElement {
 
     updated(changedProperties) {}
 
-    get textFieldNative() {
+    get switchNative() {
         return this.querySelector(".md-switch__native");
+    }
+
+    get switchTrack() {
+        return this.querySelector(".md-switch__track");
+    }
+
+    get switchThumb() {
+        return this.querySelector(".md-switch__thumb");
     }
 
     handleSwitchNativeFocus(event) {
         this.emit("onSwitchNativeFocus", event);
     }
+
     handleSwitchNativeBlur(event) {
         this.emit("onSwitchNativeBlur", event);
     }
+
     handleSwitchNativeInput(event) {
         this.emit("onSwitchNativeInput", event);
     }
+
     handleSwitchNativeInvalid(event) {
         event.preventDefault();
-
-
         this.emit("onSwitchNativeInvalid", event);
     }
-    handleSwitchNativeReset(event) {
 
+    handleSwitchNativeReset(event) {
         this.emit("onSwitchNativeReset", event);
     }
 }
-
 customElements.define("md-switch", MDSwitch);
-
 export { MDSwitch };

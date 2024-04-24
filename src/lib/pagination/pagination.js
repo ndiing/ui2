@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDPagination extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDPagination extends MDElement {
         this.classList.remove("md-pagination");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-pagination", MDPagination);

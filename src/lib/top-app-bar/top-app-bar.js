@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDTopAppBar extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDTopAppBar extends MDElement {
         this.classList.remove("md-top-app-bar");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-top-app-bar", MDTopAppBar);

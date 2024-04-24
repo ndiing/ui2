@@ -4,10 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDFab extends MDElement {
     static get properties() {
-        return {
-            icon:{type:String},
-            ui:{type:String},
-        };
+        return { icon: { type: String }, ui: { type: String } };
     }
 
     constructor() {
@@ -32,17 +29,15 @@ class MDFab extends MDElement {
     }
 
     updated(changedProperties) {
-        if(changedProperties.has('ui')){
-            if(this.ui){
-                this.classList.add('md-fab--'+this.ui)
-            }else{
-                this.classList.add('md-fab--small')
-                this.classList.add('md-fab--large')
+        if (changedProperties.has("ui")) {
+            if (this.ui) {
+                this.classList.add("md-fab--" + this.ui);
+            } else {
+                this.classList.add("md-fab--small");
+                this.classList.add("md-fab--large");
             }
         }
     }
 }
-
 customElements.define("md-fab", MDFab);
-
 export { MDFab };

@@ -23,18 +23,7 @@ class MDPasswordField extends MDElement {
 
     constructor() {
         super();
-
-        // this.type = "text";
         this.type = "password";
-
-        // visibility
-        // visibility_off
-
-        // on=text
-        // on=visibility
-
-        // on=password
-        // on=visibility_off
     }
 
     render() {
@@ -95,34 +84,32 @@ class MDPasswordField extends MDElement {
     handlePasswordFieldNativeFocus(event) {
         this.emit("onPasswordFieldNativeFocus", event);
     }
+
     handlePasswordFieldNativeBlur(event) {
         this.emit("onPasswordFieldNativeBlur", event);
     }
+
     handlePasswordFieldNativeInput(event) {
         this.emit("onPasswordFieldNativeInput", event);
     }
+
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.PasswordFieldNative.validity.valid;
         this.validationMessage = this.PasswordFieldNative.validationMessage;
-
         this.emit("onPasswordFieldNativeInvalid", event);
     }
+
     handlePasswordFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onPasswordFieldNativeReset", event);
     }
 
-    handlePasswordFieldActionToggle(event){
-        this.toggle=!this.toggle
-        
-        this.emit('onPasswordFieldActionToggle',event)
+    handlePasswordFieldActionToggle(event) {
+        this.toggle = !this.toggle;
+        this.emit("onPasswordFieldActionToggle", event);
     }
 }
-
 customElements.define("md-password-field", MDPasswordField);
-
 export { MDPasswordField };

@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDChip extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDChip extends MDElement {
         this.classList.remove("md-chip");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-chip", MDChip);

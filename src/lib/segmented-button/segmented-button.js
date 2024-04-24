@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDSegmentedButton extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDSegmentedButton extends MDElement {
         this.classList.remove("md-segmented-button");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-segmented-button", MDSegmentedButton);

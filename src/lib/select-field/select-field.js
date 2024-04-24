@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDSelectField extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDSelectField extends MDElement {
         this.classList.remove("md-select-field");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-select-field", MDSelectField);

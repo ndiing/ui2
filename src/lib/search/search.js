@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDSearch extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDSearch extends MDElement {
         this.classList.remove("md-search");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-search", MDSearch);

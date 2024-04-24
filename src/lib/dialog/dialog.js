@@ -5,16 +5,15 @@ import { msg } from "@lit/localize";
 class MDDialog extends MDElement {
     static get properties() {
         return {
-            label:{type:String},
-            open:{type:Boolean,reflect:true},
-            buttons:{type:Array},
+            label: { type: String },
+            open: { type: Boolean, reflect: true },
+            buttons: { type: Array },
         };
     }
 
     constructor() {
         super();
-
-        this.body=Array.from(this.childNodes)
+        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -52,28 +51,26 @@ class MDDialog extends MDElement {
         this.classList.remove("md-dialog");
     }
 
-    updated(changedProperties) {
+    updated(changedProperties) {}
+
+    close() {
+        this.open = false;
     }
 
-    close(){
-        this.open=false
-    }
-    show(){
-        this.open=true
-    }
-    showModal(){
+    show() {
+        this.open = true;
     }
 
-    handleDialogScrimClick(event){
-        this.close()
-        this.emit('onDialogScrimClick',event)
+    showModal() {}
+
+    handleDialogScrimClick(event) {
+        this.close();
+        this.emit("onDialogScrimClick", event);
     }
 
-    handleDialogButtonClick(event){
-        this.emit('onDialogButtonClick',event)
+    handleDialogButtonClick(event) {
+        this.emit("onDialogButtonClick", event);
     }
 }
-
 customElements.define("md-dialog", MDDialog);
-
 export { MDDialog };

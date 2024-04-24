@@ -6,16 +6,15 @@ import { Ripple } from "../ripple/ripple";
 class MDButton extends MDElement {
     static get properties() {
         return {
-            label:{type:String},
-            type:{type:String},
-            ui:{type:String},
+            label: { type: String },
+            type: { type: String },
+            ui: { type: String },
         };
     }
 
     constructor() {
         super();
-
-        this.type='button'
+        this.type = "button";
     }
 
     render() {
@@ -26,38 +25,33 @@ class MDButton extends MDElement {
         `
     }
 
-    get buttonNative(){
-        return this.querySelector('.md-button__native')
-    }
-
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-button");
-        await this.updateComplete
-        this.ripple=new Ripple(this,{
-            button:this.buttonNative,
-            inverse:this.ui==='filled'
-        })
+        await this.updateComplete;
+        this.ripple = new Ripple(this, { button: this.buttonNative, inverse: this.ui === "filled" });
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-button");
-        this.ripple?.destroy()
+        this.ripple?.destroy();
     }
 
     updated(changedProperties) {
-        if(changedProperties.has('ui')){
-            if(this.ui){
-                this.classList.add('md-button--'+this.ui)
-            }else{
-                this.classList.add('md-button--filled')
-                this.classList.add('md-button--filled-tonal')
+        if (changedProperties.has("ui")) {
+            if (this.ui) {
+                this.classList.add("md-button--" + this.ui);
+            } else {
+                this.classList.add("md-button--filled");
+                this.classList.add("md-button--filled-tonal");
             }
         }
     }
+
+    get buttonNative() {
+        return this.querySelector(".md-button__native");
+    }
 }
-
 customElements.define("md-button", MDButton);
-
 export { MDButton };

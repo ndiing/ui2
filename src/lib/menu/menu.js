@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDMenu extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDMenu extends MDElement {
         this.classList.remove("md-menu");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-menu", MDMenu);

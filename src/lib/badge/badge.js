@@ -5,15 +5,14 @@ import { msg } from "@lit/localize";
 class MDBadge extends MDElement {
     static get properties() {
         return {
-            label:{type:Number},
-            max:{type:Number},
+            label: { type: Number },
+            max: { type: Number },
         };
     }
 
     constructor() {
         super();
-
-        this.max=999
+        this.max = 999;
     }
 
     render() {
@@ -31,10 +30,7 @@ class MDBadge extends MDElement {
         this.classList.remove("md-badge");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
-
 customElements.define("md-badge", MDBadge);
-
 export { MDBadge };

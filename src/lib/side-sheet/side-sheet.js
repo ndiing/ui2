@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDSideSheet extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDSideSheet extends MDElement {
         this.classList.remove("md-side-sheet");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-side-sheet", MDSideSheet);

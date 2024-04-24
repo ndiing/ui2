@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDNavigationRail extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDNavigationRail extends MDElement {
         this.classList.remove("md-navigation-rail");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-navigation-rail", MDNavigationRail);

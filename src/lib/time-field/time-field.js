@@ -2,7 +2,6 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
-
 class MDTimeField extends MDElement {
     static get properties() {
         return {
@@ -22,7 +21,6 @@ class MDTimeField extends MDElement {
 
     constructor() {
         super();
-
         this.type = "time";
     }
 
@@ -84,31 +82,31 @@ class MDTimeField extends MDElement {
     handleTimeFieldNativeFocus(event) {
         this.emit("onTimeFieldNativeFocus", event);
     }
+
     handleTimeFieldNativeBlur(event) {
         this.emit("onTimeFieldNativeBlur", event);
     }
+
     handleTimeFieldNativeInput(event) {
         this.emit("onTimeFieldNativeInput", event);
     }
+
     handleTimeFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.valid = this.timeFieldNative.validity.valid;
         this.validationMessage = this.timeFieldNative.validationMessage;
-
         this.emit("onTimeFieldNativeInvalid", event);
     }
+
     handleTimeFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
-
         this.emit("onTimeFieldNativeReset", event);
     }
-    handleTimeFieldActionClick(event){
-        this.timeFieldNative.showPicker()
+
+    handleTimeFieldActionClick(event) {
+        this.timeFieldNative.showPicker();
     }
 }
-
 customElements.define("md-time-field", MDTimeField);
-
 export { MDTimeField };

@@ -145,8 +145,6 @@ class Store {
         let { _sort, _order, q, _page, _limit, _start, _end, ...rest } = options;
         let docs = Array.from(this.docs.values());
 
-        
-
         if (_sort && _order) {
             const sorters = _sort.split(",").map((name, index) => ({
                 name,
@@ -156,13 +154,9 @@ class Store {
             docs = this.sort(docs, sorters);
         }
 
-        
-
         if (q) {
             docs = this.search(docs, q);
         }
-
-        
 
         if (Object.keys(rest).length) {
             const filters = [];
@@ -176,7 +170,6 @@ class Store {
             docs = this.filter(docs, filters);
         }
 
-        
         const total = docs.length;
         let first, prev, next, last;
 
@@ -204,4 +197,3 @@ class Store {
 }
 
 export { Store };
-

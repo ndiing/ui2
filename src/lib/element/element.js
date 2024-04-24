@@ -4,7 +4,7 @@ import { updateWhenLocaleChanges } from "@lit/localize";
 class MDElement extends LitElement {
     constructor() {
         super();
-        
+
         updateWhenLocaleChanges(this);
     }
 

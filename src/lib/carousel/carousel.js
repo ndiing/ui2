@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDCarousel extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDCarousel extends MDElement {
         this.classList.remove("md-carousel");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-carousel", MDCarousel);

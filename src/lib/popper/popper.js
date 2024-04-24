@@ -1,7 +1,6 @@
 class Popper {
     constructor(host, options = {}) {
         this.options = {
-            // button,
             boundary: document.body,
             offset: 0,
             placements: ["top", "bottom"],
@@ -27,8 +26,6 @@ class Popper {
     init() {
         this.host.classList.add("md-popper--container");
         this.options.button.classList.add("md-popper--button");
-
-        // this.setPlacement();
     }
 
     setPlacement() {

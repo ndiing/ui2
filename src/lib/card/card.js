@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDCard extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDCard extends MDElement {
         this.classList.remove("md-card");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-card", MDCard);
