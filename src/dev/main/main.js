@@ -9,11 +9,14 @@ class DevMain extends MDElement {
         this.list = [
             // { label: "/localization", routerLink: "/localization" },
             // { label: "/element", routerLink: "/element" },
+
             // { label: "/router", routerLink: "/router" },
             // { label: "/store", routerLink: "/store" },
+            
             // { label: "/ripple", routerLink: "/ripple" },
             // { label: "/gesture", routerLink: "/gesture" },
             // { label: "/popper", routerLink: "/popper" },
+
             { label: "/button", routerLink: "/button" },
             { label: "/extended-fab", routerLink: "/extended-fab" },
             { label: "/fab", routerLink: "/fab" },
