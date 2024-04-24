@@ -45,10 +45,10 @@ class DevForm extends MDElement {
                         <md-week-field label="week" name="week"></md-week-field>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>color</label></div><div><input type="color" name="color"></div></div>
+                        <md-color-field label="color" name="color"></md-color-field>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>file</label></div><div><input type="file" name="file"></div></div>
+                        <md-file-field label="file" name="file"></md-file-field>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
                         <md-slider></md-slider>
