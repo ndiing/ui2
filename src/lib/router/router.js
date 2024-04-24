@@ -111,6 +111,7 @@ class Router {
 
         this.emit("onCurrentEntryChange");
 
+        performance.mark("markCurrentEntryChange");
         for (const stack of this.stacks) {
             this.emit("onNavigate");
 
@@ -161,6 +162,10 @@ class Router {
         }
 
         this.emit("onNavigateSuccess");
+
+        performance.mark("markNavigateSuccess");
+
+        performance.measure("measureNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
     }
 
     static navigate(url) {

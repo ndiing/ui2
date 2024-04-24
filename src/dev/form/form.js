@@ -6,7 +6,9 @@ class DevForm extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <md-form>
+            <md-form
+                @onFormNativeSubmit="${this.handleFormNativeSubmit}"
+            >
                 <div class="md-layout__grid">
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
                         <md-email-field label="email" name="email"></md-email-field>
@@ -21,10 +23,10 @@ class DevForm extends MDElement {
                         <md-url-field label="url" name="url"></md-url-field>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>search</label></div><div><input type="search" name="search"></div></div>
+                        <!-- <div><div><label>search</label></div><div><input type="search" name="search"></div></div> -->
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>number</label></div><div><input type="number" name="number"></div></div>
+                        <!-- <div><div><label>number</label></div><div><input type="number" name="number"></div></div> -->
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
                         <md-tel-field label="tel" name="tel"></md-tel-field>
@@ -60,7 +62,7 @@ class DevForm extends MDElement {
                         <md-radio-button></md-radio-button>
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
-                        <div><div><label>select</label></div><div><select name="select"></option></select></div></div>
+                        <!-- <div><div><label>select</label></div><div><select name="select"></option></select></div></div> -->
                     </div>
                     <div class="md-layout__column--expanded2 md-layout__column--medium4 md-layout__column--compact4">
                         <md-textarea-field label="textarea" name="textarea"></md-textarea-field>
@@ -73,6 +75,22 @@ class DevForm extends MDElement {
                 </div>
             </md-form>
         `;
+    }
+    handleFormNativeSubmit(event){
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+              title: 'foo',
+              body: 'bar',
+              userId: 1,
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+          
     }
 }
 

@@ -1,8 +1,9 @@
-import "./localization/localization.js";
-import "./element/element.js";
-
+import "./progress/progress.js";
 import "./router/router.js";
 import "./store/store.js";
+
+import "./localization/localization.js";
+import "./element/element.js";
 
 import "./gesture/gesture.js";
 import "./ripple/ripple.js";
@@ -65,4 +66,3 @@ import "./search/search.js";
 import "./segmented-button/segmented-button.js";
 import "./data-table/data-table.js";
 import "./pagination/pagination.js";
-
