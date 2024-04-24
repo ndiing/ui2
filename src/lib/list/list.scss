@@ -3,8 +3,8 @@ ul {
     list-style-type: none;
 }
 
-:not(ul){
-    >li{
+:not(ul) {
+    > li {
         list-style-type: none;
     }
 }
@@ -54,7 +54,16 @@ ul {
         }
     }
 
+    + .md-list__container {
+        border-radius: calc(56px / 2);
+
+        .md-list__label {
+            @extend .md-typography--label-large;
+        }
+    }
+
     .md-list__container {
+        margin: 0 12px;
         gap: 0 12px;
         border-radius: calc(56px / 2);
     }

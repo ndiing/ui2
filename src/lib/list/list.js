@@ -151,8 +151,8 @@ class MDList extends MDElement {
 
     handleListItemDragStart(event) {
         this.fromItem = event.currentTarget;
-        this.fromItemRect = this.fromItem.getBoundingClientRect();
-        this.fromItemDragged = this.fromItem.cloneNode(true);
+        this.fromItemRect = this.fromItem.children[0].getBoundingClientRect();
+        this.fromItemDragged = this.fromItem.children[0].cloneNode(true);
         this.parentElement.insertBefore(this.fromItemDragged, this.nextElementSibling);
         this.fromItemDragged.style.setProperty("width", this.fromItemRect.width + "px");
         this.fromItemDragged.style.setProperty("height", this.fromItemRect.height + "px");

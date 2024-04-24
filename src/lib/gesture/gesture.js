@@ -26,37 +26,40 @@ class Gesture {
     init() {
         this.host.classList.add("md-gesture");
 
-        this.resizeElement = document.createElement("div");
-        this.resizeElement.classList.add("md-resize");
+        if(this.options.resizeHandles.length){
 
-        let innerHTML = "";
-        if (this.options.resizeHandles.includes("n")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--n"></div>`;
+            this.resizeElement = document.createElement("div");
+            this.resizeElement.classList.add("md-resize");
+    
+            let innerHTML = "";
+            if (this.options.resizeHandles.includes("n")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--n"></div>`;
+            }
+            if (this.options.resizeHandles.includes("ne")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--ne"></div>`;
+            }
+            if (this.options.resizeHandles.includes("e")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--e"></div>`;
+            }
+            if (this.options.resizeHandles.includes("se")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--se"></div>`;
+            }
+            if (this.options.resizeHandles.includes("s")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--s"></div>`;
+            }
+            if (this.options.resizeHandles.includes("sw")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--sw"></div>`;
+            }
+            if (this.options.resizeHandles.includes("w")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--w"></div>`;
+            }
+            if (this.options.resizeHandles.includes("nw")) {
+                innerHTML += `<div class="md-resize__handle md-resize__handle--nw"></div>`;
+            }
+            this.resizeElement.innerHTML = innerHTML;
+    
+            this.host.append(this.resizeElement);
         }
-        if (this.options.resizeHandles.includes("ne")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--ne"></div>`;
-        }
-        if (this.options.resizeHandles.includes("e")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--e"></div>`;
-        }
-        if (this.options.resizeHandles.includes("se")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--se"></div>`;
-        }
-        if (this.options.resizeHandles.includes("s")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--s"></div>`;
-        }
-        if (this.options.resizeHandles.includes("sw")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--sw"></div>`;
-        }
-        if (this.options.resizeHandles.includes("w")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--w"></div>`;
-        }
-        if (this.options.resizeHandles.includes("nw")) {
-            innerHTML += `<div class="md-resize__handle md-resize__handle--nw"></div>`;
-        }
-        this.resizeElement.innerHTML = innerHTML;
-
-        this.host.append(this.resizeElement);
 
         this.handleMousedown = this.handleMousedown.bind(this);
         this.handleMousemove = this.handleMousemove.bind(this);

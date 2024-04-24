@@ -210,6 +210,7 @@ class MDDataTable extends MDElement {
     handleDataTableColumnDragStart(event) {
         this.fromColumn = event.currentTarget;
         this.fromColumnRect = this.fromColumn.getBoundingClientRect();
+
         this.fromColumnDragged = this.fromColumn.cloneNode(true);
         this.parentElement.insertBefore(this.fromColumnDragged, this.nextElementSibling);
         this.fromColumnDragged.style.setProperty("width", this.fromColumnRect.width + "px");
@@ -247,6 +248,9 @@ class MDDataTable extends MDElement {
     handleDataTableRowDragStart(event) {
         this.fromRow = event.currentTarget;
         this.fromRowRect = this.fromRow.getBoundingClientRect();
+        const tds = Array.from(this.fromRow.children).map((td) => {
+            return td.getBoundingClientRect();
+        });
         this.fromRowDragged = this.fromRow.cloneNode(true);
         this.parentElement.insertBefore(this.fromRowDragged, this.nextElementSibling);
         this.fromRowDragged.style.setProperty("width", this.fromRowRect.width + "px");
@@ -260,11 +264,18 @@ class MDDataTable extends MDElement {
         this.fromRowDragged.classList.add("md-ripple--containment");
         this.fromRowDragged.classList.add("md-ripple--button");
         this.fromRowDragged.classList.add("md-ripple--dragged");
+        Array.from(this.fromRowDragged.children).map((td, index) => {
+            const rect = tds[index];
+            td.style.setProperty("min-width", rect.width + "px");
+            td.style.setProperty("max-width", rect.width + "px");
+            td.style.setProperty("min-height", rect.height + "px");
+            td.style.setProperty("max-height", rect.height + "px");
+        });
     }
 
     handleDataTableRowDrag(event) {
         // this.fromRowDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
-        this.fromRowDragged.style.setProperty('transform',`translate3d(0px,${event.detail.moveY}px,0)`)
+        this.fromRowDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
     }
 
     handleDataTableRowDragEnd(event) {
