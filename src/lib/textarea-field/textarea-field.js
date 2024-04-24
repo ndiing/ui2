@@ -82,9 +82,9 @@ class MDTextareaField extends MDElement {
     }
 
     handleTextareaFieldNativeInput(event) {
-        this.textareaFieldNative.style.setProperty('height','0px')
-        const height=this.textareaFieldNative.scrollHeight
-        this.textareaFieldNative.style.setProperty('height',height+'px')
+        this.textareaFieldNative.style.setProperty("height", "0px");
+        const height = this.textareaFieldNative.scrollHeight;
+        this.textareaFieldNative.style.setProperty("height", height + "px");
         this.emit("onTextareaFieldNativeInput", event);
     }
 
@@ -98,6 +98,7 @@ class MDTextareaField extends MDElement {
     handleTextareaFieldNativeReset(event) {
         this.valid = undefined;
         this.validationMessage = undefined;
+        this.textareaFieldNative.style.removeProperty("height");
         this.emit("onTextareaFieldNativeReset", event);
     }
 }
