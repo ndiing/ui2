@@ -10,15 +10,13 @@ class DevDialog extends MDElement {
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                     <md-dialog 
                         id="dialog"
-                        label="Label"
+                        label="label"
                         .buttons="${[
-                            'Button',
-                            'Button',
+                            'button',
+                            'button',
                         ]}"
                         @onDialogButtonClick="${this.handleDialogButtonClick}"
-                    >
-                        Text content
-                    </md-dialog>
+                    >Lorem, ipsum dolor.</md-dialog>
                     <md-button label="Dialog" @click="${this.handleClick}"></md-button>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>

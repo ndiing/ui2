@@ -12,11 +12,11 @@ class DevNavigationBar extends MDElement {
                     <md-list 
                         class="md-list--navigation-bar"
                         .list="${[
-                            { icon:'image',label: 'Item 1', selected:true },
-                            { icon:'image',label: 'Item 2' },
-                            { icon:'image',label: 'Item 3' },
-                            { icon:'image',label: 'Item 4' },
-                            { icon:'image',label: 'Item 5' },
+                            { icon:'image',label: 'Lorem', selected:true },
+                            { icon:'image',label: 'ipsum' },
+                            { icon:'image',label: 'dolor' },
+                            { icon:'image',label: 'sit' },
+                            { icon:'image',label: 'amet' },
                         ]}"
                     ></md-list>
                 </div>

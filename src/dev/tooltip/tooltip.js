@@ -9,20 +9,16 @@ class DevTooltip extends MDElement {
         return html`
             <div class="md-layout__grid">
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                    <md-tooltip id="tooltip">search</md-tooltip>
-                    <md-button label="Tooltip" 
+                    <md-tooltip id="tooltip">Lorem, ipsum.</md-tooltip>
+                    <md-button label="label" 
                         @click="${this.handleClick}"
                         @mouseenter="${this.handleMouseenter}"
                         @mouseleave="${this.handleMouseleave}"
                     ></md-button>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                    <md-tooltip id="tooltip2">Lorem ipsum dolor sit amet.
-                    Architecto vel aliquam aliquid explicabo.
-                    Non reprehenderit asperiores earum dolorem?
-                    Quisquam, facere aperiam. Aut, voluptatem?
-                    Possimus ex ipsum eveniet qui?</md-tooltip>
-                    <md-button label="Tooltip" 
+                    <md-tooltip id="tooltip2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, doloribus.</md-tooltip>
+                    <md-button label="label" 
                         @click="${this.handleClick2}"
                         @mouseenter="${this.handleMouseenter2}"
                         @mouseleave="${this.handleMouseleave2}"

@@ -11,16 +11,11 @@ class DevList extends MDElement {
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
                     <md-list 
                         .list="${[
-                            { label: 'Item 1' },
-                            { label: 'Item 2' },
-                            { label: 'Item 3' },
-                            { label: 'Item 4' },
-                            { label: 'Item 5' },
-                            { label: 'Item 6' },
-                            { label: 'Item 7' },
-                            { label: 'Item 8' },
-                            { label: 'Item 9' },
-                            { label: 'Item 10' },
+                            { label: 'Lorem' },
+                            { label: 'ipsum' },
+                            { label: 'dolor' },
+                            { label: 'sit' },
+                            { label: 'amet' },
                         ]}"
                     ></md-list>
                 </div>
