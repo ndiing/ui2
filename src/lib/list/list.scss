@@ -3,6 +3,12 @@ ul {
     list-style-type: none;
 }
 
+:not(ul){
+    >li{
+        list-style-type: none;
+    }
+}
+
 /* list */
 .md-list {
     display: flex;

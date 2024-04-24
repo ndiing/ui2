@@ -110,11 +110,11 @@ class Ripple {
     }
 
     handleFocus(event) {
-        this.host.classList.add("md-ripple--focus");
+        this.host.classList.add("md-ripple--focused");
     }
 
     handleBlur(event) {
-        this.host.classList.remove("md-ripple--focus");
+        this.host.classList.remove("md-ripple--focused");
     }
 }
 export { Ripple };

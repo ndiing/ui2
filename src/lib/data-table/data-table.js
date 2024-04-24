@@ -87,6 +87,9 @@ class MDDataTable extends MDElement {
                                 @onResize="${this.handleDataTableColumnResize}"
                                 @onResizeEnd="${this.handleDataTableColumnResizeEnd}"
                                 @onResizeHandleDoubleTap="${this.handleDataTableColumnResizeHandleDoubleTap}"
+                                @onDragStart="${this.handleDataTableColumnDragStart}"
+                                @onDrag="${this.handleDataTableColumnDrag}"
+                                @onDragEnd="${this.handleDataTableColumnDragEnd}"
                             >
                                 <md-data-table-container
                                     .label="${column.label}"
@@ -103,6 +106,9 @@ class MDDataTable extends MDElement {
                             tabindex="0"
                             ?selected="${row.selected}"
                             @click="${this.handleDataTableRowClick}"
+                            @onDragStart="${this.handleDataTableRowDragStart}"
+                            @onDrag="${this.handleDataTableRowDrag}"
+                            @onDragEnd="${this.handleDataTableRowDragEnd}"
                         >
                             ${this.columns.map(column => html`
                                 <td>
@@ -199,6 +205,86 @@ class MDDataTable extends MDElement {
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
         this.requestUpdate();
+    }
+
+    handleDataTableColumnDragStart(event) {
+        this.fromColumn = event.currentTarget;
+        this.fromColumnRect = this.fromColumn.getBoundingClientRect();
+        this.fromColumnDragged = this.fromColumn.cloneNode(true);
+        this.parentElement.insertBefore(this.fromColumnDragged, this.nextElementSibling);
+        this.fromColumnDragged.style.setProperty("width", this.fromColumnRect.width + "px");
+        this.fromColumnDragged.style.setProperty("height", this.fromColumnRect.height + "px");
+        this.fromColumnDragged.style.setProperty("position", "absolute");
+        this.fromColumnDragged.style.setProperty("left", this.fromColumnRect.left + "px");
+        this.fromColumnDragged.style.setProperty("top", this.fromColumnRect.top + "px");
+        this.fromColumnDragged.style.setProperty("z-index", 1);
+        this.fromColumnDragged.style.setProperty("pointer-events", "none");
+        this.fromColumnDragged.classList.add("md-ripple");
+        this.fromColumnDragged.classList.add("md-ripple--containment");
+        this.fromColumnDragged.classList.add("md-ripple--button");
+        this.fromColumnDragged.classList.add("md-ripple--dragged");
+    }
+
+    handleDataTableColumnDrag(event) {
+        // this.fromColumnDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
+        this.fromColumnDragged.style.setProperty("transform", `translate3d(${event.detail.moveX}px,0px,0)`);
+    }
+
+    handleDataTableColumnDragEnd(event) {
+        const toColumn = event.detail.target?.closest("th");
+        if (toColumn && this.toColumn !== toColumn && !this.fromColumn !== toColumn) {
+            this.toColumn = toColumn;
+            const oldIndex = this.columns.indexOf(this.fromColumn.data);
+            const newIndex = this.columns.indexOf(this.toColumn.data);
+            this.reorderArray(this.columns, oldIndex, newIndex);
+            this.requestUpdate();
+        }
+        this.fromColumn = null;
+        this.toColumn = null;
+        this.fromColumnDragged.remove();
+    }
+
+    handleDataTableRowDragStart(event) {
+        this.fromRow = event.currentTarget;
+        this.fromRowRect = this.fromRow.getBoundingClientRect();
+        this.fromRowDragged = this.fromRow.cloneNode(true);
+        this.parentElement.insertBefore(this.fromRowDragged, this.nextElementSibling);
+        this.fromRowDragged.style.setProperty("width", this.fromRowRect.width + "px");
+        this.fromRowDragged.style.setProperty("height", this.fromRowRect.height + "px");
+        this.fromRowDragged.style.setProperty("position", "absolute");
+        this.fromRowDragged.style.setProperty("left", this.fromRowRect.left + "px");
+        this.fromRowDragged.style.setProperty("top", this.fromRowRect.top + "px");
+        this.fromRowDragged.style.setProperty("z-index", 1);
+        this.fromRowDragged.style.setProperty("pointer-events", "none");
+        this.fromRowDragged.classList.add("md-ripple");
+        this.fromRowDragged.classList.add("md-ripple--containment");
+        this.fromRowDragged.classList.add("md-ripple--button");
+        this.fromRowDragged.classList.add("md-ripple--dragged");
+    }
+
+    handleDataTableRowDrag(event) {
+        // this.fromRowDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
+        this.fromRowDragged.style.setProperty('transform',`translate3d(0px,${event.detail.moveY}px,0)`)
+    }
+
+    handleDataTableRowDragEnd(event) {
+        const toRow = event.detail.target?.closest("tr");
+        if (toRow && this.toRow !== toRow && !this.fromRow !== toRow) {
+            this.toRow = toRow;
+            const oldIndex = this.rows.indexOf(this.fromRow.data);
+            const newIndex = this.rows.indexOf(this.toRow.data);
+            this.reorderArray(this.rows, oldIndex, newIndex);
+            this.requestUpdate();
+        }
+        this.fromRow = null;
+        this.toRow = null;
+        this.fromRowDragged.remove();
+    }
+
+    reorderArray(array, oldIndex, newIndex) {
+        const element = array.splice(oldIndex, 1)[0];
+        array.splice(newIndex, 0, element);
+        return array;
     }
 }
 customElements.define("md-data-table", MDDataTable);

@@ -114,6 +114,9 @@ class Gesture {
         this.moveX = event.clientX - this.startX;
         this.moveY = event.clientY - this.startY;
 
+        event.moveX=this.moveX
+        event.moveY=this.moveY
+
         this.swipeDirection = (this.moveX < -30 && "Left") || (this.moveX > 30 && "Right") || (this.moveY < -30 && "Top") || (this.moveY > 30 && "Bottom");
 
         if (this.swipeDirection) {

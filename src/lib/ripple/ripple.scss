@@ -63,7 +63,7 @@
     }
 }
 
-.md-ripple--focus {
+.md-ripple--focused {
     &::after {
         opacity: 10%;
         animation-name: var(--md-ripple-animation, md-ripple);
@@ -78,8 +78,15 @@
     }
 }
 
+.md-ripple--dragged {
+    box-shadow: var(--md-sys-elevation-level4);
+    &::after {
+        opacity: 16%;
+    }
+}
+
 .md-ripple--fadeout {
-    &.md-ripple--focus {
+    &.md-ripple--focused {
         &::after {
             opacity: 0;
             animation-name: var(--md-ripple-animation, md-ripple), var(--md-ripple-animation, md-ripple-fadeout);

@@ -2,6 +2,19 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
+import { Gesture } from "../gesture/gesture";
+
+class MDListItem extends HTMLLIElement{
+    connectedCallback(){
+        this.gesture=new Gesture(this,{
+            resizeHandles: [],
+        })
+    }
+    disconnectedCallback(){
+        this.gesture.destroy()
+    }
+}
+customElements.define('md-list-item',MDListItem,{extends:'li'})
 
 class MDListContainer extends MDElement {
     static get properties() {
@@ -65,7 +78,14 @@ class MDList extends MDElement {
         return html`
             <ul>
                 ${this.list.map(item=>html`
-                    <li>
+                    <li
+                        is="md-list-item"
+                        .data="${item}"
+                        tabIndex="0"
+                        @onDragStart="${this.handleListItemDragStart}"
+                        @onDrag="${this.handleListItemDrag}"
+                        @onDragEnd="${this.handleListItemDragEnd}"
+                    >
                         <md-list-container
                             .data="${item}"
                             .icon="${item.icon}"
@@ -126,6 +146,50 @@ class MDList extends MDElement {
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
         this.requestUpdate();
+    }
+
+
+    handleListItemDragStart(event) {
+        this.fromItem = event.currentTarget;
+        this.fromItemRect = this.fromItem.getBoundingClientRect();
+        this.fromItemDragged = this.fromItem.cloneNode(true);
+        this.parentElement.insertBefore(this.fromItemDragged, this.nextElementSibling);
+        this.fromItemDragged.style.setProperty("width", this.fromItemRect.width + "px");
+        this.fromItemDragged.style.setProperty("height", this.fromItemRect.height + "px");
+        this.fromItemDragged.style.setProperty("position", "absolute");
+        this.fromItemDragged.style.setProperty("left", this.fromItemRect.left + "px");
+        this.fromItemDragged.style.setProperty("top", this.fromItemRect.top + "px");
+        this.fromItemDragged.style.setProperty("z-index", 1);
+        this.fromItemDragged.style.setProperty("pointer-events", "none");
+        this.fromItemDragged.classList.add("md-ripple");
+        this.fromItemDragged.classList.add("md-ripple--containment");
+        this.fromItemDragged.classList.add("md-ripple--button");
+        this.fromItemDragged.classList.add("md-ripple--dragged");
+    }
+
+    handleListItemDrag(event) {
+        // this.fromItemDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
+        this.fromItemDragged.style.setProperty('transform',`translate3d(0px,${event.detail.moveY}px,0)`)
+    }
+
+    handleListItemDragEnd(event) {
+        const toItem = event.detail.target?.closest("li");
+        if (toItem && this.toItem !== toItem && !this.fromItem !== toItem) {
+            this.toItem = toItem;
+            const oldIndex = this.list.indexOf(this.fromItem.data);
+            const newIndex = this.list.indexOf(this.toItem.data);
+            this.reorderArray(this.list, oldIndex, newIndex);
+            this.requestUpdate();
+        }
+        this.fromItem = null;
+        this.toItem = null;
+        this.fromItemDragged.remove();
+    }
+
+    reorderArray(array, oldIndex, newIndex) {
+        const element = array.splice(oldIndex, 1)[0];
+        array.splice(newIndex, 0, element);
+        return array;
     }
 }
 customElements.define("md-list", MDList);
