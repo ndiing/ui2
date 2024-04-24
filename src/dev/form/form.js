@@ -67,8 +67,8 @@ class DevForm extends MDElement {
                     </div>
                     <div class="md-layout__column--expanded12 md-layout__column--medium4 md-layout__column--compact4">
 
-                        <button type="reset">reset</button>
-                        <button type="submit">submit</button>
+                        <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
+                        <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>
                 </div>
             </md-form>

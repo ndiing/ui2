@@ -1,0 +1,28 @@
+.md-progress-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.md-progress-indicator__native {
+    appearance: none;
+    width: 100%;
+    height: 4px;
+
+    // &::-webkit-progress-inner-element {
+    // }
+
+    &::-webkit-progress-bar {
+        height: 4px;
+        border-radius: calc(4px / 2);
+        background: var(--md-sys-color-primary-container);
+    }
+
+    &::-webkit-progress-value {
+        height: 4px;
+        border-radius: calc(4px / 2);
+        background: var(--md-sys-color-primary);
+    }
+
+    // &:indeterminate{
+    // }
+}
