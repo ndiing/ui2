@@ -1,42 +1,109 @@
-
-.dev-ripple{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 280px;
-    background: var(--md-sys-color-surface-container-highest);
-    color: var(--md-sys-color-on-surface-container);
+@media (prefers-color-scheme: light) {
+    :root {
+        --md-sys-color-primary: #2c5234; /* Dark green */
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #8bc6a4; /* Light green */
+        --md-sys-color-on-primary-container: #2c5234; /* Dark green */
+        --md-sys-color-secondary: #446145; /* Olive green */
+        --md-sys-color-on-secondary: #ffffff;
+        --md-sys-color-secondary-container: #a9cbaa; /* Light olive green */
+        --md-sys-color-on-secondary-container: #446145; /* Olive green */
+        --md-sys-color-tertiary: #6e8b70; /* Moss green */
+        --md-sys-color-on-tertiary: #ffffff;
+        --md-sys-color-tertiary-container: #c4d6c0; /* Light moss green */
+        --md-sys-color-on-tertiary-container: #6e8b70; /* Moss green */
+        --md-sys-color-error: #b3504b; /* Dark red */
+        --md-sys-color-on-error: #ffffff;
+        --md-sys-color-error-container: #f0bfb7; /* Light red */
+        --md-sys-color-on-error-container: #b3504b; /* Dark red */
+        --md-sys-color-surface: #f4f7f5; /* Light grey */
+        --md-sys-color-on-surface: #2c5234; /* Dark green */
+        --md-sys-color-surface-variant: #d9e1da; /* Light grey variant */
+        --md-sys-color-on-surface-variant: #446145; /* Olive green */
+        --md-sys-color-surface-container-highest: #f0f4f1; /* Light grey container highest */
+        --md-sys-color-surface-container-high: #e5ece8; /* Light grey container high */
+        --md-sys-color-surface-container: #dbe4e0; /* Light grey container */
+        --md-sys-color-surface-container-low: #cfd9d5; /* Light grey container low */
+        --md-sys-color-surface-container-lowest: #c4d6c0; /* Light moss green */
+        --md-sys-color-inverse-surface: #2c5234; /* Dark green */
+        --md-sys-color-inverse-on-surface: #f4f7f5; /* Light grey */
+        --md-sys-color-surface-tint: #2c5234; /* Dark green */
+        --md-sys-color-surface-tint-color: #2c5234; /* Dark green */
+        --md-sys-color-outline: #54705a; /* Light olive green */
+        --md-sys-color-outline-variant: #c1d3bf; /* Light grey olive */
+        --md-sys-color-primary-fixed: #8bc6a4; /* Light green */
+        --md-sys-color-on-primary-fixed: #2c5234; /* Dark green */
+        --md-sys-color-primary-fixed-dim: #6e8b70; /* Moss green */
+        --md-sys-color-on-primary-fixed-variant: #446145; /* Olive green */
+        --md-sys-color-inverse-primary: #6e8b70; /* Moss green */
+        --md-sys-color-secondary-fixed: #a9cbaa; /* Light olive green */
+        --md-sys-color-on-secondary-fixed: #446145; /* Olive green */
+        --md-sys-color-on-secondary-fixed-variant: #6e8b70; /* Moss green */
+        --md-sys-color-secondary-fixed-dim: #c4d6c0; /* Light moss green */
+        --md-sys-color-tertiary-fixed: #c4d6c0; /* Light moss green */
+        --md-sys-color-on-tertiary-fixed: #6e8b70; /* Moss green */
+        --md-sys-color-on-tertiary-fixed-variant: #8bc6a4; /* Light green */
+        --md-sys-color-tertiary-fixed-dim: #a9cbaa; /* Light olive green */
+        --md-sys-color-background: #f4f7f5; /* Light grey */
+        --md-sys-color-on-background: #2c5234; /* Dark green */
+        --md-sys-color-surface-bright: #f4f7f5; /* Light grey */
+        --md-sys-color-surface-dim: #dbe4e0; /* Light grey container */
+        --md-sys-color-scrim: #000000;
+        --md-sys-color-shadow: #000000;
+    }
 }
 
-.dev-gesture{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 280px;
-    background: var(--md-sys-color-surface-container-highest);
-    color: var(--md-sys-color-on-surface-container);
-}
-
-.dev-popper__container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 224px;
-    height: 280px;
-    // width: 96px;
-    // height: 24px;
-    background: var(--md-sys-color-surface-container-highest);
-    color: var(--md-sys-color-on-surface-container);
-    opacity: 50%;
-}
-.dev-popper__button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 112px;
-    height: 56px;
-    background: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-sys-color-primary: #2c5234; /* Dark green */
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #8bc6a4; /* Light green */
+        --md-sys-color-on-primary-container: #2c5234; /* Dark green */
+        --md-sys-color-secondary: #446145; /* Olive green */
+        --md-sys-color-on-secondary: #ffffff;
+        --md-sys-color-secondary-container: #a9cbaa; /* Light olive green */
+        --md-sys-color-on-secondary-container: #446145; /* Olive green */
+        --md-sys-color-tertiary: #6e8b70; /* Moss green */
+        --md-sys-color-on-tertiary: #ffffff;
+        --md-sys-color-tertiary-container: #c4d6c0; /* Light moss green */
+        --md-sys-color-on-tertiary-container: #6e8b70; /* Moss green */
+        --md-sys-color-error: #b3504b; /* Dark red */
+        --md-sys-color-on-error: #ffffff;
+        --md-sys-color-error-container: #f0bfb7; /* Light red */
+        --md-sys-color-on-error-container: #b3504b; /* Dark red */
+        --md-sys-color-surface: #202d23; /* Dark grey */
+        --md-sys-color-on-surface: #8bc6a4; /* Light green */
+        --md-sys-color-surface-variant: #263832; /* Dark grey variant */
+        --md-sys-color-on-surface-variant: #446145; /* Olive green */
+        --md-sys-color-surface-container-highest: #17261b; /* Dark grey container highest */
+        --md-sys-color-surface-container-high: #1d2c20; /* Dark grey container high */
+        --md-sys-color-surface-container: #2c5234; /* Dark green container */
+        --md-sys-color-surface-container-low: #335b3c; /* Dark green container low */
+        --md-sys-color-surface-container-lowest: #446145; /* Olive green */
+        --md-sys-color-inverse-surface: #8bc6a4; /* Light green */
+        --md-sys-color-inverse-on-surface: #202d23; /* Dark grey */
+        --md-sys-color-surface-tint: #2c5234; /* Dark green */
+        --md-sys-color-surface-tint-color: #2c5234; /* Dark green */
+        --md-sys-color-outline: #54705a; /* Light olive green */
+        --md-sys-color-outline-variant: #c1d3bf; /* Light grey olive */
+        --md-sys-color-primary-fixed: #8bc6a4; /* Light green */
+        --md-sys-color-on-primary-fixed: #2c5234; /* Dark green */
+        --md-sys-color-primary-fixed-dim: #6e8b70; /* Moss green */
+        --md-sys-color-on-primary-fixed-variant: #446145; /* Olive green */
+        --md-sys-color-inverse-primary: #6e8b70; /* Moss green */
+        --md-sys-color-secondary-fixed: #a9cbaa; /* Light olive green */
+        --md-sys-color-on-secondary-fixed: #446145; /* Olive green */
+        --md-sys-color-on-secondary-fixed-variant: #6e8b70; /* Moss green */
+        --md-sys-color-secondary-fixed-dim: #c4d6c0; /* Light moss green */
+        --md-sys-color-tertiary-fixed: #c4d6c0; /* Light moss green */
+        --md-sys-color-on-tertiary-fixed: #6e8b70; /* Moss green */
+        --md-sys-color-on-tertiary-fixed-variant: #8bc6a4; /* Light green */
+        --md-sys-color-tertiary-fixed-dim: #a9cbaa; /* Light olive green */
+        --md-sys-color-background: #202d23; /* Dark grey */
+        --md-sys-color-on-background: #8bc6a4; /* Light green */
+        --md-sys-color-surface-bright: #202d23; /* Dark grey */
+        --md-sys-color-surface-dim: #2c5234; /* Dark green container */
+        --md-sys-color-scrim: #000000;
+        --md-sys-color-shadow: #000000;
+    }
 }
