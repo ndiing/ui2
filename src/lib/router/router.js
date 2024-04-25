@@ -135,7 +135,7 @@ class Router {
         }
         Router.emit("onNavigateSuccess");
         performance.mark("markNavigateSuccess");
-        performance.measure("measureNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
+        performance.measure("measureCurrentEntryChangeNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
     }
 
     static navigate(url) {

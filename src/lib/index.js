@@ -1,3 +1,4 @@
+import "./progress/progress.js";
 import "./router/router.js";
 import "./store/store.js";
 
