@@ -23,6 +23,7 @@ Description: Represents a Material Design data table element.
 | onDataTableColumnResize        | Triggered during a column resize operation.             |
 | onDataTableColumnResizeEnd     | Triggered when a column resize operation ends.          |
 | onDataTableColumnResizeHandleDoubleTap | Triggered when a column resize handle is double-tapped. |
+| onDataTableRowClick            | Triggered when a row in the data table is clicked.      |
 | onDataTableColumnDragStart     | Triggered when a column drag operation starts.          |
 | onDataTableColumnDrag          | Triggered during a column drag operation.               |
 | onDataTableColumnDragEnd       | Triggered when a column drag operation ends.            |
