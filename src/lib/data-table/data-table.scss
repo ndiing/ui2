@@ -27,6 +27,11 @@ th {
 
     tbody {
         tr {
+            &[selected] {
+                .md-data-table__container {
+                    @extend .md-ripple--selected;
+                }
+            }
             &:hover {
                 .md-data-table__container {
                     @extend .md-ripple--hover;
