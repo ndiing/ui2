@@ -64,6 +64,7 @@ class MDSegmentedButton extends MDElement {
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
         this.requestUpdate();
+        this.emit('onSegmentedButtonClick',event)
     }
 
 }

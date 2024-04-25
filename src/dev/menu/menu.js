@@ -8,9 +8,8 @@ class DevMenu extends MDElement {
         return html`
             <div class="md-layout__grid">
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                    <!-- <md-menu>search</md-menu> -->
-                    <md-list 
-                        class="md-list--menu"
+                    <md-menu 
+                        id="menu"
                         .list="${[
                             { icon:'image',label: 'Lorem', selected:true },
                             { icon:'image',label: 'ipsum' },
@@ -18,12 +17,21 @@ class DevMenu extends MDElement {
                             { icon:'image',label: 'sit' },
                             { icon:'image',label: 'amet' },
                         ]}"
-                    ></md-list>
+                        @onListContainerClick="${this.handleListContainerClick}"
+                    ></md-menu>
+                    <md-button id="button" label="menu" @click="${this.handleClick}"></md-button>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
             </div>
         `;
+    }
+
+    handleClick(event){
+        menu.show(button,{})
+    }
+    handleListContainerClick(event){
+        menu.close()
     }
 }
 

@@ -122,6 +122,7 @@ class MDList extends MDElement {
                 item.selected = true;
             });
             this.requestUpdate();
+            this.emit('onListKeydownCtrlA',event)
         }
     }
 
@@ -147,6 +148,7 @@ class MDList extends MDElement {
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
         this.requestUpdate();
+        this.emit('onListContainerClick',event)
     }
 
     handleListItemDragStart(event) {
@@ -165,11 +167,13 @@ class MDList extends MDElement {
         this.fromItemDragged.classList.add("md-ripple--containment");
         this.fromItemDragged.classList.add("md-ripple--button");
         this.fromItemDragged.classList.add("md-ripple--dragged");
+        this.emit('onListItemDragStart',event)
     }
 
     handleListItemDrag(event) {
         // this.fromItemDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromItemDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
+        this.emit('onListItemDrag',event)
     }
 
     handleListItemDragEnd(event) {
@@ -184,6 +188,7 @@ class MDList extends MDElement {
         this.fromItem = null;
         this.toItem = null;
         this.fromItemDragged.remove();
+        this.emit('onListItemDragEnd',event)
     }
 
     reorderArray(array, oldIndex, newIndex) {

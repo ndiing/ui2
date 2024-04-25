@@ -149,6 +149,7 @@ class MDDataTable extends MDElement {
     handleDataTableColumnResizeStart(event) {
         const th = event.currentTarget;
         th.startOffsetWidth = th.offsetWidth - event.detail.clientX;
+        this.emit('onDataTableColumnResizeStart',event)
     }
 
     handleDataTableColumnResize(event) {
@@ -159,9 +160,12 @@ class MDDataTable extends MDElement {
         th.style.minWidth = width + "px";
         th.style.maxWidth = width + "px";
         this.requestUpdate();
+        this.emit('onDataTableColumnResize',event)
     }
 
-    handleDataTableColumnResizeEnd(event) {}
+    handleDataTableColumnResizeEnd(event) {
+        this.emit('onDataTableColumnResizeEnd',event)
+    }
 
     handleDataTableColumnResizeHandleDoubleTap(event) {
         const th = event.currentTarget;
@@ -177,6 +181,7 @@ class MDDataTable extends MDElement {
         tds.forEach((td) => td.style.setProperty("max-width", "0px"));
         data.width = width;
         this.requestUpdate();
+        this.emit('onDataTableColumnResizeHandleDoubleTap',event)
     }
 
     handleDataTableKeydown(event) {
@@ -186,6 +191,7 @@ class MDDataTable extends MDElement {
                 item.selected = true;
             });
             this.requestUpdate();
+            this.emit('onDataTableKeydownCtrlA',event)
         }
     }
 
@@ -211,6 +217,7 @@ class MDDataTable extends MDElement {
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
         this.requestUpdate();
+        this.emit('onDataTableRowClick',event)
     }
 
     handleDataTableColumnDragStart(event) {
@@ -230,11 +237,13 @@ class MDDataTable extends MDElement {
         this.fromColumnDragged.classList.add("md-ripple--containment");
         this.fromColumnDragged.classList.add("md-ripple--button");
         this.fromColumnDragged.classList.add("md-ripple--dragged");
+        this.emit('onDataTableColumnDragStart',event)
     }
 
     handleDataTableColumnDrag(event) {
         // this.fromColumnDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromColumnDragged.style.setProperty("transform", `translate3d(${event.detail.moveX}px,0px,0)`);
+        this.emit('onDataTableColumnDrag',event)
     }
 
     handleDataTableColumnDragEnd(event) {
@@ -249,6 +258,7 @@ class MDDataTable extends MDElement {
         this.fromColumn = null;
         this.toColumn = null;
         this.fromColumnDragged.remove();
+        this.emit('onDataTableColumnDragEnd',event)
     }
 
     handleDataTableRowDragStart(event) {
@@ -277,11 +287,13 @@ class MDDataTable extends MDElement {
             td.style.setProperty("min-height", rect.height + "px");
             td.style.setProperty("max-height", rect.height + "px");
         });
+        this.emit('onDataTableRowDragStart',event)
     }
 
     handleDataTableRowDrag(event) {
         // this.fromRowDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromRowDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
+        this.emit('onDataTableRowDrag',event)
     }
 
     handleDataTableRowDragEnd(event) {
@@ -296,6 +308,7 @@ class MDDataTable extends MDElement {
         this.fromRow = null;
         this.toRow = null;
         this.fromRowDragged.remove();
+        this.emit('onDataTableRowDragEnd',event)
     }
 
     reorderArray(array, oldIndex, newIndex) {

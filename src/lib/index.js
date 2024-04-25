@@ -66,4 +66,3 @@ import "./search/search.js";
 import "./segmented-button/segmented-button.js";
 import "./data-table/data-table.js";
 import "./pagination/pagination.js";
-

@@ -132,7 +132,7 @@ ul {
         justify-content: center;
         padding: 12px 0;
         gap: 4px 0;
-        height: 80px;
+        min-height: 80px;
 
         &[selected] {
             background: inherit;
@@ -156,18 +156,5 @@ ul {
     .md-list__label {
         @extend .md-typography--label-medium;
         margin-bottom: 4px;
-    }
-}
-
-/* menu */
-.md-list--menu {
-    .md-list__container {
-        height: 48px;
-        padding: 0 12px;
-        gap: 0 12px;
-    }
-
-    .md-list__label {
-        @extend .md-typography--label-large;
     }
 }

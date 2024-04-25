@@ -54,6 +54,7 @@ class MDTab extends MDElement {
         const width = tabRect.width;
         this.style.setProperty("--md-tab-width", width + "px");
         this.style.setProperty("--md-tab-left", left + "px");
+        this.emit('onTabListContainerSelected',event)
     }
 }
 
