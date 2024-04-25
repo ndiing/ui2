@@ -1,3 +1,8 @@
+function emit(type, detail) {
+    const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
+    window.dispatchEvent(event);
+}
+
 const fetch = window.fetch;
 window.fetch = function () {
     performance.mark("markFetchStart");
@@ -12,7 +17,7 @@ window.fetch = function () {
 const pushState = window.history.pushState;
 window.history.pushState = function () {
     pushState.apply(this, arguments);
-    Router.emit("popstate");
+    emit("popstate");
 };
 
 class Progress {
@@ -75,10 +80,10 @@ class Color {
     }
 
     static update() {
-        const item = this.list.find((item) => window.matchMedia(item.value).matches);
-        Router.emit("onColorChange", item);
+        this.item = this.list.find((item) => window.matchMedia(item.value).matches);
+        emit("onColorChange", this.item);
         this.mql?.removeEventListener("change", this.update);
-        this.mql = window.matchMedia(item.value);
+        this.mql = window.matchMedia(this.item.value);
         this.mql.addEventListener("change", this.update);
     }
 }
@@ -97,24 +102,13 @@ class Layout {
     }
 
     static update() {
-        const item = this.list.find((item) => window.matchMedia(item.value).matches);
-        Router.emit("onLayoutChange", item);
+        this.item = this.list.find((item) => window.matchMedia(item.value).matches);
+        emit("onLayoutChange", this.item);
         this.mql?.removeEventListener("change", this.update);
-        this.mql = window.matchMedia(item.value);
+        this.mql = window.matchMedia(this.item.value);
         this.mql.addEventListener("change", this.update);
     }
 }
-
-
-const observer = new PerformanceObserver((entries) => {
-    entries.getEntries().forEach((entry) => {
-        Progress.start(entry.duration);
-    });
-});
-observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"] });
-
-// Color.start();
-// Layout.start();
 
 class Router {
     static setRoutes(routes = [], parent = null) {
@@ -206,11 +200,11 @@ class Router {
         if (!this.controller || (this.controller && this.controller.signal.aborted)) {
             this.controller = new AbortController();
         }
-        Router.emit("onCurrentEntryChange");
+        emit("onCurrentEntryChange");
         performance.mark("markCurrentEntryChange");
 
         for (const stack of this.stacks) {
-            Router.emit("onNavigate");
+            emit("onNavigate");
 
             if (stack.beforeLoad) {
                 try {
@@ -219,7 +213,7 @@ class Router {
                         stack.beforeLoad(resolve, reject);
                     });
                 } catch (error) {
-                    Router.emit("onNavigateError");
+                    emit("onNavigateError");
                     break;
                 }
             }
@@ -250,7 +244,7 @@ class Router {
                 }
             }
         }
-        Router.emit("onNavigateSuccess");
+        emit("onNavigateSuccess");
         performance.mark("markNavigateSuccess");
         performance.measure("measureNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
     }
@@ -271,14 +265,23 @@ class Router {
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
 
-
+        const observer = new PerformanceObserver((entries) => {
+            entries.getEntries().forEach((entry) => {
+                Progress.start(entry.duration);
+            });
+        });
+        observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"] });
+        
+        Color.start();
+        Layout.start();
+        
         this.on("load", this.handleLoad);
         this.on("popstate", this.handleLoad);
 
         this.on("click", this.handleClick);
     }
 }
-export { Router };
+export { Progress, Color, Layout, Router };
 
 // onColorChange
 // onLayoutChange

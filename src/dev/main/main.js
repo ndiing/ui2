@@ -1,7 +1,7 @@
 import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Router } from "../../lib/router/router";
+import { Color, Layout, Router } from "../../lib/router/router";
 
 class DevMain extends MDElement {
     constructor() {
@@ -99,7 +99,12 @@ class DevMain extends MDElement {
         });
 
     }
-
+    firstUpdated(){
+        // console.log(Color.item)
+        // console.log(Layout.item)
+        // window.addEventListener('onColorChange',console.log)
+        // window.addEventListener('onLayoutChange',console.log)
+    }
 }
 
 customElements.define("dev-main", DevMain);
