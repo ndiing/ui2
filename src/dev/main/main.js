@@ -1,7 +1,7 @@
 import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Color, Layout, Router } from "../../lib/router/router";
+import {  Router } from "../../lib/router/router";
 
 class DevMain extends MDElement {
     constructor() {
