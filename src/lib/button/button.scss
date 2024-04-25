@@ -33,6 +33,12 @@
 }
 
 /* ui */
+.md-button--outlined {
+    padding: 0 24px;
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+}
 .md-button--filled-tonal {
     padding: 0 24px;
     background: var(--md-sys-color-secondary-container);

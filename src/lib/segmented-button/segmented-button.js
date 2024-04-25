@@ -4,7 +4,9 @@ import { msg } from "@lit/localize";
 
 class MDSegmentedButton extends MDElement {
     static get properties() {
-        return {};
+        return {
+            buttons:{type:Array},
+        };
     }
 
     constructor() {
@@ -14,6 +16,16 @@ class MDSegmentedButton extends MDElement {
     render() {
         // prettier-ignore
         return html`
+            ${this.buttons?.map(button=>html`
+                <md-button
+                    .label="${button?.label??button}"
+                    .type="${button?.type}"
+                    .ui="${button?.ui??"outlined"}"
+                    .selected="${button?.selected}"
+                    .data="${button}"
+                    @click="${this.handleSegmentedButtonClick}"
+                ></md-button>
+            `)}
         `
     }
 
@@ -28,6 +40,32 @@ class MDSegmentedButton extends MDElement {
     }
 
     updated(changedProperties) {}
+
+    
+    handleSegmentedButtonClick(event) {
+        const data = event.currentTarget.data;
+        this.currentSelectedIndex = this.buttons.indexOf(data);
+
+        if (event.shiftKey) {
+            this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
+
+            if (this.lastSelectedIndex > this.currentSelectedIndex) {
+                [this.lastSelectedIndex, this.currentSelectedIndex] = [this.currentSelectedIndex, this.lastSelectedIndex];
+            }
+            this.buttons.forEach((item, index) => {
+                item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
+            });
+        } else if (event.ctrlKey) {
+            data.selected = !data.selected;
+        } else {
+            this.buttons.forEach((item) => {
+                item.selected = item === data;
+            });
+        }
+        this.lastSelectedIndex = this.currentSelectedIndex;
+        this.requestUpdate();
+    }
+
 }
 
 customElements.define("md-segmented-button", MDSegmentedButton);

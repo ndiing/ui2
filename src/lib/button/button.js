@@ -9,6 +9,7 @@ class MDButton extends MDElement {
             label: { type: String },
             type: { type: String },
             ui: { type: String },
+            selected: { type: Boolean,reflect:true },
         };
     }
 
@@ -45,6 +46,7 @@ class MDButton extends MDElement {
             } else {
                 this.classList.add("md-button--filled");
                 this.classList.add("md-button--filled-tonal");
+                this.classList.add("md-button--outlined");
             }
         }
     }

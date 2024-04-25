@@ -8,7 +8,13 @@ class DevSegmentedButton extends MDElement {
         return html`
             <div class="md-layout__grid">
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                    <md-segmented-button>search</md-segmented-button>
+                    <md-segmented-button
+                        .buttons="${[
+                            {label:'button'},
+                            {label:'button'},
+                            {label:'button'},
+                        ]}"
+                    ></md-segmented-button>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>

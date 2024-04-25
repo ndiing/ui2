@@ -47,7 +47,7 @@
     }
 }
 
-[selected],
+.md-ripple[selected],
 .md-ripple--selected {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
@@ -96,7 +96,7 @@
     }
 }
 
-[disabled],
+.md-ripple[disabled],
 .md-ripple--disabled {
     opacity: 38%;
 
