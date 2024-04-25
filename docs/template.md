@@ -29,7 +29,7 @@ rule:
 {{1}} take the name of the class name
 {{2}} Create a description for class
 {{3}} Take from the properties
-{{4}} Take all the methods on the class except (properties,constructor,render,connectedCallback,disconnectedCallback,updated,firstUpdated)
+{{4}} Take all the methods on the class except (properties,constructor,render,connectedCallback,disconnectedCallback,updated,firstUpdated, and the method that begins with handle...)
 {{5}} Take the event from this.emit()
 
 
