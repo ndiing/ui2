@@ -58,14 +58,29 @@ const observer = new PerformanceObserver((entries) => {
         progress.start(duration);
     });
 });
-observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"] });
+observer.observe({
+    entryTypes: [
+        "element",
+        "event",
+        "first-input",
+        "largest-contentful-paint",
+        "layout-shift",
+        "long-animation-frame",
+        "longtask",
+        "mark",
+        "measure",
+        "navigation",
+        "paint",
+        "resource",
+        "visibility-state",
+    ],
+});
 
 const originalFetch = window.fetch;
 
 window.fetch = function () {
     performance.mark("markFetchStart");
     const fetchPromise = originalFetch.apply(this, arguments);
-
     fetchPromise.then((response) => {
         performance.mark("markFetchEnd");
         performance.measure("measureFetch", "markFetchStart", "markFetchEnd");

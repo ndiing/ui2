@@ -1,3 +1,8 @@
+:root {
+    --md-data-table-column-height: calc(56px + (4px * var(--md-density)));
+    --md-data-table-row-height: calc(52px + (4px * var(--md-density)));
+}
+
 /* reset */
 table {
     border-spacing: 0;
@@ -42,7 +47,7 @@ th {
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
         .md-data-table__container {
-            height: 56px;
+            height: var(--md-data-table-column-height);
         }
 
         .md-data-table__label {
@@ -65,7 +70,7 @@ th {
 .md-data-table__container {
     display: flex;
     align-items: center;
-    height: 52px;
+    height: var(--md-data-table-row-height);
     padding: 0 16px;
     // background: var(--md-sys-color-background);
     // color: var(--md-sys-color-on-background);

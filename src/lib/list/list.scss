@@ -1,3 +1,7 @@
+:root {
+    --md-list-container-height: calc(56px + (4px * var(--md-density)));
+}
+
 /* reset */
 ul {
     list-style-type: none;
@@ -23,7 +27,7 @@ ul {
 .md-list__container {
     display: flex;
     align-items: center;
-    height: 56px;
+    height: var(--md-list-container-height);
     padding: 0 16px;
     gap: 0 16px;
 }

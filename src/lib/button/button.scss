@@ -1,10 +1,14 @@
+:root {
+    --md-button-height: calc(40px + (4px * var(--md-density)));
+}
+
 /* button */
 .md-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    border-radius: calc(40px / 2);
+    height: var(--md-button-height);
+    border-radius: calc(var(--md-button-height) / 2);
     padding: 0 12px;
     position: relative;
     background: transparent;

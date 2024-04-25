@@ -43,6 +43,7 @@ class MDTextField extends MDElement {
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handleTextFieldNativeFocus}"
                     @blur="${this.handleTextFieldNativeBlur}"
                     @input="${this.handleTextFieldNativeInput}"
