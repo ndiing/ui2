@@ -70,6 +70,7 @@ class Color {
         ],
     ) {
         this.list = list;
+        this.update = this.update.bind(this);
         this.update();
     }
 
@@ -77,7 +78,7 @@ class Color {
         const item = this.list.find((item) => window.matchMedia(item.value).matches);
         Router.emit("onColorChange", item);
         this.mql?.removeEventListener("change", this.update);
-        this.mql = window.matchMedia(item);
+        this.mql = window.matchMedia(item.value);
         this.mql.addEventListener("change", this.update);
     }
 }
@@ -91,6 +92,7 @@ class Layout {
         ],
     ) {
         this.list = list;
+        this.update = this.update.bind(this);
         this.update();
     }
 
@@ -98,10 +100,21 @@ class Layout {
         const item = this.list.find((item) => window.matchMedia(item.value).matches);
         Router.emit("onLayoutChange", item);
         this.mql?.removeEventListener("change", this.update);
-        this.mql = window.matchMedia(item);
+        this.mql = window.matchMedia(item.value);
         this.mql.addEventListener("change", this.update);
     }
 }
+
+
+const observer = new PerformanceObserver((entries) => {
+    entries.getEntries().forEach((entry) => {
+        Progress.start(entry.duration);
+    });
+});
+observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"] });
+
+// Color.start();
+// Layout.start();
 
 class Router {
     static setRoutes(routes = [], parent = null) {
@@ -258,15 +271,6 @@ class Router {
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
 
-        const observer = new PerformanceObserver((entries) => {
-            entries.getEntries().forEach((entry) => {
-                Progress.start(entry.duration);
-            });
-        });
-        observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"] });
-
-        Color.start();
-        Layout.start();
 
         this.on("load", this.handleLoad);
         this.on("popstate", this.handleLoad);
