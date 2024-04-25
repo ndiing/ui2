@@ -1,3 +1,7 @@
+@keyframes md-tooltip {
+    from {}
+}
+
 /* tooltip */
 .md-tooltip {
     display: inline-flex;
@@ -10,7 +14,7 @@
     color: var(--md-sys-color-inverse-on-surface);
     position: absolute;
     z-index: 1;
-
+    
     &:not([open]) {
         opacity: 0;
         pointer-events: none;

@@ -59,21 +59,7 @@ const observer = new PerformanceObserver((entries) => {
     });
 });
 observer.observe({
-    entryTypes: [
-        "element",
-        "event",
-        "first-input",
-        "largest-contentful-paint",
-        "layout-shift",
-        "long-animation-frame",
-        "longtask",
-        "mark",
-        "measure",
-        "navigation",
-        "paint",
-        "resource",
-        "visibility-state",
-    ],
+    entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "long-animation-frame", "longtask", "mark", "measure", "navigation", "paint", "resource", "visibility-state"],
 });
 
 const originalFetch = window.fetch;

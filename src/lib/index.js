@@ -22,6 +22,7 @@ import "./tooltip/tooltip.js";
 import "./dialog/dialog.js";
 import "./bottom-sheet/bottom-sheet.js";
 
+import "./list/list.js";
 import "./bottom-app-bar/bottom-app-bar.js";
 import "./navigation-bar/navigation-bar.js";
 import "./navigation-drawer/navigation-drawer.js";
@@ -48,7 +49,6 @@ import "./file-field/file-field.js";
 import "./text-field/text-field.js";
 
 import "./card/card.js";
-import "./list/list.js";
 import "./side-sheet/side-sheet.js";
 import "./divider/divider.js";
 import "./carousel/carousel.js";
