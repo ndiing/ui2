@@ -95,7 +95,7 @@ class Progress {
                 'navigation',
                 'paint',
                 'resource',
-                'taskattribution',
+                // 'taskattribution',
                 'visibility-state',                
             ],
         });
