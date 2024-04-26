@@ -1,4 +1,5 @@
-import "./progress/progress.js";
+import "./router/marker.js";
+import "./router/progress.js";
 import "./router/router.js";
 import "./store/store.js";
 

@@ -1,3 +1,4 @@
+import { Marker } from "./marker";
 
 class Router {
     static setRoutes(routes = [], parent = null) {
@@ -90,7 +91,8 @@ class Router {
             this.controller = new AbortController();
         }
         Router.emit("onCurrentEntryChange");
-        performance.mark("markCurrentEntryChange");
+        const marker = new Marker();
+        marker.start();
 
         for (const stack of this.stacks) {
             Router.emit("onNavigate");
@@ -103,6 +105,7 @@ class Router {
                     });
                 } catch (error) {
                     Router.emit("onNavigateError");
+                    marker.stop();
                     break;
                 }
             }
@@ -134,8 +137,7 @@ class Router {
             }
         }
         Router.emit("onNavigateSuccess");
-        performance.mark("markNavigateSuccess");
-        performance.measure("measureNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
+        marker.stop();
     }
 
     static navigate(url) {
@@ -153,7 +155,7 @@ class Router {
 
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
-        
+
         this.on("DOMContentLoaded", this.handleLoad);
         this.on("popstate", this.handleLoad);
 
@@ -162,15 +164,9 @@ class Router {
             pushState.apply(this, arguments);
             Router.emit("popstate");
         };
-        
+
         this.on("click", this.handleClick);
     }
 }
-export {  Router };
+export { Router };
 
-// onColorChange
-// onLayoutChange
-// onCurrentEntryChange
-// onNavigate
-// onNavigateError
-// onNavigateSuccess

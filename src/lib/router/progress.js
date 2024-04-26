@@ -1,18 +1,14 @@
+import { Marker } from "./marker";
+
 const fetch = window.fetch;
 const documentBody = document.body;
 
+
 window.fetch = function () {
-    performance.mark("markFetchStart");
+    const marker=new Marker()
     const response = fetch.apply(this, arguments);
-    response
-        .then((response) => {
-            performance.mark("markFetchEnd");
-            performance.measure("measureFetchSuccess", "markFetchStart", "markFetchEnd");
-        })
-        .catch((response) => {
-            performance.mark("markFetchEnd");
-            performance.measure("measureFetchError", "markFetchStart", "markFetchEnd");
-        });
+    marker.start()
+    response.then(marker.stop).catch(marker.stop);
     return response;
 };
 
