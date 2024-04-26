@@ -1,4 +1,5 @@
 const fetch = window.fetch;
+const documentBody = document.body;
 
 window.fetch = function () {
     performance.mark("markFetchStart");
@@ -23,6 +24,7 @@ class Progress {
     static last = 0;
     static elapsedTime = 0;
     static timeout = null;
+    static removeTimeout = null;
 
     static start(duration) {
         const callback = (time) => {
@@ -32,6 +34,8 @@ class Progress {
             this.elapsedTime = time - this.startTime;
             const progress = this.elapsedTime / this.remainingDuration;
             const value = progress * 100;
+
+            clearTimeout(this.removeTimeout);
 
             if (progress > this.last) {
                 this.indicator.value = value;
@@ -45,8 +49,10 @@ class Progress {
                 this.remainingDuration = null;
                 this.startTime = null;
                 this.last = 0;
-                this.indicator.remove();
-                this.indicator = null;
+                this.removeTimeout = setTimeout(() => {
+                    this.indicator.remove();
+                    this.indicator = null;
+                }, 100);
             }
         };
 
@@ -66,12 +72,8 @@ class Progress {
 
     static create() {
         this.indicator = document.createElement("md-progress-indicator");
-        document.body.append(this.indicator);
-        this.indicator.style.position = "absolute";
-        this.indicator.style.top = "0px";
-        this.indicator.style.right = "0px";
-        this.indicator.style.left = "0px";
-        this.indicator.style.zIndex = "999";
+        documentBody.append(this.indicator);
+        this.indicator.style.cssText = "position: absolute; top: 0; right: 0; left: 0; z-index: 999;";
     }
 
     static init() {
