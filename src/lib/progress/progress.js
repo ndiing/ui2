@@ -82,4 +82,6 @@ class Progress {
         observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "longtask", "mark", "measure", "navigation", "paint", "resource"] });
     }
 }
+
 Progress.init();
+
