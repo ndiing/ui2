@@ -3,11 +3,10 @@ import { Marker } from "./marker";
 const fetch = window.fetch;
 const documentBody = document.body;
 
-
 window.fetch = function () {
-    const marker=new Marker()
+    const marker = new Marker();
     const response = fetch.apply(this, arguments);
-    marker.start()
+    marker.start();
     response.then(marker.stop).catch(marker.stop);
     return response;
 };
@@ -82,7 +81,24 @@ class Progress {
                 }, 100);
             });
         });
-        observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "longtask", "mark", "measure", "navigation", "paint", "resource"] });
+        observer.observe({
+            entryTypes: [
+                'element',
+                'event',
+                'first-input',
+                'largest-contentful-paint',
+                'layout-shift',
+                'long-animation-frame',
+                'longtask',
+                'mark',
+                'measure',
+                'navigation',
+                'paint',
+                'resource',
+                'taskattribution',
+                'visibility-state',                
+            ],
+        });
     }
 }
 
