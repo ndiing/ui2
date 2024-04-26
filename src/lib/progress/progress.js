@@ -1,5 +1,5 @@
-
 const fetch = window.fetch;
+
 window.fetch = function () {
     performance.mark("markFetchStart");
     const response = fetch.apply(this, arguments);
@@ -11,65 +11,75 @@ window.fetch = function () {
 };
 
 class Progress {
-    static remainingTime = 0;
-    static startTime = 0;
-    static progress = 0;
-    static lastProgress = 0;
+    static id = null;
+    static remainingDuration = null;
+    static startTime = null;
     static indicator = null;
+    static last = 0;
+    static elapsedTime = 0;
+    static timeout = null;
 
-    static run(duration) {
-        this.remainingTime += duration;
-        if (this.progress > 0) return;
+    static start(duration) {
+        const callback = (time) => {
+            if (!this.startTime) {
+                this.startTime = time;
+            }
+            this.elapsedTime = time - this.startTime;
+            const progress = this.elapsedTime / this.remainingDuration;
+            const value = progress * 100;
 
-        this.startTime = performance.now();
-
-        const callback = (currentTime) => {
-            const elapsedTime = currentTime - this.startTime;
-            this.progress = elapsedTime / this.remainingTime;
-
-            if (!this.indicator) {
-                this.indicator = document.createElement("md-progress-indicator");
-                this.indicator.style.position = "absolute";
-                this.indicator.style.left = "0px";
-                this.indicator.style.right = "0px";
-                this.indicator.style.top = "0px";
-                this.indicator.style.zIndex = "999";
-                document.body.append(this.indicator);
+            if (progress > this.last) {
+                this.indicator.value = value;
+                this.last = progress;
             }
 
-            if (this.progress > this.lastProgress) {
-                const value = this.progress * 100;
-                const validValue = isNaN(value) || !isFinite(value) ? 0 : Math.floor(value);
-                this.indicator.value = validValue;
-
-                this.lastProgress = this.progress;
-            }
-
-            if (this.progress < 1) {
-                window.requestAnimationFrame(callback);
+            if (progress < 1) {
+                this.id = window.requestAnimationFrame(callback);
             } else {
-                this.remainingTime = 0;
-                this.startTime = 0;
-                this.progress = 0;
-                this.lastProgress = 0;
+                this.id = null;
+                this.remainingDuration = null;
+                this.startTime = null;
+                this.last = 0;
                 this.indicator.remove();
                 this.indicator = null;
             }
         };
 
-        window.requestAnimationFrame(callback);
+        if (this.id) {
+            this.remainingDuration += duration;
+        } else {
+            this.remainingDuration = duration;
+            this.id = window.requestAnimationFrame(callback);
+
+            if (this.indicator) {
+                this.indicator.value = 0;
+            } else {
+                this.create();
+            }
+        }
+    }
+
+    static create() {
+        this.indicator = document.createElement("md-progress-indicator");
+        document.body.append(this.indicator);
+        this.indicator.style.position = "absolute";
+        this.indicator.style.top = "0px";
+        this.indicator.style.right = "0px";
+        this.indicator.style.left = "0px";
+        this.indicator.style.zIndex = "999";
     }
 
     static init() {
         const observer = new PerformanceObserver((entries) => {
             entries.getEntries().forEach((entry) => {
-                this.run(entry.duration);
+                this.start(entry.duration);
+                clearTimeout(this.timeout);
+                this.timeout = setTimeout(() => {
+                    this.remainingDuration = this.elapsedTime + 100;
+                }, 100);
             });
         });
-        observer.observe({
-            entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "longtask", "mark", "measure", "navigation", "paint", "resource"],
-        });
+        observer.observe({ entryTypes: ["element", "event", "first-input", "largest-contentful-paint", "layout-shift", "longtask", "mark", "measure", "navigation", "paint", "resource"] });
     }
 }
-
 Progress.init();
