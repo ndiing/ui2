@@ -3,10 +3,15 @@ const fetch = window.fetch;
 window.fetch = function () {
     performance.mark("markFetchStart");
     const response = fetch.apply(this, arguments);
-    response.then((response) => {
-        performance.mark("markFetchEnd");
-        performance.measure("measureFetchStartFetchEnd", "markFetchStart", "markFetchEnd");
-    });
+    response
+        .then((response) => {
+            performance.mark("markFetchEnd");
+            performance.measure("measureFetchSuccess", "markFetchStart", "markFetchEnd");
+        })
+        .catch((response) => {
+            performance.mark("markFetchEnd");
+            performance.measure("measureFetchError", "markFetchStart", "markFetchEnd");
+        });
     return response;
 };
 
@@ -84,4 +89,3 @@ class Progress {
 }
 
 Progress.init();
-

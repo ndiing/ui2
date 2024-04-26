@@ -135,7 +135,7 @@ class Router {
         }
         Router.emit("onNavigateSuccess");
         performance.mark("markNavigateSuccess");
-        performance.measure("measureCurrentEntryChangeNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
+        performance.measure("measureNavigateSuccess", "markCurrentEntryChange", "markNavigateSuccess");
     }
 
     static navigate(url) {
@@ -154,7 +154,7 @@ class Router {
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
         
-        this.on("load", this.handleLoad);
+        this.on("DOMContentLoaded", this.handleLoad);
         this.on("popstate", this.handleLoad);
 
         const pushState = window.history.pushState;
