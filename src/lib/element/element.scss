@@ -279,10 +279,10 @@
     width: 16px;
     height: 16px;
 }
-::-webkit-scrollbar-button {
-}
-::-webkit-scrollbar:horizontal {
-}
+// ::-webkit-scrollbar-button {
+// }
+// ::-webkit-scrollbar:horizontal {
+// }
 ::-webkit-scrollbar-thumb {
     border: 4px solid var(--md-sys-color-secondary-container);
     border-radius: calc(16px / 2);
@@ -291,14 +291,14 @@
 ::-webkit-scrollbar-track {
     background: var(--md-sys-color-secondary-container);
 }
-::-webkit-scrollbar-track-piece {
-}
-::-webkit-scrollbar:vertical {
-}
-::-webkit-scrollbar-corner {
-}
-::-webkit-resizer {
-}
+// ::-webkit-scrollbar-track-piece {
+// }
+// ::-webkit-scrollbar:vertical {
+// }
+// ::-webkit-scrollbar-corner {
+// }
+// ::-webkit-resizer {
+// }
 
 /* icon */
 .md-icon {

@@ -1,3 +1,4 @@
+import "./router/observer.js";
 import "./router/marker.js";
 import "./router/progress.js";
 import "./router/router.js";
