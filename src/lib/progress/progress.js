@@ -83,20 +83,20 @@ class Progress {
         });
         observer.observe({
             entryTypes: [
-                'element',
-                'event',
-                'first-input',
-                'largest-contentful-paint',
-                'layout-shift',
-                'long-animation-frame',
-                'longtask',
+                // 'element',
+                // 'event',
+                // 'first-input',
+                // 'largest-contentful-paint',
+                // 'layout-shift',
+                // 'long-animation-frame',
+                // 'longtask',
                 'mark',
                 'measure',
                 'navigation',
-                'paint',
+                // 'paint',
                 'resource',
                 // 'taskattribution',
-                'visibility-state',                
+                // 'visibility-state',                
             ],
         });
     }
