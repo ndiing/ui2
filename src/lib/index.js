@@ -1,6 +1,6 @@
-import "./router/observer.js";
-import "./router/marker.js";
-import "./router/progress.js";
+import "./observer/observer.js";
+import "./marker/marker.js";
+import "./progress/progress.js";
 import "./router/router.js";
 import "./store/store.js";
 

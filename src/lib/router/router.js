@@ -1,4 +1,4 @@
-import { Marker } from "./marker";
+import { Marker } from "../marker/marker";
 
 class Router {
     static setRoutes(routes = [], parent = null) {

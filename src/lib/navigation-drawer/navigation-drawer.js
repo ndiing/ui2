@@ -2,6 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
+import { Gesture } from "../gesture/gesture";
 
 class MDNavigationDrawer extends MDElement {
 
@@ -18,10 +19,10 @@ class MDNavigationDrawer extends MDElement {
         return html`
             <div class="md-navigation-drawer__container">
                 <div class="md-navigation-drawer__body">
-                <md-list 
-                    class="md-list--navigation-drawer"
-                    .list="${this.list}"
-                ></md-list>
+                    <md-list 
+                        class="md-list--navigation-drawer"
+                        .list="${this.list}"
+                    ></md-list>
                 </div>
             </div>
             <div class="md-navigation-drawer__scrim" @click="${this.handleNavigationDrawerScrimClick}"></div>
@@ -31,14 +32,21 @@ class MDNavigationDrawer extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-drawer");
+        // await this.updateComplete
+        // this.gesture=new Gesture(this.navigationDrawerContainer,{})
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
+        // this.gesture.destroy()
     }
 
     updated(changedProperties) {}
+
+    get navigationDrawerContainer(){
+        return this.querySelector('.md-navigation-drawer__container')
+    }
 
     close() {
         this.open = false;

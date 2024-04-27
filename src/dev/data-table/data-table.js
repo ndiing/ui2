@@ -13,8 +13,8 @@ class DevDataTable extends MDElement {
         super();
 
         const result = store.getAll({
-            _page: 1,
-            _limit: 10,
+            // _page: 1,
+            // _limit: 10,
         });
 
         this.columns = [
@@ -28,9 +28,8 @@ class DevDataTable extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout__grid">
+            <div class="md-layout__grid" >
                 <div class="md-layout__column--expanded12 md-layout__column--medium4 md-layout__column--compact4">
-                    <md-button label="table" @click="${this.handleClick}"></md-button>
                     <md-data-table
                         id="table"
                         .columns="${this.columns}"
@@ -42,34 +41,39 @@ class DevDataTable extends MDElement {
             </div>
         `;
     }
-    get list(){
-        return [
-            'https://jsonplaceholder.typicode.com/posts',
-            'https://jsonplaceholder.typicode.com/comments',
-            'https://jsonplaceholder.typicode.com/albums',
-            'https://jsonplaceholder.typicode.com/photos',
-            'https://jsonplaceholder.typicode.com/todos',
-            'https://jsonplaceholder.typicode.com/users',
-        ]
-    }
-    counter=0
-    handleClick(){
-        fetch(this.list[this.counter%this.list.length])
-        .then(res=>res.json())
-        .then(res=>{
-            const store = new Store(res, {
-                primaryKey: "id",
-            });
-            const result = store.getAll({
-                _page: 1,
-                _limit: 10,
-            });
-    
-            this.columns = Object.keys(result.docs[0]).map(name=>({name,label:name,width:56*5}));
-            this.rows = result.docs;
-            this.requestUpdate()
+
+    async connectedCallback(){
+        super.connectedCallback()
+
+        await this.updateComplete
+
+        table.addEventListener('scroll',(event) => {
+            const itemCount = 2000
+            const rowHeight = 52
+            const scrollTop = event.currentTarget.scrollTop
+            const nodePadding = 2
+            const viewportHeight = 256
+
+            const totalContentHeight = itemCount * rowHeight;
+
+            let startNode = Math.floor(scrollTop / rowHeight) - nodePadding;
+            startNode = Math.max(0, startNode);
+          
+            let visibleNodesCount = Math.ceil(viewportHeight / rowHeight) + 2 * nodePadding;
+            visibleNodesCount = Math.min(itemCount - startNode, visibleNodesCount);
+          
+            const offsetY = startNode * rowHeight;
+          
+            console.log(
+                totalContentHeight,
+                startNode,
+                visibleNodesCount,
+                offsetY,
+            )
         })
-        ++this.counter
+    }
+    disconnectedCallback(){
+        super.disconnectedCallback()
     }
 }
 

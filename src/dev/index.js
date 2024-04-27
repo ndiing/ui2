@@ -8,6 +8,8 @@ Router.init([
         { path: "gesture", load: () => import("./gesture/gesture.js").then((m) => m.default) },
         { path: "popper", load: () => import("./popper/popper.js").then((m) => m.default) },
 
+        { path: "layout", load: () => import("./layout/layout.js").then((m) => m.default) },
+
         { path: "button", load: () => import("./button/button.js").then((m) => m.default) },
         { path: "extended-fab", load: () => import("./extended-fab/extended-fab.js").then((m) => m.default) },
         { path: "fab", load: () => import("./fab/fab.js").then((m) => m.default) },

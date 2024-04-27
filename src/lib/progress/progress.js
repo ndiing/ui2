@@ -1,4 +1,4 @@
-import { Marker } from "./marker";
+import { Marker } from "../marker/marker";
 
 const fetch = window.fetch;
 const documentBody = document.body;

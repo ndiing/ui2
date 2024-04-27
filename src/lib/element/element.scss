@@ -493,22 +493,22 @@
     }
 }
 
-::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-}
+// ::-webkit-scrollbar {
+//     width: 16px;
+//     height: 16px;
+// }
 // ::-webkit-scrollbar-button {
 // }
 // ::-webkit-scrollbar:horizontal {
 // }
-::-webkit-scrollbar-thumb {
-    border: 4px solid var(--md-sys-color-secondary-container);
-    border-radius: calc(16px / 2);
-    background: var(--md-sys-color-secondary);
-}
-::-webkit-scrollbar-track {
-    background: var(--md-sys-color-secondary-container);
-}
+// ::-webkit-scrollbar-thumb {
+//     border: 4px solid var(--md-sys-color-secondary-container);
+//     border-radius: calc(16px / 2);
+//     background: var(--md-sys-color-secondary);
+// }
+// ::-webkit-scrollbar-track {
+//     background: var(--md-sys-color-secondary-container);
+// }
 // ::-webkit-scrollbar-track-piece {
 // }
 // ::-webkit-scrollbar:vertical {
