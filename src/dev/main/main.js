@@ -6,68 +6,73 @@ import {  Router } from "../../lib/router/router";
 class DevMain extends MDElement {
     constructor() {
         super();
-        this.list = [
-            // { label: "/localization", routerLink: "/localization" },
-            // { label: "/element", routerLink: "/element" },
-
-            // { label: "/router", routerLink: "/router" },
-            // { label: "/store", routerLink: "/store" },
-            
-            // { label: "/ripple", routerLink: "/ripple" },
-            // { label: "/gesture", routerLink: "/gesture" },
-            // { label: "/popper", routerLink: "/popper" },
-
-            { label: "/button", routerLink: "/button" },
-            { label: "/extended-fab", routerLink: "/extended-fab" },
-            { label: "/fab", routerLink: "/fab" },
-            { label: "/icon-button", routerLink: "/icon-button" },
-            { label: "/badge", routerLink: "/badge" },
-            { label: "/progress-indicator", routerLink: "/progress-indicator" },
-            { label: "/snackbar", routerLink: "/snackbar" },
-            { label: "/tooltip", routerLink: "/tooltip" },
-            { label: "/dialog", routerLink: "/dialog" },
-            { label: "/bottom-sheet", routerLink: "/bottom-sheet" },
-            { label: "/bottom-app-bar", routerLink: "/bottom-app-bar" },
-            { label: "/navigation-bar", routerLink: "/navigation-bar" },
-            { label: "/navigation-drawer", routerLink: "/navigation-drawer" },
-            { label: "/navigation-rail", routerLink: "/navigation-rail" },
-            { label: "/tab", routerLink: "/tab" },
-            { label: "/top-app-bar", routerLink: "/top-app-bar" },
-            { label: "/form", routerLink: "/form" },
-            { label: "/select-field", routerLink: "/select-field" },
-            { label: "/textarea-field", routerLink: "/textarea-field" },
-            { label: "/email-field", routerLink: "/email-field" },
-            { label: "/password-field", routerLink: "/password-field" },
-            { label: "/url-field", routerLink: "/url-field" },
-            { label: "/search-field", routerLink: "/search-field" },
-            { label: "/number-field", routerLink: "/number-field" },
-            { label: "/tel-field", routerLink: "/tel-field" },
-            { label: "/date-field", routerLink: "/date-field" },
-            { label: "/datetime-field", routerLink: "/datetime-field" },
-            { label: "/month-field", routerLink: "/month-field" },
-            { label: "/time-field", routerLink: "/time-field" },
-            { label: "/week-field", routerLink: "/week-field" },
-            { label: "/color-field", routerLink: "/color-field" },
-            { label: "/file-field", routerLink: "/file-field" },
-            { label: "/text-field", routerLink: "/text-field" },
-            { label: "/card", routerLink: "/card" },
-            { label: "/list", routerLink: "/list" },
-            { label: "/side-sheet", routerLink: "/side-sheet" },
-            { label: "/divider", routerLink: "/divider" },
-            { label: "/carousel", routerLink: "/carousel" },
-            { label: "/checkbox", routerLink: "/checkbox" },
-            { label: "/radio-button", routerLink: "/radio-button" },
-            { label: "/slider", routerLink: "/slider" },
-            { label: "/switch", routerLink: "/switch" },
-            { label: "/date-picker", routerLink: "/date-picker" },
-            { label: "/time-picker", routerLink: "/time-picker" },
-            { label: "/chip", routerLink: "/chip" },
-            { label: "/menu", routerLink: "/menu" },
-            { label: "/search", routerLink: "/search" },
-            { label: "/segmented-button", routerLink: "/segmented-button" },
-            { label: "/data-table", routerLink: "/data-table" },
-            { label: "/pagination", routerLink: "/pagination" },
-        ].map((item) => {
+        this.list =[
+            {"label": "Badge", "routerLink": "/badge"},
+            {"label": "Bottom App Bar", "routerLink": "/bottom-app-bar"},
+            {"label": "Bottom Sheet", "routerLink": "/bottom-sheet"},
+            {"label": "Button", "routerLink": "/button"},
+            {"label": "Card", "routerLink": "/card"},
+            {"label": "Carousel", "routerLink": "/carousel"},
+            {"label": "Checkbox", "routerLink": "/checkbox"},
+            {"label": "Chip", "routerLink": "/chip"},
+            {"label": "Color Field", "routerLink": "/color-field"},
+            {"label": "Data Table", "routerLink": "/data-table"},
+            {"label": "Date Field", "routerLink": "/date-field"},
+            {"label": "Date Picker", "routerLink": "/date-picker"},
+            {"label": "Datetime Field", "routerLink": "/datetime-field"},
+            {"label": "Dialog", "routerLink": "/dialog"},
+            {"label": "Divider", "routerLink": "/divider"},
+            {"label": "Email Field", "routerLink": "/email-field"},
+            {"label": "Element", "routerLink": "/element"},
+            {"label": "Extended FAB", "routerLink": "/extended-fab"},
+            {"label": "FAB", "routerLink": "/fab"},
+            {"label": "File Field", "routerLink": "/file-field"},
+            {"label": "Form", "routerLink": "/form"},
+            {"label": "Gesture", "routerLink": "/gesture"},
+            {"label": "Icon", "routerLink": "/icon"},
+            {"label": "Icon Button", "routerLink": "/icon-button"},
+            {"label": "Layout", "routerLink": "/layout"},
+            {"label": "List", "routerLink": "/list"},
+            {"label": "Localization", "routerLink": "/localization"},
+            {"label": "Marker", "routerLink": "/marker"},
+            {"label": "Menu", "routerLink": "/menu"},
+            {"label": "Month Field", "routerLink": "/month-field"},
+            {"label": "Navigation Bar", "routerLink": "/navigation-bar"},
+            {"label": "Navigation Drawer", "routerLink": "/navigation-drawer"},
+            {"label": "Navigation Rail", "routerLink": "/navigation-rail"},
+            {"label": "Number Field", "routerLink": "/number-field"},
+            {"label": "Observer", "routerLink": "/observer"},
+            {"label": "Pagination", "routerLink": "/pagination"},
+            {"label": "Pane", "routerLink": "/pane"},
+            {"label": "Password Field", "routerLink": "/password-field"},
+            {"label": "Popper", "routerLink": "/popper"},
+            {"label": "Progress", "routerLink": "/progress"},
+            {"label": "Progress Indicator", "routerLink": "/progress-indicator"},
+            {"label": "Radio Button", "routerLink": "/radio-button"},
+            {"label": "Ripple", "routerLink": "/ripple"},
+            {"label": "Router", "routerLink": "/router"},
+            {"label": "Search", "routerLink": "/search"},
+            {"label": "Search Field", "routerLink": "/search-field"},
+            {"label": "Segmented Button", "routerLink": "/segmented-button"},
+            {"label": "Select Field", "routerLink": "/select-field"},
+            {"label": "Side Sheet", "routerLink": "/side-sheet"},
+            {"label": "Slider", "routerLink": "/slider"},
+            {"label": "Snackbar", "routerLink": "/snackbar"},
+            {"label": "Store", "routerLink": "/store"},
+            {"label": "Switch", "routerLink": "/switch"},
+            {"label": "Tab", "routerLink": "/tab"},
+            {"label": "Tel Field", "routerLink": "/tel-field"},
+            {"label": "Textarea Field", "routerLink": "/textarea-field"},
+            {"label": "Text Field", "routerLink": "/text-field"},
+            {"label": "Time Field", "routerLink": "/time-field"},
+            {"label": "Time Picker", "routerLink": "/time-picker"},
+            {"label": "Tooltip", "routerLink": "/tooltip"},
+            {"label": "Top App Bar", "routerLink": "/top-app-bar"},
+            {"label": "URL Field", "routerLink": "/url-field"},
+            {"label": "Week Field", "routerLink": "/week-field"}
+        ]
+        
+        .map((item) => {
             item.selected = item.routerLink === Router.path;
             return item;
         });
@@ -77,14 +82,14 @@ class DevMain extends MDElement {
         return html`
             <!-- <h1>${"Main"}</h1> -->
             <!-- <div class="md-layout"> -->
-                <div class="md-layout__border">
+                <div class="md-layout__border md-layout__fit">
                     <md-navigation-drawer
-                        class="md-layout__region md-layout__region--w"
+                        class="md-layout__region md-layout__region--w md-layout__fit"
                         open
                         .list="${this.list}"
                         @onListContainerSelected="${this.handleListContainerSelected}"
                     ></md-navigation-drawer>
-                    <div class="md-layout__region md-layout__region--c">
+                    <div class="md-layout__region md-layout__region--c md-layout__fit">
                         <md-outlet></md-outlet>
                     </div>
                 </div>

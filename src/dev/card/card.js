@@ -8,7 +8,13 @@ class DevCard extends MDElement {
         return html`
             <div class="md-layout__grid">
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
-                    <md-card>search</md-card>
+                    <md-card class="md-card--elevated"></md-card>
+                </div>
+                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <md-card class="md-card--filled"></md-card>
+                </div>
+                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <md-card class="md-card--outlined"></md-card>
                 </div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
                 <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>

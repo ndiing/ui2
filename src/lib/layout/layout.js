@@ -2,7 +2,7 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 
-class MDIcon extends MDElement {
+class MDLayout extends MDElement {
     static get properties() {
         return {
         };
@@ -20,18 +20,18 @@ class MDIcon extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-        this.classList.add("md-icon");
+        this.classList.add("md-layout");
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-        this.classList.remove("md-icon");
+        this.classList.remove("md-layout");
     }
 
     updated(changedProperties) {
     }
 }
 
-customElements.define("md-icon", MDIcon);
+customElements.define("md-layout", MDLayout);
 
-export { MDIcon };
+export { MDLayout };
