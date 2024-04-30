@@ -6,8 +6,8 @@ class DevTab extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout__grid">
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+            <div class="md-layout--column">
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tab 
                         .list="${[
                             { icon:'image',label: 'Lorem', selected:true },
@@ -16,7 +16,7 @@ class DevTab extends MDElement {
                         ]}"
                     ></md-tab>
                 </div>
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tab 
                         .list="${[
                             { label: 'Lorem', selected:true },
@@ -27,9 +27,9 @@ class DevTab extends MDElement {
                         ]}"
                     ></md-tab>
                 </div>
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
 
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tab 
                         .ui="${"secondary"}"
                         .list="${[
@@ -39,7 +39,7 @@ class DevTab extends MDElement {
                         ]}"
                     ></md-tab>
                 </div>
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tab 
                         .ui="${"secondary"}"
                         .list="${[
@@ -51,7 +51,7 @@ class DevTab extends MDElement {
                         ]}"
                     ></md-tab>
                 </div>
-                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
             </div>
         `;
     }

@@ -82,14 +82,14 @@ class DevMain extends MDElement {
         return html`
             <!-- <h1>${"Main"}</h1> -->
             <!-- <div class="md-layout"> -->
-                <div class="md-layout__border md-layout__fit">
+                <div class="md-layout--border md-layout--fit">
                     <md-navigation-drawer
-                        class="md-layout__region md-layout__region--w md-layout__fit"
+                        class="md-layout__item md-layout__item--west md-layout--fit"
                         open
                         .list="${this.list}"
                         @onListContainerSelected="${this.handleListContainerSelected}"
                     ></md-navigation-drawer>
-                    <div class="md-layout__region md-layout__region--c md-layout__fit">
+                    <div class="md-layout__item md-layout__item--center md-layout--fit">
                         <md-outlet></md-outlet>
                     </div>
                 </div>

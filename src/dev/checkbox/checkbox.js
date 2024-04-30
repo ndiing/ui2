@@ -9,17 +9,17 @@ class DevCheckbox extends MDElement {
             <md-form
                 @onFormNativeSubmit="${console.log}"
             >
-                <div class="md-layout__grid">
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout--column">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-checkbox></md-checkbox>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-checkbox indeterminate></md-checkbox>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-checkbox checked defaultChecked></md-checkbox>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset"></md-button>
                         <md-button type="submit" label="Submit"></md-button>
                     </div>

@@ -9,15 +9,15 @@ class DevRadioButton extends MDElement {
             <md-form
                 @onFormNativeSubmit="${console.log}"
             >
-                <div class="md-layout__grid">
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout--column">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-radio-button name="radio-button"></md-radio-button>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-radio-button name="radio-button" checked defaultChecked></md-radio-button>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset"></md-button>
                         <md-button type="submit" label="Submit"></md-button>
                     </div>

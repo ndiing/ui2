@@ -9,17 +9,17 @@ class DevUrlField extends MDElement {
             <md-form
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
-                <div class="md-layout__grid">
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout--column">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-tel-field label="Tel Field" text="Text content" name="text1"></md-tel-field>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-tel-field label="Tel Field" text="Text content" name="text2" placeholder="placeholder" required></md-tel-field>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-tel-field label="Tel Field" text="Text content" name="text3" value="value" defaultValue="value"></md-tel-field>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset"></md-button>
                         <md-button type="submit" label="Submit"></md-button>
                     </div>

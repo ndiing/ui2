@@ -7,19 +7,19 @@ class DevRangeField extends MDElement {
         // prettier-ignore
         return html`
             <md-form-field @onFormFieldNativeSubmit="${console.log}">
-                <div class="md-layout__grid">
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                <div class="md-layout--column">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-range-field label="Range field" name="rangeField1"></md-range-field>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-range-field label="Range field with value" name="rangeField2" value="25" defaultValue="25"></md-range-field>
                     </div>
-                    <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-range-field label="Range field with value" name="rangeField3" value="[25,55]" defaultValue="[25,55]"></md-range-field>
                     </div>
                     
                     
-                    <div class="md-layout__column--expanded12 md-layout__column--medium4 md-layout__column--compact4">
+                    <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>
