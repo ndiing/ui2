@@ -8,7 +8,9 @@ class DevPane extends MDElement {
         return html`
             <div class="md-layout--column" style="padding:24px;">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-pane></md-pane>
+                    <md-pane
+                        label="Label"
+                    >body</md-pane>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
