@@ -8,7 +8,19 @@ class DevNavigationDrawer extends MDElement {
         return html`
             <div class="md-layout--column">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-navigation-drawer
+                    <md-navigation-drawer 
+                        open
+                        .list="${[
+                            { label: 'Lorem', selected:true },
+                            { label: 'ipsum' },
+                            { label: 'dolor' },
+                            { label: 'sit' },
+                            { label: 'amet' },
+                        ]}"
+                    ></md-navigation-drawer>
+                </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-navigation-drawer 
                         open
                         .list="${[
                             { icon:'image',label: 'Lorem', selected:true },
@@ -18,7 +30,6 @@ class DevNavigationDrawer extends MDElement {
                             { icon:'image',label: 'amet' },
                         ]}"
                     ></md-navigation-drawer>
-                    
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>

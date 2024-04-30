@@ -89,7 +89,7 @@ class DevMain extends MDElement {
                         .list="${this.list}"
                         @onListContainerSelected="${this.handleListContainerSelected}"
                     ></md-navigation-drawer>
-                    <div class="md-layout__item md-layout__item--center md-layout--fit">
+                    <div class="md-layout__item md-layout__item--center md-layout--fit" style="padding:24px;">
                         <md-outlet></md-outlet>
                     </div>
                 </div>

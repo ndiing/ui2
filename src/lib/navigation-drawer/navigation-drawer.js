@@ -2,70 +2,97 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
-import { Gesture } from "../gesture/gesture";
 
 class MDNavigationDrawer extends MDElement {
+  static get properties() {
+    return Object.assign(MDList.properties,{
+        open: { type: Boolean, reflect: true },
+      });
+  }
 
-    static get properties() {
-        return Object.assign(MDList.properties, { open: { type: Boolean, reflect: true } });
-    }
+  constructor() {
+    super();
 
-    constructor() {
-        super();
-    }
+  }
 
-    render() {
-        // prettier-ignore
-        return html`
-            <div class="md-navigation-drawer__container">
-                <div class="md-navigation-drawer__body">
-                    <md-list 
-                        class="md-list--navigation-drawer"
+  render() {
+    // prettier-ignore
+    return html`
+            <div class="md-navigation-drawer__body">
+                <div class="md-navigation-drawer__inner">
+                    <md-list
+                        class="md-navigation-drawer__list"
                         .list="${this.list}"
                     ></md-list>
                 </div>
             </div>
-            <div class="md-navigation-drawer__scrim" @click="${this.handleNavigationDrawerScrimClick}"></div>
         `
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("md-navigation-drawer");
+
+    this.navigationDrawerScrimElement = document.createElement("div");
+    document.body.append(this.navigationDrawerScrimElement);
+    this.navigationDrawerScrimElement.classList.add("md-navigation-drawer__scrim");
+    this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
+    this.navigationDrawerScrimElement.addEventListener(
+      "click",
+      this.handleNavigationDrawerScrimClick
+    );
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.classList.remove("md-navigation-drawer");
+
+    this.navigationDrawerScrimElement.remove();
+  }
+
+  firstUpdated(changedProperties) {
+    if(changedProperties.has('open')){
+        if(this.open){
+            this.navigationDrawerScrimElement.classList.add('md-navigation-drawer--open')
+        }
+        else{
+            this.navigationDrawerScrimElement.classList.remove('md-navigation-drawer--open')
+        }
     }
+  }
 
-    async connectedCallback() {
-        super.connectedCallback();
-        this.classList.add("md-navigation-drawer");
-        // await this.updateComplete
-        // this.gesture=new Gesture(this.navigationDrawerContainer,{})
+  updated(changedProperties) {
+    if(changedProperties.has('open')){
+        if(this.open){
+            this.navigationDrawerScrimElement.classList.add('md-navigation-drawer--open')
+        }
+        else{
+            this.navigationDrawerScrimElement.classList.remove('md-navigation-drawer--open')
+        }
     }
+  }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-navigation-drawer");
-        // this.gesture.destroy()
-    }
+  handleNavigationDrawerActionClick(event) {
+    this.emit("onNavigationDrawerActionClick", event);
+  }
 
-    updated(changedProperties) {}
+  handleNavigationDrawerButtonClick(event) {
+    this.emit("onNavigationDrawerButtonClick", event);
+  }
 
-    get navigationDrawerContainer(){
-        return this.querySelector('.md-navigation-drawer__container')
-    }
+  handleNavigationDrawerScrimClick(event) {
+    this.close();
+    this.emit("onNavigationDrawerScrimClick", event);
+  }
 
-    close() {
-        this.open = false;
-    }
-
-    show() {
-        this.open = true;
-    }
-
-    showModal() {}
-
-    handleNavigationDrawerScrimClick(event) {
-        this.close();
-        this.emit("onNavigationDrawerScrimClick", event);
-    }
-
-    handleNavigationDrawerButtonClick(event) {
-        this.emit("onNavigationDrawerButtonClick", event);
-    }
+  close() {
+    this.open = false;
+  }
+  show() {
+    this.open = true;
+  }
 }
+
 customElements.define("md-navigation-drawer", MDNavigationDrawer);
+
 export { MDNavigationDrawer };

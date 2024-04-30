@@ -7,17 +7,13 @@ class DevDialog extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--column">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-dialog 
                         id="dialog"
-                        label="label"
-                        .buttons="${[
-                            'button',
-                            'button',
-                        ]}"
-                        @onDialogButtonClick="${this.handleDialogButtonClick}"
-                    >Lorem, ipsum dolor.</md-dialog>
-                    <md-button label="dialog" @click="${this.handleClick}"></md-button>
+                        @onDialogActionClick="${this.handleClick}"
+                        @onDialogButtonClick="${this.handleClick}"
+                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-dialog>
+                    <md-button id="button" label="dialog" @click="${this.handleClick}"></md-button>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
@@ -27,9 +23,6 @@ class DevDialog extends MDElement {
     handleClick(event) {
         if (dialog.open) dialog.close();
         else dialog.show();
-    }
-    handleDialogButtonClick(event) {
-        this.handleClick()
     }
 }
 
