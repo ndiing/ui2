@@ -60,9 +60,9 @@ Router.init([
         { path: "segmented-button", load: () => import("./segmented-button/segmented-button.js").then((m) => m.default) },
         { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
         { path: "pagination", load: () => import("./pagination/pagination.js").then((m) => m.default) },
+        { path: "layout", load: () => import("./layout/layout.js").then((m) => m.default) },
+        { path: "pane", load: () => import("./pane/pane.js").then((m) => m.default) },
     ]},
     
-    { path: "layout", load: () => import("./layout/layout.js").then((m) => m.default) },
-    { path: "pane", load: () => import("./pane/pane.js").then((m) => m.default) },
 
 ]);

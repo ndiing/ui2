@@ -27,7 +27,7 @@ class DevLayout extends MDElement {
                     </md-pane>
                 </div>
                 <div class="md-layout__item md-layout__item--center md-layout--fit" style="">
-                    <md-pane>
+                    <md-pane class="md-layout--fit">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus deserunt sunt ducimus tempore velit? Quibusdam maiores eum illo, hic voluptas modi aperiam nobis repellat exercitationem in praesentium itaque voluptatibus optio.
                         Hic velit repellat nostrum maiores laudantium suscipit nemo, officia id ut alias voluptate. Nisi deserunt veritatis excepturi dignissimos quos nemo odit nihil magni impedit doloremque, placeat quia culpa accusamus dolorem?
                         Cum quisquam dolor similique, distinctio inventore impedit maxime accusantium saepe! Iusto, doloremque voluptas voluptates minima vero illo ratione repellat perferendis? Maxime aut iste consequatur corporis, commodi architecto recusandae dicta quae!
