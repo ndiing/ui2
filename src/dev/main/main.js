@@ -83,13 +83,16 @@ class DevMain extends MDElement {
             <!-- <h1>${"Main"}</h1> -->
             <!-- <div class="md-layout"> -->
                 <div class="md-layout--border md-layout--fit">
-                    <md-navigation-drawer
-                        class="md-layout__item md-layout__item--west md-layout--fit"
-                        open
-                        .list="${this.list}"
-                        @onListContainerSelected="${this.handleListContainerSelected}"
-                    ></md-navigation-drawer>
-                    <div class="md-layout__item md-layout__item--center md-layout--fit" style="padding:24px;">
+                    <div id="layoutItemWest" class="open md-layout__item md-layout__item--west md-layout--fit">
+                        <md-navigation-drawer
+                            id="navigationDrawer"
+                            class="open"
+                            open
+                            .list="${this.list}"
+                            @onListContainerSelected="${this.handleListContainerSelected}"
+                        ></md-navigation-drawer>
+                    </div>
+                    <div class="md-layout__item md-layout__item--center md-layout--fit" >
                         <md-outlet></md-outlet>
                     </div>
                 </div>
@@ -109,6 +112,10 @@ class DevMain extends MDElement {
         // console.log(Layout.item)
         // window.addEventListener('onColorChange',console.log)
         // window.addEventListener('onLayoutChange',console.log)
+        // window.addEventListener('click',() => {
+        //     layoutItemWest.classList.toggle('open')
+        //     navigationDrawer.classList.toggle('open')
+        // })
     }
 }
 

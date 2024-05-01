@@ -17,7 +17,10 @@ th {
 .md-data-table {
     display: flex;
     flex-direction: column;
-
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    
     table {
         display: block;
     }
@@ -46,7 +49,7 @@ th {
     th {
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 2;
         background: var(--md-sys-color-background);
         color: var(--md-sys-color-on-background);
         border-bottom: 1px solid var(--md-sys-color-outline-variant);

@@ -8,9 +8,8 @@ class DevNavigationRail extends MDElement {
         return html`
             <div class="md-layout--column">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <!-- <md-navigation-rail>search</md-navigation-rail> -->
-                    <md-list 
-                        class="md-list--navigation-rail"
+                    <md-navigation-rail 
+                        open
                         .list="${[
                             { icon:'image',label: 'Lorem', selected:true },
                             { icon:'image',label: 'ipsum' },
@@ -18,7 +17,19 @@ class DevNavigationRail extends MDElement {
                             { icon:'image',label: 'sit' },
                             { icon:'image',label: 'amet' },
                         ]}"
-                    ></md-list>
+                    ></md-navigation-rail>
+                </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-navigation-rail 
+                        open
+                        .list="${[
+                            { icon:'image', selected:true },
+                            { icon:'image' },
+                            { icon:'image' },
+                            { icon:'image' },
+                            { icon:'image' },
+                        ]}"
+                    ></md-navigation-rail>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>

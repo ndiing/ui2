@@ -17,7 +17,6 @@ class DevMenu extends MDElement {
                             { icon:'image',label: 'sit' },
                             { icon:'image',label: 'amet' },
                         ]}"
-                        @onListContainerClick="${this.handleListContainerClick}"
                     ></md-menu>
                     <md-button id="button" label="menu" @click="${this.handleClick}"></md-button>
                 </div>
@@ -29,9 +28,6 @@ class DevMenu extends MDElement {
 
     handleClick(event){
         menu.show(button,{})
-    }
-    handleListContainerClick(event){
-        menu.close()
     }
 }
 

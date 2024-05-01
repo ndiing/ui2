@@ -28,17 +28,17 @@ class DevDataTable extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" >
-                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+            <!-- <div class="md-layout--column md-layout--fit" >
+                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4 md-layout--fit"> -->
                     <md-data-table
                         id="table"
                         .columns="${this.columns}"
                         .rows="${this.rows}"
                     ></md-data-table>
-                </div>
+                <!-- </div>
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4"></div>
-            </div>
+            </div> -->
         `;
     }
 

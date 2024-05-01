@@ -25,14 +25,14 @@
 }
 .md-pane__body {
     flex: 1;
-    overflow: auto;
+    overflow: hidden auto;
     display: flex;
     flex-direction: column;
     
 }
 .md-pane__inner {
     flex: 1;
-    overflow: auto;
+    overflow: hidden auto;
     padding: 0 24px;
     margin: 24px 0;
     @extend .md-typography--body-medium;

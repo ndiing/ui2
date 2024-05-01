@@ -427,7 +427,7 @@ body {
 }
 
 body {
-    overflow: auto;
+    overflow: hidden auto;
     @extend .md-typography--body-large;
     font-family: "Noto Sans";
     background: var(--md-sys-color-background);

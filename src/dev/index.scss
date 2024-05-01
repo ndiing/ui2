@@ -105,3 +105,24 @@
 //     --md-sys-color-surface-container-highest: rgb(51 54 46);
 //     }
 // }
+
+
+// #layoutItemWest{
+//     width: 360px;
+//     transition-property: all;
+//     transition-duration: var(--md-sys-motion-duration-short4);
+//     transition-timing-function: var(--md-sys-motion-easing-standard);
+//     &:not(.open){
+//         width: 0;
+//     }
+// }
+// #navigationDrawer{
+//     width: 100%;
+//     transform: translate3d(0%,0,0);
+//     transition-property: all;
+//     transition-duration: var(--md-sys-motion-duration-short4);
+//     transition-timing-function: var(--md-sys-motion-easing-standard);
+//     &:not(.open){
+//         transform: translate3d(-100%,0,0);
+//     }
+// }

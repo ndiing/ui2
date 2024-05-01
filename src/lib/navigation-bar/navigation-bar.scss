@@ -15,14 +15,14 @@
 
 .md-navigation-bar__body {
     flex: 1;
-    overflow: auto;
+    overflow: hidden auto;
     display: flex;
     flex-direction: column;
     
 }
 .md-navigation-bar__inner {
     flex: 1;
-    overflow: auto;
+    overflow: hidden auto;
     padding: 0;
     margin: 0;
     @extend .md-typography--body-medium;

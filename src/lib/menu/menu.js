@@ -5,79 +5,115 @@ import { MDList } from "../list/list";
 import { Popper } from "../popper/popper";
 
 class MDMenu extends MDElement {
-    static get properties() {
-        return Object.assign(MDList.properties, {
-            open: { type: Boolean, reflect: true },
-        });
-    }
+  static get properties() {
+    return Object.assign(MDList.properties,{
+        open: { type: Boolean, reflect: true },
+      });
+  }
 
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
 
-    render() {
-        // prettier-ignore
-        return html`
-            <div class="md-menu__container">
-                <div class="md-menu__body">
-                    <md-list 
+  }
+
+  render() {
+    // prettier-ignore
+    return html`
+            <div class="md-menu__body">
+                <div class="md-menu__inner">
+                    <md-list
                         class="md-menu__list"
                         .list="${this.list}"
+                        @onListContainerClick="${this.handleListContainerClick}"
                     ></md-list>
                 </div>
             </div>
-            <div class="md-menu__scrim" @click="${this.handleMenuScrimClick}"></div>
         `
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("md-menu");
+
+    this.navigationRailScrimElement = document.createElement("div");
+    document.body.append(this.navigationRailScrimElement);
+    this.navigationRailScrimElement.classList.add("md-menu__scrim");
+    this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
+    this.navigationRailScrimElement.addEventListener(
+      "click",
+      this.handleMenuScrimClick
+    );
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.classList.remove("md-menu");
+
+    this.navigationRailScrimElement.remove();
+  }
+
+  firstUpdated(changedProperties) {
+    if(changedProperties.has('open')){
+        if(this.open){
+            this.navigationRailScrimElement.classList.add('md-menu--open')
+        }
+        else{
+            this.navigationRailScrimElement.classList.remove('md-menu--open')
+        }
     }
+  }
 
-    async connectedCallback() {
-        super.connectedCallback();
-        this.classList.add("md-menu");
+  updated(changedProperties) {
+    if(changedProperties.has('open')){
+        if(this.open){
+            this.navigationRailScrimElement.classList.add('md-menu--open')
+        }
+        else{
+            this.navigationRailScrimElement.classList.remove('md-menu--open')
+        }
     }
+  }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-menu");
-    }
+  handleMenuActionClick(event) {
+    this.emit("onMenuActionClick", event);
+  }
 
-    updated(changedProperties) {}
+  handleMenuButtonClick(event) {
+    this.emit("onMenuButtonClick", event);
+  }
 
-    get menuContainer() {
-        return this.querySelector(".md-menu__container");
-    }
+  handleMenuScrimClick(event) {
+    this.close();
+    this.emit("onMenuScrimClick", event);
+  }
 
-    close() {
-        this.open = false;
-        this.popper?.destroy();
-    }
+  handleListContainerClick(event) {
+    this.close();
+    this.emit("onListContainerClick", event);
+  }
 
-    show(button, options = {}) {
-        this.open = true;
-        this.popper = new Popper(this.menuContainer, {
-            button,
-            placements: [
-                "bottom-start",
-                "bottom-end",
-                "bottom",
-                "top-start",
-                "top-end",
-                "top",
-            ],
-            ...options,
-        });
-        this.popper.setPlacement();
-    }
-
-    showModal() {}
-
-    handleMenuScrimClick(event) {
-        this.close();
-        this.emit("onMenuScrimClick", event);
-    }
-
-    handleMenuButtonClick(event) {
-        this.emit("onMenuButtonClick", event);
-    }
+  close() {
+    this.open = false;
+    this.popper.destroy()
+  }
+  show(button) {
+    this.open = true;
+    this.popper = new Popper(this,{
+        button,
+        offset: 0,
+        placements: [
+            'bottom-start',
+            'bottom-end',
+            'bottom-center',
+            'top-start',
+            'top-end',
+            'top-center',
+        ],
+    })
+    this.popper.setPlacement()
+  }
 }
+
 customElements.define("md-menu", MDMenu);
+
 export { MDMenu };

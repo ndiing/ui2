@@ -1,0 +1,92 @@
+.md-navigation-rail {
+    display: inline-flex;
+    flex-direction: column;
+    width: 360px;
+    border-radius: 0 16px 16px 0;
+    background: var(--md-sys-color-surface-container-low);
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--md-sys-elevation-level0);
+
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+    // top: 0;
+    // z-index: 2;
+}
+
+.md-navigation-rail__body {
+    flex: 1;
+    overflow: hidden auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.md-navigation-rail__inner {
+    flex: 1;
+    overflow: hidden auto;
+    padding: 0;
+    margin: 0;
+    @extend .md-typography--body-medium;
+}
+
+// .md-navigation-rail__scrim{
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     z-index: 1;
+//     width: 100%;
+//     height: 100%;
+//     background: #000;
+//     opacity: 32%;
+// }
+
+
+.md-navigation-rail__list {
+    display: inline-flex;
+
+    > ul {
+        padding: 0;
+    }
+
+    .md-list__container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 12px;
+        gap: 4px 0;
+
+        &[selected] {
+            background: inherit;
+            color: inherit;
+
+            .md-list__icon {
+                @extend .md-ripple--selected;
+                animation-name: md-navigation-bar-list-icon;
+                animation-duration: var(--md-sys-motion-duration-short4);
+                animation-timing-function: var(--md-sys-motion-easing-standard);
+            }
+        }
+    }
+
+    .md-list__icon {
+        width: 56px;
+        height: 32px;
+        border-radius: calc(32px / 2);
+    }
+
+    .md-list__label {
+        @extend .md-typography--label-medium;
+    }
+}
+
+
+// .md-navigation-rail:not([open]){
+//     opacity: 0;
+//     pointer-events: none;
+// }
+
+// .md-navigation-rail__scrim:not(.md-navigation-rail--open){
+//     opacity: 0;
+//     pointer-events: none;
+// }

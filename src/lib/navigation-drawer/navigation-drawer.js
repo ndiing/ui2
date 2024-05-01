@@ -2,6 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
+import { Gesture } from "../gesture/gesture";
 
 class MDNavigationDrawer extends MDElement {
   static get properties() {
@@ -41,6 +42,21 @@ class MDNavigationDrawer extends MDElement {
       "click",
       this.handleNavigationDrawerScrimClick
     );
+
+    // new Gesture(this,{
+    //   resizeHandles: ['e'],
+    // })
+    // let offsetWidthStart
+    // this.addEventListener('onResizeStart', (event) => {
+    //   offsetWidthStart=event.currentTarget.offsetWidth-event.detail.clientX
+    // })
+    // this.addEventListener('onResize', (event) => {
+    //   const width=(offsetWidthStart+event.detail.clientX)
+    //   event.currentTarget.style.width=width+'px'
+    // })
+    // this.addEventListener('onResizeEnd', (event) => {
+    //   console.log(event)
+    // })
   }
 
   disconnectedCallback() {
