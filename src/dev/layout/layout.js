@@ -8,12 +8,12 @@ class DevLayout extends MDElement {
         return html`
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item md-layout__item--north md-layout--fit" >
-                    <md-pane style="height:64px;">
+                    <md-pane style="border-radius:0px;height:64px;">
                         north
                     </md-pane>
                 </div>
                 <div class="md-layout__item md-layout__item--west md-layout--fit" >
-                    <md-pane style="width:360px;height:100%;">
+                    <md-pane style="border-radius:0px;width:360px;height:100%;">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda pariatur quae cumque, nesciunt nam possimus distinctio provident, inventore veniam facere expedita et non quia delectus voluptatibus eos excepturi, totam doloribus?
                         Dolorum, voluptatem cupiditate sint pariatur, adipisci modi ducimus nihil in quos expedita rem quia incidunt nam voluptatum. Vitae architecto eligendi cumque facilis, dolores nemo nam quia numquam ratione sunt aut.
                         At placeat maiores quia veniam ullam, ipsam vero dicta iusto facilis eligendi a explicabo tempore! Possimus quas illo commodi distinctio. Nesciunt ratione delectus rerum tenetur laborum tempora, fugit voluptatibus dolorem.
@@ -61,12 +61,12 @@ class DevLayout extends MDElement {
                     </md-pane>
                 </div>
                 <div class="md-layout__item md-layout__item--east md-layout--fit">
-                    <md-pane style="width:360px;height:100%;">
+                    <md-pane style="border-radius:0px;width:360px;height:100%;">
                         east
                     </md-pane>
                 </div>
                 <div class="md-layout__item md-layout__item--south md-layout--fit" >
-                    <md-pane style="height:80px;">
+                    <md-pane style="border-radius:0px;height:80px;">
                         south
                     </md-pane>
                 </div>

@@ -8,7 +8,19 @@ class DevTopAppBar extends MDElement {
         return html`
             <div class="md-layout--column">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-top-app-bar>search</md-top-app-bar>
+                    <md-top-app-bar
+                        .leadingActions="${[
+                            {icon:"image"},
+                            {icon:"image"},
+                            {icon:"image"},
+                        ]}"
+                        .label="${"Label"}"
+                        .trailingActions="${[
+                            {icon:"image"},
+                            {icon:"image"},
+                            {icon:"image"},
+                        ]}"
+                    ></md-top-app-bar>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>

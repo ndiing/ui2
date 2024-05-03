@@ -1,10 +1,14 @@
 import { MDElement } from "../element/element";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 
 class MDTopAppBar extends MDElement {
     static get properties() {
-        return {};
+        return {
+            leadingActions:{type:Array},
+            label:{type:String},
+            trailingActions:{type:Array},
+        };
     }
 
     constructor() {
@@ -14,6 +18,27 @@ class MDTopAppBar extends MDElement {
     render() {
         // prettier-ignore
         return html`
+            ${this.leadingActions?.length? html`
+                <div class="md-top-app-bar__actions">
+                    ${this.leadingActions?.map(action=>html`
+                        <md-icon-button 
+                            class="md-top-app-bar__action" 
+                            .icon="${action.icon??action}"
+                        ></md-icon-button>
+                    `)}
+                </div>
+            ` : nothing}
+            <div class="md-top-app-bar__label">${this.label}</div>
+            ${this.trailingActions?.length? html`
+                <div class="md-top-app-bar__actions">
+                    ${this.trailingActions?.map(action=>html`
+                        <md-icon-button 
+                            class="md-top-app-bar__action" 
+                            .icon="${action.icon??action}"
+                        ></md-icon-button>
+                    `)}
+                </div>
+            ` : nothing}
         `
     }
 
