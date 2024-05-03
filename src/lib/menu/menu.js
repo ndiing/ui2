@@ -89,7 +89,7 @@ class MDMenu extends MDElement {
 
   handleListContainerClick(event) {
     this.close();
-    this.emit("onListContainerClick", event);
+    // this.emit("onListContainerClick", event);
   }
 
   close() {

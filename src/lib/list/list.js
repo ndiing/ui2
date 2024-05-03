@@ -66,12 +66,22 @@ class MDList extends MDElement {
     static get properties() {
         return {
             list: { type: Array },
+            
+            valueField: { type: String },
+            labelField: { type: String },
+
+            selectRange: { type: Boolean },
+            selectMulti: { type: Boolean },
+            selectSingle: { type: Boolean },
+            selectAll: { type: Boolean },
         };
     }
 
     constructor() {
         super();
         this.list = [];
+        this.valueField='value'
+        this.labelField='label'
     }
 
     render() {
@@ -83,14 +93,15 @@ class MDList extends MDElement {
                         is="md-list-item"
                         .data="${item}"
                         tabIndex="0"
-                        @onDragStart="${this.handleListItemDragStart}"
-                        @onDrag="${this.handleListItemDrag}"
-                        @onDragEnd="${this.handleListItemDragEnd}"
+                        @onDragStart="${true&&this.handleListItemDragStart||(() => {})}"
+                        @onDrag="${true&&this.handleListItemDrag||(() => {})}"
+                        @onDragEnd="${true&&this.handleListItemDragEnd||(() => {})}"
                     >
                         <md-list-container
                             .data="${item}"
                             .icon="${item.icon}"
-                            .label="${item.label}"
+                            .label="${item[this.labelField]}"
+                            .value="${item[this.valueField]}"
                             .routerLink="${item.routerLink}"
                             .selected="${item.selected}"
                             @click="${this.handleListContainerClick}"
@@ -116,7 +127,7 @@ class MDList extends MDElement {
     updated(changedProperties) {}
 
     handleListKeydown(event) {
-        if (event.ctrlKey && event.key === "a") {
+        if (this.selectAll&&event.ctrlKey && event.key === "a") {
             event.preventDefault();
             this.list.forEach((item) => {
                 item.selected = true;
@@ -126,11 +137,15 @@ class MDList extends MDElement {
         }
     }
 
+    get selectedItems(){
+        return this.list.filter(item=>item.selected)
+    }
+
     handleListContainerClick(event) {
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.list.indexOf(data);
 
-        if (event.shiftKey) {
+        if (this.selectRange&&event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
@@ -139,14 +154,15 @@ class MDList extends MDElement {
             this.list.forEach((item, index) => {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
-        } else if (event.ctrlKey) {
+        } else if (this.selectMulti&&event.ctrlKey) {
             data.selected = !data.selected;
-        } else {
+        } else if(this.selectSingle) {
             this.list.forEach((item) => {
                 item.selected = item === data;
             });
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
+
         this.requestUpdate();
         this.emit('onListContainerClick',event)
     }
