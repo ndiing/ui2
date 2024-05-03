@@ -19,23 +19,30 @@
 // border
 .md-layout--border {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 1fr auto;
+  // grid-template-columns: auto 1fr auto;
+  // grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
+  grid-template-rows: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
   grid-template-areas:
     "north north north"
     "west center east"
     "south south south";
+    position: relative;
+    overflow: hidden;
     // gap: 24px;
   // > .md-layout__item {
   //   overflow: hidden auto;
   // }
 
-  .md-layout__item--north,
-  .md-layout__item--east,
-  .md-layout__item--center,
-  .md-layout__item--south,
-  .md-layout__item--west{
+  >.md-layout__item--north,
+  >.md-layout__item--east,
+  >.md-layout__item--center,
+  >.md-layout__item--south,
+  >.md-layout__item--west{
     overflow: hidden auto;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: var(--md-sys-motion-easing-standard);
   }
 
   > .md-layout__item--north {

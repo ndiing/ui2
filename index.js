@@ -28,12 +28,12 @@ function devTpl(name) {
     code += `    render() {\r\n`;
     code += `        // prettier-ignore\r\n`;
     code += `        return html\`\r\n`;
-    code += `            <div class="md-layout__grid">\r\n`;
-    code += `                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4">\r\n`;
+    code += `            <div class="md-layout--column">\r\n`;
+    code += `                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">\r\n`;
     code += `                    <md-${name}>search</md-${name}>\r\n`;
     code += `                </div>\r\n`;
-    code += `                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>\r\n`;
-    code += `                <div class="md-layout__column--expanded4 md-layout__column--medium4 md-layout__column--compact4"></div>\r\n`;
+    code += `                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>\r\n`;
+    code += `                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>\r\n`;
     code += `            </div>\r\n`;
     code += `        \`;\r\n`;
     code += `    }\r\n`;
