@@ -1,7 +1,18 @@
 .md-top-app-bar{
     display: flex;
     align-items: center;
+    height: 64px;
+    padding: 0 16px;
+    gap: 0 16px;
+    background: var(--md-sys-color-surface);
 }
-.md-top-app-bar__actions{}
-.md-top-app-bar__action{}
-.md-top-app-bar__label{}
+.md-top-app-bar__actions{
+    display: inline-flex;
+    align-items: center;
+    gap: 0 24px;
+}
+// .md-top-app-bar__action{}
+.md-top-app-bar__label{
+    flex: 1;
+    @extend .md-typography--title-large;
+}

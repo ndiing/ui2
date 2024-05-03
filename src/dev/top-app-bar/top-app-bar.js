@@ -6,12 +6,10 @@ class DevTopAppBar extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+            <div class="md-layout--border">
+                <div class="md-layout__item md-layout__item--north">
                     <md-top-app-bar
                         .leadingActions="${[
-                            {icon:"image"},
-                            {icon:"image"},
                             {icon:"image"},
                         ]}"
                         .label="${"Label"}"
@@ -22,8 +20,7 @@ class DevTopAppBar extends MDElement {
                         ]}"
                     ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                <div class="md-layout__item md-layout__item--center"></div>
             </div>
         `;
     }

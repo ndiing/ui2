@@ -24,6 +24,7 @@ class MDTopAppBar extends MDElement {
                         <md-icon-button 
                             class="md-top-app-bar__action" 
                             .icon="${action.icon??action}"
+                            @click="${this.handleTopAppBarActionClick}"
                         ></md-icon-button>
                     `)}
                 </div>
@@ -35,6 +36,7 @@ class MDTopAppBar extends MDElement {
                         <md-icon-button 
                             class="md-top-app-bar__action" 
                             .icon="${action.icon??action}"
+                            @click="${this.handleTopAppBarActionClick}"
                         ></md-icon-button>
                     `)}
                 </div>
@@ -53,6 +55,10 @@ class MDTopAppBar extends MDElement {
     }
 
     updated(changedProperties) {}
+
+    handleTopAppBarActionClick(event) {
+        this.emit('onTopAppBarActionClick',event)
+    }
 }
 
 customElements.define("md-top-app-bar", MDTopAppBar);
