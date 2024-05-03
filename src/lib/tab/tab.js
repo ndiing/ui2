@@ -21,6 +21,7 @@ class MDTab extends MDElement {
             <md-list
                 class="md-tab__list"
                 .list="${this.list}"
+                .selectSingle="${true}"
                 @onListContainerSelected="${this.handleListContainerSelected}"
             ></md-list>
         `
