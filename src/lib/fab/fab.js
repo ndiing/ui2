@@ -39,7 +39,9 @@ class MDFab extends MDElement {
   updated(changedProperties) {
     if (changedProperties.has("ui")) {
       if (this.ui) {
-        this.classList.add("md-fab--" + this.ui);
+        this.ui.split(' ').forEach(ui=>{
+          this.classList.add("md-fab--" + ui);
+        })
       } else {
         this.classList.add("md-fab--small");
         this.classList.add("md-fab--large");

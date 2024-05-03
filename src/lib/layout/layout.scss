@@ -26,9 +26,18 @@
     "west center east"
     "south south south";
     // gap: 24px;
-  > .md-layout__item {
+  // > .md-layout__item {
+  //   overflow: hidden auto;
+  // }
+
+  .md-layout__item--north,
+  .md-layout__item--east,
+  .md-layout__item--center,
+  .md-layout__item--south,
+  .md-layout__item--west{
     overflow: hidden auto;
   }
+
   > .md-layout__item--north {
     grid-area: north;
   }

@@ -7,7 +7,7 @@ class DevBottomAppBar extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item md-layout__item--south">
+                <div class="md-layout__item--south">
                     <md-bottom-app-bar
                         .actions="${[
                             {icon:'image'},
@@ -26,7 +26,7 @@ class DevBottomAppBar extends MDElement {
                         ]}"
                     ></md-bottom-app-bar> -->
                 </div>
-                <div class="md-layout__item md-layout__item--center">
+                <div class="md-layout__item--center">
                         <md-button label="bottom app bar"
                         ></md-button>
                 </div>

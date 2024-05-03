@@ -6,8 +6,8 @@ class DevNavigationDrawer extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+            <div class="md-layout--border md-layout--fit">
+                <div class="md-layout__item--west">
                     <md-navigation-drawer 
                         open
                         .list="${[
@@ -19,7 +19,7 @@ class DevNavigationDrawer extends MDElement {
                         ]}"
                     ></md-navigation-drawer>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <!-- <div class="md-layout__item--west">
                     <md-navigation-drawer 
                         open
                         .list="${[
@@ -30,9 +30,8 @@ class DevNavigationDrawer extends MDElement {
                             { icon:'image',label: 'amet' },
                         ]}"
                     ></md-navigation-drawer>
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                </div> -->
+                <div class="md-layout__item--center">center</div>
             </div>
         `;
     }

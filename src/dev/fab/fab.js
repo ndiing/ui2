@@ -16,6 +16,15 @@ class DevFab extends MDElement {
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-fab icon="image" ui="large"></md-fab>
                 </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-fab icon="image" ui="small unelevated"></md-fab>
+                </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-fab icon="image" ui="unelevated"></md-fab>
+                </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-fab icon="image" ui="large unelevated"></md-fab>
+                </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
             </div>
