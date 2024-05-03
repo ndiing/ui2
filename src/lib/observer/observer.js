@@ -40,7 +40,7 @@ new Observer(
     (item) => {
         layout = item;
         emit("onLayoutChange", item);
-    },
+    }
 );
 
 new Observer(
@@ -51,7 +51,7 @@ new Observer(
     (item) => {
         color = item;
         emit("onColorChange", item);
-    },
+    }
 );
 
 export { layout, color };

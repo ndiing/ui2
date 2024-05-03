@@ -4,8 +4,7 @@ import { msg } from "@lit/localize";
 
 class MDIcon extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,8 +27,7 @@ class MDIcon extends MDElement {
         this.classList.remove("md-icon");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-icon", MDIcon);

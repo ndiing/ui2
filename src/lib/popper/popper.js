@@ -19,7 +19,11 @@ class Popper {
     }
 
     emit(type, detail) {
-        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
         this.host.dispatchEvent(event);
     }
 
@@ -57,21 +61,32 @@ class Popper {
             {
                 placement: "top-start",
                 calculate: () => ({
-                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
+                    top:
+                        this.buttonRect.top -
+                        this.containerRect.height -
+                        this.options.offset,
                     left: this.buttonRect.left,
                 }),
             },
             {
                 placement: "top",
                 calculate: () => ({
-                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
-                    left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2,
+                    top:
+                        this.buttonRect.top -
+                        this.containerRect.height -
+                        this.options.offset,
+                    left:
+                        this.buttonRect.left +
+                        (this.buttonRect.width - this.containerRect.width) / 2,
                 }),
             },
             {
                 placement: "top-end",
                 calculate: () => ({
-                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
+                    top:
+                        this.buttonRect.top -
+                        this.containerRect.height -
+                        this.options.offset,
                     left: this.buttonRect.right - this.containerRect.width,
                 }),
             },
@@ -85,7 +100,10 @@ class Popper {
             {
                 placement: "right",
                 calculate: () => ({
-                    top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2,
+                    top:
+                        this.buttonRect.top +
+                        (this.buttonRect.height - this.containerRect.height) /
+                            2,
                     left: this.buttonRect.right + this.options.offset,
                 }),
             },
@@ -107,7 +125,9 @@ class Popper {
                 placement: "bottom",
                 calculate: () => ({
                     top: this.buttonRect.bottom + this.options.offset,
-                    left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2,
+                    left:
+                        this.buttonRect.left +
+                        (this.buttonRect.width - this.containerRect.width) / 2,
                 }),
             },
             {
@@ -121,31 +141,49 @@ class Popper {
                 placement: "left-end",
                 calculate: () => ({
                     top: this.buttonRect.bottom - this.containerRect.height,
-                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                    left:
+                        this.buttonRect.left -
+                        this.containerRect.width -
+                        this.options.offset,
                 }),
             },
             {
                 placement: "left",
                 calculate: () => ({
-                    top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2,
-                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                    top:
+                        this.buttonRect.top +
+                        (this.buttonRect.height - this.containerRect.height) /
+                            2,
+                    left:
+                        this.buttonRect.left -
+                        this.containerRect.width -
+                        this.options.offset,
                 }),
             },
             {
                 placement: "left-start",
                 calculate: () => ({
                     top: this.buttonRect.top,
-                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                    left:
+                        this.buttonRect.left -
+                        this.containerRect.width -
+                        this.options.offset,
                 }),
             },
         ];
 
-        const { left, top } = placements.find((p) => p.placement == placement).calculate();
+        const { left, top } = placements
+            .find((p) => p.placement == placement)
+            .calculate();
 
         const right = left + this.containerRect.width;
         const bottom = top + this.containerRect.height;
 
-        const exceed = left < this.boundaryRect.left || right > this.boundaryRect.right || top < this.boundaryRect.top || bottom > this.boundaryRect.bottom;
+        const exceed =
+            left < this.boundaryRect.left ||
+            right > this.boundaryRect.right ||
+            top < this.boundaryRect.top ||
+            bottom > this.boundaryRect.bottom;
 
         return { exceed, left, top, right, bottom };
     }

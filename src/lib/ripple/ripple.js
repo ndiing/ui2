@@ -21,7 +21,11 @@ class Ripple {
     }
 
     emit(type, detail) {
-        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
         this.host.dispatchEvent(event);
     }
 
@@ -30,9 +34,17 @@ class Ripple {
 
         if (!this.options.size) {
             this.rect = this.host.getBoundingClientRect();
-            this.options.size = (Math.sqrt(Math.pow(this.rect.width, 2) + Math.pow(this.rect.height, 2)) / this.rect.width) * 100;
+            this.options.size =
+                (Math.sqrt(
+                    Math.pow(this.rect.width, 2) + Math.pow(this.rect.height, 2)
+                ) /
+                    this.rect.width) *
+                100;
         }
-        this.host.style.setProperty("--md-ripple-size", this.options.size + "%");
+        this.host.style.setProperty(
+            "--md-ripple-size",
+            this.options.size + "%"
+        );
 
         if (this.options.containment) {
             this.host.classList.add("md-ripple--containment");
@@ -61,8 +73,14 @@ class Ripple {
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.options.button.addEventListener("mousedown", this.handleMousedown);
-        this.options.button.addEventListener("mouseenter", this.handleMouseenter);
-        this.options.button.addEventListener("mouseleave", this.handleMouseleave);
+        this.options.button.addEventListener(
+            "mouseenter",
+            this.handleMouseenter
+        );
+        this.options.button.addEventListener(
+            "mouseleave",
+            this.handleMouseleave
+        );
         this.options.button.addEventListener("focus", this.handleFocus);
         this.options.button.addEventListener("blur", this.handleBlur);
     }
@@ -72,10 +90,19 @@ class Ripple {
         this.host.style.removeProperty("--md-ripple-size");
         this.options.button.removeAttribute("tabIndex");
         this.options.button.classList.remove("md-ripple--button");
-        this.options.button.removeEventListener("mousedown", this.handleMousedown);
+        this.options.button.removeEventListener(
+            "mousedown",
+            this.handleMousedown
+        );
         this.options.button.removeEventListener("mouseup", this.handleMouseup);
-        this.options.button.removeEventListener("mouseenter", this.handleMouseenter);
-        this.options.button.removeEventListener("mouseleave", this.handleMouseleave);
+        this.options.button.removeEventListener(
+            "mouseenter",
+            this.handleMouseenter
+        );
+        this.options.button.removeEventListener(
+            "mouseleave",
+            this.handleMouseleave
+        );
         this.options.button.removeEventListener("focus", this.handleFocus);
         this.options.button.removeEventListener("blur", this.handleBlur);
     }
@@ -88,7 +115,9 @@ class Ripple {
         const left = (event.clientX - this.rect.left) / this.rect.width;
         const top = (event.clientY - this.rect.top) / this.rect.height;
         const x = (0.5 - left) * (100 / this.options.size);
-        const y = (0.5 - top) * ((100 / this.options.size) * (this.rect.height / this.rect.width));
+        const y =
+            (0.5 - top) *
+            ((100 / this.options.size) * (this.rect.height / this.rect.width));
         this.host.style.removeProperty("--md-ripple-animation");
         this.host.style.setProperty("--md-ripple-left", left * 100 + "%");
         this.host.style.setProperty("--md-ripple-top", top * 100 + "%");

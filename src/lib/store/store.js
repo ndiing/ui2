@@ -5,7 +5,9 @@ class Store {
             ...options,
         };
 
-        this.docs = new Map(docs.map((doc) => [doc[this.options.primaryKey], doc]));
+        this.docs = new Map(
+            docs.map((doc) => [doc[this.options.primaryKey], doc])
+        );
     }
 
     post(doc) {
@@ -16,7 +18,9 @@ class Store {
         }
 
         if (this.docs.has(doc[primaryKey])) {
-            throw new Error("Document with the same primary key already exists.");
+            throw new Error(
+                "Document with the same primary key already exists."
+            );
         }
 
         this.docs.set(doc[primaryKey], doc);
@@ -28,7 +32,9 @@ class Store {
 
     patch(_id, doc) {
         if (!this.docs.has(_id)) {
-            throw new Error("Document with the specified primary key does not exist.");
+            throw new Error(
+                "Document with the specified primary key does not exist."
+            );
         }
 
         const originalDoc = this.docs.get(_id);
@@ -49,7 +55,9 @@ class Store {
 
     delete(_id) {
         if (!this.docs.has(_id)) {
-            throw new Error("Document with the specified primary key does not exist.");
+            throw new Error(
+                "Document with the specified primary key does not exist."
+            );
         }
 
         this.docs.delete(_id);
@@ -86,13 +94,21 @@ class Store {
     search(docs, q) {
         return docs.filter((doc) => {
             for (const key in doc) {
-                if (typeof doc[key] === "string" && doc[key].toLowerCase().includes(q.toLowerCase())) {
+                if (
+                    typeof doc[key] === "string" &&
+                    doc[key].toLowerCase().includes(q.toLowerCase())
+                ) {
                     return true;
                 }
 
                 if (typeof doc[key] === "object") {
                     for (const nestedKey in doc[key]) {
-                        if (typeof doc[key][nestedKey] === "string" && doc[key][nestedKey].toLowerCase().includes(q.toLowerCase())) {
+                        if (
+                            typeof doc[key][nestedKey] === "string" &&
+                            doc[key][nestedKey]
+                                .toLowerCase()
+                                .includes(q.toLowerCase())
+                        ) {
                             return true;
                         }
                     }
@@ -106,7 +122,9 @@ class Store {
         return docs.filter((doc) => {
             return filters.every((filter) => {
                 const { name, value, operator } = filter;
-                const propValue = name.split(".").reduce((obj, key) => obj[key], doc);
+                const propValue = name
+                    .split(".")
+                    .reduce((obj, key) => obj[key], doc);
 
                 switch (operator) {
                     case "_eq":
@@ -124,7 +142,9 @@ class Store {
                     case "_like":
                         return propValue.includes(value);
                     default:
-                        throw new Error(`Operator '${operator}' is not supported.`);
+                        throw new Error(
+                            `Operator '${operator}' is not supported.`
+                        );
                 }
             });
         });
@@ -142,7 +162,8 @@ class Store {
     }
 
     getAll(options = {}) {
-        let { _sort, _order, q, _page, _limit, _start, _end, ...rest } = options;
+        let { _sort, _order, q, _page, _limit, _start, _end, ...rest } =
+            options;
         let docs = Array.from(this.docs.values());
 
         if (_sort && _order) {
@@ -163,7 +184,9 @@ class Store {
 
             for (const name in rest) {
                 const value = rest[name];
-                const [, key, operator = "_eq"] = name.match(/^(.*?)(_eq|_ne|_lt|_gt|_lte|_gte|_like)?$/);
+                const [, key, operator = "_eq"] = name.match(
+                    /^(.*?)(_eq|_ne|_lt|_gt|_lte|_gte|_like)?$/
+                );
                 filters.push({ name: key, value, operator });
             }
 

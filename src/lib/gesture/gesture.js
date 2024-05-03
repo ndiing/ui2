@@ -19,18 +19,21 @@ class Gesture {
     }
 
     emit(type, detail) {
-        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
         this.host.dispatchEvent(event);
     }
 
     init() {
         this.host.classList.add("md-gesture");
 
-        if(this.options.resizeHandles.length){
-
+        if (this.options.resizeHandles.length) {
             this.resizeElement = document.createElement("div");
             this.resizeElement.classList.add("md-resize");
-    
+
             let innerHTML = "";
             if (this.options.resizeHandles.includes("n")) {
                 innerHTML += `<div class="md-resize__handle md-resize__handle--n"></div>`;
@@ -57,7 +60,7 @@ class Gesture {
                 innerHTML += `<div class="md-resize__handle md-resize__handle--nw"></div>`;
             }
             this.resizeElement.innerHTML = innerHTML;
-    
+
             this.host.append(this.resizeElement);
         }
 
@@ -85,7 +88,10 @@ class Gesture {
         this.longPressTimeout = window.setTimeout(() => {
             this.longPress = true;
             this.emit("onLongPress", event);
-            if (this.resizeHandleElement && this.options.resizeStartWaitForLongPress) {
+            if (
+                this.resizeHandleElement &&
+                this.options.resizeStartWaitForLongPress
+            ) {
                 this.resize = true;
                 this.emit("onResizeStart", event);
             }
@@ -99,7 +105,10 @@ class Gesture {
         this.swipe = false;
 
         this.resize = false;
-        if (this.resizeHandleElement && !this.options.resizeStartWaitForLongPress) {
+        if (
+            this.resizeHandleElement &&
+            !this.options.resizeStartWaitForLongPress
+        ) {
             this.resize = true;
             this.emit("onResizeStart", event);
         }
@@ -117,10 +126,14 @@ class Gesture {
         this.moveX = event.clientX - this.startX;
         this.moveY = event.clientY - this.startY;
 
-        event.moveX=this.moveX
-        event.moveY=this.moveY
+        event.moveX = this.moveX;
+        event.moveY = this.moveY;
 
-        this.swipeDirection = (this.moveX < -30 && "Left") || (this.moveX > 30 && "Right") || (this.moveY < -30 && "Top") || (this.moveY > 30 && "Bottom");
+        this.swipeDirection =
+            (this.moveX < -30 && "Left") ||
+            (this.moveX > 30 && "Right") ||
+            (this.moveY < -30 && "Top") ||
+            (this.moveY > 30 && "Bottom");
 
         if (this.swipeDirection) {
             this.swipe = true;

@@ -45,8 +45,8 @@ class Progress {
                 this.startTime = null;
                 this.last = 0;
                 // this.removeTimeout = setTimeout(() => {
-                    this.indicator.remove();
-                    this.indicator = null;
+                this.indicator.remove();
+                this.indicator = null;
                 // }, 100);
             }
         };
@@ -68,7 +68,8 @@ class Progress {
     static create() {
         this.indicator = document.createElement("md-progress-indicator");
         documentBody.append(this.indicator);
-        this.indicator.style.cssText = "position: absolute; top: 0; right: 0; left: 0; z-index: 999;";
+        this.indicator.style.cssText =
+            "position: absolute; top: 0; right: 0; left: 0; z-index: 999;";
     }
 
     static init() {
@@ -90,13 +91,13 @@ class Progress {
                 // 'layout-shift',
                 // 'long-animation-frame',
                 // 'longtask',
-                'mark',
-                'measure',
-                'navigation',
+                "mark",
+                "measure",
+                "navigation",
                 // 'paint',
-                'resource',
+                "resource",
                 // 'taskattribution',
-                // 'visibility-state',                
+                // 'visibility-state',
             ],
         });
     }

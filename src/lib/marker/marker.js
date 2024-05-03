@@ -2,11 +2,11 @@ class Marker {
     constructor() {
         this.id = null;
         this.remainingTime = null;
-        
+
         this.start = this.start.bind(this);
         this.pending = this.pending.bind(this);
         this.stop = this.stop.bind(this);
-        
+
         performance.mark("markRequestStart");
     }
 
@@ -30,7 +30,11 @@ class Marker {
 
     stop() {
         performance.mark("markRequestEnd");
-        performance.measure("measureRequest", "markRequestStart", "markRequestEnd");
+        performance.measure(
+            "measureRequest",
+            "markRequestStart",
+            "markRequestEnd"
+        );
 
         window.cancelAnimationFrame(this.id);
         this.id = null;

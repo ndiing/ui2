@@ -9,7 +9,7 @@ class MDButton extends MDElement {
             label: { type: String },
             type: { type: String },
             ui: { type: String },
-            selected: { type: Boolean,reflect:true },
+            selected: { type: Boolean, reflect: true },
         };
     }
 
@@ -30,7 +30,10 @@ class MDButton extends MDElement {
         super.connectedCallback();
         this.classList.add("md-button");
         await this.updateComplete;
-        this.ripple = new Ripple(this, { button: this.buttonNative, inverse: this.ui === "filled" });
+        this.ripple = new Ripple(this, {
+            button: this.buttonNative,
+            inverse: this.ui === "filled",
+        });
     }
 
     disconnectedCallback() {
