@@ -9,8 +9,8 @@ class MDPane extends MDElement {
             label: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
-            ui: { type: String },
-            open: { type: Boolean, reflect: true },
+            // ui: { type: String },
+            // open: { type: Boolean, reflect: true },
         };
     }
 
@@ -79,60 +79,59 @@ class MDPane extends MDElement {
         super.connectedCallback();
         this.classList.add("md-pane");
 
-        this.paneScrimElement = document.createElement("div");
-        // document.body.append(this.paneScrimElement);
-        this.parentElement.insertBefore(
-            this.paneScrimElement,
-            this.nextElementSibling
-        )
-        this.paneScrimElement.classList.add("md-pane__scrim");
-        this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
-        this.paneScrimElement.addEventListener("click", this.handlePaneScrimClick);
+        // this.paneScrimElement = document.createElement("div");
+        // // document.body.append(this.paneScrimElement);
+        // this.parentElement.insertBefore(
+        //     this.paneScrimElement,
+        //     this.nextElementSibling
+        // )
+        // this.paneScrimElement.classList.add("md-pane__scrim");
+        // this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
+        // this.paneScrimElement.addEventListener("click", this.handlePaneScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
+        // // dialog&&!full-screen
+        // // sheet&&modal
 
-        this.updateStyle();
+        // this.updateStyle();
     }
 
-    updateStyle() {
-        if ((this.ui?.includes("dialog") && !this.ui?.includes("full-screen")) || (this.ui?.includes("sheet") && this.ui?.includes("modal"))) {
-            if (this.open) {
-                this.paneScrimElement.classList.add("md-pane--open");
-            } else {
-                this.paneScrimElement.classList.remove("md-pane--open");
-            }
-        }
-    }
+    // updateStyle() {
+    //     if ((this.ui?.includes("dialog") && !this.ui?.includes("full-screen")) || (this.ui?.includes("sheet") && this.ui?.includes("modal"))) {
+    //         if (this.open) {
+    //             this.paneScrimElement.classList.add("md-pane--open");
+    //         } else {
+    //             this.paneScrimElement.classList.remove("md-pane--open");
+    //         }
+    //     }
+    // }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-pane");
 
-        this.paneScrimElement.remove();
-        this.paneScrimElement.removeEventListener("click", this.handlePaneScrimClick);
+        // this.paneScrimElement.remove();
+        // this.paneScrimElement.removeEventListener("click", this.handlePaneScrimClick);
     }
 
     updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-pane--" + ui);
-                });
-            } else {
-                ["dialog", "full-screen", "sheet", "modal", "north", "east", "south", "west"].forEach((ui) => {
-                    this.classList.remove("md-pane--" + ui);
-                });
-            }
-        }
-        if (changedProperties.has("open")) {
-            if (this.open) {
-                this.classList.add("md-pane--open");
-            } else {
-                this.classList.remove("md-pane--open");
-            }
-            this.updateStyle();
-        }
+        // if (changedProperties.has("ui")) {
+        //     ["dialog", "full-screen", "sheet", "modal", "north", "east", "south", "west"].forEach((ui) => {
+        //         this.classList.remove("md-pane--" + ui);
+        //     });
+        //     if (this.ui) {
+        //         this.ui.split(" ").forEach((ui) => {
+        //             this.classList.add("md-pane--" + ui);
+        //         });
+        //     } 
+        // }
+        // if (changedProperties.has("open")) {
+        //     if (this.open) {
+        //         this.classList.add("md-pane--open");
+        //     } else {
+        //         this.classList.remove("md-pane--open");
+        //     }
+        //     this.updateStyle();
+        // }
     }
 
     handlePaneActionClick(event) {
@@ -143,17 +142,17 @@ class MDPane extends MDElement {
         this.emit("onPaneButtonClick", event);
     }
 
-    handlePaneScrimClick(event) {
-        this.close();
-        this.emit("onPaneScrimClick", event);
-    }
+    // handlePaneScrimClick(event) {
+    //     this.close();
+    //     this.emit("onPaneScrimClick", event);
+    // }
 
-    show() {
-        this.open = true;
-    }
-    close() {
-        this.open = false;
-    }
+    // show() {
+    //     this.open = true;
+    // }
+    // close() {
+    //     this.open = false;
+    // }
 }
 
 customElements.define("md-pane", MDPane);

@@ -93,9 +93,9 @@ class MDList extends MDElement {
                         is="md-list-item"
                         .data="${item}"
                         tabIndex="0"
-                        @onDragStart="${true&&this.handleListItemDragStart||(() => {})}"
-                        @onDrag="${true&&this.handleListItemDrag||(() => {})}"
-                        @onDragEnd="${true&&this.handleListItemDragEnd||(() => {})}"
+                        @onDragStart="${false&&this.handleListItemDragStart||(() => {})}"
+                        @onDrag="${false&&this.handleListItemDrag||(() => {})}"
+                        @onDragEnd="${false&&this.handleListItemDragEnd||(() => {})}"
                     >
                         <md-list-container
                             .data="${item}"

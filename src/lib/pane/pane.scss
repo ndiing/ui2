@@ -58,94 +58,94 @@
 // sheet modal south
 // sheet modal west
 
-.md-pane--dialog{
-    border-radius: 28px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%,-50%,0) scale(1);
-    z-index: 2;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-    &:not(.md-pane--open){
-        transform: translate3d(-50%,-50%,0) scale(0.84);
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-.md-pane--full-screen{
-    width: 100%;
-    height: 100%;
-}
+// .md-pane--dialog{
+//     border-radius: 28px;
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate3d(-50%,-50%,0) scale(1);
+//     z-index: 2;
+//     transition-property: all;
+//     transition-duration: var(--md-sys-motion-duration-short4);
+//     transition-timing-function: var(--md-sys-motion-easing-standard);
+//     &:not(.md-pane--open){
+//         transform: translate3d(-50%,-50%,0) scale(0.84);
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+// }
+// .md-pane--full-screen{
+//     width: 100%;
+//     height: 100%;
+// }
 
-.md-pane--sheet{
-    border-radius: 0;
-    transform: translate3d(0%,0%,0);
-    z-index: 2;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-    &.md-pane--modal{
-        position: absolute;
-    }
-    &:not(.md-pane--open){
-        // transform: translate3d(0%,0%,0);
-        // opacity: 0;
-        pointer-events: none;
-    }
-}
-.md-pane--north{
-    width: 100%;
-    top: 0;
-    left: 0;
-    &:not(.md-pane--open){
-        height: 0; /* temp */
-        transform: translate3d(0%,-100%,0);
-    }
-}
-.md-pane--east{
-    height: 100%;
-    right: 0;
-    top: 0;
-    &:not(.md-pane--open){
-        width: 0; /* temp */
-        transform: translate3d(100%,0%,0);
-    }
-}
-.md-pane--south{
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    &:not(.md-pane--open){
-        height: 0; /* temp */
-        transform: translate3d(0%,100%,0);
-    }
-}
-.md-pane--west{
-    height: 100%;
-    left: 0;
-    top: 0;
-    &:not(.md-pane--open){
-        width: 0; /* temp */
-        transform: translate3d(-100%,0%,0);
-    }
-}
+// .md-pane--sheet{
+//     border-radius: 0;
+//     transform: translate3d(0%,0%,0);
+//     z-index: 2;
+//     transition-property: all;
+//     transition-duration: var(--md-sys-motion-duration-short4);
+//     transition-timing-function: var(--md-sys-motion-easing-standard);
+//     &.md-pane--modal{
+//         position: absolute;
+//     }
+//     &:not(.md-pane--open){
+//         // transform: translate3d(0%,0%,0);
+//         // opacity: 0;
+//         pointer-events: none;
+//     }
+// }
+// .md-pane--north{
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     &:not(.md-pane--open){
+//         height: 0; /* temp */
+//         transform: translate3d(0%,-100%,0);
+//     }
+// }
+// .md-pane--east{
+//     height: 100%;
+//     right: 0;
+//     top: 0;
+//     &:not(.md-pane--open){
+//         width: 0; /* temp */
+//         transform: translate3d(100%,0%,0);
+//     }
+// }
+// .md-pane--south{
+//     width: 100%;
+//     bottom: 0;
+//     left: 0;
+//     &:not(.md-pane--open){
+//         height: 0; /* temp */
+//         transform: translate3d(0%,100%,0);
+//     }
+// }
+// .md-pane--west{
+//     height: 100%;
+//     left: 0;
+//     top: 0;
+//     &:not(.md-pane--open){
+//         width: 0; /* temp */
+//         transform: translate3d(-100%,0%,0);
+//     }
+// }
 
-.md-pane__scrim{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    background: #000;
-    opacity: 32%;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-    &:not(.md-pane--open){
-        opacity: 0;
-        pointer-events: none;
-    }
-}
+// .md-pane__scrim{
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     z-index: 1;
+//     background: #000;
+//     opacity: 32%;
+//     transition-property: all;
+//     transition-duration: var(--md-sys-motion-duration-short4);
+//     transition-timing-function: var(--md-sys-motion-easing-standard);
+//     &:not(.md-pane--open){
+//         opacity: 0;
+//         pointer-events: none;
+//     }
+// }

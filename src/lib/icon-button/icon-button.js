@@ -45,12 +45,11 @@ class MDButton extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
+            this.classList.remove("md-icon-button--filled");
+            this.classList.remove("md-icon-button--filled-tonal");
             if (this.ui) {
                 this.classList.add("md-icon-button--" + this.ui);
-            } else {
-                this.classList.add("md-icon-button--filled");
-                this.classList.add("md-icon-button--filled-tonal");
-            }
+            } 
         }
     }
 
