@@ -4,10 +4,7 @@ class Router {
     static setRoutes(routes = [], parent = null) {
         return routes.reduce((p, c) => {
             c.parent = parent;
-            c.fullpath = `${c.parent?.fullpath ?? ""}/${c.path}`.replace(
-                /\/+/g,
-                "/"
-            );
+            c.fullpath = `${c.parent?.fullpath ?? ""}/${c.path}`.replace(/\/+/g, "/");
             p = p.concat(c);
 
             if (c.children) {
@@ -37,19 +34,12 @@ class Router {
     }
 
     static getQuery() {
-        return Object.fromEntries(
-            new URLSearchParams(window.location.search).entries()
-        );
+        return Object.fromEntries(new URLSearchParams(window.location.search).entries());
     }
 
     static getRoute(path) {
         return this.routes.find((route) => {
-            const pattern =
-                "^" +
-                route.fullpath
-                    .replace(/\:(\w+)/g, "(?<$1>[^/]+)")
-                    .replace(/\*/, "(?:.*)") +
-                "(?:/?$)";
+            const pattern = "^" + route.fullpath.replace(/\:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
             this.params = { ...matches?.groups };
@@ -67,12 +57,18 @@ class Router {
         }, []);
     }
 
-    static async getOutlet(container) {
+    static async getOutlet(stack, container) {
         return await new Promise((resolve) => {
             let observer;
             let outlet;
+            let selector = "md-outlet";
+            let target = container;
+            if(stack.outlet){
+                selector = 'md-outlet[name="'+stack.outlet+'"]';
+                target = document.body;
+            }
             const callback = () => {
-                outlet = container.querySelector("md-outlet");
+                outlet = target.querySelector(selector);
 
                 if (outlet) {
                     if (observer) {
@@ -85,7 +81,7 @@ class Router {
 
             if (!outlet) {
                 observer = new MutationObserver(callback);
-                observer.observe(container, { childList: true, subtree: true });
+                observer.observe(target, { childList: true, subtree: true });
             }
         });
     }
@@ -101,10 +97,7 @@ class Router {
             this.controller.abort();
         }
 
-        if (
-            !this.controller ||
-            (this.controller && this.controller.signal.aborted)
-        ) {
+        if (!this.controller || (this.controller && this.controller.signal.aborted)) {
             this.controller = new AbortController();
         }
         Router.emit("onCurrentEntryChange");
@@ -117,10 +110,7 @@ class Router {
             if (stack.beforeLoad) {
                 try {
                     await new Promise((resolve, reject) => {
-                        this.controller.signal.addEventListener(
-                            "abort",
-                            reject
-                        );
+                        this.controller.signal.addEventListener("abort", reject);
                         stack.beforeLoad(resolve, reject);
                     });
                 } catch (error) {
@@ -134,29 +124,20 @@ class Router {
                 stack.component = await stack.load();
             }
             const container = stack.parent?.component ?? document.body;
-            const outlet = await this.getOutlet(container);
+            const outlet = await this.getOutlet(stack, container);
 
             if (!stack.component.isConnected) {
-                outlet.parentElement.insertBefore(
-                    stack.component,
-                    outlet.nextElementSibling
-                );
+                outlet.parentElement.insertBefore(stack.component, outlet.nextElementSibling);
                 stack.component.isComponent = true;
             }
-            const outlets = Array.from(
-                document.body.querySelectorAll("md-outlet")
-            );
+            const outlets = Array.from(document.body.querySelectorAll("md-outlet"));
 
             for (const outlet of outlets) {
                 let nextElement = outlet.nextElementSibling;
 
                 while (nextElement) {
-                    const notStack = !this.stacks.find(
-                        (stack) => stack.component === nextElement
-                    );
-                    const notOutlet = !outlets.find(
-                        (outlet) => outlet === nextElement
-                    );
+                    const notStack = !this.stacks.find((stack) => stack.component === nextElement);
+                    const notOutlet = !outlets.find((outlet) => outlet === nextElement);
 
                     if (nextElement.isComponent && notStack && notOutlet) {
                         nextElement.remove();

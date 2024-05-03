@@ -19,7 +19,7 @@ Router.init([
             { path: "dialog", load: () => import("./dialog/dialog.js").then((m) => m.default) },
             { path: "bottom-sheet", load: () => import("./bottom-sheet/bottom-sheet.js").then((m) => m.default) },
             { path: "bottom-app-bar", load: () => import("./bottom-app-bar/bottom-app-bar.js").then((m) => m.default) },
-            { path: "navigation-bar", load: () => import("./navigation-bar/navigation-bar.js").then((m) => m.default) },
+            { path: "navigation-bar", outlet:'navigation-bar', load: () => import("./navigation-bar/navigation-bar.js").then((m) => m.default) },
             { path: "navigation-drawer", load: () => import("./navigation-drawer/navigation-drawer.js").then((m) => m.default) },
             { path: "navigation-rail", load: () => import("./navigation-rail/navigation-rail.js").then((m) => m.default) },
             { path: "tab", load: () => import("./tab/tab.js").then((m) => m.default) },

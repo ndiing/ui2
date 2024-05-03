@@ -6,8 +6,8 @@ class DevNavigationBar extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--south">
+            <!-- <div class="md-layout--border md-layout--fit">
+                <div class="md-layout__item--south"> -->
                     <md-navigation-bar 
                         open
                         .list="${[
@@ -18,7 +18,7 @@ class DevNavigationBar extends MDElement {
                             { icon:'image',label: 'amet' },
                         ]}"
                     ></md-navigation-bar>
-                </div>
+                <!-- </div> -->
                 <!-- <div class="md-layout__item--south">
                     <md-navigation-bar 
                         .list="${[
@@ -30,8 +30,8 @@ class DevNavigationBar extends MDElement {
                         ]}"
                     ></md-navigation-bar>
                 </div> -->
-                <div class="md-layout__item--center">center</div>
-            </div>
+                <!-- <div class="md-layout__item--center">center</div>
+            </div> -->
         `;
     }
 }

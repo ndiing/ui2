@@ -20,13 +20,20 @@ th {
     overflow: auto;
     width: 100%;
     height: 100%;
-    
+
     table {
         display: block;
     }
 
-    // thead {
-    // }
+    thead {
+        tr {
+            th {
+                &:last-child {
+                    border-right: 0;
+                }
+            }
+        }
+    }
 
     tbody {
         tr {
@@ -38,6 +45,16 @@ th {
             &:hover {
                 .md-data-table__container {
                     @extend .md-ripple--hover;
+                }
+            }
+            &:last-child {
+                td {
+                    border-bottom: 0;
+                }
+            }
+            td {
+                &:last-child {
+                    border-right: 0;
                 }
             }
         }
@@ -53,6 +70,7 @@ th {
         background: var(--md-sys-color-background);
         color: var(--md-sys-color-on-background);
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        // border-right: 1px solid var(--md-sys-color-outline-variant);
 
         .md-data-table__container {
             height: var(--md-data-table-column-height);
@@ -72,6 +90,7 @@ th {
     td {
         max-width: 0;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        // border-right: 1px solid var(--md-sys-color-outline-variant);
     }
 }
 

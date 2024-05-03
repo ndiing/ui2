@@ -47,18 +47,22 @@
 
   > .md-layout__item--north {
     grid-area: north;
+    // margin-bottom: 24px;
   }
   > .md-layout__item--east {
     grid-area: east;
+    // margin-left: 24px;
   }
   > .md-layout__item--center {
     grid-area: center;
   }
   > .md-layout__item--south {
     grid-area: south;
+    // margin-top: 24px;
   }
   > .md-layout__item--west {
     grid-area: west;
+    // margin-right: 24px;
   }
 }
 
