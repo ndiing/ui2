@@ -61,7 +61,7 @@ class Router {
         return await new Promise((resolve) => {
             let observer;
             let outlet;
-            let selector = "md-outlet";
+            let selector = "md-outlet:not([name])";
             let target = container;
             if(stack.outlet){
                 selector = 'md-outlet[name="'+stack.outlet+'"]';

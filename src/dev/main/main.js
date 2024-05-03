@@ -95,9 +95,6 @@ class DevMain extends MDElement {
                     <div class="md-layout__item--center md-layout--fit" >
                         <md-outlet></md-outlet>
                     </div>
-                    <div class="md-layout__item--south md-layout--fit" >
-                        <md-outlet name="navigation-bar"></md-outlet>
-                    </div>
                 </div>
             <!-- </div> -->
         `;
