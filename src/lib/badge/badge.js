@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 
 class MDBadge extends MDElement {
     static get properties() {
@@ -32,5 +31,7 @@ class MDBadge extends MDElement {
 
     updated(changedProperties) {}
 }
+
 customElements.define("md-badge", MDBadge);
+
 export { MDBadge };

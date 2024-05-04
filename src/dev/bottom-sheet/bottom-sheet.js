@@ -6,40 +6,48 @@ class DevSideSheet extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--south md-layout--fit">
-                    <md-bottom-sheet 
-                        open
-                        id="bottomSheet"
-                        @onSideSheetActionClick="${this.handleClick}"
-                        @onSideSheetButtonClick="${this.handleClick}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >body</md-bottom-sheet>
-                    
-                    <md-bottom-sheet 
-                        ui="modal"
+            <!-- <div class="md-layout--border md-layout--fit"> -->
+                <!-- <div class="md-layout__item--south md-layout--fit"> -->
+                    <md-bottom-sheet
+                        id="bottomSheet1"
+                    >
+                        Lorem ipsum dolor sit amet. <br>
+                        Tempore dolorum praesentium officia quo? <br>
+                        Voluptates iste eum optio commodi? <br>
+                        Eaque saepe doloremque at aut. <br>
+                        Saepe ab tempore esse totam. <br>
+                    </md-bottom-sheet>
+
+                    <md-bottom-sheet
                         id="bottomSheet2"
-                        @onSideSheetActionClick="${this.handleClick2}"
-                        @onSideSheetButtonClick="${this.handleClick2}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >body</md-bottom-sheet>
+                        ui="modal"
+                    >
+                        Lorem ipsum dolor sit amet. <br>
+                        Tempore dolorum praesentium officia quo? <br>
+                        Voluptates iste eum optio commodi? <br>
+                        Eaque saepe doloremque at aut. <br>
+                        Saepe ab tempore esse totam. <br>
+                    </md-bottom-sheet>
                     
+                <!-- </div> -->
+                <!-- <div class="md-layout__item--center"> -->
+                <div style="padding:24px;">
+                    <md-button ui="filled-tonal" label="Standard bottom sheet" @click="${this.handleClick1}"></md-button>
+                    <md-button ui="filled-tonal" label="Modal bottom sheet" @click="${this.handleClick2}"></md-button>
                 </div>
-                <div class="md-layout__item--center">
-                    <md-button id="button" label="bottom sheet" @click="${this.handleClick}"></md-button>
-                    <md-button id="button" label="bottom sheet modal" @click="${this.handleClick2}"></md-button>
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
         `;
     }
-    handleClick(event) {
-        if (bottomSheet.open) bottomSheet.close();
-        else bottomSheet.show();
+    handleClick1(event) {
+        if (bottomSheet1.open) bottomSheet1.close();
+        else bottomSheet1.show();
     }
     handleClick2(event) {
         if (bottomSheet2.open) bottomSheet2.close();
         else bottomSheet2.show();
     }
+    
 }
 
 customElements.define("dev-bottom-sheet", DevSideSheet);

@@ -8,22 +8,20 @@ class DevCard extends MDElement {
         return html`
             <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-card class="md-card--elevated">
-                        elevated
+                    <md-card ui="elevated">
+                        Elevated
                     </md-card>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-card class="md-card--filled">
-                        filled
+                    <md-card ui="filled">
+                        Filled
                     </md-card>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-card class="md-card--outlined">
-                        outlined
+                    <md-card ui="outlined">
+                        Outlined
                     </md-card>
                 </div>
-                
-                
             </div>
         `;
     }

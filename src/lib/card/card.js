@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 
 class MDCard extends MDElement {
     static get properties() {
@@ -9,6 +8,7 @@ class MDCard extends MDElement {
             label: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
+            ui: { type: String },
         };
     }
 
@@ -76,8 +76,6 @@ class MDCard extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-card");
-
-        
     }
 
     disconnectedCallback() {
@@ -86,6 +84,22 @@ class MDCard extends MDElement {
     }
 
     updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            [
+                "elevated",
+                "filled",
+                "outlined",
+            ].forEach((ui) => {
+                this.classList.remove("md-card--" + ui);
+            });
+
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-card--" + ui);
+                });
+            }
+        }
+
     }
 
     handleCardActionClick(event) {
@@ -95,7 +109,8 @@ class MDCard extends MDElement {
     handleCardButtonClick(event) {
         this.emit("onCardButtonClick", event);
     }
-    
+
+
 }
 
 customElements.define("md-card", MDCard);

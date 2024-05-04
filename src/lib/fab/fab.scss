@@ -5,10 +5,10 @@
     width: 56px;
     height: 56px;
     padding: calc((56px - 24px) / 2);
-    border-radius: 16px;
-    background: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
-    box-shadow: var(--md-sys-elevation-level3);
+    border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    box-shadow: var(--md-sys-elevation-level1);
 }
 
 .md-fab__icon {
@@ -23,14 +23,14 @@
     width: 40px;
     height: 40px;
     padding: calc((40px - 24px) / 2);
-    border-radius: 12px;
+    border-radius: var(--md-sys-shape-corner-medium);
 }
 
 .md-fab--large {
     width: 96px;
     height: 96px;
     padding: calc((96px - 24px) / 2);
-    border-radius: 28px;
+    border-radius: var(--md-sys-shape-corner-extra-large);
 
     .md-fab__icon {
         font-size: 36px;

@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
 
 class MDButton extends MDElement {
@@ -30,10 +29,7 @@ class MDButton extends MDElement {
         super.connectedCallback();
         this.classList.add("md-button");
         await this.updateComplete;
-        this.ripple = new Ripple(this, {
-            button: this.buttonNative,
-            inverse: this.ui === "filled",
-        });
+        this.ripple = new Ripple(this, { button: this.buttonNative, inverse: this.ui === "filled" });
     }
 
     disconnectedCallback() {
@@ -47,6 +43,7 @@ class MDButton extends MDElement {
             this.classList.remove("md-button--filled");
             this.classList.remove("md-button--filled-tonal");
             this.classList.remove("md-button--outlined");
+
             if (this.ui) {
                 this.classList.add("md-button--" + this.ui);
             }
@@ -57,5 +54,7 @@ class MDButton extends MDElement {
         return this.querySelector(".md-button__native");
     }
 }
+
 customElements.define("md-button", MDButton);
+
 export { MDButton };

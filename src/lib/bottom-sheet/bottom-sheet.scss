@@ -1,32 +1,9 @@
 .md-bottom-sheet {
     display: flex;
     flex-direction: column;
-    background: var(--md-sys-color-surface);
-    background: var(--md-sys-color-surface-container);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-surface-container-lowest);
     box-shadow: var(--md-sys-elevation-level0);
-    box-shadow: var(--md-sys-elevation-level2);
-}
-
-.md-bottom-sheet__header {
-    display: flex;
-    align-items: center;
-    padding: 24px;
-    gap: 16px;
-
-    + .md-bottom-sheet__body {
-        margin-top: -24px;
-    }
-}
-
-.md-bottom-sheet__actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.md-bottom-sheet__label {
-    flex: 1;
-    @extend .md-typography--title-large;
 }
 
 .md-bottom-sheet__body {
@@ -42,30 +19,20 @@
     padding: 0 24px;
     margin: 24px 0;
     @extend .md-typography--body-medium;
-
-    + .md-bottom-sheet__footer {
-        margin-top: -24px;
-    }
-}
-
-.md-bottom-sheet__footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 24px;
-    gap: 8px;
 }
 
 .md-bottom-sheet {
+    position: absolute;
+    border-radius: var(--md-sys-shape-corner-large-top);
+    background: var(--md-sys-color-surface-container-low);
+    box-shadow: var(--md-sys-elevation-level1);
     transform: translate3d(0%, 0%, 0);
     z-index: 2;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 
-    &.md-bottom-sheet--modal {
-        position: absolute;
-    }
+    // &.md-bottom-sheet--modal {}
 
     &:not(.md-bottom-sheet--open) {
         pointer-events: none;
@@ -73,13 +40,22 @@
 }
 
 .md-bottom-sheet {
+    // height: 80px;
     width: 100%;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+
+    // &.md-bottom-sheet--modal {}
+
+    @media (min-width: 840px) {
+        width: 640px;
+        margin: 72px 56px 0 56px;
+    }
 
     &:not(.md-bottom-sheet--open) {
         height: 0;
-        transform: translate3d(0%, 100%, 0);
+        transform: translate3d(-50%, 100%, 0);
     }
 }
 

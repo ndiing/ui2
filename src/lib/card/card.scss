@@ -1,8 +1,9 @@
 .md-card {
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
+    border-radius: var(--md-sys-shape-corner-medium);
     background: var(--md-sys-color-surface-container-lowest);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-card__header {
@@ -53,6 +54,7 @@
     padding: 24px;
     gap: 8px;
 }
+
 
 .md-card--elevated {
     background: var(--md-sys-color-surface-container-low);
