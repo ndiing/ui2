@@ -1,8 +1,9 @@
 .md-pane {
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
-    background: var(--md-sys-color-surface-container-lowest);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-surface-container-highest);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-pane__header {
@@ -55,7 +56,9 @@
 }
 
 .md-pane--dialog {
-    border-radius: 28px;
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--md-sys-elevation-level3);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -73,12 +76,20 @@
 }
 
 .md-pane--full-screen {
+    border-radius: var(--md-sys-shape-corner-none);
+    background: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--md-sys-elevation-level3);
     width: 100%;
     height: 100%;
 }
 
 .md-pane--sheet {
-    border-radius: 0;
+    // border-radius: var(--md-sys-shape-corner-large);
+    border-radius: var(--md-sys-shape-corner-none);
+    // background: var(--md-sys-color-surface-container-low);
+    background: var(--md-sys-color-surface);
+    // box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--md-sys-elevation-level0);
     transform: translate3d(0%, 0%, 0);
     z-index: 2;
     transition-property: all;
@@ -95,17 +106,19 @@
 }
 
 .md-pane--north {
+    height: 64px;
     width: 100%;
     top: 0;
     left: 0;
 
     &:not(.md-pane--open) {
-        height: 0;
+        height: 0px;
         transform: translate3d(0%, -100%, 0);
     }
 }
 
 .md-pane--east {
+    width: 360px;
     height: 100%;
     right: 0;
     top: 0;
@@ -117,6 +130,7 @@
 }
 
 .md-pane--south {
+    height: 80px;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -128,6 +142,7 @@
 }
 
 .md-pane--west {
+    width: 360px;
     height: 100%;
     left: 0;
     top: 0;

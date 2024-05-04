@@ -11,9 +11,6 @@
     > .md-layout__item--south,
     > .md-layout__item--west {
         overflow: hidden auto;
-        transition-property: all;
-        transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: var(--md-sys-motion-easing-standard);
     }
 
     > .md-layout__item--north {
