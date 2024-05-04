@@ -12,6 +12,10 @@ class MDButton extends MDElement {
         };
     }
 
+    get buttonNative() {
+        return this.querySelector(".md-button__native");
+    }
+
     constructor() {
         super();
         this.type = "button";
@@ -48,10 +52,6 @@ class MDButton extends MDElement {
                 this.classList.add("md-button--" + this.ui);
             }
         }
-    }
-
-    get buttonNative() {
-        return this.querySelector(".md-button__native");
     }
 }
 

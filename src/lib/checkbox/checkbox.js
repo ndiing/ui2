@@ -1,10 +1,9 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { Ripple } from "../ripple/ripple";
-class MDCheckbox extends MDElement {
 
+class MDCheckbox extends MDElement {
     static get properties() {
         return {
             type: { type: String },
@@ -17,6 +16,18 @@ class MDCheckbox extends MDElement {
             checked: { type: Boolean },
             defaultChecked: { type: Boolean },
         };
+    }
+
+    get checkboxNative() {
+        return this.querySelector(".md-checkbox__native");
+    }
+
+    get checkboxTrack() {
+        return this.querySelector(".md-checkbox__track");
+    }
+
+    get checkboxThumb() {
+        return this.querySelector(".md-checkbox__thumb");
     }
 
     constructor() {
@@ -54,7 +65,12 @@ class MDCheckbox extends MDElement {
         super.connectedCallback();
         this.classList.add("md-checkbox");
         await this.updateComplete;
-        this.ripple = new Ripple(this.checkboxTrack, { button: this.checkboxNative, containment: false, fadeout: true, size: (40 / this.checkboxTrack.clientWidth) * 100 });
+        this.ripple = new Ripple(this.checkboxTrack, {
+            button: this.checkboxNative,
+            containment: false,
+            fadeout: true,
+            size: (40 / this.checkboxTrack.clientWidth) * 100,
+        });
     }
 
     disconnectedCallback() {
@@ -62,18 +78,8 @@ class MDCheckbox extends MDElement {
         this.classList.remove("md-checkbox");
     }
 
-    updated(changedProperties) {}
-
-    get checkboxNative() {
-        return this.querySelector(".md-checkbox__native");
-    }
-
-    get checkboxTrack() {
-        return this.querySelector(".md-checkbox__track");
-    }
-
-    get checkboxThumb() {
-        return this.querySelector(".md-checkbox__thumb");
+    firstUpdated(changedProperties) {
+        this.defaultIndeterminate = this.indeterminate;
     }
 
     handleCheckboxNativeFocus(event) {
@@ -94,8 +100,12 @@ class MDCheckbox extends MDElement {
     }
 
     handleCheckboxNativeReset(event) {
+        this.checkboxNative.checked = !this.defaultIndeterminate;
+        this.checkboxNative.indeterminate = this.defaultIndeterminate;
         this.emit("onCheckboxNativeReset", event);
     }
 }
+
 customElements.define("md-checkbox", MDCheckbox);
+
 export { MDCheckbox };
