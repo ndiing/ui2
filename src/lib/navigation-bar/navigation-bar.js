@@ -1,11 +1,10 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
 
 class MDNavigationBar extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties,{
+        return Object.assign(MDList.properties, {
             open: { type: Boolean, reflect: true },
         });
     }
@@ -34,14 +33,11 @@ class MDNavigationBar extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-bar");
-
     }
-
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-bar");
-
     }
 
     updated(changedProperties) {
@@ -69,6 +65,7 @@ class MDNavigationBar extends MDElement {
     show() {
         this.open = true;
     }
+
     close() {
         this.open = false;
     }

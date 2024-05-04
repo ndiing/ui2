@@ -78,17 +78,11 @@ class MDPane extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-pane");
-
         this.paneScrimElement = document.createElement("div");
-        this.parentElement.insertBefore(
-            this.paneScrimElement,
-            this.nextElementSibling
-        )
+        this.parentElement.insertBefore(this.paneScrimElement, this.nextElementSibling);
         this.paneScrimElement.classList.add("md-pane__scrim");
         this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
         this.paneScrimElement.addEventListener("click", this.handlePaneScrimClick);
-
-
         this.updateStyle();
     }
 
@@ -105,7 +99,6 @@ class MDPane extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-pane");
-
         this.paneScrimElement.remove();
         this.paneScrimElement.removeEventListener("click", this.handlePaneScrimClick);
     }
@@ -115,12 +108,14 @@ class MDPane extends MDElement {
             ["dialog", "full-screen", "sheet", "modal", "north", "east", "south", "west"].forEach((ui) => {
                 this.classList.remove("md-pane--" + ui);
             });
+
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-pane--" + ui);
                 });
-            } 
+            }
         }
+
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-pane--open");
@@ -147,6 +142,7 @@ class MDPane extends MDElement {
     show() {
         this.open = true;
     }
+
     close() {
         this.open = false;
     }

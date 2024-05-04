@@ -9,45 +9,43 @@ class DevNavigationDrawer extends MDElement {
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--west">
                     <md-navigation-drawer 
-                        open
                         id="navigationDrawer1"
                         .list="${[
-                            { icon:'image',label: 'Lorem', selected:true },
-                            { icon:'image',label: 'ipsum' },
-                            { icon:'image',label: 'dolor' },
-                            { icon:'image',label: 'sit' },
-                            { icon:'image',label: 'amet' },
+                            { icon:'inbox',label: 'Inbox', selected:true },
+                            { icon:'send',label: 'Outbox' },
+                            { icon:'favorite',label: 'Favorites' },
+                            { icon:'delete',label: 'Trash' },
                         ]}"
                     ></md-navigation-drawer>
                     
                     <md-navigation-drawer 
-                        ui="modal"
                         id="navigationDrawer2"
+                        .ui="${"modal"}"
                         .list="${[
-                            { label:'Lorem', selected:true },
-                            { label:'ipsum' },
-                            { label:'dolor' },
-                            { label:'sit' },
-                            { label:'amet' },
+                            { icon:'inbox',label: 'Inbox', selected:true },
+                            { icon:'send',label: 'Outbox' },
+                            { icon:'favorite',label: 'Favorites' },
+                            { icon:'delete',label: 'Trash' },
                         ]}"
                     ></md-navigation-drawer>
+                    
                 </div>
-                <div class="md-layout__item--center">
-                    <md-button label="Navigation drawer" @click="${this.handleClick1}"></md-button>
-                    <md-button label="Navigation drawer" @click="${this.handleClick2}"></md-button>
+                <div class="md-layout__item--center" style="padding:24px;">
+                    <md-button ui="filled-tonal" label="Standard navigation drawer" @click="${this.handleClick1}"></md-button>
+                    <md-button ui="filled-tonal" label="Modal navigation drawer" @click="${this.handleClick2}"></md-button>
                 </div>
             </div>
         `;
     }
 
-    handleClick1(){
-        if(navigationDrawer1.open)navigationDrawer1.close()
-            else navigationDrawer1.show()
+    handleClick1() {
+        if (navigationDrawer1.open) navigationDrawer1.close();
+        else navigationDrawer1.show();
     }
 
-    handleClick2(){
-        if(navigationDrawer2.open)navigationDrawer2.close()
-            else navigationDrawer2.show()
+    handleClick2() {
+        if (navigationDrawer2.open) navigationDrawer2.close();
+        else navigationDrawer2.show();
     }
 }
 
