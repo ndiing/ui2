@@ -12,10 +12,21 @@ class DevSideSheet extends MDElement {
                         id="sideSheet"
                         @onSideSheetActionClick="${this.handleClick}"
                         @onSideSheetButtonClick="${this.handleClick}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-side-sheet>
-                    </div>
+                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
+                    >body</md-side-sheet>
+                    
+                    <md-side-sheet 
+                        ui="modal"
+                        id="sideSheet2"
+                        @onSideSheetActionClick="${this.handleClick2}"
+                        @onSideSheetButtonClick="${this.handleClick2}"
+                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
+                    >body</md-side-sheet>
+                    
+                </div>
                 <div class="md-layout__item--center">
                     <md-button id="button" label="side sheet" @click="${this.handleClick}"></md-button>
+                    <md-button id="button" label="side sheet modal" @click="${this.handleClick2}"></md-button>
                 </div>
             </div>
         `;
@@ -23,6 +34,10 @@ class DevSideSheet extends MDElement {
     handleClick(event) {
         if (sideSheet.open) sideSheet.close();
         else sideSheet.show();
+    }
+    handleClick2(event) {
+        if (sideSheet2.open) sideSheet2.close();
+        else sideSheet2.show();
     }
 }
 

@@ -15,6 +15,15 @@ class DevDialog extends MDElement {
                         leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-dialog>
                     <md-button id="button" label="dialog" @click="${this.handleClick}"></md-button>
                 </div>
+                <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-dialog 
+                        id="dialog2"
+                        ui="full-screen"
+                        @onDialogActionClick="${this.handleClick2}"
+                        @onDialogButtonClick="${this.handleClick2}"
+                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-dialog>
+                    <md-button id="button" label="dialog full-screen" @click="${this.handleClick2}"></md-button>
+                </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
             </div>
@@ -23,6 +32,10 @@ class DevDialog extends MDElement {
     handleClick(event) {
         if (dialog.open) dialog.close();
         else dialog.show();
+    }
+    handleClick2(event) {
+        if (dialog2.open) dialog2.close();
+        else dialog2.show();
     }
 }
 

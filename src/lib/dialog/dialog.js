@@ -3,34 +3,35 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 
 class MDDialog extends MDElement {
-  static get properties() {
-    return {
-      leadingActions: { type: Array },
-      label: { type: String },
-      trailingActions: { type: Array },
-      buttons: { type: Array },
-      open: { type: Boolean, reflect: true },
-    };
-  }
+    static get properties() {
+        return {
+            leadingActions: { type: Array },
+            label: { type: String },
+            trailingActions: { type: Array },
+            buttons: { type: Array },
+            ui: { type: String },
+            open: { type: Boolean, reflect: true },
+        };
+    }
 
-  constructor() {
-    super();
+    constructor() {
+        super();
+        this.body = Array.from(this.childNodes);
+    }
 
-    this.body = Array.from(this.childNodes);
-  }
-
-  render() {
-    // prettier-ignore
-    return html`
+    render() {
+        // prettier-ignore
+        return html`
             ${this.leadingActions?.length||this.label||this.trailingActions?.length?html`
                 <div class="md-dialog__header">
                     ${this.leadingActions?.length?html`
                         <div class="md-dialog__actions">
                             ${this.leadingActions?.map(action=>html`
-                                <md-icon-button
-                                    .icon="${action.icon??action}"
-                                    .type="${action.type}"
-                                    .ui="${action.ui}"
+                                <md-icon-button 
+                                    class="md-dialog__action"
+                                    .icon="${action?.icon??action}"
+                                    .type="${action?.type}"
+                                    .ui="${action?.ui}"
                                     @click="${this.handleDialogActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -42,10 +43,11 @@ class MDDialog extends MDElement {
                     ${this.trailingActions?.length?html`
                         <div class="md-dialog__actions">
                             ${this.trailingActions?.map(action=>html`
-                                <md-icon-button
-                                    .icon="${action.icon??action}"
-                                    .type="${action.type}"
-                                    .ui="${action.ui}"
+                                <md-icon-button 
+                                    class="md-dialog__action"
+                                    .icon="${action?.icon??action}"
+                                    .type="${action?.type}"
+                                    .ui="${action?.ui}"
                                     @click="${this.handleDialogActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -53,91 +55,104 @@ class MDDialog extends MDElement {
                     `:nothing}
                 </div>
             `:nothing}
-            ${this.body?.length||this.buttons?.length?html`
-                <div class="md-dialog__body">
-                    ${this.body?.length?html`
-                        <div class="md-dialog__inner">${this.body}</div>
-                    `:nothing}
-                    ${this.buttons?.length?html`
-                        <div class="md-dialog__footer">
-                            ${this.buttons?.map(button=>html`
-                                <md-button
-                                    .label="${button.label??button}"
-                                    .type="${button.type}"
-                                    .ui="${button.ui}"
-                                    .selected="${button.selected}"
-                                    @click="${this.handleDialogButtonClick}"
-                                ></md-button>
-                            `)}
-                        </div>
-                    `:nothing}
-                </div>
-            `:nothing}
+            <div class="md-dialog__body">
+                <div class="md-dialog__inner">${this.body}</div>
+                ${this.buttons?.length?html`
+                    <div class="md-dialog__footer">
+                        ${this.buttons?.map(button=>html`
+                            <md-button 
+                                class="md-dialog__button"
+                                .label="${button?.label??button}"
+                                .type="${button?.type}"
+                                .ui="${button?.ui}"
+                                .selected="${button?.selected}"
+                                @click="${this.handleDialogButtonClick}"
+                            ></md-button>
+                        `)}
+                    </div>
+                `:nothing}
+            </div>
         `
-  }
+    }
 
-  async connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("md-dialog");
+    async connectedCallback() {
+        super.connectedCallback();
+        this.classList.add("md-dialog");
 
-    this.dialogScrimElement = document.createElement("div");
-    document.body.append(this.dialogScrimElement);
-    this.dialogScrimElement.classList.add("md-dialog__scrim");
-    this.handleDialogScrimClick = this.handleDialogScrimClick.bind(this);
-    this.dialogScrimElement.addEventListener(
-      "click",
-      this.handleDialogScrimClick
-    );
-  }
+        this.dialogScrimElement = document.createElement("div");
+        // document.body.append(this.dialogScrimElement);
+        this.parentElement.insertBefore(this.dialogScrimElement, this.nextElementSibling);
+        this.dialogScrimElement.classList.add("md-dialog__scrim");
+        this.handleDialogScrimClick = this.handleDialogScrimClick.bind(this);
+        this.dialogScrimElement.addEventListener("click", this.handleDialogScrimClick);
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.classList.remove("md-dialog");
+        // dialog&&!full-screen
+        // sheet&&modal
 
-    this.dialogScrimElement.remove();
-  }
+        this.updateStyle();
+    }
 
-  firstUpdated(changedProperties) {
-    if(changedProperties.has('open')){
-        if(this.open){
-            this.dialogScrimElement.classList.add('md-dialog--open')
-        }
-        else{
-            this.dialogScrimElement.classList.remove('md-dialog--open')
+    updateStyle() {
+        if (!this.ui?.includes("full-screen") ) {
+            if (this.open) {
+                this.dialogScrimElement.classList.add("md-dialog--open");
+            } else {
+                this.dialogScrimElement.classList.remove("md-dialog--open");
+            }
         }
     }
-  }
 
-  updated(changedProperties) {
-    if(changedProperties.has('open')){
-        if(this.open){
-            this.dialogScrimElement.classList.add('md-dialog--open')
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.classList.remove("md-dialog");
+
+        this.dialogScrimElement.remove();
+        this.dialogScrimElement.removeEventListener("click", this.handleDialogScrimClick);
+    }
+
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            [
+                //
+                "full-screen",
+            ].forEach((ui) => {
+                this.classList.remove("md-dialog--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-dialog--" + ui);
+                });
+            }
         }
-        else{
-            this.dialogScrimElement.classList.remove('md-dialog--open')
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-dialog--open");
+            } else {
+                this.classList.remove("md-dialog--open");
+            }
+            this.updateStyle();
         }
     }
-  }
 
-  handleDialogActionClick(event) {
-    this.emit("onDialogActionClick", event);
-  }
+    handleDialogActionClick(event) {
+        this.emit("onDialogActionClick", event);
+    }
 
-  handleDialogButtonClick(event) {
-    this.emit("onDialogButtonClick", event);
-  }
+    handleDialogButtonClick(event) {
+        this.emit("onDialogButtonClick", event);
+    }
 
-  handleDialogScrimClick(event) {
-    this.close();
-    this.emit("onDialogScrimClick", event);
-  }
+    handleDialogScrimClick(event) {
+        this.close();
+        this.emit("onDialogScrimClick", event);
+    }
 
-  close() {
-    this.open = false;
-  }
-  show() {
-    this.open = true;
-  }
+    show() {
+        this.open = true;
+    }
+    close() {
+        this.open = false;
+    }
 }
 
 customElements.define("md-dialog", MDDialog);

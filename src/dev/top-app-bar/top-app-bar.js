@@ -6,9 +6,11 @@ class DevTopAppBar extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--border">
+            <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--north">
                     <md-top-app-bar
+                        id="topAppBar"
+                        open
                         .leadingActions="${[
                             {icon:"image"},
                         ]}"
@@ -20,9 +22,16 @@ class DevTopAppBar extends MDElement {
                         ]}"
                     ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--center"></div>
+                <div class="md-layout__item--center">
+                    <md-button label="top app bar" @click="${this.handleClick}"></md-button>
+                </div>
             </div>
         `;
+    }
+
+    handleClick(){
+        if(topAppBar.open)topAppBar.close()
+            else topAppBar.show()
     }
 }
 
