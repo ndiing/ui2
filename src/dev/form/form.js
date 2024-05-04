@@ -9,7 +9,7 @@ class DevForm extends MDElement {
             <md-form
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
-                <div class="md-layout--column">
+                <div class="md-layout--column" style="margin:24px;">
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4">
                         <md-email-field label="email" name="email"></md-email-field>
                     </div>

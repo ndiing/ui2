@@ -7,7 +7,7 @@ class DevPopper extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
+            <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <!-- <br>
                     <br>
@@ -17,8 +17,8 @@ class DevPopper extends MDElement {
                     <div class="dev-popper__container">container</div>
                     <div class="dev-popper__button">button</div>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                
+                
             </div>
         `;
     }

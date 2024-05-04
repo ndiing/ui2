@@ -6,7 +6,7 @@ class DevMenu extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
+            <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-menu 
                         id="menu"
@@ -20,8 +20,8 @@ class DevMenu extends MDElement {
                     ></md-menu>
                     <md-button id="button" label="menu" @click="${this.handleClick}"></md-button>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                
+                
             </div>
         `;
     }
