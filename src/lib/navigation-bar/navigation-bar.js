@@ -23,7 +23,7 @@ class MDNavigationBar extends MDElement {
                         .selectMulti="${this.selectMulti}"
                         .selectSingle="${this.selectSingle??true}"
                         .selectAll="${this.selectAll}"
-                        @onListItemContainerClick="${this.handleNavigationBarListItemContainerClick}"
+                        @onListItemClick="${this.handleNavigationBarListItemClick}"
                     ></md-list>
                 </div>
             </div>
@@ -58,8 +58,8 @@ class MDNavigationBar extends MDElement {
         this.emit("onNavigationBarButtonClick", event);
     }
 
-    handleNavigationBarListItemContainerClick(event) {
-        this.emit("onNavigationBarListItemContainerClick", event);
+    handleNavigationBarListItemClick(event) {
+        this.emit("onNavigationBarListItemClick", event);
     }
 
     show() {

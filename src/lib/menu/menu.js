@@ -25,7 +25,7 @@ class MDMenu extends MDElement {
                         .selectMulti="${this.selectMulti}"
                         .selectSingle="${this.selectSingle??true}"
                         .selectAll="${this.selectAll}"
-                        @onListItemContainerClick="${this.handleListItemContainerClick}"
+                        @onListItemClick="${this.handleMenuListItemClick}"
                     ></md-list>
                 </div>
             </div>
@@ -84,9 +84,9 @@ class MDMenu extends MDElement {
         this.emit("onMenuScrimClick", event);
     }
 
-    handleListItemContainerClick(event) {
+    handleMenuListItemClick(event) {
         this.close();
-        this.emit("onMenuListItemContainerClick", event);
+        this.emit("onMenuListItemClick", event);
     }
 
     show(button,options={}) {

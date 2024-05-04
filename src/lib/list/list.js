@@ -104,7 +104,7 @@ class MDList extends MDElement {
                             .value="${item[this.valueField]}"
                             .routerLink="${item.routerLink}"
                             .selected="${item.selected}"
-                            @click="${this.handleListItemContainerClick}"
+                            @click="${this.handleListItemClick}"
                         ></md-list-container>
                     </li>
                 `)}
@@ -141,7 +141,7 @@ class MDList extends MDElement {
         return this.list.filter(item=>item.selected)
     }
 
-    handleListItemContainerClick(event) {
+    handleListItemClick(event) {
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.list.indexOf(data);
 
@@ -164,7 +164,7 @@ class MDList extends MDElement {
         this.lastSelectedIndex = this.currentSelectedIndex;
 
         this.requestUpdate();
-        this.emit('onListItemContainerClick',event)
+        this.emit('onListItemClick',event)
     }
 
     handleListItemDragStart(event) {

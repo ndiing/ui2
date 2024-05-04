@@ -30,7 +30,7 @@ class MDNavigationDrawer extends MDElement {
                         .selectMulti="${this.selectMulti}"
                         .selectSingle="${this.selectSingle??true}"
                         .selectAll="${this.selectAll}"
-                        @onListItemContainerClick="${this.handleNavigationDrawerListItemContainerClick}"
+                        @onListItemClick="${this.handleNavigationDrawerListItemClick}"
                     ></md-list>
                 </div>
             </div>
@@ -101,8 +101,8 @@ class MDNavigationDrawer extends MDElement {
         this.emit("onNavigationDrawerScrimClick", event);
     }
 
-    handleNavigationDrawerListItemContainerClick(event) {
-        this.emit("onNavigationDrawerListItemContainerClick", event);
+    handleNavigationDrawerListItemClick(event) {
+        this.emit("onNavigationDrawerListItemClick", event);
     }
 
     show() {

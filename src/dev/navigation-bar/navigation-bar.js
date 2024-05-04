@@ -17,19 +17,25 @@ class DevNavigationBar extends MDElement {
                             { icon:'change_history',label: 'Label' },
                         ]}"
                     ></md-navigation-bar>
-                    <md-navigation-bar 
-                        id="navigationBar2"
-                        .list="${[
-                            { icon:'change_history', selected:true },
-                            { icon:'change_history' },
-                            { icon:'change_history' },
-                            { icon:'change_history' },
-                        ]}"
-                    ></md-navigation-bar>
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
-                    <md-button ui="filled-tonal" label="4 destinations; label text" @click="${this.handleClick1}"></md-button>
-                    <md-button ui="filled-tonal" label="4 destinations; no label text" @click="${this.handleClick2}"></md-button>
+                <div class="md-layout__item--center" >
+                    <div class="md-layout--border md-layout--fit">
+                        <div class="md-layout__item--south" style="overflow:hidden;">
+                            <md-navigation-bar 
+                                id="navigationBar2"
+                                .list="${[
+                                    { icon:'change_history', selected:true },
+                                    { icon:'change_history' },
+                                    { icon:'change_history' },
+                                    { icon:'change_history' },
+                                ]}"
+                            ></md-navigation-bar>
+                        </div>
+                        <div class="md-layout__item--center" style="padding:24px;">
+                            <md-button ui="filled-tonal" label="4 destinations; label text" @click="${this.handleClick1}"></md-button>
+                            <md-button ui="filled-tonal" label="4 destinations; no label text" @click="${this.handleClick2}"></md-button>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;

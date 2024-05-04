@@ -99,7 +99,7 @@ class DevMain extends MDElement {
                             .open="${true}"
                             .ui=""
                             .list="${this.list}"
-                            @onListItemContainerClick="${this.handleListItemContainerClick}"
+                            @onListItemClick="${this.handleListItemClick}"
                         ></md-navigation-drawer>
                     </div>
                     <div class="md-layout__item--center" >
@@ -109,7 +109,7 @@ class DevMain extends MDElement {
             <!-- </div> -->
         `;
     }
-    handleListItemContainerClick(event) {
+    handleListItemClick(event) {
 
     }
     handleTopAppBarActionClick(event) {

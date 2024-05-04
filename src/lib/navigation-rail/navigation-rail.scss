@@ -1,30 +1,9 @@
 .md-navigation-rail {
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
+    border-radius: var(--md-sys-shape-corner-medium);
     background: var(--md-sys-color-surface-container-lowest);
-}
-
-.md-navigation-rail__header {
-    display: flex;
-    align-items: center;
-    padding: 24px;
-    gap: 16px;
-
-    + .md-navigation-rail__body {
-        margin-top: -24px;
-    }
-}
-
-.md-navigation-rail__actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.md-navigation-rail__label {
-    flex: 1;
-    @extend .md-typography--title-large;
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-navigation-rail__body {
@@ -38,64 +17,33 @@
     flex: 1;
     overflow: hidden auto;
     @extend .md-typography--body-medium;
-
-    + .md-navigation-rail__footer {
-        margin-top: -24px;
-    }
-}
-
-.md-navigation-rail__footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 24px;
-    gap: 8px;
 }
 
 .md-navigation-rail {
-    border-radius: 0;
+    border-radius: var(--md-sys-shape-corner-none);
+    background: var(--md-sys-color-surface-container-low);
+    box-shadow: var(--md-sys-elevation-level1);
     transform: translate3d(0%, 0%, 0);
     z-index: 2;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 
-    &.md-navigation-rail--modal {
-        position: absolute;
-    }
-
     &:not(.md-navigation-rail--open) {
         pointer-events: none;
     }
 }
 
 .md-navigation-rail {
+    width: 80px;
     height: 100%;
     left: 0;
     top: 0;
+
 
     &:not(.md-navigation-rail--open) {
         width: 0;
         transform: translate3d(-100%, 0%, 0);
-    }
-}
-
-.md-navigation-rail__scrim {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    background: #000;
-    opacity: 32%;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-
-    &:not(.md-navigation-rail--open) {
-        opacity: 0;
-        pointer-events: none;
     }
 }
 
@@ -111,6 +59,7 @@
         justify-content: center;
         padding: 0 12px;
         gap: 4px 0;
+        min-width: 80px;
 
         &[selected] {
             background: inherit;

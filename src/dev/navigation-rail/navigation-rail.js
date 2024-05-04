@@ -7,46 +7,50 @@ class DevNavigationRail extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--west">
+                <div class="md-layout__item--west" style="overflow:hidden;">
                     <md-navigation-rail 
-                        open
                         id="navigationRail1"
                         .list="${[
-                            { icon:'image',label: 'Lorem', selected:true },
-                            { icon:'image',label: 'ipsum' },
-                            { icon:'image',label: 'dolor' },
-                            { icon:'image',label: 'sit' },
-                            { icon:'image',label: 'amet' },
+                            { icon:'change_history',label: 'Label', selected:true },
+                            { icon:'change_history',label: 'Label' },
+                            { icon:'change_history',label: 'Label' },
+                            { icon:'change_history',label: 'Label' },
                         ]}"
                     ></md-navigation-rail>
                     
-                    <!-- <md-navigation-rail 
-                        id="navigationRail2"
-                        .list="${[
-                            { icon:'image', selected:true },
-                            { icon:'image' },
-                            { icon:'image' },
-                            { icon:'image' },
-                            { icon:'image' },
-                        ]}"
-                    ></md-navigation-rail> -->
                 </div>
                 <div class="md-layout__item--center">
-                    <md-button label="Navigation rail" @click="${this.handleClick1}"></md-button>
-                    <!-- <md-button label="Navigation rail" @click="${this.handleClick2}"></md-button> -->
+                    <div class="md-layout--border md-layout--fit">
+                        <div class="md-layout__item--west" style="overflow:hidden;">
+                            
+                            <md-navigation-rail 
+                                id="navigationRail2"
+                                .list="${[
+                                    { icon:'change_history', selected:true },
+                                    { icon:'change_history' },
+                                    { icon:'change_history' },
+                                    { icon:'change_history' },
+                                ]}"
+                            ></md-navigation-rail>
+                        </div>
+                        <div class="md-layout__item--center" style="padding:24px;">
+                            <md-button ui="filled-tonal" label="All destinations with text labels" @click="${this.handleClick1}"></md-button>
+                            <md-button ui="filled-tonal" label="All destinations without labels" @click="${this.handleClick2}"></md-button>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
     }
 
-    handleClick1(){
-        if(navigationRail1.open)navigationRail1.close()
-            else navigationRail1.show()
+    handleClick1() {
+        if (navigationRail1.open) navigationRail1.close();
+        else navigationRail1.show();
     }
 
-    handleClick2(){
-        if(navigationRail2.open)navigationRail2.close()
-            else navigationRail2.show()
+    handleClick2() {
+        if (navigationRail2.open) navigationRail2.close();
+        else navigationRail2.show();
     }
 }
 
