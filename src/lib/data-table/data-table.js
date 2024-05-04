@@ -6,35 +6,33 @@ import { styleMap } from "lit/directives/style-map.js";
 
 class MDDataTableColumn extends HTMLTableCellElement {
     connectedCallback() {
-        this.gesture = new Gesture(this, {
-            dragStartWaitForLongPress: true,
-            resizeHandles: ["e"],
-        });
+        this.gesture = new Gesture(this, { dragStartWaitForLongPress: true, resizeHandles: ["e"] });
     }
 
     disconnectedCallback() {
         this.gesture.destroy();
     }
 }
+
 customElements.define("md-data-table-column", MDDataTableColumn, { extends: "th" });
 
 class MDDataTableRow extends HTMLTableRowElement {
     connectedCallback() {
-        this.gesture = new Gesture(this, {
-            dragStartWaitForLongPress: true,
-            resizeHandles: [],
-        });
+        this.gesture = new Gesture(this, { dragStartWaitForLongPress: true, resizeHandles: [] });
     }
 
     disconnectedCallback() {
         this.gesture.destroy();
     }
 }
+
 customElements.define("md-data-table-row", MDDataTableRow, { extends: "tr" });
 
 class MDDataTableContainer extends MDElement {
     static get properties() {
-        return { label: { type: String } };
+        return {
+            label: { type: String },
+        };
     }
 
     constructor() {
@@ -50,23 +48,29 @@ class MDDataTableContainer extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-
         this.classList.add("md-data-table__container");
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-
         this.classList.remove("md-data-table__container");
     }
 
     updated(changedProperties) {}
 }
+
 customElements.define("md-data-table-container", MDDataTableContainer);
 
 class MDDataTable extends MDElement {
     static get properties() {
-        return { columns: { type: Array }, rows: { type: Array } };
+        return {
+            columns: { type: Array },
+            rows: { type: Array },
+            selectAll: { type: Boolean },
+            selectRange: { type: Boolean },
+            selectMulti: { type: Boolean },
+            selectSingle: { type: Boolean },
+        };
     }
 
     constructor() {
@@ -89,13 +93,13 @@ class MDDataTable extends MDElement {
                                 style="${styleMap({
                                     ...(column.width&&{'min-width':column.width+'px'})
                                 })}"
-                                @onResizeStart="${this.handleDataTableColumnResizeStart}"
-                                @onResize="${this.handleDataTableColumnResize}"
-                                @onResizeEnd="${this.handleDataTableColumnResizeEnd}"
-                                @onResizeHandleDoubleTap="${this.handleDataTableColumnResizeHandleDoubleTap}"
-                                @onDragStart="${this.handleDataTableColumnDragStart}"
-                                @onDrag="${this.handleDataTableColumnDrag}"
-                                @onDragEnd="${this.handleDataTableColumnDragEnd}"
+                                @onResizeStart="${false&&this.handleDataTableColumnResizeStart||(() => {})}"
+                                @onResize="${false&&this.handleDataTableColumnResize||(() => {})}"
+                                @onResizeEnd="${false&&this.handleDataTableColumnResizeEnd||(() => {})}"
+                                @onResizeHandleDoubleTap="${false&&this.handleDataTableColumnResizeHandleDoubleTap||(() => {})}"
+                                @onDragStart="${false&&this.handleDataTableColumnDragStart||(() => {})}"
+                                @onDrag="${false&&this.handleDataTableColumnDrag||(() => {})}"
+                                @onDragEnd="${false&&this.handleDataTableColumnDragEnd||(() => {})}"
                             >
                                 <md-data-table-container
                                     .label="${column.label}"
@@ -112,9 +116,9 @@ class MDDataTable extends MDElement {
                             tabindex="0"
                             ?selected="${row.selected}"
                             @click="${this.handleDataTableRowClick}"
-                            @onDragStart="${this.handleDataTableRowDragStart}"
-                            @onDrag="${this.handleDataTableRowDrag}"
-                            @onDragEnd="${this.handleDataTableRowDragEnd}"
+                            @onDragStart="${false&&this.handleDataTableRowDragStart||(() => {})}"
+                            @onDrag="${false&&this.handleDataTableRowDrag||(() => {})}"
+                            @onDragEnd="${false&&this.handleDataTableRowDragEnd||(() => {})}"
                         >
                             ${this.columns.map(column => html`
                                 <td>
@@ -132,14 +136,12 @@ class MDDataTable extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-
         this.classList.add("md-data-table");
         this.addEventListener("keydown", this.handleDataTableKeydown);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-
         this.classList.remove("md-data-table");
         this.addEventListener("keydown", this.handleDataTableKeydown);
     }
@@ -185,7 +187,7 @@ class MDDataTable extends MDElement {
     }
 
     handleDataTableKeydown(event) {
-        if (event.ctrlKey && event.key === "a") {
+        if (this.selectAll && event.ctrlKey && event.key === "a") {
             event.preventDefault();
             this.rows.forEach((item) => {
                 item.selected = true;
@@ -199,7 +201,7 @@ class MDDataTable extends MDElement {
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.rows.indexOf(data);
 
-        if (event.shiftKey) {
+        if (this.selectRange && event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
@@ -208,9 +210,9 @@ class MDDataTable extends MDElement {
             this.rows.forEach((item, index) => {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
-        } else if (event.ctrlKey) {
+        } else if (this.selectMulti && event.ctrlKey) {
             data.selected = !data.selected;
-        } else {
+        } else if (this.selectSingle) {
             this.rows.forEach((item) => {
                 item.selected = item === data;
             });
@@ -223,7 +225,6 @@ class MDDataTable extends MDElement {
     handleDataTableColumnDragStart(event) {
         this.fromColumn = event.currentTarget;
         this.fromColumnRect = this.fromColumn.getBoundingClientRect();
-
         this.fromColumnDragged = this.fromColumn.cloneNode(true);
         this.parentElement.insertBefore(this.fromColumnDragged, this.nextElementSibling);
         this.fromColumnDragged.style.setProperty("width", this.fromColumnRect.width + "px");
@@ -247,6 +248,7 @@ class MDDataTable extends MDElement {
 
     handleDataTableColumnDragEnd(event) {
         const toColumn = event.detail.target?.closest("th");
+
         if (toColumn && this.toColumn !== toColumn && !this.fromColumn !== toColumn) {
             this.toColumn = toColumn;
             const oldIndex = this.columns.indexOf(this.fromColumn.data);
@@ -296,6 +298,7 @@ class MDDataTable extends MDElement {
 
     handleDataTableRowDragEnd(event) {
         const toRow = event.detail.target?.closest("tr");
+
         if (toRow && this.toRow !== toRow && !this.fromRow !== toRow) {
             this.toRow = toRow;
             const oldIndex = this.rows.indexOf(this.fromRow.data);
@@ -315,5 +318,6 @@ class MDDataTable extends MDElement {
         return array;
     }
 }
+
 customElements.define("md-data-table", MDDataTable);
 export { MDDataTable };

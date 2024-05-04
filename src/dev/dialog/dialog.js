@@ -9,12 +9,17 @@ class DevDialog extends MDElement {
             <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-dialog 
-                        open
-                        id="dialog"
-                        @onDialogActionClick="${this.handleClick}"
-                        @onDialogButtonClick="${this.handleClick}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-dialog>
-                    <md-button id="button" label="dialog" @click="${this.handleClick}"></md-button>
+                        id="dialog1"
+                        @onDialogActionClick="${this.handleClick1}"
+                        @onDialogButtonClick="${this.handleClick1}"
+                        leadingActions='["home"]' 
+                        label="Label" 
+                        trailingActions='["close"]' 
+                        buttons='[{"label":"save","ui":"filled"}]'
+                    >
+                        body
+                    </md-dialog>
+                    <md-button ui="filled-tonal" label="Basic dialog" @click="${this.handleClick1}"></md-button>
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-dialog 
@@ -22,17 +27,23 @@ class DevDialog extends MDElement {
                         ui="full-screen"
                         @onDialogActionClick="${this.handleClick2}"
                         @onDialogButtonClick="${this.handleClick2}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'>body</md-dialog>
-                    <md-button id="button" label="dialog full-screen" @click="${this.handleClick2}"></md-button>
+                        leadingActions='["home"]' 
+                        label="Label" 
+                        trailingActions='["close"]' 
+                        buttons='[{"label":"save","ui":"filled"}]'
+                    >
+                        body
+                    </md-dialog>
+                    <md-button ui="filled-tonal" label="Full-screen dialog" @click="${this.handleClick2}"></md-button>
                 </div>
                 
                 
             </div>
         `;
     }
-    handleClick(event) {
-        if (dialog.open) dialog.close();
-        else dialog.show();
+    handleClick1(event) {
+        if (dialog1.open) dialog1.close();
+        else dialog1.show();
     }
     handleClick2(event) {
         if (dialog2.open) dialog2.close();

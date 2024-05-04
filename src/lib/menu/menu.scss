@@ -1,11 +1,9 @@
 .md-menu {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    border-radius: 4px;
-    background: var(--md-sys-color-surface);
-    background: var(--md-sys-color-surface-container);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-surface-container-lowest);
     box-shadow: var(--md-sys-elevation-level0);
-    box-shadow: var(--md-sys-elevation-level2);
 }
 
 .md-menu__body {
@@ -20,20 +18,26 @@
     overflow: hidden auto;
     @extend .md-typography--body-medium;
 
-    + .md-menu__footer {
-        margin-top: -24px;
-    }
 }
 
 .md-menu {
-    overflow: hidden;
+    min-width: 112px;
+    max-width: 280px;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    background: var(--md-sys-color-surface-container);
+    box-shadow: var(--md-sys-elevation-level2);
     position: absolute;
+    overflow: hidden;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate3d(-50%, -50%, 0) scale(1);
     z-index: 2;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 
     &:not(.md-menu--open) {
+        // transform: translate3d(-50%, -50%, 0) scale(0.84);
         opacity: 0;
         pointer-events: none;
     }
@@ -46,6 +50,7 @@
     left: 0;
     top: 0;
     z-index: 1;
+    // background: #000;
     opacity: 32%;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);

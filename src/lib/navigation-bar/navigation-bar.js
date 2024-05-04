@@ -6,14 +6,8 @@ import { MDList } from "../list/list";
 class MDNavigationBar extends MDElement {
     static get properties() {
         return Object.assign(MDList.properties,{
-            ui: { type: String },
             open: { type: Boolean, reflect: true },
         });
-    }
-
-    constructor() {
-        super();
-        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -21,12 +15,17 @@ class MDNavigationBar extends MDElement {
         return html`
             <div class="md-navigation-bar__body">
                 <div class="md-navigation-bar__inner">
-                    <md-list
+                    <md-list 
                         class="md-navigation-bar__list"
                         .list="${this.list}"
-                        .selectSingle="${true}"
-                        @onListItemContainerClick="${this.handleNavigationBarItemContainerClick}"
-                    ></md-list>    
+                        .valueField="${this.valueField??'value'}"
+                        .labelField="${this.labelField??'label'}"
+                        .selectRange="${this.selectRange}"
+                        .selectMulti="${this.selectMulti}"
+                        .selectSingle="${this.selectSingle??true}"
+                        .selectAll="${this.selectAll}"
+                        @onListItemContainerClick="${this.handleNavigationBarListItemContainerClick}"
+                    ></md-list>
                 </div>
             </div>
         `
@@ -36,54 +35,22 @@ class MDNavigationBar extends MDElement {
         super.connectedCallback();
         this.classList.add("md-navigation-bar");
 
-        this.navigationBarScrimElement = document.createElement("div");
-        this.parentElement.insertBefore(this.navigationBarScrimElement, this.nextElementSibling);
-        this.navigationBarScrimElement.classList.add("md-navigation-bar__scrim");
-        this.handleNavigationBarScrimClick = this.handleNavigationBarScrimClick.bind(this);
-        this.navigationBarScrimElement.addEventListener("click", this.handleNavigationBarScrimClick);
-
-
-        this.updateStyle();
     }
 
-    updateStyle() {
-        if ( ( this.ui?.includes("modal"))) {
-            if (this.open) {
-                this.navigationBarScrimElement.classList.add("md-navigation-bar--open");
-            } else {
-                this.navigationBarScrimElement.classList.remove("md-navigation-bar--open");
-            }
-        }
-    }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-bar");
 
-        this.navigationBarScrimElement.remove();
-        this.navigationBarScrimElement.removeEventListener("click", this.handleNavigationBarScrimClick);
     }
 
     updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            [
-                "modal",
-            ].forEach((ui) => {
-                this.classList.remove("md-navigation-bar--" + ui);
-            });
-            if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-navigation-bar--" + ui);
-                });
-            }
-        }
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-navigation-bar--open");
             } else {
                 this.classList.remove("md-navigation-bar--open");
             }
-            this.updateStyle();
         }
     }
 
@@ -95,13 +62,8 @@ class MDNavigationBar extends MDElement {
         this.emit("onNavigationBarButtonClick", event);
     }
 
-    handleNavigationBarScrimClick(event) {
-        this.close();
-        this.emit("onNavigationBarScrimClick", event);
-    }
-
-    handleNavigationBarItemContainerClick(event) {
-        this.emit("onNavigationBarItemContainerClick", event);
+    handleNavigationBarListItemContainerClick(event) {
+        this.emit("onNavigationBarListItemContainerClick", event);
     }
 
     show() {

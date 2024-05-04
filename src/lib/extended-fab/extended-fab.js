@@ -1,14 +1,13 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
+import { Ripple } from "../ripple/ripple";
 
 class MDExtendedFab extends MDElement {
     static get properties() {
-        return { icon: { type: String }, label: { type: String } };
-    }
-
-    constructor() {
-        super();
+        return {
+            icon: { type: String },
+            label: { type: String },
+        };
     }
 
     render() {
@@ -22,14 +21,17 @@ class MDExtendedFab extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-extended-fab");
+        this.ripple = new Ripple(this, {});
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-extended-fab");
+        this.ripple.destroy();
     }
-
-    updated(changedProperties) {}
+    
 }
+
 customElements.define("md-extended-fab", MDExtendedFab);
+
 export { MDExtendedFab };

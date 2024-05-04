@@ -11,14 +11,13 @@ class DevMenu extends MDElement {
                     <md-menu 
                         id="menu"
                         .list="${[
-                            { icon:'image',label: 'Lorem', selected:true },
-                            { icon:'image',label: 'ipsum' },
-                            { icon:'image',label: 'dolor' },
-                            { icon:'image',label: 'sit' },
-                            { icon:'image',label: 'amet' },
+                            { icon:'cut',label: 'Item 1', selected:true },
+                            { icon:'content_copy',label: 'Item 2' },
+                            { icon:'content_paste',label: 'Item 3' },
+                            { icon:'cloud',label: 'Item 4' },
                         ]}"
                     ></md-menu>
-                    <md-button id="button" label="menu" @click="${this.handleClick}"></md-button>
+                    <md-button id="button" ui="filled-tonal" label="Button" @click="${this.handleClick}"></md-button>
                 </div>
                 
                 

@@ -78,19 +78,16 @@ class MDDialog extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-dialog");
-
         this.dialogScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.dialogScrimElement, this.nextElementSibling);
         this.dialogScrimElement.classList.add("md-dialog__scrim");
         this.handleDialogScrimClick = this.handleDialogScrimClick.bind(this);
         this.dialogScrimElement.addEventListener("click", this.handleDialogScrimClick);
-
-
         this.updateStyle();
     }
 
     updateStyle() {
-        if (!this.ui?.includes("full-screen") ) {
+        if (!this.ui?.includes("full-screen")) {
             if (this.open) {
                 this.dialogScrimElement.classList.add("md-dialog--open");
             } else {
@@ -102,24 +99,23 @@ class MDDialog extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-dialog");
-
         this.dialogScrimElement.remove();
         this.dialogScrimElement.removeEventListener("click", this.handleDialogScrimClick);
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                "full-screen",
-            ].forEach((ui) => {
+            ["full-screen"].forEach((ui) => {
                 this.classList.remove("md-dialog--" + ui);
             });
+
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-dialog--" + ui);
                 });
             }
         }
+
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-dialog--open");
@@ -146,6 +142,7 @@ class MDDialog extends MDElement {
     show() {
         this.open = true;
     }
+
     close() {
         this.open = false;
     }
