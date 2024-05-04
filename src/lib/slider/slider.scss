@@ -1,4 +1,4 @@
-/* slider */
+
 .md-slider {
     display: grid;
     position: relative;
@@ -79,19 +79,14 @@
 
 .md-slider--centered {
     .md-slider__native {
-        // &::-webkit-slider-container {
-        // }
 
         &::-webkit-slider-runnable-track {
             background: var(--md-sys-color-primary-container);
         }
 
-        // &::-webkit-slider-thumb {
-        // }
     }
 }
 
-// .md-slider--continuous{}
 
 .md-slider--discrete {
     .md-slider__item {
@@ -109,8 +104,6 @@
     }
 
     .md-slider__native {
-        // &::-webkit-slider-container {
-        // }
 
         &::-webkit-slider-runnable-track {
             background: linear-gradient(to right, var(--md-sys-color-primary-container) 0 var(--md-slider-percentage1), var(--md-sys-color-primary) var(--md-slider-percentage1) var(--md-slider-percentage2), var(--md-sys-color-primary-container) var(--md-slider-percentage2) 100%);

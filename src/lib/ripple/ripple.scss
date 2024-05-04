@@ -1,4 +1,3 @@
-/* keyframes */
 @keyframes md-ripple {
     0% {
         width: 0;
@@ -10,7 +9,7 @@
         opacity: 10%;
     }
 }
-/* ripple */
+
 .md-ripple {
     position: relative;
 }
@@ -34,8 +33,7 @@
     left: var(--md-ripple-left, 50%);
     top: var(--md-ripple-top, 50%);
     z-index: 1;
-    transform: translate3d(-50%, -50%, 0)
-        translate3d(var(--md-ripple-x, 0), var(--md-ripple-y, 0), 0);
+    transform: translate3d(-50%, -50%, 0) translate3d(var(--md-ripple-x, 0), var(--md-ripple-y, 0), 0);
     background: var(--md-sys-color-on-background);
     opacity: 0;
     pointer-events: none;
@@ -54,20 +52,17 @@
     &.md-ripple--focused {
         &::after {
             opacity: 0;
-            animation-name: var(--md-ripple-animation, md-ripple),
-                var(--md-ripple-animation, md-ripple-fadeout);
-            animation-duration: var(--md-sys-motion-duration-short4),
-                var(--md-sys-motion-duration-long4);
-            animation-timing-function: var(--md-sys-motion-easing-standard),
-                var(--md-sys-motion-easing-standard);
+            animation-name: var(--md-ripple-animation, md-ripple), var(--md-ripple-animation, md-ripple-fadeout);
+            animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
+            animation-timing-function: var(--md-sys-motion-easing-standard), var(--md-sys-motion-easing-standard);
         }
     }
 }
-
 .md-ripple[selected],
 .md-ripple--selected {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
+
     &::after {
         opacity: 0%;
     }
@@ -96,14 +91,15 @@
 
 .md-ripple--dragged {
     box-shadow: var(--md-sys-elevation-level4);
+
     &::after {
         opacity: 16%;
     }
 }
-
 .md-ripple[disabled],
 .md-ripple--disabled {
     opacity: 38%;
+
     &::after {
         opacity: 0%;
     }

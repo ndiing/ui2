@@ -2,6 +2,7 @@ import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Router } from "../../lib/router/router";
+import { color, layout } from "../../lib/observer/observer";
 
 class DevMain extends MDElement {
     constructor() {
@@ -81,38 +82,44 @@ class DevMain extends MDElement {
             <!-- <h1>${"Main"}</h1> -->
             <!-- <div class="md-layout"> -->
                 <div class="md-layout--border md-layout--fit">
-                    <div id="layoutItemWest" class="open md-layout__item md-layout__item--west md-layout--fit">
+                    <div class="md-layout__item--north">
+                        <md-top-app-bar
+                            id="top"
+                            .open="${false}"
+                            .leadingActions="${[
+                                {icon:"image"}
+                            ]}"
+                            .label="${"Label"}"
+                            @onTopAppBarActionClick="${this.handleTopAppBarActionClick}"
+                        ></md-top-app-bar>
+                    </div>
+                    <div class="md-layout__item--west">
                         <md-navigation-drawer
-                            id="navigationDrawer"
-                            class="open"
-                            open
+                            id="drawer"
+                            .open="${true}"
+                            .ui=""
                             .list="${this.list}"
-                            @onListContainerSelected="${this.handleListContainerSelected}"
+                            @onListItemContainerClick="${this.handleListItemContainerClick}"
                         ></md-navigation-drawer>
                     </div>
-                    <div class="md-layout__item--center md-layout--fit" >
+                    <div class="md-layout__item--center" >
                         <md-outlet></md-outlet>
                     </div>
                 </div>
             <!-- </div> -->
         `;
     }
-    handleListContainerSelected(event) {
-        event.detail.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "nearest",
-        });
+    handleListItemContainerClick(event) {
+
+    }
+    handleTopAppBarActionClick(event) {
+        drawer.show()
     }
     firstUpdated() {
-        // console.log(Color.item)
-        // console.log(Layout.item)
-        // window.addEventListener('onColorChange',console.log)
-        // window.addEventListener('onLayoutChange',console.log)
-        // window.addEventListener('click',() => {
-        //     layoutItemWest.classList.toggle('open')
-        //     navigationDrawer.classList.toggle('open')
-        // })
+        console.log(color.name)
+        console.log(layout.name)
+        window.addEventListener('onColorChange',event=>console.log(event.detail.name))
+        window.addEventListener('onLayoutChange',event=>console.log(event.detail.name))
     }
 }
 

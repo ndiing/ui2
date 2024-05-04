@@ -1,8 +1,7 @@
-/* text-field */
+
 .md-text-field {
     display: flex;
     flex-direction: column;
-    // position: relative;
 }
 
 .md-text-field__label {
@@ -10,7 +9,6 @@
     align-items: center;
     height: 40px;
     padding: 0 16px;
-    // position: absolute;
 }
 
 .md-text-field__label-text {

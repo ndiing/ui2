@@ -80,7 +80,6 @@ class MDPane extends MDElement {
         this.classList.add("md-pane");
 
         this.paneScrimElement = document.createElement("div");
-        // document.body.append(this.paneScrimElement);
         this.parentElement.insertBefore(
             this.paneScrimElement,
             this.nextElementSibling
@@ -89,8 +88,6 @@ class MDPane extends MDElement {
         this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
         this.paneScrimElement.addEventListener("click", this.handlePaneScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }

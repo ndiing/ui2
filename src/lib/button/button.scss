@@ -2,7 +2,6 @@
     --md-button-height: calc(40px + (4px * var(--md-density)));
 }
 
-/* button */
 .md-button {
     display: inline-flex;
     align-items: center;
@@ -32,13 +31,13 @@
     text-overflow: ellipsis;
 }
 
-/* ui */
 .md-button--outlined {
     padding: 0 24px;
     background: transparent;
     color: var(--md-sys-color-primary);
     border: 1px solid var(--md-sys-color-outline);
 }
+
 .md-button--filled-tonal {
     padding: 0 24px;
     background: var(--md-sys-color-secondary-container);

@@ -37,14 +37,11 @@ class MDNavigationRail extends MDElement {
         this.classList.add("md-navigation-rail");
 
         this.navigationRailScrimElement = document.createElement("div");
-        // document.body.append(this.navigationRailScrimElement);
         this.parentElement.insertBefore(this.navigationRailScrimElement, this.nextElementSibling);
         this.navigationRailScrimElement.classList.add("md-navigation-rail__scrim");
         this.handleNavigationRailScrimClick = this.handleNavigationRailScrimClick.bind(this);
         this.navigationRailScrimElement.addEventListener("click", this.handleNavigationRailScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -70,7 +67,6 @@ class MDNavigationRail extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-navigation-rail--" + ui);

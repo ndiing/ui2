@@ -187,7 +187,6 @@ class MDList extends MDElement {
     }
 
     handleListItemDrag(event) {
-        // this.fromItemDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromItemDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
         this.emit('onListItemDrag',event)
     }

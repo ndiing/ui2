@@ -38,14 +38,11 @@ class MDMenu extends MDElement {
         this.classList.add("md-menu");
 
         this.menuScrimElement = document.createElement("div");
-        // document.body.append(this.menuScrimElement);
         this.parentElement.insertBefore(this.menuScrimElement, this.nextElementSibling);
         this.menuScrimElement.classList.add("md-menu__scrim");
         this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
         this.menuScrimElement.addEventListener("click", this.handleMenuScrimClick);
 
-        // menu&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -71,7 +68,6 @@ class MDMenu extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "full-screen",
             ].forEach((ui) => {
                 this.classList.remove("md-menu--" + ui);

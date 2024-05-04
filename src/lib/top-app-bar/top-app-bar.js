@@ -63,14 +63,11 @@ class MDTopAppBar extends MDElement {
         this.classList.add("md-top-app-bar");
 
         this.topAppBarScrimElement = document.createElement("div");
-        // document.body.append(this.topAppBarScrimElement);
         this.parentElement.insertBefore(this.topAppBarScrimElement, this.nextElementSibling);
         this.topAppBarScrimElement.classList.add("md-top-app-bar__scrim");
         this.handleTopAppBarScrimClick = this.handleTopAppBarScrimClick.bind(this);
         this.topAppBarScrimElement.addEventListener("click", this.handleTopAppBarScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -96,7 +93,6 @@ class MDTopAppBar extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-top-app-bar--" + ui);

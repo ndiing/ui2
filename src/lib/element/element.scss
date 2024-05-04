@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"); /* color */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 @media (prefers-color-scheme: light) {
     :root {
         --md-sys-color-primary: #6750a4;
@@ -110,7 +111,7 @@
         --md-sys-color-shadow: #000000;
     }
 }
-/* elevation */
+
 :root {
     --md-sys-elevation-surface-tint-color: #6750a4;
     --md-sys-elevation-level5: rgba(0, 0, 0, 0.2) 0px 7px 8px -4px, rgba(0, 0, 0, 0.14) 0px 12px 17px 2px, rgba(0, 0, 0, 0.12) 0px 5px 22px 4px;
@@ -120,7 +121,7 @@
     --md-sys-elevation-level1: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
     --md-sys-elevation-level0: rgba(0, 0, 0, 0.2) 0px 0px 0px 0px, rgba(0, 0, 0, 0.14) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 0px;
 }
-/* motion */
+
 :root {
     --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
     --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
@@ -150,7 +151,7 @@
     --md-sys-motion-duration-extra-long4: 1000ms;
     --md-sys-motion-path: Linear;
 }
-/* shape */
+
 :root {
     --md-sys-shape-corner-full: Circular;
     --md-sys-shape-corner-extra-large-top: 28px 28px 0 0;
@@ -165,7 +166,7 @@
     --md-sys-shape-corner-extra-small: 4px;
     --md-sys-shape-corner-none: 0;
 }
-/* typescale */
+
 :root {
     --md-sys-typescale-display-large-font: "Roboto";
     --md-sys-typescale-display-large-weight: 400;
@@ -245,7 +246,7 @@
     --md-sys-typescale-label-small-tracking: 0.5px;
     --md-sys-typescale-label-small-line-height: 16px;
 }
-/* emoji */
+
 .md-emoji {
     display: inline-flex;
     align-items: center;
@@ -256,7 +257,7 @@
     line-height: 1;
     font-family: "Noto Color Emoji";
 }
-/* typography */
+
 .md-typography--display-large {
     font-size: var(--md-sys-typescale-display-large-size);
     line-height: var(--md-sys-typescale-display-large-line-height);
@@ -361,11 +362,11 @@
     font-weight: var(--md-sys-typescale-label-small-weight);
     letter-spacing: var(--md-sys-typescale-label-small-tracking);
 }
-/* global */
+
 :root {
     --md-density: 0;
 }
-/* reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -380,27 +381,5 @@
     &:focus {
         outline: none;
     }
-}
-// ::-webkit-scrollbar {//     width: 16px;//     height: 16px;// }
-// ::-webkit-scrollbar-button {// }
-// ::-webkit-scrollbar:horizontal {// }
-// ::-webkit-scrollbar-thumb {//     border: 4px solid var(--md-sys-color-secondary-container);//     border-radius: calc(16px / 2);//     background: var(--md-sys-color-secondary);// }
-// ::-webkit-scrollbar-track {//     background: var(--md-sys-color-secondary-container);// }
-// ::-webkit-scrollbar-track-piece {// }
-// ::-webkit-scrollbar:vertical {// }
-// ::-webkit-scrollbar-corner {// }
-// ::-webkit-resizer {// }
-/* base */
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-body {
-    overflow: hidden auto;
-    @extend .md-typography--body-large;
-    font-family: "Noto Sans";
-    background: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-background);
-}
+} 
+

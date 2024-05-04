@@ -80,14 +80,11 @@ class MDBottomSheet extends MDElement {
         this.classList.add("md-bottom-sheet");
 
         this.bottomSheetScrimElement = document.createElement("div");
-        // document.body.append(this.bottomSheetScrimElement);
+
         this.parentElement.insertBefore(this.bottomSheetScrimElement, this.nextElementSibling);
         this.bottomSheetScrimElement.classList.add("md-bottom-sheet__scrim");
         this.handleBottomSheetScrimClick = this.handleBottomSheetScrimClick.bind(this);
         this.bottomSheetScrimElement.addEventListener("click", this.handleBottomSheetScrimClick);
-
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -113,7 +110,6 @@ class MDBottomSheet extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-bottom-sheet--" + ui);

@@ -13,8 +13,7 @@ class DevDataTable extends MDElement {
         super();
 
         const result = store.getAll({
-            // _page: 1,
-            // _limit: 10,
+
         });
 
         this.columns = [

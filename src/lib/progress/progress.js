@@ -30,7 +30,6 @@ class Progress {
             const progress = this.elapsedTime / this.remainingDuration;
             const value = progress * 100;
 
-            // clearTimeout(this.removeTimeout);
 
             if (progress > this.last) {
                 this.indicator.value = value;
@@ -44,10 +43,8 @@ class Progress {
                 this.remainingDuration = null;
                 this.startTime = null;
                 this.last = 0;
-                // this.removeTimeout = setTimeout(() => {
                 this.indicator.remove();
                 this.indicator = null;
-                // }, 100);
             }
         };
 

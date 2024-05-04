@@ -54,14 +54,11 @@ class MDBottomAppBar extends MDElement {
         this.classList.add("md-bottom-app-bar");
 
         this.bottomAppBarScrimElement = document.createElement("div");
-        // document.body.append(this.bottomAppBarScrimElement);
+
         this.parentElement.insertBefore(this.bottomAppBarScrimElement, this.nextElementSibling);
         this.bottomAppBarScrimElement.classList.add("md-bottom-app-bar__scrim");
         this.handleBottomAppBarScrimClick = this.handleBottomAppBarScrimClick.bind(this);
         this.bottomAppBarScrimElement.addEventListener("click", this.handleBottomAppBarScrimClick);
-
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -87,7 +84,7 @@ class MDBottomAppBar extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
+  
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-bottom-app-bar--" + ui);

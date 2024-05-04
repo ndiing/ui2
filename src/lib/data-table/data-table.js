@@ -241,7 +241,6 @@ class MDDataTable extends MDElement {
     }
 
     handleDataTableColumnDrag(event) {
-        // this.fromColumnDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromColumnDragged.style.setProperty("transform", `translate3d(${event.detail.moveX}px,0px,0)`);
         this.emit("onDataTableColumnDrag", event);
     }
@@ -291,7 +290,6 @@ class MDDataTable extends MDElement {
     }
 
     handleDataTableRowDrag(event) {
-        // this.fromRowDragged.style.setProperty('transform',`translate3d(${event.detail.moveX}px,${event.detail.moveY}px,0)`)
         this.fromRowDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
         this.emit("onDataTableRowDrag", event);
     }

@@ -80,14 +80,11 @@ class MDDialog extends MDElement {
         this.classList.add("md-dialog");
 
         this.dialogScrimElement = document.createElement("div");
-        // document.body.append(this.dialogScrimElement);
         this.parentElement.insertBefore(this.dialogScrimElement, this.nextElementSibling);
         this.dialogScrimElement.classList.add("md-dialog__scrim");
         this.handleDialogScrimClick = this.handleDialogScrimClick.bind(this);
         this.dialogScrimElement.addEventListener("click", this.handleDialogScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -113,7 +110,6 @@ class MDDialog extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "full-screen",
             ].forEach((ui) => {
                 this.classList.remove("md-dialog--" + ui);

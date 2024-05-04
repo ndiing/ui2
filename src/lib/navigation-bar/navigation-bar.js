@@ -37,14 +37,11 @@ class MDNavigationBar extends MDElement {
         this.classList.add("md-navigation-bar");
 
         this.navigationBarScrimElement = document.createElement("div");
-        // document.body.append(this.navigationBarScrimElement);
         this.parentElement.insertBefore(this.navigationBarScrimElement, this.nextElementSibling);
         this.navigationBarScrimElement.classList.add("md-navigation-bar__scrim");
         this.handleNavigationBarScrimClick = this.handleNavigationBarScrimClick.bind(this);
         this.navigationBarScrimElement.addEventListener("click", this.handleNavigationBarScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -70,7 +67,6 @@ class MDNavigationBar extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-navigation-bar--" + ui);

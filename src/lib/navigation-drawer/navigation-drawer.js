@@ -37,14 +37,11 @@ class MDNavigationDrawer extends MDElement {
         this.classList.add("md-navigation-drawer");
 
         this.navigationDrawerScrimElement = document.createElement("div");
-        // document.body.append(this.navigationDrawerScrimElement);
         this.parentElement.insertBefore(this.navigationDrawerScrimElement, this.nextElementSibling);
         this.navigationDrawerScrimElement.classList.add("md-navigation-drawer__scrim");
         this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
         this.navigationDrawerScrimElement.addEventListener("click", this.handleNavigationDrawerScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -70,7 +67,6 @@ class MDNavigationDrawer extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-navigation-drawer--" + ui);
@@ -105,9 +101,7 @@ class MDNavigationDrawer extends MDElement {
     }
 
     handleNavigationDrawerItemContainerClick(event) {
-        // if(this.ui.includes('modal')){
-        //     this.close()
-        // }
+
         this.emit("onNavigationDrawerItemContainerClick", event);
     }
 

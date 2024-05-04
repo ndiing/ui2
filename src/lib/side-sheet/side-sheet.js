@@ -80,14 +80,11 @@ class MDSideSheet extends MDElement {
         this.classList.add("md-side-sheet");
 
         this.sideSheetScrimElement = document.createElement("div");
-        // document.body.append(this.sideSheetScrimElement);
         this.parentElement.insertBefore(this.sideSheetScrimElement, this.nextElementSibling);
         this.sideSheetScrimElement.classList.add("md-side-sheet__scrim");
         this.handleSideSheetScrimClick = this.handleSideSheetScrimClick.bind(this);
         this.sideSheetScrimElement.addEventListener("click", this.handleSideSheetScrimClick);
 
-        // dialog&&!full-screen
-        // sheet&&modal
 
         this.updateStyle();
     }
@@ -113,7 +110,6 @@ class MDSideSheet extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             [
-                //
                 "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-side-sheet--" + ui);
