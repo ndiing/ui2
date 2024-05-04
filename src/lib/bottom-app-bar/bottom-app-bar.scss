@@ -1,8 +1,11 @@
 .md-bottom-app-bar{
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
-    background: var(--md-sys-color-surface-container-lowest);
+    // border-radius: 12px;
+    background: var(--md-sys-color-surface);
+    background: var(--md-sys-color-surface-container);
+    box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level2);
 }
 .md-bottom-app-bar__header{
     display: flex;
@@ -27,7 +30,7 @@
 
 
 .md-bottom-app-bar{
-    border-radius: 0;
+    // border-radius: 0;
     transform: translate3d(0%,0%,0);
     z-index: 2;
     transition-property: all;

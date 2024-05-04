@@ -7,7 +7,7 @@ class DevBottomAppBar extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--south">
+                <div class="md-layout__item--south" style="overflow:hidden;">
                     <md-bottom-app-bar
                         id="bottomAppBar"
                         open

@@ -1,8 +1,11 @@
 .md-dialog{
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
-    background: var(--md-sys-color-surface-container-lowest);
+    border-radius: 28px;
+    background: var(--md-sys-color-surface-container);
+    background: var(--md-sys-color-surface);
+    box-shadow: var(--md-sys-elevation-level2);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 .md-dialog__header{
     display: flex;
@@ -50,7 +53,7 @@
 
 
 .md-dialog{
-    border-radius: 28px;
+    // border-radius: 28px;
     position: absolute;
     left: 50%;
     top: 50%;
