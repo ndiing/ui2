@@ -2,7 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 
-class MDTopAppBar extends MDElement {
+class MDBottomAppBar extends MDElement {
     static get properties() {
         return {
             actions: { type: Array },
@@ -30,7 +30,7 @@ class MDTopAppBar extends MDElement {
                                     .icon="${action?.icon??action}"
                                     .type="${action?.type}"
                                     .ui="${action?.ui}"
-                                    @click="${this.handleTopAppBarActionClick}"
+                                    @click="${this.handleBottomAppBarActionClick}"
                                 ></md-icon-button>
                             `)}
                         </div>
@@ -41,7 +41,7 @@ class MDTopAppBar extends MDElement {
                             .icon="${this.fab?.icon??this.fab}"
                             .type="${this.fab?.type}"
                             .ui="${this.fab?.ui??"unelevated"}"
-                            @click="${this.handleTopAppBarActionClick}"
+                            @click="${this.handleBottomAppBarActionClick}"
                         ></md-fab>
                     `:nothing}
                 </div>
@@ -57,8 +57,8 @@ class MDTopAppBar extends MDElement {
         // document.body.append(this.bottomAppBarScrimElement);
         this.parentElement.insertBefore(this.bottomAppBarScrimElement, this.nextElementSibling);
         this.bottomAppBarScrimElement.classList.add("md-bottom-app-bar__scrim");
-        this.handleTopAppBarScrimClick = this.handleTopAppBarScrimClick.bind(this);
-        this.bottomAppBarScrimElement.addEventListener("click", this.handleTopAppBarScrimClick);
+        this.handleBottomAppBarScrimClick = this.handleBottomAppBarScrimClick.bind(this);
+        this.bottomAppBarScrimElement.addEventListener("click", this.handleBottomAppBarScrimClick);
 
         // dialog&&!full-screen
         // sheet&&modal
@@ -81,7 +81,7 @@ class MDTopAppBar extends MDElement {
         this.classList.remove("md-bottom-app-bar");
 
         this.bottomAppBarScrimElement.remove();
-        this.bottomAppBarScrimElement.removeEventListener("click", this.handleTopAppBarScrimClick);
+        this.bottomAppBarScrimElement.removeEventListener("click", this.handleBottomAppBarScrimClick);
     }
 
     updated(changedProperties) {
@@ -108,17 +108,17 @@ class MDTopAppBar extends MDElement {
         }
     }
 
-    handleTopAppBarActionClick(event) {
-        this.emit("onTopAppBarActionClick", event);
+    handleBottomAppBarActionClick(event) {
+        this.emit("onBottomAppBarActionClick", event);
     }
 
-    handleTopAppBarButtonClick(event) {
-        this.emit("onTopAppBarButtonClick", event);
+    handleBottomAppBarButtonClick(event) {
+        this.emit("onBottomAppBarButtonClick", event);
     }
 
-    handleTopAppBarScrimClick(event) {
+    handleBottomAppBarScrimClick(event) {
         this.close();
-        this.emit("onTopAppBarScrimClick", event);
+        this.emit("onBottomAppBarScrimClick", event);
     }
 
     show() {
@@ -129,6 +129,6 @@ class MDTopAppBar extends MDElement {
     }
 }
 
-customElements.define("md-bottom-app-bar", MDTopAppBar);
+customElements.define("md-bottom-app-bar", MDBottomAppBar);
 
-export { MDTopAppBar };
+export { MDBottomAppBar };

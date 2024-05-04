@@ -9,6 +9,7 @@ class DevDialog extends MDElement {
             <div class="md-layout--column">
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-dialog 
+                        open
                         id="dialog"
                         @onDialogActionClick="${this.handleClick}"
                         @onDialogButtonClick="${this.handleClick}"

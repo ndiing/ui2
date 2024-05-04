@@ -9,6 +9,7 @@ class DevSideSheet extends MDElement {
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--south md-layout--fit">
                     <md-bottom-sheet 
+                        open
                         id="bottomSheet"
                         @onSideSheetActionClick="${this.handleClick}"
                         @onSideSheetButtonClick="${this.handleClick}"

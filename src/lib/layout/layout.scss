@@ -19,10 +19,10 @@
 // border
 .md-layout--border {
   display: grid;
-  // grid-template-columns: auto 1fr auto;
-  // grid-template-rows: auto 1fr auto;
-  grid-template-columns: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
-  grid-template-rows: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  // grid-template-columns: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
+  // grid-template-rows: minmax(min-content,max-content) 1fr minmax(min-content,max-content);
   grid-template-areas:
     "north north north"
     "west center east"

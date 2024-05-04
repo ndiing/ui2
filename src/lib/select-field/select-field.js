@@ -63,7 +63,7 @@ class MDSelectField extends MDElement {
                         {label:'label3',value:'value3'},
                         {label:'label4',value:'value4'},
                     ]}"
-                    @onListContainerClick="${this.handleSelectFieldListContainerClick}"
+                    @onListItemContainerClick="${this.handleSelectFieldListContainerClick}"
                 ></md-menu>
             </div>
             ${this.validationMessage??this.text?html`

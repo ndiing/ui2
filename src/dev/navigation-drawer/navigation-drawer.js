@@ -10,18 +10,7 @@ class DevNavigationDrawer extends MDElement {
                 <div class="md-layout__item--west">
                     <md-navigation-drawer 
                         open
-                        .list="${[
-                            { label: 'Lorem', selected:true },
-                            { label: 'ipsum' },
-                            { label: 'dolor' },
-                            { label: 'sit' },
-                            { label: 'amet' },
-                        ]}"
-                    ></md-navigation-drawer>
-                </div>
-                <!-- <div class="md-layout__item--west">
-                    <md-navigation-drawer 
-                        open
+                        id="navigationDrawer1"
                         .list="${[
                             { icon:'image',label: 'Lorem', selected:true },
                             { icon:'image',label: 'ipsum' },
@@ -30,10 +19,35 @@ class DevNavigationDrawer extends MDElement {
                             { icon:'image',label: 'amet' },
                         ]}"
                     ></md-navigation-drawer>
-                </div> -->
-                <div class="md-layout__item--center">center</div>
+                    
+                    <md-navigation-drawer 
+                        ui="modal"
+                        id="navigationDrawer2"
+                        .list="${[
+                            { label:'Lorem', selected:true },
+                            { label:'ipsum' },
+                            { label:'dolor' },
+                            { label:'sit' },
+                            { label:'amet' },
+                        ]}"
+                    ></md-navigation-drawer>
+                </div>
+                <div class="md-layout__item--center">
+                    <md-button label="Navigation drawer" @click="${this.handleClick1}"></md-button>
+                    <md-button label="Navigation drawer" @click="${this.handleClick2}"></md-button>
+                </div>
             </div>
         `;
+    }
+
+    handleClick1(){
+        if(navigationDrawer1.open)navigationDrawer1.close()
+            else navigationDrawer1.show()
+    }
+
+    handleClick2(){
+        if(navigationDrawer2.open)navigationDrawer2.close()
+            else navigationDrawer2.show()
     }
 }
 

@@ -2,17 +2,18 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
-import { Gesture } from "../gesture/gesture";
 
 class MDNavigationDrawer extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties, {
+        return Object.assign(MDList.properties,{
+            ui: { type: String },
             open: { type: Boolean, reflect: true },
         });
     }
 
     constructor() {
         super();
+        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -24,7 +25,8 @@ class MDNavigationDrawer extends MDElement {
                         class="md-navigation-drawer__list"
                         .list="${this.list}"
                         .selectSingle="${true}"
-                    ></md-list>
+                        @onListItemContainerClick="${this.handleNavigationDrawerItemContainerClick}"
+                    ></md-list>    
                 </div>
             </div>
         `
@@ -35,36 +37,20 @@ class MDNavigationDrawer extends MDElement {
         this.classList.add("md-navigation-drawer");
 
         this.navigationDrawerScrimElement = document.createElement("div");
-        document.body.append(this.navigationDrawerScrimElement);
+        // document.body.append(this.navigationDrawerScrimElement);
+        this.parentElement.insertBefore(this.navigationDrawerScrimElement, this.nextElementSibling);
         this.navigationDrawerScrimElement.classList.add("md-navigation-drawer__scrim");
         this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
         this.navigationDrawerScrimElement.addEventListener("click", this.handleNavigationDrawerScrimClick);
 
-        // new Gesture(this,{
-        //   resizeHandles: ['e'],
-        // })
-        // let offsetWidthStart
-        // this.addEventListener('onResizeStart', (event) => {
-        //   offsetWidthStart=event.currentTarget.offsetWidth-event.detail.clientX
-        // })
-        // this.addEventListener('onResize', (event) => {
-        //   const width=(offsetWidthStart+event.detail.clientX)
-        //   event.currentTarget.style.width=width+'px'
-        // })
-        // this.addEventListener('onResizeEnd', (event) => {
-        //   console.log(event)
-        // })
+        // dialog&&!full-screen
+        // sheet&&modal
+
+        this.updateStyle();
     }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-navigation-drawer");
-
-        this.navigationDrawerScrimElement.remove();
-    }
-
-    firstUpdated(changedProperties) {
-        if (changedProperties.has("open")) {
+    updateStyle() {
+        if ( ( this.ui?.includes("modal"))) {
             if (this.open) {
                 this.navigationDrawerScrimElement.classList.add("md-navigation-drawer--open");
             } else {
@@ -73,13 +59,35 @@ class MDNavigationDrawer extends MDElement {
         }
     }
 
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.classList.remove("md-navigation-drawer");
+
+        this.navigationDrawerScrimElement.remove();
+        this.navigationDrawerScrimElement.removeEventListener("click", this.handleNavigationDrawerScrimClick);
+    }
+
     updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            [
+                //
+                "modal",
+            ].forEach((ui) => {
+                this.classList.remove("md-navigation-drawer--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-navigation-drawer--" + ui);
+                });
+            }
+        }
         if (changedProperties.has("open")) {
             if (this.open) {
-                this.navigationDrawerScrimElement.classList.add("md-navigation-drawer--open");
+                this.classList.add("md-navigation-drawer--open");
             } else {
-                this.navigationDrawerScrimElement.classList.remove("md-navigation-drawer--open");
+                this.classList.remove("md-navigation-drawer--open");
             }
+            this.updateStyle();
         }
     }
 
@@ -96,11 +104,18 @@ class MDNavigationDrawer extends MDElement {
         this.emit("onNavigationDrawerScrimClick", event);
     }
 
-    close() {
-        this.open = false;
+    handleNavigationDrawerItemContainerClick(event) {
+        // if(this.ui.includes('modal')){
+        //     this.close()
+        // }
+        this.emit("onNavigationDrawerItemContainerClick", event);
     }
+
     show() {
         this.open = true;
+    }
+    close() {
+        this.open = false;
     }
 }
 

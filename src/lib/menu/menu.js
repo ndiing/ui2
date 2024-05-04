@@ -1,18 +1,20 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
-import { MDList } from "../list/list";
 import { Popper } from "../popper/popper";
+import { MDList } from "../list/list";
 
 class MDMenu extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties, {
+        return Object.assign(MDList.properties,{
+            ui: { type: String },
             open: { type: Boolean, reflect: true },
         });
     }
 
     constructor() {
         super();
+        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -24,7 +26,7 @@ class MDMenu extends MDElement {
                         class="md-menu__list"
                         .list="${this.list}"
                         .selectSingle="${true}"
-                        @onListContainerClick="${this.handleListContainerClick}"
+                        @onListItemContainerClick="${this.handleMenuItemContainerClick}"
                     ></md-list>
                 </div>
             </div>
@@ -35,37 +37,58 @@ class MDMenu extends MDElement {
         super.connectedCallback();
         this.classList.add("md-menu");
 
-        this.navigationRailScrimElement = document.createElement("div");
-        document.body.append(this.navigationRailScrimElement);
-        this.navigationRailScrimElement.classList.add("md-menu__scrim");
+        this.menuScrimElement = document.createElement("div");
+        // document.body.append(this.menuScrimElement);
+        this.parentElement.insertBefore(this.menuScrimElement, this.nextElementSibling);
+        this.menuScrimElement.classList.add("md-menu__scrim");
         this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
-        this.navigationRailScrimElement.addEventListener("click", this.handleMenuScrimClick);
+        this.menuScrimElement.addEventListener("click", this.handleMenuScrimClick);
+
+        // menu&&!full-screen
+        // sheet&&modal
+
+        this.updateStyle();
+    }
+
+    updateStyle() {
+        if (!this.ui?.includes("full-screen") ) {
+            if (this.open) {
+                this.menuScrimElement.classList.add("md-menu--open");
+            } else {
+                this.menuScrimElement.classList.remove("md-menu--open");
+            }
+        }
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
 
-        this.navigationRailScrimElement.remove();
-    }
-
-    firstUpdated(changedProperties) {
-        if (changedProperties.has("open")) {
-            if (this.open) {
-                this.navigationRailScrimElement.classList.add("md-menu--open");
-            } else {
-                this.navigationRailScrimElement.classList.remove("md-menu--open");
-            }
-        }
+        this.menuScrimElement.remove();
+        this.menuScrimElement.removeEventListener("click", this.handleMenuScrimClick);
     }
 
     updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            [
+                //
+                "full-screen",
+            ].forEach((ui) => {
+                this.classList.remove("md-menu--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-menu--" + ui);
+                });
+            }
+        }
         if (changedProperties.has("open")) {
             if (this.open) {
-                this.navigationRailScrimElement.classList.add("md-menu--open");
+                this.classList.add("md-menu--open");
             } else {
-                this.navigationRailScrimElement.classList.remove("md-menu--open");
+                this.classList.remove("md-menu--open");
             }
+            this.updateStyle();
         }
     }
 
@@ -82,23 +105,29 @@ class MDMenu extends MDElement {
         this.emit("onMenuScrimClick", event);
     }
 
-    handleListContainerClick(event) {
+    handleMenuItemContainerClick(event) {
         this.close();
-        // this.emit("onListContainerClick", event);
+        this.emit("onMenuItemContainerClick", event);
     }
 
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom-center',
+            ],
+        })
+
+        this.popper.setPlacement()
+    }
     close() {
         this.open = false;
-        this.popper.destroy();
-    }
-    show(button) {
-        this.open = true;
-        this.popper = new Popper(this, {
-            button,
-            offset: 0,
-            placements: ["bottom-start", "bottom-end", "bottom-center", "top-start", "top-end", "top-center"],
-        });
-        this.popper.setPlacement();
+
+        this.popper.destroy()
     }
 }
 
