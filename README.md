@@ -4,84 +4,103 @@ Welcome to our Material Design Component Library! This repository hosts a compre
 
 ## Overview
 
-Our library includes a wide range of components grouped into various sections:
+Our library encompasses a wide range of components thoughtfully grouped into various sections, catering to diverse UI requirements.
 
-### Core Components
-- **Localization**: [Localization.js](./docs/localization.md)
-- **Element**: [Element.js](./docs/element.md)
-- **Router**: [Router.js](./docs/router.md)
-- **Store**: [Store.js](./docs/store.md)
+## Core Components
 
-### Interaction
-- **Gesture**: [Gesture.js](./docs/gesture.md)
-- **Ripple**: [Ripple.js](./docs/ripple.md)
-- **Popper**: [Popper.js](./docs/popper.md)
+- [Observer](./docs/observer.md)
+- [Marker](./docs/marker.md)
+- [Progress](./docs/progress.md)
+- [Router](./docs/router.md)
+- [Store](./docs/store.md)
 
-### Buttons
-- **Button**: [Button.js](./docs/button.md)
-- **Extended Fab**: [Extended Fab.js](./docs/extended-fab.md)
-- **Fab**: [Fab.js](./docs/fab.md)
-- **Icon Button**: [Icon Button.js](./docs/icon-button.md)
+## Interaction
 
-### Indicators
-- **Badge**: [Badge.js](./docs/badge.md)
-- **Progress Indicator**: [Progress Indicator.js](./docs/progress-indicator.md)
-- **Snackbar**: [Snackbar.js](./docs/snackbar.md)
-- **Tooltip**: [Tooltip.js](./docs/tooltip.md)
+- [Gesture](./docs/gesture.md)
+- [Ripple](./docs/ripple.md)
+- [Popper](./docs/popper.md)
 
-### Dialogs & Sheets
-- **Dialog**: [Dialog.js](./docs/dialog.md)
-- **Bottom Sheet**: [Bottom Sheet.js](./docs/bottom-sheet.md)
+## Basic Elements
 
-### Navigation
-- **Bottom App Bar**: [Bottom App Bar.js](./docs/bottom-app-bar.md)
-- **Navigation Bar**: [Navigation Bar.js](./docs/navigation-bar.md)
-- **Navigation Drawer**: [Navigation Drawer.js](./docs/navigation-drawer.md)
-- **Navigation Rail**: [Navigation Rail.js](./docs/navigation-rail.md)
-- **Tab**: [Tab.js](./docs/tab.md)
-- **Top App Bar**: [Top App Bar.js](./docs/top-app-bar.md)
+- [Localization](./docs/localization.md)
+- [Element](./docs/element.md)
 
-### Form Fields
-- **Form**: [Form.js](./docs/form.md)
-- **Select Field**: [Select Field.js](./docs/select-field.md)
-- **Text Area Field**: [Text Area Field.js](./docs/textarea-field.md)
-- **Email Field**: [Email Field.js](./docs/email-field.md)
-- **Password Field**: [Password Field.js](./docs/password-field.md)
-- **URL Field**: [URL Field.js](./docs/url-field.md)
-- **Search Field**: [Search Field.js](./docs/search-field.md)
-- **Number Field**: [Number Field.js](./docs/number-field.md)
-- **Tel Field**: [Tel Field.js](./docs/tel-field.md)
-- **Date Field**: [Date Field.js](./docs/date-field.md)
-- **Datetime Field**: [Datetime Field.js](./docs/datetime-field.md)
-- **Month Field**: [Month Field.js](./docs/month-field.md)
-- **Time Field**: [Time Field.js](./docs/time-field.md)
-- **Week Field**: [Week Field.js](./docs/week-field.md)
-- **Color Field**: [Color Field.js](./docs/color-field.md)
-- **File Field**: [File Field.js](./docs/file-field.md)
-- **Text Field**: [Text Field.js](./docs/text-field.md)
+## Visual Elements
 
-### Cards & Lists
-- **Card**: [Card.js](./docs/card.md)
-- **List**: [List.js](./docs/list.md)
-- **Side Sheet**: [Side Sheet.js](./docs/side-sheet.md)
-- **Divider**: [Divider.js](./docs/divider.md)
-- **Carousel**: [Carousel.js](./docs/carousel.md)
+- [Icon](./docs/icon.md)
+- [Badge](./docs/badge.md)
+- [Divider](./docs/divider.md)
 
-### Inputs & Controls
-- **Checkbox**: [Checkbox.js](./docs/checkbox.md)
-- **Radio Button**: [Radio Button.js](./docs/radio-button.md)
-- **Slider**: [Slider.js](./docs/slider.md)
-- **Switch**: [Switch.js](./docs/switch.md)
-- **Date Picker**: [Date Picker.js](./docs/date-picker.md)
-- **Time Picker**: [Time Picker.js](./docs/time-picker.md)
-- **Chip**: [Chip.js](./docs/chip.md)
-- **Menu**: [Menu.js](./docs/menu.md)
+## Buttons
 
-### Specialized Components
-- **Search**: [Search.js](./docs/search.md)
-- **Segmented Button**: [Segmented Button.js](./docs/segmented-button.md)
-- **Data Table**: [Data Table.js](./docs/data-table.md)
-- **Pagination**: [Pagination.js](./docs/pagination.md)
+- [Button](./docs/button.md)
+- [Segmented Button](./docs/segmented-button.md)
+- [Icon Button](./docs/icon-button.md)
+- [Floating Action Button](./docs/fab.md)
+- [Extended Floating Action Button](./docs/extended-fab.md)
+- [Chip](./docs/chip.md)
+
+## Layout
+
+- [Layout](./docs/layout.md)
+- [Pane](./docs/pane.md)
+
+## Dialogs & Sheets
+
+- [Card](./docs/card.md)
+- [Carousel](./docs/carousel.md)
+- [Dialog](./docs/dialog.md)
+- [Bottom Sheet](./docs/bottom-sheet.md)
+- [Side Sheet](./docs/side-sheet.md)
+- [Snackbar](./docs/snackbar.md)
+- [Tooltip](./docs/tooltip.md)
+- [Progress Indicator](./docs/progress-indicator.md)
+
+## Navigation
+
+- [List](./docs/list.md)
+- [Navigation Bar](./docs/navigation-bar.md)
+- [Navigation Drawer](./docs/navigation-drawer.md)
+- [Navigation Rail](./docs/navigation-rail.md)
+- [Tab](./docs/tab.md)
+- [Top App Bar](./docs/top-app-bar.md)
+- [Bottom App Bar](./docs/bottom-app-bar.md)
+- [Menu](./docs/menu.md)
+
+## Form Fields
+
+- [Form](./docs/form.md)
+- [Select Field](./docs/select-field.md)
+- [Text Area Field](./docs/textarea-field.md)
+- [Email Field](./docs/email-field.md)
+- [Password Field](./docs/password-field.md)
+- [URL Field](./docs/url-field.md)
+- [Search Field](./docs/search-field.md)
+- [Number Field](./docs/number-field.md)
+- [Tel Field](./docs/tel-field.md)
+- [Date Field](./docs/date-field.md)
+- [Datetime Field](./docs/datetime-field.md)
+- [Month Field](./docs/month-field.md)
+- [Time Field](./docs/time-field.md)
+- [Week Field](./docs/week-field.md)
+- [Color Field](./docs/color-field.md)
+- [File Field](./docs/file-field.md)
+- [Text Field](./docs/text-field.md)
+
+## Inputs & Controls
+
+- [Search](./docs/search.md)
+- [Checkbox](./docs/checkbox.md)
+- [Radio Button](./docs/radio-button.md)
+- [Slider](./docs/slider.md)
+- [Switch](./docs/switch.md)
+- [Date Picker](./docs/date-picker.md)
+- [Time Picker](./docs/time-picker.md)
+
+## Specialized Components
+
+- [Data Table](./docs/data-table.md)
+- [Pagination](./docs/pagination.md)
 
 ## Usage
 
@@ -99,4 +118,4 @@ This library is licensed under the [MIT License](./LICENSE). Feel free to use, m
 
 We value your feedback! If you have any questions, suggestions, or issues, please don't hesitate to [contact us](mailto:your-email@example.com).
 
-Thank you for choosing o
+Thank you for choosing our Material Design Component Library!

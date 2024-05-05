@@ -1,3 +1,7 @@
+:root {
+    --md-text-field-height: calc(56px + (4px * var(--md-density)));
+}
+
 .md-text-field {
     display: flex;
     flex-direction: column;
@@ -9,7 +13,7 @@
     @extend .md-typography--body-large;
     color: var(--md-sys-color-on-surface-variant);
     position: absolute;
-    padding: 16px 16px;
+    padding: calc((var(--md-text-field-height) - 24px) / 2) 16px;
     pointer-events: none;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
@@ -25,7 +29,7 @@
 }
 .md-text-field__native {
     width: 100%;
-    padding: 16px;
+    padding: calc((var(--md-text-field-height) - 24px) / 2) 16px;
     background: transparent;
     color: inherit;
     @extend .md-typography--body-large;
@@ -68,13 +72,13 @@
 }
 .md-text-field--populated {
     .md-text-field__label {
-        padding-top: calc(((56px - 16px) / 2) - 8px);
-        padding-bottom: calc(((56px - 16px) / 2) + 8px);
+        padding-top: calc(((var(--md-text-field-height) - 16px) / 2) - 8px);
+        padding-bottom: calc(((var(--md-text-field-height) - 16px) / 2) + 8px);
         @extend .md-typography--body-small;
     }
     .md-text-field__native {
-        padding-top: calc(((56px - 24px) / 2) + 8px);
-        padding-bottom: calc(((56px - 24px) / 2) - 8px);
+        padding-top: calc(((var(--md-text-field-height) - 24px) / 2) + 8px);
+        padding-bottom: calc(((var(--md-text-field-height) - 24px) / 2) - 8px);
     }
 }
 .md-text-field--focus {
