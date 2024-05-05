@@ -23,7 +23,7 @@ class DevSlider extends MDElement {
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <br><br><br><md-slider ui="range-selection" name="range-selection" value='[25,75]' defaultValue='[25,75]'></md-slider>
                     </div>
-                    <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="reset"></md-button>
                         <md-button type="submit" label="submit"></md-button>
                     </div>

@@ -7,7 +7,6 @@ class MDDatetimeField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            type: { type: String },
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
@@ -15,53 +14,48 @@ class MDDatetimeField extends MDElement {
             value: { type: String },
             defaultValue: { type: String },
             text: { type: String },
-            valid: { type: Boolean },
             validationMessage: { type: String },
+            error: { type: Boolean },
         };
     }
 
-    constructor() {
-        super();
-        this.type = "datetime-local";
+    get datetimeFieldNative() {
+        return this.querySelector(".md-datetime-field__native");
     }
 
     render() {
         // prettier-ignore
         return html`
             ${this.label?html`
-                <div class="md-datetime-field__label">
-                    <label class="md-datetime-field__label-text">${this.label}</label>
-                </div>
+                <div class="md-datetime-field__label">${this.label}</div>
             `:nothing}
             <div class="md-datetime-field__container">
                 <input 
                     class="md-datetime-field__native"
-                    .type="${ifDefined(this.type)}"
+                    type="datetime-local"
                     .name="${ifDefined(this.name)}"
                     .placeholder="${ifDefined(this.placeholder)}"
                     .required="${ifDefined(this.required)}"
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handleDatetimeFieldNativeFocus}"
                     @blur="${this.handleDatetimeFieldNativeBlur}"
                     @input="${this.handleDatetimeFieldNativeInput}"
                     @invalid="${this.handleDatetimeFieldNativeInvalid}"
                     @reset="${this.handleDatetimeFieldNativeReset}"
                 >
-                <div class="md-datetime-field__actions">
-                    <div 
-                        class="md-datetime-field__action"
-                        @click="${this.handleDatetimeFieldActionClick}"
-                    >calendar_clock</div>
-                </div>
+                <div class="md-datetime-field__actions"><md-icon-button class="md-datetime-field__action" .icon="${"calendar_clock"}" @click="${this.handleDatetimeFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-datetime-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-datetime-field__text">
-                    <div class="md-datetime-field__text-message">${this.validationMessage??this.text}</div>
-                </div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-datetime-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
+    }
+
+    handleDatetimeFieldActionClick(event){
+        this.datetimeFieldNative.showPicker()
     }
 
     async connectedCallback() {
@@ -74,40 +68,69 @@ class MDDatetimeField extends MDElement {
         this.classList.remove("md-datetime-field");
     }
 
-    updated(changedProperties) {}
-
-    get datetimeFieldNative() {
-        return this.querySelector(".md-datetime-field__native");
+    firstUpdated(changedProperties) {
+        this.updateClassPopulated();
     }
 
     handleDatetimeFieldNativeFocus(event) {
+        this.classList.add("md-datetime-field--focus");
         this.emit("onDatetimeFieldNativeFocus", event);
     }
 
     handleDatetimeFieldNativeBlur(event) {
+        this.classList.remove("md-datetime-field--focus");
         this.emit("onDatetimeFieldNativeBlur", event);
     }
 
     handleDatetimeFieldNativeInput(event) {
+        this.updateClassPopulated();
+        this.updateClassError();
         this.emit("onDatetimeFieldNativeInput", event);
     }
 
     handleDatetimeFieldNativeInvalid(event) {
         event.preventDefault();
-        this.valid = this.datetimeFieldNative.validity.valid;
-        this.validationMessage = this.datetimeFieldNative.validationMessage;
+        this.updateClassError();
         this.emit("onDatetimeFieldNativeInvalid", event);
     }
 
     handleDatetimeFieldNativeReset(event) {
-        this.valid = undefined;
-        this.validationMessage = undefined;
+        this.resetClassError();
+        this.resetClassPopulated();
         this.emit("onDatetimeFieldNativeReset", event);
     }
 
-    handleDatetimeFieldActionClick(event) {
-        this.datetimeFieldNative.showPicker();
+    updateClassPopulated() {
+        if (this.datetimeFieldNative.value) {
+            this.classList.add("md-datetime-field--populated");
+        } else {
+            this.classList.remove("md-datetime-field--populated");
+        }
+    }
+
+    updateClassError() {
+        this.error = !this.datetimeFieldNative.validity.valid;
+        this.validationMessage = this.datetimeFieldNative.validationMessage;
+
+        if (this.error) {
+            this.classList.add("md-datetime-field--error");
+        } else {
+            this.classList.remove("md-datetime-field--error");
+        }
+    }
+
+    resetClassPopulated() {
+        this.datetimeFieldNative.value = this.datetimeFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove("md-datetime-field--error");
     }
 }
+
 customElements.define("md-datetime-field", MDDatetimeField);
+
 export { MDDatetimeField };

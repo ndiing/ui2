@@ -28,15 +28,15 @@ class DevDataTable extends MDElement {
         // prettier-ignore
         return html`
             <!-- <div class="md-layout--column md-layout--fit" >
-                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4 md-layout--fit"> -->
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4 md-layout--fit"> -->
                     <md-data-table
                         id="table"
                         .columns="${this.columns}"
                         .rows="${this.rows}"
                     ></md-data-table>
                 <!-- </div>
-                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4"></div>
-                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4"></div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4"></div>
             </div> -->
         `;
     }

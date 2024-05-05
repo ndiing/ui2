@@ -7,7 +7,6 @@ class MDSelectField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            type: { type: String },
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
@@ -15,61 +14,42 @@ class MDSelectField extends MDElement {
             value: { type: String },
             defaultValue: { type: String },
             text: { type: String },
-            valid: { type: Boolean },
             validationMessage: { type: String },
+            error: { type: Boolean },
         };
     }
 
-    constructor() {
-        super();
-        this.type = "text";
+    get selectFieldNative() {
+        return this.querySelector(".md-select-field__native");
     }
 
     render() {
         // prettier-ignore
         return html`
             ${this.label?html`
-                <div class="md-select-field__label">
-                    <label class="md-select-field__label-text">${this.label}</label>
-                </div>
+                <div class="md-select-field__label">${this.label}</div>
             `:nothing}
             <div class="md-select-field__container">
                 <input 
                     class="md-select-field__native"
-                    .type="${ifDefined(this.type)}"
+                    type="text"
                     .name="${ifDefined(this.name)}"
                     .placeholder="${ifDefined(this.placeholder)}"
                     .required="${ifDefined(this.required)}"
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handleSelectFieldNativeFocus}"
                     @blur="${this.handleSelectFieldNativeBlur}"
                     @input="${this.handleSelectFieldNativeInput}"
                     @invalid="${this.handleSelectFieldNativeInvalid}"
                     @reset="${this.handleSelectFieldNativeReset}"
                 >
-                <div class="md-select-field__actions">
-                    <div 
-                        class="md-select-field__action"
-                        @click="${this.handleSelectFieldActionClick}"
-                    >arrow_drop_down</div>
-                </div>
-                <md-menu 
-                    class="md-select-field__menu"
-                    .list="${[
-                        {label:'label1',value:'value1'},
-                        {label:'label2',value:'value2'},
-                        {label:'label3',value:'value3'},
-                        {label:'label4',value:'value4'},
-                    ]}"
-                    @onListItemClick="${this.handleSelectFieldListContainerClick}"
-                ></md-menu>
+                <div class="md-select-field__actions">${this.error?html`<md-icon class="md-select-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-select-field__text">
-                    <div class="md-select-field__text-message">${this.validationMessage??this.text}</div>
-                </div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-select-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
     }
@@ -84,58 +64,69 @@ class MDSelectField extends MDElement {
         this.classList.remove("md-select-field");
     }
 
-    updated(changedProperties) {}
-
-    get selectFieldNative() {
-        return this.querySelector(".md-select-field__native");
-    }
-
-    get selectFieldContainer() {
-        return this.querySelector(".md-select-field__container");
-    }
-
-    get selectFieldMenu() {
-        return this.querySelector(".md-select-field__menu");
+    firstUpdated(changedProperties) {
+        this.updateClassPopulated();
     }
 
     handleSelectFieldNativeFocus(event) {
+        this.classList.add("md-select-field--focus");
         this.emit("onSelectFieldNativeFocus", event);
     }
 
     handleSelectFieldNativeBlur(event) {
+        this.classList.remove("md-select-field--focus");
         this.emit("onSelectFieldNativeBlur", event);
     }
 
     handleSelectFieldNativeInput(event) {
+        this.updateClassPopulated();
+        this.updateClassError();
         this.emit("onSelectFieldNativeInput", event);
     }
 
     handleSelectFieldNativeInvalid(event) {
         event.preventDefault();
-        this.valid = this.selectFieldNative.validity.valid;
-        this.validationMessage = this.selectFieldNative.validationMessage;
+        this.updateClassError();
         this.emit("onSelectFieldNativeInvalid", event);
     }
 
     handleSelectFieldNativeReset(event) {
-        this.valid = undefined;
-        this.validationMessage = undefined;
+        this.resetClassError();
+        this.resetClassPopulated();
         this.emit("onSelectFieldNativeReset", event);
     }
 
-    handleSelectFieldActionClick(event) {
-        const rect=this.selectFieldContainer.getBoundingClientRect()
-        this.selectFieldMenu.style.width=rect.width+'px'
-        this.selectFieldMenu.style.minWidth=rect.width+'px'
-        this.selectFieldMenu.style.maxWidth=rect.width+'px'
-        this.selectFieldMenu.show(this.selectFieldContainer,{
-
-        })
+    updateClassPopulated() {
+        if (this.selectFieldNative.value) {
+            this.classList.add("md-select-field--populated");
+        } else {
+            this.classList.remove("md-select-field--populated");
+        }
     }
 
-    handleSelectFieldListContainerClick(event){
-        console.log(event)
+    updateClassError() {
+        this.error = !this.selectFieldNative.validity.valid;
+        this.validationMessage = this.selectFieldNative.validationMessage;
+
+        if (this.error) {
+            this.classList.add("md-select-field--error");
+        } else {
+            this.classList.remove("md-select-field--error");
+        }
+    }
+
+    resetClassPopulated() {
+        this.selectFieldNative.value = this.selectFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove("md-select-field--error");
     }
 }
+
 customElements.define("md-select-field", MDSelectField);
+
 export { MDSelectField };

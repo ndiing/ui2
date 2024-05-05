@@ -7,7 +7,6 @@ class MDPasswordField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            
             type: { type: String },
             name: { type: String },
             placeholder: { type: String },
@@ -15,15 +14,13 @@ class MDPasswordField extends MDElement {
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
-
             text: { type: String },
-            
             validationMessage: { type: String },
             error: { type: Boolean },
         };
     }
 
-    get textFieldNative() {
+    get passwordFieldNative() {
         return this.querySelector(".md-password-field__native");
     }
 
@@ -63,6 +60,14 @@ class MDPasswordField extends MDElement {
         `
     }
 
+    handlePasswordFieldActionClick(event){
+        if(this.type==='password'){
+            this.type='text'
+        }else{
+            this.type='password'
+        }
+    }
+
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-password-field");
@@ -78,78 +83,64 @@ class MDPasswordField extends MDElement {
     }
 
     handlePasswordFieldNativeFocus(event) {
-        this.classList.add('md-password-field--focus')
-
+        this.classList.add("md-password-field--focus");
         this.emit("onPasswordFieldNativeFocus", event);
     }
-    
-    handlePasswordFieldNativeBlur(event) {
-        this.classList.remove('md-password-field--focus')
 
+    handlePasswordFieldNativeBlur(event) {
+        this.classList.remove("md-password-field--focus");
         this.emit("onPasswordFieldNativeBlur", event);
     }
 
     handlePasswordFieldNativeInput(event) {
         this.updateClassPopulated();
-
         this.updateClassError();
-
         this.emit("onPasswordFieldNativeInput", event);
     }
 
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.updateClassError();
-
         this.emit("onPasswordFieldNativeInvalid", event);
     }
-    
+
     handlePasswordFieldNativeReset(event) {
         this.resetClassError();
-
         this.resetClassPopulated();
-
         this.emit("onPasswordFieldNativeReset", event);
     }
 
     updateClassPopulated() {
-        if (this.textFieldNative.value) {
-            this.classList.add('md-password-field--populated');
+        if (this.passwordFieldNative.value) {
+            this.classList.add("md-password-field--populated");
         } else {
-            this.classList.remove('md-password-field--populated');
+            this.classList.remove("md-password-field--populated");
         }
     }
 
     updateClassError() {
-        this.error = !this.textFieldNative.validity.valid;
-        this.validationMessage = this.textFieldNative.validationMessage;
+        this.error = !this.passwordFieldNative.validity.valid;
+        this.validationMessage = this.passwordFieldNative.validationMessage;
+
         if (this.error) {
-            this.classList.add('md-password-field--error');
+            this.classList.add("md-password-field--error");
         } else {
-            this.classList.remove('md-password-field--error');
+            this.classList.remove("md-password-field--error");
         }
     }
 
     resetClassPopulated() {
-        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.passwordFieldNative.value = this.passwordFieldNative.defaultValue;
         this.updateClassPopulated();
     }
 
     resetClassError() {
         this.error = false;
         this.validationMessage = undefined;
-        this.classList.remove('md-password-field--error');
-    }
-
-    handlePasswordFieldActionClick(){
-        if(this.type==='password'){
-            this.type='text'
-        }
-        else {
-            this.type='password'
-        }
+        this.classList.remove("md-password-field--error");
     }
 }
+
 customElements.define("md-password-field", MDPasswordField);
+
 export { MDPasswordField };

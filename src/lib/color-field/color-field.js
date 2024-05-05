@@ -7,7 +7,6 @@ class MDColorField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            type: { type: String },
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
@@ -15,62 +14,65 @@ class MDColorField extends MDElement {
             value: { type: String },
             defaultValue: { type: String },
             text: { type: String },
-            valid: { type: Boolean },
             validationMessage: { type: String },
+            error: { type: Boolean },
         };
     }
 
-    constructor() {
-        super();
-        this.type = "color";
+    get textFieldNative() {
+        return this.querySelector('input[type="text"].md-color-field__native');
+    }
+
+    get colorFieldNative() {
+        return this.querySelector('input[type="color"].md-color-field__native');
+    }
+
+    constructor(){
+        super()
+        this.value='#000000'
+        this.defaultValue='#000000'
     }
 
     render() {
         // prettier-ignore
         return html`
             ${this.label?html`
-                <div class="md-color-field__label">
-                    <label class="md-color-field__label-text">${this.label}</label>
-                </div>
+                <div class="md-color-field__label">${this.label}</div>
             `:nothing}
             <div class="md-color-field__container">
                 <input 
-                    class="md-text-field__native"
-                    .type="${"text"}"
-                    .name="${ifDefined(this.name)}"
-                    .placeholder="${ifDefined(this.placeholder)}"
-                    .required="${ifDefined(this.required)}"
+                    class="md-color-field__native"
+                    type="text"
                     .readOnly="${true}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
                 >
                 <input 
                     class="md-color-field__native"
-                    .type="${"color"}"
+                    type="color"
+                    .name="${ifDefined(this.name)}"
                     .placeholder="${ifDefined(this.placeholder)}"
                     .required="${ifDefined(this.required)}"
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handleColorFieldNativeFocus}"
                     @blur="${this.handleColorFieldNativeBlur}"
                     @input="${this.handleColorFieldNativeInput}"
                     @invalid="${this.handleColorFieldNativeInvalid}"
                     @reset="${this.handleColorFieldNativeReset}"
                 >
-                <div class="md-color-field__actions">
-                    <div 
-                        class="md-color-field__action"
-                        @click="${this.handleColorFieldActionClick}"
-                    >palette</div>
-                </div>
+                <div class="md-color-field__actions"><md-icon-button class="md-color-field__action" .icon="${"palette"}" @click="${this.handleColorFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-color-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-color-field__text">
-                    <div class="md-color-field__text-message">${this.validationMessage??this.text}</div>
-                </div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-color-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
+    }
+
+    handleColorFieldActionClick(event){
+        this.colorFieldNative.showPicker()
     }
 
     async connectedCallback() {
@@ -83,51 +85,70 @@ class MDColorField extends MDElement {
         this.classList.remove("md-color-field");
     }
 
-    async firstUpdated(changedProperties) {
-        await this.updateComplete
-        this.value=this.colorFieldNative.value
-        this.defaultValue=this.colorFieldNative.value
-    }
-
-    updated(changedProperties) {}
-
-    get textFieldNative() {
-        return this.querySelector(".md-text-field__native");
-    }
-
-    get colorFieldNative() {
-        return this.querySelector(".md-color-field__native");
+    firstUpdated(changedProperties) {
+        this.updateClassPopulated();
     }
 
     handleColorFieldNativeFocus(event) {
+        this.classList.add("md-color-field--focus");
         this.emit("onColorFieldNativeFocus", event);
     }
 
     handleColorFieldNativeBlur(event) {
+        this.classList.remove("md-color-field--focus");
         this.emit("onColorFieldNativeBlur", event);
     }
 
     handleColorFieldNativeInput(event) {
         this.value=this.colorFieldNative.value
+        this.updateClassPopulated();
+        this.updateClassError();
         this.emit("onColorFieldNativeInput", event);
     }
 
     handleColorFieldNativeInvalid(event) {
         event.preventDefault();
-        this.valid = this.colorFieldNative.validity.valid;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.updateClassError();
         this.emit("onColorFieldNativeInvalid", event);
     }
 
     handleColorFieldNativeReset(event) {
-        this.valid = undefined;
-        this.validationMessage = undefined;
+        this.resetClassError();
+        this.resetClassPopulated();
         this.emit("onColorFieldNativeReset", event);
     }
 
-    handleColorFieldActionClick(event) {
-        this.colorFieldNative.showPicker();
+    updateClassPopulated() {
+        if (this.colorFieldNative.value) {
+            this.classList.add("md-color-field--populated");
+        } else {
+            this.classList.remove("md-color-field--populated");
+        }
+    }
+
+    updateClassError() {
+        this.error = !this.colorFieldNative.validity.valid;
+        this.validationMessage = this.colorFieldNative.validationMessage;
+
+        if (this.error) {
+            this.classList.add("md-color-field--error");
+        } else {
+            this.classList.remove("md-color-field--error");
+        }
+    }
+
+    resetClassPopulated() {
+        this.colorFieldNative.value = this.colorFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove("md-color-field--error");
     }
 }
+
 customElements.define("md-color-field", MDColorField);
+
 export { MDColorField };

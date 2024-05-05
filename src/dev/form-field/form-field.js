@@ -8,7 +8,7 @@ class DevFormField extends MDElement {
         return html`
             <md-form-field @onFormFieldNativeSubmit="${console.log}">
                 <div class="md-layout--column" style="margin:24px;">                    
-                    <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <label for="">email</label>
                         <br>
                         <input type="email">
@@ -138,7 +138,7 @@ class DevFormField extends MDElement {
                         <button></button>
                     </div>
                     
-                    <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>

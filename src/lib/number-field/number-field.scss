@@ -1,71 +1,107 @@
+:root {
+    --md-number-field-height: calc(56px + (4px * var(--md-density)));
+}
 
 .md-number-field {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
 }
-
 .md-number-field__label {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-}
-
-.md-number-field__label-text {
-  @extend .md-typography--body-large;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: transparent;
-  color: var(--md-sys-color-on-surface-variant);
-}
-
-.md-number-field__container {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  background: var(--md-sys-color-surface-container-highest);
-  color: var(--md-sys-color-on-surface);
-}
-
-.md-number-field__native {
-  @extend .md-typography--body-large;
-  width: 100%;
-  height: 56px;
-  padding: 0 16px;
-  background: transparent;
-  color: inherit;
-
-  &::placeholder {
+    padding: 0 16px;
+    @extend .md-typography--body-large;
     color: var(--md-sys-color-on-surface-variant);
-  }
-
-  &::-webkit-inner-spin-button {
-    appearance: none;
-  }
+    position: absolute;
+    padding: calc((var(--md-number-field-height) - 24px) / 2) 16px;
+    pointer-events: none;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: var(--md-sys-motion-easing-standard);
 }
-
+.md-number-field__container {
+    display: flex;
+    align-items: center;
+    border-radius: var(--md-sys-shape-corner-extra-small-top);
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface);
+    box-shadow: inset 0 -1px 0 0 var(--md-sys-color-on-surface-variant);
+}
+.md-number-field__native {
+    height: var(--md-number-field-height);
+    width: 100%;
+    padding: calc((var(--md-number-field-height) - 24px) / 2) 16px;
+    background: transparent;
+    color: inherit;
+    @extend .md-typography--body-large;
+    // transition-property: all;
+    // transition-duration: var(--md-sys-motion-duration-short4);
+    // transition-timing-function: var(--md-sys-motion-easing-standard);
+    &::placeholder {
+        color: var(--md-sys-color-on-surface-variant);
+    }
+    + .md-number-field__actions {
+        margin-left: -12px;
+    }
+}
 .md-number-field__text {
-  display: flex;
-  align-items: center;
-  height: 24px;
-  padding: 0 16px;
-  margin: 4px 0 0 0;
+    padding: 0 16px;
+    @extend .md-typography--body-small;
+    color: var(--md-sys-color-on-surface-variant);
 }
-
-.md-number-field__text-message {
-  @extend .md-typography--body-small;
-}
-
 .md-number-field__actions {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 12px;
-  gap: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 12px;
+    gap: 0 8px;
+    &:empty{
+        padding: 0;
+        margin: 0;
+    }
+    + .md-number-field__native {
+        margin-left: -12px;
+    }
 }
+// .md-number-field__action{}
 
-.md-number-field__action {
-  @extend .md-icon;
-  @extend .md-ripple;
-  @extend .md-ripple--button;
+.md-number-field:not(.md-number-field--populated):not(.md-number-field--focus) {
+    .md-number-field__native {
+        &::placeholder {
+            visibility: hidden;
+        }
+    }
+}
+.md-number-field--populated {
+    .md-number-field__label {
+        padding-top: calc(((var(--md-number-field-height) - 16px) / 2) - 8px);
+        padding-bottom: calc(((var(--md-number-field-height) - 16px) / 2) + 8px);
+        @extend .md-typography--body-small;
+    }
+    .md-number-field__native {
+        padding-top: calc(((var(--md-number-field-height) - 24px) / 2) + 8px);
+        padding-bottom: calc(((var(--md-number-field-height) - 24px) / 2) - 8px);
+    }
+}
+.md-number-field--focus {
+    @extend .md-number-field--populated;
+    .md-number-field__label {
+        color: var(--md-sys-color-primary);
+    }
+    .md-number-field__container {
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
+    }
+}
+.md-number-field--error {
+    .md-number-field__label {
+        color: var(--md-sys-color-error);
+    }
+    .md-number-field__container {
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);
+    }
+    .md-number-field__icon {
+        color: var(--md-sys-color-error);
+    }
+    .md-number-field__text {
+        color: var(--md-sys-color-error);
+    }
 }

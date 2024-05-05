@@ -1,3 +1,29 @@
+
+// 
+// 
+// 
+
+input::-webkit-search-cancel-button,
+input::-webkit-inner-spin-button,
+input[type="week" i]::-webkit-calendar-picker-indicator,
+input[type="time" i]::-webkit-calendar-picker-indicator,
+input[type="month" i]::-webkit-calendar-picker-indicator,
+input[type="datetime-local" i]::-webkit-calendar-picker-indicator,
+input[type="date" i]::-webkit-calendar-picker-indicator,
+input[type="color" i]::-webkit-color-swatch-wrapper,
+input[type="color" i]::-webkit-color-swatch,
+input[type="file" i]::-webkit-file-upload-button{
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 0;
+    height: 0;
+}
+// 
+// 
+// 
+
 :root {
     --md-text-field-height: calc(56px + (4px * var(--md-density)));
 }
@@ -104,3 +130,24 @@
         color: var(--md-sys-color-error);
     }
 }
+
+// 
+// 
+// 
+.md-week-field:not(.md-week-field--populated):not(.md-week-field--focus),
+.md-time-field:not(.md-time-field--populated):not(.md-time-field--focus),
+.md-month-field:not(.md-month-field--populated):not(.md-month-field--focus),
+.md-datetime-field:not(.md-datetime-field--populated):not(.md-datetime-field--focus),
+.md-date-field:not(.md-date-field--populated):not(.md-date-field--focus) {
+    .md-week-field__native::-webkit-datetime-edit,
+    .md-time-field__native::-webkit-datetime-edit,
+    .md-month-field__native::-webkit-datetime-edit,
+    .md-datetime-field__native::-webkit-datetime-edit,
+    .md-date-field__native::-webkit-datetime-edit {
+        visibility: hidden;
+    }
+}
+
+// 
+// 
+// 

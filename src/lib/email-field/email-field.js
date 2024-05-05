@@ -7,22 +7,19 @@ class MDEmailField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
-
             text: { type: String },
-            
             validationMessage: { type: String },
             error: { type: Boolean },
         };
     }
 
-    get textFieldNative() {
+    get emailFieldNative() {
         return this.querySelector(".md-email-field__native");
     }
 
@@ -72,69 +69,64 @@ class MDEmailField extends MDElement {
     }
 
     handleEmailFieldNativeFocus(event) {
-        this.classList.add('md-email-field--focus')
-
+        this.classList.add("md-email-field--focus");
         this.emit("onEmailFieldNativeFocus", event);
     }
-    
-    handleEmailFieldNativeBlur(event) {
-        this.classList.remove('md-email-field--focus')
 
+    handleEmailFieldNativeBlur(event) {
+        this.classList.remove("md-email-field--focus");
         this.emit("onEmailFieldNativeBlur", event);
     }
 
     handleEmailFieldNativeInput(event) {
         this.updateClassPopulated();
-
         this.updateClassError();
-
         this.emit("onEmailFieldNativeInput", event);
     }
 
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.updateClassError();
-
         this.emit("onEmailFieldNativeInvalid", event);
     }
-    
+
     handleEmailFieldNativeReset(event) {
         this.resetClassError();
-
         this.resetClassPopulated();
-
         this.emit("onEmailFieldNativeReset", event);
     }
 
     updateClassPopulated() {
-        if (this.textFieldNative.value) {
-            this.classList.add('md-email-field--populated');
+        if (this.emailFieldNative.value) {
+            this.classList.add("md-email-field--populated");
         } else {
-            this.classList.remove('md-email-field--populated');
+            this.classList.remove("md-email-field--populated");
         }
     }
 
     updateClassError() {
-        this.error = !this.textFieldNative.validity.valid;
-        this.validationMessage = this.textFieldNative.validationMessage;
+        this.error = !this.emailFieldNative.validity.valid;
+        this.validationMessage = this.emailFieldNative.validationMessage;
+
         if (this.error) {
-            this.classList.add('md-email-field--error');
+            this.classList.add("md-email-field--error");
         } else {
-            this.classList.remove('md-email-field--error');
+            this.classList.remove("md-email-field--error");
         }
     }
 
     resetClassPopulated() {
-        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.emailFieldNative.value = this.emailFieldNative.defaultValue;
         this.updateClassPopulated();
     }
 
     resetClassError() {
         this.error = false;
         this.validationMessage = undefined;
-        this.classList.remove('md-email-field--error');
+        this.classList.remove("md-email-field--error");
     }
 }
+
 customElements.define("md-email-field", MDEmailField);
+
 export { MDEmailField };

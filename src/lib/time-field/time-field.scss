@@ -1,88 +1,107 @@
+:root {
+    --md-time-field-height: calc(56px + (4px * var(--md-density)));
+}
 
 .md-time-field {
     display: flex;
     flex-direction: column;
+    gap: 4px;
+    position: relative;
 }
-
 .md-time-field__label {
-    display: flex;
-    align-items: center;
-    height: 40px;
     padding: 0 16px;
-}
-
-.md-time-field__label-text {
     @extend .md-typography--body-large;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background: transparent;
     color: var(--md-sys-color-on-surface-variant);
+    position: absolute;
+    padding: calc((var(--md-time-field-height) - 24px) / 2) 16px;
+    pointer-events: none;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: var(--md-sys-motion-easing-standard);
 }
-
 .md-time-field__container {
     display: flex;
     align-items: center;
-    border-radius: 4px;
+    border-radius: var(--md-sys-shape-corner-extra-small-top);
     background: var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface);
+    box-shadow: inset 0 -1px 0 0 var(--md-sys-color-on-surface-variant);
 }
-
 .md-time-field__native {
-    @extend .md-typography--body-large;
+    height: var(--md-time-field-height);
     width: 100%;
-    height: 56px;
-    padding: 0 16px;
+    padding: calc((var(--md-time-field-height) - 24px) / 2) 16px;
     background: transparent;
     color: inherit;
-
+    @extend .md-typography--body-large;
+    // transition-property: all;
+    // transition-duration: var(--md-sys-motion-duration-short4);
+    // transition-timing-function: var(--md-sys-motion-easing-standard);
     &::placeholder {
         color: var(--md-sys-color-on-surface-variant);
     }
-
-    &::-webkit-time-edit {
-    }
-
-    &::-webkit-time-edit-fields-wrapper {
-        padding: 0;
-    }
-
-    &::-webkit-time-edit-day-field {
-        padding: 0;
-    }
-
-    &::-webkit-time-edit-text {
-    }
-
-    &::-webkit-calendar-picker-indicator {
-        background: none;
-        margin: 0;
-        padding: 0;
-        width: 0;
-        height: 0;
+    + .md-time-field__actions {
+        margin-left: -12px;
     }
 }
-
 .md-time-field__text {
-    display: flex;
-    align-items: center;
-    height: 24px;
     padding: 0 16px;
-    margin: 4px 0 0 0;
-}
-
-.md-time-field__text-message {
     @extend .md-typography--body-small;
+    color: var(--md-sys-color-on-surface-variant);
 }
-
 .md-time-field__actions {
     display: inline-flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 16px 12px;
+    gap: 0 8px;
+    &:empty{
+        padding: 0;
+        margin: 0;
+    }
+    + .md-time-field__native {
+        margin-left: -12px;
+    }
 }
+// .md-time-field__action{}
 
-.md-time-field__action {
-    @extend .md-icon;
-    @extend .md-ripple;
-    @extend .md-ripple--button;
+.md-time-field:not(.md-time-field--populated):not(.md-time-field--focus) {
+    .md-time-field__native {
+        &::placeholder {
+            visibility: hidden;
+        }
+    }
+}
+.md-time-field--populated {
+    .md-time-field__label {
+        padding-top: calc(((var(--md-time-field-height) - 16px) / 2) - 8px);
+        padding-bottom: calc(((var(--md-time-field-height) - 16px) / 2) + 8px);
+        @extend .md-typography--body-small;
+    }
+    .md-time-field__native {
+        padding-top: calc(((var(--md-time-field-height) - 24px) / 2) + 8px);
+        padding-bottom: calc(((var(--md-time-field-height) - 24px) / 2) - 8px);
+    }
+}
+.md-time-field--focus {
+    @extend .md-time-field--populated;
+    .md-time-field__label {
+        color: var(--md-sys-color-primary);
+    }
+    .md-time-field__container {
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
+    }
+}
+.md-time-field--error {
+    .md-time-field__label {
+        color: var(--md-sys-color-error);
+    }
+    .md-time-field__container {
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);
+    }
+    .md-time-field__icon {
+        color: var(--md-sys-color-error);
+    }
+    .md-time-field__text {
+        color: var(--md-sys-color-error);
+    }
 }

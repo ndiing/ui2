@@ -7,22 +7,19 @@ class MDUrlField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
-
             text: { type: String },
-            
             validationMessage: { type: String },
             error: { type: Boolean },
         };
     }
 
-    get textFieldNative() {
+    get urlFieldNative() {
         return this.querySelector(".md-url-field__native");
     }
 
@@ -72,69 +69,64 @@ class MDUrlField extends MDElement {
     }
 
     handleUrlFieldNativeFocus(event) {
-        this.classList.add('md-url-field--focus')
-
+        this.classList.add("md-url-field--focus");
         this.emit("onUrlFieldNativeFocus", event);
     }
-    
-    handleUrlFieldNativeBlur(event) {
-        this.classList.remove('md-url-field--focus')
 
+    handleUrlFieldNativeBlur(event) {
+        this.classList.remove("md-url-field--focus");
         this.emit("onUrlFieldNativeBlur", event);
     }
 
     handleUrlFieldNativeInput(event) {
         this.updateClassPopulated();
-
         this.updateClassError();
-
         this.emit("onUrlFieldNativeInput", event);
     }
 
     handleUrlFieldNativeInvalid(event) {
         event.preventDefault();
-
         this.updateClassError();
-
         this.emit("onUrlFieldNativeInvalid", event);
     }
-    
+
     handleUrlFieldNativeReset(event) {
         this.resetClassError();
-
         this.resetClassPopulated();
-
         this.emit("onUrlFieldNativeReset", event);
     }
 
     updateClassPopulated() {
-        if (this.textFieldNative.value) {
-            this.classList.add('md-url-field--populated');
+        if (this.urlFieldNative.value) {
+            this.classList.add("md-url-field--populated");
         } else {
-            this.classList.remove('md-url-field--populated');
+            this.classList.remove("md-url-field--populated");
         }
     }
 
     updateClassError() {
-        this.error = !this.textFieldNative.validity.valid;
-        this.validationMessage = this.textFieldNative.validationMessage;
+        this.error = !this.urlFieldNative.validity.valid;
+        this.validationMessage = this.urlFieldNative.validationMessage;
+
         if (this.error) {
-            this.classList.add('md-url-field--error');
+            this.classList.add("md-url-field--error");
         } else {
-            this.classList.remove('md-url-field--error');
+            this.classList.remove("md-url-field--error");
         }
     }
 
     resetClassPopulated() {
-        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.urlFieldNative.value = this.urlFieldNative.defaultValue;
         this.updateClassPopulated();
     }
 
     resetClassError() {
         this.error = false;
         this.validationMessage = undefined;
-        this.classList.remove('md-url-field--error');
+        this.classList.remove("md-url-field--error");
     }
 }
+
 customElements.define("md-url-field", MDUrlField);
+
 export { MDUrlField };
