@@ -99,6 +99,7 @@
             visibility: hidden;
         }
     }
+    &.md-file-field,
     &.md-file-field--focus,
     &.md-file-field--populated {
         .md-file-field__label {
@@ -168,6 +169,7 @@
             visibility: hidden;
         }
     }
+    &.md-file-field,
     &.md-file-field--focus,
     &.md-file-field--populated {
         .md-file-field__label {
