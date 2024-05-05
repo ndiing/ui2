@@ -78,19 +78,16 @@ class MDSideSheet extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-side-sheet");
-
         this.sideSheetScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.sideSheetScrimElement, this.nextElementSibling);
         this.sideSheetScrimElement.classList.add("md-side-sheet__scrim");
         this.handleSideSheetScrimClick = this.handleSideSheetScrimClick.bind(this);
         this.sideSheetScrimElement.addEventListener("click", this.handleSideSheetScrimClick);
-
-
         this.updateStyle();
     }
 
     updateStyle() {
-        if (this.ui?.includes("modal")) {
+        if ( ( this.ui?.includes("modal"))) {
             if (this.open) {
                 this.sideSheetScrimElement.classList.add("md-side-sheet--open");
             } else {
@@ -102,24 +99,23 @@ class MDSideSheet extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-side-sheet");
-
         this.sideSheetScrimElement.remove();
         this.sideSheetScrimElement.removeEventListener("click", this.handleSideSheetScrimClick);
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                "modal",
-            ].forEach((ui) => {
+            ["modal"].forEach((ui) => {
                 this.classList.remove("md-side-sheet--" + ui);
             });
+
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-side-sheet--" + ui);
                 });
             }
         }
+
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-side-sheet--open");
@@ -146,6 +142,7 @@ class MDSideSheet extends MDElement {
     show() {
         this.open = true;
     }
+
     close() {
         this.open = false;
     }

@@ -10,7 +10,7 @@ class DevTooltip extends MDElement {
             <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tooltip id="tooltip">Lorem, ipsum.</md-tooltip>
-                    <md-button label="tooltip" 
+                    <md-button ui="filled-tonal" label="tooltip" 
                         @click="${this.handleClick}"
                         @mouseenter="${this.handleMouseenter}"
                         @mouseleave="${this.handleMouseleave}"
@@ -18,15 +18,12 @@ class DevTooltip extends MDElement {
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tooltip id="tooltip2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, doloribus.</md-tooltip>
-                    <md-button label="tooltip" 
+                    <md-button ui="filled-tonal" label="tooltip" 
                         @click="${this.handleClick2}"
                         @mouseenter="${this.handleMouseenter2}"
                         @mouseleave="${this.handleMouseleave2}"
                     ></md-button>
-                    
                 </div>
-                
-                
             </div>
         `;
     }

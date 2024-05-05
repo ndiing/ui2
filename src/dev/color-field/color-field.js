@@ -20,8 +20,8 @@ class DevColorField extends MDElement {
                         <md-color-field label="Color Field" text="Text content" name="text3" value="value" defaultValue="value"></md-color-field>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <md-button type="reset" label="Reset"></md-button>
-                        <md-button type="submit" label="Submit"></md-button>
+                        <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
+                        <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>
                 </div>
             </md-form>

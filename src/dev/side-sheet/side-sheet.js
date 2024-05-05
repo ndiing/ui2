@@ -7,13 +7,15 @@ class DevSideSheet extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--east md-layout--fit">
+                <div class="md-layout__item--east ">
                     <md-side-sheet 
                         id="sideSheet1"
                         @onSideSheetActionClick="${this.handleClick1}"
                         @onSideSheetButtonClick="${this.handleClick1}"
                         leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >body</md-side-sheet>
+                    >
+                        body
+                    </md-side-sheet>
                     
                     <md-side-sheet 
                         ui="modal"
@@ -21,7 +23,9 @@ class DevSideSheet extends MDElement {
                         @onSideSheetActionClick="${this.handleClick2}"
                         @onSideSheetButtonClick="${this.handleClick2}"
                         leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >body</md-side-sheet>
+                    >
+                        body
+                    </md-side-sheet>
                     
                 </div>
                 <div class="md-layout__item--center" style="padding:24px;">

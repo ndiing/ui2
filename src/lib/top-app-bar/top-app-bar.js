@@ -8,15 +8,12 @@ class MDTopAppBar extends MDElement {
             leadingActions: { type: Array },
             label: { type: String },
             trailingActions: { type: Array },
-            buttons: { type: Array },
-            ui: { type: String },
             open: { type: Boolean, reflect: true },
         };
     }
 
     constructor() {
         super();
-        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -61,55 +58,22 @@ class MDTopAppBar extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-top-app-bar");
-
-        this.topAppBarScrimElement = document.createElement("div");
-        this.parentElement.insertBefore(this.topAppBarScrimElement, this.nextElementSibling);
-        this.topAppBarScrimElement.classList.add("md-top-app-bar__scrim");
-        this.handleTopAppBarScrimClick = this.handleTopAppBarScrimClick.bind(this);
-        this.topAppBarScrimElement.addEventListener("click", this.handleTopAppBarScrimClick);
-
-
-        this.updateStyle();
     }
 
-    updateStyle() {
-        if (this.ui?.includes("modal")) {
-            if (this.open) {
-                this.topAppBarScrimElement.classList.add("md-top-app-bar--open");
-            } else {
-                this.topAppBarScrimElement.classList.remove("md-top-app-bar--open");
-            }
-        }
-    }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-top-app-bar");
-
-        this.topAppBarScrimElement.remove();
-        this.topAppBarScrimElement.removeEventListener("click", this.handleTopAppBarScrimClick);
     }
 
     updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            [
-                "modal",
-            ].forEach((ui) => {
-                this.classList.remove("md-top-app-bar--" + ui);
-            });
-            if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-top-app-bar--" + ui);
-                });
-            }
-        }
+
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-top-app-bar--open");
             } else {
                 this.classList.remove("md-top-app-bar--open");
             }
-            this.updateStyle();
         }
     }
 
@@ -121,14 +85,11 @@ class MDTopAppBar extends MDElement {
         this.emit("onTopAppBarButtonClick", event);
     }
 
-    handleTopAppBarScrimClick(event) {
-        this.close();
-        this.emit("onTopAppBarScrimClick", event);
-    }
 
     show() {
         this.open = true;
     }
+
     close() {
         this.open = false;
     }

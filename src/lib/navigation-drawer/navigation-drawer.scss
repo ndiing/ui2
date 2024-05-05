@@ -49,6 +49,8 @@
     left: 0;
     top: 0;
 
+    // @media (max-width: 599px) {}
+
     &.md-navigation-drawer--modal {
         border-radius: var(--md-sys-shape-corner-large-end);
     }

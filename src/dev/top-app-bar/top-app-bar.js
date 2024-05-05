@@ -9,8 +9,7 @@ class DevTopAppBar extends MDElement {
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--north">
                     <md-top-app-bar
-                        id="topAppBar"
-                        open
+                        id="topAppBar1"
                         .leadingActions="${[
                             {icon:"image"},
                         ]}"
@@ -22,16 +21,16 @@ class DevTopAppBar extends MDElement {
                         ]}"
                     ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--center">
-                    <md-button label="top app bar" @click="${this.handleClick}"></md-button>
+                <div class="md-layout__item--center" style="padding:24px;">
+                    <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick1}"></md-button>
                 </div>
             </div>
         `;
     }
 
-    handleClick(){
-        if(topAppBar.open)topAppBar.close()
-            else topAppBar.show()
+    handleClick1() {
+        if (topAppBar1.open) topAppBar1.close();
+        else topAppBar1.show();
     }
 }
 
