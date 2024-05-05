@@ -90,6 +90,19 @@ class MDColorField extends MDElement {
         this.updateClassPopulated();
     }
 
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["filled", "outlined"].forEach((ui) => {
+                this.classList.remove("md-text-field--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-text-field--" + ui);
+                });
+            }
+        }
+    }
+
     handleColorFieldNativeFocus(event) {
         this.classList.add("md-color-field--focus");
         this.emit("onColorFieldNativeFocus", event);

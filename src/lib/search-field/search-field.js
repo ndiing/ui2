@@ -76,6 +76,19 @@ class MDSearchField extends MDElement {
         this.updateClassPopulated();
     }
 
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["filled", "outlined"].forEach((ui) => {
+                this.classList.remove("md-text-field--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-text-field--" + ui);
+                });
+            }
+        }
+    }
+
     handleSearchFieldNativeFocus(event) {
         this.classList.add("md-search-field--focus");
         this.emit("onSearchFieldNativeFocus", event);

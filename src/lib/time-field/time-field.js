@@ -73,6 +73,19 @@ class MDTimeField extends MDElement {
         this.updateClassPopulated();
     }
 
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["filled", "outlined"].forEach((ui) => {
+                this.classList.remove("md-text-field--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-text-field--" + ui);
+                });
+            }
+        }
+    }
+
     handleTimeFieldNativeFocus(event) {
         this.classList.add("md-time-field--focus");
         this.emit("onTimeFieldNativeFocus", event);

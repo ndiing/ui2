@@ -73,6 +73,19 @@ class MDDatetimeField extends MDElement {
         this.updateClassPopulated();
     }
 
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["filled", "outlined"].forEach((ui) => {
+                this.classList.remove("md-text-field--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-text-field--" + ui);
+                });
+            }
+        }
+    }
+
     handleDatetimeFieldNativeFocus(event) {
         this.classList.add("md-datetime-field--focus");
         this.emit("onDatetimeFieldNativeFocus", event);
