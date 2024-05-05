@@ -20,6 +20,10 @@
     gap: 24px;
 }
 
+.md-top-app-bar__action {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
 .md-top-app-bar__label {
     flex: 1;
     @extend .md-typography--title-large;

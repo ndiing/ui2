@@ -19,6 +19,10 @@
     gap: 24px;
 }
 
+.md-bottom-app-bar__action {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
 .md-bottom-app-bar {
     border-radius: var(--md-sys-shape-corner-none);
     background: var(--md-sys-color-surface-container-low);

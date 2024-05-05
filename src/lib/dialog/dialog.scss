@@ -23,6 +23,10 @@
     gap: 24px;
 }
 
+.md-dialog__action {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
 .md-dialog__label {
     flex: 1;
     @extend .md-typography--title-large;
