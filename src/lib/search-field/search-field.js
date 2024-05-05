@@ -79,11 +79,11 @@ class MDSearchField extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined"].forEach((ui) => {
-                this.classList.remove("md-text-field--" + ui);
+                this.classList.remove("md-search-field--" + ui);
             });
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-text-field--" + ui);
+                    this.classList.add("md-search-field--" + ui);
                 });
             }
         }

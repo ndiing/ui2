@@ -76,11 +76,11 @@ class MDWeekField extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined"].forEach((ui) => {
-                this.classList.remove("md-text-field--" + ui);
+                this.classList.remove("md-week-field--" + ui);
             });
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-text-field--" + ui);
+                    this.classList.add("md-week-field--" + ui);
                 });
             }
         }
