@@ -42,6 +42,11 @@ import "./top-app-bar/top-app-bar.js";
 import "./bottom-app-bar/bottom-app-bar.js";
 import "./menu/menu.js";
 
+import "./date-picker/date-picker.js";
+import "./time-picker/time-picker.js";
+import "./color-picker/color-picker.js";
+import "./emoji-picker/emoji-picker.js";
+
 import "./form/form.js";
 import "./email-field/email-field.js";
 import "./password-field/password-field.js";
@@ -63,8 +68,6 @@ import "./checkbox/checkbox.js";
 import "./radio-button/radio-button.js";
 import "./switch/switch.js";
 import "./slider/slider.js";
-import "./date-picker/date-picker.js";
-import "./time-picker/time-picker.js";
 
 import "./data-table/data-table.js";
 import "./pagination/pagination.js";

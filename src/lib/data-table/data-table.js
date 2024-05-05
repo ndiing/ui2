@@ -93,10 +93,10 @@ class MDDataTable extends MDElement {
                                 style="${styleMap({
                                     ...(column.width&&{'min-width':column.width+'px'})
                                 })}"
-                                @onResizeStart="${false&&this.handleDataTableColumnResizeStart||(() => {})}"
-                                @onResize="${false&&this.handleDataTableColumnResize||(() => {})}"
-                                @onResizeEnd="${false&&this.handleDataTableColumnResizeEnd||(() => {})}"
-                                @onResizeHandleDoubleTap="${false&&this.handleDataTableColumnResizeHandleDoubleTap||(() => {})}"
+                                @onResizeStart="${true&&this.handleDataTableColumnResizeStart||(() => {})}"
+                                @onResize="${true&&this.handleDataTableColumnResize||(() => {})}"
+                                @onResizeEnd="${true&&this.handleDataTableColumnResizeEnd||(() => {})}"
+                                @onResizeHandleDoubleTap="${true&&this.handleDataTableColumnResizeHandleDoubleTap||(() => {})}"
                                 @onDragStart="${false&&this.handleDataTableColumnDragStart||(() => {})}"
                                 @onDrag="${false&&this.handleDataTableColumnDrag||(() => {})}"
                                 @onDragEnd="${false&&this.handleDataTableColumnDragEnd||(() => {})}"
