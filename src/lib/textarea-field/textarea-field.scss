@@ -23,6 +23,7 @@
 }
 
 .md-textarea-field__native {
+    resize: none;
     height: var(--md-textarea-field-height);
     width: 100%;
     padding: calc((var(--md-textarea-field-height) - 24px) / 2) 16px;

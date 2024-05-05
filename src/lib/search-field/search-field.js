@@ -43,6 +43,7 @@ class MDSearchField extends MDElement {
                     @focus="${this.handleSearchFieldNativeFocus}"
                     @blur="${this.handleSearchFieldNativeBlur}"
                     @input="${this.handleSearchFieldNativeInput}"
+                    @search="${this.handleSearchFieldNativeSearch}"
                     @invalid="${this.handleSearchFieldNativeInvalid}"
                     @reset="${this.handleSearchFieldNativeReset}"
                 >
@@ -89,6 +90,10 @@ class MDSearchField extends MDElement {
         this.updateClassPopulated();
         this.updateClassError();
         this.emit("onSearchFieldNativeInput", event);
+    }
+
+    handleSearchFieldNativeSearch(event) {
+        this.emit("onSearchFieldNativeSearch", event);
     }
 
     handleSearchFieldNativeInvalid(event) {

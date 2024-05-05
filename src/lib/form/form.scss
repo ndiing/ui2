@@ -54,3 +54,45 @@ input[type="file" i]::-webkit-file-upload-button{
 // 
 // 
 // 
+
+// 
+// 
+// 
+.md-email-field,
+.md-password-field,
+.md-text-field,
+.md-url-field,
+.md-tel-field,
+.md-date-field,
+.md-datetime-field,
+.md-month-field,
+.md-time-field,
+.md-week-field,
+.md-color-field,
+.md-file-field,
+.md-textarea-field,
+.md-select-field,
+.md-number-field,
+.md-search-field{
+    .md-email-field__action,
+    .md-password-field__action,
+    .md-text-field__action,
+    .md-url-field__action,
+    .md-tel-field__action,
+    .md-date-field__action,
+    .md-datetime-field__action,
+    .md-month-field__action,
+    .md-time-field__action,
+    .md-week-field__action,
+    .md-color-field__action,
+    .md-file-field__action,
+    .md-textarea-field__action,
+    .md-select-field__action,
+    .md-number-field__action,
+    .md-search-field__action{
+        color: var(--md-sys-color-on-surface-variant);
+    }
+}
+// 
+// 
+// 
