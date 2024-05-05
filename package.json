@@ -20,7 +20,7 @@
     "webpack-dev-server": "^5.0.4",
     "workbox-webpack-plugin": "^7.0.0"
   },
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "My webpack project",
   "name": "my-webpack-project",
   "scripts": {
