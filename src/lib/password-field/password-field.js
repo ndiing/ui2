@@ -7,6 +7,7 @@ class MDPasswordField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
+            
             type: { type: String },
             name: { type: String },
             placeholder: { type: String },
@@ -14,53 +15,50 @@ class MDPasswordField extends MDElement {
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
+
             text: { type: String },
-            valid: { type: Boolean },
+            
             validationMessage: { type: String },
-            toggle: { type: Boolean },
+            error: { type: Boolean },
         };
     }
 
-    constructor() {
-        super();
-        this.type = "password";
+    get textFieldNative() {
+        return this.querySelector(".md-password-field__native");
+    }
+
+    constructor(){
+        super()
+        this.type='password'
     }
 
     render() {
         // prettier-ignore
         return html`
             ${this.label?html`
-                <div class="md-password-field__label">
-                    <label class="md-password-field__label-text">${this.label}</label>
-                </div>
+                <div class="md-password-field__label">${this.label}</div>
             `:nothing}
             <div class="md-password-field__container">
                 <input 
                     class="md-password-field__native"
-                    .type="${ifDefined(this.toggle?'text':'password')}"
+                    .type="${this.type}"
                     .name="${ifDefined(this.name)}"
                     .placeholder="${ifDefined(this.placeholder)}"
                     .required="${ifDefined(this.required)}"
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handlePasswordFieldNativeFocus}"
                     @blur="${this.handlePasswordFieldNativeBlur}"
                     @input="${this.handlePasswordFieldNativeInput}"
                     @invalid="${this.handlePasswordFieldNativeInvalid}"
                     @reset="${this.handlePasswordFieldNativeReset}"
                 >
-                <div class="md-password-field__actions">
-                    <div 
-                        class="md-password-field__action"
-                        @click="${this.handlePasswordFieldActionToggle}"
-                    >${this.toggle?'visibility':'visibility_off'}</div>
-                </div>
+                <div class="md-password-field__actions"><md-icon-button class="md-password-field__action" .icon="${this.type==='password'?'visibility_off':'visibility'}" @click="${this.handlePasswordFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-password-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-password-field__text">
-                    <div class="md-password-field__text-message">${this.validationMessage??this.text}</div>
-                </div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-password-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
     }
@@ -75,40 +73,82 @@ class MDPasswordField extends MDElement {
         this.classList.remove("md-password-field");
     }
 
-    updated(changedProperties) {}
-
-    get PasswordFieldNative() {
-        return this.querySelector(".md-password-field__native");
+    firstUpdated(changedProperties) {
+        this.updateClassPopulated();
     }
 
     handlePasswordFieldNativeFocus(event) {
+        this.classList.add('md-password-field--focus')
+
         this.emit("onPasswordFieldNativeFocus", event);
     }
-
+    
     handlePasswordFieldNativeBlur(event) {
+        this.classList.remove('md-password-field--focus')
+
         this.emit("onPasswordFieldNativeBlur", event);
     }
 
     handlePasswordFieldNativeInput(event) {
+        this.updateClassPopulated();
+
+        this.updateClassError();
+
         this.emit("onPasswordFieldNativeInput", event);
     }
 
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
-        this.valid = this.PasswordFieldNative.validity.valid;
-        this.validationMessage = this.PasswordFieldNative.validationMessage;
+
+        this.updateClassError();
+
         this.emit("onPasswordFieldNativeInvalid", event);
     }
-
+    
     handlePasswordFieldNativeReset(event) {
-        this.valid = undefined;
-        this.validationMessage = undefined;
+        this.resetClassError();
+
+        this.resetClassPopulated();
+
         this.emit("onPasswordFieldNativeReset", event);
     }
 
-    handlePasswordFieldActionToggle(event) {
-        this.toggle = !this.toggle;
-        this.emit("onPasswordFieldActionToggle", event);
+    updateClassPopulated() {
+        if (this.textFieldNative.value) {
+            this.classList.add('md-password-field--populated');
+        } else {
+            this.classList.remove('md-password-field--populated');
+        }
+    }
+
+    updateClassError() {
+        this.error = !this.textFieldNative.validity.valid;
+        this.validationMessage = this.textFieldNative.validationMessage;
+        if (this.error) {
+            this.classList.add('md-password-field--error');
+        } else {
+            this.classList.remove('md-password-field--error');
+        }
+    }
+
+    resetClassPopulated() {
+        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove('md-password-field--error');
+    }
+
+    handlePasswordFieldActionClick(){
+        if(this.type==='password'){
+            this.type='text'
+        }
+        else {
+            this.type='password'
+        }
     }
 }
 customElements.define("md-password-field", MDPasswordField);

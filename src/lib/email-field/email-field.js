@@ -7,53 +7,52 @@ class MDEmailField extends MDElement {
     static get properties() {
         return {
             label: { type: String },
-            type: { type: String },
+            
             name: { type: String },
             placeholder: { type: String },
             required: { type: Boolean },
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
+
             text: { type: String },
-            valid: { type: Boolean },
+            
             validationMessage: { type: String },
+            error: { type: Boolean },
         };
     }
 
-    constructor() {
-        super();
-        this.type = "email";
+    get textFieldNative() {
+        return this.querySelector(".md-email-field__native");
     }
 
     render() {
         // prettier-ignore
         return html`
             ${this.label?html`
-                <div class="md-email-field__label">
-                    <label class="md-email-field__label-text">${this.label}</label>
-                </div>
+                <div class="md-email-field__label">${this.label}</div>
             `:nothing}
             <div class="md-email-field__container">
                 <input 
                     class="md-email-field__native"
-                    .type="${ifDefined(this.type)}"
+                    type="email"
                     .name="${ifDefined(this.name)}"
                     .placeholder="${ifDefined(this.placeholder)}"
                     .required="${ifDefined(this.required)}"
                     .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
+                    autocomplete="off"
                     @focus="${this.handleEmailFieldNativeFocus}"
                     @blur="${this.handleEmailFieldNativeBlur}"
                     @input="${this.handleEmailFieldNativeInput}"
                     @invalid="${this.handleEmailFieldNativeInvalid}"
                     @reset="${this.handleEmailFieldNativeReset}"
                 >
+                <div class="md-email-field__actions">${this.error?html`<md-icon class="md-email-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-email-field__text">
-                    <div class="md-email-field__text-message">${this.validationMessage??this.text}</div>
-                </div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-email-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
     }
@@ -68,35 +67,73 @@ class MDEmailField extends MDElement {
         this.classList.remove("md-email-field");
     }
 
-    updated(changedProperties) {}
-
-    get EmailFieldNative() {
-        return this.querySelector(".md-email-field__native");
+    firstUpdated(changedProperties) {
+        this.updateClassPopulated();
     }
 
     handleEmailFieldNativeFocus(event) {
+        this.classList.add('md-email-field--focus')
+
         this.emit("onEmailFieldNativeFocus", event);
     }
-
+    
     handleEmailFieldNativeBlur(event) {
+        this.classList.remove('md-email-field--focus')
+
         this.emit("onEmailFieldNativeBlur", event);
     }
 
     handleEmailFieldNativeInput(event) {
+        this.updateClassPopulated();
+
+        this.updateClassError();
+
         this.emit("onEmailFieldNativeInput", event);
     }
 
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
-        this.valid = this.EmailFieldNative.validity.valid;
-        this.validationMessage = this.EmailFieldNative.validationMessage;
+
+        this.updateClassError();
+
         this.emit("onEmailFieldNativeInvalid", event);
     }
-
+    
     handleEmailFieldNativeReset(event) {
-        this.valid = undefined;
-        this.validationMessage = undefined;
+        this.resetClassError();
+
+        this.resetClassPopulated();
+
         this.emit("onEmailFieldNativeReset", event);
+    }
+
+    updateClassPopulated() {
+        if (this.textFieldNative.value) {
+            this.classList.add('md-email-field--populated');
+        } else {
+            this.classList.remove('md-email-field--populated');
+        }
+    }
+
+    updateClassError() {
+        this.error = !this.textFieldNative.validity.valid;
+        this.validationMessage = this.textFieldNative.validationMessage;
+        if (this.error) {
+            this.classList.add('md-email-field--error');
+        } else {
+            this.classList.remove('md-email-field--error');
+        }
+    }
+
+    resetClassPopulated() {
+        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove('md-email-field--error');
     }
 }
 customElements.define("md-email-field", MDEmailField);

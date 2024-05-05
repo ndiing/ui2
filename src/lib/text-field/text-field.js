@@ -51,8 +51,8 @@ class MDTextField extends MDElement {
                 >
                 <div class="md-text-field__actions">${this.error?html`<md-icon class="md-text-field__icon">error</md-icon>`:nothing}</div>
             </div>
-            ${this.validationMessage??this.text?html`
-                <div class="md-text-field__text">${this.validationMessage??this.text}</div>
+            ${this.validationMessage||this.text?html`
+                <div class="md-text-field__text">${this.validationMessage||this.text}</div>
             `:nothing}
         `
     }
@@ -71,14 +71,6 @@ class MDTextField extends MDElement {
         this.updateClassPopulated();
     }
 
-    updateClassPopulated() {
-        if (this.textFieldNative.value) {
-            this.classList.add('md-text-field--populated');
-        } else {
-            this.classList.remove('md-text-field--populated');
-        }
-    }
-
     handleTextFieldNativeFocus(event) {
         this.classList.add('md-text-field--focus')
 
@@ -94,12 +86,7 @@ class MDTextField extends MDElement {
     handleTextFieldNativeInput(event) {
         this.updateClassPopulated();
 
-        this.error=!this.textFieldNative.validity.valid
-        if(this.error){
-            this.classList.add('md-text-field--error')
-        }else{
-            this.classList.remove('md-text-field--error')
-        }
+        this.updateClassError();
 
         this.emit("onTextFieldNativeInput", event);
     }
@@ -107,22 +94,46 @@ class MDTextField extends MDElement {
     handleTextFieldNativeInvalid(event) {
         event.preventDefault();
 
-        this.error=!this.textFieldNative.validity.valid
-        this.validationMessage = this.textFieldNative.validationMessage;
-        this.classList.add('md-text-field--error')
+        this.updateClassError();
 
         this.emit("onTextFieldNativeInvalid", event);
     }
     
     handleTextFieldNativeReset(event) {
-        this.error=false
-        this.validationMessage = undefined;
-        this.classList.remove('md-text-field--error')
+        this.resetClassError();
 
-        this.textFieldNative.value=this.textFieldNative.defaultValue
-        this.updateClassPopulated();
+        this.resetClassPopulated();
 
         this.emit("onTextFieldNativeReset", event);
+    }
+
+    updateClassPopulated() {
+        if (this.textFieldNative.value) {
+            this.classList.add('md-text-field--populated');
+        } else {
+            this.classList.remove('md-text-field--populated');
+        }
+    }
+
+    updateClassError() {
+        this.error = !this.textFieldNative.validity.valid;
+        this.validationMessage = this.textFieldNative.validationMessage;
+        if (this.error) {
+            this.classList.add('md-text-field--error');
+        } else {
+            this.classList.remove('md-text-field--error');
+        }
+    }
+
+    resetClassPopulated() {
+        this.textFieldNative.value = this.textFieldNative.defaultValue;
+        this.updateClassPopulated();
+    }
+
+    resetClassError() {
+        this.error = false;
+        this.validationMessage = undefined;
+        this.classList.remove('md-text-field--error');
     }
 }
 customElements.define("md-text-field", MDTextField);

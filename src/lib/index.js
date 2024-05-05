@@ -43,6 +43,7 @@ import "./bottom-app-bar/bottom-app-bar.js";
 import "./menu/menu.js";
 
 import "./form/form.js";
+import "./text-field/text-field.js";
 import "./select-field/select-field.js";
 import "./textarea-field/textarea-field.js";
 import "./email-field/email-field.js";
@@ -58,12 +59,11 @@ import "./time-field/time-field.js";
 import "./week-field/week-field.js";
 import "./color-field/color-field.js";
 import "./file-field/file-field.js";
-import "./text-field/text-field.js";
 import "./search/search.js";
 import "./checkbox/checkbox.js";
 import "./radio-button/radio-button.js";
-import "./slider/slider.js";
 import "./switch/switch.js";
+import "./slider/slider.js";
 import "./date-picker/date-picker.js";
 import "./time-picker/time-picker.js";
 

@@ -11,17 +11,17 @@ class DevPasswordField extends MDElement {
             >
                 <div class="md-layout--column" style="margin:24px;">
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <md-password-field label="Password Field" text="Text content" name="password1"></md-password-field>
+                        <md-password-field label="Password Field" text="Text content" name="text1"></md-password-field>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <md-password-field label="Password Field" text="Text content" name="password2" placeholder="placeholder" required></md-password-field>
+                        <md-password-field label="Password Field" text="Text content" name="text2" placeholder="placeholder" required></md-password-field>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <md-password-field label="Password Field" text="Text content" name="password3" value="secret" defaultValue="secret"></md-password-field>
+                        <md-password-field label="Password Field" text="Text content" name="text3" value="value" defaultValue="value"></md-password-field>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <button type="reset" label="Reset"></button>
-                        <button type="submit" label="Submit"></button>
+                        <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
+                        <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>
                 </div>
             </md-form>
