@@ -18,7 +18,7 @@ function toPascalCase(string) {
 }
 
 function toCamelCase(string) {
-    return string.replace(/(^|[^a-zA-Z0-9])([a-zA-Z])/g, ($, $1, $2,$0) => $0===0?$2.toLowerCase():$2.toUpperCase());
+    return string.replace(/(^|[^a-zA-Z0-9])([a-zA-Z])/g, ($, $1, $2, $0) => ($0 === 0 ? $2.toLowerCase() : $2.toUpperCase()));
 }
 
 function devTpl(name) {
@@ -49,13 +49,12 @@ function devTpl(name) {
     return code;
 }
 
-function componentTpl(name,tpl='default') {
+function componentTpl(name, tpl = "default") {
     const className = toPascalCase(name);
     const methodName = toCamelCase(name);
-    const typeName = name.split('-')?.[0];
+    const typeName = name.split("-")?.[0];
     let code = "";
-    if(tpl==='default'){
-
+    if (tpl === "default") {
         code += `import { MDElement } from "../element/element";\r\n`;
         code += `import { html } from "lit";\r\n`;
         code += `import { msg } from "@lit/localize";\r\n`;
@@ -118,269 +117,370 @@ function componentTpl(name,tpl='default') {
         code += `customElements.define("md-${name}", MD${className});\r\n`;
         code += `\r\n`;
         code += `export { MD${className} };\r\n`;
-    }
-    
-    else if(tpl==='text-field'){
-        code+=`import { MDElement } from "../element/element";\r\n`
-        code+=`import { html, nothing } from "lit";\r\n`
-        code+=`import { msg } from "@lit/localize";\r\n`
-        code+=`import { ifDefined } from "lit/directives/if-defined.js";\r\n`
-        code+=`\r\n`
-        code+=`class MD${className} extends MDElement {\r\n`
-        code+=`    static get properties() {\r\n`
-        code+=`        return {\r\n`
-        code+=`            label: { type: String },\r\n`
-        code+=`            name: { type: String },\r\n`
-        code+=`            placeholder: { type: String },\r\n`
-        code+=`            required: { type: Boolean },\r\n`
-        code+=`            readOnly: { type: Boolean },\r\n`
-        code+=`            value: { type: String },\r\n`
-        code+=`            defaultValue: { type: String },\r\n`
-        code+=`            text: { type: String },\r\n`
-        code+=`            validationMessage: { type: String },\r\n`
-        code+=`            error: { type: Boolean },\r\n`
-        code+=`        };\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    get ${methodName}Native() {\r\n`
-        code+=`        return this.querySelector(".md-${name}__native");\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    render() {\r\n`
-        code+=`        // prettier-ignore\r\n`
-        code+=`        return html\`\r\n`
-        code+=`            \${this.label?html\`\r\n`
-        code+=`                <div class="md-${name}__label">\${this.label}</div>\r\n`
-        code+=`            \`:nothing}\r\n`
-        code+=`            <div class="md-${name}__container">\r\n`
-        code+=`                <input \r\n`
-        code+=`                    class="md-${name}__native"\r\n`
-        code+=`                    type="${typeName}"\r\n`
-        code+=`                    .name="\${ifDefined(this.name)}"\r\n`
-        code+=`                    .placeholder="\${ifDefined(this.placeholder)}"\r\n`
-        code+=`                    .required="\${ifDefined(this.required)}"\r\n`
-        code+=`                    .readOnly="\${ifDefined(this.readOnly)}"\r\n`
-        code+=`                    .value="\${ifDefined(this.value)}"\r\n`
-        code+=`                    .defaultValue="\${ifDefined(this.defaultValue)}"\r\n`
-        code+=`                    autocomplete="off"\r\n`
-        code+=`                    @focus="\${this.handle${className}NativeFocus}"\r\n`
-        code+=`                    @blur="\${this.handle${className}NativeBlur}"\r\n`
-        code+=`                    @input="\${this.handle${className}NativeInput}"\r\n`
-        code+=`                    @invalid="\${this.handle${className}NativeInvalid}"\r\n`
-        code+=`                    @reset="\${this.handle${className}NativeReset}"\r\n`
-        code+=`                >\r\n`
-        code+=`                <div class="md-${name}__actions">\${this.error?html\`<md-icon class="md-${name}__icon">error</md-icon>\`:nothing}</div>\r\n`
-        code+=`            </div>\r\n`
-        code+=`            \${this.validationMessage||this.text?html\`\r\n`
-        code+=`                <div class="md-${name}__text">\${this.validationMessage||this.text}</div>\r\n`
-        code+=`            \`:nothing}\r\n`
-        code+=`        \`\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    async connectedCallback() {\r\n`
-        code+=`        super.connectedCallback();\r\n`
-        code+=`        this.classList.add("md-${name}");\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    disconnectedCallback() {\r\n`
-        code+=`        super.disconnectedCallback();\r\n`
-        code+=`        this.classList.remove("md-${name}");\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    firstUpdated(changedProperties) {\r\n`
-        code+=`        this.updateClassPopulated();\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    handle${className}NativeFocus(event) {\r\n`
-        code+=`        this.classList.add("md-${name}--focus");\r\n`
-        code+=`        this.emit("on${className}NativeFocus", event);\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    handle${className}NativeBlur(event) {\r\n`
-        code+=`        this.classList.remove("md-${name}--focus");\r\n`
-        code+=`        this.emit("on${className}NativeBlur", event);\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    handle${className}NativeInput(event) {\r\n`
-        code+=`        this.updateClassPopulated();\r\n`
-        code+=`        this.updateClassError();\r\n`
-        code+=`        this.emit("on${className}NativeInput", event);\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    handle${className}NativeInvalid(event) {\r\n`
-        code+=`        event.preventDefault();\r\n`
-        code+=`        this.updateClassError();\r\n`
-        code+=`        this.emit("on${className}NativeInvalid", event);\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    handle${className}NativeReset(event) {\r\n`
-        code+=`        this.resetClassError();\r\n`
-        code+=`        this.resetClassPopulated();\r\n`
-        code+=`        this.emit("on${className}NativeReset", event);\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    updateClassPopulated() {\r\n`
-        code+=`        if (this.${methodName}Native.value) {\r\n`
-        code+=`            this.classList.add("md-${name}--populated");\r\n`
-        code+=`        } else {\r\n`
-        code+=`            this.classList.remove("md-${name}--populated");\r\n`
-        code+=`        }\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    updateClassError() {\r\n`
-        code+=`        this.error = !this.${methodName}Native.validity.valid;\r\n`
-        code+=`        this.validationMessage = this.${methodName}Native.validationMessage;\r\n`
-        code+=`\r\n`
-        code+=`        if (this.error) {\r\n`
-        code+=`            this.classList.add("md-${name}--error");\r\n`
-        code+=`        } else {\r\n`
-        code+=`            this.classList.remove("md-${name}--error");\r\n`
-        code+=`        }\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    resetClassPopulated() {\r\n`
-        code+=`        this.${methodName}Native.value = this.${methodName}Native.defaultValue;\r\n`
-        code+=`        this.updateClassPopulated();\r\n`
-        code+=`    }\r\n`
-        code+=`\r\n`
-        code+=`    resetClassError() {\r\n`
-        code+=`        this.error = false;\r\n`
-        code+=`        this.validationMessage = undefined;\r\n`
-        code+=`        this.classList.remove("md-${name}--error");\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`\r\n`
-        code+=`customElements.define("md-${name}", MD${className});\r\n`
-        code+=`\r\n`
-        code+=`export { MD${className} };\r\n`
-        
+    } else if (tpl === "text-field") {
+        code += `import { MDElement } from "../element/element";\r\n`;
+        code += `import { html, nothing } from "lit";\r\n`;
+        code += `import { msg } from "@lit/localize";\r\n`;
+        code += `import { ifDefined } from "lit/directives/if-defined.js";\r\n`;
+        code += `\r\n`;
+        code += `class MD${className} extends MDElement {\r\n`;
+        code += `    static get properties() {\r\n`;
+        code += `        return {\r\n`;
+        code += `            label: { type: String },\r\n`;
+        code += `            name: { type: String },\r\n`;
+        code += `            placeholder: { type: String },\r\n`;
+        code += `            required: { type: Boolean },\r\n`;
+        code += `            readOnly: { type: Boolean },\r\n`;
+        code += `            value: { type: String },\r\n`;
+        code += `            defaultValue: { type: String },\r\n`;
+        code += `            ui: { type: String },\r\n`;
+        code += `            text: { type: String },\r\n`;
+        code += `            validationMessage: { type: String },\r\n`;
+        code += `            error: { type: Boolean },\r\n`;
+        code += `        };\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    get ${methodName}Native() {\r\n`;
+        code += `        return this.querySelector(".md-${name}__native");\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    render() {\r\n`;
+        code += `        // prettier-ignore\r\n`;
+        code += `        return html\`\r\n`;
+        code += `            \${this.label?html\`\r\n`;
+        code += `                <div class="md-${name}__label">\${this.label}</div>\r\n`;
+        code += `            \`:nothing}\r\n`;
+        code += `            <div class="md-${name}__container">\r\n`;
+        code += `                <input \r\n`;
+        code += `                    class="md-${name}__native"\r\n`;
+        code += `                    type="${typeName}"\r\n`;
+        code += `                    .name="\${ifDefined(this.name)}"\r\n`;
+        code += `                    .placeholder="\${ifDefined(this.placeholder)}"\r\n`;
+        code += `                    .required="\${ifDefined(this.required)}"\r\n`;
+        code += `                    .readOnly="\${ifDefined(this.readOnly)}"\r\n`;
+        code += `                    .value="\${ifDefined(this.value)}"\r\n`;
+        code += `                    .defaultValue="\${ifDefined(this.defaultValue)}"\r\n`;
+        code += `                    autocomplete="off"\r\n`;
+        code += `                    @focus="\${this.handle${className}NativeFocus}"\r\n`;
+        code += `                    @blur="\${this.handle${className}NativeBlur}"\r\n`;
+        code += `                    @input="\${this.handle${className}NativeInput}"\r\n`;
+        code += `                    @invalid="\${this.handle${className}NativeInvalid}"\r\n`;
+        code += `                    @reset="\${this.handle${className}NativeReset}"\r\n`;
+        code += `                >\r\n`;
+        code += `                <div class="md-${name}__actions">\${this.error?html\`<md-icon class="md-${name}__icon">error</md-icon>\`:nothing}</div>\r\n`;
+        code += `            </div>\r\n`;
+        code += `            \${this.validationMessage||this.text?html\`\r\n`;
+        code += `                <div class="md-${name}__text">\${this.validationMessage||this.text}</div>\r\n`;
+        code += `            \`:nothing}\r\n`;
+        code += `        \`\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    async connectedCallback() {\r\n`;
+        code += `        super.connectedCallback();\r\n`;
+        code += `        this.classList.add("md-${name}");\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    disconnectedCallback() {\r\n`;
+        code += `        super.disconnectedCallback();\r\n`;
+        code += `        this.classList.remove("md-${name}");\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    firstUpdated(changedProperties) {\r\n`;
+        code += `        this.updateClassPopulated();\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    updated(changedProperties) {\r\n`;
+        code += `        if (changedProperties.has("ui")) {\r\n`;
+        code += `            ["filled", "outlined"].forEach((ui) => {\r\n`;
+        code += `                this.classList.remove("md-${name}--" + ui);\r\n`;
+        code += `            });\r\n`;
+        code += `            if (this.ui) {\r\n`;
+        code += `                this.ui.split(" ").forEach((ui) => {\r\n`;
+        code += `                    this.classList.add("md-${name}--" + ui);\r\n`;
+        code += `                });\r\n`;
+        code += `            }\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    handle${className}NativeFocus(event) {\r\n`;
+        code += `        this.classList.add("md-${name}--focus");\r\n`;
+        code += `        this.emit("on${className}NativeFocus", event);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    handle${className}NativeBlur(event) {\r\n`;
+        code += `        this.classList.remove("md-${name}--focus");\r\n`;
+        code += `        this.emit("on${className}NativeBlur", event);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    handle${className}NativeInput(event) {\r\n`;
+        code += `        this.updateClassPopulated();\r\n`;
+        code += `        this.updateClassError();\r\n`;
+        code += `        this.emit("on${className}NativeInput", event);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    handle${className}NativeInvalid(event) {\r\n`;
+        code += `        event.preventDefault();\r\n`;
+        code += `        this.updateClassError();\r\n`;
+        code += `        this.emit("on${className}NativeInvalid", event);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    handle${className}NativeReset(event) {\r\n`;
+        code += `        this.resetClassError();\r\n`;
+        code += `        this.resetClassPopulated();\r\n`;
+        code += `        this.emit("on${className}NativeReset", event);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    updateClassPopulated() {\r\n`;
+        code += `        if (this.${methodName}Native.value) {\r\n`;
+        code += `            this.classList.add("md-${name}--populated");\r\n`;
+        code += `        } else {\r\n`;
+        code += `            this.classList.remove("md-${name}--populated");\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    updateClassError() {\r\n`;
+        code += `        this.error = !this.${methodName}Native.validity.valid;\r\n`;
+        code += `        this.validationMessage = this.${methodName}Native.validationMessage;\r\n`;
+        code += `\r\n`;
+        code += `        if (this.error) {\r\n`;
+        code += `            this.classList.add("md-${name}--error");\r\n`;
+        code += `        } else {\r\n`;
+        code += `            this.classList.remove("md-${name}--error");\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    resetClassPopulated() {\r\n`;
+        code += `        this.${methodName}Native.value = this.${methodName}Native.defaultValue;\r\n`;
+        code += `        this.updateClassPopulated();\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    resetClassError() {\r\n`;
+        code += `        this.error = false;\r\n`;
+        code += `        this.validationMessage = undefined;\r\n`;
+        code += `        this.classList.remove("md-${name}--error");\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `customElements.define("md-${name}", MD${className});\r\n`;
+        code += `\r\n`;
+        code += `export { MD${className} };\r\n`;
     }
 
     return code;
 }
 
-function componentStyleTpl(name,tpl='default'){
-    let code=''
-    if(tpl==='default'){}
-    else if(tpl==='text-field'){
-        code+=`:root {\r\n`
-        code+=`    --md-${name}-height: calc(56px + (4px * var(--md-density)));\r\n`
-        code+=`}\r\n`
-        code+=`\r\n`
-        code+=`.md-${name} {\r\n`
-        code+=`    display: flex;\r\n`
-        code+=`    flex-direction: column;\r\n`
-        code+=`    gap: 4px;\r\n`
-        code+=`    position: relative;\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}__label {\r\n`
-        code+=`    padding: 0 16px;\r\n`
-        code+=`    @extend .md-typography--body-large;\r\n`
-        code+=`    color: var(--md-sys-color-on-surface-variant);\r\n`
-        code+=`    position: absolute;\r\n`
-        code+=`    padding: calc((var(--md-${name}-height) - 24px) / 2) 16px;\r\n`
-        code+=`    pointer-events: none;\r\n`
-        code+=`    transition-property: all;\r\n`
-        code+=`    transition-duration: var(--md-sys-motion-duration-short4);\r\n`
-        code+=`    transition-timing-function: var(--md-sys-motion-easing-standard);\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}__container {\r\n`
-        code+=`    display: flex;\r\n`
-        code+=`    align-items: center;\r\n`
-        code+=`    border-radius: var(--md-sys-shape-corner-extra-small-top);\r\n`
-        code+=`    background: var(--md-sys-color-surface-container-highest);\r\n`
-        code+=`    color: var(--md-sys-color-on-surface);\r\n`
-        code+=`    box-shadow: inset 0 -1px 0 0 var(--md-sys-color-on-surface-variant);\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}__native {\r\n`
-        code+=`    height: var(--md-${name}-height);\r\n`
-        code+=`    width: 100%;\r\n`
-        code+=`    padding: calc((var(--md-${name}-height) - 24px) / 2) 16px;\r\n`
-        code+=`    background: transparent;\r\n`
-        code+=`    color: inherit;\r\n`
-        code+=`    @extend .md-typography--body-large;\r\n`
-        code+=`    // transition-property: all;\r\n`
-        code+=`    // transition-duration: var(--md-sys-motion-duration-short4);\r\n`
-        code+=`    // transition-timing-function: var(--md-sys-motion-easing-standard);\r\n`
-        code+=`    &::placeholder {\r\n`
-        code+=`        color: var(--md-sys-color-on-surface-variant);\r\n`
-        code+=`    }\r\n`
-        code+=`    + .md-${name}__actions {\r\n`
-        code+=`        margin-left: -12px;\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}__text {\r\n`
-        code+=`    padding: 0 16px;\r\n`
-        code+=`    @extend .md-typography--body-small;\r\n`
-        code+=`    color: var(--md-sys-color-on-surface-variant);\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}__actions {\r\n`
-        code+=`    display: inline-flex;\r\n`
-        code+=`    align-items: center;\r\n`
-        code+=`    padding: 16px 12px;\r\n`
-        code+=`    gap: 0 8px;\r\n`
-        code+=`    &:empty{\r\n`
-        code+=`        padding: 0;\r\n`
-        code+=`        margin: 0;\r\n`
-        code+=`    }\r\n`
-        code+=`    + .md-${name}__native {\r\n`
-        code+=`        margin-left: -12px;\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`// .md-${name}__action{}\r\n`
-        code+=`\r\n`
-        code+=`.md-${name}:not(.md-${name}--populated):not(.md-${name}--focus) {\r\n`
-        code+=`    .md-${name}__native {\r\n`
-        code+=`        &::placeholder {\r\n`
-        code+=`            visibility: hidden;\r\n`
-        code+=`        }\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}--populated {\r\n`
-        code+=`    .md-${name}__label {\r\n`
-        code+=`        padding-top: calc(((var(--md-${name}-height) - 16px) / 2) - 8px);\r\n`
-        code+=`        padding-bottom: calc(((var(--md-${name}-height) - 16px) / 2) + 8px);\r\n`
-        code+=`        @extend .md-typography--body-small;\r\n`
-        code+=`    }\r\n`
-        code+=`    .md-${name}__native {\r\n`
-        code+=`        padding-top: calc(((var(--md-${name}-height) - 24px) / 2) + 8px);\r\n`
-        code+=`        padding-bottom: calc(((var(--md-${name}-height) - 24px) / 2) - 8px);\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}--focus {\r\n`
-        code+=`    @extend .md-${name}--populated;\r\n`
-        code+=`    .md-${name}__label {\r\n`
-        code+=`        color: var(--md-sys-color-primary);\r\n`
-        code+=`    }\r\n`
-        code+=`    .md-${name}__container {\r\n`
-        code+=`        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        code+=`.md-${name}--error {\r\n`
-        code+=`    .md-${name}__label {\r\n`
-        code+=`        color: var(--md-sys-color-error);\r\n`
-        code+=`    }\r\n`
-        code+=`    .md-${name}__container {\r\n`
-        code+=`        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);\r\n`
-        code+=`    }\r\n`
-        code+=`    .md-${name}__icon {\r\n`
-        code+=`        color: var(--md-sys-color-error);\r\n`
-        code+=`    }\r\n`
-        code+=`    .md-${name}__text {\r\n`
-        code+=`        color: var(--md-sys-color-error);\r\n`
-        code+=`    }\r\n`
-        code+=`}\r\n`
-        
+function componentStyleTpl(name, tpl = "default") {
+    let code = "";
+    if (tpl === "default") {
+    } else if (tpl === "text-field") {
+        code += `:root {\r\n`;
+        code += `    --md-${name}-height: calc(56px + (4px * var(--md-density)));\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name} {\r\n`;
+        code += `    display: flex;\r\n`;
+        code += `    flex-direction: column;\r\n`;
+        code += `    gap: 4px 0;\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}__label {\r\n`;
+        code += `    padding: 0 16px;\r\n`;
+        code += `    @extend .md-typography--body-large;\r\n`;
+        code += `    color: var(--md-sys-color-on-surface-variant);\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}__container {\r\n`;
+        code += `    display: flex;\r\n`;
+        code += `    align-items: center;\r\n`;
+        code += `    border-radius: var(--md-sys-shape-corner-extra-small);\r\n`;
+        code += `    background: var(--md-sys-color-surface-container-highest);\r\n`;
+        code += `    color: var(--md-sys-color-on-surface);\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}__native {\r\n`;
+        code += `    height: var(--md-${name}-height);\r\n`;
+        code += `    width: 100%;\r\n`;
+        code += `    padding: calc((var(--md-${name}-height) - 24px) / 2) 16px;\r\n`;
+        code += `    background: transparent;\r\n`;
+        code += `    color: inherit;\r\n`;
+        code += `    @extend .md-typography--body-large;\r\n`;
+        code += `\r\n`;
+        code += `    + .md-${name}__actions {\r\n`;
+        code += `        margin-left: -12px;\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}__actions {\r\n`;
+        code += `    display: inline-flex;\r\n`;
+        code += `    align-items: center;\r\n`;
+        code += `    padding: 0 12px;\r\n`;
+        code += `    gap: 0 8px;\r\n`;
+        code += `\r\n`;
+        code += `    + .md-${name}__native {\r\n`;
+        code += `        margin-left: -12px;\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}__text {\r\n`;
+        code += `    padding: 0 16px;\r\n`;
+        code += `    @extend .md-typography--body-small;\r\n`;
+        code += `    color: var(--md-sys-color-on-surface-variant);\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}--focus {\r\n`;
+        code += `    .md-${name}__label {\r\n`;
+        code += `        color: var(--md-sys-color-primary);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__text {\r\n`;
+        code += `        color: var(--md-sys-color-primary);\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}--error {\r\n`;
+        code += `    .md-${name}__label {\r\n`;
+        code += `        color: var(--md-sys-color-error);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__icon {\r\n`;
+        code += `        color: var(--md-sys-color-error);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__text {\r\n`;
+        code += `        color: var(--md-sys-color-error);\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}--filled {\r\n`;
+        code += `    position: relative;\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__label {\r\n`;
+        code += `        position: absolute;\r\n`;
+        code += `        padding-top: calc((var(--md-${name}-height) - 24px) / 2);\r\n`;
+        code += `        padding-bottom: calc((var(--md-${name}-height) - 24px) / 2);\r\n`;
+        code += `        pointer-events: none;\r\n`;
+        code += `        transition-property: all;\r\n`;
+        code += `        transition-duration: var(--md-sys-motion-duration-short4);\r\n`;
+        code += `        transition-timing-function: var(--md-sys-motion-easing-standard);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__container {\r\n`;
+        code += `        border-radius: var(--md-sys-shape-corner-extra-small-top);\r\n`;
+        code += `        box-shadow: inset 0 -1px 0 0 var(--md-sys-color-on-surface-variant);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &:not(.md-${name}--populated):not(.md-${name}--focus) {\r\n`;
+        code += `        .md-${name}__label + .md-${name}__container .md-${name}__native::placeholder {\r\n`;
+        code += `            visibility: hidden;\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `    &.md-${name}--focus,\r\n`;
+        code += `    &.md-${name}--populated {\r\n`;
+        code += `        .md-${name}__label {\r\n`;
+        code += `            @extend .md-typography--body-small;\r\n`;
+        code += `            padding-top: calc(((var(--md-${name}-height) - 16px) / 2) - 8px);\r\n`;
+        code += `            padding-bottom: calc(((var(--md-${name}-height) - 16px) / 2) + 8px);\r\n`;
+        code += `\r\n`;
+        code += `            + .md-${name}__container {\r\n`;
+        code += `                .md-${name}__native {\r\n`;
+        code += `                    padding-top: calc(((var(--md-${name}-height) - 24px) / 2) + 8px);\r\n`;
+        code += `                    padding-bottom: calc(((var(--md-${name}-height) - 24px) / 2) - 8px);\r\n`;
+        code += `                }\r\n`;
+        code += `            }\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &.md-${name}--focus {\r\n`;
+        code += `        .md-${name}__container {\r\n`;
+        code += `            box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &.md-${name}--error {\r\n`;
+        code += `        .md-${name}__container {\r\n`;
+        code += `            box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
+        code += `\r\n`;
+        code += `.md-${name}--outlined {\r\n`;
+        code += `    position: relative;\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__label {\r\n`;
+        code += `        position: absolute;\r\n`;
+        code += `        padding-left: 4px;\r\n`;
+        code += `        padding-right: 4px;\r\n`;
+        code += `        margin-left: 12px;\r\n`;
+        code += `        margin-right: 12px;\r\n`;
+        code += `        padding-top: calc((var(--md-${name}-height) - 24px) / 2);\r\n`;
+        code += `        padding-bottom: calc((var(--md-${name}-height) - 24px) / 2);\r\n`;
+        code += `        pointer-events: none;\r\n`;
+        code += `        transition-property: all;\r\n`;
+        code += `        transition-duration: var(--md-sys-motion-duration-short4);\r\n`;
+        code += `        transition-timing-function: var(--md-sys-motion-easing-standard);\r\n`;
+        code += `\r\n`;
+        code += `        &::before {\r\n`;
+        code += `            content: "";\r\n`;
+        code += `            width: 0%;\r\n`;
+        code += `            height: 16px;\r\n`;
+        code += `            position: absolute;\r\n`;
+        code += `            left: 50%;\r\n`;
+        code += `            top: 50%;\r\n`;
+        code += `            z-index: -1;\r\n`;
+        code += `            transform: translate3d(-50%, -50%, 0);\r\n`;
+        code += `            background: var(--md-sys-color-surface);\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    .md-${name}__container {\r\n`;
+        code += `        background: var(--md-sys-color-surface);\r\n`;
+        code += `        border-radius: var(--md-sys-shape-corner-extra-small);\r\n`;
+        code += `        box-shadow: inset 0 0 0 1px var(--md-sys-color-outline);\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &:not(.md-${name}--populated):not(.md-${name}--focus) {\r\n`;
+        code += `        .md-${name}__label + .md-${name}__container .md-${name}__native::placeholder {\r\n`;
+        code += `            visibility: hidden;\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `    &.md-${name}--focus,\r\n`;
+        code += `    &.md-${name}--populated {\r\n`;
+        code += `        .md-${name}__label {\r\n`;
+        code += `            @extend .md-typography--body-small;\r\n`;
+        code += `            padding-top: calc(((var(--md-${name}-height) - 16px) / 2));\r\n`;
+        code += `            padding-bottom: calc(((var(--md-${name}-height) - 16px) / 2));\r\n`;
+        code += `            left: 0;\r\n`;
+        code += `            top: 0;\r\n`;
+        code += `            transform: translate3d(0, -50%, 0);\r\n`;
+        code += `\r\n`;
+        code += `            &::before {\r\n`;
+        code += `                width: 100%;\r\n`;
+        code += `            }\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &.md-${name}--focus {\r\n`;
+        code += `        .md-${name}__container {\r\n`;
+        code += `            box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `\r\n`;
+        code += `    &.md-${name}--error {\r\n`;
+        code += `        .md-${name}__container {\r\n`;
+        code += `            box-shadow: inset 0 0 0 2px var(--md-sys-color-error);\r\n`;
+        code += `        }\r\n`;
+        code += `    }\r\n`;
+        code += `}\r\n`;
     }
-    return code
+    return code;
 }
 
-function controllerTpl(name, tpl='default') {
+function controllerTpl(name, tpl = "default") {
     const className = toPascalCase(name);
     const methodName = toCamelCase(name);
     let code = "";
 
-    if(tpl==='default'){
+    if (tpl === "default") {
         code += `class ${className} {\r\n`;
         code += `    constructor(host, options = {}) {\r\n`;
         code += `        this.options = { button: host, ...options };\r\n`;
@@ -493,13 +593,13 @@ const stacks = {
         },
     },
     component: {
-        create: (name,template) => {
+        create: (name, template) => {
             const file = `./src/lib/${name}/${name}.js`;
-            const data = componentTpl(name,template);
+            const data = componentTpl(name, template);
             write(file, data);
 
             const file2 = `./src/lib/${name}/${name}.scss`;
-            const data2 = componentStyleTpl(name,template);
+            const data2 = componentStyleTpl(name, template);
             write(file2, data2);
         },
         delete: (name) => {
@@ -510,13 +610,13 @@ const stacks = {
         },
     },
     controller: {
-        create: (name,template) => {
+        create: (name, template) => {
             const file = `./src/lib/${name}/${name}.js`;
-            const data = controllerTpl(name,template);
+            const data = controllerTpl(name, template);
             write(file, data);
 
             const file2 = `./src/lib/${name}/${name}.scss`;
-            const data2 = '';
+            const data2 = "";
             write(file2, data2);
         },
         delete: (name) => {
@@ -528,4 +628,4 @@ const stacks = {
     },
 };
 
-stacks[type][method](name,template);
+stacks[type][method](name, template);

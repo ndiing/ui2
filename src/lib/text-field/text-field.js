@@ -13,6 +13,7 @@ class MDTextField extends MDElement {
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
+            ui: { type: String },
             text: { type: String },
             validationMessage: { type: String },
             error: { type: Boolean },
@@ -66,6 +67,19 @@ class MDTextField extends MDElement {
 
     firstUpdated(changedProperties) {
         this.updateClassPopulated();
+    }
+
+    updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["filled", "outlined"].forEach((ui) => {
+                this.classList.remove("md-text-field--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-text-field--" + ui);
+                });
+            }
+        }
     }
 
     handleTextFieldNativeFocus(event) {
