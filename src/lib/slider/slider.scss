@@ -31,6 +31,16 @@
         height: 16px;
         border-radius: calc(16px / 2);
         background: linear-gradient(to right, var(--md-sys-color-primary) 0 var(--md-slider-percentage1), var(--md-sys-color-primary-container) var(--md-slider-percentage1) 100%);
+        // background: linear-gradient(
+        //     to right,
+        //     hsl(0,100%,50%),
+        //     hsl(60,100%,50%),
+        //     hsl(120,100%,50%),
+        //     hsl(180,100%,50%),
+        //     hsl(240,100%,50%),
+        //     hsl(300,100%,50%),
+        //     hsl(360,100%,50%)
+        // );
     }
 
     &::-webkit-slider-thumb {
