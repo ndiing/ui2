@@ -13,6 +13,7 @@ class MDTelField extends MDElement {
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
+            ui: { type: String },
             text: { type: String },
             validationMessage: { type: String },
             error: { type: Boolean },

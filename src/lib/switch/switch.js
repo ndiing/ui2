@@ -13,6 +13,7 @@ class MDSwitch extends MDElement {
             readOnly: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
+            ui: { type: String },
             indeterminate: { type: Boolean },
             checked: { type: Boolean },
             defaultChecked: { type: Boolean },
