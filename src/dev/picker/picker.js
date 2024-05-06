@@ -8,7 +8,7 @@ class DevPicker extends MDElement {
         return html`
             <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-date-picker></md-date-picker>
+                    <md-date-picker .date="${new Date('1990/10/17')}"></md-date-picker>
                 </div>
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                     <md-time-picker></md-time-picker>
