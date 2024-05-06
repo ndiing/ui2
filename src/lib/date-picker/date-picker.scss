@@ -63,6 +63,18 @@
     }
 }
 
+.md-date-picker__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+    gap: 8px;
+}
+
+.md-date-picker__button {
+    --md-density: -2;
+}
+
 .md-date-picker__card {
     display: flex;
     align-items: center;
@@ -120,16 +132,4 @@
 
 .md-date-picker__item--secondary {
     opacity: 38%;
-}
-
-.md-date-picker__footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 16px;
-    gap: 8px;
-}
-
-.md-date-picker__button {
-    --md-density: -2;
 }
