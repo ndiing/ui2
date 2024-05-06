@@ -30,7 +30,6 @@ class MDDatePicker extends MDElement {
         return new Intl.DateTimeFormat("id-ID", {
             year: "numeric",
             month: "long",
-            day: "2-digit",
         }).formatToParts(this.selected);
     }
 
