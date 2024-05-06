@@ -193,8 +193,8 @@ class MDDatePicker extends MDElement {
                     </div>
                 </div>
                 <div class="md-date-picker__footer">
-                    <md-button class="md-date-picker__button" ui="filled-tonal" label="Clear" @click="${this.handleDatePickerButtonClearClick}"></md-button>
-                    <md-button class="md-date-picker__button" ui="filled" label="Today" @click="${this.handleDatePickerButtonTodayClick}"></md-button>
+                    <md-button class="md-date-picker__button" label="Clear" @click="${this.handleDatePickerButtonClearClick}"></md-button>
+                    <md-button class="md-date-picker__button" label="Today" @click="${this.handleDatePickerButtonTodayClick}"></md-button>
                 </div>
             </div>
         `

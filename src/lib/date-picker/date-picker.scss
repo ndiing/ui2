@@ -1,9 +1,11 @@
 .md-date-picker {
+    --md-density: -2;
     --md-date-picker-item-height: calc(40px + (4px * var(--md-density)));
     display: inline-flex;
     flex-direction: column;
     border-radius: 16px;
     background: var(--md-sys-color-surface-container-lowest);
+    background: var(--md-sys-color-surface-container-high);
 }
 .md-date-picker__header {
     display: flex;
@@ -41,7 +43,7 @@
     flex: 1;
     overflow: hidden;
     padding: 16px;
-    @extend .md-typography--body-medium;
+    @extend .md-typography--body-small;
     color: var(--md-sys-color-on-surface);
     + .md-date-picker__footer {
         margin-top: -16px;

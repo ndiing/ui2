@@ -134,8 +134,8 @@ class MDTimePicker extends MDElement {
 
                 </div>
                 <div class="md-time-picker__footer">
-                    <md-button class="md-time-picker__button" ui="filled-tonal" label="Clear" @click="${this.handleTimePickerButtonClearClick}"></md-button>
-                    <md-button class="md-time-picker__button" ui="filled" label="Now" @click="${this.handleTimePickerButtonNowClick}"></md-button>
+                    <md-button class="md-time-picker__button" label="Clear" @click="${this.handleTimePickerButtonClearClick}"></md-button>
+                    <md-button class="md-time-picker__button" label="Now" @click="${this.handleTimePickerButtonNowClick}"></md-button>
                 </div>
             </div>
         `
