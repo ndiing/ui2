@@ -293,8 +293,13 @@ class MDDatePicker extends MDElement {
     }
 
     handleDatePickerButtonClearClick(event){
-
+        this.index=2
     
+        this.selected=new Date()
+        this.value=new Date()
+        
+        this.requestUpdate()
+
         this.emit('onDatePickerButtonClearClick',event)
     }
     handleDatePickerButtonTodayClick(event){
