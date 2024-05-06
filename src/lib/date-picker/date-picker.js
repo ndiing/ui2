@@ -18,8 +18,19 @@ class MDDatePicker extends MDElement {
         this.index = 2;
     }
 
-    get dateParts() {
-        return new Intl.DateTimeFormat("id-ID", { year: "numeric", month: "long" }).formatToParts(this.selected);
+    get label() {
+        if (this.index == 2) {
+            return new Intl.DateTimeFormat("id-ID", {
+                year: "numeric",
+                month: "long",
+            }).format(this.selected);
+        } else if (this.index == 1) {
+            return new Intl.DateTimeFormat("id-ID", {
+                year: "numeric",
+            }).format(this.selected);
+        } else if (this.index == 0) {
+            return `${this.years[0].year} - ${this.years[this.years.length - 1].year}`;
+        }
     }
 
     render() {
@@ -27,15 +38,7 @@ class MDDatePicker extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-date-picker__header">
-                <div class="md-date-picker__label">
-                    ${this.dateParts.map(data=>html`
-                        <div 
-                            .data="${data}" 
-                            class="md-date-picker__label-primary md-date-picker__label-primary--${data.type}" 
-                            @click="${this.handleDatePickerLabelClick}"
-                        >${data.value}</div>
-                    `)}
-                </div>
+                <md-button class="md-date-picker__label" @click="${this.handleDatePickerLabelClick}" label="${this.label}"></md-button>
                 <div class="md-date-picker__actions">
                     <md-icon-button class="md-date-picker__action" icon="navigate_before" @click="${this.handleDatePickerActionPrevClick}"></md-icon-button>
                     <md-icon-button class="md-date-picker__action" icon="navigate_next" @click="${this.handleDatePickerActionNextClick}"></md-icon-button>
@@ -185,8 +188,11 @@ class MDDatePicker extends MDElement {
     }
 
     handleDatePickerLabelClick(event) {
-        const data = event.currentTarget.data;
-        this.index = { day: 2, month: 1, year: 0 }[data.type];
+        if (this.index === 2) {
+            this.index = 1;
+        } else if (this.index === 1) {
+            this.index = 0;
+        }
         this.emit("onDatePickerLabelClick", event);
     }
 

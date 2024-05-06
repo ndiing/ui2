@@ -17,15 +17,10 @@
 }
 
 .md-date-picker__label {
-    flex: 1;
+    --md-density: -2;
     display: inline-flex;
     align-items: center;
-    gap: 2px;
     @extend .md-typography--label-large;
-}
-.md-date-picker__label-primary--day,
-.md-date-picker__label-primary--month,
-.md-date-picker__label-primary--year {
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -39,6 +34,7 @@
     display: inline-flex;
     align-items: center;
     gap: 16px;
+    margin-left: auto;
 }
 
 .md-date-picker__action {
