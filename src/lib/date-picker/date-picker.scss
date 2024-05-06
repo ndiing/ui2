@@ -17,17 +17,12 @@
 }
 
 .md-date-picker__label {
-    --md-density: -2;
     display: inline-flex;
     align-items: center;
     @extend .md-typography--label-large;
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
-
-    &:hover {
-        @extend .md-ripple--hover;
-    }
 }
 
 .md-date-picker__actions {

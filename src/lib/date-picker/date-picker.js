@@ -38,7 +38,7 @@ class MDDatePicker extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-date-picker__header">
-                <md-button class="md-date-picker__label" @click="${this.handleDatePickerLabelClick}" label="${this.label}"></md-button>
+                <div class="md-date-picker__label" @click="${this.handleDatePickerLabelClick}">${this.label}</div>
                 <div class="md-date-picker__actions">
                     <md-icon-button class="md-date-picker__action" icon="navigate_before" @click="${this.handleDatePickerActionPrevClick}"></md-icon-button>
                     <md-icon-button class="md-date-picker__action" icon="navigate_next" @click="${this.handleDatePickerActionNextClick}"></md-icon-button>
