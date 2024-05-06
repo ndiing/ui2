@@ -32,20 +32,20 @@
 }
 
 .md-button--outlined {
-    padding: 0 24px;
+    padding: 0 calc(var(--md-button-height) * (24px / 40px));
     background: transparent;
     color: var(--md-sys-color-primary);
     border: 1px solid var(--md-sys-color-outline);
 }
 
 .md-button--filled-tonal {
-    padding: 0 24px;
+    padding: 0 calc(var(--md-button-height) * (24px / 40px));
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
 }
 
 .md-button--filled {
-    padding: 0 24px;
+    padding: 0 calc(var(--md-button-height) * (24px / 40px));
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 }

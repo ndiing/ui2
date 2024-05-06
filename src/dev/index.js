@@ -69,6 +69,7 @@ Router.init([
             {path:'slider',load:() => import('./slider/slider.js').then(m=>m.default)},
             {path:'data-table',load:() => import('./data-table/data-table.js').then(m=>m.default)},
             {path:'pagination',load:() => import('./pagination/pagination.js').then(m=>m.default)},
+            {path:'picker',load:() => import('./picker/picker.js').then(m=>m.default)},
         ],
     },
 ]);

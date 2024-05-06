@@ -7,8 +7,8 @@ class DevDatePicker extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--column" style="margin:24px;">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-date-picker>search</md-date-picker>
+                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-date-picker></md-date-picker>
                 </div>
                 
                 

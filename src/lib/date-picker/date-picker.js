@@ -4,7 +4,8 @@ import { msg } from "@lit/localize";
 
 class MDDatePicker extends MDElement {
     static get properties() {
-        return {};
+        return {
+        };
     }
 
     constructor() {
@@ -27,7 +28,8 @@ class MDDatePicker extends MDElement {
         this.classList.remove("md-date-picker");
     }
 
-    updated(changedProperties) {}
+    updated(changedProperties) {
+    }
 }
 
 customElements.define("md-date-picker", MDDatePicker);
