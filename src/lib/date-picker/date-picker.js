@@ -23,7 +23,6 @@ class MDDatePicker extends MDElement {
             }).format(date);
 
         this.current = new Date();
-        this.date = new Date();
         this.index = 2;
     }
 
@@ -140,7 +139,10 @@ class MDDatePicker extends MDElement {
     }
 
     updateData() {
-        console.log(this.date);
+        if (!this.date) {
+            this.date = this.current;
+        }
+
         if (!this.selected) {
             this.selected = this.date;
         }

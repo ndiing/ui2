@@ -1,4 +1,3 @@
-
 import "./observer/observer.js";
 import "./marker/marker.js";
 import "./progress/progress.js";
