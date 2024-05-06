@@ -10,13 +10,13 @@ class DevPicker extends MDElement {
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-date-picker></md-date-picker>
                 </div>
-                <div class="md-layout__item--expanded9 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-time-picker></md-time-picker>
                 </div>
-                <div class="md-layout__item--expanded9 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                     <md-color-picker></md-color-picker>
                 </div>
-                <div class="md-layout__item--expanded9 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                     <md-emoji-picker></md-emoji-picker>
                 </div>
             </div>

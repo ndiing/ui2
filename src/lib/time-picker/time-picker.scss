@@ -5,7 +5,7 @@
     flex-direction: column;
     border-radius: 16px;
     background: var(--md-sys-color-surface-container-lowest);
-    background: var(--md-sys-color-surface-container-high);
+    // background: var(--md-sys-color-surface-container-high);
 }
 .md-time-picker__header {
     display: flex;
@@ -61,7 +61,8 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    background: var(--md-sys-color-surface-container-highest);
+    background: var(--md-sys-color-surface-container-low);
+    // background: var(--md-sys-color-surface-container-highest);
     border-radius: 50%;
 }
 .md-time-picker__hours1 {
@@ -95,7 +96,8 @@
     display: grid;
     width: calc(var(--md-time-picker-item-height) * 7);
     height: calc(var(--md-time-picker-item-height) * 7);
-    background: var(--md-sys-color-surface-container-highest);
+    background: var(--md-sys-color-surface-container-low);
+    // background: var(--md-sys-color-surface-container-highest);
     border-radius: 50%;
 }
 .md-time-picker__minute {
