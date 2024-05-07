@@ -1,8 +1,6 @@
-:root {
-    --md-time-field-height: calc(56px + (4px * var(--md-density)));
-}
 
 .md-time-field {
+    --md-time-field-height: calc(56px + (4px * var(--md-density)));
     display: flex;
     flex-direction: column;
     gap: 4px 0;

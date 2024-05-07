@@ -1,8 +1,6 @@
-:root {
-    --md-textarea-field-height: calc(56px + (4px * var(--md-density)));
-}
 
 .md-textarea-field {
+    --md-textarea-field-height: calc(56px + (4px * var(--md-density)));
     display: flex;
     flex-direction: column;
     gap: 4px 0;

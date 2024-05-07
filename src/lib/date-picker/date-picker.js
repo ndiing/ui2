@@ -15,6 +15,20 @@ class MDDatePicker extends MDElement {
     render() {
         // prettier-ignore
         return html`
+            <div class="md-date-picker__header">
+                <div class="md-date-picker__label">label</div>
+                <div class="md-date-picker__actions">
+                    <md-icon-button class="md-date-picker__action" icon="navigate_before"></md-icon-button>
+                    <md-icon-button class="md-date-picker__action" icon="navigate_next"></md-icon-button>
+                </div>
+            </div>
+            <div class="md-date-picker__body">
+                <div class="md-date-picker__inner"></div>
+                <div class="md-date-picker__footer">
+                    <md-button class="md-date-picker__button" label="Clear"></md-button>
+                    <md-button class="md-date-picker__button" label="Today"></md-button>
+                </div>
+            </div>
         `
     }
 

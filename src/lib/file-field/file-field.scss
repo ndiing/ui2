@@ -1,8 +1,6 @@
-:root {
-    --md-file-field-height: calc(56px + (4px * var(--md-density)));
-}
 
 .md-file-field {
+    --md-file-field-height: calc(56px + (4px * var(--md-density)));
     display: flex;
     flex-direction: column;
     gap: 4px 0;
