@@ -78,10 +78,7 @@ class MDDatePicker extends MDElement {
         } else if (this.index === 1) {
             return this.yearDTF.format(this.selected);
         } else if (this.index === 0) {
-            return [
-                this.years[0].year,
-                this.years[this.years.length-1].year,
-            ].join(' - ');
+            return [this.years[0].year, this.years[this.years.length - 1].year].join(" - ");
         }
     }
 
@@ -106,7 +103,6 @@ class MDDatePicker extends MDElement {
     }
 
     render() {
-        this.selected=this.value
         // prettier-ignore
         return html`
             <div class="md-date-picker__header">
@@ -205,6 +201,14 @@ class MDDatePicker extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-date-picker");
+    }
+
+    async firstUpdated(changedProperties) {
+        if (changedProperties.has("value")) {
+            await this.updateComplete;
+            this.selected = this.value;
+            this.requestUpdate();
+        }
     }
 
     updated(changedProperties) {
