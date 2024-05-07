@@ -276,14 +276,25 @@ class MDDatePicker extends MDElement {
     }
     handleDatePickerButtonClearClick(event) {
         this.index = 2;
-        this.selected = new Date();
-        this.value = this.selected;
+        const date=new Date()
+        this.selected.setFullYear(date.getFullYear());
+        this.selected.setMonth(date.getMonth());
+        this.selected.setDate(date.getDate());
+        this.value.setFullYear(date.getFullYear());
+        this.value.setMonth(date.getMonth());
+        this.value.setDate(date.getDate());
         this.requestUpdate();
         this.emit("onDatePickerButtonClearClick", event);
     }
     handleDatePickerButtonTodayClick(event) {
-        this.selected = new Date();
-        this.value = this.selected;
+        this.index = 2;
+        const date=new Date()
+        this.selected.setFullYear(date.getFullYear());
+        this.selected.setMonth(date.getMonth());
+        this.selected.setDate(date.getDate());
+        this.value.setFullYear(date.getFullYear());
+        this.value.setMonth(date.getMonth());
+        this.value.setDate(date.getDate());
         this.requestUpdate();
         this.emit("onDatePickerButtonTodayClick", event);
     }
