@@ -222,6 +222,8 @@ class MDDatePicker extends MDElement {
             this.index = 1;
         } else if (this.index === 1) {
             this.index = 0;
+        }else if (this.index === 0) {
+            this.index = 2;
         }
         this.requestUpdate();
         this.emit("onDatePickerLabelClick", event);
