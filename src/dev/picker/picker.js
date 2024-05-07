@@ -16,8 +16,6 @@ class DevPicker extends MDElement {
                     <md-time-picker></md-time-picker>
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
-                    <!-- <md-week-picker .value="${new Date(0,0,1,0,0)}"></md-week-picker> -->
-                    <md-week-picker></md-week-picker>
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                 </div>
