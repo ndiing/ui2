@@ -60,6 +60,7 @@ class MDDatePicker extends MDElement {
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
+
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth() && day == this.current.getDate(),
                 selected: year == this.value.getFullYear() && month == this.value.getMonth() && day == this.value.getDate(),
@@ -98,7 +99,7 @@ class MDDatePicker extends MDElement {
 
         // console.log(this.years);
         // console.log(this.months);
-        // console.log(this.days);
+        console.log(this.days);
         // console.log(this.weekdays);
     }
 
@@ -222,7 +223,7 @@ class MDDatePicker extends MDElement {
             this.index = 1;
         } else if (this.index === 1) {
             this.index = 0;
-        }else if (this.index === 0) {
+        } else if (this.index === 0) {
             this.index = 2;
         }
         this.requestUpdate();
@@ -278,7 +279,7 @@ class MDDatePicker extends MDElement {
     }
     handleDatePickerButtonClearClick(event) {
         this.index = 2;
-        const date=new Date()
+        const date = new Date();
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
         this.selected.setDate(date.getDate());
@@ -290,7 +291,7 @@ class MDDatePicker extends MDElement {
     }
     handleDatePickerButtonTodayClick(event) {
         this.index = 2;
-        const date=new Date()
+        const date = new Date();
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
         this.selected.setDate(date.getDate());
