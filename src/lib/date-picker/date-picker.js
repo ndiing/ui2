@@ -261,15 +261,15 @@ class MDDatePicker extends MDElement {
     handleDatePickerItemMonthClick(event) {
         this.index = 2;
         const data = event.currentTarget.data;
-        this.selected.setFullYear(this.selected.getFullYear());
+        this.selected.setFullYear(data.year);
         this.selected.setMonth(data.month);
         this.requestUpdate();
         this.emit("onDatePickerItemMonthClick", event);
     }
     handleDatePickerItemDayClick(event) {
         const data = event.currentTarget.data;
-        this.selected.setFullYear(this.selected.getFullYear());
-        this.selected.setMonth(this.selected.getMonth());
+        this.selected.setFullYear(data.year);
+        this.selected.setMonth(data.month);
         this.selected.setDate(data.day);
         this.value.setFullYear(this.selected.getFullYear());
         this.value.setMonth(this.selected.getMonth());
