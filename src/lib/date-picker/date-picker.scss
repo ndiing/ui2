@@ -16,6 +16,9 @@
 .md-date-picker__label {
     @extend .md-typography--label-large;
     line-height: 24px;
+    @extend .md-ripple;
+    @extend .md-ripple--containment;
+    @extend .md-ripple--button;
 }
 .md-date-picker__actions {
     display: inline-flex;
@@ -36,6 +39,7 @@
     flex: 1;
     overflow: auto;
     padding: 16px;
+    @extend .md-typography--body-small;
     + .md-date-picker__footer {
         margin-top: -16px;
     }
@@ -43,9 +47,66 @@
 .md-date-picker__footer {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     padding: 16px;
     gap: 8px;
 }
 .md-date-picker__button {
     --md-button-density: -2;
+}
+
+.md-date-picker__card {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: calc(36px * 7);
+    height: calc(36px * 7);
+}
+.md-date-picker__card-item {
+    flex: 1 0 auto;
+    transform: translate3d(calc((0 - var(--md-date-picker-index)) * 100%),0,0);
+}
+.md-date-picker__column {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+}
+.md-date-picker__column-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    width: calc(36px - (2px * 2));
+    height: calc(36px - (2px * 2));
+    border-radius: calc((36px - (2px * 2)) / 2);
+    
+}
+// .md-date-picker__column-label {}
+
+.md-date-picker__column4 {
+    grid-template-columns: repeat(4, auto);
+    .md-date-picker__column-item {
+        margin: calc(2px + ((((((36px * 7) / 4) - (2px * 2))) - (36px - (2px * 2))) / 2)) 2px;
+        width: calc((((36px * 7) / 4) - (2px * 2)));
+    }
+    // .md-date-picker__column-label {}
+}
+
+.md-date-picker__column-item--action{
+    @extend .md-ripple;
+    @extend .md-ripple--containment;
+    @extend .md-ripple--button;
+
+    &:hover{
+        @extend .md-ripple--hover;
+    }
+}
+.md-date-picker__column-item--activated{
+    border: 1px solid var(--md-sys-color-primary);
+}
+.md-date-picker__column-item--selected{
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+.md-date-picker__column-item--disabled{
+    opacity: 38%;
 }
