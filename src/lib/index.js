@@ -43,8 +43,6 @@ import "./menu/menu.js";
 
 import "./date-picker/date-picker.js";
 import "./time-picker/time-picker.js";
-import "./color-picker/color-picker.js";
-import "./emoji-picker/emoji-picker.js";
 
 import "./form/form.js";
 import "./email-field/email-field.js";
