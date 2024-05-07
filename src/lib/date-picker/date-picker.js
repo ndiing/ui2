@@ -23,7 +23,11 @@ class MDDatePicker extends MDElement {
                 </div>
             </div>
             <div class="md-date-picker__body">
-                <div class="md-date-picker__inner"></div>
+                <div class="md-date-picker__inner">
+
+                    
+
+                </div>
                 <div class="md-date-picker__footer">
                     <md-button class="md-date-picker__button" label="Clear"></md-button>
                     <md-button class="md-date-picker__button" label="Today"></md-button>
