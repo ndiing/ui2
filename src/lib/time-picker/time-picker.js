@@ -50,7 +50,7 @@ class MDTimePicker extends MDElement {
     }
 
     get label() {
-        return this.labelDTF.format(this.selected);
+        return this.labelDTF.format(this.selected).replace(/\./,':');
     }
 
     constructor() {
