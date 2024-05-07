@@ -8,12 +8,12 @@ class DevPicker extends MDElement {
         return html`
             <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-date-picker .value="${new Date(1990,9,17)}"></md-date-picker>
+                    <md-date-picker .value="${new Date(0,0,1,0,0)}"></md-date-picker>
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-time-picker .value="${new Date(0,0,1,17,30)}"></md-time-picker>
+                    <md-time-picker .value="${new Date(0,0,1,0,0)}"></md-time-picker>
                 </div>
-                <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-color-picker></md-color-picker>
                 </div>
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">

@@ -1,0 +1,57 @@
+.md-color-picker {
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 16px;
+    background: var(--md-sys-color-surface-container-lowest);
+    // background: var(--md-sys-color-surface-container-high);
+}
+.md-color-picker__header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    + .md-color-picker__body {
+        margin-top: -16px;
+    }
+}
+.md-color-picker__label {
+    @extend .md-typography--label-large;
+    line-height: 24px;
+    @extend .md-ripple;
+    @extend .md-ripple--containment;
+    @extend .md-ripple--button;
+}
+.md-color-picker__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+.md-color-picker__action {
+    color: var(--md-sys-color-on-surface-variant);
+}
+.md-color-picker__body {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.md-color-picker__inner {
+    flex: 1;
+    overflow: auto;
+    padding: 16px;
+    @extend .md-typography--body-small;
+    + .md-color-picker__footer {
+        margin-top: -16px;
+    }
+}
+.md-color-picker__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+    gap: 8px;
+}
+.md-color-picker__button {
+    --md-button-density: -2;
+}

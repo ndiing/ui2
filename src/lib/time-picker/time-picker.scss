@@ -3,6 +3,7 @@
     flex-direction: column;
     border-radius: 16px;
     background: var(--md-sys-color-surface-container-lowest);
+    // background: var(--md-sys-color-surface-container-high);
 }
 .md-time-picker__header {
     display: flex;
@@ -63,7 +64,8 @@
     height: calc(36px * 7);
     pointer-events: none;
     border-radius: calc((36px * 7) / 2);
-    background: var(--md-sys-color-surface-container-highest);
+    background: var(--md-sys-color-surface-container-low);
+    // background: var(--md-sys-color-surface-container-highest);
 }
 .md-time-picker__card-item {
     flex: 1 0 auto;
