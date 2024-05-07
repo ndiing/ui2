@@ -99,7 +99,7 @@ class MDDatePicker extends MDElement {
 
         // console.log(this.years);
         // console.log(this.months);
-        console.log(this.days);
+        // console.log(this.days);
         // console.log(this.weekdays);
     }
 
