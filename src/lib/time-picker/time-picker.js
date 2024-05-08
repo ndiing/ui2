@@ -6,20 +6,20 @@ import { classMap } from "lit/directives/class-map.js";
 class MDTimePicker extends MDElement {
     static get properties() {
         return {
-            value: { type: Date, converter: (value) => new Date(value) },
+            value: { type: Date, converter: (value) => new Date(0, 0, 1, ...value.split(":")) },
             index: { type: Number },
         };
     }
 
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
-            const date = new Date(0,0,1,k);
+            const date = new Date(0, 0, 1, k);
             const hour = date.getHours();
             return {
-                activated: hour==this.current.getHours(),
-                selected: hour==this.value.getHours(),
+                activated: hour == this.current.getHours(),
+                selected: hour == this.value.getHours(),
                 disabled: false,
-                hour12: k<12,
+                hour12: k < 12,
                 label: this.hourDTF.format(date),
                 hour,
             };
@@ -28,15 +28,15 @@ class MDTimePicker extends MDElement {
 
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
-            const date = new Date(0,0,1,0,k);
+            const date = new Date(0, 0, 1, 0, k);
             const minute = date.getMinutes();
-            let label
-            if(k%5===0){
-                label=this.minuteDTF.format(date)
+            let label;
+            if (k % 5 === 0) {
+                label = this.minuteDTF.format(date);
             }
             return {
-                activated: minute==this.current.getMinutes(),
-                selected: minute==this.value.getMinutes(),
+                activated: minute == this.current.getMinutes(),
+                selected: minute == this.value.getMinutes(),
                 disabled: false,
                 label,
                 minute,
@@ -51,15 +51,15 @@ class MDTimePicker extends MDElement {
     constructor() {
         super();
 
-        this.hourDTF = new Intl.DateTimeFormat(undefined, { hour:'numeric', hour12:false });
-        this.minuteDTF = new Intl.DateTimeFormat(undefined, { minute:'numeric', hour12:false });
-        this.labelDTF = new Intl.DateTimeFormat(undefined, { hour:'2-digit',minute:'2-digit', hour12:false });
+        this.hourDTF = new Intl.DateTimeFormat(undefined, { hour: "numeric", hour12: false });
+        this.minuteDTF = new Intl.DateTimeFormat(undefined, { minute: "numeric", hour12: false });
+        this.labelDTF = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", hour12: false });
 
         this.current = new Date();
         this.selected = new Date();
         this.value = new Date();
 
-        this.index=1
+        this.index = 1;
 
         // console.log(this.hours);
         // console.log(this.minutes);
@@ -152,34 +152,49 @@ class MDTimePicker extends MDElement {
         this.classList.remove("md-time-picker");
     }
 
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+        this.selected = this.value;
+        this.requestUpdate();
+    }
+
     updated(changedProperties) {
-        this.style.setProperty('--md-time-picker-index',this.index)
+        this.style.setProperty("--md-time-picker-index", this.index);
     }
 
     handleTimePickerLabelClick(event) {
-        if(this.index===1){this.index=0}
-        else if(this.index===0){this.index=1}
+        if (this.index === 1) {
+            this.index = 0;
+        } else if (this.index === 0) {
+            this.index = 1;
+        }
         this.emit("onTimePickerLabelClick", event);
     }
     handleTimePickerActionBeforeClick(event) {
-        if(this.index===1){this.selected.setHours(this.selected.getHours()-1)}
-        else if(this.index===0){this.selected.setMinutes(this.selected.getMinutes()-1)}
-        this.requestUpdate()
+        if (this.index === 1) {
+            this.selected.setHours(this.selected.getHours() - 1);
+        } else if (this.index === 0) {
+            this.selected.setMinutes(this.selected.getMinutes() - 1);
+        }
+        this.requestUpdate();
         this.emit("onTimePickerActionBeforeClick", event);
     }
     handleTimePickerActionNextClick(event) {
-        if(this.index===1){this.selected.setHours(this.selected.getHours()+1)}
-        else if(this.index===0){this.selected.setMinutes(this.selected.getMinutes()+1)}
-        this.requestUpdate()
+        if (this.index === 1) {
+            this.selected.setHours(this.selected.getHours() + 1);
+        } else if (this.index === 0) {
+            this.selected.setMinutes(this.selected.getMinutes() + 1);
+        }
+        this.requestUpdate();
         this.emit("onTimePickerActionNextClick", event);
     }
 
     handleTimePickerColumnLabelMinuteClick(event) {
-        this.index=1
+        this.index = 1;
 
         const data = event.currentTarget.data;
         this.selected.setMinutes(data.minute);
-        
+
         this.value.setHours(this.selected.getHours());
         this.value.setMinutes(this.selected.getMinutes());
 
@@ -187,8 +202,8 @@ class MDTimePicker extends MDElement {
         this.emit("onTimePickerColumnLabelMinuteClick", event);
     }
     handleTimePickerColumnLabelHourClick(event) {
-        this.index=0
-        
+        this.index = 0;
+
         const data = event.currentTarget.data;
         this.selected.setHours(data.hour);
 
@@ -196,9 +211,9 @@ class MDTimePicker extends MDElement {
         this.emit("onTimePickerColumnLabelHourClick", event);
     }
     handleTimePickerButtonCancelClick(event) {
-        this.index=1
+        this.index = 1;
 
-        const date=new Date()
+        const date = new Date();
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
 
@@ -212,7 +227,7 @@ class MDTimePicker extends MDElement {
         // this.value.setHours(this.selected.getHours());
         // this.value.setMinutes(this.selected.getMinutes());
         // this.requestUpdate();
-        console.log(this.value)
+        console.log(this.value);
         this.emit("onTimePickerButtonOkClick", event);
     }
 }

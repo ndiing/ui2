@@ -217,6 +217,12 @@ class MDDatePicker extends MDElement {
         this.classList.remove("md-date-picker");
     }
 
+    async firstUpdated(changedProperties) {
+        await this.updateComplete
+        this.selected=this.value
+        this.requestUpdate()
+    }
+
     updated(changedProperties) {
         this.style.setProperty('--md-date-picker-index',this.index)
     }
