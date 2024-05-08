@@ -219,7 +219,9 @@ class MDDatePicker extends MDElement {
 
     async firstUpdated(changedProperties) {
         await this.updateComplete
-        this.selected=this.value
+        this.selected.setFullYear(this.value.getFullYear())
+        this.selected.setMonth(this.value.getMonth())
+        this.selected.setDate(this.value.getDate())
         this.requestUpdate()
     }
 

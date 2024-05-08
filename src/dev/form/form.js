@@ -18,11 +18,11 @@ class DevForm extends MDElement {
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-number-field ui="outlined" label="number" name="number"></md-number-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-tel-field ui="outlined" label="tel" name="tel"></md-tel-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-date-field ui="outlined" label="date" name="date"></md-date-field></div>
-                    <!-- <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-datetime-field ui="outlined" label="datetime" name="datetime"></md-datetime-field></div> -->
-                    <!-- <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-month-field ui="outlined" label="month" name="month"></md-month-field></div> -->
+                    <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-datetime-field ui="outlined" label="datetime" name="datetime"></md-datetime-field></div>
+                    <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-month-field ui="outlined" label="month" name="month"></md-month-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-time-field ui="outlined" label="time" name="time"></md-time-field></div>
-                    <!-- <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-week-field ui="outlined" label="week" name="week"></md-week-field></div> -->
-                    <!-- <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-color-field ui="outlined" label="color" name="color"></md-color-field></div> -->
+                    <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-week-field ui="outlined" label="week" name="week"></md-week-field></div>
+                    <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-color-field ui="outlined" label="color" name="color"></md-color-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-file-field ui="outlined" label="file" name="file"></md-file-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-select-field ui="outlined" label="select" name="select"></md-select-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-textarea-field ui="outlined" label="textarea" name="textarea"></md-textarea-field></div>

@@ -6,7 +6,10 @@ import { classMap } from "lit/directives/class-map.js";
 class MDTimePicker extends MDElement {
     static get properties() {
         return {
-            value: { type: Date, converter: (value) => new Date(0, 0, 1, ...value.split(":")) },
+            value: { type: Date, converter: (value) => {
+                const [hour,minute] = value.split(':')
+                return new Date(0,0,1,hour,minute)
+            } },
             index: { type: Number },
         };
     }
@@ -154,7 +157,8 @@ class MDTimePicker extends MDElement {
 
     async firstUpdated(changedProperties) {
         await this.updateComplete;
-        this.selected = this.value;
+        this.selected.setHours(this.value.getHours());
+        this.selected.setMinutes(this.value.getMinutes());
         this.requestUpdate();
     }
 

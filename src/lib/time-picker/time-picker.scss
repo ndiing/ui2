@@ -162,7 +162,7 @@
 }
 
 .md-time-picker__column-label--activated {
-    box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-primary);
 }
 .md-time-picker__column-label--error {
     color: var(--md-sys-color-error);
