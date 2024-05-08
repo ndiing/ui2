@@ -15,7 +15,7 @@ class DevPicker extends MDElement {
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <!-- <md-week-picker value="2024-W18"></md-week-picker> -->
-                    <md-week-picker ></md-week-picker>
+                    <!-- <md-week-picker ></md-week-picker> -->
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                 </div>
