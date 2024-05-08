@@ -1,50 +1,67 @@
 .md-date-picker {
     display: inline-flex;
     flex-direction: column;
-    border-radius: 16px;
+    border-radius: var(--md-sys-shape-corner-medium);
     background: var(--md-sys-color-surface-container-lowest);
-    // background: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--md-sys-elevation-level0);
 }
+
 .md-date-picker__header {
     display: flex;
     align-items: center;
     padding: 16px;
     gap: 16px;
+
     + .md-date-picker__body {
         margin-top: -16px;
     }
 }
-.md-date-picker__label {
-    @extend .md-typography--label-large;
-    line-height: 24px;
-    @extend .md-ripple;
-    @extend .md-ripple--containment;
-    @extend .md-ripple--button;
-}
+
 .md-date-picker__actions {
     display: inline-flex;
     align-items: center;
     gap: 16px;
     margin-left: auto;
 }
+
 .md-date-picker__action {
     color: var(--md-sys-color-on-surface-variant);
 }
+
+.md-date-picker__label {
+    height: 32px;
+    padding: 6px calc(32px * (12px / 40px));
+    border-radius: calc(32px / 2);
+    @extend .md-typography--label-large;
+
+    @extend .md-ripple;
+    @extend .md-ripple--containment;
+    @extend .md-ripple--button;
+
+    &:hover {
+        @extend .md-ripple--hover;
+    }
+}
+
 .md-date-picker__body {
     flex: 1;
-    overflow: auto;
+    overflow: hidden auto;
     display: flex;
     flex-direction: column;
 }
+
 .md-date-picker__inner {
     flex: 1;
-    overflow: auto;
-    padding: 16px;
+    overflow: hidden auto;
+    padding: 0 16px;
+    margin: 16px 0;
     @extend .md-typography--body-small;
+
     + .md-date-picker__footer {
         margin-top: -16px;
     }
 }
+
 .md-date-picker__footer {
     display: flex;
     align-items: center;
@@ -69,29 +86,40 @@
 }
 .md-date-picker__column {
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(4, calc((36px * 7) / 4));
+    grid-template-rows: repeat(4, calc((36px * 7) / 4));
 }
+// .md-date-picker__column--year{}
+// .md-date-picker__column--month{}
+.md-date-picker__column--day {
+    grid-template-columns: repeat(7, 36px);
+    grid-template-rows: repeat(7, 36px);
+}
+
 .md-date-picker__column-item {
+    padding: calc(2px + ((((36px * 7) / 4) - 36px) / 2)) 2px;
+}
+// .md-date-picker__column-item--year{}
+// .md-date-picker__column-item--month{}
+.md-date-picker__column-item--weekday,
+.md-date-picker__column-item--day {
+    padding: 2px;
+}
+
+.md-date-picker__column-label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 2px;
-    width: calc(36px - (2px * 2));
-    height: calc(36px - (2px * 2));
-    border-radius: calc((36px - (2px * 2)) / 2);
+    width: 100%;
+    height: 100%;
+    border-radius: calc(36px / 2);
 }
-// .md-date-picker__column-label {}
-
-.md-date-picker__column4 {
-    grid-template-columns: repeat(4, auto);
-    .md-date-picker__column-item {
-        margin: calc(2px + ((((((36px * 7) / 4) - (2px * 2))) - (36px - (2px * 2))) / 2)) 2px;
-        width: calc((((36px * 7) / 4) - (2px * 2)));
-    }
-    // .md-date-picker__column-label {}
+.md-date-picker__column-label--weekday {
+    color: var(--md-sys-color-on-surface-variant);
 }
-
-.md-date-picker__column-item--action {
+.md-date-picker__column-label--year,
+.md-date-picker__column-label--month,
+.md-date-picker__column-label--day {
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -100,13 +128,18 @@
         @extend .md-ripple--hover;
     }
 }
-.md-date-picker__column-item--activated {
-    border: 1px solid var(--md-sys-color-primary);
+
+.md-date-picker__column-label--activated {
+    box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
 }
-.md-date-picker__column-item--selected {
+.md-date-picker__column-label--error {
+    color: var(--md-sys-color-error);
+}
+.md-date-picker__column-label--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 }
-.md-date-picker__column-item--disabled {
+.md-date-picker__column-label--disabled {
     opacity: 38%;
+    pointer-events: none;
 }
