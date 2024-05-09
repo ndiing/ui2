@@ -2,42 +2,66 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
+import { styleMap } from "lit/directives/style-map.js";
 
 class MDTimePicker extends MDElement {
     static get properties() {
         return {
-            value: { type: Date, converter: (value) => {
-                const [hour,minute] = value.split(':')
-                return new Date(0,0,1,hour,minute)
-            } },
+            value: {
+                type: Date,
+                converter(value) {
+                    return new Date(value);
+                },
+            },
             index: { type: Number },
         };
     }
 
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
-            const date = new Date(0, 0, 1, k);
+            let x;
+            let y;
+            let h = (k + 3) % 12;
+
+            if (k < 12) {
+                x = 128 * Math.cos((k / 12) * 2 * Math.PI) + 132;
+                y = 128 * Math.sin((k / 12) * 2 * Math.PI) + 132;
+            } else {
+                h = h + 12;
+                x = 84 * Math.cos(((k % 12) / 12) * 2 * Math.PI) + 132;
+                y = 84 * Math.sin(((k % 12) / 12) * 2 * Math.PI) + 132;
+            }
+
+            const date = new Date(0, 0, 1, h, 0);
             const hour = date.getHours();
+
             return {
+                x,
+                y,
                 activated: hour == this.current.getHours(),
                 selected: hour == this.value.getHours(),
                 disabled: false,
-                hour12: k < 12,
                 label: this.hourDTF.format(date),
                 hour,
             };
         });
     }
-
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
-            const date = new Date(0, 0, 1, 0, k);
+            const x = 128 * Math.cos((k / 60) * 2 * Math.PI) + 132;
+            const y = 128 * Math.sin((k / 60) * 2 * Math.PI) + 132;
+
+            const date = new Date(0, 0, 1, 0, (k + 15) % 60);
             const minute = date.getMinutes();
+
             let label;
-            if (k % 5 === 0) {
+            if (k % 5 == 0) {
                 label = this.minuteDTF.format(date);
             }
+
             return {
+                x,
+                y,
                 activated: minute == this.current.getMinutes(),
                 selected: minute == this.value.getMinutes(),
                 disabled: false,
@@ -54,86 +78,83 @@ class MDTimePicker extends MDElement {
     constructor() {
         super();
 
-        this.hourDTF = new Intl.DateTimeFormat(undefined, { hour: "numeric", hour12: false });
-        this.minuteDTF = new Intl.DateTimeFormat(undefined, { minute: "numeric", hour12: false });
-        this.labelDTF = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", hour12: false });
+        const locales = "id-ID";
+
+        this.hourDTF = new Intl.DateTimeFormat(locales, { hour: "numeric" });
+        this.minuteDTF = new Intl.DateTimeFormat(locales, { minute: "numeric" });
+        this.labelDTF = new Intl.DateTimeFormat(locales, { hour: "2-digit", minute: "2-digit", hour12: false });
 
         this.current = new Date();
-        this.selected = new Date();
         this.value = new Date();
+        this.selected = new Date();
 
-        this.index = 1;
+        this.index = 0;
 
-        // console.log(this.hours);
-        // console.log(this.minutes);
+        console.log(this.hours, this.minutes);
     }
 
     render() {
         // prettier-ignore
         return html`
             <div class="md-time-picker__header">
-                <div @click="${this.handleTimePickerLabelClick}" class="md-time-picker__label">${this.label}</div>
-                <!-- <div class="md-time-picker__actions">
+                <md-button @click="${this.handleTimePickerLabelClick}" class="md-time-picker__label" .label="${this.label}"></md-button>
+                <div class="md-time-picker__actions">
                     <md-icon-button @click="${this.handleTimePickerActionBeforeClick}" class="md-time-picker__action" icon="navigate_before"></md-icon-button>
                     <md-icon-button @click="${this.handleTimePickerActionNextClick}" class="md-time-picker__action" icon="navigate_next"></md-icon-button>
-                </div> -->
+                </div>
             </div>
             <div class="md-time-picker__body">
                 <div class="md-time-picker__inner">
-                
+
                     <div class="md-time-picker__card">
-                        
                         <div class="md-time-picker__card-item">
+                            <div class="md-time-picker__inner">
 
-                            <div class="md-time-picker__column md-time-picker__column--minute" style="transform:rotate(${(360/60)*15}deg);">
-                                ${this.minutes.map((data,index)=>html`
-                                    <div class="${classMap({
-                                        'md-time-picker__column-item':true,
-                                        'md-time-picker__column-item--minute':true,
-                                        'md-time-picker__column-item--selected':data.selected,
-                                    })}" style="transform:rotate(${(360/60)*index}deg);">
-                                        <div .data="${data}" @click="${this.handleTimePickerColumnLabelMinuteClick}" 
+                                <div class="md-time-picker__absolute">
+                                    ${this.hours.map(item=>html`
+                                        <div 
+                                            .data="${item}"
+                                            @click="${this.handleTimePickerAbsoluteItemHourClick}"
                                             class="${classMap({
-                                                'md-time-picker__column-label':true,
-                                                'md-time-picker__column-label--minute':true,
-                                                'md-time-picker__column-label--activated':data.activated,
-                                                'md-time-picker__column-label--selected':data.selected,
-                                                'md-time-picker__column-label--disabled':data.disabled,
-                                            })}" style="transform:rotate(${(360/60)*(-15-index)}deg);"
-                                        >${data.label}</div>
-                                    </div>
-                                `)}
-                            </div>
+                                                'md-time-picker__absolute-item':true,
+                                                'md-time-picker__absolute-item--activated':item.activated,
+                                                'md-time-picker__absolute-item--selected':item.selected,
+                                                'md-time-picker__absolute-item--disalbed':item.disalbed,
+                                            })}"
+                                            style="${styleMap({
+                                                left:item.x+'px',
+                                                top:item.y+'px',
+                                            })}"
+                                        >${item.label}</div>
+                                    `)}
+                                </div>
 
+                            </div>
                         </div>
-                        
-                        
                         <div class="md-time-picker__card-item">
+                            <div class="md-time-picker__inner">
 
-                            <div class="md-time-picker__column md-time-picker__column--hour" style="transform:rotate(${(360/12)*3}deg);">
-                                ${this.hours.map((data,index)=>html`
-                                    <div class="${classMap({
-                                        'md-time-picker__column-item':true,
-                                        'md-time-picker__column-item--hour':true,
-                                        'md-time-picker__column-item--selected':data.selected,
-                                        'md-time-picker__column-item--hour24':!data.hour12,
-                                    })}" style="transform:rotate(${(360/12)*index}deg);">
-                                        <div .data="${data}" @click="${this.handleTimePickerColumnLabelHourClick}" 
+                                <div class="md-time-picker__absolute">
+                                    ${this.minutes.map(item=>html`
+                                        <div 
+                                            .data="${item}"
+                                            @click="${this.handleTimePickerAbsoluteItemMinuteClick}"
                                             class="${classMap({
-                                                'md-time-picker__column-label':true,
-                                                'md-time-picker__column-label--hour':true,
-                                                'md-time-picker__column-label--hour24':!data.hour12,
-                                                'md-time-picker__column-label--activated':data.activated,
-                                                'md-time-picker__column-label--selected':data.selected,
-                                                'md-time-picker__column-label--disabled':data.disabled,
-                                            })}" style="transform:rotate(${(360/12)*(-3-index)}deg);"
-                                        >${data.label}</div>
-                                    </div>
-                                `)}
-                            </div>
+                                                'md-time-picker__absolute-item':true,
+                                                'md-time-picker__absolute-item--activated':item.activated,
+                                                'md-time-picker__absolute-item--selected':item.selected,
+                                                'md-time-picker__absolute-item--disalbed':item.disalbed,
+                                            })}"
+                                            style="${styleMap({
+                                                left:item.x+'px',
+                                                top:item.y+'px',
+                                            })}"
+                                        >${item.label}</div>
+                                    `)}
+                                </div>
 
+                            </div>
                         </div>
-                        
                     </div>
 
                 </div>
@@ -157,8 +178,10 @@ class MDTimePicker extends MDElement {
 
     async firstUpdated(changedProperties) {
         await this.updateComplete;
+
         this.selected.setHours(this.value.getHours());
         this.selected.setMinutes(this.value.getMinutes());
+
         this.requestUpdate();
     }
 
@@ -167,72 +190,83 @@ class MDTimePicker extends MDElement {
     }
 
     handleTimePickerLabelClick(event) {
-        if (this.index === 1) {
-            this.index = 0;
-        } else if (this.index === 0) {
+        if (this.index == 0) {
             this.index = 1;
+        } else if (this.index == 1) {
+            this.index = 0;
         }
         this.emit("onTimePickerLabelClick", event);
     }
+
     handleTimePickerActionBeforeClick(event) {
-        if (this.index === 1) {
-            this.selected.setHours(this.selected.getHours() - 1);
-        } else if (this.index === 0) {
+        if (this.index == 1) {
             this.selected.setMinutes(this.selected.getMinutes() - 1);
+        } else if (this.index == 0) {
+            this.selected.setHours(this.selected.getHours() - 1);
         }
+
         this.requestUpdate();
+
         this.emit("onTimePickerActionBeforeClick", event);
     }
     handleTimePickerActionNextClick(event) {
-        if (this.index === 1) {
-            this.selected.setHours(this.selected.getHours() + 1);
-        } else if (this.index === 0) {
+        if (this.index == 1) {
             this.selected.setMinutes(this.selected.getMinutes() + 1);
+        } else if (this.index == 0) {
+            this.selected.setHours(this.selected.getHours() + 1);
         }
+
         this.requestUpdate();
+
         this.emit("onTimePickerActionNextClick", event);
     }
 
-    handleTimePickerColumnLabelMinuteClick(event) {
-        this.index = 1;
-
-        const data = event.currentTarget.data;
-        this.selected.setMinutes(data.minute);
-
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
-
-        this.requestUpdate();
-        this.emit("onTimePickerColumnLabelMinuteClick", event);
-    }
-    handleTimePickerColumnLabelHourClick(event) {
-        this.index = 0;
-
-        const data = event.currentTarget.data;
-        this.selected.setHours(data.hour);
-
-        this.requestUpdate();
-        this.emit("onTimePickerColumnLabelHourClick", event);
-    }
     handleTimePickerButtonCancelClick(event) {
-        this.index = 1;
+        const date = new Date()
 
-        const date = new Date();
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
 
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        this.value.setHours(date.getHours());
+        this.value.setMinutes(date.getMinutes());
+
         this.requestUpdate();
+
         this.emit("onTimePickerButtonCancelClick", event);
     }
     handleTimePickerButtonOkClick(event) {
-        // this.index=1
-        // this.value.setHours(this.selected.getHours());
-        // this.value.setMinutes(this.selected.getMinutes());
-        // this.requestUpdate();
-        console.log(this.value);
+        this.value.setHours(this.selected.getHours());
+        this.value.setMinutes(this.selected.getMinutes());
+
+        this.requestUpdate();
+
         this.emit("onTimePickerButtonOkClick", event);
+    }
+
+    handleTimePickerAbsoluteItemHourClick(event){
+        const data = event.currentTarget.data
+
+        this.selected.setHours(data.hour)
+
+        this.index=1
+
+        this.requestUpdate()
+
+        this.emit('onTimePickerAbsoluteItemHourClick',event)
+    }
+    handleTimePickerAbsoluteItemMinuteClick(event){
+        const data = event.currentTarget.data
+
+        this.selected.setMinutes(data.minute)
+
+        this.index=0
+
+        this.value.setHours(this.selected.getHours())
+        this.value.setMinutes(this.selected.getMinutes())
+
+        this.requestUpdate()
+
+        this.emit('onTimePickerAbsoluteItemMinuteClick',event)
     }
 }
 

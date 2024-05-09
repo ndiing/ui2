@@ -70,6 +70,7 @@ Router.init([
             {path:'data-table',load:() => import('./data-table/data-table.js').then(m=>m.default)},
             {path:'pagination',load:() => import('./pagination/pagination.js').then(m=>m.default)},
             {path:'picker',load:() => import('./picker/picker.js').then(m=>m.default)},
+            {path:'virtual-scroll',load:() => import('./virtual-scroll/virtual-scroll.js').then(m=>m.default)},
         ],
     },
 ]);

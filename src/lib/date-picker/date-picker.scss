@@ -2,7 +2,8 @@
     display: inline-flex;
     flex-direction: column;
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container-lowest);
+    background: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
 }
 
@@ -10,7 +11,6 @@
     display: flex;
     align-items: center;
     padding: 16px;
-    gap: 16px;
 
     + .md-date-picker__body {
         margin-top: -16px;
@@ -20,7 +20,7 @@
 .md-date-picker__actions {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
+    gap: 0 24px;
     margin-left: auto;
 }
 
@@ -29,18 +29,8 @@
 }
 
 .md-date-picker__label {
-    height: 32px;
-    padding: 6px calc(32px * (12px / 40px));
-    border-radius: calc(32px / 2);
-    @extend .md-typography--label-large;
-
-    @extend .md-ripple;
-    @extend .md-ripple--containment;
-    @extend .md-ripple--button;
-
-    &:hover {
-        @extend .md-ripple--hover;
-    }
+    // --md-button-density: -2;
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 .md-date-picker__body {
@@ -52,74 +42,110 @@
 
 .md-date-picker__inner {
     flex: 1;
-    overflow: hidden auto;
-    padding: 0 16px;
-    margin: 16px 0;
-    @extend .md-typography--body-small;
+    // overflow: hidden auto;
+    // padding: 0 16px;
+    // margin: 16px 0;
+    // @extend .md-typography--body-small;
 
-    + .md-date-picker__footer {
+    // + .md-date-picker__footer {
+    //     margin-top: -16px;
+    // }
+}
+
+// .md-date-picker__footer {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+//     padding: 16px;
+//     gap: 8px;
+// }
+
+// .md-date-picker__button {
+//     --md-button-density: -2;
+// }
+
+.md-date-picker__card {
+    display: flex;
+    width: calc((40px * 7) + (16px * 2) + ((4px * 7) - 4px));
+}
+.md-date-picker__card-item {
+    flex: 1 0 auto;
+    overflow: hidden auto;
+    display: flex;
+    flex-direction: column;
+    width: calc((40px * 7) + (16px * 2) + ((4px * 7) - 4px));
+    height: calc(((40px * 7) + (16px * 2) + ((4px * 7) - 4px)) + (((16px * 2) + 40px) - 16px));
+    transform: translate3d(calc((0 - var(--md-date-picker-index)) * 100%),0,0);
+}
+.md-date-picker__card-inner {
+    flex: 1;
+    overflow: hidden auto;
+    // padding: 0 16px;
+    // margin: 16px 0;
+    // @extend .md-typography--body-small;
+
+    + .md-date-picker__card-footer {
         margin-top: -16px;
     }
 }
-
-.md-date-picker__footer {
+.md-date-picker__card-footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 16px;
-    gap: 8px;
+    gap: 0 8px;
 }
-.md-date-picker__button {
-    --md-button-density: -2;
-}
+// .md-date-picker__card-button{
+//     --md-button-density: -2;
+// }
 
-.md-date-picker__card {
+.md-date-picker__list {
+    display: flex;
+    flex-direction: column;
+}
+.md-date-picker__list-item {
     display: flex;
     align-items: center;
-    overflow: hidden;
-    width: calc(36px * 7);
-    height: calc(36px * 7);
-}
-.md-date-picker__card-item {
-    flex: 1 0 auto;
-    transform: translate3d(calc((0 - var(--md-date-picker-index)) * 100%), 0, 0);
-}
-.md-date-picker__column {
-    display: grid;
-    grid-template-columns: repeat(4, calc((36px * 7) / 4));
-    grid-template-rows: repeat(4, calc((36px * 7) / 4));
-}
-// .md-date-picker__column--year{}
-// .md-date-picker__column--month{}
-.md-date-picker__column--day {
-    grid-template-columns: repeat(7, 36px);
-    grid-template-rows: repeat(7, 36px);
-}
+    height: 48px;
+    padding: 0 16px;
+    gap: 0 16px;
 
-.md-date-picker__column-item {
-    padding: calc(2px + ((((36px * 7) / 4) - 36px) / 2)) 2px;
-}
-// .md-date-picker__column-item--year{}
-// .md-date-picker__column-item--month{}
-.md-date-picker__column-item--weekday,
-.md-date-picker__column-item--day {
-    padding: 2px;
-}
+    @extend .md-ripple;
+    @extend .md-ripple--containment;
+    @extend .md-ripple--button;
 
-.md-date-picker__column-label {
+    &:hover {
+        @extend .md-ripple--hover;
+    }
+}
+// .md-date-picker__list-icon{}
+// .md-date-picker__list-label{}
+
+.md-date-picker__table {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    gap: 4px 0;
+}
+.md-date-picker__table-row {
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+}
+.md-date-picker__table-row--header {
+    color: var(--md-sys-color-on-surface-variant);
+}
+// .md-date-picker__table-row--body {
+//     color: var(--md-sys-color-on-surface);
+// }
+.md-date-picker__table-item {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    border-radius: calc(36px / 2);
-}
-.md-date-picker__column-label--weekday {
-    color: var(--md-sys-color-on-surface-variant);
-}
-.md-date-picker__column-label--year,
-.md-date-picker__column-label--month,
-.md-date-picker__column-label--day {
+    width: 40px;
+    height: 40px;
+    border-radius: calc(40px / 2);
+
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -129,17 +155,24 @@
     }
 }
 
-.md-date-picker__column-label--activated {
+.md-date-picker__list-item--activated {
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+.md-date-picker__list-item--selected {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+}
+.md-date-picker__list-item--disabled {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-date-picker__table-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
-.md-date-picker__column-label--error {
-    color: var(--md-sys-color-error);
-}
-.md-date-picker__column-label--selected {
+.md-date-picker__table-item--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 }
-.md-date-picker__column-label--disabled {
-    opacity: 38%;
-    pointer-events: none;
+.md-date-picker__table-item--disabled {
+    color: var(--md-sys-color-on-surface-variant);
 }

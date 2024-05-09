@@ -6,6 +6,7 @@ import "./store/store.js";
 import "./gesture/gesture.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
+import "./virtual-scroll/virtual-scroll.js";
 
 import "./localization/localization.js";
 import "./element/element.js";
