@@ -86,7 +86,7 @@ class MDDatePicker extends MDElement {
                 return {
                     activated: year == this.current.getFullYear() && month == this.current.getMonth() && day == this.current.getDate(),
                     selected: year == this.value.getFullYear() && month == this.value.getMonth() && day == this.value.getDate(),
-                    disabled: false,
+                    disabled: year!==this.selected.getFullYear()||month!==this.selected.getMonth(),
                     label: this.dayDTF.format(date),
                     year,
                     month,
@@ -260,9 +260,9 @@ class MDDatePicker extends MDElement {
 
         this.selected.setFullYear(data.year);
 
-        this.index = 1;
-
         this.requestUpdate();
+
+        this.index = 1;
 
         this.emit("onDatePickerListItemYearClick", event);
     }
@@ -272,9 +272,9 @@ class MDDatePicker extends MDElement {
         this.selected.setFullYear(data.year);
         this.selected.setMonth(data.month);
 
-        this.index = 2;
-
         this.requestUpdate();
+
+        this.index = 2;
 
         this.emit("onDatePickerListItemMonthClick", event);
     }
@@ -344,6 +344,8 @@ class MDDatePicker extends MDElement {
 
         this.requestUpdate();
 
+        this.index=2
+
         this.emit("onDatePickerButtonCancelClick", event);
     }
     handleDatePickerButtonOkClick(event) {
@@ -353,6 +355,8 @@ class MDDatePicker extends MDElement {
         this.value.setDate(this.selected.getDate());
 
         this.requestUpdate();
+
+        this.index=2
 
         this.emit("onDatePickerButtonOkClick", event);
     }

@@ -10,7 +10,8 @@ class MDTimePicker extends MDElement {
             value: {
                 type: Date,
                 converter(value) {
-                    return new Date(value);
+                    const [hour,minute]=value.split(':')
+                    return new Date(0,0,1,hour,minute);
                 },
             },
             index: { type: Number },
@@ -35,12 +36,20 @@ class MDTimePicker extends MDElement {
             const date = new Date(0, 0, 1, h, 0);
             const hour = date.getHours();
 
+            const selected = hour == this.value.getHours()
+
+            if(selected){
+                this.style.setProperty('--md-time-picker-hour-rotate',((360/12)*k)+'deg')
+                const width=k < 12?'216px':'128px'
+                this.style.setProperty('--md-time-picker-hour-width',width)
+            }
+
             return {
                 x,
                 y,
                 activated: hour == this.current.getHours(),
-                selected: hour == this.value.getHours(),
-                disabled: false,
+                selected,
+                // disabled: hour<this.selected.getHours(),
                 label: this.hourDTF.format(date),
                 hour,
             };
@@ -59,12 +68,20 @@ class MDTimePicker extends MDElement {
                 label = this.minuteDTF.format(date);
             }
 
+            const selected=minute == this.value.getMinutes()
+
+            if(selected){
+                this.style.setProperty('--md-time-picker-minute-rotate',((360/60)*k)+'deg')
+                const width=k % 5 == 0?'216px':'236px'
+                this.style.setProperty('--md-time-picker-minute-width',width)
+            }
+
             return {
                 x,
                 y,
                 activated: minute == this.current.getMinutes(),
-                selected: minute == this.value.getMinutes(),
-                disabled: false,
+                selected,
+                // disabled: minute<this.selected.getMinutes(),
                 label,
                 minute,
             };
@@ -90,7 +107,7 @@ class MDTimePicker extends MDElement {
 
         this.index = 0;
 
-        console.log(this.hours, this.minutes);
+        // console.log(this.hours, this.minutes);
     }
 
     render() {
@@ -110,7 +127,7 @@ class MDTimePicker extends MDElement {
                         <div class="md-time-picker__card-item">
                             <div class="md-time-picker__inner">
 
-                                <div class="md-time-picker__absolute">
+                                <div class="md-time-picker__absolute md-time-picker__absolute--hour">
                                     ${this.hours.map(item=>html`
                                         <div 
                                             .data="${item}"
@@ -119,7 +136,7 @@ class MDTimePicker extends MDElement {
                                                 'md-time-picker__absolute-item':true,
                                                 'md-time-picker__absolute-item--activated':item.activated,
                                                 'md-time-picker__absolute-item--selected':item.selected,
-                                                'md-time-picker__absolute-item--disalbed':item.disalbed,
+                                                'md-time-picker__absolute-item--disabled':item.disabled,
                                             })}"
                                             style="${styleMap({
                                                 left:item.x+'px',
@@ -134,7 +151,7 @@ class MDTimePicker extends MDElement {
                         <div class="md-time-picker__card-item">
                             <div class="md-time-picker__inner">
 
-                                <div class="md-time-picker__absolute">
+                                <div class="md-time-picker__absolute md-time-picker__absolute--minute">
                                     ${this.minutes.map(item=>html`
                                         <div 
                                             .data="${item}"
@@ -143,7 +160,7 @@ class MDTimePicker extends MDElement {
                                                 'md-time-picker__absolute-item':true,
                                                 'md-time-picker__absolute-item--activated':item.activated,
                                                 'md-time-picker__absolute-item--selected':item.selected,
-                                                'md-time-picker__absolute-item--disalbed':item.disalbed,
+                                                'md-time-picker__absolute-item--disabled':item.disabled,
                                             })}"
                                             style="${styleMap({
                                                 left:item.x+'px',
@@ -205,6 +222,9 @@ class MDTimePicker extends MDElement {
             this.selected.setHours(this.selected.getHours() - 1);
         }
 
+        this.value.setHours(this.selected.getHours())
+        this.value.setMinutes(this.selected.getMinutes())
+
         this.requestUpdate();
 
         this.emit("onTimePickerActionBeforeClick", event);
@@ -215,6 +235,9 @@ class MDTimePicker extends MDElement {
         } else if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
         }
+
+        this.value.setHours(this.selected.getHours())
+        this.value.setMinutes(this.selected.getMinutes())
 
         this.requestUpdate();
 
@@ -232,6 +255,8 @@ class MDTimePicker extends MDElement {
 
         this.requestUpdate();
 
+        this.index=0
+
         this.emit("onTimePickerButtonCancelClick", event);
     }
     handleTimePickerButtonOkClick(event) {
@@ -239,6 +264,8 @@ class MDTimePicker extends MDElement {
         this.value.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
+
+        this.index=0
 
         this.emit("onTimePickerButtonOkClick", event);
     }
@@ -248,9 +275,11 @@ class MDTimePicker extends MDElement {
 
         this.selected.setHours(data.hour)
 
-        this.index=1
+        this.value.setHours(this.selected.getHours())
 
         this.requestUpdate()
+
+        this.index=1
 
         this.emit('onTimePickerAbsoluteItemHourClick',event)
     }
@@ -259,12 +288,12 @@ class MDTimePicker extends MDElement {
 
         this.selected.setMinutes(data.minute)
 
-        this.index=0
-
         this.value.setHours(this.selected.getHours())
         this.value.setMinutes(this.selected.getMinutes())
 
         this.requestUpdate()
+
+        this.index=0
 
         this.emit('onTimePickerAbsoluteItemMinuteClick',event)
     }

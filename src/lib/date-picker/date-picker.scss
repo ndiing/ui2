@@ -164,6 +164,7 @@
 }
 .md-date-picker__list-item--disabled {
     color: var(--md-sys-color-on-surface-variant);
+    opacity: 38%;
 }
 
 .md-date-picker__table-item--activated {
@@ -175,4 +176,5 @@
 }
 .md-date-picker__table-item--disabled {
     color: var(--md-sys-color-on-surface-variant);
+    opacity: 38%;
 }
