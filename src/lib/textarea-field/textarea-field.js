@@ -93,8 +93,7 @@ class MDTextareaField extends MDElement {
     }
 
     handleTextareaFieldNativeInput(event) {
-        this.textareaFieldNative.style.height = "0px";
-        this.textareaFieldNative.style.height = this.textareaFieldNative.scrollHeight + "px";
+        
         this.updateClassPopulated();
         this.updateClassError();
         this.emit("onTextareaFieldNativeInput", event);
@@ -118,6 +117,8 @@ class MDTextareaField extends MDElement {
         } else {
             this.classList.remove("md-textarea-field--populated");
         }
+        this.textareaFieldNative.style.height = "0px";
+        this.textareaFieldNative.style.height = this.textareaFieldNative.scrollHeight + "px";
     }
 
     updateClassError() {
