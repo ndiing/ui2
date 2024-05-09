@@ -9,7 +9,12 @@ class MDDatePickerList extends HTMLDivElement {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
         const viewportHeight = this.clientHeight;
-        this.virtualScroll = new VirtualScroll(this, { total, itemHeight, viewportHeight, containerSelector: ".md-date-picker__list" });
+        this.virtualScroll = new VirtualScroll(this, {
+            total,
+            itemHeight,
+            viewportHeight,
+            containerSelector: ".md-date-picker__list",
+        });
         this.scrollTop = itemHeight * (total / 2) - itemHeight * Math.floor(viewportHeight / itemHeight / 2);
     }
 
