@@ -9,6 +9,6 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      
+      'sade703ea318a661c': `Users`,
     };
   
