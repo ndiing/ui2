@@ -161,10 +161,9 @@ class MDTimePicker extends MDElement {
 
     constructor() {
         super();
-        const locales = "id-ID";
-        this.hourDTF = new Intl.DateTimeFormat(locales, { hour: "numeric" });
-        this.minuteDTF = new Intl.DateTimeFormat(locales, { minute: "numeric" });
-        this.labelDTF = new Intl.DateTimeFormat(locales, { hour: "2-digit", minute: "2-digit", hour12: false });
+        this.hourDTF = new Intl.DateTimeFormat(this.locales, { hour: "numeric", hour12: false });
+        this.minuteDTF = new Intl.DateTimeFormat(this.locales, { minute: "numeric" });
+        this.labelDTF = new Intl.DateTimeFormat(this.locales, { hour: "2-digit", minute: "2-digit", hour12: false });
         this.current = new Date();
         this.value = new Date();
         this.selected = new Date();

@@ -47,6 +47,24 @@ Date.prototype.setWeek = function (week, year) {
 // myDate.setWeek(20, 2024); // Sets myDate to the first day of the 20th week of 2024
 // console.log("Date set to:", myDate.toDateString());
 
+const formats = {
+    "en-GB": "Week $WW$, $YYYY$",
+    "en-US": "Week $WW$, $YYYY$",
+    "fr-FR": "Semaine $WW$, $YYYY$",
+    "es-ES": "Semana $WW$, $YYYY$",
+    "de-DE": "Woche $WW$, $YYYY$",
+    "it-IT": "Settimana $WW$, $YYYY$",
+    "ja-JP": "週 $WW$, $YYYY$",
+    "zh-CN": "第$WW$周，$YYYY$",
+    "ko-KR": "주 $WW$, $YYYY$",
+    "pt-BR": "Semana $WW$, $YYYY$",
+    "ru-RU": "Неделя $WW$, $YYYY$",
+    "hi-IN": "सप्ताह $WW$, $YYYY$",
+    "id-ID": "Pekan $WW$, $YYYY$",
+    "ar-SA": "الأسبوع $WW$, $YYYY$",
+    "nl-NL": "Week $WW$, $YYYY$",
+};
+
 class MDWeekPickerList extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
@@ -140,7 +158,11 @@ class MDWeekPicker extends MDElement {
 
     get label() {
         if (this.index == 2) {
-            return `Week ${("" + (this.selected.getWeek() + 1)).padStart(2, "0")}, ${this.labelDTF.format(this.selected)}`;
+            const locale=(this.labelDTF.resolvedOptions().locale);
+            const WW=("" + (this.selected.getWeek() + 1)).padStart(2, "0")
+            const YYYY=this.labelDTF.format(this.selected)
+            const data={WW,YYYY}
+            return formats[locale].replace(/\$([^\$]+)\$/g,($,$1)=>data[$1]);
         } else if (this.index == 1) {
             return this.yearDTF.format(this.selected);
         } else if (this.index == 0) {
@@ -150,13 +172,12 @@ class MDWeekPicker extends MDElement {
 
     constructor() {
         super();
-        const locales = "id-ID";
-        this.yearDTF = new Intl.DateTimeFormat(locales, { year: "numeric" });
-        this.monthDTF = new Intl.DateTimeFormat(locales, { month: "long" });
-        this.weekdayDTF = new Intl.DateTimeFormat(locales, { weekday: "narrow" });
-        this.dayDTF = new Intl.DateTimeFormat(locales, { day: "numeric" });
-        this.labelDTF = new Intl.DateTimeFormat(locales, { year: "numeric", week: "2-digit" });
-        this.valueDTF = new Intl.DateTimeFormat(locales, { year: "numeric", month: "2-digit", day: "2-digit" });
+        this.yearDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric" });
+        this.monthDTF = new Intl.DateTimeFormat(this.locales, { month: "long" });
+        this.weekdayDTF = new Intl.DateTimeFormat(this.locales, { weekday: "narrow" });
+        this.dayDTF = new Intl.DateTimeFormat(this.locales, { day: "numeric" });
+        this.labelDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric", week: "2-digit" });
+        this.valueDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric", month: "2-digit", day: "2-digit" });
         this.current = new Date();
         this.value = new Date();
         this.selected = new Date();

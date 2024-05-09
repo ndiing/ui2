@@ -92,13 +92,12 @@ class MDDatePicker extends MDElement {
 
     constructor() {
         super();
-        const locales = "id-ID";
-        this.yearDTF = new Intl.DateTimeFormat(locales, { year: "numeric" });
-        this.monthDTF = new Intl.DateTimeFormat(locales, { month: "long" });
-        this.weekdayDTF = new Intl.DateTimeFormat(locales, { weekday: "narrow" });
-        this.dayDTF = new Intl.DateTimeFormat(locales, { day: "numeric" });
-        this.labelDTF = new Intl.DateTimeFormat(locales, { year: "numeric", month: "long" });
-        this.valueDTF = new Intl.DateTimeFormat(locales, { year: "numeric", month: "2-digit", day: "2-digit" });
+        this.yearDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric" });
+        this.monthDTF = new Intl.DateTimeFormat(this.locales, { month: "long" });
+        this.weekdayDTF = new Intl.DateTimeFormat(this.locales, { weekday: "narrow" });
+        this.dayDTF = new Intl.DateTimeFormat(this.locales, { day: "numeric" });
+        this.labelDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric", month: "long" });
+        this.valueDTF = new Intl.DateTimeFormat(this.locales, { year: "numeric", month: "2-digit", day: "2-digit" });
         this.current = new Date();
         this.value = new Date();
         this.selected = new Date();
