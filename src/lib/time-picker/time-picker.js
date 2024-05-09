@@ -9,9 +9,10 @@ class MDTimePicker extends MDElement {
         return {
             value: {
                 type: Date,
+
                 converter(value) {
-                    const [hour,minute]=value.split(':')
-                    return new Date(0,0,1,hour,minute);
+                    const [hour, minute] = value.split(":");
+                    return new Date(0, 0, 1, hour, minute);
                 },
             },
             index: { type: Number },
@@ -32,56 +33,49 @@ class MDTimePicker extends MDElement {
                 x = 84 * Math.cos(((k % 12) / 12) * 2 * Math.PI) + 132;
                 y = 84 * Math.sin(((k % 12) / 12) * 2 * Math.PI) + 132;
             }
-
             const date = new Date(0, 0, 1, h, 0);
             const hour = date.getHours();
+            const selected = hour == this.value.getHours();
 
-            const selected = hour == this.value.getHours()
-
-            if(selected){
-                this.style.setProperty('--md-time-picker-hour-rotate',((360/12)*k)+'deg')
-                const width=k < 12?'216px':'128px'
-                this.style.setProperty('--md-time-picker-hour-width',width)
+            if (selected) {
+                this.style.setProperty("--md-time-picker-hour-rotate", (360 / 12) * k + "deg");
+                const width = k < 12 ? "216px" : "128px";
+                this.style.setProperty("--md-time-picker-hour-width", width);
             }
-
             return {
                 x,
                 y,
                 activated: hour == this.current.getHours(),
                 selected,
-                // disabled: hour<this.selected.getHours(),
                 label: this.hourDTF.format(date),
                 hour,
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const x = 128 * Math.cos((k / 60) * 2 * Math.PI) + 132;
             const y = 128 * Math.sin((k / 60) * 2 * Math.PI) + 132;
-
             const date = new Date(0, 0, 1, 0, (k + 15) % 60);
             const minute = date.getMinutes();
-
             let label;
+
             if (k % 5 == 0) {
                 label = this.minuteDTF.format(date);
             }
+            const selected = minute == this.value.getMinutes();
 
-            const selected=minute == this.value.getMinutes()
-
-            if(selected){
-                this.style.setProperty('--md-time-picker-minute-rotate',((360/60)*k)+'deg')
-                const width=k % 5 == 0?'216px':'236px'
-                this.style.setProperty('--md-time-picker-minute-width',width)
+            if (selected) {
+                this.style.setProperty("--md-time-picker-minute-rotate", (360 / 60) * k + "deg");
+                const width = k % 5 == 0 ? "216px" : "236px";
+                this.style.setProperty("--md-time-picker-minute-width", width);
             }
-
             return {
                 x,
                 y,
                 activated: minute == this.current.getMinutes(),
                 selected,
-                // disabled: minute<this.selected.getMinutes(),
                 label,
                 minute,
             };
@@ -90,24 +84,6 @@ class MDTimePicker extends MDElement {
 
     get label() {
         return this.labelDTF.format(this.selected);
-    }
-
-    constructor() {
-        super();
-
-        const locales = "id-ID";
-
-        this.hourDTF = new Intl.DateTimeFormat(locales, { hour: "numeric" });
-        this.minuteDTF = new Intl.DateTimeFormat(locales, { minute: "numeric" });
-        this.labelDTF = new Intl.DateTimeFormat(locales, { hour: "2-digit", minute: "2-digit", hour12: false });
-
-        this.current = new Date();
-        this.value = new Date();
-        this.selected = new Date();
-
-        this.index = 0;
-
-        // console.log(this.hours, this.minutes);
     }
 
     render() {
@@ -183,6 +159,18 @@ class MDTimePicker extends MDElement {
         `
     }
 
+    constructor() {
+        super();
+        const locales = "id-ID";
+        this.hourDTF = new Intl.DateTimeFormat(locales, { hour: "numeric" });
+        this.minuteDTF = new Intl.DateTimeFormat(locales, { minute: "numeric" });
+        this.labelDTF = new Intl.DateTimeFormat(locales, { hour: "2-digit", minute: "2-digit", hour12: false });
+        this.current = new Date();
+        this.value = new Date();
+        this.selected = new Date();
+        this.index = 0;
+    }
+
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-picker");
@@ -195,10 +183,8 @@ class MDTimePicker extends MDElement {
 
     async firstUpdated(changedProperties) {
         await this.updateComplete;
-
         this.selected.setHours(this.value.getHours());
         this.selected.setMinutes(this.value.getMinutes());
-
         this.requestUpdate();
     }
 
@@ -221,81 +207,60 @@ class MDTimePicker extends MDElement {
         } else if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() - 1);
         }
-
-        this.value.setHours(this.selected.getHours())
-        this.value.setMinutes(this.selected.getMinutes())
-
+        this.value.setHours(this.selected.getHours());
+        this.value.setMinutes(this.selected.getMinutes());
         this.requestUpdate();
-
         this.emit("onTimePickerActionBeforeClick", event);
     }
+
     handleTimePickerActionNextClick(event) {
         if (this.index == 1) {
             this.selected.setMinutes(this.selected.getMinutes() + 1);
         } else if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
         }
-
-        this.value.setHours(this.selected.getHours())
-        this.value.setMinutes(this.selected.getMinutes())
-
+        this.value.setHours(this.selected.getHours());
+        this.value.setMinutes(this.selected.getMinutes());
         this.requestUpdate();
-
         this.emit("onTimePickerActionNextClick", event);
     }
 
     handleTimePickerButtonCancelClick(event) {
-        const date = new Date()
-
+        const date = new Date();
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
-
         this.value.setHours(date.getHours());
         this.value.setMinutes(date.getMinutes());
-
         this.requestUpdate();
-
-        this.index=0
-
+        this.index = 0;
         this.emit("onTimePickerButtonCancelClick", event);
     }
+
     handleTimePickerButtonOkClick(event) {
         this.value.setHours(this.selected.getHours());
         this.value.setMinutes(this.selected.getMinutes());
-
         this.requestUpdate();
-
-        this.index=0
-
+        this.index = 0;
         this.emit("onTimePickerButtonOkClick", event);
     }
 
-    handleTimePickerAbsoluteItemHourClick(event){
-        const data = event.currentTarget.data
-
-        this.selected.setHours(data.hour)
-
-        this.value.setHours(this.selected.getHours())
-
-        this.requestUpdate()
-
-        this.index=1
-
-        this.emit('onTimePickerAbsoluteItemHourClick',event)
+    handleTimePickerAbsoluteItemHourClick(event) {
+        const data = event.currentTarget.data;
+        this.selected.setHours(data.hour);
+        this.value.setHours(this.selected.getHours());
+        this.requestUpdate();
+        this.index = 1;
+        this.emit("onTimePickerAbsoluteItemHourClick", event);
     }
-    handleTimePickerAbsoluteItemMinuteClick(event){
-        const data = event.currentTarget.data
 
-        this.selected.setMinutes(data.minute)
-
-        this.value.setHours(this.selected.getHours())
-        this.value.setMinutes(this.selected.getMinutes())
-
-        this.requestUpdate()
-
-        this.index=0
-
-        this.emit('onTimePickerAbsoluteItemMinuteClick',event)
+    handleTimePickerAbsoluteItemMinuteClick(event) {
+        const data = event.currentTarget.data;
+        this.selected.setMinutes(data.minute);
+        this.value.setHours(this.selected.getHours());
+        this.value.setMinutes(this.selected.getMinutes());
+        this.requestUpdate();
+        this.index = 0;
+        this.emit("onTimePickerAbsoluteItemMinuteClick", event);
     }
 }
 
