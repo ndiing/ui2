@@ -121,10 +121,11 @@ class DevDataTable extends MDElement {
         event.detail.preventDefault();
     }
 
-    async firstUpdated() {
+    async connectedCallback() {
+        super.connectedCallback()
         await this.updateComplete;
-        const viewport = this.querySelector(".md-data-table");
-        const table = this.querySelector(".md-data-table > table");
+        this.viewport = this.querySelector(".md-data-table");
+        this.table = this.querySelector(".md-data-table > table");
 
         // first load
         const result2 = this.store2.getAll({
@@ -136,17 +137,21 @@ class DevDataTable extends MDElement {
 
         const total = result2.total;
         const itemHeight = 52;
-        const viewportHeight = viewport.clientHeight;
+        const viewportHeight = this.viewport.clientHeight;
 
-        new VirtualScroll(table, {
+        this.virtualScroll=new VirtualScroll(this.table, {
             containerSelector: ".md-data-table > table > tbody",
             total,
             itemHeight,
             viewportHeight,
         });
 
-        table.addEventListener("onVirtualScroll", (event) => {
-            const { start, end } = event.detail;
+        this.handleScroll=this.handleScroll.bind(this)
+        this.table.addEventListener("onVirtualScroll", this.handleScroll);
+    }
+
+    handleScroll(){
+        const { start, end } = event.detail;
 
             // load on scroll
             const result2 = this.store2.getAll({
@@ -155,7 +160,12 @@ class DevDataTable extends MDElement {
             });
             this.rows2 = result2.docs;
             this.requestUpdate();
-        });
+    }
+
+    disconnectedCallback(){
+        super.disconnectedCallback()
+        this.table.removeEventListener("onVirtualScroll", this.handleScroll);
+        this.virtualScroll.destroy()
     }
 }
 
