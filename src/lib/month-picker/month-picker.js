@@ -44,7 +44,7 @@ class MDMonthPickerListMonthItem extends HTMLDivElement {
         this.scrollIntoView({
             block: "center",
             inline: "center",
-            behavior: 'instant',
+            behavior: 'smooth',
         });
     }
 }
