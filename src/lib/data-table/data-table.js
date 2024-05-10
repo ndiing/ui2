@@ -1,8 +1,10 @@
 import { MDElement } from "../element/element";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { Gesture } from "../gesture/gesture";
 import { styleMap } from "lit/directives/style-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { classMap } from "lit/directives/class-map.js";
 
 class MDDataTableColumn extends HTMLTableCellElement {
     connectedCallback() {
@@ -32,17 +34,55 @@ class MDDataTableContainer extends MDElement {
     static get properties() {
         return {
             label: { type: String },
+            sortable: { type: Boolean },
+            type: { type: String },
+            order: { type: String },
+            actions: { type: Array },
         };
+    }
+
+    get sortableIcon() {
+        return this.order == "asc" ? "arrow_upward" : this.order == "desc" ? "arrow_downward" : "";
     }
 
     constructor() {
         super();
+
+        this.type = "string";
+    }
+
+    renderIcon() {
+        // prettier-ignore
+        return html`
+            <md-icon-button 
+                class="md-data-table__icon"
+                .icon="${this.sortableIcon}"
+                .type="${undefined}"
+                .ui="${undefined}"
+                @click="${this.handleDataTableIconClick}"
+            ></md-icon-button>
+        `
     }
 
     render() {
         // prettier-ignore
         return html`
-            <div class="md-data-table__label">${this.label}</div>
+            ${this.sortable&&this.type!=='string'?this.renderIcon():nothing}
+            ${this.label?html`<div class="md-data-table__label">${this.label}</div>`:nothing}
+            ${this.sortable&&this.type=='string'?this.renderIcon():nothing}
+            ${this.actions?.length?html`
+                <div class="md-data-table__actions">
+                    ${this.actions.map(action => html`
+                        <md-icon-button 
+                            class="md-data-table__action" 
+                            .icon="${action?.icon??action}"
+                            .type="${action.type}"
+                            .ui="${action.ui}"
+                            @click="${this.handleDataTableActionClick}"
+                        ></md-icon-button>
+                    `)}
+                </div>
+            `:nothing}
         `
     }
 
@@ -57,6 +97,14 @@ class MDDataTableContainer extends MDElement {
     }
 
     updated(changedProperties) {}
+
+    handleDataTableIconClick(event) {
+        this.emit("onDataTableIconClick", event);
+    }
+
+    handleDataTableActionClick(event) {
+        this.emit("onDataTableActionClick", event);
+    }
 }
 
 customElements.define("md-data-table-container", MDDataTableContainer);
@@ -73,6 +121,11 @@ class MDDataTable extends MDElement {
         };
     }
 
+    getLabel(data,name){
+        return name.split('.')
+        .reduce((p,c) => p[c],data)
+    }
+
     constructor() {
         super();
         this.columns = [];
@@ -83,15 +136,20 @@ class MDDataTable extends MDElement {
         // prettier-ignore
         return html`
             <table>
+                <caption></caption>
                 <thead>
                     <tr>
-                        ${this.columns.map(column => html`
+                        ${this.columns?.map(column => html`
                             <th
                                 is="md-data-table-column"
                                 .data="${column}"
                                 tabindex="0"
                                 style="${styleMap({
                                     ...(column.width&&{'min-width':column.width+'px'})
+                                })}"
+                                class="${classMap({
+                                    "md-data-table__th":true,
+                                    "md-data-table__th--order":column.order,
                                 })}"
                                 @onResizeStart="${true&&this.handleDataTableColumnResizeStart||(() => {})}"
                                 @onResize="${true&&this.handleDataTableColumnResize||(() => {})}"
@@ -100,16 +158,27 @@ class MDDataTable extends MDElement {
                                 @onDragStart="${false&&this.handleDataTableColumnDragStart||(() => {})}"
                                 @onDrag="${false&&this.handleDataTableColumnDrag||(() => {})}"
                                 @onDragEnd="${false&&this.handleDataTableColumnDragEnd||(() => {})}"
+                                @onDataTableIconClick="${this.handleDataTableColumnIconClick}"
+                                @onDataTableActionClick="${this.handleDataTableColumnActionClick}"
+                                @contextmenu="${this.handleDataTableColumnContextmenu}"
                             >
                                 <md-data-table-container
-                                    .label="${column.label}"
+                                    class="${classMap({
+                                        "md-data-table__container":true,
+                                        "md-data-table__container--number":column.type=='number',
+                                    })}"
+                                    .label="${ifDefined(column.label)}"
+                                    .sortable="${ifDefined(column.sortable)}"
+                                    .type="${ifDefined(column.type)}"
+                                    .order="${ifDefined(column.order)}"
+                                    .actions="${ifDefined(column.actions)}"
                                 ></md-data-table-container>
                             </th>
                         `)}
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.rows.map(row=>html`
+                    ${this.rows?.map(row=>html`
                         <tr
                             is="md-data-table-row"
                             .data="${row}"
@@ -119,11 +188,18 @@ class MDDataTable extends MDElement {
                             @onDragStart="${false&&this.handleDataTableRowDragStart||(() => {})}"
                             @onDrag="${false&&this.handleDataTableRowDrag||(() => {})}"
                             @onDragEnd="${false&&this.handleDataTableRowDragEnd||(() => {})}"
+                            @onDataTableActionClick="${this.handleDataTableRowActionClick}"
+                            @contextmenu="${this.handleDataTableRowContextmenu}"
                         >
-                            ${this.columns.map(column => html`
+                            ${this.columns?.map(column => html`
                                 <td>
                                     <md-data-table-container
-                                        .label="${row[column.name]}"
+                                        class="${classMap({
+                                            "md-data-table__container":true,
+                                            "md-data-table__container--number":column.type=='number',
+                                        })}"
+                                        .label="${(column.rowConverter||((value) => value))(this.getLabel(row,column.name))}"
+                                        .actions="${ifDefined(column.rowActions)}"
                                     ></md-data-table-container>
                                 </td>
                             `)}
@@ -148,6 +224,39 @@ class MDDataTable extends MDElement {
 
     updated(changedProperties) {}
 
+    handleDataTableColumnIconClick(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.order = "asc";
+            } else if (data.order == "asc") {
+                data.order = "desc";
+            } else if (data.order == "desc") {
+                data.order = undefined;
+            }
+        }
+
+        this.requestUpdate();
+
+        this.emit("onDataTableColumnIconClick", event);
+    }
+
+    handleDataTableColumnActionClick(event) {
+        this.emit("onDataTableColumnActionClick",event);
+    }
+
+    handleDataTableRowActionClick(event) {
+        this.emit("onDataTableRowActionClick",event);
+    }
+
+    handleDataTableColumnContextmenu(event){
+        this.emit('onDataTableColumnContextmenu',event)
+    }
+    handleDataTableRowContextmenu(event){
+        this.emit('onDataTableRowContextmenu',event)
+    }
+
     handleDataTableColumnResizeStart(event) {
         const th = event.currentTarget;
         th.startOffsetWidth = th.offsetWidth - event.detail.clientX;
@@ -159,8 +268,8 @@ class MDDataTable extends MDElement {
         const data = th.data;
         const width = th.startOffsetWidth + event.detail.clientX;
         data.width = width;
-        th.style.minWidth = width + "px";
-        th.style.maxWidth = width + "px";
+        // th.style.minWidth = width + "px";
+        // th.style.maxWidth = width + "px";
         this.requestUpdate();
         this.emit("onDataTableColumnResize", event);
     }
@@ -174,15 +283,23 @@ class MDDataTable extends MDElement {
         const data = th.data;
         const index = this.columns.indexOf(data);
         const tds = Array.from(this.querySelectorAll("td:nth-child(" + (index + 1) + ")"));
+
         tds.forEach((td) => td.style.setProperty("max-width", "100%"));
+
         th.style.setProperty("min-width", "0px");
-        th.style.setProperty("max-width", "0px");
+        // th.style.setProperty("max-width", "0px");
+
         const width = Math.max(...tds.map((td) => td.scrollWidth));
+
         th.style.setProperty("min-width", width + "px");
         th.style.setProperty("max-width", width + "px");
+
         tds.forEach((td) => td.style.setProperty("max-width", "0px"));
+
         data.width = width;
+
         this.requestUpdate();
+
         this.emit("onDataTableColumnResizeHandleDoubleTap", event);
     }
 

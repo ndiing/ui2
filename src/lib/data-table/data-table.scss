@@ -13,12 +13,10 @@ th {
     --md-data-table-row-height: calc(52px + (4px * var(--md-density)));
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    width: 100%;
-    height: 100%;
 
     table {
         display: block;
+        overflow: auto;
     }
 
     thead {
@@ -43,6 +41,11 @@ th {
                 .md-data-table__container {
                     @extend .md-ripple--hover;
                 }
+            }
+
+        
+            &:not(:hover){
+                .md-data-table__action{visibility: hidden;}
             }
 
             &:last-child {
@@ -80,6 +83,13 @@ th {
                 @extend .md-ripple--hover;
             }
         }
+
+        &:not(:hover){
+            &:not(.md-data-table__th--order){
+                .md-data-table__icon{visibility: hidden;}
+            }
+            .md-data-table__action{visibility: hidden;}
+        }
     }
 
     td {
@@ -93,6 +103,7 @@ th {
     align-items: center;
     height: var(--md-data-table-row-height);
     padding: 0 16px;
+    gap: 0 8px;
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -102,9 +113,23 @@ th {
     }
 }
 
+.md-data-table__container--number{
+    justify-content: flex-end;
+}
+
+// .md-data-table__icon {}
+
 .md-data-table__label {
     @extend .md-typography--body-medium;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.md-data-table__actions{
+    display: inline-flex;
+    align-items: center;
+    gap: 0 16px;
+    margin-left: auto;
+}
+// .md-data-table__action{}
