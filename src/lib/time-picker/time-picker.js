@@ -77,6 +77,7 @@ class MDTimePicker extends MDElement {
                 activated: minute == this.current.getMinutes(),
                 selected,
                 label,
+                small: k % 5 > 0,
                 minute,
             };
         });
@@ -137,6 +138,7 @@ class MDTimePicker extends MDElement {
                                                 'md-time-picker__absolute-item--activated':item.activated,
                                                 'md-time-picker__absolute-item--selected':item.selected,
                                                 'md-time-picker__absolute-item--disabled':item.disabled,
+                                                'md-time-picker__absolute-item--small':item.small,
                                             })}"
                                             style="${styleMap({
                                                 left:item.x+'px',

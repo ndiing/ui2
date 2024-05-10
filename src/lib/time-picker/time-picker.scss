@@ -145,12 +145,13 @@
     width: 40px;
     border-radius: calc(40px / 2);
 
-    &:empty {
-        height: calc(40px / 2);
-        width: calc(40px / 2);
-        margin: calc((40px / 2) / 2);
-        border-radius: calc((40px / 2) / 2);
-    }
+    // &:empty {
+    //     height: calc(40px / 2);
+    //     width: calc(40px / 2);
+    //     margin: calc((40px / 2) / 2);
+    //     border-radius: calc((40px / 2) / 2);
+    // }
+
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -158,6 +159,13 @@
     &:hover {
         @extend .md-ripple--hover;
     }
+}
+
+.md-time-picker__absolute-item--small{
+    height: calc(40px / 2);
+    width: calc(40px / 2);
+    margin: calc((40px / 2) / 2);
+    border-radius: calc((40px / 2) / 2);
 }
 
 .md-time-picker__absolute-item--activated {
