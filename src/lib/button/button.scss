@@ -11,6 +11,7 @@
     position: relative;
     background: transparent;
     color: var(--md-sys-color-primary);
+    user-select: none;
 }
 
 .md-button__native {
