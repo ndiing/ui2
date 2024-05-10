@@ -37,9 +37,16 @@ class MDMonthPickerMonth extends HTMLDivElement {
 customElements.define("md-month-picker-month", MDMonthPickerMonth, { extends: "div" });
 
 class MDMonthPickerListMonthItem extends HTMLDivElement {
-    connectedCallback() {
-    }
+    static observedAttributes = ["selected"];
+    connectedCallback() {}
     disconnectedCallback() {}
+    attributeChangedCallback() {
+        this.scrollIntoView({
+            block: "center",
+            inline: "center",
+            behavior: 'instant',
+        });
+    }
 }
 
 customElements.define("md-month-picker-list-month-item", MDMonthPickerListMonthItem, { extends: "div" });
@@ -112,7 +119,7 @@ class MDMonthPicker extends MDElement {
         super();
 
         this.yearDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
-        this.monthDTF = new Intl.DateTimeFormat(undefined, { month: 'long' });
+        this.monthDTF = new Intl.DateTimeFormat(undefined, { month: "long" });
 
         this.value = new Date();
         this.selected = new Date();
@@ -173,6 +180,7 @@ class MDMonthPicker extends MDElement {
                         <div 
                             is="md-month-picker-list-month-item"
                             .data="${data}"
+                            ?selected="${data.selected}"
                             @click="${this.handleMonthPickerItemMonthClick}"
                             class="${classMap({
                                 "md-month-picker__list-item":true,
@@ -210,10 +218,12 @@ class MDMonthPicker extends MDElement {
         return html`
             <div class="md-month-picker__header">
                 <md-button @click="${this.handleMonthPickerLabelClick}" class="md-month-picker__label" .label="${this.label}"></md-button>
-                <div class="md-month-picker__actions">
-                    <md-icon-button @click="${this.handleMonthPickerActionBeforeClick}" class="md-month-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleMonthPickerActionNextClick}" class="md-month-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
+                ${this.index!==0?html`
+                    <div class="md-month-picker__actions">
+                        <md-icon-button @click="${this.handleMonthPickerActionBeforeClick}" class="md-month-picker__action" icon="navigate_before"></md-icon-button>
+                        <md-icon-button @click="${this.handleMonthPickerActionNextClick}" class="md-month-picker__action" icon="navigate_next"></md-icon-button>
+                    </div>
+                `:nothing}
             </div>
             <div class="md-month-picker__body">
                 <div class="md-month-picker__inner">${this.renderInner()}</div>
@@ -235,6 +245,10 @@ class MDMonthPicker extends MDElement {
         this.classList.remove("md-month-picker");
     }
 
+    get listMonthItemSelected() {
+        return this.querySelector(".md-month-picker__list-item--selected");
+    }
+
     async firstUpdated(changedProperties) {
         await this.updateComplete;
 
@@ -242,20 +256,9 @@ class MDMonthPicker extends MDElement {
         this.selected.setMonth(this.value.getMonth());
 
         this.requestUpdate();
-
-        await this.updateComplete;
-    
-        this.listMonthItemSelected=
-        this.querySelector('.md-month-picker__list-item--selected')
-        this.listMonthItemSelected.scrollIntoView({
-            block:'center',
-            inline:'center',
-            behavior:'instant',
-        })
-
     }
 
-    updated(changedProperties) {
+    async updated(changedProperties) {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-month-picker-index", this.index);
         }
@@ -310,7 +313,7 @@ class MDMonthPicker extends MDElement {
         this.emit("onMonthPickerItemYearClick", event);
     }
 
-    handleMonthPickerItemMonthClick(event) {
+    async handleMonthPickerItemMonthClick(event) {
         const data = event.currentTarget.data;
 
         this.selected.setFullYear(data.year);
@@ -336,13 +339,12 @@ class MDMonthPicker extends MDElement {
         this.emit("onMonthPickerLabelClick", event);
     }
 
-    handleMonthPickerActionBeforeClick(event) {
+    async handleMonthPickerActionBeforeClick(event) {
         if (this.index == 0) {
             this.selected.setFullYear(this.selected.getFullYear() - 1);
         } else if (this.index == 1) {
             this.selected.setFullYear(this.selected.getFullYear() - 1);
         }
-        
 
         this.requestUpdate();
 
@@ -361,7 +363,7 @@ class MDMonthPicker extends MDElement {
         this.emit("onMonthPickerActionNextClick", event);
     }
 
-    handleMonthPickerButtonCancelClick(event) {
+    async handleMonthPickerButtonCancelClick(event) {
         const date = new Date();
 
         this.selected.setFullYear(date.getFullYear());
@@ -377,7 +379,7 @@ class MDMonthPicker extends MDElement {
         this.emit("onMonthPickerButtonCancelClick", event);
     }
 
-    handleMonthPickerButtonOkClick(event) {
+    async handleMonthPickerButtonOkClick(event) {
         this.value.setFullYear(this.selected.getFullYear());
         this.value.setMonth(this.selected.getMonth());
 

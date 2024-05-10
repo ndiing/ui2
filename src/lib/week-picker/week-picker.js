@@ -107,7 +107,7 @@ class MDWeekPicker extends MDElement {
                     activated: year == this.current.getFullYear() && week == this.current.getWeek(),
                     selected: year == this.value.getFullYear() && week == this.value.getWeek(),
                     disabled: false,
-                    // error: date.getDay() == 0,
+                    error: date.getDay() == 0,
                     label: this.dayDTF.format(date),
                     year,
                     month,
@@ -287,10 +287,12 @@ class MDWeekPicker extends MDElement {
         return html`
             <div class="md-week-picker__header">
                 <md-button @click="${this.handleWeekPickerLabelClick}" class="md-week-picker__label" .label="${this.label}"></md-button>
-                <div class="md-week-picker__actions">
-                    <md-icon-button @click="${this.handleWeekPickerActionBeforeClick}" class="md-week-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleWeekPickerActionNextClick}" class="md-week-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
+                ${this.index!==0?html`
+                    <div class="md-week-picker__actions">
+                        <md-icon-button @click="${this.handleWeekPickerActionBeforeClick}" class="md-week-picker__action" icon="navigate_before"></md-icon-button>
+                        <md-icon-button @click="${this.handleWeekPickerActionNextClick}" class="md-week-picker__action" icon="navigate_next"></md-icon-button>
+                    </div>
+                `:nothing}
             </div>
             <div class="md-week-picker__body">
                 <div class="md-week-picker__inner">${this.renderInner()}</div>

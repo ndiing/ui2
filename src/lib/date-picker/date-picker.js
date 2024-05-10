@@ -273,10 +273,12 @@ class MDDatePicker extends MDElement {
         return html`
             <div class="md-date-picker__header">
                 <md-button @click="${this.handleDatePickerLabelClick}" class="md-date-picker__label" .label="${this.label}"></md-button>
-                <div class="md-date-picker__actions">
-                    <md-icon-button @click="${this.handleDatePickerActionBeforeClick}" class="md-date-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleDatePickerActionNextClick}" class="md-date-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
+                ${this.index!==0?html`
+                    <div class="md-date-picker__actions">
+                        <md-icon-button @click="${this.handleDatePickerActionBeforeClick}" class="md-date-picker__action" icon="navigate_before"></md-icon-button>
+                        <md-icon-button @click="${this.handleDatePickerActionNextClick}" class="md-date-picker__action" icon="navigate_next"></md-icon-button>
+                    </div>
+                `:nothing}
             </div>
             <div class="md-date-picker__body">
                 <div class="md-date-picker__inner">${this.renderInner()}</div>

@@ -396,10 +396,12 @@ class MDDatetimePicker extends MDElement {
                 ${this.label2?html`
                     <md-button @click="${this.handleDatetimePickerLabel2Click}" class="md-datetime-picker__label" .label="${this.label2}"></md-button>
                 `:nothing}
-                <div class="md-datetime-picker__actions">
-                    <md-icon-button @click="${this.handleDatetimePickerActionBeforeClick}" class="md-datetime-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleDatetimePickerActionNextClick}" class="md-datetime-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
+                ${this.index!==0?html`
+                    <div class="md-datetime-picker__actions">
+                        <md-icon-button @click="${this.handleDatetimePickerActionBeforeClick}" class="md-datetime-picker__action" icon="navigate_before"></md-icon-button>
+                        <md-icon-button @click="${this.handleDatetimePickerActionNextClick}" class="md-datetime-picker__action" icon="navigate_next"></md-icon-button>
+                    </div>
+                `:nothing}
             </div>
             <div class="md-datetime-picker__body">
                 <div class="md-datetime-picker__inner">${this.renderInner()}</div>

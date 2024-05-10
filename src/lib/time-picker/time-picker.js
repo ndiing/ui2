@@ -219,7 +219,7 @@ class MDTimePicker extends MDElement {
 
         this.requestUpdate();
 
-        this.index = 4;
+        this.index = 1;
 
         this.emit("onTimePickerItemHourClick", event);
     }
@@ -235,7 +235,7 @@ class MDTimePicker extends MDElement {
 
         this.requestUpdate();
 
-        this.index = 2;
+        this.index = 0;
 
         this.emit("onTimePickerItemMinuteClick", event);
     }

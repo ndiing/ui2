@@ -175,6 +175,10 @@
     &.md-week-picker__table-row--selected {
         background: var(--md-sys-color-primary);
         color: var(--md-sys-color-on-primary);
+        
+        .md-week-picker__table-item{
+            color: var(--md-sys-color-on-primary);
+        }
     }
 }
 
@@ -312,11 +316,11 @@
 // .md-week-picker__table-item--disabled {
 //     opacity: 38%;
 // }
-// .md-week-picker__table-item--error {
-//     // background: var(--md-sys-color-error);
-//     // color: var(--md-sys-color-on-error);
-//     color: var(--md-sys-color-error);
-// }
+.md-week-picker__table-item--error {
+    // background: var(--md-sys-color-error);
+    // color: var(--md-sys-color-on-error);
+    color: var(--md-sys-color-error);
+}
 // .md-week-picker__table-item--selected {
 //     background: var(--md-sys-color-primary);
 //     color: var(--md-sys-color-on-primary);
