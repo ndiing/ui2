@@ -124,7 +124,7 @@ class MDWeekPicker extends MDElement {
         } else if (this.index == 1) {
             return this.yearDTF.format(this.selected);
         } else if (this.index == 2 || this.index == 3 || this.index == 4) {
-            return this.labelDTF.format(this.selected);
+            return `Week ${(''+(this.selected.getWeek()+1)).padStart(2,'0')}, ${this.labelDTF.format(this.selected)}`;
         }
     }
 
@@ -136,7 +136,7 @@ class MDWeekPicker extends MDElement {
         this.weekdayDTF = new Intl.DateTimeFormat(undefined, { weekday: "narrow" });
         this.dayDTF = new Intl.DateTimeFormat(undefined, { day: "numeric" });
 
-        this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" });
+        this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric", });
 
         this.value = new Date();
         this.selected = new Date();
