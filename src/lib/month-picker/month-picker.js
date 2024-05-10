@@ -36,6 +36,14 @@ class MDMonthPickerMonth extends HTMLDivElement {
 
 customElements.define("md-month-picker-month", MDMonthPickerMonth, { extends: "div" });
 
+class MDMonthPickerListMonthItem extends HTMLDivElement {
+    connectedCallback() {
+    }
+    disconnectedCallback() {}
+}
+
+customElements.define("md-month-picker-list-month-item", MDMonthPickerListMonthItem, { extends: "div" });
+
 class MDMonthPicker extends MDElement {
     static get properties() {
         return {
@@ -163,6 +171,7 @@ class MDMonthPicker extends MDElement {
                 <div class="md-month-picker__list">
                     ${this.months.map(data=>html`
                         <div 
+                            is="md-month-picker-list-month-item"
                             .data="${data}"
                             @click="${this.handleMonthPickerItemMonthClick}"
                             class="${classMap({
@@ -233,6 +242,17 @@ class MDMonthPicker extends MDElement {
         this.selected.setMonth(this.value.getMonth());
 
         this.requestUpdate();
+
+        await this.updateComplete;
+    
+        this.listMonthItemSelected=
+        this.querySelector('.md-month-picker__list-item--selected')
+        this.listMonthItemSelected.scrollIntoView({
+            block:'center',
+            inline:'center',
+            behavior:'instant',
+        })
+
     }
 
     updated(changedProperties) {
