@@ -46,6 +46,7 @@ import "./date-picker/date-picker.js";
 import "./time-picker/time-picker.js";
 import "./week-picker/week-picker.js";
 import "./month-picker/month-picker.js";
+import "./datetime-picker/datetime-picker.js";
 
 import "./form/form.js";
 import "./email-field/email-field.js";

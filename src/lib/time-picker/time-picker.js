@@ -208,8 +208,8 @@ class MDTimePicker extends MDElement {
         } else if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() - 1);
         }
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        // this.value.setHours(this.selected.getHours());
+        // this.value.setMinutes(this.selected.getMinutes());
         this.requestUpdate();
         this.emit("onTimePickerActionBeforeClick", event);
     }
@@ -220,8 +220,8 @@ class MDTimePicker extends MDElement {
         } else if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
         }
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        // this.value.setHours(this.selected.getHours());
+        // this.value.setMinutes(this.selected.getMinutes());
         this.requestUpdate();
         this.emit("onTimePickerActionNextClick", event);
     }

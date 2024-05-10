@@ -19,6 +19,9 @@ class DevPicker extends MDElement {
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-month-picker value="2024-04"></md-month-picker>
                 </div>
+                <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-datetime-picker value="2024-05-07T06:22"></md-datetime-picker>
+                </div>
             </div>
         `;
     }
