@@ -95,6 +95,16 @@ th {
     td {
         max-width: 0;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
+
+        .md-data-table__container{
+            @extend .md-ripple;
+            @extend .md-ripple--containment;
+            @extend .md-ripple--button;
+        
+            &:after {
+                width: 200%;
+            }
+        }
     }
 }
 
@@ -104,13 +114,7 @@ th {
     height: var(--md-data-table-row-height);
     padding: 0 16px;
     gap: 0 8px;
-    @extend .md-ripple;
-    @extend .md-ripple--containment;
-    @extend .md-ripple--button;
-
-    &:after {
-        width: 200%;
-    }
+    
 }
 
 .md-data-table__container--number{
