@@ -169,7 +169,7 @@ class MDColorPicker extends MDElement {
             </div>
             <div class="md-color-picker__body">
                 <div class="md-color-picker__inner">
-                    <div class="md-color-picker__fill">
+                    <div class="md-color-picker__area">
                         <canvas 
                             class="md-color-picker__gradient" 
                             width="336" 
