@@ -171,10 +171,10 @@ class MDColorPicker extends MDElement {
                 <div class="md-color-picker__inner">
                     <div class="md-color-picker__fill">
                         <canvas 
-                            class="md-color-picker__solid" 
+                            class="md-color-picker__gradient" 
                             width="336" 
                             height="216" 
-                            @mousedown="${this.handleColorPickerSolidMousedown}"
+                            @mousedown="${this.handleColorPickerGradientMousedown}"
                         ></canvas>
                         <input 
                             type="range" 
@@ -206,9 +206,9 @@ class MDColorPicker extends MDElement {
         super.connectedCallback();
         this.classList.add("md-color-picker");
 
-        this.handleColorPickerSolidMousedown = this.handleColorPickerSolidMousedown.bind(this);
-        this.handleColorPickerSolidMousemove = this.handleColorPickerSolidMousemove.bind(this);
-        this.handleColorPickerSolidMouseup = this.handleColorPickerSolidMouseup.bind(this);
+        this.handleColorPickerGradientMousedown = this.handleColorPickerGradientMousedown.bind(this);
+        this.handleColorPickerGradientMousemove = this.handleColorPickerGradientMousemove.bind(this);
+        this.handleColorPickerGradientMouseup = this.handleColorPickerGradientMouseup.bind(this);
     }
 
     disconnectedCallback() {
@@ -235,20 +235,12 @@ class MDColorPicker extends MDElement {
 
         this.requestUpdate();
 
-        this.colorSolid = this.querySelector(".md-color-picker__solid");
-        this.contextSolid = this.colorSolid.getContext("2d", { willReadFrequently: true });
+        this.canvas = this.querySelector(".md-color-picker__gradient");
+        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
 
-        this.solidWidth = this.colorSolid.width;
-        this.solidHeight = this.colorSolid.height;
+        this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.contextSolid.rect(0, 0, this.solidWidth, this.solidHeight);
-
-        // console.log(
-        //     this.colorSolid.width,
-        //     this.colorSolid.height,
-        // )
-
-        this.drawSolid();
+        this.draw();
     }
 
     async updated(changedProperties) {
@@ -265,23 +257,23 @@ class MDColorPicker extends MDElement {
         this.style.setProperty("--md-color-picker-alpha", this.alpha);
     }
 
-    drawSolid() {
-        this.contextSolid.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
-        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
+    draw() {
+        this.ctx.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        const gradientWhite = this.contextSolid.createLinearGradient(0, 0, this.solidWidth, 0);
-        gradientWhite.addColorStop(1/100, "rgba(255, 255, 255, 1)");
-        gradientWhite.addColorStop(1, "rgba(255, 255, 255, 0)");
+        const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
+        gradient1.addColorStop(1/100, "rgba(255, 255, 255, 1)");
+        gradient1.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-        this.contextSolid.fillStyle = gradientWhite;
-        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
+        this.ctx.fillStyle = gradient1;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        const gradientBlack = this.contextSolid.createLinearGradient(0, 0, 0, this.solidHeight);
-        gradientBlack.addColorStop(1/100, "rgba(0, 0, 0, 0)");
-        gradientBlack.addColorStop(1, "rgba(0, 0, 0, 1)");
+        const gradient2 = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
+        gradient2.addColorStop(1/100, "rgba(0, 0, 0, 0)");
+        gradient2.addColorStop(1, "rgba(0, 0, 0, 1)");
 
-        this.contextSolid.fillStyle = gradientBlack;
-        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
+        this.ctx.fillStyle = gradient2;
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     handleColorPickerLabelClick(event) {
@@ -302,42 +294,42 @@ class MDColorPicker extends MDElement {
         this.emit("onColorPickerActionNextClick", event);
     }
 
-    handleColorPickerSolidMousedown(event) {
+    handleColorPickerGradientMousedown(event) {
         this.drag = true;
 
-        window.addEventListener("mousemove", this.handleColorPickerSolidMousemove);
-        window.addEventListener("mouseup", this.handleColorPickerSolidMouseup);
+        window.addEventListener("mousemove", this.handleColorPickerGradientMousemove);
+        window.addEventListener("mouseup", this.handleColorPickerGradientMouseup);
 
-        this.changeValue(event);
+        this.setValue(event);
 
-        this.emit("onColorPickerSolidMousedown", event);
+        this.emit("onColorPickerGradientMousedown", event);
     }
 
-    handleColorPickerSolidMousemove(event) {
+    handleColorPickerGradientMousemove(event) {
         if (this.drag) {
-            this.changeValue(event);
+            this.setValue(event);
 
-            this.emit("onColorPickerSolidMousemove", event);
+            this.emit("onColorPickerGradientMousemove", event);
         }
     }
 
-    handleColorPickerSolidMouseup(event) {
+    handleColorPickerGradientMouseup(event) {
         if (this.drag) {
-            this.emit("onColorPickerSolidMouseup", event);
+            this.emit("onColorPickerGradientMouseup", event);
 
-            window.removeEventListener("mousemove", this.handleColorPickerSolidMousemove);
-            window.removeEventListener("mouseup", this.handleColorPickerSolidMouseup);
+            window.removeEventListener("mousemove", this.handleColorPickerGradientMousemove);
+            window.removeEventListener("mouseup", this.handleColorPickerGradientMouseup);
 
             this.drag = false;
         }
     }
 
-    changeValue(event) {
-        this.rect = this.colorSolid.getBoundingClientRect();
-        const sx = Math.max(0, Math.min(event.clientX - this.rect.left, this.solidWidth) - 1);
-        const sy = Math.max(0, Math.min(event.clientY - this.rect.top, this.solidHeight));
+    setValue(event) {
+        this.rect = this.canvas.getBoundingClientRect();
+        const sx = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
+        const sy = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
 
-        const [r, g, b, a] = this.contextSolid.getImageData(sx, sy, 1, 1).data;
+        const [r, g, b, a] = this.ctx.getImageData(sx, sy, 1, 1).data;
         this.red = r;
         this.green = g;
         this.blue = b;
@@ -358,7 +350,7 @@ class MDColorPicker extends MDElement {
         const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
         this.hex = hex;
 
-        this.drawSolid();
+        this.draw();
 
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
