@@ -42,9 +42,9 @@ class MDMonthPickerListMonthItem extends HTMLDivElement {
     disconnectedCallback() {}
     attributeChangedCallback() {
         this.scrollIntoView({
-            block: "center",
-            inline: "center",
-            behavior: 'smooth',
+            // block: "center",
+            // inline: "center",
+            // behavior: 'smooth',
         });
     }
 }

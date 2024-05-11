@@ -1,10 +1,11 @@
 import { MDElement } from "../element/element";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { Ripple } from "../ripple/ripple";
 
 class MDButton extends MDElement {
     static get properties() {
         return {
+            icon: { type: String },
             label: { type: String },
             type: { type: String },
             ui: { type: String },
@@ -25,6 +26,7 @@ class MDButton extends MDElement {
         // prettier-ignore
         return html`
             <button class="md-button__native" .type="${this.type}"></button>
+            ${this.icon?html`<md-icon class="md-button__icon">${this.icon}</md-icon>`:nothing}
             <div class="md-button__label">${this.label}</div>
         `
     }

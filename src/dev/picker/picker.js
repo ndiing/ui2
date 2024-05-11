@@ -23,7 +23,7 @@ class DevPicker extends MDElement {
                     <md-datetime-picker value="1990-10-17T20:30"></md-datetime-picker>
                 </div>
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-color-picker value="#000000"></md-color-picker>
+                    <md-color-picker value="#36693d"></md-color-picker>
                 </div>
             </div>
         `;

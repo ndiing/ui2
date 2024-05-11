@@ -2,12 +2,15 @@
 .md-button {
     --md-button-density:var(--md-density);
     --md-button-height: calc(40px + (4px * var(--md-button-density)));
+    --md-button-icon-color:var(--md-sys-color-primary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
     height: var(--md-button-height);
     border-radius: calc(var(--md-button-height) / 2);
     padding: 0 calc(var(--md-button-height) * (12px / 40px));
+    gap: 0 8px;
     position: relative;
     background: transparent;
     color: var(--md-sys-color-primary);
@@ -24,6 +27,16 @@
     color: transparent;
 }
 
+.md-button__icon{
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--md-button-icon-color);
+    .md-button__label{
+        padding-right: 4px;
+    }
+}
+
 .md-button__label {
     @extend .md-typography--label-large;
     white-space: nowrap;
@@ -36,16 +49,37 @@
     background: transparent;
     color: var(--md-sys-color-primary);
     border: 1px solid var(--md-sys-color-outline);
+
+    .md-button__icon{
+        margin-left: -8px;
+        +.md-button__label{
+            padding-right: 0;
+        }
+    }
 }
 
 .md-button--filled-tonal {
     padding: 0 calc(var(--md-button-height) * (24px / 40px));
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
+
+    .md-button__icon{
+        margin-left: -8px;
+        +.md-button__label{
+            padding-right: 0;
+        }
+    }
 }
 
 .md-button--filled {
     padding: 0 calc(var(--md-button-height) * (24px / 40px));
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
+
+    .md-button__icon{
+        margin-left: -8px;
+        +.md-button__label{
+            padding-right: 0;
+        }
+    }
 }
