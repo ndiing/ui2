@@ -251,24 +251,62 @@ class MDColorPicker extends MDElement {
         this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
 
         this.draw();
+
+        const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        const data = imageData.data;
+
+        let xy = [];
+        for (let y = 0; y < this.canvas.height; y++) {
+            for (let x = 0; x < this.canvas.width; x++) {
+                const index = (y * this.canvas.width + x) * 4;
+                if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
+                    xy = [x, y];
+                    break;
+                }
+            }
+            if (xy.length) {
+                break;
+            }
+        }
+        let [x, y] = xy;
+        this.thumb.style.left = x + "px";
+        this.thumb.style.top = y + "px";
     }
 
     async updated(changedProperties) {
-        this.style.setProperty("--md-color-picker-red", this.red);
-        this.style.setProperty("--md-color-picker-green", this.green);
-        this.style.setProperty("--md-color-picker-blue", this.blue);
+        // this.style.setProperty("--md-color-picker-red", this.red);
+        // this.style.setProperty("--md-color-picker-green", this.green);
+        // this.style.setProperty("--md-color-picker-blue", this.blue);
 
-        this.style.setProperty("--md-color-picker-hue", this.hue);
-        this.style.setProperty("--md-color-picker-saturation", this.saturation);
-        this.style.setProperty("--md-color-picker-lightness", this.lightness);
+        // this.style.setProperty("--md-color-picker-hue", this.hue);
+        // this.style.setProperty("--md-color-picker-saturation", this.saturation);
+        // this.style.setProperty("--md-color-picker-lightness", this.lightness);
 
         this.style.setProperty("--md-color-picker-hex", this.hex);
 
-        this.style.setProperty("--md-color-picker-alpha", this.alpha);
+        // this.style.setProperty("--md-color-picker-alpha", this.alpha);
+
+        // console.log({
+        //     red: this.red,
+        //     green: this.green,
+        //     blue: this.blue,
+        //     alpha: this.alpha,
+        //     hue: this.hue,
+        //     saturation: this.saturation,
+        //     lightness: this.lightness,
+        //     hex: this.hex,
+        // })
     }
 
     draw() {
-        this.ctx.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
+        const { r, b, g, a } = this.hslaToRgba(
+            this.hue,
+            100, // this.saturation,
+            50, // this.lightness,
+            this.alpha
+        );
+        this.ctx.fillStyle = `rgba(${r},${g},${b},1)`;
+        // this.ctx.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
@@ -336,7 +374,7 @@ class MDColorPicker extends MDElement {
 
     setValue(event) {
         this.rect = this.canvas.getBoundingClientRect();
-        
+
         const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
         const y = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
 
