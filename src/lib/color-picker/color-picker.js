@@ -255,19 +255,20 @@ class MDColorPicker extends MDElement {
     }
 
     drawSolid() {
+      
+        this.contextSolid.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
+        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
+        
         const gradientWhite = this.contextSolid.createLinearGradient(0, 0, this.solidWidth, 0);
         gradientWhite.addColorStop(0, "rgba(255,255,255,1)");
         gradientWhite.addColorStop(1, "rgba(255,255,255,0)");
 
+        this.contextSolid.fillStyle = gradientWhite;
+        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
+
         const gradientBlack = this.contextSolid.createLinearGradient(0, 0, 0, this.solidHeight);
         gradientBlack.addColorStop(0, "rgba(0,0,0,0)");
         gradientBlack.addColorStop(1, "rgba(0,0,0,1)");
-
-        this.contextSolid.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
-        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
-
-        this.contextSolid.fillStyle = gradientWhite;
-        this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
 
         this.contextSolid.fillStyle = gradientBlack;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
