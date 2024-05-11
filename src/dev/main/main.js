@@ -160,13 +160,13 @@ const libs = [
 class DevMain extends MDElement {
     constructor() {
         super();
-        this.list = libs.concat(
-            devs.filter(dev=>!libs.includes(dev))
-        ).map((lib) => ({
+        this.list = libs.concat(devs.filter((dev) => !libs.includes(dev))).map((lib) => ({
             icon: "deployed_code",
             label: lib,
             routerLink: `/${lib}`,
         }));
+
+        console.log(this.list.length);
 
         this.list.forEach((item) => {
             item.selected = item.routerLink === Router.path;
