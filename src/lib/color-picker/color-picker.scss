@@ -29,7 +29,6 @@
 }
 
 .md-color-picker__label {
-    --md-button-icon-color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
     color: var(--md-sys-color-on-surface-variant);
 
     + .md-color-picker__label {
@@ -37,11 +36,8 @@
     }
 
     .md-button__icon {
-        font-variation-settings:
-            "FILL" 1,
-            "wght" 400,
-            "GRAD" 0,
-            "opsz" 24;
+        --md-button-icon-color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
+        @extend .md-icon--selected;
     }
 }
 

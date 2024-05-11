@@ -123,6 +123,7 @@ class MDColorPicker extends MDElement {
     }
 
     get label() {
+        // return this.value;
         if (this.index === 0) {
             return this.value;
         } else if (this.index === 1) {
@@ -160,10 +161,9 @@ class MDColorPicker extends MDElement {
                     .label="${this.label}"
                     .icon="${"lens"}"
                 ></md-button>
-                <div class="md-color-picker__actions">
-                    <md-icon-button @click="${this.handleColorPickerActionBeforeClick}" class="md-color-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleColorPickerActionNextClick}" class="md-color-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
+                <!-- <div class="md-color-picker__actions">
+                    <md-icon-button @click="${this.handleColorPickerActionColorizeClick}" class="md-color-picker__action" icon="colorize"></md-icon-button>
+                </div> -->
             </div>
             <div class="md-color-picker__body">
                 <div class="md-color-picker__inner">
@@ -307,15 +307,11 @@ class MDColorPicker extends MDElement {
         this.emit("onColorPickerLabelClick", event);
     }
 
-    handleColorPickerActionBeforeClick(event) {
-        this.index = (this.index + 3 + -1) % 3;
-
-        this.emit("onColorPickerActionBeforeClick", event);
+    handleColorPickerActionColorizeClick(event) {
+        this.emit("onColorPickerActionColorizeClick", event);
     }
 
     handleColorPickerActionNextClick(event) {
-        this.index = (this.index + 3 + 1) % 3;
-
         this.emit("onColorPickerActionNextClick", event);
     }
 
