@@ -138,8 +138,10 @@ class MDColorPicker extends MDElement {
         this.style.setProperty("--md-color-picker-hue", this.hue);
         this.style.setProperty("--md-color-picker-saturation", this.saturation);
         this.style.setProperty("--md-color-picker-lightness", this.lightness);
-        
+
         this.style.setProperty("--md-color-picker-hex", this.hex);
+
+        this.style.setProperty("--md-color-picker-alpha", this.alpha);
     }
 
     hexToRgba(hex) {
