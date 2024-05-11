@@ -124,19 +124,19 @@ class MDColorPicker extends MDElement {
 
     get label() {
         if (this.index === 0) {
-            return this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+            return this.value;
         } else if (this.index === 1) {
             return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
         } else if (this.index === 2) {
-            const { h, s, l, a } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
-            return `hsla(${h.toFixed(2)}, ${s.toFixed(2)}, ${l.toFixed(2)}, ${a})`;
+            return `hsla(${this.hue.toFixed(2)}, ${this.saturation.toFixed(2)}, ${this.lightness.toFixed(2)}, ${this.alpha})`;
         }
     }
 
     constructor() {
         super();
-        this.value = "#000000";
         this.index = 0;
+
+        this.value = "#000000";
 
         const { r, g, b, a } = this.hexToRgba(this.value);
         this.red = r;
@@ -148,9 +148,6 @@ class MDColorPicker extends MDElement {
         this.hue = h;
         this.saturation = s;
         this.lightness = l;
-
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
     }
 
     render() {
@@ -235,9 +232,6 @@ class MDColorPicker extends MDElement {
         this.saturation = s;
         this.lightness = l;
 
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
-
         this.requestUpdate();
 
         this.canvas = this.querySelector(".md-color-picker__gradient-track");
@@ -256,57 +250,38 @@ class MDColorPicker extends MDElement {
         const data = imageData.data;
 
         let xy = [];
+
         for (let y = 0; y < this.canvas.height; y++) {
             for (let x = 0; x < this.canvas.width; x++) {
                 const index = (y * this.canvas.width + x) * 4;
+
                 if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
                     xy = [x, y];
                     break;
                 }
             }
+
             if (xy.length) {
                 break;
             }
         }
-        let [x, y] = xy;
+
+        const [x = this.canvas.width, y = this.canvas.height] = xy;
+
         this.thumb.style.left = x + "px";
         this.thumb.style.top = y + "px";
     }
 
     async updated(changedProperties) {
-        // this.style.setProperty("--md-color-picker-red", this.red);
-        // this.style.setProperty("--md-color-picker-green", this.green);
-        // this.style.setProperty("--md-color-picker-blue", this.blue);
-
-        // this.style.setProperty("--md-color-picker-hue", this.hue);
-        // this.style.setProperty("--md-color-picker-saturation", this.saturation);
-        // this.style.setProperty("--md-color-picker-lightness", this.lightness);
-
-        this.style.setProperty("--md-color-picker-hex", this.hex);
-
-        // this.style.setProperty("--md-color-picker-alpha", this.alpha);
-
-        // console.log({
-        //     red: this.red,
-        //     green: this.green,
-        //     blue: this.blue,
-        //     alpha: this.alpha,
-        //     hue: this.hue,
-        //     saturation: this.saturation,
-        //     lightness: this.lightness,
-        //     hex: this.hex,
-        // })
+        this.style.setProperty("--md-color-picker-red", this.red);
+        this.style.setProperty("--md-color-picker-green", this.green);
+        this.style.setProperty("--md-color-picker-blue", this.blue);
     }
 
     draw() {
-        const { r, b, g, a } = this.hslaToRgba(
-            this.hue,
-            100, // this.saturation,
-            50, // this.lightness,
-            this.alpha
-        );
+        const { r, b, g, a } = this.hslaToRgba(this.hue, 100, 50, this.alpha);
         this.ctx.fillStyle = `rgba(${r},${g},${b},1)`;
-        // this.ctx.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
+
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
@@ -378,34 +353,32 @@ class MDColorPicker extends MDElement {
         const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
         const y = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
 
-        const [r, g, b, a] = this.ctx.getImageData(x, y, 1, 1).data;
+        const [r, g, b] = this.ctx.getImageData(x, y, 1, 1).data;
         this.red = r;
         this.green = g;
         this.blue = b;
 
-        this.thumb.style.left = x + "px";
-        this.thumb.style.top = y + "px";
-
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
+        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
+        this.saturation = s;
+        this.lightness = l;
 
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+
+        this.thumb.style.left = x + "px";
+        this.thumb.style.top = y + "px";
     }
 
     handleColorPickerHueInput(event) {
         this.hue = parseFloat(event.currentTarget.value);
 
-        const { r, g, b, a } = this.hslaToRgba(this.hue, 100, 50, 1);
+        const { r, g, b, a } = this.hslaToRgba(this.hue, this.saturation, this.lightness, 1);
         this.red = r;
         this.green = g;
         this.blue = b;
 
-        this.draw();
-
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
-
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+
+        this.draw();
 
         this.emit("onColorPickerHueInput", event);
     }

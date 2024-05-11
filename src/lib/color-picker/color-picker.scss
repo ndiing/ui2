@@ -148,7 +148,11 @@
     }
 
     &::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, transparent, var(--md-color-picker-hex));
+        background: linear-gradient(to right, transparent, rgb(
+            var(--md-color-picker-red),
+            var(--md-color-picker-green),
+            var(--md-color-picker-blue)
+        ));
     }
 
     // &::-webkit-slider-thumb {}
