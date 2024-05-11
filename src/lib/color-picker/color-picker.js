@@ -158,6 +158,7 @@ class MDColorPicker extends MDElement {
                     @click="${this.handleColorPickerLabelClick}" 
                     class="md-color-picker__label" 
                     .label="${this.label}"
+                    .icon="${"lens"}"
                 ></md-button>
                 <div class="md-color-picker__actions">
                     <md-icon-button @click="${this.handleColorPickerActionBeforeClick}" class="md-color-picker__action" icon="navigate_before"></md-icon-button>
@@ -276,6 +277,7 @@ class MDColorPicker extends MDElement {
         this.style.setProperty("--md-color-picker-red", this.red);
         this.style.setProperty("--md-color-picker-green", this.green);
         this.style.setProperty("--md-color-picker-blue", this.blue);
+        this.style.setProperty("--md-color-picker-alpha", this.alpha);
     }
 
     draw() {

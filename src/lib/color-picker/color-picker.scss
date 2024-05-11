@@ -29,10 +29,19 @@
 }
 
 .md-color-picker__label {
+    --md-button-icon-color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
     color: var(--md-sys-color-on-surface-variant);
 
     + .md-color-picker__label {
         margin-left: -12px;
+    }
+
+    .md-button__icon {
+        font-variation-settings:
+            "FILL" 1,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
     }
 }
 
@@ -93,7 +102,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%, -50%, 0);
     pointer-events: none;
 }
 
@@ -148,11 +157,7 @@
     }
 
     &::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, transparent, rgb(
-            var(--md-color-picker-red),
-            var(--md-color-picker-green),
-            var(--md-color-picker-blue)
-        ));
+        background: linear-gradient(to right, transparent, rgb(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue)));
     }
 
     // &::-webkit-slider-thumb {}
