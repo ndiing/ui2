@@ -170,12 +170,15 @@ class MDColorPicker extends MDElement {
             <div class="md-color-picker__body">
                 <div class="md-color-picker__inner">
                     <div class="md-color-picker__area">
-                        <canvas 
-                            class="md-color-picker__gradient" 
-                            width="336" 
-                            height="216" 
-                            @mousedown="${this.handleColorPickerGradientMousedown}"
-                        ></canvas>
+                        
+                        <div class="md-color-picker__gradient">
+                            <canvas 
+                                class="md-color-picker__gradient-track" 
+                                @mousedown="${this.handleColorPickerGradientMousedown}"
+                            ></canvas>
+                            <div class="md-color-picker__gradient-thumb"></div>
+                        </div>
+                        
                         <input 
                             type="range" 
                             class="md-color-picker__hue" 
@@ -184,6 +187,7 @@ class MDColorPicker extends MDElement {
                             .value="${this.hue}" 
                             @input="${this.handleColorPickerHueInput}"
                         >
+
                         <input 
                             type="range" 
                             class="md-color-picker__opacity" 
@@ -192,6 +196,7 @@ class MDColorPicker extends MDElement {
                             .value="${this.alpha*100}" 
                             @input="${this.handleColorPickerOpacityInput}"
                         >
+
                     </div>
                 </div>
                 <div class="md-color-picker__footer">
@@ -235,7 +240,12 @@ class MDColorPicker extends MDElement {
 
         this.requestUpdate();
 
-        this.canvas = this.querySelector(".md-color-picker__gradient");
+        this.canvas = this.querySelector(".md-color-picker__gradient-track");
+        this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
+
+        this.canvas.width = this.canvas.clientWidth;
+        this.canvas.height = this.canvas.clientHeight;
+
         this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
 
         this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
@@ -262,14 +272,14 @@ class MDColorPicker extends MDElement {
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
-        gradient1.addColorStop(1/100, "rgba(255, 255, 255, 1)");
+        gradient1.addColorStop(1 / 100, "rgba(255, 255, 255, 1)");
         gradient1.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         this.ctx.fillStyle = gradient1;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient2 = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient2.addColorStop(1/100, "rgba(0, 0, 0, 0)");
+        gradient2.addColorStop(1 / 100, "rgba(0, 0, 0, 0)");
         gradient2.addColorStop(1, "rgba(0, 0, 0, 1)");
 
         this.ctx.fillStyle = gradient2;
@@ -326,15 +336,17 @@ class MDColorPicker extends MDElement {
 
     setValue(event) {
         this.rect = this.canvas.getBoundingClientRect();
-        const sx = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
-        const sy = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
+        
+        const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
+        const y = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
 
-        const [r, g, b, a] = this.ctx.getImageData(sx, sy, 1, 1).data;
+        const [r, g, b, a] = this.ctx.getImageData(x, y, 1, 1).data;
         this.red = r;
         this.green = g;
         this.blue = b;
 
-        console.log(r, g, b, a);
+        this.thumb.style.left = x + "px";
+        this.thumb.style.top = y + "px";
 
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
     }
