@@ -18,8 +18,8 @@ class MDColorPicker extends MDElement {
         } else if (this.index === 1) {
             return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
         } else if (this.index === 2) {
-            const { h: hue, s: saturation, l: lightness, a: alpha } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
-            return `hsla(${hue.toFixed(2)}, ${saturation.toFixed(2)}, ${lightness.toFixed(2)}, ${alpha})`;
+            const { h, s, l, a } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
+            return `hsla(${h.toFixed(2)}, ${s.toFixed(2)}, ${l.toFixed(2)}, ${a})`;
         }
     }
 
@@ -143,14 +143,14 @@ class MDColorPicker extends MDElement {
     hexToRgba(hex) {
         hex = hex.replace(/^#/, "");
 
-        var alphaHex = hex.substring(6);
-        var alpha = alphaHex ? parseInt(alphaHex, 16) / 255 : 1;
+        var alpha = hex.substring(6);
+        var a = alpha ? parseInt(alpha, 16) / 255 : 1;
 
         var r = parseInt(hex.substring(0, 2), 16);
         var g = parseInt(hex.substring(2, 4), 16);
         var b = parseInt(hex.substring(4, 6), 16);
 
-        return { r: r, g: g, b: b, a: alpha };
+        return { r, g, b, a };
     }
 
     rgbaToHsla(r, g, b, a = 1) {
@@ -184,7 +184,7 @@ class MDColorPicker extends MDElement {
             h += 360;
         }
 
-        return { h: h, s: s * 100, l: l * 100, a: a };
+        return { h, s: s * 100, l: l * 100, a };
     }
 
     rgbaToHex(r, g, b, a = 1) {
@@ -247,25 +247,25 @@ class MDColorPicker extends MDElement {
         g = Math.round((g + m) * 255);
         b = Math.round((b + m) * 255);
 
-        return { r: r, g: g, b: b, a: a };
+        return { r, g, b, a };
     }
 
     drawSolid() {
-        const grdWhite = this.contextSolid.createLinearGradient(0, 0, this.solidWidth, 0);
-        grdWhite.addColorStop(0, "rgba(255,255,255,1)");
-        grdWhite.addColorStop(1, "rgba(255,255,255,0)");
+        const gradientWhite = this.contextSolid.createLinearGradient(0, 0, this.solidWidth, 0);
+        gradientWhite.addColorStop(0, "rgba(255,255,255,1)");
+        gradientWhite.addColorStop(1, "rgba(255,255,255,0)");
 
-        const grdBlack = this.contextSolid.createLinearGradient(0, 0, 0, this.solidHeight);
-        grdBlack.addColorStop(0, "rgba(0,0,0,0)");
-        grdBlack.addColorStop(1, "rgba(0,0,0,1)");
+        const gradientBlack = this.contextSolid.createLinearGradient(0, 0, 0, this.solidHeight);
+        gradientBlack.addColorStop(0, "rgba(0,0,0,0)");
+        gradientBlack.addColorStop(1, "rgba(0,0,0,1)");
 
         this.contextSolid.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
 
-        this.contextSolid.fillStyle = grdWhite;
+        this.contextSolid.fillStyle = gradientWhite;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
 
-        this.contextSolid.fillStyle = grdBlack;
+        this.contextSolid.fillStyle = gradientBlack;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
     }
 
