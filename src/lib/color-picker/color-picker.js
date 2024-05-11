@@ -386,6 +386,9 @@ class MDColorPicker extends MDElement {
         this.thumb.style.left = x + "px";
         this.thumb.style.top = y + "px";
 
+        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
+        this.hex = hex;
+
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
     }
 
@@ -397,10 +400,10 @@ class MDColorPicker extends MDElement {
         this.green = g;
         this.blue = b;
 
+        this.draw();
+
         const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
         this.hex = hex;
-
-        this.draw();
 
         this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
