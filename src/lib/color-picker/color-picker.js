@@ -12,138 +12,6 @@ class MDColorPicker extends MDElement {
         };
     }
 
-    get label() {
-        if (this.index === 0) {
-            return this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
-        } else if (this.index === 1) {
-            return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
-        } else if (this.index === 2) {
-            const { h, s, l, a } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
-            return `hsla(${h.toFixed(2)}, ${s.toFixed(2)}, ${l.toFixed(2)}, ${a})`;
-        }
-    }
-
-    constructor() {
-        super();
-        this.value = "#000000";
-        this.index = 0;
-
-        const { r, g, b, a } = this.hexToRgba(this.value);
-        this.red = r;
-        this.green = g;
-        this.blue = b;
-        this.alpha = a;
-
-        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
-        this.hue = h;
-        this.saturation = s;
-        this.lightness = l;
-
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
-    }
-
-    render() {
-        // prettier-ignore
-        return html`
-            <div class="md-color-picker__header">
-                <md-button 
-                    @click="${this.handleColorPickerLabelClick}" 
-                    class="md-color-picker__label" 
-                    .label="${this.label}"
-                ></md-button>
-                <div class="md-color-picker__actions">
-                    <md-icon-button @click="${this.handleColorPickerActionBeforeClick}" class="md-color-picker__action" icon="navigate_before"></md-icon-button>
-                    <md-icon-button @click="${this.handleColorPickerActionNextClick}" class="md-color-picker__action" icon="navigate_next"></md-icon-button>
-                </div>
-            </div>
-            <div class="md-color-picker__body">
-                <div class="md-color-picker__inner">
-                    <div class="md-color-picker__fill">
-                        <canvas 
-                            class="md-color-picker__solid" 
-                            width="336" 
-                            height="216" 
-                            @click="${this.handleColorPickerSolidClick}"
-                        ></canvas>
-                        <input 
-                            type="range" 
-                            class="md-color-picker__hue" 
-                            min="0" 
-                            max="360" 
-                            .value="${this.hue}" 
-                            @input="${this.handleColorPickerHueInput}"
-                        >
-                        <input 
-                            type="range" 
-                            class="md-color-picker__opacity" 
-                            min="0" 
-                            max="100" 
-                            .value="${this.alpha*100}" 
-                            @input="${this.handleColorPickerOpacityInput}"
-                        >
-                    </div>
-                </div>
-                <div class="md-color-picker__footer">
-                    <md-button @click="${this.handleColorPickerButtonCancelClick}" class="md-color-picker__button" label="Cancel"></md-button>
-                    <md-button @click="${this.handleColorPickerButtonOkClick}" class="md-color-picker__button" label="Ok"></md-button>
-                </div>
-            </div>
-        `
-    }
-
-    async connectedCallback() {
-        super.connectedCallback();
-        this.classList.add("md-color-picker");
-    }
-
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-color-picker");
-    }
-
-    async firstUpdated(changedProperties) {
-        await this.updateComplete;
-
-        const { r, g, b, a } = this.hexToRgba(this.value);
-        this.red = r;
-        this.green = g;
-        this.blue = b;
-        this.alpha = a;
-
-        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
-        this.hue = h;
-        this.saturation = s;
-        this.lightness = l;
-
-        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
-        this.hex = hex;
-
-        this.requestUpdate();
-
-        const colorSolid = this.querySelector(".md-color-picker__solid");
-        this.contextSolid = colorSolid.getContext("2d", { willReadFrequently: true });
-
-        this.solidWidth = colorSolid.width;
-        this.solidHeight = colorSolid.height;
-
-        this.drawSolid();
-    }
-
-    async updated(changedProperties) {
-        this.style.setProperty("--md-color-picker-red", this.red);
-        this.style.setProperty("--md-color-picker-green", this.green);
-        this.style.setProperty("--md-color-picker-blue", this.blue);
-
-        this.style.setProperty("--md-color-picker-hue", this.hue);
-        this.style.setProperty("--md-color-picker-saturation", this.saturation);
-        this.style.setProperty("--md-color-picker-lightness", this.lightness);
-
-        this.style.setProperty("--md-color-picker-hex", this.hex);
-
-        this.style.setProperty("--md-color-picker-alpha", this.alpha);
-    }
-
     hexToRgba(hex) {
         hex = hex.replace(/^#/, "");
 
@@ -254,21 +122,163 @@ class MDColorPicker extends MDElement {
         return { r, g, b, a };
     }
 
+    get label() {
+        if (this.index === 0) {
+            return this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        } else if (this.index === 1) {
+            return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
+        } else if (this.index === 2) {
+            const { h, s, l, a } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
+            return `hsla(${h.toFixed(2)}, ${s.toFixed(2)}, ${l.toFixed(2)}, ${a})`;
+        }
+    }
+
+    constructor() {
+        super();
+        this.value = "#000000";
+        this.index = 0;
+
+        const { r, g, b, a } = this.hexToRgba(this.value);
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+        this.alpha = a;
+
+        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
+        this.hue = h;
+        this.saturation = s;
+        this.lightness = l;
+
+        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
+        this.hex = hex;
+    }
+
+    render() {
+        // prettier-ignore
+        return html`
+            <div class="md-color-picker__header">
+                <md-button 
+                    @click="${this.handleColorPickerLabelClick}" 
+                    class="md-color-picker__label" 
+                    .label="${this.label}"
+                ></md-button>
+                <div class="md-color-picker__actions">
+                    <md-icon-button @click="${this.handleColorPickerActionBeforeClick}" class="md-color-picker__action" icon="navigate_before"></md-icon-button>
+                    <md-icon-button @click="${this.handleColorPickerActionNextClick}" class="md-color-picker__action" icon="navigate_next"></md-icon-button>
+                </div>
+            </div>
+            <div class="md-color-picker__body">
+                <div class="md-color-picker__inner">
+                    <div class="md-color-picker__fill">
+                        <canvas 
+                            class="md-color-picker__solid" 
+                            width="336" 
+                            height="216" 
+                            @mousedown="${this.handleColorPickerSolidMousedown}"
+                        ></canvas>
+                        <input 
+                            type="range" 
+                            class="md-color-picker__hue" 
+                            min="0" 
+                            max="360" 
+                            .value="${this.hue}" 
+                            @input="${this.handleColorPickerHueInput}"
+                        >
+                        <input 
+                            type="range" 
+                            class="md-color-picker__opacity" 
+                            min="0" 
+                            max="100" 
+                            .value="${this.alpha*100}" 
+                            @input="${this.handleColorPickerOpacityInput}"
+                        >
+                    </div>
+                </div>
+                <div class="md-color-picker__footer">
+                    <md-button @click="${this.handleColorPickerButtonCancelClick}" class="md-color-picker__button" label="Cancel"></md-button>
+                    <md-button @click="${this.handleColorPickerButtonOkClick}" class="md-color-picker__button" label="Ok"></md-button>
+                </div>
+            </div>
+        `
+    }
+
+    async connectedCallback() {
+        super.connectedCallback();
+        this.classList.add("md-color-picker");
+
+        this.handleColorPickerSolidMousedown = this.handleColorPickerSolidMousedown.bind(this);
+        this.handleColorPickerSolidMousemove = this.handleColorPickerSolidMousemove.bind(this);
+        this.handleColorPickerSolidMouseup = this.handleColorPickerSolidMouseup.bind(this);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.classList.remove("md-color-picker");
+    }
+
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+
+        const { r, g, b, a } = this.hexToRgba(this.value);
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+        this.alpha = a;
+
+        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
+        this.hue = h;
+        this.saturation = s;
+        this.lightness = l;
+
+        const hex = this.rgbaToHex(this.red, this.green, this.blue, 1);
+        this.hex = hex;
+
+        this.requestUpdate();
+
+        this.colorSolid = this.querySelector(".md-color-picker__solid");
+        this.contextSolid = this.colorSolid.getContext("2d", { willReadFrequently: true });
+
+        this.solidWidth = this.colorSolid.width;
+        this.solidHeight = this.colorSolid.height;
+
+        this.contextSolid.rect(0, 0, this.solidWidth, this.solidHeight);
+
+        // console.log(
+        //     this.colorSolid.width,
+        //     this.colorSolid.height,
+        // )
+
+        this.drawSolid();
+    }
+
+    async updated(changedProperties) {
+        this.style.setProperty("--md-color-picker-red", this.red);
+        this.style.setProperty("--md-color-picker-green", this.green);
+        this.style.setProperty("--md-color-picker-blue", this.blue);
+
+        this.style.setProperty("--md-color-picker-hue", this.hue);
+        this.style.setProperty("--md-color-picker-saturation", this.saturation);
+        this.style.setProperty("--md-color-picker-lightness", this.lightness);
+
+        this.style.setProperty("--md-color-picker-hex", this.hex);
+
+        this.style.setProperty("--md-color-picker-alpha", this.alpha);
+    }
+
     drawSolid() {
-      
         this.contextSolid.fillStyle = `rgba(${this.red},${this.green},${this.blue},1)`;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
-        
+
         const gradientWhite = this.contextSolid.createLinearGradient(0, 0, this.solidWidth, 0);
-        gradientWhite.addColorStop(0, "rgba(255,255,255,1)");
-        gradientWhite.addColorStop(1, "rgba(255,255,255,0)");
+        gradientWhite.addColorStop(1/100, "rgba(255, 255, 255, 1)");
+        gradientWhite.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         this.contextSolid.fillStyle = gradientWhite;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
 
         const gradientBlack = this.contextSolid.createLinearGradient(0, 0, 0, this.solidHeight);
-        gradientBlack.addColorStop(0, "rgba(0,0,0,0)");
-        gradientBlack.addColorStop(1, "rgba(0,0,0,1)");
+        gradientBlack.addColorStop(1/100, "rgba(0, 0, 0, 0)");
+        gradientBlack.addColorStop(1, "rgba(0, 0, 0, 1)");
 
         this.contextSolid.fillStyle = gradientBlack;
         this.contextSolid.fillRect(0, 0, this.solidWidth, this.solidHeight);
@@ -292,15 +302,49 @@ class MDColorPicker extends MDElement {
         this.emit("onColorPickerActionNextClick", event);
     }
 
-    handleColorPickerSolidClick(event) {
-        const [r, g, b] = this.contextSolid.getImageData(event.offsetX, event.offsetY, 1, 1).data;
+    handleColorPickerSolidMousedown(event) {
+        this.drag = true;
+
+        window.addEventListener("mousemove", this.handleColorPickerSolidMousemove);
+        window.addEventListener("mouseup", this.handleColorPickerSolidMouseup);
+
+        this.changeValue(event);
+
+        this.emit("onColorPickerSolidMousedown", event);
+    }
+
+    handleColorPickerSolidMousemove(event) {
+        if (this.drag) {
+            this.changeValue(event);
+
+            this.emit("onColorPickerSolidMousemove", event);
+        }
+    }
+
+    handleColorPickerSolidMouseup(event) {
+        if (this.drag) {
+            this.emit("onColorPickerSolidMouseup", event);
+
+            window.removeEventListener("mousemove", this.handleColorPickerSolidMousemove);
+            window.removeEventListener("mouseup", this.handleColorPickerSolidMouseup);
+
+            this.drag = false;
+        }
+    }
+
+    changeValue(event) {
+        this.rect = this.colorSolid.getBoundingClientRect();
+        const sx = Math.max(0, Math.min(event.clientX - this.rect.left, this.solidWidth) - 1);
+        const sy = Math.max(0, Math.min(event.clientY - this.rect.top, this.solidHeight));
+
+        const [r, g, b, a] = this.contextSolid.getImageData(sx, sy, 1, 1).data;
         this.red = r;
         this.green = g;
         this.blue = b;
 
-        this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        console.log(r, g, b, a);
 
-        this.emit("onColorPickerSolidClick", event);
+        this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
     }
 
     handleColorPickerHueInput(event) {
