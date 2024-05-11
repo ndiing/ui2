@@ -134,9 +134,11 @@ class MDColorPicker extends MDElement {
         this.style.setProperty("--md-color-picker-red", this.red);
         this.style.setProperty("--md-color-picker-green", this.green);
         this.style.setProperty("--md-color-picker-blue", this.blue);
+
         this.style.setProperty("--md-color-picker-hue", this.hue);
         this.style.setProperty("--md-color-picker-saturation", this.saturation);
         this.style.setProperty("--md-color-picker-lightness", this.lightness);
+        
         this.style.setProperty("--md-color-picker-hex", this.hex);
     }
 
