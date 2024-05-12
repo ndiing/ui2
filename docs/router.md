@@ -61,7 +61,7 @@ const routes = [
         ],
     },
     // Default route
-    { path: "*", load: () => import("./main/main.js").then((m) => m.default) },
+    { path: "*", load: () => import("./error/error.js").then((m) => m.default) },
 ];
 
 // Initialize router with defined routes
