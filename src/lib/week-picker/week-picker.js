@@ -8,9 +8,6 @@ class MDWeekPickerYear extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
-        // 336
-        // 304
-        // (40*7)+(4*6)=304
         const viewportHeight = 40 * 7 + 4 * 6;
 
         this.virtualScroll = new VirtualScroll(this, {
@@ -39,15 +36,7 @@ customElements.define("md-week-picker-month", MDWeekPickerMonth, { extends: "div
 class MDWeekPicker extends MDElement {
     static get properties() {
         return {
-            value: {
-                type: Date,
-                converter: (value, type) => {
-                    const [year, week] = value.split("-W");
-                    const date = new Date(value);
-                    date.setWeek(week, year);
-                    return date;
-                },
-            },
+            value: { type: String },
             index: { type: Number },
         };
     }
@@ -75,7 +64,7 @@ class MDWeekPicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.value.getFullYear() && month == this.value.getMonth(),
+                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -105,7 +94,7 @@ class MDWeekPicker extends MDElement {
                 const week = date.getWeek();
                 return {
                     activated: year == this.current.getFullYear() && week == this.current.getWeek(),
-                    selected: year == this.value.getFullYear() && week == this.value.getWeek(),
+                    selected: year == this.temp.getFullYear() && week == this.temp.getWeek(),
                     disabled: false,
                     error: date.getDay() == 0,
                     label: this.dayDTF.format(date),
@@ -124,7 +113,7 @@ class MDWeekPicker extends MDElement {
         } else if (this.index == 1) {
             return this.yearDTF.format(this.selected);
         } else if (this.index == 2 || this.index == 3 || this.index == 4) {
-            return `Week ${(''+(this.selected.getWeek()+1)).padStart(2,'0')}, ${this.labelDTF.format(this.selected)}`;
+            return `Week ${("" + (this.selected.getWeek() + 1)).padStart(2, "0")}, ${this.labelDTF.format(this.selected)}`;
         }
     }
 
@@ -136,22 +125,13 @@ class MDWeekPicker extends MDElement {
         this.weekdayDTF = new Intl.DateTimeFormat(undefined, { weekday: "narrow" });
         this.dayDTF = new Intl.DateTimeFormat(undefined, { day: "numeric" });
 
-        this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric", });
+        this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
 
-        this.value = new Date();
+        this.temp = new Date();
         this.selected = new Date();
         this.current = new Date();
 
         this.index = 2;
-
-        // console.log(this.first);
-        // console.log(this.last);
-        // console.log(this.years);
-        // console.log(this.months);
-        // console.log(this.weekdays);
-        // console.log(this.days);
-        // console.log(this.hours);
-        // console.log(this.minutes);
     }
 
     get cardInnerYear() {
@@ -159,140 +139,151 @@ class MDWeekPicker extends MDElement {
     }
 
     renderCardItemYears() {
-        // prettier-ignore
         return html`
             <div class="md-week-picker__card-inner md-week-picker__card-inner--year" is="md-week-picker-year" @onVirtualScroll="${this.handleWeekPickerYearVirtualScroll}">
                 <div class="md-week-picker__list">
-                    ${this.years.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleWeekPickerItemYearClick}"
-                            class="${classMap({
-                                "md-week-picker__list-item":true,
-                                "md-week-picker__list-item--activated":data.activated,
-                                "md-week-picker__list-item--selected":data.selected,
-                                "md-week-picker__list-item--disabled":data.disabled,
-                                "md-week-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-week-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-week-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.years.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleWeekPickerItemYearClick}"
+                                class="${classMap({
+                                    "md-week-picker__list-item": true,
+                                    "md-week-picker__list-item--activated": data.activated,
+                                    "md-week-picker__list-item--selected": data.selected,
+                                    "md-week-picker__list-item--disabled": data.disabled,
+                                    "md-week-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-week-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-week-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-week-picker__card-footer"> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemMonths() {
-        // prettier-ignore
         return html`
             <div class="md-week-picker__card-inner" is="md-week-picker-month" @onVirtualScroll="${this.handleWeekPickerMonthVirtualScroll}">
                 <div class="md-week-picker__list">
-                    ${this.months.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleWeekPickerItemMonthClick}"
-                            class="${classMap({
-                                "md-week-picker__list-item":true,
-                                "md-week-picker__list-item--activated":data.activated,
-                                "md-week-picker__list-item--selected":data.selected,
-                                "md-week-picker__list-item--disabled":data.disabled,
-                                "md-week-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-week-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-week-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.months.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleWeekPickerItemMonthClick}"
+                                class="${classMap({
+                                    "md-week-picker__list-item": true,
+                                    "md-week-picker__list-item--activated": data.activated,
+                                    "md-week-picker__list-item--selected": data.selected,
+                                    "md-week-picker__list-item--disabled": data.disabled,
+                                    "md-week-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-week-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-week-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-week-picker__card-footer"> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemDays() {
-        // prettier-ignore
         return html`
             <div class="md-week-picker__card-inner">
                 <div class="md-week-picker__table">
                     <div class="md-week-picker__table-row md-week-picker__table-row--header">
-                        ${this.weekdays.map(data=>html`
-                            <div 
-                                class="${classMap({
-                                    "md-week-picker__table-item":true,
-                                    "md-week-picker__table-item--activated":data.activated,
-                                    "md-week-picker__table-item--selected":data.selected,
-                                    "md-week-picker__table-item--disabled":data.disabled,
-                                    "md-week-picker__table-item--error":data.error,
-                                })}"
-                            >${data.label}</div>
-                        `)}
-                    </div>
-                    ${this.days.map(row=>html`
-                        <div 
-                            class="${classMap({
-                                "md-week-picker__table-row":true,
-                                "md-week-picker__table-row--body":true,
-                                "md-week-picker__table-row--activated":row.find(data=>data.activated),
-                                "md-week-picker__table-row--selected":row.find(data=>data.selected),
-                                "md-week-picker__table-row--disabled":row.find(data=>data.disabled),
-                                "md-week-picker__table-row--error":row.find(data=>data.error),
-                            })}"
-                        >
-                            ${row.map(data=>html`
-                                <div 
-                                    .data="${data}"
-                                    @click="${this.handleWeekPickerItemDayClick}"
+                        ${this.weekdays.map(
+                            (data) => html`
+                                <div
                                     class="${classMap({
-                                        "md-week-picker__table-item":true,
-                                        "md-week-picker__table-item--activated":data.activated,
-                                        "md-week-picker__table-item--selected":data.selected,
-                                        "md-week-picker__table-item--disabled":data.disabled,
-                                        "md-week-picker__table-item--error":data.error,
+                                        "md-week-picker__table-item": true,
+                                        "md-week-picker__table-item--activated": data.activated,
+                                        "md-week-picker__table-item--selected": data.selected,
+                                        "md-week-picker__table-item--disabled": data.disabled,
+                                        "md-week-picker__table-item--error": data.error,
                                     })}"
-                                >${data.label}</div>
-                            `)}
-                        </div>
-                    `)}
+                                >
+                                    ${data.label}
+                                </div>
+                            `
+                        )}
+                    </div>
+                    ${this.days.map(
+                        (row) => html`
+                            <div
+                                class="${classMap({
+                                    "md-week-picker__table-row": true,
+                                    "md-week-picker__table-row--body": true,
+                                    "md-week-picker__table-row--activated": row.find((data) => data.activated),
+                                    "md-week-picker__table-row--selected": row.find((data) => data.selected),
+                                    "md-week-picker__table-row--disabled": row.find((data) => data.disabled),
+                                    "md-week-picker__table-row--error": row.find((data) => data.error),
+                                })}"
+                            >
+                                ${row.map(
+                                    (data) => html`
+                                        <div
+                                            .data="${data}"
+                                            @click="${this.handleWeekPickerItemDayClick}"
+                                            class="${classMap({
+                                                "md-week-picker__table-item": true,
+                                                "md-week-picker__table-item--activated": data.activated,
+                                                "md-week-picker__table-item--selected": data.selected,
+                                                "md-week-picker__table-item--disabled": data.disabled,
+                                                "md-week-picker__table-item--error": data.error,
+                                            })}"
+                                        >
+                                            ${data.label}
+                                        </div>
+                                    `
+                                )}
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-week-picker__card-footer"> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderInner() {
-        // prettier-ignore
         return html`
             <div class="md-week-picker__card">
                 <div class="md-week-picker__card-item">${this.renderCardItemYears()}</div>
                 <div class="md-week-picker__card-item">${this.renderCardItemMonths()}</div>
                 <div class="md-week-picker__card-item">${this.renderCardItemDays()}</div>
             </div>
-        `
+        `;
     }
 
     render() {
-        // prettier-ignore
         return html`
             <div class="md-week-picker__header">
                 <md-button @click="${this.handleWeekPickerLabelClick}" class="md-week-picker__label" .label="${this.label}"></md-button>
-                ${this.index!==0?html`
-                    <div class="md-week-picker__actions">
-                        <md-icon-button @click="${this.handleWeekPickerActionBeforeClick}" class="md-week-picker__action" icon="navigate_before"></md-icon-button>
-                        <md-icon-button @click="${this.handleWeekPickerActionNextClick}" class="md-week-picker__action" icon="navigate_next"></md-icon-button>
-                    </div>
-                `:nothing}
+                ${this.index !== 0
+                    ? html`
+                          <div class="md-week-picker__actions">
+                              <md-icon-button @click="${this.handleWeekPickerActionBeforeClick}" class="md-week-picker__action" icon="navigate_before"></md-icon-button>
+                              <md-icon-button @click="${this.handleWeekPickerActionNextClick}" class="md-week-picker__action" icon="navigate_next"></md-icon-button>
+                          </div>
+                      `
+                    : nothing}
             </div>
             <div class="md-week-picker__body">
                 <div class="md-week-picker__inner">${this.renderInner()}</div>
@@ -301,7 +292,7 @@ class MDWeekPicker extends MDElement {
                     <md-button @click="${this.handleWeekPickerButtonOkClick}" class="md-week-picker__button" label="Ok"></md-button>
                 </div>
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
@@ -314,17 +305,26 @@ class MDWeekPicker extends MDElement {
         this.classList.remove("md-week-picker");
     }
 
-    async firstUpdated(changedProperties) {
-        await this.updateComplete;
+    async firstUpdated(changedProperties) {}
 
-        this.selected.setFullYear(this.value.getFullYear());
-        this.selected.setMonth(this.value.getMonth());
-        this.selected.setDate(this.value.getDate());
+    async updated(changedProperties) {
+        if (changedProperties.has("value")) {
+            await this.updateComplete;
 
-        this.requestUpdate();
-    }
+            const [year, week] = this.value.split("-W");
+            const value = new Date(this.value);
+            value.setWeek(week, year);
 
-    updated(changedProperties) {
+            this.temp.setFullYear(value.getFullYear());
+            this.temp.setMonth(value.getMonth());
+            this.temp.setDate(value.getDate());
+
+            this.selected.setFullYear(value.getFullYear());
+            this.selected.setMonth(value.getMonth());
+            this.selected.setDate(value.getDate());
+
+            this.requestUpdate();
+        }
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-week-picker-index", this.index);
         }
@@ -344,7 +344,7 @@ class MDWeekPicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.value.getFullYear(),
+                selected: year == this.temp.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -399,9 +399,9 @@ class MDWeekPicker extends MDElement {
         this.selected.setMonth(data.month);
         this.selected.setDate(data.day);
 
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
 
         this.requestUpdate();
 
@@ -416,8 +416,6 @@ class MDWeekPicker extends MDElement {
         } else if (this.index == 2) {
             this.index = 1;
         }
-
-        // this.requestUpdate();
 
         this.emit("onWeekPickerLabelClick", event);
     }
@@ -457,9 +455,9 @@ class MDWeekPicker extends MDElement {
         this.selected.setMonth(date.getMonth());
         this.selected.setDate(date.getDate());
 
-        this.value.setFullYear(date.getFullYear());
-        this.value.setMonth(date.getMonth());
-        this.value.setDate(date.getDate());
+        this.temp.setFullYear(date.getFullYear());
+        this.temp.setMonth(date.getMonth());
+        this.temp.setDate(date.getDate());
 
         this.requestUpdate();
 
@@ -469,9 +467,9 @@ class MDWeekPicker extends MDElement {
     }
 
     handleWeekPickerButtonOkClick(event) {
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
 
         this.requestUpdate();
 

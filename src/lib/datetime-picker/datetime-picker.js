@@ -8,9 +8,6 @@ class MDDatetimePickerYear extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
-        // 336
-        // 304
-        // (40*7)+(4*6)=304
         const viewportHeight = 40 * 7 + 4 * 6;
 
         this.virtualScroll = new VirtualScroll(this, {
@@ -39,12 +36,7 @@ customElements.define("md-datetime-picker-month", MDDatetimePickerMonth, { exten
 class MDDatetimePicker extends MDElement {
     static get properties() {
         return {
-            value: {
-                type: Date,
-                converter: (value, type) => {
-                    return new Date(value);
-                },
-            },
+            value: { type: String },
             index: { type: Number },
         };
     }
@@ -72,7 +64,7 @@ class MDDatetimePicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.value.getFullYear() && month == this.value.getMonth(),
+                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -101,7 +93,7 @@ class MDDatetimePicker extends MDElement {
                 const day = date.getDate();
                 return {
                     activated: year == this.current.getFullYear() && month == this.current.getMonth() && day == this.current.getDate(),
-                    selected: year == this.value.getFullYear() && month == this.value.getMonth() && day == this.value.getDate(),
+                    selected: year == this.temp.getFullYear() && month == this.temp.getMonth() && day == this.temp.getDate(),
                     disabled: false,
                     error: date.getDay() == 0,
                     label: this.dayDTF.format(date),
@@ -122,16 +114,9 @@ class MDDatetimePicker extends MDElement {
             const date = new Date(0, 0, 1, h);
             const hour = date.getHours();
 
-            // if (hour == this.value.getHours()) {
-            //     const width = k < 12 ? "216px" : "132px";
-            //     this.style.setProperty("--md-datetime-picker-hour-width", width);
-            //     const rotate = (360 / 12) * k + "deg";
-            //     this.style.setProperty("--md-datetime-picker-hour-rotate", rotate);
-            // }
-
             return {
                 activated: hour == this.current.getHours(),
-                selected: hour == this.value.getHours(),
+                selected: hour == this.temp.getHours(),
                 disabled: false,
                 error: false,
                 label: this.hourDTF.format(date),
@@ -146,16 +131,9 @@ class MDDatetimePicker extends MDElement {
             const date = new Date(0, 0, 1, 0, k + 15);
             const minute = date.getMinutes();
 
-            // if (minute == this.value.getMinutes()) {
-            //     const width = k % 5 > 0 ? "256px" : "216px";
-            //     this.style.setProperty("--md-datetime-picker-minute-width", width);
-            //     const rotate = (360 / 60) * k + "deg";
-            //     this.style.setProperty("--md-datetime-picker-minute-rotate", rotate);
-            // }
-
             return {
                 activated: minute == this.current.getMinutes(),
-                selected: minute == this.value.getMinutes(),
+                selected: minute == this.temp.getMinutes(),
                 disabled: false,
                 error: false,
                 label: this.minuteDTF.format(date),
@@ -187,7 +165,7 @@ class MDDatetimePicker extends MDElement {
         super();
 
         this.yearDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
-        this.monthDTF = new Intl.DateTimeFormat(undefined, { month: 'long' });
+        this.monthDTF = new Intl.DateTimeFormat(undefined, { month: "long" });
         this.weekdayDTF = new Intl.DateTimeFormat(undefined, { weekday: "narrow" });
         this.dayDTF = new Intl.DateTimeFormat(undefined, { day: "numeric" });
         this.hourDTF = new Intl.DateTimeFormat(undefined, { hour: "numeric", hour12: false });
@@ -196,20 +174,11 @@ class MDDatetimePicker extends MDElement {
         this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" });
         this.label2DTF = new Intl.DateTimeFormat(undefined, { hour: "2-digit", hour12: false, minute: "2-digit" });
 
-        this.value = new Date();
+        this.temp = new Date();
         this.selected = new Date();
         this.current = new Date();
 
         this.index = 2;
-
-        // console.log(this.first);
-        // console.log(this.last);
-        // console.log(this.years);
-        // console.log(this.months);
-        // console.log(this.weekdays);
-        // console.log(this.days);
-        // console.log(this.hours);
-        // console.log(this.minutes);
     }
 
     get cardInnerYear() {
@@ -217,166 +186,182 @@ class MDDatetimePicker extends MDElement {
     }
 
     renderCardItemYears() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card-inner md-datetime-picker__card-inner--year" is="md-datetime-picker-year" @onVirtualScroll="${this.handleDatetimePickerYearVirtualScroll}">
                 <div class="md-datetime-picker__list">
-                    ${this.years.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleDatetimePickerItemYearClick}"
-                            class="${classMap({
-                                "md-datetime-picker__list-item":true,
-                                "md-datetime-picker__list-item--activated":data.activated,
-                                "md-datetime-picker__list-item--selected":data.selected,
-                                "md-datetime-picker__list-item--disabled":data.disabled,
-                                "md-datetime-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-datetime-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-datetime-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.years.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleDatetimePickerItemYearClick}"
+                                class="${classMap({
+                                    "md-datetime-picker__list-item": true,
+                                    "md-datetime-picker__list-item--activated": data.activated,
+                                    "md-datetime-picker__list-item--selected": data.selected,
+                                    "md-datetime-picker__list-item--disabled": data.disabled,
+                                    "md-datetime-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-datetime-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-datetime-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-datetime-picker__card-footer"> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemMonths() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card-inner" is="md-datetime-picker-month" @onVirtualScroll="${this.handleDatetimePickerMonthVirtualScroll}">
                 <div class="md-datetime-picker__list">
-                    ${this.months.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleDatetimePickerItemMonthClick}"
-                            class="${classMap({
-                                "md-datetime-picker__list-item":true,
-                                "md-datetime-picker__list-item--activated":data.activated,
-                                "md-datetime-picker__list-item--selected":data.selected,
-                                "md-datetime-picker__list-item--disabled":data.disabled,
-                                "md-datetime-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-datetime-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-datetime-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.months.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleDatetimePickerItemMonthClick}"
+                                class="${classMap({
+                                    "md-datetime-picker__list-item": true,
+                                    "md-datetime-picker__list-item--activated": data.activated,
+                                    "md-datetime-picker__list-item--selected": data.selected,
+                                    "md-datetime-picker__list-item--disabled": data.disabled,
+                                    "md-datetime-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-datetime-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-datetime-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-datetime-picker__card-footer"> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemDays() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card-inner">
                 <div class="md-datetime-picker__table">
                     <div class="md-datetime-picker__table-row md-datetime-picker__table-row--header">
-                        ${this.weekdays.map(data=>html`
-                            <div 
-                                class="${classMap({
-                                    "md-datetime-picker__table-item":true,
-                                    "md-datetime-picker__table-item--activated":data.activated,
-                                    "md-datetime-picker__table-item--selected":data.selected,
-                                    "md-datetime-picker__table-item--disabled":data.disabled,
-                                    "md-datetime-picker__table-item--error":data.error,
-                                })}"
-                            >${data.label}</div>
-                        `)}
-                    </div>
-                    ${this.days.map(row=>html`
-                        <div class="md-datetime-picker__table-row md-datetime-picker__table-row--body">
-                            ${row.map(data=>html`
-                                <div 
-                                    .data="${data}"
-                                    @click="${this.handleDatetimePickerItemDayClick}"
+                        ${this.weekdays.map(
+                            (data) => html`
+                                <div
                                     class="${classMap({
-                                        "md-datetime-picker__table-item":true,
-                                        "md-datetime-picker__table-item--activated":data.activated,
-                                        "md-datetime-picker__table-item--selected":data.selected,
-                                        "md-datetime-picker__table-item--disabled":data.disabled,
-                                        "md-datetime-picker__table-item--error":data.error,
+                                        "md-datetime-picker__table-item": true,
+                                        "md-datetime-picker__table-item--activated": data.activated,
+                                        "md-datetime-picker__table-item--selected": data.selected,
+                                        "md-datetime-picker__table-item--disabled": data.disabled,
+                                        "md-datetime-picker__table-item--error": data.error,
                                     })}"
-                                >${data.label}</div>
-                            `)}
-                        </div>
-                    `)}
+                                >
+                                    ${data.label}
+                                </div>
+                            `
+                        )}
+                    </div>
+                    ${this.days.map(
+                        (row) => html`
+                            <div class="md-datetime-picker__table-row md-datetime-picker__table-row--body">
+                                ${row.map(
+                                    (data) => html`
+                                        <div
+                                            .data="${data}"
+                                            @click="${this.handleDatetimePickerItemDayClick}"
+                                            class="${classMap({
+                                                "md-datetime-picker__table-item": true,
+                                                "md-datetime-picker__table-item--activated": data.activated,
+                                                "md-datetime-picker__table-item--selected": data.selected,
+                                                "md-datetime-picker__table-item--disabled": data.disabled,
+                                                "md-datetime-picker__table-item--error": data.error,
+                                            })}"
+                                        >
+                                            ${data.label}
+                                        </div>
+                                    `
+                                )}
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-datetime-picker__card-footer"> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemHours() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card-inner">
                 <div class="md-datetime-picker__absolute md-datetime-picker__absolute--hour">
-                    ${this.hours.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleDatetimePickerItemHourClick}"
-                            class="${classMap({
-                                "md-datetime-picker__absolute-item":true,
-                                "md-datetime-picker__absolute-item--activated":data.activated,
-                                "md-datetime-picker__absolute-item--selected":data.selected,
-                                "md-datetime-picker__absolute-item--disabled":data.disabled,
-                                "md-datetime-picker__absolute-item--error":data.error,
-                            })}"
-                        >${data.label}</div>
-                    `)}
+                    ${this.hours.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleDatetimePickerItemHourClick}"
+                                class="${classMap({
+                                    "md-datetime-picker__absolute-item": true,
+                                    "md-datetime-picker__absolute-item--activated": data.activated,
+                                    "md-datetime-picker__absolute-item--selected": data.selected,
+                                    "md-datetime-picker__absolute-item--disabled": data.disabled,
+                                    "md-datetime-picker__absolute-item--error": data.error,
+                                })}"
+                            >
+                                ${data.label}
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-datetime-picker__card-footer"> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemMinutes() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card-inner">
                 <div class="md-datetime-picker__absolute md-datetime-picker__absolute--minute">
-                    ${this.minutes.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleDatetimePickerItemMinuteClick}"
-                            class="${classMap({
-                                "md-datetime-picker__absolute-item":true,
-                                "md-datetime-picker__absolute-item--activated":data.activated,
-                                "md-datetime-picker__absolute-item--selected":data.selected,
-                                "md-datetime-picker__absolute-item--disabled":data.disabled,
-                                "md-datetime-picker__absolute-item--error":data.error,
-                                "md-datetime-picker__absolute-item--small":data.small,
-                            })}"
-                        >${data.label}</div>
-                    `)}
+                    ${this.minutes.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleDatetimePickerItemMinuteClick}"
+                                class="${classMap({
+                                    "md-datetime-picker__absolute-item": true,
+                                    "md-datetime-picker__absolute-item--activated": data.activated,
+                                    "md-datetime-picker__absolute-item--selected": data.selected,
+                                    "md-datetime-picker__absolute-item--disabled": data.disabled,
+                                    "md-datetime-picker__absolute-item--error": data.error,
+                                    "md-datetime-picker__absolute-item--small": data.small,
+                                })}"
+                            >
+                                ${data.label}
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-datetime-picker__card-footer"> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-datetime-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderInner() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__card">
                 <div class="md-datetime-picker__card-item">${this.renderCardItemYears()}</div>
@@ -385,23 +370,22 @@ class MDDatetimePicker extends MDElement {
                 <div class="md-datetime-picker__card-item">${this.renderCardItemHours()}</div>
                 <div class="md-datetime-picker__card-item">${this.renderCardItemMinutes()}</div>
             </div>
-        `
+        `;
     }
 
     render() {
-        // prettier-ignore
         return html`
             <div class="md-datetime-picker__header">
                 <md-button @click="${this.handleDatetimePickerLabelClick}" class="md-datetime-picker__label" .label="${this.label}"></md-button>
-                ${this.label2?html`
-                    <md-button @click="${this.handleDatetimePickerLabel2Click}" class="md-datetime-picker__label" .label="${this.label2}"></md-button>
-                `:nothing}
-                ${this.index!==0?html`
-                    <div class="md-datetime-picker__actions">
-                        <md-icon-button @click="${this.handleDatetimePickerActionBeforeClick}" class="md-datetime-picker__action" icon="navigate_before"></md-icon-button>
-                        <md-icon-button @click="${this.handleDatetimePickerActionNextClick}" class="md-datetime-picker__action" icon="navigate_next"></md-icon-button>
-                    </div>
-                `:nothing}
+                ${this.label2 ? html` <md-button @click="${this.handleDatetimePickerLabel2Click}" class="md-datetime-picker__label" .label="${this.label2}"></md-button> ` : nothing}
+                ${this.index !== 0
+                    ? html`
+                          <div class="md-datetime-picker__actions">
+                              <md-icon-button @click="${this.handleDatetimePickerActionBeforeClick}" class="md-datetime-picker__action" icon="navigate_before"></md-icon-button>
+                              <md-icon-button @click="${this.handleDatetimePickerActionNextClick}" class="md-datetime-picker__action" icon="navigate_next"></md-icon-button>
+                          </div>
+                      `
+                    : nothing}
             </div>
             <div class="md-datetime-picker__body">
                 <div class="md-datetime-picker__inner">${this.renderInner()}</div>
@@ -410,7 +394,7 @@ class MDDatetimePicker extends MDElement {
                     <md-button @click="${this.handleDatetimePickerButtonOkClick}" class="md-datetime-picker__button" label="Ok"></md-button>
                 </div>
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
@@ -423,19 +407,28 @@ class MDDatetimePicker extends MDElement {
         this.classList.remove("md-datetime-picker");
     }
 
-    async firstUpdated(changedProperties) {
-        await this.updateComplete;
+    async firstUpdated(changedProperties) {}
 
-        this.selected.setFullYear(this.value.getFullYear());
-        this.selected.setMonth(this.value.getMonth());
-        this.selected.setDate(this.value.getDate());
-        this.selected.setHours(this.value.getHours());
-        this.selected.setMinutes(this.value.getMinutes());
+    async updated(changedProperties) {
+        if (changedProperties.has("value")) {
+            await this.updateComplete;
 
-        this.requestUpdate();
-    }
+            const value = new Date(this.value);
 
-    updated(changedProperties) {
+            this.temp.setFullYear(value.getFullYear());
+            this.temp.setMonth(value.getMonth());
+            this.temp.setDate(value.getDate());
+            this.temp.setHours(value.getHours());
+            this.temp.setMinutes(value.getMinutes());
+
+            this.selected.setFullYear(value.getFullYear());
+            this.selected.setMonth(value.getMonth());
+            this.selected.setDate(value.getDate());
+            this.selected.setHours(value.getHours());
+            this.selected.setMinutes(value.getMinutes());
+
+            this.requestUpdate();
+        }
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-datetime-picker-index", this.index);
         }
@@ -455,7 +448,7 @@ class MDDatetimePicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.value.getFullYear(),
+                selected: year == this.temp.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -513,11 +506,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(this.selected.getHours());
         this.selected.setMinutes(this.selected.getMinutes());
 
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
+        this.temp.setHours(this.selected.getHours());
+        this.temp.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -529,11 +522,11 @@ class MDDatetimePicker extends MDElement {
 
         this.selected.setHours(data.hour);
 
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
+        this.temp.setHours(this.selected.getHours());
+        this.temp.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -548,11 +541,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(this.selected.getHours());
         this.selected.setMinutes(data.minute);
 
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
+        this.temp.setHours(this.selected.getHours());
+        this.temp.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -572,8 +565,6 @@ class MDDatetimePicker extends MDElement {
         } else if (this.index == 4) {
         }
 
-        // this.requestUpdate();
-
         this.emit("onDatetimePickerLabelClick", event);
     }
 
@@ -588,8 +579,6 @@ class MDDatetimePicker extends MDElement {
             this.index = 2;
         }
 
-        // this.requestUpdate();
-
         this.emit("onDatetimePickerLabelClick", event);
     }
 
@@ -602,18 +591,18 @@ class MDDatetimePicker extends MDElement {
             this.selected.setMonth(this.selected.getMonth() - 1);
         } else if (this.index == 3) {
             this.selected.setHours(this.selected.getHours() - 1);
-            this.value.setFullYear(this.selected.getFullYear());
-            this.value.setMonth(this.selected.getMonth());
-            this.value.setDate(this.selected.getDate());
-            this.value.setHours(this.selected.getHours());
-            this.value.setMinutes(this.selected.getMinutes());
+            this.temp.setFullYear(this.selected.getFullYear());
+            this.temp.setMonth(this.selected.getMonth());
+            this.temp.setDate(this.selected.getDate());
+            this.temp.setHours(this.selected.getHours());
+            this.temp.setMinutes(this.selected.getMinutes());
         } else if (this.index == 4) {
             this.selected.setMinutes(this.selected.getMinutes() - 1);
-            this.value.setFullYear(this.selected.getFullYear());
-            this.value.setMonth(this.selected.getMonth());
-            this.value.setDate(this.selected.getDate());
-            this.value.setHours(this.selected.getHours());
-            this.value.setMinutes(this.selected.getMinutes());
+            this.temp.setFullYear(this.selected.getFullYear());
+            this.temp.setMonth(this.selected.getMonth());
+            this.temp.setDate(this.selected.getDate());
+            this.temp.setHours(this.selected.getHours());
+            this.temp.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -630,18 +619,18 @@ class MDDatetimePicker extends MDElement {
             this.selected.setMonth(this.selected.getMonth() + 1);
         } else if (this.index == 3) {
             this.selected.setHours(this.selected.getHours() + 1);
-            this.value.setFullYear(this.selected.getFullYear());
-            this.value.setMonth(this.selected.getMonth());
-            this.value.setDate(this.selected.getDate());
-            this.value.setHours(this.selected.getHours());
-            this.value.setMinutes(this.selected.getMinutes());
+            this.temp.setFullYear(this.selected.getFullYear());
+            this.temp.setMonth(this.selected.getMonth());
+            this.temp.setDate(this.selected.getDate());
+            this.temp.setHours(this.selected.getHours());
+            this.temp.setMinutes(this.selected.getMinutes());
         } else if (this.index == 4) {
             this.selected.setMinutes(this.selected.getMinutes() + 1);
-            this.value.setFullYear(this.selected.getFullYear());
-            this.value.setMonth(this.selected.getMonth());
-            this.value.setDate(this.selected.getDate());
-            this.value.setHours(this.selected.getHours());
-            this.value.setMinutes(this.selected.getMinutes());
+            this.temp.setFullYear(this.selected.getFullYear());
+            this.temp.setMonth(this.selected.getMonth());
+            this.temp.setDate(this.selected.getDate());
+            this.temp.setHours(this.selected.getHours());
+            this.temp.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -658,11 +647,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
 
-        this.value.setFullYear(date.getFullYear());
-        this.value.setMonth(date.getMonth());
-        this.value.setDate(date.getDate());
-        this.value.setHours(date.getHours());
-        this.value.setMinutes(date.getMinutes());
+        this.temp.setFullYear(date.getFullYear());
+        this.temp.setMonth(date.getMonth());
+        this.temp.setDate(date.getDate());
+        this.temp.setHours(date.getHours());
+        this.temp.setMinutes(date.getMinutes());
 
         this.requestUpdate();
 
@@ -672,11 +661,11 @@ class MDDatetimePicker extends MDElement {
     }
 
     handleDatetimePickerButtonOkClick(event) {
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
-        this.value.setDate(this.selected.getDate());
-        this.value.setHours(this.selected.getHours());
-        this.value.setMinutes(this.selected.getMinutes());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
+        this.temp.setDate(this.selected.getDate());
+        this.temp.setHours(this.selected.getHours());
+        this.temp.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 

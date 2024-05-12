@@ -219,6 +219,19 @@ class MDColorPicker extends MDElement {
     }
 
     async firstUpdated(changedProperties) {
+        
+        this.canvas = this.querySelector(".md-color-picker__gradient-track");
+        this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
+
+        this.canvas.width = this.canvas.clientWidth;
+        this.canvas.height = this.canvas.clientHeight;
+
+        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
+
+        this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.draw();
+
         await this.updateComplete;
 
         const { r, g, b, a } = this.hexToRgba(this.value);
@@ -233,17 +246,7 @@ class MDColorPicker extends MDElement {
         this.lightness = l;
 
         this.requestUpdate();
-
-        this.canvas = this.querySelector(".md-color-picker__gradient-track");
-        this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
-
-        this.canvas.width = this.canvas.clientWidth;
-        this.canvas.height = this.canvas.clientHeight;
-
-        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
-
-        this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-
+        
         this.draw();
 
         const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);

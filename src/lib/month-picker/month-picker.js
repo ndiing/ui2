@@ -8,9 +8,6 @@ class MDMonthPickerYear extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
-        // 336
-        // 304
-        // (40*7)+(4*6)=304
         const viewportHeight = 40 * 7 + 4 * 6;
 
         this.virtualScroll = new VirtualScroll(this, {
@@ -41,11 +38,7 @@ class MDMonthPickerListMonthItem extends HTMLDivElement {
     connectedCallback() {}
     disconnectedCallback() {}
     attributeChangedCallback() {
-        this.scrollIntoView({
-            // block: "center",
-            // inline: "center",
-            // behavior: 'smooth',
-        });
+        this.scrollIntoView({});
     }
 }
 
@@ -54,12 +47,7 @@ customElements.define("md-month-picker-list-month-item", MDMonthPickerListMonthI
 class MDMonthPicker extends MDElement {
     static get properties() {
         return {
-            value: {
-                type: Date,
-                converter: (value, type) => {
-                    return new Date(value);
-                },
-            },
+            value: { type: String },
             index: { type: Number },
         };
     }
@@ -87,7 +75,7 @@ class MDMonthPicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.value.getFullYear() && month == this.value.getMonth(),
+                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -121,20 +109,11 @@ class MDMonthPicker extends MDElement {
         this.yearDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
         this.monthDTF = new Intl.DateTimeFormat(undefined, { month: "long" });
 
-        this.value = new Date();
+        this.temp = new Date();
         this.selected = new Date();
         this.current = new Date();
 
         this.index = 1;
-
-        // console.log(this.first);
-        // console.log(this.last);
-        // console.log(this.years);
-        // console.log(this.months);
-        // console.log(this.weekdays);
-        // console.log(this.days);
-        // console.log(this.hours);
-        // console.log(this.minutes);
     }
 
     get cardInnerYear() {
@@ -142,88 +121,90 @@ class MDMonthPicker extends MDElement {
     }
 
     renderCardItemYears() {
-        // prettier-ignore
         return html`
             <div class="md-month-picker__card-inner md-month-picker__card-inner--year" is="md-month-picker-year" @onVirtualScroll="${this.handleMonthPickerYearVirtualScroll}">
                 <div class="md-month-picker__list">
-                    ${this.years.map(data=>html`
-                        <div 
-                            .data="${data}"
-                            @click="${this.handleMonthPickerItemYearClick}"
-                            class="${classMap({
-                                "md-month-picker__list-item":true,
-                                "md-month-picker__list-item--activated":data.activated,
-                                "md-month-picker__list-item--selected":data.selected,
-                                "md-month-picker__list-item--disabled":data.disabled,
-                                "md-month-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-month-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-month-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.years.map(
+                        (data) => html`
+                            <div
+                                .data="${data}"
+                                @click="${this.handleMonthPickerItemYearClick}"
+                                class="${classMap({
+                                    "md-month-picker__list-item": true,
+                                    "md-month-picker__list-item--activated": data.activated,
+                                    "md-month-picker__list-item--selected": data.selected,
+                                    "md-month-picker__list-item--disabled": data.disabled,
+                                    "md-month-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-month-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-month-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-month-picker__card-footer"> -->
-                <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderCardItemMonths() {
-        // prettier-ignore
         return html`
             <div class="md-month-picker__card-inner" is="md-month-picker-month" @onVirtualScroll="${this.handleMonthPickerMonthVirtualScroll}">
                 <div class="md-month-picker__list">
-                    ${this.months.map(data=>html`
-                        <div 
-                            is="md-month-picker-list-month-item"
-                            .data="${data}"
-                            ?selected="${data.selected}"
-                            @click="${this.handleMonthPickerItemMonthClick}"
-                            class="${classMap({
-                                "md-month-picker__list-item":true,
-                                "md-month-picker__list-item--activated":data.activated,
-                                "md-month-picker__list-item--selected":data.selected,
-                                "md-month-picker__list-item--disabled":data.disabled,
-                                "md-month-picker__list-item--error":data.error,
-                            })}"
-                        >
-                            <md-icon class="md-month-picker__list-icon">${data.selected?'check':''}</md-icon>
-                            <div class="md-month-picker__list-label">${data.label}</div>
-                        </div>
-                    `)}
+                    ${this.months.map(
+                        (data) => html`
+                            <div
+                                is="md-month-picker-list-month-item"
+                                .data="${data}"
+                                ?selected="${data.selected}"
+                                @click="${this.handleMonthPickerItemMonthClick}"
+                                class="${classMap({
+                                    "md-month-picker__list-item": true,
+                                    "md-month-picker__list-item--activated": data.activated,
+                                    "md-month-picker__list-item--selected": data.selected,
+                                    "md-month-picker__list-item--disabled": data.disabled,
+                                    "md-month-picker__list-item--error": data.error,
+                                })}"
+                            >
+                                <md-icon class="md-month-picker__list-icon">${data.selected ? "check" : ""}</md-icon>
+                                <div class="md-month-picker__list-label">${data.label}</div>
+                            </div>
+                        `
+                    )}
                 </div>
             </div>
             <!-- <div class="md-month-picker__card-footer"> -->
-                <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
-                <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
+            <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
+            <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
             <!-- </div> -->
-        `
+        `;
     }
 
     renderInner() {
-        // prettier-ignore
         return html`
             <div class="md-month-picker__card">
                 <div class="md-month-picker__card-item">${this.renderCardItemYears()}</div>
                 <div class="md-month-picker__card-item">${this.renderCardItemMonths()}</div>
             </div>
-        `
+        `;
     }
 
     render() {
-        // prettier-ignore
         return html`
             <div class="md-month-picker__header">
                 <md-button @click="${this.handleMonthPickerLabelClick}" class="md-month-picker__label" .label="${this.label}"></md-button>
-                ${this.index!==0?html`
-                    <div class="md-month-picker__actions">
-                        <md-icon-button @click="${this.handleMonthPickerActionBeforeClick}" class="md-month-picker__action" icon="navigate_before"></md-icon-button>
-                        <md-icon-button @click="${this.handleMonthPickerActionNextClick}" class="md-month-picker__action" icon="navigate_next"></md-icon-button>
-                    </div>
-                `:nothing}
+                ${this.index !== 0
+                    ? html`
+                          <div class="md-month-picker__actions">
+                              <md-icon-button @click="${this.handleMonthPickerActionBeforeClick}" class="md-month-picker__action" icon="navigate_before"></md-icon-button>
+                              <md-icon-button @click="${this.handleMonthPickerActionNextClick}" class="md-month-picker__action" icon="navigate_next"></md-icon-button>
+                          </div>
+                      `
+                    : nothing}
             </div>
             <div class="md-month-picker__body">
                 <div class="md-month-picker__inner">${this.renderInner()}</div>
@@ -232,7 +213,7 @@ class MDMonthPicker extends MDElement {
                     <md-button @click="${this.handleMonthPickerButtonOkClick}" class="md-month-picker__button" label="Ok"></md-button>
                 </div>
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
@@ -249,16 +230,22 @@ class MDMonthPicker extends MDElement {
         return this.querySelector(".md-month-picker__list-item--selected");
     }
 
-    async firstUpdated(changedProperties) {
-        await this.updateComplete;
-
-        this.selected.setFullYear(this.value.getFullYear());
-        this.selected.setMonth(this.value.getMonth());
-
-        this.requestUpdate();
-    }
+    async firstUpdated(changedProperties) {}
 
     async updated(changedProperties) {
+        if (changedProperties.has("value")) {
+            await this.updateComplete;
+
+            const value = new Date(this.value);
+
+            this.temp.setFullYear(value.getFullYear());
+            this.temp.setMonth(value.getMonth());
+
+            this.selected.setFullYear(value.getFullYear());
+            this.selected.setMonth(value.getMonth());
+
+            this.requestUpdate();
+        }
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-month-picker-index", this.index);
         }
@@ -278,7 +265,7 @@ class MDMonthPicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.value.getFullYear(),
+                selected: year == this.temp.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -319,8 +306,8 @@ class MDMonthPicker extends MDElement {
         this.selected.setFullYear(data.year);
         this.selected.setMonth(data.month);
 
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
 
         this.requestUpdate();
 
@@ -333,8 +320,6 @@ class MDMonthPicker extends MDElement {
         } else if (this.index == 0) {
             this.index = 1;
         }
-
-        // this.requestUpdate();
 
         this.emit("onMonthPickerLabelClick", event);
     }
@@ -369,8 +354,8 @@ class MDMonthPicker extends MDElement {
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
 
-        this.value.setFullYear(date.getFullYear());
-        this.value.setMonth(date.getMonth());
+        this.temp.setFullYear(date.getFullYear());
+        this.temp.setMonth(date.getMonth());
 
         this.requestUpdate();
 
@@ -380,8 +365,8 @@ class MDMonthPicker extends MDElement {
     }
 
     async handleMonthPickerButtonOkClick(event) {
-        this.value.setFullYear(this.selected.getFullYear());
-        this.value.setMonth(this.selected.getMonth());
+        this.temp.setFullYear(this.selected.getFullYear());
+        this.temp.setMonth(this.selected.getMonth());
 
         this.requestUpdate();
 
