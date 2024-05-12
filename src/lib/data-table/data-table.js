@@ -268,8 +268,6 @@ class MDDataTable extends MDElement {
         const data = th.data;
         const width = th.startOffsetWidth + event.detail.clientX;
         data.width = width;
-        // th.style.minWidth = width + "px";
-        // th.style.maxWidth = width + "px";
         this.requestUpdate();
         this.emit("onDataTableColumnResize", event);
     }
@@ -287,7 +285,6 @@ class MDDataTable extends MDElement {
         tds.forEach((td) => td.style.setProperty("max-width", "100%"));
 
         th.style.setProperty("min-width", "0px");
-        // th.style.setProperty("max-width", "0px");
 
         const width = Math.max(...tds.map((td) => td.scrollWidth));
 

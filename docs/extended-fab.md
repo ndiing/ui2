@@ -1,18 +1,22 @@
-# Name: MDExtendedFab
+# MDExtendedFab
 
-Description: Represents an extended floating action button with optional icon and label.
+A custom element representing an extended FAB (Floating Action Button).
 
 ## Instance properties
 
-| name  | type   | default | description                          |
-| ----- | ------ | ------- | ------------------------------------ |
-| icon  | String |         | The icon of the extended FAB.        |
-| label | String |         | The label text of the extended FAB.  |
+| name  | type   | default | description               |
+| ----- | ------ | ------- | ------------------------- |
+| icon  | String |         | The icon of the FAB       |
+| label | String |         | The label of the FAB      |
 
 ## Instance methods
 
-No custom instance methods are defined in this class.
+| name | args | description |
+| ---- | ---- | ----------- |
+| -    | -    | No instance methods defined for this class |
 
 ## Events
 
-No events are emitted directly from this class.
+| name | description |
+| ---- | ----------- |
+| -    | No events emitted from this class |

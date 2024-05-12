@@ -6,14 +6,14 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDProgressIndicator extends MDElement {
     static get properties() {
         return {
-            max:{type:Number},
-            value:{type:Number},
+            max: { type: Number },
+            value: { type: Number },
         };
     }
 
     constructor() {
         super();
-        this.max=100
+        this.max = 100;
     }
 
     render() {
@@ -37,8 +37,7 @@ class MDProgressIndicator extends MDElement {
         this.classList.remove("md-progress-indicator");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
 
 customElements.define("md-progress-indicator", MDProgressIndicator);

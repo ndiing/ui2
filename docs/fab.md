@@ -1,18 +1,22 @@
-# Name: MDFab
+# MDFab
 
-Description: Represents a floating action button with an icon.
+A custom element representing a FAB (Floating Action Button).
 
 ## Instance properties
 
-| name | type   | default | description                          |
-| ---- | ------ | ------- | ------------------------------------ |
-| icon | String |         | The icon of the FAB.                 |
-| ui   | String |         | The UI style of the FAB.             |
+| name | type   | default | description                   |
+| ---- | ------ | ------- | ----------------------------- |
+| icon | String |         | The icon of the FAB           |
+| ui   | String |         | The UI styles of the FAB      |
 
 ## Instance methods
 
-No custom instance methods are defined in this class.
+| name | args | description |
+| ---- | ---- | ----------- |
+| -    | -    | No instance methods defined for this class |
 
 ## Events
 
-No events are emitted directly from this class.
+| name | description |
+| ---- | ----------- |
+| -    | No events emitted from this class |

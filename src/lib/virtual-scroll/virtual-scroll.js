@@ -26,19 +26,15 @@ class VirtualScroll {
     }
 
     init() {
-        // host
         this.host.classList.add("md-virtual-scroll");
 
-        // scrollElement
         this.scrollElement = document.createElement("div");
         this.scrollElement.classList.add("md-virtual-scroll__scroll");
         this.host.append(this.scrollElement);
 
-        // containerElement
         this.containerElement = this.host.querySelector(this.options.containerSelector);
         this.containerElement.classList.add("md-virtual-scroll__container");
 
-        // handleScroll
         this.handleScroll = this.handleScroll.bind(this);
         this.host.addEventListener("scroll", this.handleScroll);
 

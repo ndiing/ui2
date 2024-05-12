@@ -28,10 +28,7 @@
     overflow: hidden;
     position: absolute;
     z-index: 2;
-    // transition-property: all;
-    // transition-duration: var(--md-sys-motion-duration-short4);
-    // transition-timing-function: var(--md-sys-motion-easing-standard);
-
+            
     &:not(.md-menu--open) {
         opacity: 0;
         pointer-events: none;
@@ -52,10 +49,7 @@
     top: 0;
     z-index: 1;
     opacity: 32%;
-    // transition-property: all;
-    // transition-duration: var(--md-sys-motion-duration-short4);
-    // transition-timing-function: var(--md-sys-motion-easing-standard);
-
+            
     &:not(.md-menu--open) {
         opacity: 0;
         pointer-events: none;

@@ -96,7 +96,6 @@ class MDMenu extends MDElement {
             this.popper = new Popper(this, {
                 button,
                 placements: [
-                    //
                     "bottom-start",
                     "bottom-end",
                     "bottom",
