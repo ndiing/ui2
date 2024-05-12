@@ -60,19 +60,19 @@ class MDColorPicker extends MDElement {
     }
 
     rgbaToHex(r, g, b, a = 1) {
-        r = Math.round(r);
-        g = Math.round(g);
-        b = Math.round(b);
+        r = Math.max(0, Math.min(255, r));
+        g = Math.max(0, Math.min(255, g));
+        b = Math.max(0, Math.min(255, b));
 
-        var hexR = r.toString(16).padStart(2, "0");
-        var hexG = g.toString(16).padStart(2, "0");
-        var hexB = b.toString(16).padStart(2, "0");
+        var hex = ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 
-        var hexA = Math.round(a * 255)
-            .toString(16)
-            .padStart(2, "0");
+        if (a < 1) {
+            a = Math.max(0, Math.min(1, a));
+            var alphaHex = Math.round(a * 255).toString(16);
+            hex += alphaHex.length === 1 ? "0" + alphaHex : alphaHex;
+        }
 
-        return "#" + hexR + hexG + hexB + hexA;
+        return "#" + hex;
     }
 
     hslaToRgba(h, s, l, a = 1) {
@@ -123,7 +123,6 @@ class MDColorPicker extends MDElement {
     }
 
     get label() {
-        // return this.value;
         if (this.index === 0) {
             return this.value;
         } else if (this.index === 1) {
@@ -274,6 +273,10 @@ class MDColorPicker extends MDElement {
     }
 
     async updated(changedProperties) {
+        if(changedProperties.has('value')){
+            
+        }
+
         this.style.setProperty("--md-color-picker-red", this.red);
         this.style.setProperty("--md-color-picker-green", this.green);
         this.style.setProperty("--md-color-picker-blue", this.blue);
@@ -287,14 +290,14 @@ class MDColorPicker extends MDElement {
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
-        gradient1.addColorStop(1/255, "rgba(255, 255, 255, 1)");
+        gradient1.addColorStop(1 / 255, "rgba(255, 255, 255, 1)");
         gradient1.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         this.ctx.fillStyle = gradient1;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const gradient2 = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient2.addColorStop(1/255, "rgba(0, 0, 0, 0)");
+        gradient2.addColorStop(1 / 255, "rgba(0, 0, 0, 0)");
         gradient2.addColorStop(1, "rgba(0, 0, 0, 1)");
 
         this.ctx.fillStyle = gradient2;
@@ -348,7 +351,7 @@ class MDColorPicker extends MDElement {
     setValue(event) {
         this.rect = this.canvas.getBoundingClientRect();
 
-        const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width)-1);
+        const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
         const y = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
 
         const [r, g, b] = this.ctx.getImageData(x, y, 1, 1).data;
