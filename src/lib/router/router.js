@@ -1,17 +1,5 @@
 import { Marker } from "../marker/marker";
 
-/* 
-    {
-        path,
-        component,
-        load: () => import().then(m=>m.default),
-        beforeLoad: () => {},
-        children: [
-            {}
-        ]
-    }
-*/
-
 class Router {
     static setRoutes(routes = [], parent = null) {
         return routes.reduce((p, c) => {
