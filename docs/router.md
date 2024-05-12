@@ -26,13 +26,14 @@ No properties available for this class.
 
 ### Route Properties
 
-| Property     | Type     | Description                                     |
-| ------------ | -------- | ----------------------------------------------- |
-| path         | string   | The path of the route.                         |
-| component    | HTML     | The HTML component associated with the route.  |
-| load         | string   | The path of the component to load.             |
-| beforeLoad   | function | A function to execute before loading the component. |
-| children     | Array    | An array of child routes.                      |
+| Property     | Type      | Required | Description                                     |
+| ------------ | --------- | -------- | ----------------------------------------------- |
+| path         | string    | Yes      | The path of the route.                         |
+| component    | HTML      | Conditional | The HTML component associated with the route.  |
+| load         | string    | Conditional | The path of the component to load.             |
+| beforeLoad   | function  | No       | A function to execute before loading the component. |
+| children     | Array     | No       | An array of child routes.                      |
+
 
 ## Usage Example
 
