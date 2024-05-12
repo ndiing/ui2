@@ -33,7 +33,6 @@ class DevMain extends MDElement {
             { icon: "deployed_code", label: "fab", routerLink: "/fab", selected: false },
             { icon: "deployed_code", label: "file-field", routerLink: "/file-field", selected: false },
             { icon: "deployed_code", label: "form", routerLink: "/form", selected: false },
-            { icon: "deployed_code", label: "form-field", routerLink: "/form-field", selected: false },
             { icon: "deployed_code", label: "gesture", routerLink: "/gesture", selected: false },
             { icon: "deployed_code", label: "icon", routerLink: "/icon", selected: false },
             { icon: "deployed_code", label: "icon-button", routerLink: "/icon-button", selected: false },

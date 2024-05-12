@@ -32,7 +32,6 @@ const routes = [
             { path: "fab", load: () => import("./fab/fab.js").then((m) => m.default) },
             { path: "file-field", load: () => import("./file-field/file-field.js").then((m) => m.default) },
             { path: "form", load: () => import("./form/form.js").then((m) => m.default) },
-            { path: "form-field", load: () => import("./form-field/form-field.js").then((m) => m.default) },
             { path: "gesture", load: () => import("./gesture/gesture.js").then((m) => m.default) },
             { path: "icon", load: () => import("./icon/icon.js").then((m) => m.default) },
             { path: "icon-button", load: () => import("./icon-button/icon-button.js").then((m) => m.default) },
