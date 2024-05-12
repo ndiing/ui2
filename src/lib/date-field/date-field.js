@@ -46,6 +46,7 @@ class MDDateField extends MDElement {
                     @input="${this.handleDateFieldNativeInput}"
                     @invalid="${this.handleDateFieldNativeInvalid}"
                     @reset="${this.handleDateFieldNativeReset}"
+                    @click="${this.handleDateFieldNativeClick}"
                 >
                 <div class="md-date-field__actions"><md-icon-button class="md-date-field__action" .icon="${"today"}" @click="${this.handleDateFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-date-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -113,6 +114,10 @@ class MDDateField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onDateFieldNativeReset", event);
+    }
+
+    handleDateFieldNativeClick(event){
+        event.preventDefault()
     }
 
     updateClassPopulated() {

@@ -63,6 +63,7 @@ class MDColorField extends MDElement {
                     @input="${this.handleColorFieldNativeInput}"
                     @invalid="${this.handleColorFieldNativeInvalid}"
                     @reset="${this.handleColorFieldNativeReset}"
+                    @click="${this.handleColorFieldNativeClick}"
                 >
                 <div class="md-color-field__actions"><md-icon-button class="md-color-field__action" .icon="${"palette"}" @click="${this.handleColorFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-color-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -130,6 +131,10 @@ class MDColorField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onColorFieldNativeReset", event);
+    }
+
+    handleColorFieldNativeClick(event){
+        // event.preventDefault()
     }
 
     updateClassPopulated() {

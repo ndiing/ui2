@@ -59,6 +59,27 @@ input[type="file" i]::-webkit-file-upload-button{
 .md-select-field,
 .md-number-field,
 .md-search-field{
+    
+
+    .md-email-field__native,
+    .md-password-field__native,
+    .md-text-field__native,
+    .md-url-field__native,
+    .md-tel-field__native,
+    .md-date-field__native,
+    .md-datetime-field__native,
+    .md-month-field__native,
+    .md-time-field__native,
+    .md-week-field__native,
+    .md-color-field__native,
+    .md-file-field__native,
+    .md-textarea-field__native,
+    .md-select-field__native,
+    .md-number-field__native,
+    .md-search-field__native{
+        appearance: none;
+    }
+
     .md-email-field__action,
     .md-password-field__action,
     .md-text-field__action,
