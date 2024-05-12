@@ -36,7 +36,7 @@
     }
 
     .md-button__icon {
-        --md-button-icon-color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
+        color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
         @extend .md-icon--selected;
     }
 }
