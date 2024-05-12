@@ -118,17 +118,6 @@
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
     }
-
-    &::after {
-        content: "";
-        height: 2px;
-        border-radius: 2px;
-        background: linear-gradient(to right, transparent 50%, var(--md-sys-color-primary) 50%);
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%, -50%, 0) rotate(240deg);
-    }
 }
 
 .md-time-picker__absolute--hour {
@@ -136,17 +125,25 @@
         .md-time-picker__absolute-item:nth-child(#{($i % 12) + 1}) {
             left: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * cos($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * sin($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
+
+            &.md-time-picker__absolute-item--selected {
+                &:before {
+                    transform: rotate(calc(360deg / 12) * $i);
+                }
+            }
         }
 
         .md-time-picker__absolute-item:nth-child(#{($i % 12) + 1 + 12}) {
             left: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px - 4px - 32px) * cos($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px - 4px - 32px) * sin($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
-        }
-    }
 
-    &::after {
-        width: var(--md-time-picker-hour-width);
-        transform: translate3d(-50%, -50%, 0) rotate(var(--md-time-picker-hour-rotate));
+            &.md-time-picker__absolute-item--selected {
+                &:before {
+                    width: calc((((32px * 7) + (4px * 6) - 32px) / 2) - 4px - 4px - 32px);
+                    transform: rotate(calc(360deg / 12) * $i);
+                }
+            }
+        }
     }
 }
 
@@ -155,12 +152,13 @@
         .md-time-picker__absolute-item:nth-child(#{($i % 60) + 1}) {
             left: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * cos($i / 60 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * sin($i / 60 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
-        }
-    }
 
-    &::after {
-        width: var(--md-time-picker-minute-width);
-        transform: translate3d(-50%, -50%, 0) rotate(var(--md-time-picker-minute-rotate));
+            &.md-time-picker__absolute-item--selected {
+                &:before {
+                    transform: rotate(calc(360deg / 60) * $i);
+                }
+            }
+        }
     }
 }
 
@@ -206,4 +204,22 @@
 .md-time-picker__absolute-item--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
+    overflow: visible;
+
+    &::before {
+        content: "";
+        height: 2px;
+        width: calc((((32px * 7) + (4px * 6) - 32px) / 2) - 4px);
+        background: var(--md-sys-color-primary);
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        z-index: -1;
+        transform: rotate(90deg);
+        transform-origin: 100% 0%;
+    }
+
+    &::after {
+        width: 100%;
+    }
 }

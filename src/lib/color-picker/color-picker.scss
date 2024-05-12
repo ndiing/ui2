@@ -91,11 +91,11 @@
 }
 
 .md-color-picker__gradient-thumb {
-    width: calc(32px - (3px * 2));
-    height: calc(32px - (3px * 2));
-    background: transparent;
-    box-shadow: inset 0 0 0 3px white;
-    border-radius: calc((32px - (3px * 2)) / 2);
+    width: calc(32px - (6px * 2));
+    height: calc(32px - (6px * 2));
+    border-radius: calc((32px - (6px * 2)) / 2);
+    margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
+    box-shadow: inset 0 0 0 2px var(--md-sys-color-surface-container-lowest);
     position: absolute;
     left: 0;
     top: 0;
@@ -124,12 +124,12 @@
 
     &::-webkit-slider-thumb {
         appearance: none;
-        width: calc(32px - (3px * 2));
-        height: calc(32px - (3px * 2));
-        border-radius: calc((32px - (3px * 2)) / 2);
-        margin-top: calc((32px - calc(32px - (3px * 2))) / 2);
+        width: calc(32px - (6px * 2));
+        height: calc(32px - (6px * 2));
+        border-radius: calc((32px - (6px * 2)) / 2);
+        margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
         background: transparent;
-        box-shadow: inset 0 0 0 3px white;
+        box-shadow: inset 0 0 0 2px var(--md-sys-color-surface-container-lowest);
     }
 }
 

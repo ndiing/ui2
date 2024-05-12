@@ -122,12 +122,12 @@ class MDDatetimePicker extends MDElement {
             const date = new Date(0, 0, 1, h);
             const hour = date.getHours();
 
-            if (hour == this.value.getHours()) {
-                const width = k < 12 ? "216px" : "132px";
-                this.style.setProperty("--md-datetime-picker-hour-width", width);
-                const rotate = (360 / 12) * k + "deg";
-                this.style.setProperty("--md-datetime-picker-hour-rotate", rotate);
-            }
+            // if (hour == this.value.getHours()) {
+            //     const width = k < 12 ? "216px" : "132px";
+            //     this.style.setProperty("--md-datetime-picker-hour-width", width);
+            //     const rotate = (360 / 12) * k + "deg";
+            //     this.style.setProperty("--md-datetime-picker-hour-rotate", rotate);
+            // }
 
             return {
                 activated: hour == this.current.getHours(),
@@ -146,12 +146,12 @@ class MDDatetimePicker extends MDElement {
             const date = new Date(0, 0, 1, 0, k + 15);
             const minute = date.getMinutes();
 
-            if (minute == this.value.getMinutes()) {
-                const width = k % 5 > 0 ? "256px" : "216px";
-                this.style.setProperty("--md-datetime-picker-minute-width", width);
-                const rotate = (360 / 60) * k + "deg";
-                this.style.setProperty("--md-datetime-picker-minute-rotate", rotate);
-            }
+            // if (minute == this.value.getMinutes()) {
+            //     const width = k % 5 > 0 ? "256px" : "216px";
+            //     this.style.setProperty("--md-datetime-picker-minute-width", width);
+            //     const rotate = (360 / 60) * k + "deg";
+            //     this.style.setProperty("--md-datetime-picker-minute-rotate", rotate);
+            // }
 
             return {
                 activated: minute == this.current.getMinutes(),
