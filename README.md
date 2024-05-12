@@ -6,33 +6,31 @@ Welcome to our Material Design Component Library! This repository hosts a compre
 
 Our library encompasses a wide range of components thoughtfully grouped into various sections, catering to diverse UI requirements.
 
-## Core Components
+### Updated List of Library Components:
 
+#### Core Components
 - [Observer](./docs/observer.md)
 - [Marker](./docs/marker.md)
 - [Progress](./docs/progress.md)
 - [Router](./docs/router.md)
 - [Store](./docs/store.md)
 
-## Interaction
-
+#### Interaction
 - [Gesture](./docs/gesture.md)
 - [Ripple](./docs/ripple.md)
 - [Popper](./docs/popper.md)
+- [Virtual Scroll](./docs/virtual-scroll.md) *(Added)*
 
-## Basic Elements
-
+#### Basic Elements
 - [Localization](./docs/localization.md)
 - [Element](./docs/element.md)
 
-## Visual Elements
-
+#### Visual Elements
 - [Icon](./docs/icon.md)
 - [Badge](./docs/badge.md)
 - [Divider](./docs/divider.md)
 
-## Buttons
-
+#### Buttons
 - [Button](./docs/button.md)
 - [Segmented Button](./docs/segmented-button.md)
 - [Icon Button](./docs/icon-button.md)
@@ -40,13 +38,11 @@ Our library encompasses a wide range of components thoughtfully grouped into var
 - [Extended Floating Action Button](./docs/extended-fab.md)
 - [Chip](./docs/chip.md)
 
-## Layout
-
+#### Layout
 - [Layout](./docs/layout.md)
 - [Pane](./docs/pane.md)
 
-## Dialogs & Sheets
-
+#### Dialogs & Sheets
 - [Card](./docs/card.md)
 - [Carousel](./docs/carousel.md)
 - [Dialog](./docs/dialog.md)
@@ -56,8 +52,7 @@ Our library encompasses a wide range of components thoughtfully grouped into var
 - [Tooltip](./docs/tooltip.md)
 - [Progress Indicator](./docs/progress-indicator.md)
 
-## Navigation
-
+#### Navigation
 - [List](./docs/list.md)
 - [Navigation Bar](./docs/navigation-bar.md)
 - [Navigation Drawer](./docs/navigation-drawer.md)
@@ -67,8 +62,7 @@ Our library encompasses a wide range of components thoughtfully grouped into var
 - [Bottom App Bar](./docs/bottom-app-bar.md)
 - [Menu](./docs/menu.md)
 
-## Form Fields
-
+#### Form Fields
 - [Form](./docs/form.md)
 - [Select Field](./docs/select-field.md)
 - [Text Area Field](./docs/textarea-field.md)
@@ -87,8 +81,7 @@ Our library encompasses a wide range of components thoughtfully grouped into var
 - [File Field](./docs/file-field.md)
 - [Text Field](./docs/text-field.md)
 
-## Inputs & Controls
-
+#### Inputs & Controls
 - [Search](./docs/search.md)
 - [Checkbox](./docs/checkbox.md)
 - [Radio Button](./docs/radio-button.md)
@@ -97,10 +90,10 @@ Our library encompasses a wide range of components thoughtfully grouped into var
 - [Date Picker](./docs/date-picker.md)
 - [Time Picker](./docs/time-picker.md)
 
-## Specialized Components
-
+#### Specialized Components
 - [Data Table](./docs/data-table.md)
 - [Pagination](./docs/pagination.md)
+
 
 ## Usage
 
