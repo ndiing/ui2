@@ -10,7 +10,6 @@
     display: flex;
     align-items: center;
     padding: 16px;
-    // gap: 16px;
 
     + .md-week-picker__body {
         margin-top: -16px;
@@ -46,8 +45,6 @@
 .md-week-picker__inner {
     flex: 1;
     overflow: hidden auto;
-    // padding: 0 16px;
-    // margin: 16px 0;
 
     + .md-week-picker__footer {
         margin-top: -16px;
@@ -61,8 +58,6 @@
     padding: 16px;
     gap: 8px;
 }
-
-// .md-week-picker__button {}
 
 .md-week-picker__card {
     display: flex;
@@ -83,7 +78,7 @@
 .md-week-picker__card-inner {
     flex: 1;
     overflow: hidden auto;
-    // padding: 0 16px;
+
     margin: 16px 0;
 
     + .md-week-picker__card-footer {
@@ -119,10 +114,6 @@
     }
 }
 
-// .md-week-picker__list-icon{}
-
-// .md-week-picker__list-label{}
-
 .md-week-picker__table {
     display: flex;
     flex-direction: column;
@@ -144,12 +135,6 @@
     }
 }
 
-// .md-week-picker__table-row--header{
-//     .md-week-picker__table-item{
-//         user-select: none;
-//     }
-// }
-
 .md-week-picker__table-row--body {
     border-radius: calc(40px / 2);
     @extend .md-ripple;
@@ -161,31 +146,21 @@
     }
 
     &.md-week-picker__table-row--activated {
-        // border: 1px solid var(--md-sys-color-primary);
         box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
     }
     &.md-week-picker__table-row--disabled {
         opacity: 38%;
     }
-    // &.md-week-picker__table-row--error {
-    //     // background: var(--md-sys-color-error);
-    //     // color: var(--md-sys-color-on-error);
-    //     color: var(--md-sys-color-error);
-    // }
+
     &.md-week-picker__table-row--selected {
         background: var(--md-sys-color-primary);
         color: var(--md-sys-color-on-primary);
-        
-        .md-week-picker__table-item{
+
+        .md-week-picker__table-item {
             color: var(--md-sys-color-on-primary);
         }
     }
 }
-
-// .md-week-picker__table-row--activated{}
-// .md-week-picker__table-row--selected{}
-// .md-week-picker__table-row--disabled{}
-// .md-week-picker__table-row--error{}
 
 .md-week-picker__table-item {
     display: inline-flex;
@@ -219,9 +194,9 @@
 
     &::after {
         content: "";
-        width: 216px; // hour12/minute
-        width: 256px; // small
-        width: 132px; // hour24
+        width: 216px;
+        width: 256px;
+        width: 132px;
         height: 2px;
         border-radius: 2px;
         background: linear-gradient(to right, transparent 50%, var(--md-sys-color-primary) 50%);
@@ -234,14 +209,11 @@
 
 .md-week-picker__absolute--hour {
     @for $i from 1 through 24 {
-        // (40*7)+(4*6)=304
-        // 304-40=264/2=132
         .md-week-picker__absolute-item:nth-child(#{($i % 12) + 1}) {
             left: calc(((132px - 4px) * cos($i / 12 * 2 * pi)) + 132px);
             top: calc(((132px - 4px) * sin($i / 12 * 2 * pi)) + 132px);
         }
 
-        // 132-4=128-40=88
         .md-week-picker__absolute-item:nth-child(#{($i % 12) + 1 + 12}) {
             left: calc(((88px - 4px) * cos($i / 12 * 2 * pi)) + 132px);
             top: calc(((88px - 4px) * sin($i / 12 * 2 * pi)) + 132px);
@@ -276,13 +248,6 @@
     width: 40px;
     height: 40px;
     border-radius: calc(40px / 2);
-    // @extend .md-ripple;
-    // @extend .md-ripple--containment;
-    // @extend .md-ripple--button;
-
-    // &:hover {
-    //     @extend .md-ripple--hover;
-    // }
 }
 
 .md-week-picker__absolute-item--small {
@@ -301,8 +266,6 @@
     opacity: 38%;
 }
 .md-week-picker__list-item--error {
-    // background: var(--md-sys-color-error);
-    // color: var(--md-sys-color-on-error);
     color: var(--md-sys-color-error);
 }
 .md-week-picker__list-item--selected {
@@ -310,21 +273,9 @@
     color: var(--md-sys-color-on-surface-variant);
 }
 
-// .md-week-picker__table-item--activated {
-//     border: 1px solid var(--md-sys-color-primary);
-// }
-// .md-week-picker__table-item--disabled {
-//     opacity: 38%;
-// }
 .md-week-picker__table-item--error {
-    // background: var(--md-sys-color-error);
-    // color: var(--md-sys-color-on-error);
     color: var(--md-sys-color-error);
 }
-// .md-week-picker__table-item--selected {
-//     background: var(--md-sys-color-primary);
-//     color: var(--md-sys-color-on-primary);
-// }
 
 .md-week-picker__absolute-item--activated {
     border: 1px solid var(--md-sys-color-primary);
@@ -333,8 +284,6 @@
     opacity: 38%;
 }
 .md-week-picker__absolute-item--error {
-    // background: var(--md-sys-color-error);
-    // color: var(--md-sys-color-on-error);
     color: var(--md-sys-color-error);
 }
 .md-week-picker__absolute-item--selected {

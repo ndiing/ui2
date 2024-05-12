@@ -8,9 +8,6 @@
     flex-direction: column;
 }
 
-// 
-// 
-// 
 
 input::-webkit-search-cancel-button,
 input::-webkit-inner-spin-button,
@@ -29,14 +26,8 @@ input[type="file" i]::-webkit-file-upload-button{
     width: 0;
     height: 0;
 }
-// 
-// 
-// 
 
 
-// 
-// 
-// 
 .md-week-field:not(.md-week-field--populated):not(.md-week-field--focus),
 .md-time-field:not(.md-time-field--populated):not(.md-time-field--focus),
 .md-month-field:not(.md-month-field--populated):not(.md-month-field--focus),
@@ -51,13 +42,7 @@ input[type="file" i]::-webkit-file-upload-button{
     }
 }
 
-// 
-// 
-// 
 
-// 
-// 
-// 
 .md-email-field,
 .md-password-field,
 .md-text-field,
@@ -93,6 +78,4 @@ input[type="file" i]::-webkit-file-upload-button{
         color: var(--md-sys-color-on-surface-variant);
     }
 }
-// 
-// 
 // 

@@ -10,7 +10,6 @@
     display: flex;
     align-items: center;
     padding: 16px;
-    // gap: 16px;
 
     + .md-color-picker__body {
         margin-top: -16px;
@@ -51,8 +50,6 @@
 .md-color-picker__inner {
     flex: 1;
     overflow: hidden auto;
-    // padding: 0 16px;
-    // margin: 16px 0;
 
     + .md-color-picker__footer {
         margin-top: -16px;
@@ -66,8 +63,6 @@
     padding: 16px;
     gap: 8px;
 }
-
-// .md-color-picker__button {}
 
 .md-color-picker__area {
     display: flex;
@@ -134,13 +129,9 @@
 }
 
 .md-color-picker__hue {
-    // &::-webkit-slider-container {}
-
     &::-webkit-slider-runnable-track {
         background: linear-gradient(to right, hsl(0deg, 100%, 50%), hsl(60deg, 100%, 50%), hsl(120deg, 100%, 50%), hsl(160deg, 100%, 50%), hsl(240deg, 100%, 50%), hsl(300deg, 100%, 50%), hsl(360deg, 100%, 50%));
     }
-
-    // &::-webkit-slider-thumb {}
 }
 
 .md-color-picker__opacity {
@@ -155,6 +146,4 @@
     &::-webkit-slider-runnable-track {
         background: linear-gradient(to right, transparent, rgb(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue)));
     }
-
-    // &::-webkit-slider-thumb {}
 }
