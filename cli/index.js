@@ -25,8 +25,7 @@ function write(file, data) {
     fs.writeFileSync(file, data);
 }
 
-function removeDir(file) {
-    const dir = path.dirname(file);
+function removeDir(dir) {
     const exist = fs.existsSync(dir);
     if (exist) {
         fs.rmdirSync(dir, { recursive: true });
