@@ -8,6 +8,7 @@ class MDColorPicker extends MDElement {
     static get properties() {
         return {
             value: { type: String },
+            temp: { type: String },
             index: { type: Number },
         };
     }
@@ -124,7 +125,7 @@ class MDColorPicker extends MDElement {
 
     get label() {
         if (this.index === 0) {
-            return this.value;
+            return this.temp;
         } else if (this.index === 1) {
             return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
         } else if (this.index === 2) {
@@ -136,9 +137,9 @@ class MDColorPicker extends MDElement {
         super();
         this.index = 0;
 
-        this.value = "#000000";
+        this.temp = "#000000";
 
-        const { r, g, b, a } = this.hexToRgba(this.value);
+        const { r, g, b, a } = this.hexToRgba(this.temp);
         this.red = r;
         this.green = g;
         this.blue = b;
@@ -219,7 +220,6 @@ class MDColorPicker extends MDElement {
     }
 
     async firstUpdated(changedProperties) {
-        
         this.canvas = this.querySelector(".md-color-picker__gradient-track");
         this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
 
@@ -231,53 +231,53 @@ class MDColorPicker extends MDElement {
         this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
 
         this.draw();
+    }
 
-        await this.updateComplete;
+    async updated(changedProperties) {
+        if (changedProperties.has("value")) {
+            await this.updateComplete;
 
-        const { r, g, b, a } = this.hexToRgba(this.value);
-        this.red = r;
-        this.green = g;
-        this.blue = b;
-        this.alpha = a;
+            this.temp = this.value;
 
-        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
-        this.hue = h;
-        this.saturation = s;
-        this.lightness = l;
+            const { r, g, b, a } = this.hexToRgba(this.temp);
+            this.red = r;
+            this.green = g;
+            this.blue = b;
+            this.alpha = a;
 
-        this.requestUpdate();
-        
-        this.draw();
+            const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
+            this.hue = h;
+            this.saturation = s;
+            this.lightness = l;
 
-        const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-        const data = imageData.data;
+            this.requestUpdate();
 
-        let xy = [];
+            this.draw();
 
-        for (let y = 0; y < this.canvas.height; y++) {
-            for (let x = 0; x < this.canvas.width; x++) {
-                const index = (y * this.canvas.width + x) * 4;
+            const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+            const data = imageData.data;
 
-                if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
-                    xy = [x, y];
+            let xy = [];
+
+            for (let y = 0; y < this.canvas.height; y++) {
+                for (let x = 0; x < this.canvas.width; x++) {
+                    const index = (y * this.canvas.width + x) * 4;
+
+                    if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
+                        xy = [x, y];
+                        break;
+                    }
+                }
+
+                if (xy.length) {
                     break;
                 }
             }
 
-            if (xy.length) {
-                break;
-            }
-        }
+            const [x = this.canvas.width, y = this.canvas.height] = xy;
 
-        const [x = this.canvas.width, y = this.canvas.height] = xy;
-
-        this.thumb.style.left = x + "px";
-        this.thumb.style.top = y + "px";
-    }
-
-    async updated(changedProperties) {
-        if(changedProperties.has('value')){
-            
+            this.thumb.style.left = x + "px";
+            this.thumb.style.top = y + "px";
         }
 
         this.style.setProperty("--md-color-picker-red", this.red);
@@ -366,7 +366,7 @@ class MDColorPicker extends MDElement {
         this.saturation = s;
         this.lightness = l;
 
-        this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.thumb.style.left = x + "px";
         this.thumb.style.top = y + "px";
@@ -380,7 +380,7 @@ class MDColorPicker extends MDElement {
         this.green = g;
         this.blue = b;
 
-        this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.draw();
 
@@ -390,7 +390,7 @@ class MDColorPicker extends MDElement {
     handleColorPickerOpacityInput(event) {
         this.alpha = parseFloat(event.currentTarget.value) / 100;
 
-        this.value = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.emit("onColorPickerOpacityInput", event);
     }
