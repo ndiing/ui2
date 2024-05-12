@@ -46,11 +46,12 @@ const routes = [
         path: "",
         load: () => import("./main/main.js").then((m) => m.default),
         children: [
-            { path: "admin", load: () => import("./admin/admin.js").then((m) => m.default) },
             { path: "blogs", load: () => import("./blogs/blogs.js").then((m) => m.default), children: [{ path: "blog", load: () => import("./blog/blog.js").then((m) => m.default) }] },
-            { path: "users", load: () => import("./users/users.js").then((m) => m.default), children: [{ path: "user", load: () => import("./user/user.js").then((m) => m.default) }] },
         ],
     },
+    { path: "admin", load: () => import("./admin/admin.js").then((m) => m.default), children:[
+        { path: "users", load: () => import("./users/users.js").then((m) => m.default), children: [{ path: "user", load: () => import("./user/user.js").then((m) => m.default) }] },
+    ] },
     {
         path: "auth",
         load: () => import("./auth/auth.js").then((m) => m.default),
