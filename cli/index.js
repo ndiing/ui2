@@ -67,12 +67,12 @@ function toKebabCase(string) {
 // CLI
 //
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
 
-const commands = ["create component <name>", "delete component <name>", "create controller <name>", "delete controller <name>", "create dev <name>", "delete dev <name>", "create app <name>", "delete app <name>"];
+// const commands = ["create component <name>", "delete component <name>", "create controller <name>", "delete controller <name>", "create dev <name>", "delete dev <name>", "create app <name>", "delete app <name>"];
 
 function print() {
     console.log("Welcome to My CLI!");
@@ -333,13 +333,28 @@ function deleteApp(name) {
     }
 }
 
-print();
+// print();
 
-rl.question("Enter command: ", (answer) => {
-    processCommand(answer);
-    rl.close();
-});
+// rl.question("Enter command: ", (answer) => {
+//     processCommand(answer);
+//     rl.close();
+// });
 
 //
 // CLI
 //
+
+const [,,method,type,name] = process.argv
+
+const cli={
+    createComponent,
+    deleteComponent,
+    createController,
+    deleteController,
+    createDev,
+    deleteDev,
+    createApp,
+    deleteApp,
+}
+
+cli[toCamelCase([method,type].join())](name)
