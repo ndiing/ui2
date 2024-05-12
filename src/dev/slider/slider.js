@@ -10,7 +10,7 @@ class DevSlider extends MDElement {
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
 
-                <div class="md-layout--column" style="margin:24px;">
+                <div class="md-layout--column">
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <br><br><br><md-slider ui="centered" name="centered"></md-slider>
                     </div>

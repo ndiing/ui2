@@ -9,7 +9,7 @@ class DevWeekField extends MDElement {
             <md-form
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
-                <div class="md-layout--column" style="margin:24px;">
+                <div class="md-layout--column">
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-week-field label="Week Field" text="Text content" name="text1"></md-week-field>
                     </div>

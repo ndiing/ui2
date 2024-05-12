@@ -9,7 +9,7 @@ class DevRadioButton extends MDElement {
             <md-form
                 @onFormNativeSubmit="${console.log}"
             >
-                <div class="md-layout--column" style="margin:24px;">
+                <div class="md-layout--column">
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-radio-button name="radio-button"></md-radio-button>
                     </div>

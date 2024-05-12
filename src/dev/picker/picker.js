@@ -6,7 +6,7 @@ class DevPicker extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin:24px;">
+            <div class="md-layout--column">
                 <div class="md-layout__item--expanded3 md-layout__item--medium4 md-layout__item--compact4">
                     <md-date-picker id="datePicker" value="1990-10-17"></md-date-picker>
                 </div>

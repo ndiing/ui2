@@ -6,9 +6,9 @@ class DevIcon extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin:24px;">
+            <div class="md-layout--column">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-icon>search</md-icon>
+                    <md-icon></md-icon>
                     <md-icon>home</md-icon>
                     <md-icon>menu</md-icon>
                     <md-icon>close</md-icon>

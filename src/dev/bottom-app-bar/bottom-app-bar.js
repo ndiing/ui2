@@ -33,7 +33,7 @@ class DevBottomAppBar extends MDElement {
                         @onBottomAppBarActionClick="${console.log}"
                     ></md-bottom-app-bar>
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item--center">
                     <md-button ui="filled-tonal" label="Icon buttons and FAB" @click="${this.handleClick1}"></md-button><br><br>
                     <md-button ui="filled-tonal" label="Icon buttons and no FAB" @click="${this.handleClick2}"></md-button><br><br>
                 </div>

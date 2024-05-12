@@ -31,7 +31,7 @@ class DevNavigationBar extends MDElement {
                                 ]}"
                             ></md-navigation-bar>
                         </div>
-                        <div class="md-layout__item--center" style="padding:24px;">
+                        <div class="md-layout__item--center">
                             <md-button ui="filled-tonal" label="4 destinations; label text" @click="${this.handleClick1}"></md-button>
                             <md-button ui="filled-tonal" label="4 destinations; no label text" @click="${this.handleClick2}"></md-button>
                         </div>
