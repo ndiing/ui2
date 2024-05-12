@@ -4,15 +4,15 @@ import { msg } from "@lit/localize";
 import { Router } from "../../lib/router/router";
 import { color, layout } from "../../lib/observer/observer";
 
-const devs = ["badge", "bottom-app-bar", "bottom-sheet", "button", "card", "carousel", "checkbox", "chip", "color-field", "data", "data-table", "date-field", "date-picker", "datetime-field", "dialog", "divider", "email-field", "emoji", "error", "extended-fab", "fab", "file-field", "form", "gesture", "icon", "icon-button", "layout", "list", "login", "main", "menu", "month-field", "navigation-bar", "navigation-drawer", "navigation-rail", "number-field", "pagination", "pane", "password-field", "picker", "popper", "progress-indicator", "radio-button", "range-field", "ripple", "search", "search-field", "segmented-button", "select-field", "side-sheet", "slider", "snackbar", "switch", "tab", "tel-field", "text-field", "textarea-field", "time-field", "time-picker", "tooltip", "top-app-bar", "url-field", "virtual-scroll", "week-field"];
+const devs = [{"path":"badge"},{"path":"bottom-app-bar"},{"path":"bottom-sheet"},{"path":"button"},{"path":"card"},{"path":"carousel"},{"path":"checkbox"},{"path":"chip"},{"path":"color-field"},{"path":"data-table"},{"path":"date-field"},{"path":"date-picker"},{"path":"datetime-field"},{"path":"dialog"},{"path":"divider"},{"path":"email-field"},{"path":"emoji"},{"path":"extended-fab"},{"path":"fab"},{"path":"file-field"},{"path":"form"},{"path":"gesture"},{"path":"icon"},{"path":"icon-button"},{"path":"layout"},{"path":"list"},{"path":"main"},{"path":"menu"},{"path":"month-field"},{"path":"navigation-bar"},{"path":"navigation-drawer"},{"path":"navigation-rail"},{"path":"number-field"},{"path":"pagination"},{"path":"pane"},{"path":"password-field"},{"path":"picker"},{"path":"popper"},{"path":"progress-indicator"},{"path":"radio-button"},{"path":"ripple"},{"path":"search"},{"path":"segmented-button"},{"path":"select-field"},{"path":"side-sheet"},{"path":"slider"},{"path":"snackbar"},{"path":"switch"},{"path":"tab"},{"path":"tel-field"},{"path":"text-field"},{"path":"textarea-field"},{"path":"time-field"},{"path":"time-picker"},{"path":"tooltip"},{"path":"top-app-bar"},{"path":"url-field"},{"path":"virtual-scroll"},{"path":"week-field"}]
 
 class DevMain extends MDElement {
     constructor() {
         super();
         this.list = devs.map((dev) => ({
             icon: "deployed_code",
-            label: dev,
-            routerLink: `/${dev}`,
+            label: dev.path,
+            routerLink: `/${dev.path}`,
             selected: false,
         }));
     }
