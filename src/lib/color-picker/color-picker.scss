@@ -28,6 +28,7 @@
 }
 
 .md-color-picker__label {
+    --md-button-density: -2;
     color: var(--md-sys-color-on-surface-variant);
 
     + .md-color-picker__label {
@@ -50,6 +51,7 @@
 .md-color-picker__inner {
     flex: 1;
     overflow: hidden auto;
+    @extend .md-typography--body-small;
 
     + .md-color-picker__footer {
         margin-top: -16px;
@@ -64,6 +66,10 @@
     gap: 8px;
 }
 
+.md-color-picker__button {
+    --md-button-density: -2;
+}
+
 .md-color-picker__area {
     display: flex;
     flex-direction: column;
@@ -73,8 +79,8 @@
 
 .md-color-picker__gradient {
     user-select: none;
-    width: 336px;
-    height: 216px;
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6) - 4px - 32px - 4px - 32px);
     position: relative;
     overflow: hidden;
 }
@@ -85,46 +91,45 @@
 }
 
 .md-color-picker__gradient-thumb {
-    width: 32px;
-    height: 32px;
+    width: calc(32px - (3px * 2));
+    height: calc(32px - (3px * 2));
     background: transparent;
-    box-shadow: inset 0 0 0 4px white;
-    border-radius: calc(32px / 2);
+    box-shadow: inset 0 0 0 3px white;
+    border-radius: calc((32px - (3px * 2)) / 2);
     position: absolute;
     left: 0;
     top: 0;
     transform: translate3d(-50%, -50%, 0);
     pointer-events: none;
 }
-
 .md-color-picker__hue,
 .md-color-picker__opacity {
     appearance: none;
     display: flex;
     align-items: center;
-    width: 336px;
-    height: 40px;
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: 32px;
     background: transparent;
 
     &::-webkit-slider-container {
         appearance: none;
         background: transparent;
-        height: 40px;
+        height: 32px;
     }
 
     &::-webkit-slider-runnable-track {
-        height: 40px;
+        height: 32px;
         background: transparent;
     }
 
     &::-webkit-slider-thumb {
         appearance: none;
-        width: 32px;
-        height: 32px;
-        border-radius: calc(32px / 2);
-        margin-top: calc((40px - 32px) / 2);
+        width: calc(32px - (3px * 2));
+        height: calc(32px - (3px * 2));
+        border-radius: calc((32px - (3px * 2)) / 2);
+        margin-top: calc((32px - calc(32px - (3px * 2))) / 2);
         background: transparent;
-        box-shadow: inset 0 0 0 4px white;
+        box-shadow: inset 0 0 0 3px white;
     }
 }
 

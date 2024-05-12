@@ -28,6 +28,7 @@
 }
 
 .md-datetime-picker__label {
+    --md-button-density: -2;
     color: var(--md-sys-color-on-surface-variant);
 
     + .md-datetime-picker__label {
@@ -45,6 +46,7 @@
 .md-datetime-picker__inner {
     flex: 1;
     overflow: hidden auto;
+    @extend .md-typography--body-small;
 
     + .md-datetime-picker__footer {
         margin-top: -16px;
@@ -59,10 +61,14 @@
     gap: 8px;
 }
 
+.md-datetime-picker__button {
+    --md-button-density: -2;
+}
+
 .md-datetime-picker__card {
     display: flex;
-    width: calc((40px * 7) + (4px * 6) + (16px * 2));
-    height: calc((40px * 7) + (4px * 6) + (16px * 2));
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6) + (16px * 2));
 }
 
 .md-datetime-picker__card-item {
@@ -70,15 +76,14 @@
     overflow: hidden auto;
     display: flex;
     flex-direction: column;
-    width: calc((40px * 7) + (4px * 6) + (16px * 2));
-    height: calc((40px * 7) + (4px * 6) + (16px * 2));
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6) + (16px * 2));
     transform: translate3d(calc((0 - var(--md-datetime-picker-index)) * 100%), 0, 0);
 }
 
 .md-datetime-picker__card-inner {
     flex: 1;
     overflow: hidden auto;
-
     margin: 16px 0;
 
     + .md-datetime-picker__card-footer {
@@ -105,6 +110,7 @@
     height: 48px;
     padding: 0 16px;
     gap: 0 16px;
+    @extend .md-typography--body-medium;
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -143,18 +149,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: calc(40px / 2);
+    width: 32px;
+    height: 32px;
+    border-radius: calc(32px / 2);
     user-select: none;
 }
 
 .md-datetime-picker__absolute {
     position: relative;
-    width: calc((40px * 7) + (4px * 6));
-    height: calc((40px * 7) + (4px * 6));
+    width: calc((32px * 7) + (4px * 6));
+    height: calc((32px * 7) + (4px * 6));
     margin: 0 16px;
-    border-radius: calc(((40px * 7) + (4px * 6)) / 2);
+    border-radius: calc(((32px * 7) + (4px * 6)) / 2);
     background: var(--md-sys-color-surface-container-highest);
 
     &::before {
@@ -222,9 +228,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: calc(40px / 2);
+    width: 32px;
+    height: 32px;
+    border-radius: calc(32px / 2);
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -235,10 +241,10 @@
 }
 
 .md-datetime-picker__absolute-item--small {
-    width: calc(40px / 2);
-    height: calc(40px / 2);
-    margin: calc((40px / 2) / 2);
-    border-radius: calc((40px / 2) / 2);
+    width: calc(32px / 2);
+    height: calc(32px / 2);
+    margin: calc((32px / 2) / 2);
+    border-radius: calc((32px / 2) / 2);
     font-size: 0;
     line-height: 0;
 }
@@ -246,12 +252,15 @@
 .md-datetime-picker__list-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
+
 .md-datetime-picker__list-item--disabled {
     opacity: 38%;
 }
+
 .md-datetime-picker__list-item--error {
     color: var(--md-sys-color-error);
 }
+
 .md-datetime-picker__list-item--selected {
     background: var(--md-sys-color-surface-variant);
     color: var(--md-sys-color-on-surface-variant);
@@ -260,12 +269,15 @@
 .md-datetime-picker__table-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
+
 .md-datetime-picker__table-item--disabled {
     opacity: 38%;
 }
+
 .md-datetime-picker__table-item--error {
     color: var(--md-sys-color-error);
 }
+
 .md-datetime-picker__table-item--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
@@ -274,12 +286,15 @@
 .md-datetime-picker__absolute-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
+
 .md-datetime-picker__absolute-item--disabled {
     opacity: 38%;
 }
+
 .md-datetime-picker__absolute-item--error {
     color: var(--md-sys-color-error);
 }
+
 .md-datetime-picker__absolute-item--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);

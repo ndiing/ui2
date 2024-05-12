@@ -28,6 +28,7 @@
 }
 
 .md-date-picker__label {
+    --md-button-density: -2;
     color: var(--md-sys-color-on-surface-variant);
 
     + .md-date-picker__label {
@@ -59,10 +60,14 @@
     gap: 8px;
 }
 
+.md-date-picker__button {
+    --md-button-density: -2;
+}
+
 .md-date-picker__card {
     display: flex;
-    width: calc((40px * 7) + (4px * 6) + (16px * 2));
-    height: calc((40px * 7) + (4px * 6) + (16px * 2));
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6) + (16px * 2));
 }
 
 .md-date-picker__card-item {
@@ -70,16 +75,16 @@
     overflow: hidden auto;
     display: flex;
     flex-direction: column;
-    width: calc((40px * 7) + (4px * 6) + (16px * 2));
-    height: calc((40px * 7) + (4px * 6) + (16px * 2));
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6) + (16px * 2));
     transform: translate3d(calc((0 - var(--md-date-picker-index)) * 100%), 0, 0);
 }
 
 .md-date-picker__card-inner {
     flex: 1;
     overflow: hidden auto;
-
     margin: 16px 0;
+    @extend .md-typography--body-small;
 
     + .md-date-picker__card-footer {
         margin-top: -16px;
@@ -105,6 +110,7 @@
     height: 48px;
     padding: 0 16px;
     gap: 0 16px;
+    @extend .md-typography--body-medium;
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -143,115 +149,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: calc(40px / 2);
+    width: 32px;
+    height: 32px;
+    border-radius: calc(32px / 2);
     user-select: none;
-}
-
-.md-date-picker__absolute {
-    position: relative;
-    width: calc((40px * 7) + (4px * 6));
-    height: calc((40px * 7) + (4px * 6));
-    margin: 0 16px;
-    border-radius: calc(((40px * 7) + (4px * 6)) / 2);
-    background: var(--md-sys-color-surface-container-highest);
-
-    &::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: calc(8px / 2);
-        background: var(--md-sys-color-primary);
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%, -50%, 0);
-    }
-
-    &::after {
-        content: "";
-        width: 216px;
-        width: 256px;
-        width: 132px;
-        height: 2px;
-        border-radius: 2px;
-        background: linear-gradient(to right, transparent 50%, var(--md-sys-color-primary) 50%);
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%, -50%, 0) rotate(240deg);
-    }
-}
-
-.md-date-picker__absolute--hour {
-    @for $i from 1 through 24 {
-        .md-date-picker__absolute-item:nth-child(#{($i % 12) + 1}) {
-            left: calc(((132px - 4px) * cos($i / 12 * 2 * pi)) + 132px);
-            top: calc(((132px - 4px) * sin($i / 12 * 2 * pi)) + 132px);
-        }
-
-        .md-date-picker__absolute-item:nth-child(#{($i % 12) + 1 + 12}) {
-            left: calc(((88px - 4px) * cos($i / 12 * 2 * pi)) + 132px);
-            top: calc(((88px - 4px) * sin($i / 12 * 2 * pi)) + 132px);
-        }
-    }
-
-    &::after {
-        width: var(--md-date-picker-hour-width);
-        transform: translate3d(-50%, -50%, 0) rotate(var(--md-date-picker-hour-rotate));
-    }
-}
-
-.md-date-picker__absolute--minute {
-    @for $i from 1 through 60 {
-        .md-date-picker__absolute-item:nth-child(#{($i % 60) + 1}) {
-            left: calc(((132px - 4px) * cos($i / 60 * 2 * pi)) + 132px);
-            top: calc(((132px - 4px) * sin($i / 60 * 2 * pi)) + 132px);
-        }
-    }
-
-    &::after {
-        width: var(--md-date-picker-minute-width);
-        transform: translate3d(-50%, -50%, 0) rotate(var(--md-date-picker-minute-rotate));
-    }
-}
-
-.md-date-picker__absolute-item {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: calc(40px / 2);
-    @extend .md-ripple;
-    @extend .md-ripple--containment;
-    @extend .md-ripple--button;
-
-    &:hover {
-        @extend .md-ripple--hover;
-    }
-}
-
-.md-date-picker__absolute-item--small {
-    width: calc(40px / 2);
-    height: calc(40px / 2);
-    margin: calc((40px / 2) / 2);
-    border-radius: calc((40px / 2) / 2);
-    font-size: 0;
-    line-height: 0;
 }
 
 .md-date-picker__list-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
+
 .md-date-picker__list-item--disabled {
     opacity: 38%;
 }
+
 .md-date-picker__list-item--error {
     color: var(--md-sys-color-error);
 }
+
 .md-date-picker__list-item--selected {
     background: var(--md-sys-color-surface-variant);
     color: var(--md-sys-color-on-surface-variant);
@@ -260,27 +175,16 @@
 .md-date-picker__table-item--activated {
     border: 1px solid var(--md-sys-color-primary);
 }
+
 .md-date-picker__table-item--disabled {
     opacity: 38%;
 }
+
 .md-date-picker__table-item--error {
     color: var(--md-sys-color-error);
 }
-.md-date-picker__table-item--selected {
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-}
 
-.md-date-picker__absolute-item--activated {
-    border: 1px solid var(--md-sys-color-primary);
-}
-.md-date-picker__absolute-item--disabled {
-    opacity: 38%;
-}
-.md-date-picker__absolute-item--error {
-    color: var(--md-sys-color-error);
-}
-.md-date-picker__absolute-item--selected {
+.md-date-picker__table-item--selected {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 }
