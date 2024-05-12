@@ -6,7 +6,7 @@ import { Popper } from "../popper/popper";
 
 class MDMenu extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties,{
+        return Object.assign(MDList.properties, {
             open: { type: Boolean, reflect: true },
         });
     }
@@ -89,29 +89,39 @@ class MDMenu extends MDElement {
         this.emit("onMenuListItemClick", event);
     }
 
-    show(button,options={}) {
+    show(button, options = {}) {
         this.open = true;
-        
-        this.popper=new Popper(this,{
-            button,
-            placements:[
-                'bottom-start',
-                'bottom-end',
-                'bottom',
-                'top-start',
-                'top-end',
-                'top',
-            ],
-            ...options
-        })
 
-        this.popper.setPlacement()
+        if (button) {
+            this.popper = new Popper(this, {
+                button,
+                placements: [
+                    //
+                    "bottom-start",
+                    "bottom-end",
+                    "bottom",
+                    "top-start",
+                    "top-end",
+                    "top",
+                ],
+                ...options,
+            });
+
+            this.popper.setPlacement();
+        } else {
+            this.classList.add("md-menu--center");
+        }
     }
 
     close() {
         this.open = false;
 
-        this.popper.destroy()
+        if (this.popper) {
+            this.popper.destroy();
+            this.popper = null;
+        } else {
+            this.classList.remove("md-menu--center");
+        }
     }
 }
 

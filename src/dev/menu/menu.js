@@ -25,8 +25,15 @@ class DevMenu extends MDElement {
         `;
     }
 
-    handleClick(event){
-        menu.show(button,{})
+    handleClick(event) {
+        menu.show(button, {});
+    }
+
+    firstUpdated() {
+        window.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+            menu.show(event, {});
+        });
     }
 }
 
