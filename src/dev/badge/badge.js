@@ -18,7 +18,7 @@ class DevBadge extends MDElement {
                         ]}"
                     ></md-navigation-bar>
                 </div>
-                <div class="md-layout__item--center" >
+                <div class="md-layout__item--center" style="padding:24px;">
                 </div>
             </div>
         `;

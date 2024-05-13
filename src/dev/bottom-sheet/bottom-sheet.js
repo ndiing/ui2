@@ -6,37 +6,36 @@ class DevSideSheet extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <!-- <div class="md-layout--border md-layout--fit"> -->
-                <!-- <div class="md-layout__item--south md-layout--fit"> -->
-                    <md-bottom-sheet
-                        id="bottomSheet1"
-                    >
-                        Lorem ipsum dolor sit amet. <br>
-                        Tempore dolorum praesentium officia quo? <br>
-                        Voluptates iste eum optio commodi? <br>
-                        Eaque saepe doloremque at aut. <br>
-                        Saepe ab tempore esse totam. <br>
-                    </md-bottom-sheet>
+    
+            <md-bottom-sheet
+                id="bottomSheet1"
+            >
+                Lorem ipsum dolor sit amet. <br>
+                Tempore dolorum praesentium officia quo? <br>
+                Voluptates iste eum optio commodi? <br>
+                Eaque saepe doloremque at aut. <br>
+                Saepe ab tempore esse totam. <br>
+            </md-bottom-sheet>
 
-                    <md-bottom-sheet
-                        id="bottomSheet2"
-                        ui="modal"
-                    >
-                        Lorem ipsum dolor sit amet. <br>
-                        Tempore dolorum praesentium officia quo? <br>
-                        Voluptates iste eum optio commodi? <br>
-                        Eaque saepe doloremque at aut. <br>
-                        Saepe ab tempore esse totam. <br>
-                    </md-bottom-sheet>
-                    
-                <!-- </div> -->
-                <!-- <div class="md-layout__item--center"> -->
-                <div>
-                    <md-button ui="filled-tonal" label="Standard bottom sheet" @click="${this.handleClick1}"></md-button>
-                    <md-button ui="filled-tonal" label="Modal bottom sheet" @click="${this.handleClick2}"></md-button>
-                </div>
-                <!-- </div> -->
-            <!-- </div> -->
+            <md-bottom-sheet
+                id="bottomSheet2"
+                ui="modal"
+            >
+                Lorem ipsum dolor sit amet. <br>
+                Tempore dolorum praesentium officia quo? <br>
+                Voluptates iste eum optio commodi? <br>
+                Eaque saepe doloremque at aut. <br>
+                Saepe ab tempore esse totam. <br>
+            </md-bottom-sheet>
+            
+        
+        
+        <div style="margin:24px;">
+            <md-button ui="filled-tonal" label="Standard bottom sheet" @click="${this.handleClick1}"></md-button>
+            <md-button ui="filled-tonal" label="Modal bottom sheet" @click="${this.handleClick2}"></md-button>
+        </div>
+        
+    
         `;
     }
     handleClick1(event) {

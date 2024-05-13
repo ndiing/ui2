@@ -30,7 +30,7 @@ class DevNavigationDrawer extends MDElement {
                     ></md-navigation-drawer>
                     
                 </div>
-                <div class="md-layout__item--center">
+                <div class="md-layout__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Standard navigation drawer" @click="${this.handleClick1}"></md-button>
                     <md-button ui="filled-tonal" label="Modal navigation drawer" @click="${this.handleClick2}"></md-button>
                 </div>

@@ -6,7 +6,7 @@ class DevImage extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
+            <div class="md-layout--column" style="margin:24px;">
                 <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="16/9"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="3/2"></md-image>

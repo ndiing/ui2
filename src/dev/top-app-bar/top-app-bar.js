@@ -21,7 +21,7 @@ class DevTopAppBar extends MDElement {
                         ]}"
                     ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--center">
+                <div class="md-layout__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick1}"></md-button>
                 </div>
             </div>

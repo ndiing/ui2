@@ -162,10 +162,10 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-week-picker__card-footer"> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
@@ -193,10 +193,10 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-week-picker__card-footer"> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
@@ -255,10 +255,10 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-week-picker__card-footer"> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-week-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 

@@ -161,9 +161,7 @@ class MDColorPicker extends MDElement {
                     .label="${this.label}"
                     .icon="${"lens"}"
                 ></md-button>
-                <!-- <div class="md-color-picker__actions">
-                    <md-icon-button @click="${this.handleColorPickerActionColorizeClick}" class="md-color-picker__action" icon="colorize"></md-icon-button>
-                </div> -->
+                
             </div>
             <div class="md-color-picker__body">
                 <div class="md-color-picker__inner">

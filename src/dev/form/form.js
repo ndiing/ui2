@@ -31,7 +31,7 @@ class DevForm extends MDElement {
             <md-form
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
-                <div class="md-layout--column">
+                <div class="md-layout--column" style="margin:24px;">
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-email-field ui="outlined" label="email" name="email" .value="${this.data.email}" .defaultValue="${this.data.email}"></md-email-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-password-field ui="outlined" label="password" name="password" .value="${this.data.password}" .defaultValue="${this.data.password}"></md-password-field></div>
                     <div class="md-layout__item--expanded2 md-layout__item--medium4 md-layout__item--compact4"><md-text-field ui="outlined" label="text" name="text" .value="${this.data.text}" .defaultValue="${this.data.text}"></md-text-field></div>

@@ -160,10 +160,10 @@ class MDDatePicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-date-picker__card-footer"> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
@@ -191,10 +191,10 @@ class MDDatePicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-date-picker__card-footer"> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
@@ -244,10 +244,10 @@ class MDDatePicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-date-picker__card-footer"> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-date-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 

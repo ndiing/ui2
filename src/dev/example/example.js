@@ -6,7 +6,7 @@ class DevExample extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
+            <div class="md-layout--column" style="margin:24px;">
                 
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
@@ -149,7 +149,7 @@ class DevExample extends MDElement {
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                 </div>
                 
-                <!-- <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -231,7 +231,7 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div> -->
                 
-                <!-- <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                
                     <md-list
                         .list="${[
                             {avatar:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},

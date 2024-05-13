@@ -144,10 +144,10 @@ class MDMonthPicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-month-picker__card-footer"> -->
-            <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
@@ -177,10 +177,10 @@ class MDMonthPicker extends MDElement {
                     )}
                 </div>
             </div>
-            <!-- <div class="md-month-picker__card-footer"> -->
-            <!-- <md-button class="md-month-picker__card-button" label="Cancel"></md-button> -->
-            <!-- <md-button class="md-month-picker__card-button" label="Ok"></md-button> -->
-            <!-- </div> -->
+            
+            
+            
+            
         `;
     }
 
