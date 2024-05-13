@@ -105,7 +105,13 @@ class MDListItem extends MDElement {
         }
     }
 
-    updated(changedProperties) {}
+    updated(changedProperties) {
+        if(changedProperties.has('selected')){
+            if(this.selected){
+                this.emit('onListItemSelected',this)
+            }
+        }
+    }
 
     handleListItemCheckboxInput(event) {
         this.emit("onListItemCheckboxInput", event);
