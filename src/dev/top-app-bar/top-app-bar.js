@@ -9,28 +9,37 @@ class DevTopAppBar extends MDElement {
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--north">
                     <md-top-app-bar
-                        id="topAppBar1"
+                        id="top-app-bar"
                         .leadingActions="${[
-                            {icon:"image"},
+                            {icon:"arrow_back"},
                         ]}"
                         .label="${"Label"}"
                         .trailingActions="${[
-                            {icon:"image"},
-                            {icon:"image"},
-                            {icon:"image"},
+                            {icon:"attach_file"},
+                            {icon:"today"},
+                            {icon:"more_vert"},
                         ]}"
+                        .open="${true}"
+                        @onTopAppBarActionClick="${console.log}"
                     ></md-top-app-bar>
                 </div>
                 <div class="md-layout__item--center" style="padding:24px;">
-                    <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick1}"></md-button>
+                    <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick}"></md-button>
                 </div>
             </div>
         `;
     }
 
-    handleClick1() {
-        if (topAppBar1.open) topAppBar1.close();
-        else topAppBar1.show();
+    get topAppBar() {
+        return this.querySelector("#top-app-bar");
+    }
+
+    handleClick() {
+        if (this.topAppBar.open) {
+            this.topAppBar.close();
+        } else {
+            this.topAppBar.show();
+        }
     }
 }
 

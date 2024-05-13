@@ -60,14 +60,12 @@ class MDTopAppBar extends MDElement {
         this.classList.add("md-top-app-bar");
     }
 
-
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-top-app-bar");
     }
 
     updated(changedProperties) {
-
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-top-app-bar--open");
@@ -80,11 +78,6 @@ class MDTopAppBar extends MDElement {
     handleTopAppBarActionClick(event) {
         this.emit("onTopAppBarActionClick", event);
     }
-
-    handleTopAppBarButtonClick(event) {
-        this.emit("onTopAppBarButtonClick", event);
-    }
-
 
     show() {
         this.open = true;
