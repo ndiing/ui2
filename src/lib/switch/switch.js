@@ -53,6 +53,7 @@ class MDSwitch extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-switch");
         await this.updateComplete;
         this.ripple = new Ripple(this.switchThumb, { button: this.switchNative, containment: false, fadeout: true, size: (40 / this.switchThumb.clientWidth) * 100 });

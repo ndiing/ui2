@@ -26,6 +26,7 @@ class MDButton extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-icon-button");
         await this.updateComplete;
         this.ripple = new Ripple(this, {

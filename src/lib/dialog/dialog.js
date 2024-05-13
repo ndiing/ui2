@@ -76,6 +76,7 @@ class MDDialog extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-dialog");
         this.dialogScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.dialogScrimElement, this.nextElementSibling);

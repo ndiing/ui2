@@ -76,6 +76,7 @@ class MDSideSheet extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-side-sheet");
         this.sideSheetScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.sideSheetScrimElement, this.nextElementSibling);

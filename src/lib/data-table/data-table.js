@@ -88,6 +88,7 @@ class MDDataTableContainer extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-data-table__container");
     }
 
@@ -212,6 +213,7 @@ class MDDataTable extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-data-table");
         this.addEventListener("keydown", this.handleDataTableKeydown);
     }

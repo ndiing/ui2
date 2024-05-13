@@ -19,6 +19,7 @@ class MDExtendedFab extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-extended-fab");
         this.ripple = new Ripple(this, {});
     }

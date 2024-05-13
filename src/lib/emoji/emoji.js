@@ -2,8 +2,9 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 class MDEmojiElement extends MDElement {
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-emoji");
     }
 

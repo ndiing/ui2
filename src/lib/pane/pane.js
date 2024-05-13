@@ -76,6 +76,7 @@ class MDPane extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-pane");
         this.paneScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.paneScrimElement, this.nextElementSibling);

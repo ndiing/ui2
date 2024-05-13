@@ -61,6 +61,7 @@ class MDTimeField extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-time-field");
     }
 

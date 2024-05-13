@@ -64,6 +64,7 @@ class MDCheckbox extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-checkbox");
         await this.updateComplete;
         this.ripple = new Ripple(this.checkboxTrack, {

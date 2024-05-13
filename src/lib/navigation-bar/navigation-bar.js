@@ -27,6 +27,7 @@ class MDNavigationBar extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-navigation-bar");
     }
 

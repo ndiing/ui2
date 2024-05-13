@@ -27,8 +27,9 @@ class MDImage extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-image");
     }
 

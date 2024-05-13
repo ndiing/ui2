@@ -24,6 +24,7 @@ class MDBottomSheet extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-bottom-sheet");
         this.bottomSheetScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.bottomSheetScrimElement, this.nextElementSibling);

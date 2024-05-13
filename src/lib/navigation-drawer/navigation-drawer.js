@@ -34,6 +34,7 @@ class MDNavigationDrawer extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-navigation-drawer");
         this.navigationDrawerScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.navigationDrawerScrimElement, this.nextElementSibling);

@@ -74,8 +74,12 @@ class MDListItem extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
+
+        await this.updateComplete
+
         this.classList.add("md-list__item");
 
         this.ripple = new Ripple(this, {

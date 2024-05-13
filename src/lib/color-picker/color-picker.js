@@ -206,6 +206,7 @@ class MDColorPicker extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-color-picker");
 
         this.handleColorPickerGradientMousedown = this.handleColorPickerGradientMousedown.bind(this);

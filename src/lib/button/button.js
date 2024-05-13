@@ -32,6 +32,7 @@ class MDButton extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-button");
         await this.updateComplete;
         this.ripple = new Ripple(this, { button: this.buttonNative, inverse: this.ui === "filled" });

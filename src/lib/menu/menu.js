@@ -29,6 +29,7 @@ class MDMenu extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-menu");
         this.menuScrimElement = document.createElement("div");
         this.parentElement.insertBefore(this.menuScrimElement, this.nextElementSibling);

@@ -18,6 +18,7 @@ class MDLayout extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+        await this.updateComplete;
         this.classList.add("md-layout");
     }
 
