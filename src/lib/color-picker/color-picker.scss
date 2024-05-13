@@ -95,7 +95,7 @@
     height: calc(32px - (6px * 2));
     border-radius: calc((32px - (6px * 2)) / 2);
     margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
-    box-shadow: inset 0 0 0 2px var(--md-sys-color-surface-container-lowest);
+    box-shadow: inset 0 0 0 2px var(--md-sys-color-surface);
     position: absolute;
     left: 0;
     top: 0;
@@ -129,7 +129,7 @@
         border-radius: calc((32px - (6px * 2)) / 2);
         margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
         background: transparent;
-        box-shadow: inset 0 0 0 2px var(--md-sys-color-surface-container-lowest);
+        box-shadow: inset 0 0 0 2px var(--md-sys-color-surface);
     }
 }
 
@@ -141,7 +141,7 @@
 
 .md-color-picker__opacity {
     &::-webkit-slider-container {
-        background-image: repeating-linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%, #f5f5f5), repeating-linear-gradient(45deg, #f5f5f5 25%, #e5e5f7 25%, #e5e5f7 75%, #f5f5f5 75%, #f5f5f5);
+        background-image: repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface)), repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, #e5e5f7 25%, #e5e5f7 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface));
         background-position:
             0 0,
             10px 10px;

@@ -26,7 +26,8 @@ class DevMenu extends MDElement {
     }
 
     handleClick(event) {
-        menu.show(button, {});
+        // menu.show(button, {});
+        menu.show(undefined, {});
     }
 
     firstUpdated() {

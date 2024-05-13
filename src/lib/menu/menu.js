@@ -87,35 +87,20 @@ class MDMenu extends MDElement {
     show(button, options = {}) {
         this.open = true;
 
-        if (button) {
-            this.popper = new Popper(this, {
-                button,
-                placements: [
-                    "bottom-start",
-                    "bottom-end",
-                    "bottom",
-                    "top-start",
-                    "top-end",
-                    "top",
-                ],
-                ...options,
-            });
+        this.popper = new Popper(this, {
+            button,
+            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top", "center"],
+            ...options,
+        });
 
-            this.popper.setPlacement();
-        } else {
-            this.classList.add("md-menu--center");
-        }
+        this.popper.setPlacement();
     }
 
     close() {
         this.open = false;
 
-        if (this.popper) {
-            this.popper.destroy();
-            this.popper = null;
-        } else {
-            this.classList.remove("md-menu--center");
-        }
+        this.popper.destroy();
+        this.popper = null;
     }
 }
 

@@ -1,7 +1,7 @@
 class Popper {
     constructor(host, options = {}) {
         this.options = {
-            button: undefined,
+            button: document.body,
             boundary: document.body,
             offset: 0,
             placements: ["top", "bottom"],
@@ -25,6 +25,10 @@ class Popper {
                 },
                 classList: { add: () => {} },
             };
+        }
+
+        if (!this.options.button) {
+            this.options.button = this.options.boundary;
         }
 
         this.host = host;
@@ -60,6 +64,7 @@ class Popper {
         for (const placement of this.options.placements) {
             let result = this.getPlacement(placement);
 
+            // console.log(result)
             if (result.exceed) {
                 continue;
             } else {
@@ -68,6 +73,8 @@ class Popper {
                 break;
             }
         }
+
+        // console.log(left,top)
 
         this.host.style.setProperty("left", left + "px");
         this.host.style.setProperty("top", top + "px");
@@ -91,6 +98,13 @@ class Popper {
             { placement: "left-end", calculate: () => ({ top: this.buttonRect.bottom - this.containerRect.height, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
             { placement: "left", calculate: () => ({ top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
             { placement: "left-start", calculate: () => ({ top: this.buttonRect.top, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
+            {
+                placement: "center",
+                calculate: () => ({
+                    top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2,
+                    left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2,
+                }),
+            },
         ];
 
         const { left, top } = placements.find((p) => p.placement == placement).calculate();
