@@ -1,21 +1,14 @@
-# MDIcon
+# MDIcon => MDElement
 
-A custom element representing an icon.
+## Properties
+Name | Type | Description
+--- | --- | ---
 
-## Instance properties
-
-| name | type | default | description |
-| ---- | ---- | ------- | ----------- |
-| - | - | - | No properties defined for this class |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| - | - | No instance methods defined for this class |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-| name | description |
-| ---- | ----------- |
-| - | No events emitted from this class |

@@ -1,25 +1,20 @@
-# MDButton
+# MDButton => MDElement
 
-A custom element representing a button.
+## Properties
+Name | Type | Description
+--- | --- | ---
+icon | String | no description
+label | String | no description
+type | String | no description
+ui | String | no description
+selected | Boolean | no description
 
-## Instance properties
-
-| name     | type    | default | description                          |
-| -------- | ------- | ------- | ------------------------------------ |
-| icon     | String  |         | The icon of the button               |
-| label    | String  |         | The label of the button              |
-| type     | String  | button  | The type of the button               |
-| ui       | String  |         | The UI style of the button           |
-| selected | Boolean |         | Indicates if the button is selected  |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| get buttonNative | - | Returns the native button element |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
+buttonNative | no args | no description
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-| name | description |
-| ---- | ----------- |
-| - | No events emitted from this class |

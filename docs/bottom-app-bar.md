@@ -1,9 +1,10 @@
-# MDBottomSheet => MDElement
+# MDBottomAppBar => MDElement
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-ui | String | no description
+actions | Array | no description
+fab | Array | no description
 open | Boolean | no description
 
 ## Methods
@@ -15,7 +16,6 @@ close | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onBottomSheetActionClick | event | no description
-onBottomSheetButtonClick | event | no description
-onBottomSheetScrimClick | event | no description
+onBottomAppBarActionClick | event | no description
+onBottomAppBarFabClick | event | no description
 

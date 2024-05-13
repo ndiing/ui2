@@ -1,9 +1,8 @@
-# MDBottomSheet => MDElement
+# MDNavigationRail => MDElement
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-ui | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -15,7 +14,7 @@ close | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onBottomSheetActionClick | event | no description
-onBottomSheetButtonClick | event | no description
-onBottomSheetScrimClick | event | no description
+onNavigationRailActionClick | event | no description
+onNavigationRailButtonClick | event | no description
+onNavigationRailListItemClick | event | no description
 

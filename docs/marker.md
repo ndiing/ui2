@@ -1,14 +1,15 @@
-# MDBadge => MDElement
+# Marker => undefined
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-label | Number | no description
-max | Number | no description
 
 ## Methods
 Name | Arguments | Description
 --- | --- | ---
+pending | time | no description
+start | no args | no description
+stop | no args | no description
 
 ## Events
 Name | Details | Description

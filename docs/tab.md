@@ -1,10 +1,9 @@
-# MDBadge => MDElement
+# MDTab => MDElement
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-label | Number | no description
-max | Number | no description
+ui | String | no description
 
 ## Methods
 Name | Arguments | Description
@@ -13,4 +12,5 @@ Name | Arguments | Description
 ## Events
 Name | Details | Description
 --- | --- | ---
+onTabListContainerSelected | event | no description
 

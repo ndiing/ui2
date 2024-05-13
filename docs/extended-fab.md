@@ -1,22 +1,16 @@
-# MDExtendedFab
+# MDExtendedFab => MDElement
 
-A custom element representing an extended FAB (Floating Action Button).
+## Properties
+Name | Type | Description
+--- | --- | ---
+icon | String | no description
+label | String | no description
 
-## Instance properties
-
-| name  | type   | default | description               |
-| ----- | ------ | ------- | ------------------------- |
-| icon  | String |         | The icon of the FAB       |
-| label | String |         | The label of the FAB      |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| -    | -    | No instance methods defined for this class |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-| name | description |
-| ---- | ----------- |
-| -    | No events emitted from this class |

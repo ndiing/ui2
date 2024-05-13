@@ -1,29 +1,25 @@
-# MDSideSheet
+# MDSideSheet => MDElement
 
-A custom element representing a side sheet.
+## Properties
+Name | Type | Description
+--- | --- | ---
+leadingActions | Array | no description
+label | String | no description
+trailingActions | Array | no description
+buttons | Array | no description
+ui | String | no description
+open | Boolean | no description
 
-## Instance properties
-
-| name            | type    | default | description                                  |
-| --------------- | ------- | ------- | -------------------------------------------- |
-| leadingActions  | Array   |         | Actions to be displayed on the leading side  |
-| label           | String  |         | Label of the side sheet                      |
-| trailingActions | Array   |         | Actions to be displayed on the trailing side |
-| buttons         | Array   |         | Buttons to be displayed in the side sheet    |
-| ui              | String  |         | The UI styles of the side sheet              |
-| open            | Boolean |         | Indicates if the side sheet is open          |
-
-## Instance methods
-
-| name  | args | description                          |
-| ----- | ---- | ------------------------------------ |
-| show  | -    | Shows the side sheet                 |
-| close | -    | Closes the side sheet                |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
+show | no args | no description
+close | no args | no description
 
 ## Events
+Name | Details | Description
+--- | --- | ---
+onSideSheetActionClick | event | no description
+onSideSheetButtonClick | event | no description
+onSideSheetScrimClick | event | no description
 
-| name                    | description                                       |
-| ----------------------- | ------------------------------------------------- |
-| onSideSheetActionClick | Handles click events on the side sheet actions    |
-| onSideSheetButtonClick | Handles click events on the side sheet buttons    |
-| onSideSheetScrimClick  | Handles click events on the side sheet scrim element |

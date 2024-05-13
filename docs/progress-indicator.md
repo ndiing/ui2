@@ -1,18 +1,16 @@
-# Name MDProgressIndicator
+# MDProgressIndicator => MDElement
 
-description MDProgressIndicator is a component used to display progress visually.
+## Properties
+Name | Type | Description
+--- | --- | ---
+max | Number | no description
+value | Number | no description
 
-## Instance properties
-
-| name  | type   | default | description                                   |
-| ----- | ------ | ------- | --------------------------------------------- |
-| max   | Number | 100     | The maximum value of the progress indicator.  |
-| value | Number |         | The current value of the progress indicator.  |
-
-## Instance methods
-
-No methods available for this class.
+## Methods
+Name | Arguments | Description
+--- | --- | ---
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-No events available for this class.

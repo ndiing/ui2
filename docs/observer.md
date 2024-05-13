@@ -1,16 +1,17 @@
-# MDBadge => MDElement
+# Observer => undefined
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-label | Number | no description
-max | Number | no description
 
 ## Methods
 Name | Arguments | Description
 --- | --- | ---
+emit | type,detail | no description
 
 ## Events
 Name | Details | Description
 --- | --- | ---
+onLayoutChange | item | no description
+onColorChange | item | no description
 

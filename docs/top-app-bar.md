@@ -1,4 +1,4 @@
-# MDCard => MDElement
+# MDTopAppBar => MDElement
 
 ## Properties
 Name | Type | Description
@@ -6,16 +6,17 @@ Name | Type | Description
 leadingActions | Array | no description
 label | String | no description
 trailingActions | Array | no description
-buttons | Array | no description
-ui | String | no description
+open | Boolean | no description
 
 ## Methods
 Name | Arguments | Description
 --- | --- | ---
+show | no args | no description
+close | no args | no description
 
 ## Events
 Name | Details | Description
 --- | --- | ---
-onCardActionClick | event | no description
-onCardButtonClick | event | no description
+onTopAppBarActionClick | event | no description
+onTopAppBarButtonClick | event | no description
 

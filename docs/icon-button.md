@@ -1,23 +1,18 @@
-# MDButton
+# MDButton => MDElement
 
-A custom element representing an icon button.
+## Properties
+Name | Type | Description
+--- | --- | ---
+icon | String | no description
+type | String | no description
+ui | String | no description
 
-## Instance properties
-
-| name | type   | default      | description                   |
-| ---- | ------ | ------------ | ----------------------------- |
-| icon | String |              | The icon of the button        |
-| type | String | icon-button  | The type of the button        |
-| ui   | String |              | The UI style of the button    |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| -    | -    | No instance methods defined for this class |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
+iconButtonNative | no args | no description
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-| name | description |
-| ---- | ----------- |
-| -    | No events emitted from this class |

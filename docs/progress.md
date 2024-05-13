@@ -1,14 +1,15 @@
-# MDBadge => MDElement
+# Progress => undefined
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-label | Number | no description
-max | Number | no description
 
 ## Methods
 Name | Arguments | Description
 --- | --- | ---
+start | duration | no description
+create | no args | no description
+init | no args | no description
 
 ## Events
 Name | Details | Description

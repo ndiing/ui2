@@ -1,69 +1,30 @@
-# Name Router
+# Router => undefined
 
-## Description
+## Properties
+Name | Type | Description
+--- | --- | ---
 
-Router is a utility class for managing client-side routing.
-
-## Instance properties
-
-No properties available for this class.
-
-## Instance methods
-
-| Name     | Args         | Description                                                  |
-| -------- | ------------ | ------------------------------------------------------------ |
-| navigate | url: string | Navigates to the specified URL by updating the browser history. |
-| init     | routes: Array | Initializes the router by setting up event listeners and defining routes. |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
+setRoutes | routes = [],parent = null | no description
+on | type,listener | no description
+off | type,listener | no description
+emit | type,detail = { ...this } | no description
+getQuery | no args | no description
+getRoute | path | no description
+getRoutes | route = [] | no description
+getOutlet | stack,container | no description
+Promise | (resolve,reject | no description
+navigate | url | no description
+init | routes = [] | no description
 
 ## Events
+Name | Details | Description
+--- | --- | ---
+onCurrentEntryChange | no args | no description
+onNavigate | no args | no description
+onNavigateError | no args | no description
+onNavigateSuccess | no args | no description
+popstate | no args | no description
 
-| Name               | Description                                                 |
-| ------------------ | ----------------------------------------------------------- |
-| onCurrentEntryChange | Event emitted when the current navigation entry changes.   |
-| onNavigate         | Event emitted when navigation begins.                      |
-| onNavigateSuccess  | Event emitted when navigation is successful.               |
-| onNavigateError    | Event emitted when an error occurs during navigation.      |
-
-### Route Properties
-
-| Property     | Type      | Required | Description                                     |
-| ------------ | --------- | -------- | ----------------------------------------------- |
-| path         | string    | Yes      | The path of the route.                         |
-| component    | HTML      | Conditional | The HTML component associated with the route.  |
-| load         | string    | Conditional | The path of the component to load.             |
-| beforeLoad   | function  | No       | A function to execute before loading the component. |
-| children     | Array     | No       | An array of child routes.                      |
-
-
-## Usage Example
-
-```javascript
-import { Router } from "../lib/router/router";
-
-// Define routes
-const routes = [
-    {
-        path: "",
-        load: () => import("./main/main.js").then((m) => m.default),
-        children: [
-            { path: "blogs", load: () => import("./blogs/blogs.js").then((m) => m.default), children: [{ path: "blog", load: () => import("./blog/blog.js").then((m) => m.default) }] },
-        ],
-    },
-    { path: "admin", load: () => import("./admin/admin.js").then((m) => m.default), children:[
-        { path: "users", load: () => import("./users/users.js").then((m) => m.default), children: [{ path: "user", load: () => import("./user/user.js").then((m) => m.default) }] },
-    ] },
-    {
-        path: "auth",
-        load: () => import("./auth/auth.js").then((m) => m.default),
-        children: [
-            { path: "login", load: () => import("./login/login.js").then((m) => m.default) },
-            { path: "verify", load: () => import("./verify/verify.js").then((m) => m.default) },
-        ],
-    },
-    // Default route
-    { path: "*", load: () => import("./error/error.js").then((m) => m.default) },
-];
-
-// Initialize router with defined routes
-Router.init(routes);
-```

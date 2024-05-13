@@ -1,29 +1,25 @@
-# MDDialog
+# MDDialog => MDElement
 
-A custom element representing a dialog.
+## Properties
+Name | Type | Description
+--- | --- | ---
+leadingActions | Array | no description
+label | String | no description
+trailingActions | Array | no description
+buttons | Array | no description
+ui | String | no description
+open | Boolean | no description
 
-## Instance properties
-
-| name            | type    | default | description                                            |
-| --------------- | ------- | ------- | ------------------------------------------------------ |
-| leadingActions  | Array   |         | The leading actions displayed in the dialog header      |
-| label           | String  |         | The label of the dialog                                |
-| trailingActions | Array   |         | The trailing actions displayed in the dialog header     |
-| buttons         | Array   |         | The buttons displayed in the dialog footer              |
-| ui              | String  |         | The UI styles of the dialog                             |
-| open            | Boolean |         | Indicates if the dialog is open                         |
-
-## Instance methods
-
-| name    | args | description                         |
-| ------- | ---- | ----------------------------------- |
-| show    | -    | Shows the dialog                    |
-| close   | -    | Closes the dialog                   |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
+show | no args | no description
+close | no args | no description
 
 ## Events
+Name | Details | Description
+--- | --- | ---
+onDialogActionClick | event | no description
+onDialogButtonClick | event | no description
+onDialogScrimClick | event | no description
 
-| name                 | description                                    |
-| -------------------- | ---------------------------------------------- |
-| onDialogActionClick  | Handles click events on the dialog actions     |
-| onDialogButtonClick | Handles click events on the dialog buttons     |
-| onDialogScrimClick   | Handles click events on the dialog scrim element |

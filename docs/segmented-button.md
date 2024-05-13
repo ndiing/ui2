@@ -1,21 +1,16 @@
-# MDSegmentedButton
+# MDSegmentedButton => MDElement
 
-A custom element representing a segmented button.
+## Properties
+Name | Type | Description
+--- | --- | ---
+buttons | Array | no description
 
-## Instance properties
-
-| name    | type  | default | description                                      |
-| ------- | ----- | ------- | ------------------------------------------------ |
-| buttons | Array |         | The array of buttons to be displayed            |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| -    | -    | No instance methods defined for this class |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
 
 ## Events
+Name | Details | Description
+--- | --- | ---
+onSegmentedButtonClick | event | no description
 
-| name                   | description                                       |
-| ---------------------- | ------------------------------------------------- |
-| onSegmentedButtonClick| Handles the click event on the segmented buttons |

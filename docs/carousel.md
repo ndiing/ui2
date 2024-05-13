@@ -1,10 +1,8 @@
-# MDBadge => MDElement
+# MDCarousel => MDElement
 
 ## Properties
 Name | Type | Description
 --- | --- | ---
-label | Number | no description
-max | Number | no description
 
 ## Methods
 Name | Arguments | Description

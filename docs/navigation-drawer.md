@@ -1,4 +1,4 @@
-# MDBottomSheet => MDElement
+# MDNavigationDrawer => MDElement
 
 ## Properties
 Name | Type | Description
@@ -15,7 +15,8 @@ close | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onBottomSheetActionClick | event | no description
-onBottomSheetButtonClick | event | no description
-onBottomSheetScrimClick | event | no description
+onNavigationDrawerActionClick | event | no description
+onNavigationDrawerButtonClick | event | no description
+onNavigationDrawerScrimClick | event | no description
+onNavigationDrawerListItemClick | event | no description
 

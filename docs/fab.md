@@ -1,22 +1,16 @@
-# MDFab
+# MDFab => MDElement
 
-A custom element representing a FAB (Floating Action Button).
+## Properties
+Name | Type | Description
+--- | --- | ---
+icon | String | no description
+ui | String | no description
 
-## Instance properties
-
-| name | type   | default | description                   |
-| ---- | ------ | ------- | ----------------------------- |
-| icon | String |         | The icon of the FAB           |
-| ui   | String |         | The UI styles of the FAB      |
-
-## Instance methods
-
-| name | args | description |
-| ---- | ---- | ----------- |
-| -    | -    | No instance methods defined for this class |
+## Methods
+Name | Arguments | Description
+--- | --- | ---
 
 ## Events
+Name | Details | Description
+--- | --- | ---
 
-| name | description |
-| ---- | ----------- |
-| -    | No events emitted from this class |
