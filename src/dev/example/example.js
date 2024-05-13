@@ -35,10 +35,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         class="md-navigation-bar__list"
                         .singleSelection="${true}"
@@ -89,10 +85,6 @@ class DevExample extends MDElement {
                             {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
@@ -147,9 +139,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-                
-                
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -161,7 +150,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <div>[{routerLink:'/example'}] </div>
                     <md-list
                         .list="${[
                             {label:"Item 1",routerLink:"/example"},
@@ -173,7 +161,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <div>{singleSelection:true} </div>
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -186,7 +173,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <div>{singleSelection:true, multiSelection:true} </div>
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -200,7 +186,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <div>{singleSelection:true, multiSelection:true, rangeSelection:true} </div>
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -215,7 +200,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <div>{singleSelection:true, multiSelection:true, rangeSelection:true, allSelection:true} </div>
                     <md-list
                         .list="${[
                             {label:"Item 1"},
@@ -229,9 +213,8 @@ class DevExample extends MDElement {
                         .rangeSelection="${true}"
                         .allSelection="${true}"
                     ></md-list>
-                </div> -->
-                
-                
+                </div>
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
                             {avatar:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -249,9 +232,6 @@ class DevExample extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
@@ -271,9 +251,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
                             {video:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -291,9 +268,6 @@ class DevExample extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
@@ -313,9 +287,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
                             {label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -333,9 +304,6 @@ class DevExample extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
@@ -355,9 +323,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
                             {leadingRadioButton:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -376,9 +341,6 @@ class DevExample extends MDElement {
                     ></md-list>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div>
-
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-list
                         .list="${[
                             {trailingSwitch:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -396,8 +358,6 @@ class DevExample extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                </div> -->
 
             </div>
         `;

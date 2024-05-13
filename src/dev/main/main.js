@@ -95,7 +95,7 @@ class DevMain extends MDElement {
                         .leadingActions="${[
                             {icon:"menu"}
                         ]}"
-                        @onTopAppBarActionClick="${this.handleTopAppBarActionClick}"
+                        @onTopAppBarActionClick="${this.handleDevMainTopAppBarActionClick}"
                     ></md-top-app-bar>
                 </div>
 
@@ -103,8 +103,8 @@ class DevMain extends MDElement {
                     <md-navigation-drawer
                         id="navigation-drawer"
                         .list="${this.list}"
-                        @onListItemClick="${this.handleListItemClick}"
-                        @onListItemSelected="${this.handleListItemSelected}"
+                        @onListItemClick="${this.handleDevMainListItemClick}"
+                        @onListItemSelected="${this.handleDevMainListItemSelected}"
                     ></md-navigation-drawer>
                 </div>
 
@@ -116,35 +116,35 @@ class DevMain extends MDElement {
         `;
     }
 
-    get navigationDrawer() {
+    get devMainNavigationDrawer() {
         return this.querySelector("#navigation-drawer");
     }
 
-    get topAppBar() {
+    get devMainTopAppBar() {
         return this.querySelector("#top-app-bar");
     }
 
     firstUpdated() {
-        this.handleLayoutChange = this.handleLayoutChange.bind(this);
-        this.handleLayoutChange({ detail: layout });
-        window.addEventListener("onLayoutChange", this.handleLayoutChange);
+        this.handleDevMainLayoutChange = this.handleDevMainLayoutChange.bind(this);
+        this.handleDevMainLayoutChange({ detail: layout });
+        window.addEventListener("onLayoutChange", this.handleDevMainLayoutChange);
     }
 
-    handleLayoutChange(event) {
+    handleDevMainLayoutChange(event) {
         const { name } = event.detail;
 
         if (name == "expanded") {
-            this.navigationDrawer.ui = "";
-            this.navigationDrawer.show();
-            this.topAppBar.close();
+            this.devMainNavigationDrawer.ui = "";
+            this.devMainNavigationDrawer.show();
+            this.devMainTopAppBar.close();
         } else {
-            this.navigationDrawer.ui = "modal";
-            this.navigationDrawer.close();
-            this.topAppBar.show();
+            this.devMainNavigationDrawer.ui = "modal";
+            this.devMainNavigationDrawer.close();
+            this.devMainTopAppBar.show();
         }
     }
 
-    handleListItemSelected(event) {
+    handleDevMainListItemSelected(event) {
         event.detail.scrollIntoView({
             behavior: "smooth",
             block: "center",
@@ -152,19 +152,19 @@ class DevMain extends MDElement {
         });
     }
 
-    handleTopAppBarActionClick(event) {
-        if (this.navigationDrawer.open) {
-            this.navigationDrawer.close();
+    handleDevMainTopAppBarActionClick(event) {
+        if (this.devMainNavigationDrawer.open) {
+            this.devMainNavigationDrawer.close();
         } else {
-            this.navigationDrawer.show();
+            this.devMainNavigationDrawer.show();
         }
     }
 
-    handleListItemClick(event) {
+    handleDevMainListItemClick(event) {
         const { name } = layout;
 
         if (name !== "expanded") {
-            this.navigationDrawer.close();
+            this.devMainNavigationDrawer.close();
         }
     }
 }
