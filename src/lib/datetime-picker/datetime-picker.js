@@ -64,7 +64,7 @@ class MDDatetimePicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
+                selected: year == this.currentValue.getFullYear() && month == this.currentValue.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -93,7 +93,7 @@ class MDDatetimePicker extends MDElement {
                 const day = date.getDate();
                 return {
                     activated: year == this.current.getFullYear() && month == this.current.getMonth() && day == this.current.getDate(),
-                    selected: year == this.temp.getFullYear() && month == this.temp.getMonth() && day == this.temp.getDate(),
+                    selected: year == this.currentValue.getFullYear() && month == this.currentValue.getMonth() && day == this.currentValue.getDate(),
                     disabled: false,
                     error: date.getDay() == 0,
                     label: this.dayDTF.format(date),
@@ -116,7 +116,7 @@ class MDDatetimePicker extends MDElement {
 
             return {
                 activated: hour == this.current.getHours(),
-                selected: hour == this.temp.getHours(),
+                selected: hour == this.currentValue.getHours(),
                 disabled: false,
                 error: false,
                 label: this.hourDTF.format(date),
@@ -133,7 +133,7 @@ class MDDatetimePicker extends MDElement {
 
             return {
                 activated: minute == this.current.getMinutes(),
-                selected: minute == this.temp.getMinutes(),
+                selected: minute == this.currentValue.getMinutes(),
                 disabled: false,
                 error: false,
                 label: this.minuteDTF.format(date),
@@ -174,7 +174,7 @@ class MDDatetimePicker extends MDElement {
         this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" });
         this.label2DTF = new Intl.DateTimeFormat(undefined, { hour: "2-digit", hour12: false, minute: "2-digit" });
 
-        this.temp = new Date();
+        this.currentValue = new Date();
         this.selected = new Date();
         this.current = new Date();
 
@@ -415,11 +415,11 @@ class MDDatetimePicker extends MDElement {
 
             const value = new Date(this.value);
 
-            this.temp.setFullYear(value.getFullYear());
-            this.temp.setMonth(value.getMonth());
-            this.temp.setDate(value.getDate());
-            this.temp.setHours(value.getHours());
-            this.temp.setMinutes(value.getMinutes());
+            this.currentValue.setFullYear(value.getFullYear());
+            this.currentValue.setMonth(value.getMonth());
+            this.currentValue.setDate(value.getDate());
+            this.currentValue.setHours(value.getHours());
+            this.currentValue.setMinutes(value.getMinutes());
 
             this.selected.setFullYear(value.getFullYear());
             this.selected.setMonth(value.getMonth());
@@ -448,7 +448,7 @@ class MDDatetimePicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.temp.getFullYear(),
+                selected: year == this.currentValue.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -506,11 +506,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(this.selected.getHours());
         this.selected.setMinutes(this.selected.getMinutes());
 
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -522,11 +522,11 @@ class MDDatetimePicker extends MDElement {
 
         this.selected.setHours(data.hour);
 
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -541,11 +541,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(this.selected.getHours());
         this.selected.setMinutes(data.minute);
 
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -591,18 +591,18 @@ class MDDatetimePicker extends MDElement {
             this.selected.setMonth(this.selected.getMonth() - 1);
         } else if (this.index == 3) {
             this.selected.setHours(this.selected.getHours() - 1);
-            this.temp.setFullYear(this.selected.getFullYear());
-            this.temp.setMonth(this.selected.getMonth());
-            this.temp.setDate(this.selected.getDate());
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setFullYear(this.selected.getFullYear());
+            this.currentValue.setMonth(this.selected.getMonth());
+            this.currentValue.setDate(this.selected.getDate());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         } else if (this.index == 4) {
             this.selected.setMinutes(this.selected.getMinutes() - 1);
-            this.temp.setFullYear(this.selected.getFullYear());
-            this.temp.setMonth(this.selected.getMonth());
-            this.temp.setDate(this.selected.getDate());
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setFullYear(this.selected.getFullYear());
+            this.currentValue.setMonth(this.selected.getMonth());
+            this.currentValue.setDate(this.selected.getDate());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -619,18 +619,18 @@ class MDDatetimePicker extends MDElement {
             this.selected.setMonth(this.selected.getMonth() + 1);
         } else if (this.index == 3) {
             this.selected.setHours(this.selected.getHours() + 1);
-            this.temp.setFullYear(this.selected.getFullYear());
-            this.temp.setMonth(this.selected.getMonth());
-            this.temp.setDate(this.selected.getDate());
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setFullYear(this.selected.getFullYear());
+            this.currentValue.setMonth(this.selected.getMonth());
+            this.currentValue.setDate(this.selected.getDate());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         } else if (this.index == 4) {
             this.selected.setMinutes(this.selected.getMinutes() + 1);
-            this.temp.setFullYear(this.selected.getFullYear());
-            this.temp.setMonth(this.selected.getMonth());
-            this.temp.setDate(this.selected.getDate());
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setFullYear(this.selected.getFullYear());
+            this.currentValue.setMonth(this.selected.getMonth());
+            this.currentValue.setDate(this.selected.getDate());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -647,11 +647,11 @@ class MDDatetimePicker extends MDElement {
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
 
-        this.temp.setFullYear(date.getFullYear());
-        this.temp.setMonth(date.getMonth());
-        this.temp.setDate(date.getDate());
-        this.temp.setHours(date.getHours());
-        this.temp.setMinutes(date.getMinutes());
+        this.currentValue.setFullYear(date.getFullYear());
+        this.currentValue.setMonth(date.getMonth());
+        this.currentValue.setDate(date.getDate());
+        this.currentValue.setHours(date.getHours());
+        this.currentValue.setMinutes(date.getMinutes());
 
         this.requestUpdate();
 
@@ -661,11 +661,11 @@ class MDDatetimePicker extends MDElement {
     }
 
     handleDatetimePickerButtonOkClick(event) {
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 

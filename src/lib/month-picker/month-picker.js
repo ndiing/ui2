@@ -75,7 +75,7 @@ class MDMonthPicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
+                selected: year == this.currentValue.getFullYear() && month == this.currentValue.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -109,7 +109,7 @@ class MDMonthPicker extends MDElement {
         this.yearDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
         this.monthDTF = new Intl.DateTimeFormat(undefined, { month: "long" });
 
-        this.temp = new Date();
+        this.currentValue = new Date();
         this.selected = new Date();
         this.current = new Date();
 
@@ -238,8 +238,8 @@ class MDMonthPicker extends MDElement {
 
             const value = new Date(this.value);
 
-            this.temp.setFullYear(value.getFullYear());
-            this.temp.setMonth(value.getMonth());
+            this.currentValue.setFullYear(value.getFullYear());
+            this.currentValue.setMonth(value.getMonth());
 
             this.selected.setFullYear(value.getFullYear());
             this.selected.setMonth(value.getMonth());
@@ -265,7 +265,7 @@ class MDMonthPicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.temp.getFullYear(),
+                selected: year == this.currentValue.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -306,8 +306,8 @@ class MDMonthPicker extends MDElement {
         this.selected.setFullYear(data.year);
         this.selected.setMonth(data.month);
 
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
 
         this.requestUpdate();
 
@@ -354,8 +354,8 @@ class MDMonthPicker extends MDElement {
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
 
-        this.temp.setFullYear(date.getFullYear());
-        this.temp.setMonth(date.getMonth());
+        this.currentValue.setFullYear(date.getFullYear());
+        this.currentValue.setMonth(date.getMonth());
 
         this.requestUpdate();
 
@@ -365,8 +365,8 @@ class MDMonthPicker extends MDElement {
     }
 
     async handleMonthPickerButtonOkClick(event) {
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
 
         this.requestUpdate();
 

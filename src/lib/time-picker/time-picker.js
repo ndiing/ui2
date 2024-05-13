@@ -23,7 +23,7 @@ class MDTimePicker extends MDElement {
 
             return {
                 activated: hour == this.current.getHours(),
-                selected: hour == this.temp.getHours(),
+                selected: hour == this.currentValue.getHours(),
                 disabled: false,
                 error: false,
                 label: this.hourDTF.format(date),
@@ -40,7 +40,7 @@ class MDTimePicker extends MDElement {
 
             return {
                 activated: minute == this.current.getMinutes(),
-                selected: minute == this.temp.getMinutes(),
+                selected: minute == this.currentValue.getMinutes(),
                 disabled: false,
                 error: false,
                 label: this.minuteDTF.format(date),
@@ -63,7 +63,7 @@ class MDTimePicker extends MDElement {
 
         this.label2DTF = new Intl.DateTimeFormat(undefined, { hour: "2-digit", hour12: false, minute: "2-digit" });
 
-        this.temp = new Date();
+        this.currentValue = new Date();
         this.selected = new Date();
         this.current = new Date();
 
@@ -178,8 +178,8 @@ class MDTimePicker extends MDElement {
             const [hour, minute] = this.value.split(/[^\d]/);
             const value = new Date(0, 0, 1, hour, minute);
 
-            this.temp.setHours(value.getHours());
-            this.temp.setMinutes(value.getMinutes());
+            this.currentValue.setHours(value.getHours());
+            this.currentValue.setMinutes(value.getMinutes());
 
             this.selected.setHours(value.getHours());
             this.selected.setMinutes(value.getMinutes());
@@ -196,8 +196,8 @@ class MDTimePicker extends MDElement {
 
         this.selected.setHours(data.hour);
 
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -212,8 +212,8 @@ class MDTimePicker extends MDElement {
         this.selected.setHours(this.selected.getHours());
         this.selected.setMinutes(data.minute);
 
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 
@@ -235,12 +235,12 @@ class MDTimePicker extends MDElement {
     handleTimePickerActionBeforeClick(event) {
         if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() - 1);
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         } else if (this.index == 1) {
             this.selected.setMinutes(this.selected.getMinutes() - 1);
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -251,12 +251,12 @@ class MDTimePicker extends MDElement {
     handleTimePickerActionNextClick(event) {
         if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         } else if (this.index == 1) {
             this.selected.setMinutes(this.selected.getMinutes() + 1);
-            this.temp.setHours(this.selected.getHours());
-            this.temp.setMinutes(this.selected.getMinutes());
+            this.currentValue.setHours(this.selected.getHours());
+            this.currentValue.setMinutes(this.selected.getMinutes());
         }
 
         this.requestUpdate();
@@ -270,8 +270,8 @@ class MDTimePicker extends MDElement {
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
 
-        this.temp.setHours(date.getHours());
-        this.temp.setMinutes(date.getMinutes());
+        this.currentValue.setHours(date.getHours());
+        this.currentValue.setMinutes(date.getMinutes());
 
         this.requestUpdate();
 
@@ -281,8 +281,8 @@ class MDTimePicker extends MDElement {
     }
 
     handleTimePickerButtonOkClick(event) {
-        this.temp.setHours(this.selected.getHours());
-        this.temp.setMinutes(this.selected.getMinutes());
+        this.currentValue.setHours(this.selected.getHours());
+        this.currentValue.setMinutes(this.selected.getMinutes());
 
         this.requestUpdate();
 

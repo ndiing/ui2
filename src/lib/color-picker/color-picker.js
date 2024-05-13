@@ -8,7 +8,7 @@ class MDColorPicker extends MDElement {
     static get properties() {
         return {
             value: { type: String },
-            temp: { type: String },
+            currentValue: { type: String },
             index: { type: Number },
         };
     }
@@ -125,7 +125,7 @@ class MDColorPicker extends MDElement {
 
     get label() {
         if (this.index === 0) {
-            return this.temp;
+            return this.currentValue;
         } else if (this.index === 1) {
             return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
         } else if (this.index === 2) {
@@ -138,9 +138,9 @@ class MDColorPicker extends MDElement {
         this.index = 0;
 
         this.value='#000000'
-        this.temp = "#000000";
+        this.currentValue = "#000000";
 
-        const { r, g, b, a } = this.hexToRgba(this.temp);
+        const { r, g, b, a } = this.hexToRgba(this.currentValue);
         this.red = r;
         this.green = g;
         this.blue = b;
@@ -236,9 +236,9 @@ class MDColorPicker extends MDElement {
         if (changedProperties.has("value")) {
             await this.updateComplete;
 
-            this.temp = this.value;
+            this.currentValue = this.value;
 
-            const { r, g, b, a } = this.hexToRgba(this.temp);
+            const { r, g, b, a } = this.hexToRgba(this.currentValue);
             this.red = r;
             this.green = g;
             this.blue = b;
@@ -365,7 +365,7 @@ class MDColorPicker extends MDElement {
         this.saturation = s;
         this.lightness = l;
 
-        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.thumb.style.left = x + "px";
         this.thumb.style.top = y + "px";
@@ -379,7 +379,7 @@ class MDColorPicker extends MDElement {
         this.green = g;
         this.blue = b;
 
-        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.draw();
 
@@ -389,7 +389,7 @@ class MDColorPicker extends MDElement {
     handleColorPickerOpacityInput(event) {
         this.alpha = parseFloat(event.currentTarget.value) / 100;
 
-        this.temp = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
 
         this.emit("onColorPickerOpacityInput", event);
     }

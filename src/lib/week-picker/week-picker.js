@@ -64,7 +64,7 @@ class MDWeekPicker extends MDElement {
             const month = date.getMonth();
             return {
                 activated: year == this.current.getFullYear() && month == this.current.getMonth(),
-                selected: year == this.temp.getFullYear() && month == this.temp.getMonth(),
+                selected: year == this.currentValue.getFullYear() && month == this.currentValue.getMonth(),
                 disabled: false,
                 error: false,
                 label: this.monthDTF.format(date),
@@ -94,7 +94,7 @@ class MDWeekPicker extends MDElement {
                 const week = date.getWeek();
                 return {
                     activated: year == this.current.getFullYear() && week == this.current.getWeek(),
-                    selected: year == this.temp.getFullYear() && week == this.temp.getWeek(),
+                    selected: year == this.currentValue.getFullYear() && week == this.currentValue.getWeek(),
                     disabled: false,
                     error: date.getDay() == 0,
                     label: this.dayDTF.format(date),
@@ -127,7 +127,7 @@ class MDWeekPicker extends MDElement {
 
         this.labelDTF = new Intl.DateTimeFormat(undefined, { year: "numeric" });
 
-        this.temp = new Date();
+        this.currentValue = new Date();
         this.selected = new Date();
         this.current = new Date();
 
@@ -315,9 +315,9 @@ class MDWeekPicker extends MDElement {
             const value = new Date(this.value);
             value.setWeek(week, year);
 
-            this.temp.setFullYear(value.getFullYear());
-            this.temp.setMonth(value.getMonth());
-            this.temp.setDate(value.getDate());
+            this.currentValue.setFullYear(value.getFullYear());
+            this.currentValue.setMonth(value.getMonth());
+            this.currentValue.setDate(value.getDate());
 
             this.selected.setFullYear(value.getFullYear());
             this.selected.setMonth(value.getMonth());
@@ -344,7 +344,7 @@ class MDWeekPicker extends MDElement {
             const year = date.getFullYear();
             return {
                 activated: year == this.current.getFullYear(),
-                selected: year == this.temp.getFullYear(),
+                selected: year == this.currentValue.getFullYear(),
                 disabled: false,
                 error: false,
                 label: this.yearDTF.format(date),
@@ -399,9 +399,9 @@ class MDWeekPicker extends MDElement {
         this.selected.setMonth(data.month);
         this.selected.setDate(data.day);
 
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
 
         this.requestUpdate();
 
@@ -455,9 +455,9 @@ class MDWeekPicker extends MDElement {
         this.selected.setMonth(date.getMonth());
         this.selected.setDate(date.getDate());
 
-        this.temp.setFullYear(date.getFullYear());
-        this.temp.setMonth(date.getMonth());
-        this.temp.setDate(date.getDate());
+        this.currentValue.setFullYear(date.getFullYear());
+        this.currentValue.setMonth(date.getMonth());
+        this.currentValue.setDate(date.getDate());
 
         this.requestUpdate();
 
@@ -467,9 +467,9 @@ class MDWeekPicker extends MDElement {
     }
 
     handleWeekPickerButtonOkClick(event) {
-        this.temp.setFullYear(this.selected.getFullYear());
-        this.temp.setMonth(this.selected.getMonth());
-        this.temp.setDate(this.selected.getDate());
+        this.currentValue.setFullYear(this.selected.getFullYear());
+        this.currentValue.setMonth(this.selected.getMonth());
+        this.currentValue.setDate(this.selected.getDate());
 
         this.requestUpdate();
 
