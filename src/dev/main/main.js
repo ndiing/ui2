@@ -118,7 +118,7 @@ class DevMain extends MDElement {
                     ></md-navigation-drawer>
                 </div>
 
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item--center">
                     <md-outlet></md-outlet>
                 </div>
 

@@ -12,16 +12,16 @@ class DevSlider extends MDElement {
 
                 <div class="md-layout--column">
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <br><br><br><md-slider ui="centered" name="centered"></md-slider>
+                        <br><md-slider ui="centered" name="centered"></md-slider>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <br><br><br><md-slider ui="continuous" name="continuous" min="0" max="100000" value="50000" defaultValue="50000"></md-slider>
+                        <br><md-slider ui="continuous" name="continuous" min="0" max="100000" value="50000" defaultValue="50000"></md-slider>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <br><br><br><md-slider ui="discrete" name="discrete" step="10"></md-slider>
+                        <br><md-slider ui="discrete" name="discrete" step="10"></md-slider>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                        <br><br><br><md-slider ui="range-selection" name="range-selection" value='[25,75]' defaultValue='[25,75]'></md-slider>
+                        <br><md-slider ui="range-selection" name="range-selection" value='[25,75]' defaultValue='[25,75]'></md-slider>
                     </div>
                     <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="reset"></md-button>
