@@ -4,7 +4,11 @@ import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
 class MDForm extends MDElement {
     static get properties() {
-        return { action: { type: String }, enctype: { type: String }, method: { type: String } };
+        return {
+            action: { type: String },
+            enctype: { type: String },
+            method: { type: String },
+        };
     }
 
     constructor() {

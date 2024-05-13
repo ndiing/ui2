@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description
 --- | --- | ---
-return | String | no description
+action | String | no description
 enctype | String | no description
 method | String | no description
 
