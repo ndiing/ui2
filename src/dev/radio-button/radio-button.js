@@ -17,7 +17,7 @@ class DevRadioButton extends MDElement {
                         <md-radio-button name="radio-button" checked defaultChecked></md-radio-button>
                     </div>
                     
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>

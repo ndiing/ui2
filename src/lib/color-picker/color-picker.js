@@ -137,6 +137,7 @@ class MDColorPicker extends MDElement {
         super();
         this.index = 0;
 
+        this.value='#000000'
         this.temp = "#000000";
 
         const { r, g, b, a } = this.hexToRgba(this.temp);

@@ -34,8 +34,8 @@ class DevNavigationRail extends MDElement {
                             ></md-navigation-rail>
                         </div>
                         <div class="md-layout__item--center" style="padding:24px;">
-                            <md-button ui="filled-tonal" label="All destinations with text labels" @click="${this.handleClick1}"></md-button>
-                            <md-button ui="filled-tonal" label="All destinations without labels" @click="${this.handleClick2}"></md-button>
+                            <md-button ui="filled-tonal" label="All destinations with text labels" @click="${this.handleClick1}"></md-button><br><br>
+                            <md-button ui="filled-tonal" label="All destinations without labels" @click="${this.handleClick2}"></md-button><br><br>
                         </div>
                     </div>
                 </div>

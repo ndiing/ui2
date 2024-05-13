@@ -29,8 +29,8 @@ class DevSideSheet extends MDElement {
                     
                 </div>
                 <div class="md-layout__item--center" style="padding:24px;">
-                    <md-button ui="filled-tonal" label="Standard side sheet" @click="${this.handleClick1}"></md-button>
-                    <md-button ui="filled-tonal" label="Modal side sheet" @click="${this.handleClick2}"></md-button>
+                    <md-button ui="filled-tonal" label="Standard side sheet" @click="${this.handleClick1}"></md-button><br><br>
+                    <md-button ui="filled-tonal" label="Modal side sheet" @click="${this.handleClick2}"></md-button><br><br>
                 </div>
             </div>
         `;
