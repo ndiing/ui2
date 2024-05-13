@@ -73,7 +73,6 @@ const devs = [
     { path: "month-field" },
     { path: "number-field" },
     { path: "password-field" },
-    { path: "range-field" },
     { path: "search-field" },
     { path: "select-field" },
     { path: "tel-field" },

@@ -59,7 +59,6 @@ const routes = [
             { path: "password-field", load: () => import("./password-field/password-field.js").then((m) => m.default) },
             { path: "progress-indicator", load: () => import("./progress-indicator/progress-indicator.js").then((m) => m.default) },
             { path: "radio-button", load: () => import("./radio-button/radio-button.js").then((m) => m.default) },
-            { path: "range-field", load: () => import("./range-field/range-field.js").then((m) => m.default) },
             { path: "search-field", load: () => import("./search-field/search-field.js").then((m) => m.default) },
             { path: "segmented-button", load: () => import("./segmented-button/segmented-button.js").then((m) => m.default) },
             { path: "select-field", load: () => import("./select-field/select-field.js").then((m) => m.default) },
