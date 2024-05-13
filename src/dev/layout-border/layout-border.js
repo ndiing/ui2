@@ -6,13 +6,49 @@ class DevLayoutBorder extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-layout-border></md-layout-border>
+            <div class="md-layout--border md-layout--fit">
+                <div class="md-layout__item--west">
+                    <md-navigation-drawer
+                        .list="${[
+                            {label:"item 1", icon:'image',selected:true},
+                            {label:"item 2", icon:'image'},
+                            {label:"item 3", icon:'image'},
+                            {label:"item 4", icon:'image'},
+                        ]}"
+                        .open="${true}"
+                    ></md-navigation-drawer>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--north">
+                    <md-top-app-bar
+                        .leadingActions="${[
+                            {icon:"image"}
+                        ]}"
+                        .label="${"Label"}"
+                        .open="${true}"
+                    ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item--center">
+                    center
+                </div>
+                <div class="md-layout__item--east">
+                    <md-side-sheet
+                        .label="${"Label"}"
+                        .trailingActions="${[
+                            {icon:"image"}
+                        ]}"
+                        .open="${true}"
+                    ></md-side-sheet>
+                </div>
+                <div class="md-layout__item--south">
+                    <md-navigation-bar
+                        .list="${[
+                            {label:"item 1", icon:'image',selected:true},
+                            {label:"item 2", icon:'image'},
+                            {label:"item 3", icon:'image'},
+                            {label:"item 4", icon:'image'},
+                        ]}"
+                        .open="${true}"
+                    ></md-navigation-bar>
                 </div>
             </div>
         `;

@@ -78,7 +78,9 @@ class MDListItem extends MDElement {
         super.connectedCallback();
         this.classList.add("md-list__item");
 
-        this.ripple = new Ripple(this, {});
+        this.ripple = new Ripple(this, {
+            fadeout:true
+        });
     }
 
     disconnectedCallback() {
