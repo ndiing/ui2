@@ -18,5 +18,4 @@ close | no args | no description
 Name | Details | Description
 --- | --- | ---
 onTopAppBarActionClick | event | no description
-onTopAppBarButtonClick | event | no description
 

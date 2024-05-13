@@ -4,7 +4,7 @@
 Name | Type | Description
 --- | --- | ---
 value | String | no description
-temp | String | no description
+currentValue | String | no description
 index | Number | no description
 
 ## Methods
