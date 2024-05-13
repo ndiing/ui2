@@ -50,7 +50,6 @@ import "./pane/pane.js";
 import "./password-field/password-field.js";
 import "./progress-indicator/progress-indicator.js";
 import "./radio-button/radio-button.js";
-import "./range-field/range-field.js";
 import "./search-field/search-field.js";
 import "./segmented-button/segmented-button.js";
 import "./select-field/select-field.js";
