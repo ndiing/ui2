@@ -78,6 +78,7 @@ const routes = [
             { path: "url-field", load: () => import("./url-field/url-field.js").then((m) => m.default) },
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((m) => m.default) },
+            { path: "picker", load: () => import("./picker/picker.js").then((m) => m.default) },
         ],
     },
     {
