@@ -21,41 +21,21 @@ const devs = [
     // { path: "router" },
     // { path: "store" },
 
-    { path: "badge" },
     { path: "bottom-app-bar" },
-    { path: "bottom-sheet" },
+    { path: "top-app-bar" },
+
+    { path: "badge" },
+
     { path: "button" },
+    { path: "fab" },
+    { path: "extended-fab" },
+    { path: "icon-button" },
+    { path: "segmented-button" },
+
     { path: "card" },
     { path: "carousel" },
     { path: "checkbox" },
     { path: "chip" },
-    { path: "data-table" },
-    { path: "dialog" },
-    { path: "divider" },
-    { path: "emoji" },
-    { path: "extended-fab" },
-    { path: "fab" },
-
-    { path: "icon" },
-    { path: "icon-button" },
-    { path: "layout" },
-    { path: "list" },
-    { path: "menu" },
-    { path: "navigation-bar" },
-    { path: "navigation-drawer" },
-    { path: "navigation-rail" },
-    { path: "pagination" },
-    // { path: "pane" },
-    { path: "progress-indicator" },
-    { path: "radio-button" },
-    { path: "segmented-button" },
-    { path: "side-sheet" },
-    { path: "slider" },
-    { path: "snackbar" },
-    { path: "switch" },
-    { path: "tab" },
-    { path: "tooltip" },
-    { path: "top-app-bar" },
 
     { path: "color-picker" },
     { path: "date-picker" },
@@ -63,6 +43,26 @@ const devs = [
     { path: "month-picker" },
     { path: "time-picker" },
     { path: "week-picker" },
+
+    { path: "dialog" },
+    { path: "divider" },
+    { path: "list" },
+    { path: "menu" },
+
+    { path: "navigation-bar" },
+    { path: "navigation-drawer" },
+    { path: "navigation-rail" },
+
+    { path: "progress-indicator" },
+    { path: "radio-button" },
+
+    { path: "bottom-sheet" },
+    { path: "side-sheet" },
+
+    { path: "slider" },
+    { path: "snackbar" },
+    { path: "switch" },
+    { path: "tab" },
 
     { path: "form" },
     { path: "color-field" },
@@ -81,6 +81,17 @@ const devs = [
     { path: "time-field" },
     { path: "url-field" },
     { path: "week-field" },
+
+    { path: "tooltip" },
+
+    { path: "data-table" },
+    
+    { path: "layout" },
+    { path: "icon" },
+    { path: "emoji" },
+    { path: "pagination" },
+    // { path: "pane" },
+
 ];
 
 class DevMain extends MDElement {
