@@ -15,9 +15,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",selected:true},
                             {label:"Item 2"},
-                            {label:"Item 3",badge:1},
-                            {label:"Item 4",badge:0},
-                            {label:"Item 5"},
+                            {label:"Item 3",badge:0},
+                            {label:"Item 4",badge:1},
+                            {label:"Item 5",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -28,9 +28,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",icon:"image",selected:true},
                             {label:"Item 2",icon:"image"},
-                            {label:"Item 3",icon:"image",badge:1},
-                            {label:"Item 4",icon:"image",badge:0},
-                            {label:"Item 5",icon:"image"},
+                            {label:"Item 3",icon:"image",badge:0},
+                            {label:"Item 4",icon:"image",badge:1},
+                            {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -45,9 +45,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",icon:"image",selected:true},
                             {label:"Item 2",icon:"image"},
-                            {label:"Item 3",icon:"image",badge:1},
-                            {label:"Item 4",icon:"image",badge:0},
-                            {label:"Item 5",icon:"image"},
+                            {label:"Item 3",icon:"image",badge:0},
+                            {label:"Item 4",icon:"image",badge:1},
+                            {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -58,9 +58,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {icon:"image",selected:true},
                             {icon:"image"},
-                            {icon:"image",badge:1},
                             {icon:"image",badge:0},
-                            {icon:"image"},
+                            {icon:"image",badge:1},
+                            {icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -71,9 +71,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",selected:true},
                             {label:"Item 2"},
-                            {label:"Item 3",badge:1},
-                            {label:"Item 4",badge:0},
-                            {label:"Item 5"},
+                            {label:"Item 3",badge:0},
+                            {label:"Item 4",badge:1},
+                            {label:"Item 5",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -84,9 +84,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",icon:"image",selected:true},
                             {label:"Item 2",icon:"image"},
-                            {label:"Item 3",icon:"image",badge:1},
-                            {label:"Item 4",icon:"image",badge:0},
-                            {label:"Item 5",icon:"image"},
+                            {label:"Item 3",icon:"image",badge:0},
+                            {label:"Item 4",icon:"image",badge:1},
+                            {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -101,9 +101,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",icon:"image",selected:true},
                             {label:"Item 2",icon:"image"},
-                            {label:"Item 3",icon:"image",badge:1},
-                            {label:"Item 4",icon:"image",badge:0},
-                            {label:"Item 5",icon:"image"},
+                            {label:"Item 3",icon:"image",badge:0},
+                            {label:"Item 4",icon:"image",badge:1},
+                            {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -114,9 +114,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {icon:"image",selected:true},
                             {icon:"image"},
-                            {icon:"image",badge:1},
                             {icon:"image",badge:0},
-                            {icon:"image"},
+                            {icon:"image",badge:1},
+                            {icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -127,9 +127,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",selected:true},
                             {label:"Item 2"},
-                            {label:"Item 3",badge:1},
-                            {label:"Item 4",badge:0},
-                            {label:"Item 5"},
+                            {label:"Item 3",badge:0},
+                            {label:"Item 4",badge:1},
+                            {label:"Item 5",badge:1000},
                         ]}"
                     ></md-list>
                 </div>
@@ -140,9 +140,9 @@ class DevExample extends MDElement {
                         .list="${[
                             {label:"Item 1",icon:"image",selected:true},
                             {label:"Item 2",icon:"image"},
-                            {label:"Item 3",icon:"image",badge:1},
-                            {label:"Item 4",icon:"image",badge:0},
-                            {label:"Item 5",icon:"image"},
+                            {label:"Item 3",icon:"image",badge:0},
+                            {label:"Item 4",icon:"image",badge:1},
+                            {label:"Item 5",icon:"image",badge:1000},
                         ]}"
                     ></md-list>
                 </div>

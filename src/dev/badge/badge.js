@@ -6,15 +6,19 @@ class DevBadge extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-badge></md-badge>
+            <div class="md-layout--border md-layout--fit">
+                <div class="md-layout__item--south">
+                    <md-navigation-bar 
+                        .open="${true}}"
+                        .list="${[
+                            { icon:'change_history',label: 'Label', selected:true },
+                            { icon:'change_history',label: 'Label', badge: 0 },
+                            { icon:'change_history',label: 'Label', badge: 1 },
+                            { icon:'change_history',label: 'Label', badge: 1000 },
+                        ]}"
+                    ></md-navigation-bar>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-badge label="1"></md-badge>
-                </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-badge label="1000"></md-badge>
+                <div class="md-layout__item--center" >
                 </div>
             </div>
         `;

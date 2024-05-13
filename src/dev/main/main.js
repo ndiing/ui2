@@ -45,7 +45,7 @@ const devs = [
     { path: "navigation-drawer" },
     { path: "navigation-rail" },
     { path: "pagination" },
-    { path: "pane" },
+    // { path: "pane" },
     { path: "progress-indicator" },
     { path: "radio-button" },
     { path: "segmented-button" },
