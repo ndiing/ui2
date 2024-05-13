@@ -2,27 +2,23 @@ import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 
-class DevIconButton extends MDElement {
+class DevLayoutFit extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin:24px;">
+            <div class="md-layout--column">
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-icon-button icon="favorite"></md-icon-button>
+                    <md-layout-fit></md-layout-fit>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-icon-button ui="filled-tonal" icon="settings"></md-icon-button>
                 </div>
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
-                    <md-icon-button ui="filled" icon="more_vert"></md-icon-button>
                 </div>
-                
-                
             </div>
         `;
     }
 }
 
-customElements.define("dev-icon-button", DevIconButton);
+customElements.define("dev-layout-fit", DevLayoutFit);
 
-export default document.createElement("dev-icon-button");
+export default document.createElement("dev-layout-fit");

@@ -10,14 +10,21 @@ class DevSegmentedButton extends MDElement {
                 <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-segmented-button
                         .buttons="${[
-                            {label:'button'},
-                            {label:'button'},
-                            {label:'button'},
+                            {label:'Day',selected:true},
+                            {label:'Week'},
+                            {label:'Month'},
                         ]}"
                     ></md-segmented-button>
                 </div>
-                
-                
+                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <md-segmented-button
+                        .buttons="${[
+                            {label:'$',selected:true},
+                            {label:'$$',selected:true},
+                            {label:'$$$'},
+                        ]}"
+                    ></md-segmented-button>
+                </div>
             </div>
         `;
     }
