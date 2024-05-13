@@ -4,10 +4,7 @@ class Store {
             primaryKey: "_id",
             ...options,
         };
-
-        this.docs = new Map(
-            docs.map((doc) => [doc[this.options.primaryKey], doc])
-        );
+        this.docs = new Map(docs.map((doc) => [doc[this.options.primaryKey], doc]));
     }
 
     post(doc) {
@@ -18,11 +15,8 @@ class Store {
         }
 
         if (this.docs.has(doc[primaryKey])) {
-            throw new Error(
-                "Document with the same primary key already exists."
-            );
+            throw new Error("Document with the same primary key already exists.");
         }
-
         this.docs.set(doc[primaryKey], doc);
     }
 
@@ -32,14 +26,13 @@ class Store {
 
     patch(_id, doc) {
         if (!this.docs.has(_id)) {
-            throw new Error(
-                "Document with the specified primary key does not exist."
-            );
+            throw new Error("Document with the specified primary key does not exist.");
         }
-
         const originalDoc = this.docs.get(_id);
-        const patchedDoc = { ...originalDoc, ...doc };
-
+        const patchedDoc = {
+            ...originalDoc,
+            ...doc,
+        };
         this.docs.set(_id, patchedDoc);
     }
 
@@ -55,11 +48,8 @@ class Store {
 
     delete(_id) {
         if (!this.docs.has(_id)) {
-            throw new Error(
-                "Document with the specified primary key does not exist."
-            );
+            throw new Error("Document with the specified primary key does not exist.");
         }
-
         this.docs.delete(_id);
     }
 
@@ -86,7 +76,6 @@ class Store {
                     }
                 }
             }
-
             return 0;
         });
     }
@@ -94,21 +83,13 @@ class Store {
     search(docs, q) {
         return docs.filter((doc) => {
             for (const key in doc) {
-                if (
-                    typeof doc[key] === "string" &&
-                    doc[key].toLowerCase().includes(q.toLowerCase())
-                ) {
+                if (typeof doc[key] === "string" && doc[key].toLowerCase().includes(q.toLowerCase())) {
                     return true;
                 }
 
                 if (typeof doc[key] === "object") {
                     for (const nestedKey in doc[key]) {
-                        if (
-                            typeof doc[key][nestedKey] === "string" &&
-                            doc[key][nestedKey]
-                                .toLowerCase()
-                                .includes(q.toLowerCase())
-                        ) {
+                        if (typeof doc[key][nestedKey] === "string" && doc[key][nestedKey].toLowerCase().includes(q.toLowerCase())) {
                             return true;
                         }
                     }
@@ -122,9 +103,7 @@ class Store {
         return docs.filter((doc) => {
             return filters.every((filter) => {
                 const { name, value, operator } = filter;
-                const propValue = name
-                    .split(".")
-                    .reduce((obj, key) => obj[key], doc);
+                const propValue = name.split(".").reduce((obj, key) => obj[key], doc);
 
                 switch (operator) {
                     case "_eq":
@@ -142,9 +121,7 @@ class Store {
                     case "_like":
                         return propValue.includes(value);
                     default:
-                        throw new Error(
-                            `Operator '${operator}' is not supported.`
-                        );
+                        throw new Error(`Operator '${operator}' is not supported.`);
                 }
             });
         });
@@ -153,7 +130,6 @@ class Store {
     paginate(docs, _page, _limit) {
         const startIndex = (_page - 1) * _limit;
         const endIndex = startIndex + _limit;
-
         return docs.slice(startIndex, endIndex);
     }
 
@@ -162,8 +138,7 @@ class Store {
     }
 
     getAll(options = {}) {
-        let { _sort, _order, q, _page, _limit, _start, _end, ...rest } =
-            options;
+        let { _sort, _order, q, _page, _limit, _start, _end, ...rest } = options;
         let docs = Array.from(this.docs.values());
 
         if (_sort && _order) {
@@ -171,7 +146,6 @@ class Store {
                 name,
                 order: _order.split(",")[index],
             }));
-
             docs = this.sort(docs, sorters);
         }
 
@@ -184,26 +158,23 @@ class Store {
 
             for (const name in rest) {
                 const value = rest[name];
-                const [, key, operator = "_eq"] = name.match(
-                    /^(.*?)(_eq|_ne|_lt|_gt|_lte|_gte|_like)?$/
-                );
-                filters.push({ name: key, value, operator });
+                const [, key, operator = "_eq"] = name.match(/^(.*?)(_eq|_ne|_lt|_gt|_lte|_gte|_like)?$/);
+                filters.push({
+                    name: key,
+                    value,
+                    operator,
+                });
             }
-
             docs = this.filter(docs, filters);
         }
-
         const total = docs.length;
         let first, prev, next, last;
 
         if (_page && _limit) {
             _page = Number(_page);
             _limit = Number(_limit);
-
             const totalPages = Math.ceil(total / _limit);
-
             docs = this.paginate(docs, _page, _limit);
-
             first = _page === 1 ? null : 1;
             prev = _page > 1 ? _page - 1 : null;
             next = _page < totalPages ? _page + 1 : null;
@@ -211,12 +182,16 @@ class Store {
         } else if (_start !== undefined && _end !== undefined) {
             _start = Number(_start);
             _end = Number(_end);
-
             docs = this.range(docs, _start, _end);
         }
-
-        return { total, docs, first, prev, next, last };
+        return {
+            total,
+            docs,
+            first,
+            prev,
+            next,
+            last,
+        };
     }
 }
-
 export { Store };

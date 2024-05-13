@@ -1,5 +1,4 @@
 import { Marker } from "../marker/marker";
-
 class Router {
     static setRoutes(routes = [], parent = null) {
         return routes.reduce((p, c) => {
@@ -24,7 +23,12 @@ class Router {
         window.removeEventListener(type, listener);
     }
 
-    static emit(type, detail = { ...this }) {
+    static emit(
+        type,
+        detail = {
+            ...this,
+        }
+    ) {
         const event = new CustomEvent(type, {
             bubbles: true,
             cancelable: true,
@@ -42,7 +46,9 @@ class Router {
             const pattern = "^" + route.fullpath.replace(/\:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
-            this.params = { ...matches?.groups };
+            this.params = {
+                ...matches?.groups,
+            };
             return matches;
         });
     }
@@ -63,8 +69,9 @@ class Router {
             let outlet;
             let selector = "md-outlet:not([name])";
             let target = container;
-            if(stack.outlet){
-                selector = 'md-outlet[name="'+stack.outlet+'"]';
+
+            if (stack.outlet) {
+                selector = 'md-outlet[name="' + stack.outlet + '"]';
                 target = document.body;
             }
             const callback = () => {
@@ -81,7 +88,10 @@ class Router {
 
             if (!outlet) {
                 observer = new MutationObserver(callback);
-                observer.observe(target, { childList: true, subtree: true });
+                observer.observe(target, {
+                    childList: true,
+                    subtree: true,
+                });
             }
         });
     }
@@ -165,16 +175,14 @@ class Router {
 
     static init(routes = []) {
         this.routes = this.setRoutes(routes);
-
         this.on("DOMContentLoaded", this.handleLoad);
         this.on("popstate", this.handleLoad);
-
         const pushState = window.history.pushState;
+
         window.history.pushState = function () {
             pushState.apply(this, arguments);
             Router.emit("popstate");
         };
-
         this.on("click", this.handleClick);
     }
 }

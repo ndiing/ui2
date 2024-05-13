@@ -2,10 +2,11 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Popper } from "../popper/popper";
-
 class MDTooltip extends MDElement {
     static get properties() {
-        return { open: { type: Boolean, reflect: true } };
+        return {
+            open: { type: Boolean, reflect: true },
+        };
     }
 
     constructor() {
@@ -39,12 +40,7 @@ class MDTooltip extends MDElement {
 
     show(button, options = {}) {
         this.open = true;
-        this.popper = new Popper(this, {
-            button,
-            placements: ["bottom", "bottom-start", "bottom-end", "top", "top-start", "top-end"],
-            offset: 4,
-            ...options,
-        });
+        this.popper = new Popper(this, { button, placements: ["bottom", "bottom-start", "bottom-end", "top", "top-start", "top-end"], offset: 4, ...options });
         this.popper.setPlacement();
     }
 }

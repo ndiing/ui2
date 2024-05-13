@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
-
 class MDPane extends MDElement {
     static get properties() {
         return {
@@ -147,7 +146,5 @@ class MDPane extends MDElement {
         this.open = false;
     }
 }
-
 customElements.define("md-pane", MDPane);
-
 export { MDPane };

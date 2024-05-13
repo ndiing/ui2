@@ -2,7 +2,6 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
-
 class MDProgressIndicator extends MDElement {
     static get properties() {
         return {
@@ -39,7 +38,5 @@ class MDProgressIndicator extends MDElement {
 
     updated(changedProperties) {}
 }
-
 customElements.define("md-progress-indicator", MDProgressIndicator);
-
 export { MDProgressIndicator };

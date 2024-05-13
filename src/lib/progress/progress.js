@@ -1,5 +1,4 @@
 import { Marker } from "../marker/marker";
-
 const fetch = window.fetch;
 const documentBody = document.body;
 
@@ -10,7 +9,6 @@ window.fetch = function () {
     response.then(marker.stop).catch(marker.stop);
     return response;
 };
-
 class Progress {
     static id = null;
     static remainingDuration = null;
@@ -29,7 +27,6 @@ class Progress {
             this.elapsedTime = time - this.startTime;
             const progress = this.elapsedTime / this.remainingDuration;
             const value = progress * 100;
-
 
             if (progress > this.last) {
                 this.indicator.value = value;
@@ -65,8 +62,7 @@ class Progress {
     static create() {
         this.indicator = document.createElement("md-progress-indicator");
         documentBody.append(this.indicator);
-        this.indicator.style.cssText =
-            "position: absolute; top: 0; right: 0; left: 0; z-index: 999;";
+        this.indicator.style.cssText = "position: absolute; top: 0; right: 0; left: 0; z-index: 999;";
     }
 
     static init() {
@@ -80,14 +76,8 @@ class Progress {
             });
         });
         observer.observe({
-            entryTypes: [
-                "mark",
-                "measure",
-                "navigation",
-                "resource",
-            ],
+            entryTypes: ["mark", "measure", "navigation", "resource"],
         });
     }
 }
-
 Progress.init();

@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDCarousel extends MDElement {
     static get properties() {
         return {};
@@ -29,7 +28,5 @@ class MDCarousel extends MDElement {
 
     updated(changedProperties) {}
 }
-
 customElements.define("md-carousel", MDCarousel);
-
 export { MDCarousel };

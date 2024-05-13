@@ -2,7 +2,6 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
-
 class MDFab extends MDElement {
     static get properties() {
         return {
@@ -39,11 +38,12 @@ class MDFab extends MDElement {
             this.classList.remove("md-fab--small");
             this.classList.remove("md-fab--large");
             this.classList.remove("md-fab--unelevated");
+
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-fab--" + ui);
                 });
-            } 
+            }
         }
     }
 }

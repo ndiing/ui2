@@ -1,10 +1,8 @@
 import { LitElement } from "lit";
 import { updateWhenLocaleChanges } from "@lit/localize";
-
 class MDElement extends LitElement {
     constructor() {
         super();
-
         updateWhenLocaleChanges(this);
     }
 
@@ -21,14 +19,8 @@ class MDElement extends LitElement {
     }
 
     emit(type, detail) {
-        const event = new CustomEvent(type, {
-            bubbles: true,
-            cancelable: true,
-            detail,
-        });
-
+        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
         this.dispatchEvent(event);
     }
 }
-
 export { MDElement };

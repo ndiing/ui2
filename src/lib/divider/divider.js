@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDDivider extends MDElement {
     static get properties() {
         return {};
@@ -29,7 +28,5 @@ class MDDivider extends MDElement {
 
     updated(changedProperties) {}
 }
-
 customElements.define("md-divider", MDDivider);
-
 export { MDDivider };

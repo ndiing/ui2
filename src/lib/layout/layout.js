@@ -1,11 +1,9 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDLayout extends MDElement {
     static get properties() {
-        return {
-        };
+        return {};
     }
 
     constructor() {
@@ -28,10 +26,7 @@ class MDLayout extends MDElement {
         this.classList.remove("md-layout");
     }
 
-    updated(changedProperties) {
-    }
+    updated(changedProperties) {}
 }
-
 customElements.define("md-layout", MDLayout);
-
 export { MDLayout };

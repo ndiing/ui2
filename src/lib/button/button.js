@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { Ripple } from "../ripple/ripple";
-
 class MDButton extends MDElement {
     static get properties() {
         return {
@@ -56,7 +55,5 @@ class MDButton extends MDElement {
         }
     }
 }
-
 customElements.define("md-button", MDButton);
-
 export { MDButton };

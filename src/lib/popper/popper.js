@@ -23,14 +23,15 @@ class Popper {
                         height: event.height,
                     };
                 },
-                classList: { add: () => {} },
+                classList: {
+                    add: () => {},
+                },
             };
         }
 
         if (!this.options.button) {
             this.options.button = this.options.boundary;
         }
-
         this.host = host;
         this.init();
     }
@@ -64,7 +65,6 @@ class Popper {
         for (const placement of this.options.placements) {
             let result = this.getPlacement(placement);
 
-            // console.log(result)
             if (result.exceed) {
                 continue;
             } else {
@@ -73,9 +73,6 @@ class Popper {
                 break;
             }
         }
-
-        // console.log(left,top)
-
         this.host.style.setProperty("left", left + "px");
         this.host.style.setProperty("top", top + "px");
     }
@@ -84,20 +81,91 @@ class Popper {
         this.containerRect = this.host.getBoundingClientRect();
         this.buttonRect = this.options.button.getBoundingClientRect();
         this.boundaryRect = this.options.boundary.getBoundingClientRect();
-
         const placements = [
-            { placement: "top-start", calculate: () => ({ top: this.buttonRect.top - this.containerRect.height - this.options.offset, left: this.buttonRect.left }) },
-            { placement: "top", calculate: () => ({ top: this.buttonRect.top - this.containerRect.height - this.options.offset, left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2 }) },
-            { placement: "top-end", calculate: () => ({ top: this.buttonRect.top - this.containerRect.height - this.options.offset, left: this.buttonRect.right - this.containerRect.width }) },
-            { placement: "right-start", calculate: () => ({ top: this.buttonRect.top, left: this.buttonRect.right + this.options.offset }) },
-            { placement: "right", calculate: () => ({ top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2, left: this.buttonRect.right + this.options.offset }) },
-            { placement: "right-end", calculate: () => ({ top: this.buttonRect.bottom - this.containerRect.height, left: this.buttonRect.right + this.options.offset }) },
-            { placement: "bottom-end", calculate: () => ({ top: this.buttonRect.bottom + this.options.offset, left: this.buttonRect.right - this.containerRect.width }) },
-            { placement: "bottom", calculate: () => ({ top: this.buttonRect.bottom + this.options.offset, left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2 }) },
-            { placement: "bottom-start", calculate: () => ({ top: this.buttonRect.bottom + this.options.offset, left: this.buttonRect.left }) },
-            { placement: "left-end", calculate: () => ({ top: this.buttonRect.bottom - this.containerRect.height, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
-            { placement: "left", calculate: () => ({ top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
-            { placement: "left-start", calculate: () => ({ top: this.buttonRect.top, left: this.buttonRect.left - this.containerRect.width - this.options.offset }) },
+            {
+                placement: "top-start",
+                calculate: () => ({
+                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
+                    left: this.buttonRect.left,
+                }),
+            },
+            {
+                placement: "top",
+                calculate: () => ({
+                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
+                    left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2,
+                }),
+            },
+            {
+                placement: "top-end",
+                calculate: () => ({
+                    top: this.buttonRect.top - this.containerRect.height - this.options.offset,
+                    left: this.buttonRect.right - this.containerRect.width,
+                }),
+            },
+            {
+                placement: "right-start",
+                calculate: () => ({
+                    top: this.buttonRect.top,
+                    left: this.buttonRect.right + this.options.offset,
+                }),
+            },
+            {
+                placement: "right",
+                calculate: () => ({
+                    top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2,
+                    left: this.buttonRect.right + this.options.offset,
+                }),
+            },
+            {
+                placement: "right-end",
+                calculate: () => ({
+                    top: this.buttonRect.bottom - this.containerRect.height,
+                    left: this.buttonRect.right + this.options.offset,
+                }),
+            },
+            {
+                placement: "bottom-end",
+                calculate: () => ({
+                    top: this.buttonRect.bottom + this.options.offset,
+                    left: this.buttonRect.right - this.containerRect.width,
+                }),
+            },
+            {
+                placement: "bottom",
+                calculate: () => ({
+                    top: this.buttonRect.bottom + this.options.offset,
+                    left: this.buttonRect.left + (this.buttonRect.width - this.containerRect.width) / 2,
+                }),
+            },
+            {
+                placement: "bottom-start",
+                calculate: () => ({
+                    top: this.buttonRect.bottom + this.options.offset,
+                    left: this.buttonRect.left,
+                }),
+            },
+            {
+                placement: "left-end",
+                calculate: () => ({
+                    top: this.buttonRect.bottom - this.containerRect.height,
+                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                }),
+            },
+            {
+                placement: "left",
+                calculate: () => ({
+                    top: this.buttonRect.top + (this.buttonRect.height - this.containerRect.height) / 2,
+                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                }),
+            },
+            {
+                placement: "left-start",
+                calculate: () => ({
+                    top: this.buttonRect.top,
+                    left: this.buttonRect.left - this.containerRect.width - this.options.offset,
+                }),
+            },
             {
                 placement: "center",
                 calculate: () => ({
@@ -106,15 +174,17 @@ class Popper {
                 }),
             },
         ];
-
         const { left, top } = placements.find((p) => p.placement == placement).calculate();
-
         const right = left + this.containerRect.width;
         const bottom = top + this.containerRect.height;
-
         const exceed = left < this.boundaryRect.left || right > this.boundaryRect.right || top < this.boundaryRect.top || bottom > this.boundaryRect.bottom;
-
-        return { exceed, left, top, right, bottom };
+        return {
+            exceed,
+            left,
+            top,
+            right,
+            bottom,
+        };
     }
 
     destroy() {}

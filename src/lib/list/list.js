@@ -178,7 +178,7 @@ class MDList extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            ${this.list.map(item => html`
+            ${this.list?.map(item => html`
                 <md-list-row>
                     <md-list-item
                         .data="${item}"

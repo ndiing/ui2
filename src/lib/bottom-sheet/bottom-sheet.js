@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-
 class MDBottomSheet extends MDElement {
     static get properties() {
         return {
@@ -95,7 +94,5 @@ class MDBottomSheet extends MDElement {
         this.open = false;
     }
 }
-
 customElements.define("md-bottom-sheet", MDBottomSheet);
-
 export { MDBottomSheet };

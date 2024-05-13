@@ -2,7 +2,6 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
-
 class MDButton extends MDElement {
     static get properties() {
         return {
@@ -47,9 +46,10 @@ class MDButton extends MDElement {
         if (changedProperties.has("ui")) {
             this.classList.remove("md-icon-button--filled");
             this.classList.remove("md-icon-button--filled-tonal");
+
             if (this.ui) {
                 this.classList.add("md-icon-button--" + this.ui);
-            } 
+            }
         }
     }
 

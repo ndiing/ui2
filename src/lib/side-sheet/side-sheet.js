@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
-
 class MDSideSheet extends MDElement {
     static get properties() {
         return {
@@ -87,7 +86,7 @@ class MDSideSheet extends MDElement {
     }
 
     updateStyle() {
-        if ( ( this.ui?.includes("modal"))) {
+        if (this.ui?.includes("modal")) {
             if (this.open) {
                 this.sideSheetScrimElement.classList.add("md-side-sheet--open");
             } else {
@@ -147,7 +146,5 @@ class MDSideSheet extends MDElement {
         this.open = false;
     }
 }
-
 customElements.define("md-side-sheet", MDSideSheet);
-
 export { MDSideSheet };

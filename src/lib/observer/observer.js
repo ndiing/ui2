@@ -8,8 +8,10 @@ class Observer {
 
     handleChange() {
         this.mql?.removeEventListener("change", this.handleChange);
+
         for (this.item of this.list) {
             this.mql = window.matchMedia(this.item.value);
+
             if (this.mql.matches) {
                 break;
             }
@@ -27,31 +29,42 @@ function emit(type, detail) {
     });
     window.dispatchEvent(event);
 }
-
 let layout;
 let color;
-
 new Observer(
     [
-        { name: "compact", value: "(max-width: 599px)" },
-        { name: "medium", value: "(min-width: 600px) and (max-width: 839px)" },
-        { name: "expanded", value: "(min-width: 840px)" },
+        {
+            name: "compact",
+            value: "(max-width: 599px)",
+        },
+        {
+            name: "medium",
+            value: "(min-width: 600px) and (max-width: 839px)",
+        },
+        {
+            name: "expanded",
+            value: "(min-width: 840px)",
+        },
     ],
     (item) => {
         layout = item;
         emit("onLayoutChange", item);
     }
 );
-
 new Observer(
     [
-        { name: "light", value: "(prefers-color-scheme: light)" },
-        { name: "dark", value: "(prefers-color-scheme: dark)" },
+        {
+            name: "light",
+            value: "(prefers-color-scheme: light)",
+        },
+        {
+            name: "dark",
+            value: "(prefers-color-scheme: dark)",
+        },
     ],
     (item) => {
         color = item;
         emit("onColorChange", item);
     }
 );
-
 export { layout, color };

@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { Ripple } from "../ripple/ripple";
-
 class MDExtendedFab extends MDElement {
     static get properties() {
         return {
@@ -29,9 +28,6 @@ class MDExtendedFab extends MDElement {
         this.classList.remove("md-extended-fab");
         this.ripple.destroy();
     }
-    
 }
-
 customElements.define("md-extended-fab", MDExtendedFab);
-
 export { MDExtendedFab };

@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDSegmentedButton extends MDElement {
     static get properties() {
         return {
@@ -49,15 +48,10 @@ class MDSegmentedButton extends MDElement {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
-                [this.lastSelectedIndex, this.currentSelectedIndex] = [
-                    this.currentSelectedIndex,
-                    this.lastSelectedIndex,
-                ];
+                [this.lastSelectedIndex, this.currentSelectedIndex] = [this.currentSelectedIndex, this.lastSelectedIndex];
             }
             this.buttons.forEach((item, index) => {
-                item.selected =
-                    index >= this.lastSelectedIndex &&
-                    index <= this.currentSelectedIndex;
+                item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
         } else if (event.ctrlKey) {
             data.selected = !data.selected;
@@ -71,7 +65,5 @@ class MDSegmentedButton extends MDElement {
         this.emit("onSegmentedButtonClick", event);
     }
 }
-
 customElements.define("md-segmented-button", MDSegmentedButton);
-
 export { MDSegmentedButton };

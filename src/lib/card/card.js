@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-
 class MDCard extends MDElement {
     static get properties() {
         return {
@@ -85,11 +84,7 @@ class MDCard extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                "elevated",
-                "filled",
-                "outlined",
-            ].forEach((ui) => {
+            ["elevated", "filled", "outlined"].forEach((ui) => {
                 this.classList.remove("md-card--" + ui);
             });
 
@@ -99,7 +94,6 @@ class MDCard extends MDElement {
                 });
             }
         }
-
     }
 
     handleCardActionClick(event) {
@@ -109,10 +103,6 @@ class MDCard extends MDElement {
     handleCardButtonClick(event) {
         this.emit("onCardButtonClick", event);
     }
-
-
 }
-
 customElements.define("md-card", MDCard);
-
 export { MDCard };

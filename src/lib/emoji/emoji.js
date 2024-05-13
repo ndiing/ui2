@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDEmojiElement extends MDElement {
     connectedCallback() {
         super.connectedCallback();
@@ -13,7 +12,5 @@ class MDEmojiElement extends MDElement {
         this.classList.remove("md-emoji");
     }
 }
-
 customElements.define("md-emoji", MDEmojiElement);
-
 export { MDEmojiElement };

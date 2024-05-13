@@ -1,7 +1,6 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-
 class MDIcon extends MDElement {
     static get properties() {
         return {};
@@ -29,7 +28,5 @@ class MDIcon extends MDElement {
 
     updated(changedProperties) {}
 }
-
 customElements.define("md-icon", MDIcon);
-
 export { MDIcon };

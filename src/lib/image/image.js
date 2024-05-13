@@ -2,7 +2,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { styleMap } from "lit/directives/style-map.js";
-
 class MDImage extends MDElement {
     static get properties() {
         return {
@@ -46,9 +45,11 @@ class MDImage extends MDElement {
                 this.style.aspectRatio = this.ratio;
             }
         }
+
         if (changedProperties.has("rounded")) {
             if (this.rounded) {
                 this.classList.add("md-image--rounded");
+
                 if (this.ratio) {
                     const [width, height] = this.ratio.split("/").map((ratio) => Number(ratio.trim()));
                     this.style.borderRadius = `calc(50% / ${width} * ${height}) / 50%`;
@@ -59,7 +60,5 @@ class MDImage extends MDElement {
         }
     }
 }
-
 customElements.define("md-image", MDImage);
-
 export { MDImage };
