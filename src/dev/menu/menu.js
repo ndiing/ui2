@@ -30,10 +30,10 @@ class DevMenu extends MDElement {
     }
 
     firstUpdated() {
-        window.addEventListener("contextmenu", (event) => {
-            event.preventDefault();
-            menu.show(event, {});
-        });
+        // window.addEventListener("contextmenu", (event) => {
+        //     event.preventDefault();
+        //     menu.show(event, {});
+        // });
     }
 }
 

@@ -1,18 +1,16 @@
 @import "./polyfill/polyfill.scss";
 @import "./element/element.scss";
 @import "./localization/localization.scss";
-
 @import "./gesture/gesture.scss";
 @import "./ripple/ripple.scss";
 @import "./popper/popper.scss";
 @import "./virtual-scroll/virtual-scroll.scss";
-
 @import "./observer/observer.scss";
 @import "./marker/marker.scss";
 @import "./progress/progress.scss";
 @import "./router/router.scss";
 @import "./store/store.scss";
-
+@import "./image/image.scss";
 @import "./badge/badge.scss";
 @import "./bottom-app-bar/bottom-app-bar.scss";
 @import "./bottom-sheet/bottom-sheet.scss";

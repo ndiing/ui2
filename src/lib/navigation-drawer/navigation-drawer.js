@@ -24,12 +24,7 @@ class MDNavigationDrawer extends MDElement {
                     <md-list 
                         class="md-navigation-drawer__list"
                         .list="${this.list}"
-                        .valueField="${this.valueField??'value'}"
-                        .labelField="${this.labelField??'label'}"
-                        .selectRange="${this.selectRange}"
-                        .selectMulti="${this.selectMulti}"
-                        .selectSingle="${this.selectSingle??true}"
-                        .selectAll="${this.selectAll}"
+                        .singleSelection="${true}"
                         @onListItemClick="${this.handleNavigationDrawerListItemClick}"
                     ></md-list>
                 </div>

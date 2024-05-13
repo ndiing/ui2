@@ -18,12 +18,7 @@ class MDNavigationRail extends MDElement {
                     <md-list 
                         class="md-navigation-rail__list"
                         .list="${this.list}"
-                        .valueField="${this.valueField??'value'}"
-                        .labelField="${this.labelField??'label'}"
-                        .selectRange="${this.selectRange}"
-                        .selectMulti="${this.selectMulti}"
-                        .selectSingle="${this.selectSingle??true}"
-                        .selectAll="${this.selectAll}"
+                        .singleSelection="${true}"
                         @onListItemClick="${this.handleNavigationRailListItemClick}"
                     ></md-list>
                 </div>

@@ -82,22 +82,3 @@
     }
 }
 
-
-.md-navigation-drawer__list {
-    > ul {
-        padding: 0;
-
-        > li {
-            padding: 0 12px;
-        }
-    }
-
-    .md-list__container {
-        gap: 0 12px;
-        border-radius: calc(56px / 2);
-    }
-
-    .md-list__label {
-        @extend .md-typography--label-large;
-    }
-}

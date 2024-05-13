@@ -1,18 +1,16 @@
 import "./polyfill/polyfill.js";
 import "./element/element.js";
 import "./localization/localization.js";
-
 import "./gesture/gesture.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
 import "./virtual-scroll/virtual-scroll.js";
-
 import "./observer/observer.js";
 import "./marker/marker.js";
 import "./progress/progress.js";
 import "./router/router.js";
 import "./store/store.js";
-
+import "./image/image.js";
 import "./badge/badge.js";
 import "./bottom-app-bar/bottom-app-bar.js";
 import "./bottom-sheet/bottom-sheet.js";

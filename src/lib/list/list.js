@@ -1,30 +1,44 @@
+import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
-import { Gesture } from "../gesture/gesture";
 
-class MDListItem extends HTMLLIElement {
-    connectedCallback() {
-        this.gesture = new Gesture(this, {
-            dragStartWaitForLongPress: true,
-            resizeHandles: [],
-        });
-    }
-    disconnectedCallback() {
-        this.gesture.destroy();
-    }
+function notNull(value){
+    return value!==null&&value!==undefined
 }
-customElements.define("md-list-item", MDListItem, { extends: "li" });
 
-class MDListContainer extends MDElement {
+class MDListItem extends MDElement {
     static get properties() {
         return {
+            avatar: { type: String },
+            image: { type: String },
+            video: { type: String },
+
             icon: { type: String },
+
             label: { type: String },
-            routerLink: { type: String, reflect: true },
+            labelSecondary: { type: String },
+
+            text: { type: String },
+
+            leadingCheckbox: { type: Object },
+            leadingRadioButton: { type: Object },
+            leadingSwitch: { type: Object },
+
+            trailingCheckbox: { type: Object },
+            trailingRadioButton: { type: Object },
+            trailingSwitch: { type: Object },
+
+            badge: { type: Number },
+
             selected: { type: Boolean, reflect: true },
+
+            routerLink: { type: String, reflect: true },
         };
+    }
+
+    get labelSecondaryElement() {
+        return this.querySelector(".md-list__label-secondary");
     }
 
     constructor() {
@@ -34,118 +48,197 @@ class MDListContainer extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            ${this.icon?html`<div class="md-list__icon">${this.icon}</div>`:nothing}
-            ${this.label?html`<div class="md-list__label">${this.label}</div>`:nothing}
-        `
+            ${this.avatar?html`<md-image class="md-list__avatar" .src="${this.avatar}" .ratio="${"1/1"}" .rounded="${true}"></md-image>`:nothing}
+            ${this.image?html`<md-image class="md-list__image" .src="${this.image}" .ratio="${"1/1"}" .rounded="${false}"></md-image>`:nothing}
+            ${this.video?html`<md-image class="md-list__video" .src="${this.video}" .ratio="${"4/3"}" .rounded="${false}"></md-image>`:nothing}
+
+            ${this.icon?html`<md-icon class="md-list__icon">${this.icon}</md-icon>`:nothing}
+
+            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleListItemCheckboxInput}" .checked="${this.selected}" class="md-list__checkbox"></md-checkbox>`:nothing}
+            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleListItemRadioButtonInput}" .checked="${this.selected}" class="md-list__radio-button"></md-radio-button>`:nothing}
+            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleListItemSwitchInput}" .checked="${this.selected}" class="md-list__switch"></md-switch>`:nothing}
+
+            ${this.label||this.labelSecondary?html`
+                <div class="md-list__label">
+                    ${this.label?html`<div class="md-list__label-primary">${this.label}</div>`:nothing}
+                    ${this.labelSecondary?html`<div class="md-list__label-secondary">${this.labelSecondary}</div>`:nothing}
+                </div>
+            `:nothing}
+            ${this.text?html`<div class="md-list__text">${this.text}</div>`:nothing}
+
+            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleListItemCheckboxInput}" .checked="${this.selected}" class="md-list__checkbox"></md-checkbox>`:nothing}
+            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleListItemRadioButtonInput}" .checked="${this.selected}" class="md-list__radio-button"></md-radio-button>`:nothing}
+            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleListItemSwitchInput}" .checked="${this.selected}" class="md-list__switch"></md-switch>`:nothing}
+
+            ${notNull(this.badge)?html`<md-badge class="md-list__badge" .label="${this.badge}"></md-badge>`:nothing}
+        `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        this.classList.add("md-list__container");
-        await this.updateComplete;
+        this.classList.add("md-list__item");
+
         this.ripple = new Ripple(this, {});
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-        this.classList.remove("md-list__container");
+        this.classList.remove("md-list__item");
+
         this.ripple.destroy();
     }
 
-    updated(changedProperties) {
-        if (changedProperties.has("selected")) {
-            if (this.selected) {
-                this.emit("onListContainerSelected", this);
+    firstUpdated(changedProperties) {
+        if (changedProperties.has("labelSecondary")) {
+            if (this.labelSecondary) {
+                const lineHeight = parseFloat(window.getComputedStyle(this.labelSecondaryElement).getPropertyValue("line-height"));
+
+                if (this.labelSecondaryElement.clientHeight > lineHeight) {
+                    this.classList.add("md-list__item--three-line");
+                } else {
+                    this.classList.add("md-list__item--two-line");
+                }
+            } else {
+                this.classList.add("md-list__item--two-line");
+                this.classList.add("md-list__item--three-line");
             }
         }
     }
+
+    updated(changedProperties) {}
+
+    handleListItemCheckboxInput(event) {
+        this.emit("onListItemCheckboxInput", event);
+    }
+    handleListItemRadioButtonInput(event) {
+        this.emit("onListItemRadioButtonInput", event);
+    }
+    handleListItemSwitchInput(event) {
+        this.emit("onListItemSwitchInput", event);
+    }
 }
-customElements.define("md-list-container", MDListContainer);
+
+customElements.define("md-list-item", MDListItem);
+
+class MDListRow extends MDElement {
+    static get properties() {
+        return {};
+    }
+
+    constructor() {
+        super();
+    }
+
+    render() {
+        // prettier-ignore
+        return html``;
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.classList.add("md-list__row");
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.classList.remove("md-list__row");
+    }
+
+    firstUpdated(changedProperties) {}
+
+    updated(changedProperties) {}
+}
+
+customElements.define("md-list-row", MDListRow);
 
 class MDList extends MDElement {
     static get properties() {
         return {
             list: { type: Array },
-            
-            valueField: { type: String },
-            labelField: { type: String },
 
-            selectRange: { type: Boolean },
-            selectMulti: { type: Boolean },
-            selectSingle: { type: Boolean },
-            selectAll: { type: Boolean },
+            allSelection: { type: Boolean },
+            rangeSelection: { type: Boolean },
+            multiSelection: { type: Boolean },
+            singleSelection: { type: Boolean },
         };
     }
 
     constructor() {
         super();
-        this.list = [];
-        this.valueField='value'
-        this.labelField='label'
     }
 
     render() {
         // prettier-ignore
         return html`
-            <ul>
-                ${this.list.map(item=>html`
-                    <li
-                        is="md-list-item"
+            ${this.list.map(item => html`
+                <md-list-row>
+                    <md-list-item
                         .data="${item}"
-                        tabIndex="0"
-                        @onDragStart="${false&&this.handleListItemDragStart||(() => {})}"
-                        @onDrag="${false&&this.handleListItemDrag||(() => {})}"
-                        @onDragEnd="${false&&this.handleListItemDragEnd||(() => {})}"
-                    >
-                        <md-list-container
-                            .data="${item}"
-                            .icon="${item.icon}"
-                            .label="${item[this.labelField]}"
-                            .value="${item[this.valueField]}"
-                            .routerLink="${item.routerLink}"
-                            .selected="${item.selected}"
-                            @click="${this.handleListItemClick}"
-                        ></md-list-container>
-                    </li>
-                `)}
-            </ul>
-        `
+                        .avatar="${ifDefined(item.avatar)}"
+                        .image="${ifDefined(item.image)}"
+                        .video="${ifDefined(item.video)}"
+                        .icon="${ifDefined(item.icon)}"
+                        .label="${ifDefined(item.label)}"
+                        .labelSecondary="${ifDefined(item.labelSecondary)}"
+                        .text="${ifDefined(item.text)}"
+                        .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
+                        .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
+                        .leadingSwitch="${ifDefined(item.leadingSwitch)}"
+                        .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
+                        .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
+                        .trailingSwitch="${ifDefined(item.trailingSwitch)}"
+                        .badge="${ifDefined(item.badge)}"
+                        .selected="${ifDefined(item.selected)}"
+                        .routerLink="${ifDefined(item.routerLink)}"
+                        @click="${this.handleListItemClick}"
+                        @onListItemCheckboxInput="${this.handleListCheckboxInput}"
+                        @onListItemRadioButtonInput="${this.handleListRadioButtonInput}"
+                        @onListItemSwitchInput="${this.handleListSwitchInput}"
+                    ></md-list-item>
+                </md-list-row>
+            `)}
+        `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-list");
+
+        this.handleListKeydown = this.handleListKeydown.bind(this);
         this.addEventListener("keydown", this.handleListKeydown);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-list");
+
         this.removeEventListener("keydown", this.handleListKeydown);
     }
+
+    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {}
 
     handleListKeydown(event) {
-        if (this.selectAll&&event.ctrlKey && event.key === "a") {
+        if (this.allSelection&&event.ctrlKey && event.key === "a") {
             event.preventDefault();
             this.list.forEach((item) => {
                 item.selected = true;
             });
             this.requestUpdate();
-            this.emit('onListKeydownCtrlA',event)
+            this.emit("onListKeydown", event);
         }
     }
 
-    get selectedItems(){
-        return this.list.filter(item=>item.selected)
-    }
-
     handleListItemClick(event) {
+        if (event.target.closest(".md-list__checkbox,.md-list__radio-button,.md-list__switch")) {
+            return;
+        }
+
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.list.indexOf(data);
 
-        if (this.selectRange&&event.shiftKey) {
+        if (this.rangeSelection&&event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
@@ -154,9 +247,9 @@ class MDList extends MDElement {
             this.list.forEach((item, index) => {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
-        } else if (this.selectMulti&&event.ctrlKey) {
+        } else if (this.multiSelection&&event.ctrlKey) {
             data.selected = !data.selected;
-        } else if(this.selectSingle) {
+        } else if (this.singleSelection) {
             this.list.forEach((item) => {
                 item.selected = item === data;
             });
@@ -164,53 +257,41 @@ class MDList extends MDElement {
         this.lastSelectedIndex = this.currentSelectedIndex;
 
         this.requestUpdate();
-        this.emit('onListItemClick',event)
+
+        this.emit("onListItemClick", event);
     }
 
-    handleListItemDragStart(event) {
-        this.fromItem = event.currentTarget;
-        this.fromItemRect = this.fromItem.children[0].getBoundingClientRect();
-        this.fromItemDragged = this.fromItem.children[0].cloneNode(true);
-        this.parentElement.insertBefore(this.fromItemDragged, this.nextElementSibling);
-        this.fromItemDragged.style.setProperty("width", this.fromItemRect.width + "px");
-        this.fromItemDragged.style.setProperty("height", this.fromItemRect.height + "px");
-        this.fromItemDragged.style.setProperty("position", "absolute");
-        this.fromItemDragged.style.setProperty("left", this.fromItemRect.left + "px");
-        this.fromItemDragged.style.setProperty("top", this.fromItemRect.top + "px");
-        this.fromItemDragged.style.setProperty("z-index", 1);
-        this.fromItemDragged.style.setProperty("pointer-events", "none");
-        this.fromItemDragged.classList.add("md-ripple");
-        this.fromItemDragged.classList.add("md-ripple--containment");
-        this.fromItemDragged.classList.add("md-ripple--button");
-        this.fromItemDragged.classList.add("md-ripple--dragged");
-        this.emit('onListItemDragStart',event)
-    }
+    handleListCheckboxInput(event) {
+        const data = event.currentTarget.data;
 
-    handleListItemDrag(event) {
-        this.fromItemDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
-        this.emit('onListItemDrag',event)
-    }
+        data.selected = !data.selected;
 
-    handleListItemDragEnd(event) {
-        const toItem = event.detail.target?.closest("li");
-        if (toItem && this.toItem !== toItem && !this.fromItem !== toItem) {
-            this.toItem = toItem;
-            const oldIndex = this.list.indexOf(this.fromItem.data);
-            const newIndex = this.list.indexOf(this.toItem.data);
-            this.reorderArray(this.list, oldIndex, newIndex);
-            this.requestUpdate();
-        }
-        this.fromItem = null;
-        this.toItem = null;
-        this.fromItemDragged.remove();
-        this.emit('onListItemDragEnd',event)
-    }
+        this.requestUpdate();
 
-    reorderArray(array, oldIndex, newIndex) {
-        const element = array.splice(oldIndex, 1)[0];
-        array.splice(newIndex, 0, element);
-        return array;
+        this.emit("onListCheckboxInput", event);
+    }
+    handleListRadioButtonInput(event) {
+        const data = event.currentTarget.data;
+
+        this.list.forEach((item) => {
+            item.selected = item === data;
+        });
+
+        this.requestUpdate();
+
+        this.emit("onListRadioButtonInput", event);
+    }
+    handleListSwitchInput(event) {
+        const data = event.currentTarget.data;
+
+        data.selected = !data.selected;
+
+        this.requestUpdate();
+
+        this.emit("onListSwitchInput", event);
     }
 }
+
 customElements.define("md-list", MDList);
+
 export { MDList };

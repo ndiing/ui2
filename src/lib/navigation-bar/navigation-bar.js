@@ -17,12 +17,7 @@ class MDNavigationBar extends MDElement {
                     <md-list 
                         class="md-navigation-bar__list"
                         .list="${this.list}"
-                        .valueField="${this.valueField??'value'}"
-                        .labelField="${this.labelField??'label'}"
-                        .selectRange="${this.selectRange}"
-                        .selectMulti="${this.selectMulti}"
-                        .selectSingle="${this.selectSingle??true}"
-                        .selectAll="${this.selectAll}"
+                        .singleSelection="${true}"
                         @onListItemClick="${this.handleNavigationBarListItemClick}"
                     ></md-list>
                 </div>
