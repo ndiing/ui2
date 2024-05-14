@@ -83,10 +83,8 @@ class MDPane extends MDElement {
         `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-
-        await this.updateComplete;
 
         this.classList.add("md-pane");
 
@@ -125,7 +123,13 @@ class MDPane extends MDElement {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-pane--open");
-                if (this.ui?.includes("dialog")) {
+                if (
+                    [
+                        //
+                        "dialog",
+                        "modal",
+                    ].includes(this.ui)
+                ) {
                     this.paneScrim.classList.add("md-pane--open");
                 }
             } else {
