@@ -6,8 +6,8 @@ class DevImage extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin:24px;">
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+            <div class="md-layout-column" style="margin:24px;">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="16/9"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="3/2"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="4/3"></md-image>
@@ -15,7 +15,7 @@ class DevImage extends MDElement {
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="3/4"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" ratio="2/3"></md-image>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-image style="height:112px" src="https://placehold.co/600x400" ratio="16/9"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" ratio="3/2"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" ratio="4/3"></md-image>
@@ -23,7 +23,7 @@ class DevImage extends MDElement {
                     <md-image style="height:112px" src="https://placehold.co/600x400" ratio="3/4"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" ratio="2/3"></md-image>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-image style="width:112px" src="https://placehold.co/600x400" rounded ratio="16/9"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" rounded ratio="3/2"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" rounded ratio="4/3"></md-image>
@@ -31,7 +31,7 @@ class DevImage extends MDElement {
                     <md-image style="width:112px" src="https://placehold.co/600x400" rounded ratio="3/4"></md-image>
                     <md-image style="width:112px" src="https://placehold.co/600x400" rounded ratio="2/3"></md-image>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-image style="height:112px" src="https://placehold.co/600x400" rounded ratio="16/9"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" rounded ratio="3/2"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" rounded ratio="4/3"></md-image>
@@ -39,9 +39,9 @@ class DevImage extends MDElement {
                     <md-image style="height:112px" src="https://placehold.co/600x400" rounded ratio="3/4"></md-image>
                     <md-image style="height:112px" src="https://placehold.co/600x400" rounded ratio="2/3"></md-image>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                 </div>
-                <div class="md-layout__item md-layout__item--expanded12 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                 </div>
             </div>
         `;

@@ -52,7 +52,6 @@ class DevDataTable extends MDElement {
         // prettier-ignore
         return html`
             <md-data-table
-                style="height:100vh;"
                 .columns="${this.columns2}"
                 .rows="${this.rows2}"
                 .selectSingle="${true}"
@@ -65,52 +64,52 @@ class DevDataTable extends MDElement {
         `;
     }
 
-    async connectedCallback() {
-        super.connectedCallback()
-        await this.updateComplete;
-        this.viewport = this.querySelector(".md-data-table");
-        this.table = this.querySelector(".md-data-table > table");
+    // async connectedCallback() {
+    //     super.connectedCallback()
+    //     await this.updateComplete;
+    //     this.viewport = this.querySelector(".md-data-table");
+    //     this.table = this.querySelector(".md-data-table > table");
 
-        // first load
-        const result2 = this.store2.getAll({
-            _start: 0,
-            _end: 20,
-        });
-        this.rows2 = result2.docs;
-        this.requestUpdate();
+    //     // first load
+    //     const result2 = this.store2.getAll({
+    //         _start: 0,
+    //         _end: 20,
+    //     });
+    //     this.rows2 = result2.docs;
+    //     this.requestUpdate();
 
-        const total = result2.total;
-        const itemHeight = 52;
-        const viewportHeight = this.viewport.clientHeight;
+    //     const total = result2.total;
+    //     const itemHeight = 52;
+    //     const viewportHeight = this.viewport.clientHeight;
 
-        this.virtualScroll=new VirtualScroll(this.table, {
-            containerSelector: ".md-data-table > table > tbody",
-            total,
-            itemHeight,
-            viewportHeight,
-        });
+    //     this.virtualScroll=new VirtualScroll(this.table, {
+    //         containerSelector: ".md-data-table > table > tbody",
+    //         total,
+    //         itemHeight,
+    //         viewportHeight,
+    //     });
 
-        this.handleScroll=this.handleScroll.bind(this)
-        this.table.addEventListener("onVirtualScroll", this.handleScroll);
-    }
+    //     this.handleScroll=this.handleScroll.bind(this)
+    //     this.table.addEventListener("onVirtualScroll", this.handleScroll);
+    // }
 
-    handleScroll(){
-        const { start, end } = event.detail;
+    // handleScroll(){
+    //     const { start, end } = event.detail;
 
-            // load on scroll
-            const result2 = this.store2.getAll({
-                _start: start,
-                _end: end,
-            });
-            this.rows2 = result2.docs;
-            this.requestUpdate();
-    }
+    //         // load on scroll
+    //         const result2 = this.store2.getAll({
+    //             _start: start,
+    //             _end: end,
+    //         });
+    //         this.rows2 = result2.docs;
+    //         this.requestUpdate();
+    // }
 
-    disconnectedCallback(){
-        super.disconnectedCallback()
-        this.table.removeEventListener("onVirtualScroll", this.handleScroll);
-        this.virtualScroll.destroy()
-    }
+    // disconnectedCallback(){
+    //     super.disconnectedCallback()
+    //     this.table.removeEventListener("onVirtualScroll", this.handleScroll);
+    //     this.virtualScroll.destroy()
+    // }
 }
 
 customElements.define("dev-data-table", DevDataTable);

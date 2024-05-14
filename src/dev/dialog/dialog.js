@@ -6,8 +6,8 @@ class DevDialog extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin:24px;">
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+            <div class="md-layout-column" style="margin:24px;">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-dialog 
                         id="dialog1"
                         @onDialogActionClick="${this.handleClick1}"
@@ -21,7 +21,7 @@ class DevDialog extends MDElement {
                     </md-dialog>
                     <md-button ui="filled-tonal" label="Basic dialog" @click="${this.handleClick1}"></md-button>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-dialog 
                         id="dialog2"
                         ui="full-screen"

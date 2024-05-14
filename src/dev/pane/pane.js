@@ -6,20 +6,20 @@ class DevPane extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout--column" style="margin: 24px;">
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane>
                         Lorem ipsum dolor sit amet.
                     </md-pane>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .label="${"Label"}"
                     >
                         Lorem ipsum dolor sit amet.
                     </md-pane>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .leadingActions="${[
                             {icon:"image"}
@@ -29,7 +29,7 @@ class DevPane extends MDElement {
                         Lorem ipsum dolor sit amet.
                     </md-pane>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .leadingActions="${[
                             {icon:"image"}
@@ -42,7 +42,7 @@ class DevPane extends MDElement {
                         Lorem ipsum dolor sit amet.
                     </md-pane>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .leadingActions="${[
                             {icon:"image"}
@@ -58,7 +58,7 @@ class DevPane extends MDElement {
                         Lorem ipsum dolor sit amet.
                     </md-pane>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .leadingActions="${[
                             {icon:"image"}
@@ -79,7 +79,7 @@ class DevPane extends MDElement {
                     </md-pane>
                     <md-button label="dialog" ui="filled-tonal" @click="${this.handleClick}"></md-button>
                 </div>
-                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-pane
                         .leadingActions="${[
                             {icon:"image"}
