@@ -62,24 +62,26 @@ class MDPane extends MDElement {
                     `:nothing}
                 </div>
             `:nothing}
-            <div class="md-pane__body">
-                <div class="md-pane__inner">${this.body}</div>
-                ${this.buttons?.length?html`
-                    <div class="md-pane__footer">
-                        ${this.buttons.map(action => html`
-                            <md-button 
-                                class="md-pane__button"
-                                .icon="${ifDefined(action.icon)}"
-                                .label="${ifDefined(action.label??action)}"
-                                .type="${ifDefined(action.type)}"
-                                .ui="${ifDefined(action.ui)}"
-                                .selected="${ifDefined(action.selected)}"
-                                @click="${this.handlePaneButtonClick}"
-                            ></md-button>
-                        `)}
-                    </div>
-                `:nothing}
-            </div>
+            ${this.body?.length||this.buttons?.length?html`
+                <div class="md-pane__body">
+                    ${this.body?.length?html`<div class="md-pane__inner">${this.body}</div>`:nothing}
+                    ${this.buttons?.length?html`
+                        <div class="md-pane__footer">
+                            ${this.buttons.map(action => html`
+                                <md-button 
+                                    class="md-pane__button"
+                                    .icon="${ifDefined(action.icon)}"
+                                    .label="${ifDefined(action.label??action)}"
+                                    .type="${ifDefined(action.type)}"
+                                    .ui="${ifDefined(action.ui)}"
+                                    .selected="${ifDefined(action.selected)}"
+                                    @click="${this.handlePaneButtonClick}"
+                                ></md-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                </div>
+            `:nothing}
         `;
     }
 
@@ -128,7 +130,7 @@ class MDPane extends MDElement {
                         //
                         "dialog",
                         "modal",
-                    ].includes(this.ui)
+                    ].some(ui => this.ui.includes(ui))
                 ) {
                     this.paneScrim.classList.add("md-pane--open");
                 }
