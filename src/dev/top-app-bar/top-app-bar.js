@@ -13,7 +13,7 @@ class DevTopAppBar extends MDElement {
                         .leadingActions="${[
                             {icon:"arrow_back"},
                         ]}"
-                        .label="${"Label"}"
+                        .label="${"Title large"}"
                         .trailingActions="${[
                             {icon:"attach_file"},
                             {icon:"today"},

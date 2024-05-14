@@ -124,10 +124,17 @@ class DevMain extends MDElement {
         return this.querySelector("#top-app-bar");
     }
 
-    firstUpdated() {
+    async connectedCallback() {
+        super.connectedCallback()
+        await this.updateComplete
         this.handleDevMainLayoutChange = this.handleDevMainLayoutChange.bind(this);
         this.handleDevMainLayoutChange({ detail: layout });
         window.addEventListener("onLayoutChange", this.handleDevMainLayoutChange);
+    }
+
+    async disconnectedCallback() {
+        super.disconnectedCallback()
+        window.removeEventListener("onLayoutChange", this.handleDevMainLayoutChange);
     }
 
     handleDevMainLayoutChange(event) {

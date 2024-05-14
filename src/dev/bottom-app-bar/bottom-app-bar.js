@@ -8,6 +8,7 @@ class DevBottomAppBar extends MDElement {
         return html`
             <div class="md-layout--border md-layout--fit">
                 <div class="md-layout__item--south">
+
                     <md-bottom-app-bar
                         id="bottom-app-bar"
                         .actions="${[
@@ -23,9 +24,29 @@ class DevBottomAppBar extends MDElement {
                         @onBottomAppBarActionClick="${console.log}"
                         @onBottomAppBarFabClick="${console.log}"
                     ></md-bottom-app-bar>
+
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
-                    <md-button ui="filled-tonal" label="Bottom app bar with four icon buttons and a FAB" @click="${this.handleClick}"></md-button><br><br>
+                <div class="md-layout__item--center">
+                    <div class="md-layout--border md-layout--fit">
+                        <div class="md-layout__item--south">
+                            
+                            <md-bottom-app-bar
+                                id="bottom-app-bar2"
+                                .actions="${[
+                                    {icon:"check_box"},
+                                    {icon:"brush"},
+                                    {icon:"mic"},
+                                    {icon:"image"},
+                                ]}"
+                                @onBottomAppBarActionClick="${console.log}"
+                            ></md-bottom-app-bar>
+                            
+                        </div>
+                        <div class="md-layout__item--center" style="padding:24px;">
+                            <md-button ui="filled-tonal" label="Icon buttons and FAB" @click="${this.handleClick}"></md-button><br><br>
+                            <md-button ui="filled-tonal" label="Icon buttons and no FAB" @click="${this.handleClick2}"></md-button><br><br>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
