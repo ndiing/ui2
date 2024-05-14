@@ -10,16 +10,16 @@ class DevDateField extends MDElement {
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
                 <div class="md-layout--column" style="margin:24px;">
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-date-field label="Date Field" text="Text content" name="text1"></md-date-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-date-field label="Date Field" text="Text content" name="text2" placeholder="placeholder" required></md-date-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-date-field label="Date Field" text="Text content" name="text3" value="value" defaultValue="value"></md-date-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>

@@ -7,15 +7,15 @@ class DevFab extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--column" style="margin:24px;">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-fab icon="accessible_forward"></md-fab>
                     <md-fab icon="accessible_forward" ui="unelevated"></md-fab>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-fab icon="edit" ui="small"></md-fab>
                     <md-fab icon="edit" ui="small unelevated"></md-fab>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-fab icon="palette" ui="large"></md-fab>
                     <md-fab icon="palette" ui="large unelevated"></md-fab>
                 </div>

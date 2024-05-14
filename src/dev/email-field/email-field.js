@@ -10,16 +10,16 @@ class DevEmailField extends MDElement {
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
                 <div class="md-layout--column" style="margin:24px;">
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-email-field label="Email Field" text="Text content" name="email1"></md-email-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-email-field label="Email Field" text="Text content" name="email2" placeholder="placeholder" required></md-email-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-email-field label="Email Field" text="Text content" name="email3" value="you@me.com" defaultValue="you@me.com"></md-email-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>

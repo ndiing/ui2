@@ -10,16 +10,16 @@ class DevSelectField extends MDElement {
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
                 <div class="md-layout--column" style="margin:24px;">
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-select-field label="Select Field" text="Text content" name="text1"></md-select-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-select-field label="Select Field" text="Text content" name="text2" placeholder="placeholder" required></md-select-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-select-field label="Select Field" text="Text content" name="text3" value="value" defaultValue="value"></md-select-field>
                     </div>
-                    <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                    <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
                         <md-button type="submit" label="Submit" ui="filled"></md-button>
                     </div>

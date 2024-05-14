@@ -8,7 +8,7 @@ class DevTooltip extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--column" style="margin:24px;">
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tooltip id="tooltip">Lorem, ipsum.</md-tooltip>
                     <md-button ui="filled-tonal" label="tooltip" 
                         @click="${this.handleClick}"
@@ -16,7 +16,7 @@ class DevTooltip extends MDElement {
                         @mouseleave="${this.handleMouseleave}"
                     ></md-button>
                 </div>
-                <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
+                <div class="md-layout__item md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                     <md-tooltip id="tooltip2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, doloribus.</md-tooltip>
                     <md-button ui="filled-tonal" label="tooltip" 
                         @click="${this.handleClick2}"

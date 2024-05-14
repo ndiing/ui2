@@ -7,21 +7,11 @@ class DevLayout extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item md-layout__item--north md-layout--fit" >
-                    north
-                </div>
-                <div class="md-layout__item md-layout__item--west md-layout--fit" >
-                    west
-                </div>
-                <div class="md-layout__item md-layout__item--center md-layout--fit" style="">
-                    center
-                </div>
-                <div class="md-layout__item md-layout__item--east md-layout--fit">
-                    east
-                </div>
-                <div class="md-layout__item md-layout__item--south md-layout--fit" >
-                    south
-                </div>
+                <div class="md-layout__item md-layout__item--north">north</div>
+                <div class="md-layout__item md-layout__item--west">west</div>
+                <div class="md-layout__item md-layout__item--center">center</div>
+                <div class="md-layout__item md-layout__item--east">east</div>
+                <div class="md-layout__item md-layout__item--south">south</div>
             </div>
         `;
     }
