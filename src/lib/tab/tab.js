@@ -40,11 +40,10 @@ class MDTab extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
+            this.classList.add("md-tab--primary");
+            this.classList.add("md-tab--secondary");
             if (this.ui) {
                 this.classList.add("md-tab--" + this.ui);
-            } else {
-                this.classList.add("md-tab--primary");
-                this.classList.add("md-tab--secondary");
             }
         }
     }

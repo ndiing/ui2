@@ -25,8 +25,6 @@ const routes = [
             { path: "element", load: () => import("./element/element.js").then((m) => m.default) },
             { path: "email-field", load: () => import("./email-field/email-field.js").then((m) => m.default) },
             { path: "emoji", load: () => import("./emoji/emoji.js").then((m) => m.default) },
-            { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
-            { path: "example2", load: () => import("./example2/example2.js").then((m) => m.default) },
             { path: "extended-fab", load: () => import("./extended-fab/extended-fab.js").then((m) => m.default) },
             { path: "fab", load: () => import("./fab/fab.js").then((m) => m.default) },
             { path: "file-field", load: () => import("./file-field/file-field.js").then((m) => m.default) },

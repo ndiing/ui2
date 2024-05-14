@@ -131,14 +131,13 @@ class MDSlider extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
+            this.classList.remove("md-slider--centered");
+            this.classList.remove("md-slider--continuous");
+            this.classList.remove("md-slider--discrete");
+            this.classList.remove("md-slider--range-selection");
             if (this.ui) {
                 this.classList.add("md-slider--" + this.ui);
-            } else {
-                this.classList.remove("md-slider--centered");
-                this.classList.remove("md-slider--continuous");
-                this.classList.remove("md-slider--discrete");
-                this.classList.remove("md-slider--range-selection");
-            }
+            } 
         }
     }
 
