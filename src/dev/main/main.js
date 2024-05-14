@@ -89,7 +89,7 @@ class DevMain extends MDElement {
         return html`
             <div class="md-layout--border md-layout--fit">
 
-                <div class="md-layout__item--north">
+                <div class="md-layout__item md-layout__item--north">
                     <md-top-app-bar
                         id="top-app-bar"
                         .leadingActions="${[
@@ -99,7 +99,7 @@ class DevMain extends MDElement {
                     ></md-top-app-bar>
                 </div>
 
-                <div class="md-layout__item--west">
+                <div class="md-layout__item md-layout__item--west">
                     <md-navigation-drawer
                         id="navigation-drawer"
                         .list="${this.list}"
@@ -108,7 +108,7 @@ class DevMain extends MDElement {
                     ></md-navigation-drawer>
                 </div>
 
-                <div class="md-layout__item--center">
+                <div class="md-layout__item md-layout__item--center">
                     <md-outlet></md-outlet>
                 </div>
 

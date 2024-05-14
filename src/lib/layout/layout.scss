@@ -2,15 +2,15 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: "north north north" "west center east" "south south south";
+    grid-template-areas:
+        "north north north"
+        "west center east"
+        "south south south";
     position: relative;
-    // overflow: hidden auto;
-    > .md-layout__item--north,
-    > .md-layout__item--east,
-    > .md-layout__item--center,
-    > .md-layout__item--south,
-    > .md-layout__item--west {
-        overflow: hidden auto;
+    overflow: hidden;
+
+    > .md-layout__item {
+        overflow: auto;
     }
 
     > .md-layout__item--north {
@@ -87,5 +87,3 @@
     width: 100%;
     height: 100%;
 }
-
-

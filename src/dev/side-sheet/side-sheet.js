@@ -7,7 +7,7 @@ class DevSideSheet extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--east ">
+                <div class="md-layout__item md-layout__item--east ">
                     <md-side-sheet 
                         id="sideSheet1"
                         @onSideSheetActionClick="${this.handleClick1}"
@@ -28,7 +28,7 @@ class DevSideSheet extends MDElement {
                     </md-side-sheet>
                     
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Standard side sheet" @click="${this.handleClick1}"></md-button><br><br>
                     <md-button ui="filled-tonal" label="Modal side sheet" @click="${this.handleClick2}"></md-button><br><br>
                 </div>

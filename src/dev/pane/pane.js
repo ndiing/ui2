@@ -7,7 +7,7 @@ class DevPane extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--north">
+                <div class="md-layout__item md-layout__item--north">
                     <md-pane
                         id="sheet1"
                         .ui="${"sheet north"}"
@@ -17,7 +17,7 @@ class DevPane extends MDElement {
                         Lorem, ipsum dolor.
                     </md-pane>
                 </div>
-                <div class="md-layout__item--east">
+                <div class="md-layout__item md-layout__item--east">
                 <md-pane
                         id="sheet2"
                         .ui="${"sheet east"}"
@@ -27,7 +27,7 @@ class DevPane extends MDElement {
                         Lorem, ipsum dolor.
                     </md-pane>
                 </div>
-                <div class="md-layout__item--south">
+                <div class="md-layout__item md-layout__item--south">
                 <md-pane
                         id="sheet3"
                         .ui="${"sheet south"}"
@@ -37,7 +37,7 @@ class DevPane extends MDElement {
                         Lorem, ipsum dolor.
                     </md-pane>
                 </div>
-                <div class="md-layout__item--west">
+                <div class="md-layout__item md-layout__item--west">
                 <md-pane
                         id="sheet4"
                         .ui="${"sheet west"}"
@@ -47,7 +47,7 @@ class DevPane extends MDElement {
                         Lorem, ipsum dolor.
                     </md-pane>
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                     <div class="md-layout--column" style="margin:24px;">
                         <div class="md-layout__item--expanded4 md-layout__item--medium4 md-layout__item--compact4">
                             <md-pane>

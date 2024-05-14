@@ -7,7 +7,7 @@ class DevNavigationRail extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--west" style="overflow:hidden;">
+                <div class="md-layout__item md-layout__item--west" style="overflow:hidden;">
                     <md-navigation-rail 
                         id="navigationRail1"
                         .list="${[
@@ -19,9 +19,9 @@ class DevNavigationRail extends MDElement {
                     ></md-navigation-rail>
                     
                 </div>
-                <div class="md-layout__item--center">
+                <div class="md-layout__item md-layout__item--center">
                     <div class="md-layout--border md-layout--fit">
-                        <div class="md-layout__item--west" style="overflow:hidden;">
+                        <div class="md-layout__item md-layout__item--west" style="overflow:hidden;">
                             
                             <md-navigation-rail 
                                 id="navigationRail2"
@@ -33,7 +33,7 @@ class DevNavigationRail extends MDElement {
                                 ]}"
                             ></md-navigation-rail>
                         </div>
-                        <div class="md-layout__item--center" style="padding:24px;">
+                        <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                             <md-button ui="filled-tonal" label="All destinations with text labels" @click="${this.handleClick1}"></md-button><br><br>
                             <md-button ui="filled-tonal" label="All destinations without labels" @click="${this.handleClick2}"></md-button><br><br>
                         </div>

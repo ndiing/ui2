@@ -7,7 +7,7 @@ class DevTopAppBar extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--north">
+                <div class="md-layout__item md-layout__item--north">
                     <md-top-app-bar
                         id="top-app-bar"
                         .leadingActions="${[
@@ -23,7 +23,7 @@ class DevTopAppBar extends MDElement {
                         @onTopAppBarActionClick="${console.log}"
                     ></md-top-app-bar>
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick}"></md-button>
                 </div>
             </div>

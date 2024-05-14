@@ -7,7 +7,7 @@ class DevNavigationDrawer extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--west">
+                <div class="md-layout__item md-layout__item--west">
                     <md-navigation-drawer 
                         id="navigationDrawer1"
                         .list="${[
@@ -30,7 +30,7 @@ class DevNavigationDrawer extends MDElement {
                     ></md-navigation-drawer>
                     
                 </div>
-                <div class="md-layout__item--center" style="padding:24px;">
+                <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Standard navigation drawer" @click="${this.handleClick1}"></md-button><br><br>
                     <md-button ui="filled-tonal" label="Modal navigation drawer" @click="${this.handleClick2}"></md-button><br><br>
                 </div>

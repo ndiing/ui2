@@ -8,7 +8,7 @@ class DevBadge extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--south">
+                <div class="md-layout__item md-layout__item--south">
                     <md-navigation-bar 
                         id="navigation-bar"
                         .open="${true}}"
@@ -20,9 +20,9 @@ class DevBadge extends MDElement {
                         ]}"
                     ></md-navigation-bar>
                 </div>
-                <div class="md-layout__item--center">
+                <div class="md-layout__item md-layout__item--center">
                     <div class="md-layout--border md-layout--fit">
-                        <div class="md-layout__item--west">
+                        <div class="md-layout__item md-layout__item--west">
                             <md-navigation-rail 
                                 id="navigation-rail"
                                 .open="${true}}"
@@ -34,7 +34,7 @@ class DevBadge extends MDElement {
                                 ]}"
                             ></md-navigation-rail>
                         </div>
-                        <div class="md-layout__item--center" style="padding:24px;">
+                        <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                         </div>
                     </div>
                 </div>

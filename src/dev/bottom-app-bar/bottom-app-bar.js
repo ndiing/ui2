@@ -7,7 +7,7 @@ class DevBottomAppBar extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout--border md-layout--fit">
-                <div class="md-layout__item--south">
+                <div class="md-layout__item md-layout__item--south">
 
                     <md-bottom-app-bar
                         id="bottom-app-bar"
@@ -26,9 +26,9 @@ class DevBottomAppBar extends MDElement {
                     ></md-bottom-app-bar>
 
                 </div>
-                <div class="md-layout__item--center">
+                <div class="md-layout__item md-layout__item--center">
                     <div class="md-layout--border md-layout--fit">
-                        <div class="md-layout__item--south">
+                        <div class="md-layout__item md-layout__item--south">
                             
                             <md-bottom-app-bar
                                 id="bottom-app-bar2"
@@ -42,7 +42,7 @@ class DevBottomAppBar extends MDElement {
                             ></md-bottom-app-bar>
                             
                         </div>
-                        <div class="md-layout__item--center" style="padding:24px;">
+                        <div class="md-layout__item md-layout__item--center" style="padding:24px;">
                             <md-button ui="filled-tonal" label="Icon buttons and FAB" @click="${this.handleClick}"></md-button><br><br>
                             <md-button ui="filled-tonal" label="Icon buttons and no FAB" @click="${this.handleClick2}"></md-button><br><br>
                         </div>
