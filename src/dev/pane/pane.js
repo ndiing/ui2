@@ -7,38 +7,6 @@ class DevPane extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-border md-layout-fit">
-                <md-pane
-                    .label="${"Label"}"
-                    .trailingActions="${[
-                        {icon:"image"}
-                    ]}"
-                    ui="sheet north"
-                    id="north"
-                ></md-pane>
-                <md-pane
-                    .label="${"Label"}"
-                    .trailingActions="${[
-                        {icon:"image"}
-                    ]}"
-                    ui="sheet east"
-                    id="east"
-                ></md-pane>
-                <md-pane
-                    .label="${"Label"}"
-                    .trailingActions="${[
-                        {icon:"image"}
-                    ]}"
-                    ui="sheet south"
-                    id="south"
-                ></md-pane>
-                <md-pane
-                    .label="${"Label"}"
-                    .trailingActions="${[
-                        {icon:"image"}
-                    ]}"
-                    ui="sheet west"
-                    id="west"
-                ></md-pane>
                 
                 <md-pane
                     .label="${"Label"}"
@@ -74,111 +42,151 @@ class DevPane extends MDElement {
                 ></md-pane>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div class="md-layout-column" style="margin: 24px;">
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane>
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .label="${"Label"}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .leadingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .label="${"Label"}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .leadingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .label="${"Label"}"
-                                .trailingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .leadingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .label="${"Label"}"
-                                .trailingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .buttons="${[
-                                    {label:"button"}
-                                ]}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .leadingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .label="${"Label"}"
-                                .trailingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .buttons="${[
-                                    {label:"button"}
-                                ]}"
-                                ui="dialog"
-                                id="dialog"
-                                @onPaneActionClick="${this.handleClick}"
-                                @onPaneButtonClick="${this.handleClick}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                            <md-button label="dialog" ui="filled-tonal" @click="${this.handleClick}"></md-button>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                .leadingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .label="${"Label"}"
-                                .trailingActions="${[
-                                    {icon:"image"}
-                                ]}"
-                                .buttons="${[
-                                    {label:"button"}
-                                ]}"
-                                ui="dialog full-screen"
-                                id="dialog2"
-                                @onPaneActionClick="${this.handleClick2}"
-                                @onPaneButtonClick="${this.handleClick2}"
-                            >
-                                Lorem ipsum dolor sit amet.
-                            </md-pane>
-                            <md-button label="dialog full-screen" ui="filled-tonal" @click="${this.handleClick2}"></md-button>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button label="sheet north" ui="filled-tonal" @click="${this.handleClick3}"></md-button>
-                            <md-button label="sheet east" ui="filled-tonal" @click="${this.handleClick4}"></md-button>
-                            <md-button label="sheet south" ui="filled-tonal" @click="${this.handleClick5}"></md-button>
-                            <md-button label="sheet west" ui="filled-tonal" @click="${this.handleClick6}"></md-button>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button label="sheet north modal" ui="filled-tonal" @click="${this.handleClick32}"></md-button>
-                            <md-button label="sheet east modal" ui="filled-tonal" @click="${this.handleClick42}"></md-button>
-                            <md-button label="sheet south modal" ui="filled-tonal" @click="${this.handleClick52}"></md-button>
-                            <md-button label="sheet west modal" ui="filled-tonal" @click="${this.handleClick62}"></md-button>
+                    <div class="md-layout-border md-layout-fit">
+
+                        <md-pane
+                            .label="${"Label"}"
+                            .trailingActions="${[
+                                {icon:"image"}
+                            ]}"
+                            ui="sheet north"
+                            id="north"
+                        ></md-pane>
+                        <md-pane
+                            .label="${"Label"}"
+                            .trailingActions="${[
+                                {icon:"image"}
+                            ]}"
+                            ui="sheet east"
+                            id="east"
+                        ></md-pane>
+                        <md-pane
+                            .label="${"Label"}"
+                            .trailingActions="${[
+                                {icon:"image"}
+                            ]}"
+                            ui="sheet south"
+                            id="south"
+                        ></md-pane>
+                        <md-pane
+                            .label="${"Label"}"
+                            .trailingActions="${[
+                                {icon:"image"}
+                            ]}"
+                            ui="sheet west"
+                            id="west"
+                        ></md-pane>
+                        
+
+                        <div class="md-layout-border__item md-layout-border__item--center">
+                            <div class="md-layout-column" style="margin: 24px;">
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane>
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .label="${"Label"}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .leadingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .label="${"Label"}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .leadingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .label="${"Label"}"
+                                        .trailingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .leadingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .label="${"Label"}"
+                                        .trailingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .buttons="${[
+                                            {label:"button"}
+                                        ]}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .leadingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .label="${"Label"}"
+                                        .trailingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .buttons="${[
+                                            {label:"button"}
+                                        ]}"
+                                        ui="dialog"
+                                        id="dialog"
+                                        @onPaneActionClick="${this.handleClick}"
+                                        @onPaneButtonClick="${this.handleClick}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                    <md-button label="dialog" ui="filled-tonal" @click="${this.handleClick}"></md-button>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane
+                                        .leadingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .label="${"Label"}"
+                                        .trailingActions="${[
+                                            {icon:"image"}
+                                        ]}"
+                                        .buttons="${[
+                                            {label:"button"}
+                                        ]}"
+                                        ui="dialog full-screen"
+                                        id="dialog2"
+                                        @onPaneActionClick="${this.handleClick2}"
+                                        @onPaneButtonClick="${this.handleClick2}"
+                                    >
+                                        Lorem ipsum dolor sit amet.
+                                    </md-pane>
+                                    <md-button label="dialog full-screen" ui="filled-tonal" @click="${this.handleClick2}"></md-button>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="sheet north" ui="filled-tonal" @click="${this.handleClick3}"></md-button>
+                                    <md-button label="sheet east" ui="filled-tonal" @click="${this.handleClick4}"></md-button>
+                                    <md-button label="sheet south" ui="filled-tonal" @click="${this.handleClick5}"></md-button>
+                                    <md-button label="sheet west" ui="filled-tonal" @click="${this.handleClick6}"></md-button>
+                                </div>
+                                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="sheet north modal" ui="filled-tonal" @click="${this.handleClick32}"></md-button>
+                                    <md-button label="sheet east modal" ui="filled-tonal" @click="${this.handleClick42}"></md-button>
+                                    <md-button label="sheet south modal" ui="filled-tonal" @click="${this.handleClick52}"></md-button>
+                                    <md-button label="sheet west modal" ui="filled-tonal" @click="${this.handleClick62}"></md-button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
