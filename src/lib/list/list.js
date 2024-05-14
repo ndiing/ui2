@@ -3,8 +3,8 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { Ripple } from "../ripple/ripple";
 
-function notNull(value){
-    return value!==null&&value!==undefined
+function notNull(value) {
+    return value !== null && value !== undefined;
 }
 
 class MDListItem extends MDElement {
@@ -78,12 +78,12 @@ class MDListItem extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
 
-        await this.updateComplete
+        await this.updateComplete;
 
         this.classList.add("md-list__item");
 
         this.ripple = new Ripple(this, {
-            fadeout:true
+            fadeout: true,
         });
     }
 
@@ -112,9 +112,9 @@ class MDListItem extends MDElement {
     }
 
     updated(changedProperties) {
-        if(changedProperties.has('selected')){
-            if(this.selected){
-                this.emit('onListItemSelected',this)
+        if (changedProperties.has("selected")) {
+            if (this.selected) {
+                this.emit("onListItemSelected", this);
             }
         }
     }
@@ -232,7 +232,7 @@ class MDList extends MDElement {
     updated(changedProperties) {}
 
     handleListKeydown(event) {
-        if (this.allSelection&&event.ctrlKey && event.key === "a") {
+        if (this.allSelection && event.ctrlKey && event.key === "a") {
             event.preventDefault();
             this.list.forEach((item) => {
                 item.selected = true;
@@ -250,7 +250,7 @@ class MDList extends MDElement {
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.list.indexOf(data);
 
-        if (this.rangeSelection&&event.shiftKey) {
+        if (this.rangeSelection && event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
@@ -259,7 +259,7 @@ class MDList extends MDElement {
             this.list.forEach((item, index) => {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
-        } else if (this.multiSelection&&event.ctrlKey) {
+        } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
         } else if (this.singleSelection) {
             this.list.forEach((item) => {
