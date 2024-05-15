@@ -22,26 +22,20 @@ class DevBadge extends MDElement {
                     ></md-navigation-bar>
                 </div>
                 
+                <div class="md-layout-border__item md-layout-border__item--west">
+                    <md-navigation-rail 
+                        id="navigation-rail"
+                        .open="${true}}"
+                        .list="${[
+                            { icon:'change_history',label: 'Label', selected:true },
+                            { icon:'change_history',label: 'Label', badge: 0 },
+                            { icon:'change_history',label: 'Label', badge: 1 },
+                            { icon:'change_history',label: 'Label', badge: 1000 },
+                        ]}"
+                    ></md-navigation-rail>
+                </div>
+
                 <div class="md-layout-border__item md-layout-border__item--center">
-
-                    <div class="md-layout-border md-layout-fit">
-
-                        <div class="md-layout-border__item md-layout-border__item--west">
-                            <md-navigation-rail 
-                                id="navigation-rail"
-                                .open="${true}}"
-                                .list="${[
-                                    { icon:'change_history',label: 'Label', selected:true },
-                                    { icon:'change_history',label: 'Label', badge: 0 },
-                                    { icon:'change_history',label: 'Label', badge: 1 },
-                                    { icon:'change_history',label: 'Label', badge: 1000 },
-                                ]}"
-                            ></md-navigation-rail>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--center" style="padding:24px;">
-                        </div>
-
-                    </div>
 
                 </div>
             </div>
