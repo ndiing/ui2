@@ -1,10 +1,13 @@
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
+import { MDList } from "../list/list";
 
 class MDPane extends MDElement {
     static get properties() {
         return {
+            ...MDList.properties,
+
             leadingActions: { type: Array },
             label: { type: String },
             labelSecondary: { type: String },
@@ -64,7 +67,16 @@ class MDPane extends MDElement {
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
                 <div class="md-pane__body">
-                    ${this.body?.length?html`<div class="md-pane__inner">${this.body}</div>`:nothing}
+                    <div class="md-pane__inner">
+                        <md-list
+                            class="md-pane__list"
+                            .list="${ifDefined(this.list)}"
+                            .allSelection="${ifDefined(this.allSelection)}"
+                            .rangeSelection="${ifDefined(this.rangeSelection)}"
+                            .multiSelection="${ifDefined(this.multiSelection)}"
+                            .singleSelection="${ifDefined(this.singleSelection)}"
+                        ></md-list>
+                    </div>
                     ${this.buttons?.length?html`
                         <div class="md-pane__footer">
                             ${this.buttons.map(action => html`

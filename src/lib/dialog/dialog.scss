@@ -1,16 +1,18 @@
 .md-dialog {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container-lowest);
+    background: var((--md-sys-color-surface-container-lowest));
     box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-dialog__header {
     display: flex;
     align-items: center;
+
     padding: 24px;
-    gap: 16px;
+    gap: 0 16px;
 
     + .md-dialog__body {
         margin-top: -24px;
@@ -20,30 +22,43 @@
 .md-dialog__actions {
     display: inline-flex;
     align-items: center;
-    gap: 24px;
-}
 
+    gap: 0 16px;
+}
 .md-dialog__action {
     color: var(--md-sys-color-on-surface-variant);
 }
 
 .md-dialog__label {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    + .md-dialog__actions {
+        margin-left: auto;
+    }
+}
+.md-dialog__label-primary {
     @extend .md-typography--title-large;
+}
+.md-dialog__label-secondary {
+    @extend .md-typography--body-medium;
 }
 
 .md-dialog__body {
     flex: 1;
-    overflow: hidden auto;
+    overflow: auto;
+
     display: flex;
     flex-direction: column;
 }
 
 .md-dialog__inner {
     flex: 1;
-    overflow: hidden auto;
+    overflow: auto;
+
     padding: 0 24px;
     margin: 24px 0;
+
     @extend .md-typography--body-medium;
 
     + .md-dialog__footer {
@@ -55,50 +70,65 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     padding: 24px;
-    gap: 8px;
+    gap: 0 8px;
 }
 
+// .md-dialog__button {
+// }
+
 .md-dialog {
+    display: inline-flex;
+
     min-width: 280px;
     max-width: 560px;
+
     border-radius: var(--md-sys-shape-corner-extra-large);
-    background: var(--md-sys-color-surface-container-high);
+    background: var((--md-sys-color-surface-container-high));
     box-shadow: var(--md-sys-elevation-level3);
+
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate3d(-50%, -50%, 0) scale(1);
     z-index: 2;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
 
     &:not(.md-dialog--open) {
-        transform: translate3d(-50%, -50%, 0) scale(0.84);
         opacity: 0;
         pointer-events: none;
+        transform: translate3d(-50%, -50%, 0) scale(0.88);
     }
 }
 
 .md-dialog--full-screen {
-    width: 100%;
+    min-width: 100%;
     max-width: 100%;
+    width: 100%;
     height: 100%;
+
     border-radius: var(--md-sys-shape-corner-none);
-    background: var(--md-sys-color-surface);
+    background: var((--md-sys-color-surface));
     box-shadow: var(--md-sys-elevation-level0);
 }
+
 
 .md-dialog__scrim {
     width: 100%;
     height: 100%;
+
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
-    background: #000;
+
+    background: var(--md-sys-color-scrim);
     opacity: 32%;
+
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);

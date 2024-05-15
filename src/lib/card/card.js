@@ -12,8 +12,6 @@ class MDCard extends MDElement {
             buttons: { type: Array },
 
             ui: { type: String },
-
-            open: { type: Boolean },
         };
     }
 
@@ -64,7 +62,7 @@ class MDCard extends MDElement {
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
                 <div class="md-card__body">
-                    ${this.body?.length?html`<div class="md-card__inner">${this.body}</div>`:nothing}
+                    <div class="md-card__inner">${this.body}</div>
                     ${this.buttons?.length?html`
                         <div class="md-card__footer">
                             ${this.buttons.map(action => html`
@@ -89,13 +87,11 @@ class MDCard extends MDElement {
         super.connectedCallback();
 
         this.classList.add("md-card");
-
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-card");
-
     }
 
     firstUpdated(changedProperties) {}
@@ -105,8 +101,8 @@ class MDCard extends MDElement {
             [
                 //
                 "elevated",
-                "outlined",
                 "filled",
+                "outlined",
             ].forEach((ui) => {
                 this.classList.remove("md-card--" + ui);
             });
@@ -116,15 +112,6 @@ class MDCard extends MDElement {
                 });
             }
         }
-        
-    }
-
-    show() {
-        this.open = true;
-    }
-
-    close() {
-        this.open = false;
     }
 
     handleCardActionClick(event) {
@@ -134,7 +121,6 @@ class MDCard extends MDElement {
     handleCardButtonClick(event) {
         this.emit("onCardButtonClick", event);
     }
-
 }
 
 customElements.define("md-card", MDCard);

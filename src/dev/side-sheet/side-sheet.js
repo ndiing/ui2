@@ -7,27 +7,25 @@ class DevSideSheet extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-border md-layout-fit">
-                <div class="md-layout-border__item md-layout-border__item--east ">
-                    <md-side-sheet 
-                        id="sideSheet1"
-                        @onSideSheetActionClick="${this.handleClick1}"
-                        @onSideSheetButtonClick="${this.handleClick1}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >
-                        body
-                    </md-side-sheet>
-                    
-                    <md-side-sheet 
-                        ui="modal"
-                        id="sideSheet2"
-                        @onSideSheetActionClick="${this.handleClick2}"
-                        @onSideSheetButtonClick="${this.handleClick2}"
-                        leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
-                    >
-                        body
-                    </md-side-sheet>
-                    
-                </div>
+                <md-side-sheet 
+                    id="sideSheet1"
+                    @onSideSheetActionClick="${this.handleClick1}"
+                    @onSideSheetButtonClick="${this.handleClick1}"
+                    leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
+                >
+                    body
+                </md-side-sheet>
+                
+                <md-side-sheet 
+                    ui="modal"
+                    id="sideSheet2"
+                    @onSideSheetActionClick="${this.handleClick2}"
+                    @onSideSheetButtonClick="${this.handleClick2}"
+                    leadingActions='["home"]' label="Label" trailingActions='["close"]' buttons='[{"label":"save","ui":"filled"}]'
+                >
+                    body
+                </md-side-sheet>
+
                 <div class="md-layout-border__item md-layout-border__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Standard side sheet" @click="${this.handleClick1}"></md-button><br><br>
                     <md-button ui="filled-tonal" label="Modal side sheet" @click="${this.handleClick2}"></md-button><br><br>

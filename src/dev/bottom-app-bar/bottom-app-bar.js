@@ -7,41 +7,33 @@ class DevBottomAppBar extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-border md-layout-fit">
-                <div class="md-layout-border__item md-layout-border__item--south">
-
-                    <md-bottom-app-bar
-                        id="bottom-app-bar"
-                        .actions="${[
-                            {icon:"check_box"},
-                            {icon:"brush"},
-                            {icon:"mic"},
-                            {icon:"image"},
-                        ]}"
-                        .fab="${{
-                            icon:"add"
-                        }}"
-                        .open="${true}"
-                        @onBottomAppBarActionClick="${console.log}"
-                        @onBottomAppBarFabClick="${console.log}"
-                    ></md-bottom-app-bar>
-
-                </div>
+                <md-bottom-app-bar
+                    id="bottom-app-bar"
+                    .actions="${[
+                        {icon:"check_box"},
+                        {icon:"brush"},
+                        {icon:"mic"},
+                        {icon:"image"},
+                    ]}"
+                    .fab="${{
+                        icon:"add"
+                    }}"
+                    .open="${true}"
+                    @onBottomAppBarActionClick="${console.log}"
+                    @onBottomAppBarFabClick="${console.log}"
+                ></md-bottom-app-bar>
                 <div class="md-layout-border__item md-layout-border__item--center">
                     <div class="md-layout-border md-layout-fit">
-                        <div class="md-layout-border__item md-layout-border__item--south">
-                            
-                            <md-bottom-app-bar
-                                id="bottom-app-bar2"
-                                .actions="${[
-                                    {icon:"check_box"},
-                                    {icon:"brush"},
-                                    {icon:"mic"},
-                                    {icon:"image"},
-                                ]}"
-                                @onBottomAppBarActionClick="${console.log}"
-                            ></md-bottom-app-bar>
-                            
-                        </div>
+                        <md-bottom-app-bar
+                            id="bottom-app-bar2"
+                            .actions="${[
+                                {icon:"check_box"},
+                                {icon:"brush"},
+                                {icon:"mic"},
+                                {icon:"image"},
+                            ]}"
+                            @onBottomAppBarActionClick="${console.log}"
+                        ></md-bottom-app-bar>
                         <div class="md-layout-border__item md-layout-border__item--center" style="padding:24px;">
                             <md-button ui="filled-tonal" label="Icon buttons and FAB" @click="${this.handleClick}"></md-button><br><br>
                             <md-button ui="filled-tonal" label="Icon buttons and no FAB" @click="${this.handleClick2}"></md-button><br><br>

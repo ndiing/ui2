@@ -125,7 +125,7 @@ function processCommand(answer) {
     }
 }
 
-function createComponent(name) {
+function createComponent(name,template='template') {
     var fileJs = `./src/lib/${name}/${name}.js`;
     var fileScss = `./src/lib/${name}/${name}.scss`;
 
@@ -135,12 +135,16 @@ function createComponent(name) {
     } else {
         console.log(`Creating component: ${name}`);
 
-        var templateJs = read("./cli/component/template.js");
-        templateJs = templateJs.replaceAll("template", name).replaceAll("Template", toPascalCase(name));
+        var templateJs = read(`./cli/component/${template}.js`);
+        templateJs=templateJs.replaceAll(`${template}`, name)
+        templateJs=templateJs.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`)
+        templateJs=templateJs.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
         write(fileJs, templateJs);
 
-        var templateScss = read("./cli/component/template.scss");
-        templateScss = templateScss.replaceAll("template", name).replaceAll("Template", toPascalCase(name));
+        var templateScss = read(`./cli/component/${template}.scss`);
+        templateScss=templateScss.replaceAll(`${template}`, name)
+        templateScss=templateScss.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`)
+        templateScss=templateScss.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
         write(fileScss, templateScss);
 
         var indexJs = read("./src/lib/index.js");
@@ -344,7 +348,7 @@ function deleteApp(name) {
 // CLI
 //
 
-const [,,method,type,name] = process.argv
+const [,,method,type,name,template] = process.argv
 
 const cli={
     createComponent,
@@ -357,4 +361,4 @@ const cli={
     deleteApp,
 }
 
-cli[toCamelCase([method,type].join())](name)
+cli[toCamelCase([method,type].join())](name,template)
