@@ -39,10 +39,11 @@ class MDNestedListItem extends MDElement {
     }
 
     renderTree() {
+        console.log(this.indent)
         // prettier-ignore
         return html`
             ${Array.from({length:this.indent}, () => html`<md-icon class="md-nested-list__icon"></md-icon>`)}
-            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.isNode?this.expanded?'keyboard_arrow_down':'keyboard_arrow_right':''}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon"></md-icon>`}
+            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.isNode?this.expanded?'keyboard_arrow_down':'keyboard_arrow_right':''}"></md-icon-button>`:this.indent>0?html`<md-icon class="md-nested-list__icon"></md-icon>`:nothing}
             <md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons_[~~this.expanded]:this.leafIcon_}</md-icon>
             <div class="md-nested-list__label"><div class="md-nested-list__label-primary">${this.label}</div></div>
         `;
@@ -160,6 +161,8 @@ class MDNestedList extends MDElement {
         super();
 
         this.singleSelection = true;
+
+        this.ui='tree'
     }
 
     renderRowItem(item, indent) {
@@ -233,7 +236,7 @@ class MDNestedList extends MDElement {
         if (changedProperties.has("list")) {
             await this.updateComplete;
             this.setList(this.list);
-            console.log(this.list);
+            // console.log(this.list);
             this.requestUpdate();
         }
     }

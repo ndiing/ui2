@@ -34,6 +34,7 @@ import "./segmented-button/segmented-button.js";
 import "./carousel/carousel.js";
 
 import "./list/list.js";
+import "./nested-list/nested-list.js";
 import "./tab/tab.js";
 import "./chip/chip.js";
 
@@ -86,4 +87,3 @@ import "./menu/menu.js";
 import "./navigation-bar/navigation-bar.js";
 import "./navigation-rail/navigation-rail.js";
 import "./navigation-drawer/navigation-drawer.js";
-import "./nested-list/nested-list.js";

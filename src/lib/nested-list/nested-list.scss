@@ -176,14 +176,16 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    .md-nested-list__row {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+    // .md-nested-list__row {
+    //     padding-left: 12px;
+    //     padding-right: 12px;
+    // }
 
     .md-nested-list__item {
         column-gap: 12px;
         border-radius: calc(56px / 2);
+        margin-left: 12px;
+        margin-right: 12px;
     }
 
     .md-nested-list__label-primary {
