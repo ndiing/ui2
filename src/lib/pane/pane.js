@@ -113,6 +113,12 @@ class MDPane extends MDElement {
                 //
                 "dialog",
                 "full-screen",
+                "sheet",
+                "north",
+                "east",
+                "south",
+                "west",
+                "modal",
             ].forEach((ui) => {
                 this.classList.remove("md-pane--" + ui);
             });
