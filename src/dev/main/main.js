@@ -89,14 +89,6 @@ class DevMain extends MDElement {
         return html`
             <div class="md-layout-border md-layout-fit">
 
-                <md-top-app-bar
-                    id="top-app-bar"
-                    .leadingActions="${[
-                        {icon:"menu"}
-                    ]}"
-                    @onTopAppBarActionClick="${this.handleDevMainTopAppBarActionClick}"
-                ></md-top-app-bar>
-
                 <md-navigation-drawer
                     id="navigation-drawer"
                     .list="${this.list}"
@@ -105,7 +97,21 @@ class DevMain extends MDElement {
                 ></md-navigation-drawer>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <md-outlet></md-outlet>
+                    <div class="md-layout-border md-layout-fit">
+        
+                        <md-top-app-bar
+                            id="top-app-bar"
+                            .leadingActions="${[
+                                {icon:"menu"}
+                            ]}"
+                            @onTopAppBarActionClick="${this.handleDevMainTopAppBarActionClick}"
+                        ></md-top-app-bar>
+        
+                        <div class="md-layout-border__item md-layout-border__item--center">
+                            <md-outlet></md-outlet>
+                        </div>
+        
+                    </div>
                 </div>
 
             </div>
