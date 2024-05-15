@@ -174,16 +174,16 @@ class DevPane extends MDElement {
                                     <md-button label="dialog full-screen" ui="filled-tonal" @click="${this.handleClick2}"></md-button>
                                 </div>
                                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                                    <md-button label="sheet north" ui="filled-tonal" @click="${this.handleClick3}"></md-button>
-                                    <md-button label="sheet east" ui="filled-tonal" @click="${this.handleClick4}"></md-button>
-                                    <md-button label="sheet south" ui="filled-tonal" @click="${this.handleClick5}"></md-button>
-                                    <md-button label="sheet west" ui="filled-tonal" @click="${this.handleClick6}"></md-button>
+                                    <md-button label="sheet north" ui="filled-tonal" @click="${this.handleClick3}"></md-button><br><br>
+                                    <md-button label="sheet east" ui="filled-tonal" @click="${this.handleClick4}"></md-button><br><br>
+                                    <md-button label="sheet south" ui="filled-tonal" @click="${this.handleClick5}"></md-button><br><br>
+                                    <md-button label="sheet west" ui="filled-tonal" @click="${this.handleClick6}"></md-button><br><br>
                                 </div>
                                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                                    <md-button label="sheet north modal" ui="filled-tonal" @click="${this.handleClick32}"></md-button>
-                                    <md-button label="sheet east modal" ui="filled-tonal" @click="${this.handleClick42}"></md-button>
-                                    <md-button label="sheet south modal" ui="filled-tonal" @click="${this.handleClick52}"></md-button>
-                                    <md-button label="sheet west modal" ui="filled-tonal" @click="${this.handleClick62}"></md-button>
+                                    <md-button label="sheet north modal" ui="filled-tonal" @click="${this.handleClick32}"></md-button><br><br>
+                                    <md-button label="sheet east modal" ui="filled-tonal" @click="${this.handleClick42}"></md-button><br><br>
+                                    <md-button label="sheet south modal" ui="filled-tonal" @click="${this.handleClick52}"></md-button><br><br>
+                                    <md-button label="sheet west modal" ui="filled-tonal" @click="${this.handleClick62}"></md-button><br><br>
                                 </div>
                             </div>
 
