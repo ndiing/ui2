@@ -25,15 +25,14 @@ class MDNavigationDrawer extends MDElement {
         return html`
             <div class="md-navigation-drawer__body">
                 <div class="md-navigation-drawer__inner">
-                    <md-nested-list
-                        class="md-navigation-drawer__nested-list"
+                    <md-list
+                        class="md-navigation-drawer__list"
                         .list="${ifDefined(this.list)}"
                         .allSelection="${ifDefined(this.allSelection)}"
                         .rangeSelection="${ifDefined(this.rangeSelection)}"
                         .multiSelection="${ifDefined(this.multiSelection)}"
                         .singleSelection="${ifDefined(this.singleSelection??true)}"
-                        .ui="${'tree'}"
-                    ></md-nested-list>
+                    ></md-list>
                 </div>
             </div>
         `;

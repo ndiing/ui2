@@ -177,7 +177,7 @@ function deleteComponent(name) {
         removeDir(dir);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/).filter(Boolean);
+        var listJs = indexJs.split(/\r\n/)//.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         var iJs = listJs.indexOf(js);
         if (iJs >= -1) {
@@ -187,7 +187,7 @@ function deleteComponent(name) {
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/).filter(Boolean);
+        var listScss = indexScss.split(/\r\n/)//.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         var iScss = listScss.indexOf(scss);
         if (iScss >= -1) {
