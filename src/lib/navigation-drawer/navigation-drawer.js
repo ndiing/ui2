@@ -1,18 +1,22 @@
+import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
 
 class MDNavigationDrawer extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties, {
+        return {
+            ...MDList.properties,
+
             ui: { type: String },
-            open: { type: Boolean, reflect: true },
-        });
+
+            open: { type: Boolean },
+        };
     }
 
     constructor() {
         super();
+
         this.body = Array.from(this.childNodes);
     }
 
@@ -21,67 +25,79 @@ class MDNavigationDrawer extends MDElement {
         return html`
             <div class="md-navigation-drawer__body">
                 <div class="md-navigation-drawer__inner">
-                    <md-list 
+                    <md-list
                         class="md-navigation-drawer__list"
-                        .list="${this.list}"
-                        .singleSelection="${true}"
-                        @onListItemClick="${this.handleNavigationDrawerListItemClick}"
+                        .list="${ifDefined(this.list)}"
+                        .allSelection="${ifDefined(this.allSelection)}"
+                        .rangeSelection="${ifDefined(this.rangeSelection)}"
+                        .multiSelection="${ifDefined(this.multiSelection)}"
+                        .singleSelection="${ifDefined(this.singleSelection??true)}"
                     ></md-list>
                 </div>
             </div>
-        `
+        `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
-        this.classList.add("md-navigation-drawer");
-        this.navigationDrawerScrimElement = document.createElement("div");
-        this.parentElement.insertBefore(this.navigationDrawerScrimElement, this.nextElementSibling);
-        this.navigationDrawerScrimElement.classList.add("md-navigation-drawer__scrim");
-        this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
-        this.navigationDrawerScrimElement.addEventListener("click", this.handleNavigationDrawerScrimClick);
-        this.updateStyle();
-    }
 
-    updateStyle() {
-        if (this.ui?.includes("modal")) {
-            if (this.open) {
-                this.navigationDrawerScrimElement.classList.add("md-navigation-drawer--open");
-            } else {
-                this.navigationDrawerScrimElement.classList.remove("md-navigation-drawer--open");
-            }
-        }
+        this.classList.add("md-navigation-drawer");
+
+        this.navigationDrawerScrim = document.createElement("div");
+        this.parentElement.insertBefore(this.navigationDrawerScrim, this.nextElementSibling);
+        this.navigationDrawerScrim.classList.add("md-navigation-drawer__scrim");
+        this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
+        this.navigationDrawerScrim.addEventListener("click", this.handleNavigationDrawerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
-        this.navigationDrawerScrimElement.remove();
-        this.navigationDrawerScrimElement.removeEventListener("click", this.handleNavigationDrawerScrimClick);
+
+        this.navigationDrawerScrim.removeEventListener("click", this.handleNavigationDrawerScrimClick);
+        this.navigationDrawerScrim.remove();
     }
+
+    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            ["modal"].forEach((ui) => {
+            [
+                //
+                "modal",
+            ].forEach((ui) => {
                 this.classList.remove("md-navigation-drawer--" + ui);
             });
-
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-navigation-drawer--" + ui);
                 });
             }
         }
-
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-navigation-drawer--open");
+                if (
+                    [
+                        //
+                        "modal",
+                    ].some((ui) => this.ui?.includes(ui))
+                ) {
+                    this.navigationDrawerScrim.classList.add("md-navigation-drawer--open");
+                }
             } else {
                 this.classList.remove("md-navigation-drawer--open");
+                this.navigationDrawerScrim.classList.remove("md-navigation-drawer--open");
             }
-            this.updateStyle();
         }
+    }
+
+    show() {
+        this.open = true;
+    }
+
+    close() {
+        this.open = false;
     }
 
     handleNavigationDrawerActionClick(event) {
@@ -95,18 +111,6 @@ class MDNavigationDrawer extends MDElement {
     handleNavigationDrawerScrimClick(event) {
         this.close();
         this.emit("onNavigationDrawerScrimClick", event);
-    }
-
-    handleNavigationDrawerListItemClick(event) {
-        this.emit("onNavigationDrawerListItemClick", event);
-    }
-
-    show() {
-        this.open = true;
-    }
-
-    close() {
-        this.open = false;
     }
 }
 

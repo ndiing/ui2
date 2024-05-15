@@ -148,14 +148,14 @@ function createComponent(name,template='template') {
         write(fileScss, templateScss);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/).filter(Boolean);
+        var listJs = indexJs.split(/\r\n/)//.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         listJs.push(js);
         indexJs = listJs.join("\r\n");
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/).filter(Boolean);
+        var listScss = indexScss.split(/\r\n/)//.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         listScss.push(scss);
         indexScss = listScss.join("\r\n");

@@ -7,29 +7,26 @@ class DevNavigationDrawer extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-border md-layout-fit">
-                <div class="md-layout-border__item md-layout-border__item--west">
-                    <md-navigation-drawer 
-                        id="navigationDrawer1"
-                        .list="${[
-                            { icon:'inbox',label: 'Inbox', selected:true },
-                            { icon:'send',label: 'Outbox' },
-                            { icon:'favorite',label: 'Favorites' },
-                            { icon:'delete',label: 'Trash' },
-                        ]}"
-                    ></md-navigation-drawer>
-                    
-                    <md-navigation-drawer 
-                        id="navigationDrawer2"
-                        .ui="${"modal"}"
-                        .list="${[
-                            { icon:'inbox',label: 'Inbox', selected:true },
-                            { icon:'send',label: 'Outbox' },
-                            { icon:'favorite',label: 'Favorites' },
-                            { icon:'delete',label: 'Trash' },
-                        ]}"
-                    ></md-navigation-drawer>
-                    
-                </div>
+                <md-navigation-drawer 
+                    id="navigationDrawer1"
+                    .list="${[
+                        { icon:'inbox',label: 'Inbox', selected:true },
+                        { icon:'send',label: 'Outbox' },
+                        { icon:'favorite',label: 'Favorites' },
+                        { icon:'delete',label: 'Trash' },
+                    ]}"
+                ></md-navigation-drawer>
+                <md-navigation-drawer 
+                    id="navigationDrawer2"
+                    .ui="${"modal"}"
+                    .list="${[
+                        { icon:'inbox',label: 'Inbox', selected:true },
+                        { icon:'send',label: 'Outbox' },
+                        { icon:'favorite',label: 'Favorites' },
+                        { icon:'delete',label: 'Trash' },
+                    ]}"
+                ></md-navigation-drawer>
+
                 <div class="md-layout-border__item md-layout-border__item--center" style="padding:24px;">
                     <md-button ui="filled-tonal" label="Standard navigation drawer" @click="${this.handleClick1}"></md-button><br><br>
                     <md-button ui="filled-tonal" label="Modal navigation drawer" @click="${this.handleClick2}"></md-button><br><br>
