@@ -116,6 +116,7 @@
         top: 0;
         bottom: 0;
         border-radius: var(--md-sys-shape-corner-large-end);
+        grid-area: 1/1/4/4;
 
         &:not(.md-navigation-drawer--open) {
             transform: translate3d(-100%, 0%, 0);

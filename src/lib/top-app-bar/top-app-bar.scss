@@ -111,6 +111,7 @@
         left: 0;
         right: 0;
         border-radius: var(--md-sys-shape-corner-large-bottom);
+        grid-area: 1/1/4/4;
 
         &:not(.md-top-app-bar--open) {
             transform: translate3d(0%, -100%, 0);

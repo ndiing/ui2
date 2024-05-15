@@ -132,6 +132,7 @@
     position: absolute;
     z-index: 2;
     transform: translate3d(0, 0, 0);
+    grid-area: 1/1/4/4;
 
     border-radius: var(--md-sys-shape-corner-large);
     background: var((--md-sys-color-surface-container-low));
@@ -147,6 +148,7 @@
         left: 0;
         right: 0;
         border-radius: var(--md-sys-shape-corner-large-bottom);
+        grid-area: 1/1/4/4;
 
         &:not(.md-pane--open) {
             transform: translate3d(0%, -100%, 0);
@@ -168,6 +170,7 @@
         top: 0;
         bottom: 0;
         border-radius: var(--md-sys-shape-corner-large-start);
+        grid-area: 1/1/4/4;
 
         &:not(.md-pane--open) {
             transform: translate3d(100%, 0%, 0);
@@ -193,6 +196,7 @@
         left: 0;
         right: 0;
         border-radius: var(--md-sys-shape-corner-large-top);
+        grid-area: 1/1/4/4;
 
         &:not(.md-pane--open) {
             transform: translate3d(0%, 100%, 0);
@@ -214,6 +218,7 @@
         top: 0;
         bottom: 0;
         border-radius: var(--md-sys-shape-corner-large-end);
+        grid-area: 1/1/4/4;
 
         &:not(.md-pane--open) {
             transform: translate3d(-100%, 0%, 0);
