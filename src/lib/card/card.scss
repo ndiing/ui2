@@ -1,16 +1,18 @@
 .md-card {
     display: flex;
     flex-direction: column;
+
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container-lowest);
+    background: var((--md-sys-color-surface-container-lowest));
     box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-card__header {
     display: flex;
     align-items: center;
+
     padding: 24px;
-    gap: 16px;
+    gap: 0 16px;
 
     + .md-card__body {
         margin-top: -24px;
@@ -20,26 +22,43 @@
 .md-card__actions {
     display: inline-flex;
     align-items: center;
-    gap: 24px;
+
+    gap: 0 16px;
+}
+.md-card__action {
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 .md-card__label {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    + .md-card__actions {
+        margin-left: auto;
+    }
+}
+.md-card__label-primary {
     @extend .md-typography--title-large;
+}
+.md-card__label-secondary {
+    @extend .md-typography--body-medium;
 }
 
 .md-card__body {
     flex: 1;
-    overflow: hidden auto;
+    overflow: auto;
+
     display: flex;
     flex-direction: column;
 }
 
 .md-card__inner {
     flex: 1;
-    overflow: hidden auto;
+    overflow: auto;
+
     padding: 0 24px;
     margin: 24px 0;
+
     @extend .md-typography--body-medium;
 
     + .md-card__footer {
@@ -51,9 +70,14 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     padding: 24px;
-    gap: 8px;
+    gap: 0 8px;
 }
+
+// .md-card__button {
+// }
+
 
 
 .md-card--elevated {
