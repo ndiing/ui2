@@ -91,7 +91,7 @@ class MDListItem extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-list__item");
 
-        this.ripple.destroy();
+        this.ripple?.destroy();
     }
 
     firstUpdated(changedProperties) {

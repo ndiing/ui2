@@ -27,7 +27,7 @@ class MDExtendedFab extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-extended-fab");
-        this.ripple.destroy();
+        this.ripple?.destroy();
     }
 }
 customElements.define("md-extended-fab", MDExtendedFab);

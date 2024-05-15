@@ -28,7 +28,7 @@ class MDButton extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-icon-button");
-        await this.updateComplete;
+        // await this.updateComplete;
         this.ripple = new Ripple(this, {
             button: this.iconButtonNative,
             containment: false,
@@ -40,7 +40,7 @@ class MDButton extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon-button");
-        this.ripple.destroy();
+        this.ripple?.destroy();
     }
 
     updated(changedProperties) {

@@ -77,6 +77,7 @@ const routes = [
             { path: "virtual-scroll", load: () => import("./virtual-scroll/virtual-scroll.js").then((m) => m.default) },
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((m) => m.default) },
+            { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
         ],
     },
     {
