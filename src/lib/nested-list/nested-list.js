@@ -77,8 +77,6 @@ class MDNestedListItem extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
 
-        // await this.updateComplete;
-
         this.classList.add("md-nested-list__item");
 
         this.ripple = new Ripple(this, {
@@ -163,7 +161,7 @@ class MDNestedList extends MDElement {
         this.ui = "tree";
     }
 
-    renderRowItem(item, indent) {
+    renderRowItem(item, ) {
         // prettier-ignore
         return html`
             <md-nested-list-row>
@@ -180,7 +178,7 @@ class MDNestedList extends MDElement {
                     .isNode="${!!item.children?.length}"
                     .isParent="${!!item.parent}"
                     .hasNode="${item.hasNode}"
-                    .indent="${indent}"
+                    .indent="${item.indent}"
                     .ui="${this.ui}"
 
                     @click="${this.handleListItemClick}"
@@ -188,7 +186,7 @@ class MDNestedList extends MDElement {
                 ></md-nested-list-item>
                 ${item.children?.length&&item.expanded?html`
                     <div class="md-nested-list">
-                        ${item.children.map((item) => this.renderRowItem(item,indent+1))}
+                        ${item.children.map((item) => this.renderRowItem(item,))}
                     </div>
                 `:nothing}
             </md-nested-list-row>
@@ -199,7 +197,7 @@ class MDNestedList extends MDElement {
         // prettier-ignore
         return this.list?.map((item,index,list) => {
             item.hasNode=!!list.find(item=>item.children?.length)
-            // console.log(item.hasNode)
+            
             return this.renderRowItem(item,0)
         })
     }
@@ -240,7 +238,7 @@ class MDNestedList extends MDElement {
         if (changedProperties.has("list")) {
             await this.updateComplete;
             this.setList(this.list);
-            // console.log(this.list);
+
             this.requestUpdate();
         }
     }
@@ -315,10 +313,11 @@ class MDNestedList extends MDElement {
         });
     }
 
-    setList(data) {
+    setList(data,indent=0) {
         let expanded = false;
 
         data.forEach((item) => {
+            item.indent=indent
             if (item.expanded || item.selected) {
                 item.expanded = true;
                 expanded = true;
@@ -331,7 +330,7 @@ class MDNestedList extends MDElement {
                     item.children.unshift(newItem);
                 }
 
-                if (this.setList(item.children)) {
+                if (this.setList(item.children,indent+1)) {
                     item.expanded = true;
                     expanded = true;
                 }

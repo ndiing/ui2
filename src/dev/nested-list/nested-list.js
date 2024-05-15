@@ -7,7 +7,7 @@ class DevNestedList extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-column md-layout-fit" style="padding: 24px;">
-                <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <!-- <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-nested-list
                         ui="tree"
                         .list="${[
@@ -66,7 +66,7 @@ class DevNestedList extends MDElement {
                             {label:'Item 5',},
                         ]}"
                     ></md-nested-list>
-                </div>
+                </div> -->
                 <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-nested-list
                         ui="card"
@@ -142,7 +142,7 @@ class DevNestedList extends MDElement {
                         ]}"
                     ></md-nested-list>
                 </div>
-                <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <!-- <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-nested-list
                         ui="accordion"
                         .list="${[
@@ -201,7 +201,7 @@ class DevNestedList extends MDElement {
                             {label:'Item 5',},
                         ]}"
                     ></md-nested-list>
-                </div>
+                </div> -->
             </div>
         `;
     }
