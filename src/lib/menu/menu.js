@@ -1,14 +1,23 @@
+import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
-import { Popper } from "../popper/popper";
+import { Popper } from "../../lib/popper/popper";
 
 class MDMenu extends MDElement {
     static get properties() {
-        return Object.assign(MDList.properties, {
-            open: { type: Boolean, reflect: true },
-        });
+        return {
+            ...MDList.properties,
+
+
+            open: { type: Boolean },
+        };
+    }
+
+    constructor() {
+        super();
+
+        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -16,55 +25,78 @@ class MDMenu extends MDElement {
         return html`
             <div class="md-menu__body">
                 <div class="md-menu__inner">
-                    <md-list 
+                    <md-list
                         class="md-menu__list"
-                        .list="${this.list}"
-                        .singleSelection="${true}"
+                        .list="${ifDefined(this.list)}"
+                        .allSelection="${ifDefined(this.allSelection)}"
+                        .rangeSelection="${ifDefined(this.rangeSelection)}"
+                        .multiSelection="${ifDefined(this.multiSelection)}"
+                        .singleSelection="${ifDefined(this.singleSelection??true)}"
                         @onListItemClick="${this.handleMenuListItemClick}"
                     ></md-list>
                 </div>
             </div>
-        `
+        `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
-        this.classList.add("md-menu");
-        this.menuScrimElement = document.createElement("div");
-        this.parentElement.insertBefore(this.menuScrimElement, this.nextElementSibling);
-        this.menuScrimElement.classList.add("md-menu__scrim");
-        this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
-        this.menuScrimElement.addEventListener("click", this.handleMenuScrimClick);
-        this.updateStyle();
-    }
 
-    updateStyle() {
-        if (!this.ui?.includes("full-screen")) {
-            if (this.open) {
-                this.menuScrimElement.classList.add("md-menu--open");
-            } else {
-                this.menuScrimElement.classList.remove("md-menu--open");
-            }
-        }
+        this.classList.add("md-menu");
+
+        this.menuScrim = document.createElement("div");
+        this.parentElement.insertBefore(this.menuScrim, this.nextElementSibling);
+        this.menuScrim.classList.add("md-menu__scrim");
+        this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
+        this.menuScrim.addEventListener("click", this.handleMenuScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
-        this.menuScrimElement.remove();
-        this.menuScrimElement.removeEventListener("click", this.handleMenuScrimClick);
+
+        this.menuScrim.removeEventListener("click", this.handleMenuScrimClick);
+        this.menuScrim.remove();
     }
+
+    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-menu--open");
+                this.menuScrim.classList.add("md-menu--open");
             } else {
                 this.classList.remove("md-menu--open");
+                this.menuScrim.classList.remove("md-menu--open");
             }
-            this.updateStyle();
         }
+    }
+
+    show(button,options={}) {
+        this.open = true;
+        
+        this.poper=new Popper(this,{
+            button,
+            placements:[
+                //
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+            ],
+            ...options
+        })
+
+        this.poper.setPlacement()
+    }
+
+    close() {
+        this.open = false;
+
+        this.poper.destroy()
     }
 
     handleMenuActionClick(event) {
@@ -83,25 +115,6 @@ class MDMenu extends MDElement {
     handleMenuListItemClick(event) {
         this.close();
         this.emit("onMenuListItemClick", event);
-    }
-
-    show(button, options = {}) {
-        this.open = true;
-
-        this.popper = new Popper(this, {
-            button,
-            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top", "center"],
-            ...options,
-        });
-
-        this.popper.setPlacement();
-    }
-
-    close() {
-        this.open = false;
-
-        this.popper.destroy();
-        this.popper = null;
     }
 }
 
