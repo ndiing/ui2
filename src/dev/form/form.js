@@ -19,7 +19,6 @@ class DevForm extends MDElement {
             "time": "04:13",
             "week": "2024-W19",
             "color": "#36693d",
-            "file": {},
             "select": "",
             "textarea": "",
             "slider": "50"

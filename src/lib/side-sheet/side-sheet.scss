@@ -104,6 +104,7 @@
 .md-side-sheet {
     grid-area: east;
     height: 100%;
+    width: 360px;
 
     &.md-side-sheet--modal {
         right: 0;
