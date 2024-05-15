@@ -105,6 +105,12 @@
     height: 100%;
     width: 360px;
 
+
+    @media (max-width: 599px) {
+        width: calc(100vw - 56px);
+    }
+    
+
     &.md-navigation-drawer--modal {
         left: 0;
         top: 0;

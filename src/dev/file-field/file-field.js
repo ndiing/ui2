@@ -17,7 +17,7 @@ class DevFileField extends MDElement {
                         <md-file-field label="File Field" text="Text content" name="text2" placeholder="placeholder" required></md-file-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-file-field label="File Field" text="Text content" name="text3" value="value" defaultValue="value"></md-file-field>
+                        <md-file-field label="File Field" text="Text content" name="text3"></md-file-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button type="reset" label="Reset" ui="filled-tonal"></md-button>
