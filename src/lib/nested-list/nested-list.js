@@ -20,30 +20,28 @@ class MDNestedListItem extends MDElement {
         };
     }
 
-    get nodeIcons_(){
-        if(this.ui=='tree'){
-            return this.nodeIcons??['folder','folder_open']
+    get nodeIcons_() {
+        if (this.ui == "tree") {
+            return this.nodeIcons ?? ["folder", "folder_open"];
         }
-        return this.nodeIcons
+        return this.nodeIcons;
     }
-    get leafIcon_(){
-        if(this.ui=='tree'){
-            return this.leafIcon??'draft'
+    get leafIcon_() {
+        if (this.ui == "tree") {
+            return this.leafIcon ?? "draft";
         }
-        return this.leafIcon
+        return this.leafIcon;
     }
 
     constructor() {
         super();
-
     }
 
     renderTree() {
-        console.log(this.indent)
         // prettier-ignore
         return html`
             ${Array.from({length:this.indent}, () => html`<md-icon class="md-nested-list__icon"></md-icon>`)}
-            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.isNode?this.expanded?'keyboard_arrow_down':'keyboard_arrow_right':''}"></md-icon-button>`:this.indent>0?html`<md-icon class="md-nested-list__icon"></md-icon>`:nothing}
+            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.isNode?this.expanded?'keyboard_arrow_down':'keyboard_arrow_right':''}"></md-icon-button>`:(this.hasNode||this.indent>0)?html`<md-icon class="md-nested-list__icon"></md-icon>`:nothing}
             <md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons_[~~this.expanded]:this.leafIcon_}</md-icon>
             <div class="md-nested-list__label"><div class="md-nested-list__label-primary">${this.label}</div></div>
         `;
@@ -162,7 +160,7 @@ class MDNestedList extends MDElement {
 
         this.singleSelection = true;
 
-        this.ui='tree'
+        this.ui = "tree";
     }
 
     renderRowItem(item, indent) {
@@ -171,6 +169,7 @@ class MDNestedList extends MDElement {
             <md-nested-list-row>
                 <md-nested-list-item
                     .data="${item}"
+
                     .label="${ifDefined(item.label)}"
                     .nodeIcons="${ifDefined(item.nodeIcons)}"
                     .leafIcon="${ifDefined(item.leafIcon)}"
@@ -180,6 +179,7 @@ class MDNestedList extends MDElement {
 
                     .isNode="${!!item.children?.length}"
                     .isParent="${!!item.parent}"
+                    .hasNode="${item.hasNode}"
                     .indent="${indent}"
                     .ui="${this.ui}"
 
@@ -197,7 +197,11 @@ class MDNestedList extends MDElement {
 
     render() {
         // prettier-ignore
-        return this.list?.map((item) => this.renderRowItem(item,0))
+        return this.list?.map((item,index,list) => {
+            item.hasNode=!!list.find(item=>item.children?.length)
+            // console.log(item.hasNode)
+            return this.renderRowItem(item,0)
+        })
     }
 
     connectedCallback() {
