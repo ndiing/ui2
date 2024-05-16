@@ -9,6 +9,7 @@ class MDNavigationDrawer extends MDElement {
             ...MDList.properties,
 
             ui: { type: String },
+            uiList: { type: String },
 
             open: { type: Boolean },
         };
@@ -32,7 +33,7 @@ class MDNavigationDrawer extends MDElement {
                         .rangeSelection="${ifDefined(this.rangeSelection)}"
                         .multiSelection="${ifDefined(this.multiSelection)}"
                         .singleSelection="${ifDefined(this.singleSelection??true)}"
-                        .ui="${"card"}"
+                        .ui="${this.uiList??"card"}"
                     ></md-nested-list>
                 </div>
             </div>
