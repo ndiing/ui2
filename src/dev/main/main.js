@@ -111,14 +111,16 @@ class DevMain extends MDElement {
             },
         ];
 
-        const setSelected = (list) => {
+        // this.list=this.list.filter(item=>!item.children?.length)
+
+        function setSelected(list) {
             list.forEach((item) => {
                 item.selected = item.routerLink == Router.path;
                 if (item.children?.length) {
                     setSelected(item.children);
                 }
             });
-        };
+        }
         setSelected(this.list);
     }
 
@@ -130,7 +132,7 @@ class DevMain extends MDElement {
                 <md-navigation-drawer
                     id="navigation-drawer"
                     .list="${this.list}"
-                    @onListItemClick="${this.handleDevMainListItemClick}"
+                    .uiList="${"card"}"
                     @onListItemSelected="${this.handleDevMainListItemSelected}"
                 ></md-navigation-drawer>
 
@@ -191,6 +193,10 @@ class DevMain extends MDElement {
             block: "center",
             inline: "center",
         });
+
+        if (layout.name !== "expanded") {
+            this.devMainNavigationDrawer.close();
+        }
     }
 
     handleDevMainTopAppBarActionClick(event) {
@@ -198,14 +204,6 @@ class DevMain extends MDElement {
             this.devMainNavigationDrawer.close();
         } else {
             this.devMainNavigationDrawer.show();
-        }
-    }
-
-    handleDevMainListItemClick(event) {
-        const { name } = layout;
-
-        if (name !== "expanded") {
-            this.devMainNavigationDrawer.close();
         }
     }
 }
