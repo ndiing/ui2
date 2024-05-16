@@ -29,7 +29,15 @@
     margin: 4px 0 4px -16px;
 }
 
-// .md-nested-list__icon {}
+// .md-nested-list__indent {}
+
+.md-nested-list__action {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-nested-list__icon {
+    color: var(--md-sys-color-on-surface-variant);
+}
 
 .md-nested-list__label {
     flex: 1;

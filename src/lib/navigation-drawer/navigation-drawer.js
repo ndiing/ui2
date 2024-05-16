@@ -32,6 +32,7 @@ class MDNavigationDrawer extends MDElement {
                         .rangeSelection="${ifDefined(this.rangeSelection)}"
                         .multiSelection="${ifDefined(this.multiSelection)}"
                         .singleSelection="${ifDefined(this.singleSelection??true)}"
+                        .ui="${"card"}"
                     ></md-nested-list>
                 </div>
             </div>

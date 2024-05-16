@@ -22,13 +22,13 @@ class MDNestedListItem extends MDElement {
     get nodeIcons_() {
         return this.ui=='tree'? 
         this.nodeIcons ?? ["folder", "folder_open"]
-        : '';
+        : this.nodeIcons;
     }
 
     get leafIcon_() {
         return this.ui=='tree'? 
         this.leafIcon ?? "draft"
-        : '';
+        : this.leafIcon;
     }
 
     constructor() {
@@ -155,6 +155,8 @@ class MDNestedList extends MDElement {
             <md-nested-list-row>
                 <md-nested-list-item
                     .data="${item}"
+                    .nodeIcons="${ifDefined(item.nodeIcons)}"
+                    .leafIcon="${ifDefined(item.leafIcon)}"
                     .indent="${item.indent}"
                     .isNode="${!!item.children?.length}"
                     .expanded="${ifDefined(item.expanded)}"
