@@ -11,8 +11,8 @@ class MDMonthPickerYear extends HTMLDivElement {
         const itemHeight = 48;
         const viewportHeight = 32 * 7 + 4 * 6;
 
-        const scrollbar = this.querySelector('.md-month-picker__scrollbar')
-        const container = this.querySelector('.md-month-picker__list')
+        const scrollbar = this.querySelector(".md-month-picker__scrollbar");
+        const container = this.querySelector(".md-month-picker__list");
 
         this.scrolling = new Scrolling(this, {
             total,
@@ -149,10 +149,6 @@ class MDMonthPicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 
@@ -182,10 +178,6 @@ class MDMonthPicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 

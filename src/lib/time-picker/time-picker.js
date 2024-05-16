@@ -93,10 +93,6 @@ class MDTimePicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 
@@ -124,10 +120,6 @@ class MDTimePicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 

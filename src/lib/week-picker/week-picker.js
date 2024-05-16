@@ -11,8 +11,8 @@ class MDWeekPickerYear extends HTMLDivElement {
         const itemHeight = 48;
         const viewportHeight = 32 * 7 + 4 * 6;
 
-        const scrollbar = this.querySelector('.md-week-picker__scrollbar')
-        const container = this.querySelector('.md-week-picker__list')
+        const scrollbar = this.querySelector(".md-week-picker__scrollbar");
+        const container = this.querySelector(".md-week-picker__list");
 
         this.scrolling = new Scrolling(this, {
             total,
@@ -167,10 +167,6 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 
@@ -198,10 +194,6 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 
@@ -260,10 +252,6 @@ class MDWeekPicker extends MDElement {
                     )}
                 </div>
             </div>
-            
-            
-            
-            
         `;
     }
 
