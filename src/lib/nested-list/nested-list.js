@@ -204,7 +204,7 @@ class MDNestedList extends MDElement {
                 "card",
                 "accordion",
             ].forEach((ui) => {
-                this.classList.add("md-nested-list--" + ui);
+                this.classList.remove("md-nested-list--" + ui);
             });
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
