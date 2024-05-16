@@ -2,25 +2,29 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
-// import { VirtualScroll } from "../virtual-scroll/virtual-scroll";
+import { Scrolling } from "../scrolling/scrolling";
+// import { Scrolling } from "../virtual-scroll/virtual-scroll";
 
 class MDDatePickerYear extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
-        const viewportHeight = 40 * 7 + 4 * 6;
+        const viewportHeight = 32 * 7 + 4 * 6;
 
-        this.virtualScroll = new VirtualScroll(this, {
+        const scrollbar = this.querySelector('.md-date-picker__scrollbar')
+        const container = this.querySelector('.md-date-picker__list')
+
+        this.scrolling = new Scrolling(this, {
             total,
             itemHeight,
-            viewportHeight,
-            containerSelector: ".md-date-picker__list",
+            scrollbar,
+            container,
         });
 
         this.scrollTop = itemHeight * (total / 2) - itemHeight * Math.floor(viewportHeight / itemHeight / 2);
     }
     disconnectedCallback() {
-        this.virtualScroll.destroy();
+        this.scrolling.destroy();
     }
 }
 
@@ -138,7 +142,8 @@ class MDDatePicker extends MDElement {
 
     renderCardItemYears() {
         return html`
-            <div class="md-date-picker__card-inner md-date-picker__card-inner--year" is="md-date-picker-year" @onVirtualScroll="${this.handleDatePickerYearVirtualScroll}">
+            <div class="md-date-picker__card-inner md-date-picker__card-inner--year" is="md-date-picker-year" @onScrolling="${this.handleDatePickerYearScrolling}">
+                <div class="md-date-picker__scrollbar"></div>
                 <div class="md-date-picker__list">
                     ${this.years.map(
                         (data) => html`
@@ -169,7 +174,7 @@ class MDDatePicker extends MDElement {
 
     renderCardItemMonths() {
         return html`
-            <div class="md-date-picker__card-inner" is="md-date-picker-month" @onVirtualScroll="${this.handleDatePickerMonthVirtualScroll}">
+            <div class="md-date-picker__card-inner" is="md-date-picker-month" @onScrolling="${this.handleDatePickerMonthScrolling}">
                 <div class="md-date-picker__list">
                     ${this.months.map(
                         (data) => html`
@@ -318,7 +323,7 @@ class MDDatePicker extends MDElement {
         }
     }
 
-    async handleDatePickerYearVirtualScroll(event) {
+    async handleDatePickerYearScrolling(event) {
         await this.updateComplete;
 
         const {
@@ -342,17 +347,17 @@ class MDDatePicker extends MDElement {
 
         this.requestUpdate();
 
-        this.emit("onDatePickerListYearVirtualScroll", event);
+        this.emit("onDatePickerListYearScrolling", event);
     }
 
-    handleDatePickerMonthVirtualScroll(event) {
+    handleDatePickerMonthScrolling(event) {
         const {
             start,
             end,
             options: { total },
         } = event.detail;
 
-        this.emit("onDatePickerListMonthVirtualScroll", event);
+        this.emit("onDatePickerListMonthScrolling", event);
     }
 
     handleDatePickerItemYearClick(event) {

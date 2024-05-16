@@ -2,25 +2,29 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
-// import { VirtualScroll } from "../virtual-scroll/virtual-scroll";
+import { Scrolling } from "../scrolling/scrolling";
+// import { Scrolling } from "../virtual-scroll/virtual-scroll";
 
 class MDWeekPickerYear extends HTMLDivElement {
     connectedCallback() {
         const total = new Date().getFullYear() * 2;
         const itemHeight = 48;
-        const viewportHeight = 40 * 7 + 4 * 6;
+        const viewportHeight = 32 * 7 + 4 * 6;
 
-        this.virtualScroll = new VirtualScroll(this, {
+        const scrollbar = this.querySelector('.md-week-picker__scrollbar')
+        const container = this.querySelector('.md-week-picker__list')
+
+        this.scrolling = new Scrolling(this, {
             total,
             itemHeight,
-            viewportHeight,
-            containerSelector: ".md-week-picker__list",
+            scrollbar,
+            container,
         });
 
         this.scrollTop = itemHeight * (total / 2) - itemHeight * Math.floor(viewportHeight / itemHeight / 2);
     }
     disconnectedCallback() {
-        this.virtualScroll.destroy();
+        this.scrolling.destroy();
     }
 }
 
@@ -140,7 +144,8 @@ class MDWeekPicker extends MDElement {
 
     renderCardItemYears() {
         return html`
-            <div class="md-week-picker__card-inner md-week-picker__card-inner--year" is="md-week-picker-year" @onVirtualScroll="${this.handleWeekPickerYearVirtualScroll}">
+            <div class="md-week-picker__card-inner md-week-picker__card-inner--year" is="md-week-picker-year" @onScrolling="${this.handleWeekPickerYearScrolling}">
+                <div class="md-week-picker__scrollbar"></div>
                 <div class="md-week-picker__list">
                     ${this.years.map(
                         (data) => html`
@@ -171,7 +176,7 @@ class MDWeekPicker extends MDElement {
 
     renderCardItemMonths() {
         return html`
-            <div class="md-week-picker__card-inner" is="md-week-picker-month" @onVirtualScroll="${this.handleWeekPickerMonthVirtualScroll}">
+            <div class="md-week-picker__card-inner" is="md-week-picker-month" @onScrolling="${this.handleWeekPickerMonthScrolling}">
                 <div class="md-week-picker__list">
                     ${this.months.map(
                         (data) => html`
@@ -331,7 +336,7 @@ class MDWeekPicker extends MDElement {
         }
     }
 
-    async handleWeekPickerYearVirtualScroll(event) {
+    async handleWeekPickerYearScrolling(event) {
         await this.updateComplete;
 
         const {
@@ -355,17 +360,17 @@ class MDWeekPicker extends MDElement {
 
         this.requestUpdate();
 
-        this.emit("onWeekPickerListYearVirtualScroll", event);
+        this.emit("onWeekPickerListYearScrolling", event);
     }
 
-    handleWeekPickerMonthVirtualScroll(event) {
+    handleWeekPickerMonthScrolling(event) {
         const {
             start,
             end,
             options: { total },
         } = event.detail;
 
-        this.emit("onWeekPickerListMonthVirtualScroll", event);
+        this.emit("onWeekPickerListMonthScrolling", event);
     }
 
     handleWeekPickerItemYearClick(event) {

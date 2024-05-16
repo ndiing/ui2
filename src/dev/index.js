@@ -78,6 +78,7 @@ const routes = [
             { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((m) => m.default) },
             { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
             { path: "scrolling", load: () => import("./scrolling/scrolling.js").then((m) => m.default) },
+            { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
         ],
     },
     {
