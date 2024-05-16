@@ -45,10 +45,16 @@
 
 .md-nested-list__label-primary {
     @extend .md-typography--body-large;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .md-nested-list__label-secondary {
     @extend .md-typography--body-medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .md-nested-list__text {
