@@ -16,11 +16,11 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.1',children:[
                                         {label:'Item 1.1.1.1',},
                                         {label:'Item 1.1.1.2',},
-                                        {label:'Item 1.1.1.3',},
+                                        {label:'Item 1.1.1.3',selected:true},
                                         {label:'Item 1.1.1.4',},
                                         {label:'Item 1.1.1.5',},
                                     ]},
-                                    {label:'Item 1.1.2',children:[
+                                    {label:'Item 1.1.2',expanded:true,children:[
                                         {label:'Item 1.1.2.1',},
                                         {label:'Item 1.1.2.2',},
                                         {label:'Item 1.1.2.3',},
@@ -31,7 +31,7 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.4',},
                                     {label:'Item 1.1.5',},
                                 ]},
-                                {label:'Item 1.2',children:[
+                                {label:'Item 1.2',expanded:true,children:[
                                     {label:'Item 1.2.1',},
                                     {label:'Item 1.2.2',},
                                     {label:'Item 1.2.3',},
@@ -76,11 +76,11 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.1',children:[
                                         {label:'Item 1.1.1.1',},
                                         {label:'Item 1.1.1.2',},
-                                        {label:'Item 1.1.1.3',},
+                                        {label:'Item 1.1.1.3',selected:true},
                                         {label:'Item 1.1.1.4',},
                                         {label:'Item 1.1.1.5',},
                                     ]},
-                                    {label:'Item 1.1.2',children:[
+                                    {label:'Item 1.1.2',expanded:true,children:[
                                         {label:'Item 1.1.2.1',},
                                         {label:'Item 1.1.2.2',},
                                         {label:'Item 1.1.2.3',},
@@ -91,7 +91,7 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.4',},
                                     {label:'Item 1.1.5',},
                                 ]},
-                                {label:'Item 1.2',children:[
+                                {label:'Item 1.2',expanded:true,children:[
                                     {label:'Item 1.2.1',},
                                     {label:'Item 1.2.2',},
                                     {label:'Item 1.2.3',},
@@ -107,21 +107,6 @@ class DevNestedList extends MDElement {
                                 ]},
                                 {label:'Item 1.4',},
                                 {label:'Item 1.5',},
-                                {label:'Item 1.6',},
-                                {label:'Item 1.7',},
-                                {label:'Item 1.8',},
-                                {label:'Item 1.9',},
-                                {label:'Item 1.10',},
-                                {label:'Item 1.11',},
-                                {label:'Item 1.12',},
-                                {label:'Item 1.13',},
-                                {label:'Item 1.14',},
-                                {label:'Item 1.15',},
-                                {label:'Item 1.16',},
-                                {label:'Item 1.17',},
-                                {label:'Item 1.18',},
-                                {label:'Item 1.19',},
-                                {label:'Item 1.20',},
                             ]},
                             {label:'Item 2',children:[
                                 {label:'Item 2.1',},
@@ -151,11 +136,11 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.1',children:[
                                         {label:'Item 1.1.1.1',},
                                         {label:'Item 1.1.1.2',},
-                                        {label:'Item 1.1.1.3',},
+                                        {label:'Item 1.1.1.3',selected:true},
                                         {label:'Item 1.1.1.4',},
                                         {label:'Item 1.1.1.5',},
                                     ]},
-                                    {label:'Item 1.1.2',children:[
+                                    {label:'Item 1.1.2',expanded:true,children:[
                                         {label:'Item 1.1.2.1',},
                                         {label:'Item 1.1.2.2',},
                                         {label:'Item 1.1.2.3',},
@@ -166,7 +151,7 @@ class DevNestedList extends MDElement {
                                     {label:'Item 1.1.4',},
                                     {label:'Item 1.1.5',},
                                 ]},
-                                {label:'Item 1.2',children:[
+                                {label:'Item 1.2',expanded:true,children:[
                                     {label:'Item 1.2.1',},
                                     {label:'Item 1.2.2',},
                                     {label:'Item 1.2.3',},
