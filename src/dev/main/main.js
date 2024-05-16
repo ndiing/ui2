@@ -65,7 +65,25 @@ class DevMain extends MDElement {
             { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
             {
                 nodeIcons: ["deployed_code", "deployed_code"],
-                label: "Uncategorized",
+                label: "Foundations",
+                children: [
+                    { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
+                    { leafIcon: "deployed_code", label: "Localization", routerLink: "/localization" },
+                    { leafIcon: "deployed_code", label: "Marker", routerLink: "/marker" },
+                    { leafIcon: "deployed_code", label: "Observer", routerLink: "/observer" },
+                    { leafIcon: "deployed_code", label: "Polyfill", routerLink: "/polyfill" },
+                    { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
+                    { leafIcon: "deployed_code", label: "Progress", routerLink: "/progress" },
+                    { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
+                    { leafIcon: "deployed_code", label: "Router", routerLink: "/router" },
+                    { leafIcon: "deployed_code", label: "Store", routerLink: "/store" },
+                    { leafIcon: "deployed_code", label: "Scrolling", routerLink: "/scrolling" },
+                    { leafIcon: "deployed_code", label: "Element", routerLink: "/element" },
+                ],
+            },
+            {
+                nodeIcons: ["deployed_code", "deployed_code"],
+                label: "Components",
                 children: [
                     { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
                     { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
@@ -73,37 +91,25 @@ class DevMain extends MDElement {
                     { leafIcon: "deployed_code", label: "Date Field", routerLink: "/date-field" },
                     { leafIcon: "deployed_code", label: "Datetime Field", routerLink: "/datetime-field" },
                     { leafIcon: "deployed_code", label: "Datetime Picker", routerLink: "/datetime-picker" },
-                    { leafIcon: "deployed_code", label: "Element", routerLink: "/element" },
                     { leafIcon: "deployed_code", label: "Email Field", routerLink: "/email-field" },
                     { leafIcon: "deployed_code", label: "Emoji", routerLink: "/emoji" },
                     { leafIcon: "deployed_code", label: "File Field", routerLink: "/file-field" },
                     { leafIcon: "deployed_code", label: "Form", routerLink: "/form" },
-                    { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
                     { leafIcon: "deployed_code", label: "Icon", routerLink: "/icon" },
                     { leafIcon: "deployed_code", label: "Image", routerLink: "/image" },
                     { leafIcon: "deployed_code", label: "Layout", routerLink: "/layout" },
-                    { leafIcon: "deployed_code", label: "Localization", routerLink: "/localization" },
-                    { leafIcon: "deployed_code", label: "Marker", routerLink: "/marker" },
                     { leafIcon: "deployed_code", label: "Month Field", routerLink: "/month-field" },
                     { leafIcon: "deployed_code", label: "Month Picker", routerLink: "/month-picker" },
                     { leafIcon: "deployed_code", label: "Number Field", routerLink: "/number-field" },
-                    { leafIcon: "deployed_code", label: "Observer", routerLink: "/observer" },
                     { leafIcon: "deployed_code", label: "Pagination", routerLink: "/pagination" },
-                    { leafIcon: "deployed_code", label: "Pane", routerLink: "/pane" },
                     { leafIcon: "deployed_code", label: "Password Field", routerLink: "/password-field" },
-                    { leafIcon: "deployed_code", label: "Polyfill", routerLink: "/polyfill" },
-                    { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
-                    { leafIcon: "deployed_code", label: "Progress", routerLink: "/progress" },
-                    { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
-                    { leafIcon: "deployed_code", label: "Router", routerLink: "/router" },
+                    { leafIcon: "deployed_code", label: "Pane", routerLink: "/pane" },
                     { leafIcon: "deployed_code", label: "Search Field", routerLink: "/search-field" },
                     { leafIcon: "deployed_code", label: "Select Field", routerLink: "/select-field" },
-                    { leafIcon: "deployed_code", label: "Store", routerLink: "/store" },
                     { leafIcon: "deployed_code", label: "Tel Field", routerLink: "/tel-field" },
                     { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
                     { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
                     { leafIcon: "deployed_code", label: "Url Field", routerLink: "/url-field" },
-                    { leafIcon: "deployed_code", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
                     { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
                     { leafIcon: "deployed_code", label: "Week Picker", routerLink: "/week-picker" },
                     { leafIcon: "deployed_code", label: "Nested List", routerLink: "/nested-list" },
@@ -174,7 +180,6 @@ class DevMain extends MDElement {
     }
 
     handleDevMainLayoutChange(event) {
-
         if (event.detail.name == "expanded") {
             this.devMainNavigationDrawer.ui = "";
             this.devMainNavigationDrawer.show();
@@ -187,17 +192,15 @@ class DevMain extends MDElement {
     }
 
     handleDevMainListItemSelected(event) {
-        
         if (layout.name !== "expanded") {
             this.devMainNavigationDrawer.close();
         }
-        
+
         event.detail.scrollIntoView({
             behavior: "smooth",
             block: "center",
             inline: "center",
         });
-
     }
 
     handleDevMainTopAppBarActionClick(event) {

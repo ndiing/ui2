@@ -9,7 +9,6 @@ import "./router/router.js";
 import "./gesture/gesture.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
-import "./virtual-scroll/virtual-scroll.js";
 import "./layout/layout.js";
 import "./divider/divider.js";
 import "./icon/icon.js";

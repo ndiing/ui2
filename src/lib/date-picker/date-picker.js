@@ -2,7 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
-import { VirtualScroll } from "../virtual-scroll/virtual-scroll";
+// import { VirtualScroll } from "../virtual-scroll/virtual-scroll";
 
 class MDDatePickerYear extends HTMLDivElement {
     connectedCallback() {

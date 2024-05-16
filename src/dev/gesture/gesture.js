@@ -9,35 +9,83 @@ class DevGesture extends MDElement {
         return html`
             <div class="md-layout-column" style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div class="dev-gesture"></div>
+                    <div class="gesture"
+                        style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 256px;
+                        height: 256px;
+                        background: var(--md-sys-color-surface-container-lowest);"
+                    ></div>
                 </div>
-                
-                
             </div>
         `;
     }
 
     firstUpdated(){
-        this.querySelectorAll('.dev-gesture')
-        .forEach(element => {
-            new Gesture(element,{
-                dragStartWaitForLongPress:true,
-                resizeStartWaitForLongPress:true,
-            })
+        const element=this.querySelector('.gesture')
 
-            element.addEventListener('onLongPress',console.log)
-            element.addEventListener('onResizeStart',console.log)
-            element.addEventListener('onDragStart',console.log)
-            element.addEventListener('onDrag',console.log)
-            element.addEventListener('onResize',console.log)
-            element.addEventListener('onDoubleTap',console.log)
-            element.addEventListener('onTap',console.log)
-            element.addEventListener('onSwipeTop',console.log)
-            element.addEventListener('onSwipeRight',console.log)
-            element.addEventListener('onSwipeBottom',console.log)
-            element.addEventListener('onSwipeLeft',console.log)
-            element.addEventListener('onDragEnd',console.log)
-            element.addEventListener('onResizeEnd',console.log)
+        const gesture = new Gesture(element,{
+            dragStartWaitForLongPress:true,
+            resizeStartWaitForLongPress:true,
+        })
+
+        element.addEventListener('onLongPress',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+
+        element.addEventListener('onResizeStart',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onResize',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onResizeEnd',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+
+        element.addEventListener('onDragStart',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onDrag',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onDragEnd',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+
+        element.addEventListener('onDoubleTap',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onTap',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+
+        element.addEventListener('onSwipeTop',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onSwipeRight',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onSwipeBottom',(event) => {
+            element.textContent=''
+            element.textContent=event.type
+        })
+        element.addEventListener('onSwipeLeft',(event) => {
+            element.textContent=''
+            element.textContent=event.type
         })
     }
 }

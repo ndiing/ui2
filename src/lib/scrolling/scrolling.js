@@ -1,10 +1,8 @@
 class Scrolling {
     constructor(host, options = {}) {
         this.options = {
-            total: 1000,
-            itemHeight: 52,
-            threshold: 2,
-            // viewportHeight: 52*5,
+            scrollbar: null,
+            container: null,
             ...options,
         };
         this.host = host;
@@ -30,20 +28,13 @@ class Scrolling {
 
     init() {
         this.host.classList.add("md-scrolling");
-        this.options.scrollbar.classList.add("md-scrolling__scrollbar");
-        this.options.container.classList.add("md-scrolling__container");
-        // // md-scrolling
-        // this.host.style.position = "relative";
-
-        // // md-scrolling__scrollbar
-        // this.options.scrollbar.style.width = "1px";
-        // this.options.scrollbar.style.position = "absolute";
-        // this.options.scrollbar.style.left = "0px";
-        // this.options.scrollbar.style.top = "0px";
+        this.options.scrollbar?.classList.add("md-scrolling__scrollbar");
+        this.options.container?.classList.add("md-scrolling__container");
 
         this.handleScroll = this.handleScroll.bind(this);
         this.host.addEventListener("scroll", this.handleScroll);
-        this.handleScroll()
+
+        this.handleScroll();
     }
 
     destroy() {
@@ -52,31 +43,28 @@ class Scrolling {
     }
 
     handleScroll() {
-        // requestAnimationFrame(() => {
-            const total = this.options.total;
-            const itemHeight = this.options.itemHeight;
-            const threshold = this.options.threshold;
-            const scrollbarHeight = total * itemHeight;
-            const viewportHeight = this.host.clientHeight;
-            const scrollTop = this.host.scrollTop;
+        const total = this.options.total ?? 1000;
+        const itemHeight = this.options.itemHeight ?? 52;
+        const scrollTop = this.host.scrollTop;
+        const threshold = this.options.threshold ?? 2;
+        const viewportHeight = this.host.clientHeight;
 
-            // md-scrolling__scrollbar
-            this.options.scrollbar.style.height = scrollbarHeight + "px";
-            
-            this.start = Math.floor(scrollTop / itemHeight) - threshold;
-            this.start = Math.max(0, this.start);
+        this.scrollbarHeight = total * itemHeight;
 
-            this.limit = Math.ceil(viewportHeight / itemHeight) + 2 * threshold;
-            this.limit = Math.min(total - this.start, this.limit);
+        this.start = Math.floor(scrollTop / itemHeight) - threshold;
+        this.start = Math.max(0, this.start);
 
-            this.end = this.start + this.limit;
-            const translateY = this.start * itemHeight;
+        this.limit = Math.ceil(viewportHeight / itemHeight) + 2 * threshold;
+        this.limit = Math.min(total - this.start, this.limit);
 
-            // md-scrolling__container
-            this.options.container.style.transform = `translate3d(0px,${translateY}px,0px)`;
+        this.end = this.start + this.limit;
 
-            this.emit("onScrolling", this);
-        // });
+        this.translateY = this.start * itemHeight;
+
+        this.options.scrollbar.style.height=this.scrollbarHeight+'px'
+        this.options.container.style.transform=`translate3d(0px,${this.translateY}px,0px)`
+
+        this.emit('onScrolling',this)
     }
 }
 

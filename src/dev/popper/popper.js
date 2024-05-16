@@ -10,8 +10,24 @@ class DevPopper extends MDElement {
             <div class="md-layout-column" style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     
-                    <div class="dev-popper__container">container</div>
-                    <div class="dev-popper__button">button</div>
+                    <div class="poper-button"
+                        style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 256px;
+                        height: 56px;
+                        background: var(--md-sys-color-surface-container-low);"
+                    ></div>
+                    <div class="poper-container"
+                        style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 256px;
+                        height: 168px;
+                        background: var(--md-sys-color-surface-container-lowest);"
+                    ></div>
                 </div>
                 
                 
@@ -19,15 +35,14 @@ class DevPopper extends MDElement {
         `;
     }
     firstUpdated() {
-        const buttons = this.querySelectorAll(".dev-popper__button");
-        this.querySelectorAll(".dev-popper__container").forEach((element, index) => {
-            new Popper(element, {
-                button: buttons[index],
-                boundary: this.parentElement,
-                placements: ["bottom", "bottom-start"],
-                offset: 8,
-            });
+        const button = this.querySelector(".poper-button");
+        const container=this.querySelector(".poper-container")
+        const popper = new Popper(container, {
+            button,
+            placements: ["right", "right-start"],
+            offset: 8,
         });
+        popper.setPlacement()
     }
 }
 

@@ -74,10 +74,10 @@ const routes = [
             { path: "tooltip", load: () => import("./tooltip/tooltip.js").then((m) => m.default) },
             { path: "top-app-bar", load: () => import("./top-app-bar/top-app-bar.js").then((m) => m.default) },
             { path: "url-field", load: () => import("./url-field/url-field.js").then((m) => m.default) },
-            { path: "virtual-scroll", load: () => import("./virtual-scroll/virtual-scroll.js").then((m) => m.default) },
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((m) => m.default) },
             { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
+            { path: "scrolling", load: () => import("./scrolling/scrolling.js").then((m) => m.default) },
         ],
     },
     {

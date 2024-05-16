@@ -2,7 +2,7 @@ import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Store } from "../../lib/store/store";
-import { VirtualScroll } from "../../lib/virtual-scroll/virtual-scroll";
+// import { VirtualScroll } from "../../lib/virtual-scroll/virtual-scroll";
 import { Scrolling } from "../../lib/scrolling/scrolling";
 
 class DevDataTable extends MDElement {
@@ -49,46 +49,37 @@ class DevDataTable extends MDElement {
 
         const response = await fetch("https://jsonplaceholder.typicode.com/photos");
         const json = await response.json();
-
         this.store.docs = json;
-
         const { docs, total } = this.store.getAll({ _start: 0, _end: 20 });
-
         this.total = total;
         this.rows = docs;
 
-        // this.requestUpdate();
-
         this.viewport = this.querySelector("md-data-table > table");
+
+        this.handleScrolling = this.handleScrolling.bind(this);
+        this.viewport.addEventListener("onScrolling", this.handleScrolling);
 
         this.scrolling = new Scrolling(this.viewport, {
             scrollbar: this.querySelector("md-data-table > table > caption"),
             container: this.querySelector("md-data-table > table > tbody"),
-            // total
+            total:this.total,
             // itemHeight
             // threshold
         });
 
-        // this.scrolling?.handleScroll();
-
-        this.handleScrolling = this.handleScrolling.bind(this);
-
-        this.viewport.addEventListener("onScrolling", this.handleScrolling);
+        // this.viewport.scrollTop = Math.floor(this.total * 52) / 2;
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
 
         this.viewport.removeEventListener("onScrolling", this.handleScrolling);
-
         this.scrolling.destroy();
     }
 
     handleScrolling(event) {
         const { start, end } = event.detail;
-
         const { docs } = this.store.getAll({ _start: start, _end: end });
-
         this.rows = docs;
     }
 }
