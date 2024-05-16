@@ -69,7 +69,7 @@ class DevDataTable extends MDElement {
             // threshold
         });
 
-        this.scrolling?.handleScroll();
+        // this.scrolling?.handleScroll();
 
         this.handleScrolling = this.handleScrolling.bind(this);
 

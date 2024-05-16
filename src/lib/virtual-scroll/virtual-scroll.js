@@ -31,13 +31,19 @@ class VirtualScroll {
 
     init() {
         this.host.classList.add("md-virtual-scroll");
+
         this.scrollElement = document.createElement("div");
         this.scrollElement.classList.add("md-virtual-scroll__scroll");
+
         this.host.append(this.scrollElement);
+
         this.containerElement = this.host.querySelector(this.options.containerSelector);
         this.containerElement.classList.add("md-virtual-scroll__container");
+
         this.handleScroll = this.handleScroll.bind(this);
+
         this.host.addEventListener("scroll", this.handleScroll);
+        
         this.handleScroll({
             currentTarget: {
                 scrollTop: this.host.scrollTop ?? 0,

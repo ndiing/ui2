@@ -4,6 +4,7 @@ class Scrolling {
             total: 1000,
             itemHeight: 52,
             threshold: 2,
+            // viewportHeight: 52*5,
             ...options,
         };
         this.host = host;
@@ -42,6 +43,7 @@ class Scrolling {
 
         this.handleScroll = this.handleScroll.bind(this);
         this.host.addEventListener("scroll", this.handleScroll);
+        this.handleScroll()
     }
 
     destroy() {
@@ -50,14 +52,17 @@ class Scrolling {
     }
 
     handleScroll() {
-        requestAnimationFrame(() => {
+        // requestAnimationFrame(() => {
             const total = this.options.total;
             const itemHeight = this.options.itemHeight;
             const threshold = this.options.threshold;
             const scrollbarHeight = total * itemHeight;
-            const viewportHeight = this.host.clientHeight;
+            const viewportHeight = this.options.viewportHeight;
             const scrollTop = this.host.scrollTop;
 
+            // md-scrolling__scrollbar
+            this.options.scrollbar.style.height = scrollbarHeight + "px";
+            
             this.start = Math.floor(scrollTop / itemHeight) - threshold;
             this.start = Math.max(0, this.start);
 
@@ -67,13 +72,11 @@ class Scrolling {
             this.end = this.start + this.limit;
             const translateY = this.start * itemHeight;
 
-            // md-scrolling__scrollbar
-            this.options.scrollbar.style.height = scrollbarHeight + "px";
             // md-scrolling__container
             this.options.container.style.transform = `translate3d(0px,${translateY}px,0px)`;
 
             this.emit("onScrolling", this);
-        });
+        // });
     }
 }
 
