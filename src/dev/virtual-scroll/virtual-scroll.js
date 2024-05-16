@@ -30,7 +30,9 @@ class DevVirtualScroll extends MDElement {
         `;
     }
 
-    async firstUpdated() {
+    async connectedCallback() {
+        super.connectedCallback()
+
         await this.updateComplete;
 
         let year = new Date().getFullYear();

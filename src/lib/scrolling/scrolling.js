@@ -57,7 +57,7 @@ class Scrolling {
             const itemHeight = this.options.itemHeight;
             const threshold = this.options.threshold;
             const scrollbarHeight = total * itemHeight;
-            const viewportHeight = this.options.viewportHeight;
+            const viewportHeight = this.host.clientHeight;
             const scrollTop = this.host.scrollTop;
 
             // md-scrolling__scrollbar
