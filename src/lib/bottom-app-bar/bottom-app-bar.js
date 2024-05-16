@@ -38,6 +38,7 @@ class MDBottomAppBar extends MDElement {
                     <md-fab class="md-bottom-app-bar__fab"
                         .icon="${ifDefined(this.fab?.icon??this.fab)}"
                         .ui="${ifDefined(this.fab?.ui??'unelevated')}"
+                        @click="${this.handleBottomAppBarFabClick}"
                     ></md-fab>
                 `:nothing}
             </div>
@@ -98,8 +99,8 @@ class MDBottomAppBar extends MDElement {
         this.emit("onBottomAppBarActionClick", event);
     }
 
-    handleBottomAppBarButtonClick(event) {
-        this.emit("onBottomAppBarButtonClick", event);
+    handleBottomAppBarFabClick(event) {
+        this.emit("onBottomAppBarFabClick", event);
     }
 
     handleBottomAppBarScrimClick(event) {
