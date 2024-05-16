@@ -39,7 +39,7 @@ class MDNestedListItem extends MDElement {
         // prettier-ignore
         return html`
             ${Array.from({length:this.indent}, () => html`<md-icon class="md-nested-list__indent"></md-icon>`)}
-            ${this.hasNode?this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.expanded?'keyboard_arrow_down':'keyboard_arrow_right'}"></md-icon-button>`:html`<md-icon class="md-nested-list__indent"></md-icon>`:nothing}
+            ${this.hasNode||this.indent>0?this.isNode?html`<md-icon-button @click="${this.handleNestedListActionClick}" class="md-nested-list__action" .icon="${this.expanded?'keyboard_arrow_down':'keyboard_arrow_right'}"></md-icon-button>`:html`<md-icon class="md-nested-list__indent"></md-icon>`:nothing}
             <md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons_?.[~~this.expanded]:this.leafIcon_}</md-icon>
             <div class="md-nested-list__label"><div class="md-nested-list__label-primary">${this.label}</div></div>
         `;
