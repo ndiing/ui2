@@ -14,6 +14,8 @@
     align-items: center;
     padding: 8px 16px;
     gap: 0 16px;
+
+    
 }
 
 .md-nested-list__avatar {
@@ -319,7 +321,13 @@
         padding-bottom: 0;
     }
 }
-.md-nested-list--card{}
+.md-nested-list--card{
+    .md-nested-list__item{
+        &[activated]{
+            @extend .md-ripple--selected;
+        }
+    }
+}
 .md-nested-list--accordion{
     .md-nested-list{
         padding-top: 0;

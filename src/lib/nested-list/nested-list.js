@@ -14,21 +14,18 @@ class MDNestedListItem extends MDElement {
             expanded: { type: Boolean, reflect: true },
             label: { type: String },
             selected: { type: Boolean, reflect: true },
+            activated: { type: Boolean, reflect: true },
             routerLink: { type: String, reflect: true },
             ui: { type: String },
         };
     }
 
     get nodeIcons_() {
-        return this.ui=='tree'? 
-        this.nodeIcons ?? ["folder", "folder_open"]
-        : this.nodeIcons;
+        return this.ui == "tree" ? this.nodeIcons ?? ["folder", "folder_open"] : this.nodeIcons;
     }
 
     get leafIcon_() {
-        return this.ui=='tree'? 
-        this.leafIcon ?? "draft"
-        : this.leafIcon;
+        return this.ui == "tree" ? this.leafIcon ?? "draft" : this.leafIcon;
     }
 
     constructor() {
@@ -146,7 +143,7 @@ class MDNestedList extends MDElement {
     constructor() {
         super();
 
-        this.ui='tree'
+        this.ui = "tree";
     }
 
     renderRowItem(item) {
@@ -166,6 +163,7 @@ class MDNestedList extends MDElement {
                     .ui="${this.ui}"
                     .isParent="${!!item.parent}"
                     .hasNode="${!!item.hasNode}"
+                    .activated="${item.activated}"
                     @click="${this.handleListItemClick}"
                     @onNestedListActionClick="${this.handleNestedListActionClick}"
                 ></md-nested-list-item>
@@ -215,6 +213,7 @@ class MDNestedList extends MDElement {
         if (changedProperties.has("list")) {
             this.setList(this.list);
             this.requestUpdate();
+            console.log(this.list);
         }
     }
 
@@ -264,21 +263,31 @@ class MDNestedList extends MDElement {
     }
 
     select(list, data) {
+        let activated=false
         list.forEach((item) => {
             item.selected = item === data;
+            item.activated = item === data;
+
+            if(item.selected){
+                activated=true
+            }
 
             if (item.children?.length) {
-                this.select(item.children, data);
+                if(this.select(item.children, data)){
+                    activated=true
+                    item.activated=true
+                }
             }
         });
+        return activated
     }
 
     setList(list, indent = 0) {
         let expanded = false;
-        list.forEach((item,index,array) => {
+        list.forEach((item, index, array) => {
             item.indent = indent;
 
-            item.hasNode=array.find(item=>item.children?.length)
+            item.hasNode = array.find((item) => item.children?.length);
 
             if (item.expanded || item.selected) {
                 expanded = true;
@@ -287,7 +296,7 @@ class MDNestedList extends MDElement {
             if (item.children?.length) {
                 if (this.ui == "card") {
                     item.expanded = false;
-                    let { children, ...newItem } = item;
+                    let { children, expanded, selected, ...newItem } = item;
                     newItem.parent = item;
                     item.children.unshift(newItem);
                 }
@@ -295,6 +304,7 @@ class MDNestedList extends MDElement {
                 if (this.setList(item.children, indent + 1)) {
                     expanded = true;
                     item.expanded = true;
+                    item.activated = true;
                 }
             }
         });
