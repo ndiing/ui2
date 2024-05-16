@@ -8,7 +8,7 @@ open | Boolean | no description
 ## Methods
 Name | Arguments | Description
 --- | --- | ---
-show | button,options = {} | no description
+show | button,options={} | no description
 close | no args | no description
 
 ## Events

@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description
 --- | --- | ---
+ui | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -16,5 +17,5 @@ Name | Details | Description
 --- | --- | ---
 onNavigationRailActionClick | event | no description
 onNavigationRailButtonClick | event | no description
-onNavigationRailListItemClick | event | no description
+onNavigationRailScrimClick | event | no description
 

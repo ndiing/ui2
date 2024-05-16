@@ -5,7 +5,9 @@ Name | Type | Description
 --- | --- | ---
 leadingActions | Array | no description
 label | String | no description
+labelSecondary | String | no description
 trailingActions | Array | no description
+ui | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -18,4 +20,6 @@ close | no args | no description
 Name | Details | Description
 --- | --- | ---
 onTopAppBarActionClick | event | no description
+onTopAppBarButtonClick | event | no description
+onTopAppBarScrimClick | event | no description
 

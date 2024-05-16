@@ -4,6 +4,7 @@
 Name | Type | Description
 --- | --- | ---
 ui | String | no description
+uiList | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -18,5 +19,4 @@ Name | Details | Description
 onNavigationDrawerActionClick | event | no description
 onNavigationDrawerButtonClick | event | no description
 onNavigationDrawerScrimClick | event | no description
-onNavigationDrawerListItemClick | event | no description
 

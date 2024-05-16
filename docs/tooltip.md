@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description
 --- | --- | ---
-return | Boolean | no description
+open | Boolean | no description
 
 ## Methods
 Name | Arguments | Description

@@ -10,7 +10,6 @@ Name | Arguments | Description
 setRoutes | routes = [],parent = null | no description
 on | type,listener | no description
 off | type,listener | no description
-emit | type,detail = { ...this } | no description
 getQuery | no args | no description
 getRoute | path | no description
 getRoutes | route = [] | no description

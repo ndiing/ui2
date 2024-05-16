@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description
 --- | --- | ---
+ui | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -16,5 +17,6 @@ Name | Details | Description
 --- | --- | ---
 onNavigationBarActionClick | event | no description
 onNavigationBarButtonClick | event | no description
+onNavigationBarScrimClick | event | no description
 onNavigationBarListItemClick | event | no description
 

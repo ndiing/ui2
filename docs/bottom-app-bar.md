@@ -4,7 +4,8 @@
 Name | Type | Description
 --- | --- | ---
 actions | Array | no description
-fab | Array | no description
+fab | Object | no description
+ui | String | no description
 open | Boolean | no description
 
 ## Methods
@@ -17,5 +18,6 @@ close | no args | no description
 Name | Details | Description
 --- | --- | ---
 onBottomAppBarActionClick | event | no description
-onBottomAppBarFabClick | event | no description
+onBottomAppBarButtonClick | event | no description
+onBottomAppBarScrimClick | event | no description
 
