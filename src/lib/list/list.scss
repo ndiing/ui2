@@ -1,6 +1,7 @@
 .md-list {
     display: flex;
     flex-direction: column;
+
     padding: 8px 0;
 }
 
@@ -12,48 +13,77 @@
 .md-list__item {
     display: flex;
     align-items: center;
+
     padding: 8px 16px;
     gap: 0 16px;
 }
 
 .md-list__avatar {
+    // flex: 0 0 auto;
     height: 40px;
 }
 
 .md-list__image {
+    // flex: 0 0 auto;
     height: 56px;
 }
 
 .md-list__video {
+    // flex: 0 0 auto;
     height: 64px;
     margin: 4px 0 4px -16px;
 }
 
-// .md-list__icon {}
+// .md-list__indent {}
+.md-list__action {
+    // flex: 0 0 auto;
+    color: var(--md-sys-color-on-surface-variant);
+}
+.md-list__icon {
+    // flex: 0 0 auto;
+    color: var(--md-sys-color-on-surface-variant);
+}
 
 .md-list__label {
     flex: 1;
+
+    min-width: 0%;
+    max-width: 100%;
+
     display: flex;
     flex-direction: column;
 }
 
 .md-list__label-primary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     @extend .md-typography--body-large;
 }
 
 .md-list__label-secondary {
+    overflow: hidden;
+
     @extend .md-typography--body-medium;
 }
 
 .md-list__text {
+    // flex: 0 0 auto;
     @extend .md-typography--body-small;
 }
 
-// .md-list__checkbox {}
+.md-list__checkbox {
+    // flex: 0 0 auto;
+}
 
-// .md-list__radio-button {}
+.md-list__radio-button {
+    // flex: 0 0 auto;
+}
 
-// .md-list__switch {}
+.md-list__switch {
+    // flex: 0 0 auto;
+}
 
 .md-list__item {
     min-height: 56px;
@@ -65,6 +95,7 @@
 
 .md-list__item--three-line {
     align-items: flex-start;
+
     min-height: 88px;
     padding-top: 12px;
     padding-bottom: 12px;
@@ -72,6 +103,10 @@
     .md-list__video {
         margin-top: 0;
         margin-bottom: 0;
+    }
+
+    .md-list__label-secondary {
+        height: 40px;
     }
 }
 
@@ -96,6 +131,7 @@
 
 .md-navigation-bar__list {
     flex-direction: row;
+
     padding-top: 0;
     padding-bottom: 0;
 
@@ -106,20 +142,26 @@
     .md-list__item {
         justify-content: center;
         flex-direction: column;
-        min-height: 80px;
+
+        height: 80px;
+
         padding-top: 12px;
         padding-bottom: 12px;
         padding-left: 0;
         padding-right: 0;
+
         row-gap: 4px;
+
         background: inherit;
         color: inherit;
+
         position: relative;
 
         &[selected] {
             .md-list__icon {
                 @extend .md-ripple--selected;
                 @extend .md-icon--selected;
+
                 animation-name: md-navigation-bar-list-item-icon-selected;
                 animation-duration: var(--md-sys-motion-duration-short4);
                 animation-timing-function: var(--md-sys-motion-easing-standard);
@@ -149,9 +191,10 @@
         position: absolute;
         left: 50%;
         top: 50%;
+        
         transform: translate3d(0%, -50%, 0);
 
-        &:empty{
+        &:empty {
             transform: translate3d(-50%, -50%, 0);
             margin-left: 8px;
         }
@@ -226,14 +269,13 @@
         @extend .md-typography--label-medium;
     }
 
-    
     .md-list__badge {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate3d(0%, -50%, 0);
-        
-        &:empty{
+
+        &:empty {
             transform: translate3d(-50%, -50%, 0);
             margin-left: 8px;
         }
@@ -277,14 +319,13 @@
     }
 
     .md-list__label {
-        flex: 0 0 auto;
+        // flex: 0 0 auto;
     }
 
     .md-list__label-primary {
         @extend .md-typography--label-large;
     }
 
-    
     // .md-list__badge {
     // }
 
@@ -294,8 +335,8 @@
         top: 50%;
         transform: translate3d(0%, -50%, 0);
         margin-top: -20px;
-        
-        &:empty{
+
+        &:empty {
             transform: translate3d(-50%, -50%, 0);
             margin-left: 8px;
         }
@@ -303,4 +344,37 @@
 
     // .md-list__icon + .md-list__badge {
     // }
+}
+
+.md-list--tree {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .md-list__action {
+        + .md-list__icon {
+            margin-left: -8px;
+        }
+    }
+    .md-list__indent {
+        + .md-list__indent {
+            margin-left: -8px;
+        }
+        + .md-list__action {
+            margin-left: -8px;
+        }
+        + .md-list__icon {
+            margin-left: -8px;
+        }
+    }
+}
+.md-list--card {
+    .md-list__item {
+        &[activated] {
+            @extend .md-ripple--selected;
+        }
+    }
+}
+.md-list--accordion {
+    padding-top: 0;
+    padding-bottom: 0;
 }
