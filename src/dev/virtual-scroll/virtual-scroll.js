@@ -56,11 +56,11 @@ class DevVirtualScroll extends MDElement {
 
         viewport.addEventListener("onScrolling", (event) => {
             const { start, end } = event.detail;
-            
+
             this.data = Array.from({ length: end - start }, (v, k) => ({
                 label: year + k + start - total / 2,
             }));
-            
+
             this.requestUpdate();
         });
     }

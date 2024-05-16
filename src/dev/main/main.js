@@ -174,9 +174,8 @@ class DevMain extends MDElement {
     }
 
     handleDevMainLayoutChange(event) {
-        const { name } = event.detail;
 
-        if (name == "expanded") {
+        if (event.detail.name == "expanded") {
             this.devMainNavigationDrawer.ui = "";
             this.devMainNavigationDrawer.show();
             this.devMainTopAppBar.close();
@@ -188,15 +187,17 @@ class DevMain extends MDElement {
     }
 
     handleDevMainListItemSelected(event) {
+        
+        if (layout.name !== "expanded") {
+            this.devMainNavigationDrawer.close();
+        }
+        
         event.detail.scrollIntoView({
             behavior: "smooth",
             block: "center",
             inline: "center",
         });
 
-        if (layout.name !== "expanded") {
-            this.devMainNavigationDrawer.close();
-        }
     }
 
     handleDevMainTopAppBarActionClick(event) {
