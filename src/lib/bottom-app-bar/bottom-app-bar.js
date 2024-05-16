@@ -5,19 +5,15 @@ import { html, nothing } from "lit";
 class MDBottomAppBar extends MDElement {
     static get properties() {
         return {
-
             actions: { type: Array },
             fab: { type: Object },
-
             ui: { type: String },
-
             open: { type: Boolean },
         };
     }
 
     constructor() {
         super();
-
         this.body = Array.from(this.childNodes);
     }
 
@@ -50,9 +46,7 @@ class MDBottomAppBar extends MDElement {
 
     connectedCallback() {
         super.connectedCallback();
-
         this.classList.add("md-bottom-app-bar");
-
         this.bottomAppBarScrim = document.createElement("div");
         this.parentElement.insertBefore(this.bottomAppBarScrim, this.nextElementSibling);
         this.bottomAppBarScrim.classList.add("md-bottom-app-bar__scrim");
@@ -63,7 +57,6 @@ class MDBottomAppBar extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-app-bar");
-
         this.bottomAppBarScrim.removeEventListener("click", this.handleBottomAppBarScrimClick);
         this.bottomAppBarScrim.remove();
     }
@@ -72,27 +65,18 @@ class MDBottomAppBar extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                //
-                "modal",
-            ].forEach((ui) => {
-                this.classList.remove("md-bottom-app-bar--" + ui);
-            });
+            ["modal"].forEach((ui) => this.classList.remove("md-bottom-app-bar--" + ui));
+
             if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-bottom-app-bar--" + ui);
-                });
+                this.ui.split(" ").forEach((ui) => this.classList.add("md-bottom-app-bar--" + ui));
             }
         }
+
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-bottom-app-bar--open");
-                if (
-                    [
-                        //
-                        "modal",
-                    ].some((ui) => this.ui?.includes(ui))
-                ) {
+
+                if (["modal"].some((ui) => this.ui?.includes(ui))) {
                     this.bottomAppBarScrim.classList.add("md-bottom-app-bar--open");
                 }
             } else {

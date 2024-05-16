@@ -10,10 +10,10 @@ class DevBottomAppBar extends MDElement {
                 <md-bottom-app-bar
                     id="bottom-app-bar"
                     .actions="${[
-                        {icon:"check_box"},
-                        {icon:"brush"},
-                        {icon:"mic"},
-                        {icon:"image"},
+                        "check_box",
+                        "brush",
+                        "mic",
+                        "image",
                     ]}"
                     .fab="${{
                         icon:"add"
