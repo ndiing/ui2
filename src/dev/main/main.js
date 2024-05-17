@@ -11,6 +11,7 @@ class DevMain extends MDElement {
             {
                 label: "Foundations",
                 nodeIcons: ["deployed_code", "deployed_code"],
+                expanded: true,
                 children: [
                     { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
                     { leafIcon: "deployed_code", label: "Localization", routerLink: "/localization" },
@@ -26,10 +27,11 @@ class DevMain extends MDElement {
                     { leafIcon: "deployed_code", label: "Element", routerLink: "/element" },
                 ],
             },
-            
+
             {
                 label: "Components",
                 nodeIcons: ["deployed_code", "deployed_code"],
+                expanded: true,
                 children: [
                     {
                         label: "App Bar",
@@ -88,10 +90,11 @@ class DevMain extends MDElement {
                     { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
                 ],
             },
-            
+
             {
                 label: "Supporting components",
                 nodeIcons: ["deployed_code", "deployed_code"],
+                expanded: true,
                 children: [
                     { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
                     { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
@@ -146,7 +149,6 @@ class DevMain extends MDElement {
                 <md-navigation-drawer
                     id="navigation-drawer"
                     .list="${this.list}"
-                    .uiList="${"card"}"
                     @onListItemSelected="${this.handleDevMainListItemSelected}"
                 ></md-navigation-drawer>
 

@@ -195,7 +195,7 @@
         border-radius: calc(56px / 2);
         margin-left: 12px;
         margin-right: 12px;
-        row-gap: 4px;
+        column-gap: 12px;
     }
 
     .md-nested-list__label-primary {
@@ -400,36 +400,36 @@
 }
 
 
-.md-nested-nested-list--tree {
+.md-nested-list--tree {
     padding-top: 0;
     padding-bottom: 0;
 
-    // .md-nested-nested-list__action {
-    //     + .md-nested-nested-list__icon {
-    //         margin-left: -8px;
-    //     }
-    // }
-    // .md-nested-nested-list__indent {
-    //     + .md-nested-nested-list__indent {
-    //         margin-left: -8px;
-    //     }
-    //     + .md-nested-nested-list__action {
-    //         margin-left: -8px;
-    //     }
-    //     + .md-nested-nested-list__icon {
-    //         margin-left: -8px;
-    //     }
-    // }
+    .md-nested-list__action {
+        + .md-nested-list__icon {
+            margin-left: -12px;
+        }
+    }
+    .md-nested-list__indent {
+        + .md-nested-list__indent {
+            margin-left: -12px;
+        }
+        + .md-nested-list__action {
+            margin-left: -12px;
+        }
+        + .md-nested-list__icon {
+            margin-left: -12px;
+        }
+    }
 
 }
-.md-nested-nested-list--card {
-    .md-nested-nested-list__item {
+.md-nested-list--card {
+    .md-nested-list__item {
         &[activated] {
             @extend .md-ripple--selected;
         }
     }
 }
-.md-nested-nested-list--accordion {
+.md-nested-list--accordion {
     padding-top: 0;
     padding-bottom: 0;
 }
