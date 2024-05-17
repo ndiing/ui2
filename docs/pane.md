@@ -1,5 +1,18 @@
 # MDPane => MDElement
 
+## Example
+```html
+<md-pane
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    buttons=""
+    ui=""
+    open
+></md-pane>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

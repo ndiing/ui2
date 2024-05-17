@@ -1,5 +1,11 @@
 # MDIcon => MDElement
 
+## Example
+```html
+<md-icon
+></md-icon>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

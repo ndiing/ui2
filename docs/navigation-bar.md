@@ -1,5 +1,13 @@
 # MDNavigationBar => MDElement
 
+## Example
+```html
+<md-navigation-bar
+    ui=""
+    open
+></md-navigation-bar>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

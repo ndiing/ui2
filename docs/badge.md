@@ -1,5 +1,13 @@
 # MDBadge => MDElement
 
+## Example
+```html
+<md-badge
+    label="Title"
+    max=""
+></md-badge>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

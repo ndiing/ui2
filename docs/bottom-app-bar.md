@@ -1,5 +1,15 @@
 # MDBottomAppBar => MDElement
 
+## Example
+```html
+<md-bottom-app-bar
+    actions=""
+    fab=""
+    ui=""
+    open
+></md-bottom-app-bar>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

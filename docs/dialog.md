@@ -1,5 +1,18 @@
 # MDDialog => MDElement
 
+## Example
+```html
+<md-dialog
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    buttons=""
+    ui=""
+    open
+></md-dialog>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

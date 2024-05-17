@@ -1,5 +1,10 @@
 # Popper => undefined
 
+## Example
+```html
+
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

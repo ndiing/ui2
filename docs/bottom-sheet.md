@@ -1,5 +1,18 @@
 # MDBottomSheet => MDElement
 
+## Example
+```html
+<md-bottom-sheet
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    buttons=""
+    ui=""
+    open
+></md-bottom-sheet>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

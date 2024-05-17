@@ -1,5 +1,10 @@
 # MDElement => LitElement
 
+## Example
+```html
+
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

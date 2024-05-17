@@ -1,5 +1,11 @@
 # MDCarousel => MDElement
 
+## Example
+```html
+<md-carousel
+></md-carousel>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

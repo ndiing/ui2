@@ -1,5 +1,14 @@
 # MDNavigationDrawer => MDElement
 
+## Example
+```html
+<md-navigation-drawer
+    ui=""
+    uiList=""
+    open
+></md-navigation-drawer>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

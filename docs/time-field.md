@@ -1,5 +1,22 @@
 # MDTimeField => MDElement
 
+## Example
+```html
+<md-time-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-time-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,25 @@
 # MDListItem => MDElement
 
+## Example
+```html
+<md-list-item
+    avatar=""
+    image=""
+    video=""
+    icon="image"
+    label="Title"
+    labelSecondary=""
+    text=""
+    leadingCheckbox=""
+    leadingRadioButton=""
+    leadingSwitch=""
+    trailingCheckbox=""
+    trailingRadioButton=""
+    trailingSwitch=""
+    badge=""
+></md-list-item>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

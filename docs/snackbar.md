@@ -1,5 +1,11 @@
 # MDSnackbar => MDElement
 
+## Example
+```html
+<md-snackbar
+></md-snackbar>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

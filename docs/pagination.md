@@ -1,5 +1,11 @@
 # MDPagination => MDElement
 
+## Example
+```html
+<md-pagination
+></md-pagination>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,14 @@
 # MDButton => MDElement
 
+## Example
+```html
+<md-icon-button
+    icon="image"
+    type=""
+    ui=""
+></md-icon-button>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,13 @@
 # MDFab => MDElement
 
+## Example
+```html
+<md-fab
+    icon="image"
+    ui=""
+></md-fab>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

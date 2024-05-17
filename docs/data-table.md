@@ -1,5 +1,16 @@
 # MDDataTableColumn => HTMLTableCellElement
 
+## Example
+```html
+<md-data-table-container
+    label="Title"
+    sortable
+    type=""
+    order=""
+    actions=""
+></md-data-table-container>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

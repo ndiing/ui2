@@ -1,5 +1,10 @@
 # Ripple => undefined
 
+## Example
+```html
+
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

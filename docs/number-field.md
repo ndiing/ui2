@@ -1,5 +1,22 @@
 # MDNumberField => MDElement
 
+## Example
+```html
+<md-number-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-number-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

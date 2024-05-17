@@ -1,5 +1,11 @@
 # MDChip => MDElement
 
+## Example
+```html
+<md-chip
+></md-chip>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

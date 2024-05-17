@@ -1,5 +1,13 @@
 # MDWeekPickerYear => HTMLDivElement
 
+## Example
+```html
+<md-week-picker
+    value=""
+    index=""
+></md-week-picker>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

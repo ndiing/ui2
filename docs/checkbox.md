@@ -1,5 +1,21 @@
 # MDCheckbox => MDElement
 
+## Example
+```html
+<md-checkbox
+    type=""
+    name=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    indeterminate
+    checked
+    defaultChecked
+></md-checkbox>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,18 @@
 # MDSideSheet => MDElement
 
+## Example
+```html
+<md-side-sheet
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    buttons=""
+    ui=""
+    open
+></md-side-sheet>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

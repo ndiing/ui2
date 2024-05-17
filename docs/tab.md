@@ -1,5 +1,11 @@
 # MDTab => MDElement
 
+## Example
+```html
+<md-tab
+></md-tab>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

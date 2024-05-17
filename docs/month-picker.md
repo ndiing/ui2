@@ -1,5 +1,13 @@
 # MDMonthPickerYear => HTMLDivElement
 
+## Example
+```html
+<md-month-picker
+    value=""
+    index=""
+></md-month-picker>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

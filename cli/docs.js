@@ -4,6 +4,49 @@ const path = require("path");
 const [,,name] = process.argv
 
 
+function generateCustomElementHtml(codeSnippet) {
+    const propertiesRegex = /static\s+get\s+properties\s*\(\)\s*\{\s*return\s*\{([^]*?)\};\s*\}/;
+    const propertiesMatch = codeSnippet.match(propertiesRegex);
+
+    const propertiesArray = [];
+    if (propertiesMatch) {
+        const propertiesContent = propertiesMatch[1].trim();
+
+        const propertyRegex = /(\w+):\s*\{\s*type:\s*(\w+)\s*\},?/g;
+        let match;
+
+        while ((match = propertyRegex.exec(propertiesContent)) !== null) {
+            const name = match[1];
+            const type = match[2];
+            propertiesArray.push({ name: name, type: eval(type) });
+        }
+    }
+
+    const tagNameRegex = /customElements\.define\("([^"]+)",\s*\w+\);/;
+    const tagNameMatch = codeSnippet.match(tagNameRegex);
+
+    let tagName = null;
+    if (tagNameMatch) {
+        tagName = tagNameMatch[1];
+    }
+
+    if (tagName) {
+        let htmlString = `<${tagName}`;
+        propertiesArray.forEach((prop) => {
+            if (prop.type === Boolean) {
+                htmlString += `\n    ${prop.name}`;
+            } else {
+                htmlString += `\n    ${prop.name}="${prop.name === "label" ? "Title" : prop.name === "icon" ? "image" : ""}"`;
+            }
+        });
+        htmlString += `\n></${tagName}>`;
+
+        return htmlString;
+    }
+
+    return "";
+}
+
 var data = fs.readFileSync(`./src/lib/${name}/${name}.js`, { encoding: "utf8" });
 var properties = [];
 var methods = [];
@@ -39,9 +82,16 @@ for (let [, , name, , args] of data.matchAll(/emit\(("|')(\w+)('|"),?(.*?)\)/g))
 
 const [, className, ,extendsName] = data.match(/class (\w+)( extends (\w+))?/);
 
+let example=generateCustomElementHtml(data)
+
 let code = ``
 
 code += `# ${className} => ${extendsName}\r\n`
+code += `\r\n`
+code += `## Example\r\n`
+code += `\`\`\`html\r\n`
+code += `${example}\r\n`
+code += `\`\`\`\r\n`
 code += `\r\n`
 code += `## Properties\r\n`
 code += `Name | Type | Description\r\n`

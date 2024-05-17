@@ -1,5 +1,21 @@
 # MDSwitch => MDElement
 
+## Example
+```html
+<md-switch
+    type=""
+    name=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    indeterminate
+    checked
+    defaultChecked
+></md-switch>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

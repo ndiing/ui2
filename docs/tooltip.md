@@ -1,5 +1,11 @@
 # MDTooltip => MDElement
 
+## Example
+```html
+<md-tooltip
+></md-tooltip>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,14 @@
 # MDForm => MDElement
 
+## Example
+```html
+<md-form
+    action=""
+    enctype=""
+    method=""
+></md-form>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

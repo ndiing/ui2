@@ -1,5 +1,17 @@
 # MDCard => MDElement
 
+## Example
+```html
+<md-card
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    buttons=""
+    ui=""
+></md-card>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

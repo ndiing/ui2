@@ -1,5 +1,22 @@
 # MDWeekField => MDElement
 
+## Example
+```html
+<md-week-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-week-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

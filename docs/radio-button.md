@@ -1,5 +1,20 @@
 # MDRadioButton => MDElement
 
+## Example
+```html
+<md-radio-button
+    type=""
+    name=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    indeterminate
+    checked
+    defaultChecked
+></md-radio-button>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

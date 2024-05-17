@@ -1,5 +1,19 @@
 # MDNestedListItem => MDElement
 
+## Example
+```html
+<md-nested-list-item
+    nodeIcons=""
+    leafIcon=""
+    label="Title"
+    indent=""
+    isNode
+    ui=""
+    isParent
+    hasNode
+></md-nested-list-item>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

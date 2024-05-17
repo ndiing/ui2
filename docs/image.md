@@ -1,5 +1,15 @@
 # MDImage => MDElement
 
+## Example
+```html
+<md-image
+    src=""
+    alt=""
+    ratio=""
+    rounded
+></md-image>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

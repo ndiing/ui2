@@ -1,5 +1,17 @@
 # MDTopAppBar => MDElement
 
+## Example
+```html
+<md-top-app-bar
+    leadingActions=""
+    label="Title"
+    labelSecondary=""
+    trailingActions=""
+    ui=""
+    open
+></md-top-app-bar>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

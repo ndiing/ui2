@@ -1,5 +1,14 @@
 # MDColorPicker => MDElement
 
+## Example
+```html
+<md-color-picker
+    value=""
+    currentValue=""
+    index=""
+></md-color-picker>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

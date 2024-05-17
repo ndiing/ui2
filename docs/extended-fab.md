@@ -1,5 +1,13 @@
 # MDExtendedFab => MDElement
 
+## Example
+```html
+<md-extended-fab
+    icon="image"
+    label="Title"
+></md-extended-fab>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

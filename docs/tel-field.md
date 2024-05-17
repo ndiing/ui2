@@ -1,5 +1,22 @@
 # MDTelField => MDElement
 
+## Example
+```html
+<md-tel-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-tel-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

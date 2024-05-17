@@ -1,5 +1,11 @@
 # MDLayout => MDElement
 
+## Example
+```html
+<md-layout
+></md-layout>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

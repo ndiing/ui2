@@ -1,5 +1,19 @@
 # MDSlider => MDElement
 
+## Example
+```html
+<md-slider
+    name=""
+    required
+    readOnly
+    min=""
+    max=""
+    step=""
+    ui=""
+    list=""
+></md-slider>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

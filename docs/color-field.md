@@ -1,5 +1,22 @@
 # MDColorField => MDElement
 
+## Example
+```html
+<md-color-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-color-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

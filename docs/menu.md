@@ -1,5 +1,12 @@
 # MDMenu => MDElement
 
+## Example
+```html
+<md-menu
+    open
+></md-menu>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

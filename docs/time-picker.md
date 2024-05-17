@@ -1,5 +1,13 @@
 # MDTimePicker => MDElement
 
+## Example
+```html
+<md-time-picker
+    value=""
+    index=""
+></md-time-picker>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---

@@ -1,5 +1,22 @@
 # MDFileField => MDElement
 
+## Example
+```html
+<md-file-field
+    label="Title"
+    name=""
+    placeholder=""
+    required
+    readOnly
+    value=""
+    defaultValue=""
+    ui=""
+    text=""
+    validationMessage=""
+    error
+></md-file-field>
+```
+
 ## Properties
 Name | Type | Description
 --- | --- | ---
