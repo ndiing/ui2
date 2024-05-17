@@ -2,7 +2,6 @@ import "./polyfill/polyfill.js";
 import "./element/element.js";
 import "./localization/localization.js";
 
-import "./animate/animate.js";
 import "./gesture/gesture.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
