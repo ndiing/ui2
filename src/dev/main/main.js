@@ -204,13 +204,13 @@ class DevMain extends MDElement {
             this.devMainNavigationDrawer.close();
         }
 
-        window.requestAnimationFrame(() => {
-            event.detail.scrollIntoView({
-                behavior: "smooth",
-                block: "center",
-                inline: "center",
-            });
-        })
+        // window.requestAnimationFrame(() => {
+        //     event.detail.scrollIntoView({
+        //         behavior: "smooth",
+        //         block: "center",
+        //         inline: "center",
+        //     });
+        // })
     }
 
     handleDevMainTopAppBarActionClick(event) {

@@ -4,6 +4,7 @@ import { msg } from "@lit/localize";
 import { Store } from "../../lib/store/store";
 // import { VirtualScroll } from "../../lib/virtual-scroll/virtual-scroll";
 import { Scrolling } from "../../lib/scrolling/scrolling";
+import { layout } from "../../lib/observer/observer";
 
 class DevDataTable extends MDElement {
     static get properties() {
@@ -36,6 +37,10 @@ class DevDataTable extends MDElement {
                         class="md-layout-fit"
                         .columns="${this.columns}"
                         .rows="${this.rows}"
+                        .selectSingle="${true}"
+                        .selectMulti="${true}"
+                        .selectRange="${true}"
+                        .selectAll="${true}"
                     ></md-data-table>
                 </div>
             </div>
@@ -68,6 +73,10 @@ class DevDataTable extends MDElement {
         });
 
         // this.viewport.scrollTop = Math.floor(this.total * 52) / 2;
+
+        this.handleDevMainLayoutChange = this.handleDevMainLayoutChange.bind(this);
+        this.handleDevMainLayoutChange({ detail: layout });
+        window.addEventListener("onLayoutChange", this.handleDevMainLayoutChange);
     }
 
     async disconnectedCallback() {
@@ -75,7 +84,33 @@ class DevDataTable extends MDElement {
 
         this.viewport.removeEventListener("onScrolling", this.handleScrolling);
         this.scrolling.destroy();
+
+        window.removeEventListener("onLayoutChange", this.handleDevMainLayoutChange);
     }
+
+
+    handleDevMainLayoutChange(event) {
+        if (event.detail.name == "expanded") {
+            this.columns = [
+                { name: "albumId", label: "albumId", width: 56 * 1 },
+                { name: "id", label: "id", width: 56 * 1 },
+                { name: "title", label: "title", width: 56 * 5 },
+                { name: "url", label: "url", width: 56 * 3 },
+                { name: "thumbnailUrl", label: "thumbnailUrl", width: 56 * 3 },
+            ];
+            this.requestUpdate()
+        } else {
+            this.columns = [
+                // { name: "albumId", label: "albumId", width: 56 * 3 },
+                { name: "id", label: "id", width: 56 * 1 },
+                { name: "title", label: "title", width: 56 * 5 },
+                // { name: "url", label: "url", width: 56 * 3 },
+                // { name: "thumbnailUrl", label: "thumbnailUrl", width: 56 * 3 },
+            ];
+            this.requestUpdate()
+        }
+    }
+
 
     handleScrolling(event) {
         const { start, end } = event.detail;

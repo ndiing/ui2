@@ -140,6 +140,7 @@ class Router {
                 outlet.parentElement.insertBefore(stack.component, outlet.nextElementSibling);
                 stack.component.isComponent = true;
             }
+
             const outlets = Array.from(document.body.querySelectorAll("md-outlet"));
 
             for (const outlet of outlets) {
