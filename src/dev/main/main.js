@@ -138,6 +138,7 @@ class DevMain extends MDElement {
                 <md-navigation-drawer
                     id="navigation-drawer"
                     .list="${this.list}"
+                    .uiList="${"card"}"
                     @onListItemSelected="${this.handleDevMainListItemSelected}"
                 ></md-navigation-drawer>
 
