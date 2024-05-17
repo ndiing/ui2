@@ -103,10 +103,14 @@
 
 .md-bottom-sheet {
     grid-area: south;
-    width: 640px;
-    margin-top: 72px;
-    margin-left: auto; // 56pxs
-    margin-right: auto; // 56pxs
+    width: 100%;
+    
+    @media (min-width: 840px) {
+        width: 640px;
+        margin-top: 72px;
+        margin-left: auto; // 56pxs
+        margin-right: auto; // 56pxs
+    }
 
     &.md-bottom-sheet--modal {
         bottom: 0;

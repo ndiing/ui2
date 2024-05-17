@@ -2,7 +2,7 @@ import { MDElement } from "../../lib/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 
-class DevExample3 extends MDElement {
+class DevNavigation extends MDElement {
     render() {
         // prettier-ignore
         return html`
@@ -163,6 +163,6 @@ class DevExample3 extends MDElement {
     }
 }
 
-customElements.define("dev-example3", DevExample3);
+customElements.define("dev-navigation", DevNavigation);
 
-export default document.createElement("dev-example3");
+export default document.createElement("dev-navigation");
