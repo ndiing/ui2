@@ -79,6 +79,7 @@ const routes = [
             { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
             { path: "scrolling", load: () => import("./scrolling/scrolling.js").then((m) => m.default) },
             { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
+            { path: "example2", load: () => import("./example2/example2.js").then((m) => m.default) },
         ],
     },
     {

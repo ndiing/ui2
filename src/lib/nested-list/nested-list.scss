@@ -195,8 +195,6 @@
     .md-nested-list__label-primary {
         @extend .md-typography--label-large;
     }
-
-    
 }
 
 .md-navigation-rail__nested-list {
@@ -320,23 +318,24 @@
 .md-nested-list--tree {
     padding-top: 0;
     padding-bottom: 0;
-    
-    .md-nested-list__action {
-        + .md-nested-list__icon {
-            margin-left: -8px;
-        }
-    }
-    .md-nested-list__indent {
-        + .md-nested-list__indent {
-            margin-left: -8px;
-        }
-        + .md-nested-list__action {
-            margin-left: -8px;
-        }
-        + .md-nested-list__icon {
-            margin-left: -8px;
-        }
-    }
+
+    // .md-nested-list__action {
+    //     + .md-nested-list__icon {
+    //         margin-left: -8px;
+    //     }
+    // }
+    // .md-nested-list__indent {
+    //     + .md-nested-list__indent {
+    //         margin-left: -8px;
+    //     }
+    //     + .md-nested-list__action {
+    //         margin-left: -8px;
+    //     }
+    //     + .md-nested-list__icon {
+    //         margin-left: -8px;
+    //     }
+    // }
+
 }
 .md-nested-list--card {
     .md-nested-list__item {
