@@ -142,48 +142,40 @@ class DevExample extends MDElement {
                             <md-icon>menu</md-icon>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="16/9"
-                                rounded
-                            ></md-image>
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="3/2"
-                                rounded
-                            ></md-image>
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="4/3"
-                                rounded
-                            ></md-image>
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="1/1"
-                                rounded
-                            ></md-image>
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="3/4"
-                                rounded
-                            ></md-image>
-                            <md-image
-                                style="width:56px;"
-                                src="https://via.placeholder.com/800x450"
-                                alt=""
-                                ratio="2/3"
-                                rounded
-                            ></md-image>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="16/9"></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/2"></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="4/3"></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="1/1"></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/4"></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="2/3"></md-image>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="16/9"></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/2"></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="4/3"></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="1/1"></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/4"></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="2/3"></md-image>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="16/9" rounded></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/2" rounded></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="4/3" rounded></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="1/1" rounded></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/4" rounded></md-image>
+                                    <md-image style="width: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="2/3" rounded></md-image>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="16/9" rounded></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/2" rounded></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="4/3" rounded></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="1/1" rounded></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="3/4" rounded></md-image>
+                                    <md-image style="height: 56px" src="https://via.placeholder.com/800x450" alt="" ratio="2/3" rounded></md-image>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                             <md-badge
@@ -200,94 +192,151 @@ class DevExample extends MDElement {
                             ></md-badge>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button
-                                icon="image"
-                                label="Title"
-                                type=""
-                                ui=""
-                            ></md-button>
-                            <md-button
-                                icon="image"
-                                label="Title"
-                                type=""
-                                ui="filled"
-                            ></md-button>
-                            <md-button
-                                icon="image"
-                                label="Title"
-                                type=""
-                                ui="filled-tonal"
-                            ></md-button>
-                            <md-button
-                                icon="image"
-                                label="Title"
-                                type=""
-                                ui="outlined"
-                            ></md-button>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="Title" type="" ui=""></md-button>
+                                    <md-button icon="image" label="Title" type="" ui=""></md-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="Title" type="" ui="filled"></md-button>
+                                    <md-button icon="image" label="Title" type="" ui="filled"></md-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="Title" type="" ui="filled-tonal"></md-button>
+                                    <md-button icon="image" label="Title" type="" ui="filled-tonal"></md-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-button label="Title" type="" ui="outlined"></md-button>
+                                    <md-button icon="image" label="Title" type="" ui="outlined"></md-button>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-extended-fab
-                                icon="image"
-                                label="Title"
-                            ></md-extended-fab>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-extended-fab label="Title"></md-extended-fab>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-extended-fab icon="image" label="Title"></md-extended-fab>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-fab
-                                icon="image"
-                                ui=""
-                            ></md-fab>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-fab icon="image" ui=""></md-fab>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-fab icon="image" ui="small"></md-fab>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-fab icon="image" ui="large"></md-fab>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-icon-button
-                                icon="image"
-                                type=""
-                                ui=""
-                            ></md-icon-button>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-icon-button icon="image" type="" ui=""></md-icon-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-icon-button icon="image" type="" ui="filled"></md-icon-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-icon-button icon="image" type="" ui="filled-tonal"></md-icon-button>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-segmented-button
-                                .buttons="${[
-                                    {"label": "Home", "icon": "home"},
-                                    {"label": "Settings", "icon": "settings"},
-                                    {"label": "Account", "icon": "account_circle"},
-                                ]}"
-                            ></md-segmented-button>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-segmented-button
+                                        .buttons="${[
+                                            {"label": "Home", "icon": "home",selected:true},
+                                            {"label": "Settings", "icon": "settings"},
+                                            {"label": "Account", "icon": "account_circle"},
+                                        ]}"
+                                    ></md-segmented-button>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-segmented-button
+                                        .buttons="${[
+                                            {"label": "Home", "icon": "home",selected:true},
+                                            {"label": "Settings", "icon": "settings",selected:true},
+                                            {"label": "Account", "icon": "account_circle"},
+                                        ]}"
+                                    ></md-segmented-button>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-card
-                                leadingActions=""
-                                label="Title"
-                                labelSecondary=""
-                                trailingActions=""
-                                buttons=""
-                                ui="elevated"
-                            ></md-card>
-                            <md-card
-                                leadingActions=""
-                                label="Title"
-                                labelSecondary=""
-                                trailingActions=""
-                                buttons=""
-                                ui="filled"
-                            ></md-card>
-                            <md-card
-                                leadingActions=""
-                                label="Title"
-                                labelSecondary=""
-                                trailingActions=""
-                                buttons=""
-                                ui="outlined"
-                            ></md-card>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-card leadingActions="" label="Title" labelSecondary="" trailingActions="" buttons="" ui="elevated"></md-card>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-card leadingActions="" label="Title" labelSecondary="" trailingActions="" buttons="" ui="filled"></md-card>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-card leadingActions="" label="Title" labelSecondary="" trailingActions="" buttons="" ui="outlined"></md-card>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-pane
-                                leadingActions=""
-                                label="Title"
-                                labelSecondary=""
-                                trailingActions=""
-                                buttons=""
-                                ui=""
-                            ></md-pane>
+                            <div class="md-layout-column">
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane 
+                                        label="Title" 
+                                    >Body</md-pane>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane 
+                                        label="Title" 
+                                        labelSecondary="Title" 
+                                    >Body</md-pane>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane 
+                                        .leadingActions="${[
+                                            {"icon": "home"},
+                                        ]}" 
+                                        label="Title" 
+                                        labelSecondary="Title" 
+                                    >Body</md-pane>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane 
+                                        .leadingActions="${[
+                                            {"icon": "home"},
+                                        ]}" 
+                                        label="Title" 
+                                        labelSecondary="Title" 
+                                        .trailingActions="${[
+                                            {"icon": "settings"},
+                                            {"icon": "account_circle"},
+                                            {"icon": "notifications"}
+                                        ]}" 
+                                    >Body</md-pane>
+                                </div>
+                                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                    <md-pane 
+                                        .leadingActions="${[
+                                            {"icon": "home"},
+                                        ]}" 
+                                        label="Title" 
+                                        labelSecondary="Title" 
+                                        .trailingActions="${[
+                                            {"icon": "settings"},
+                                            {"icon": "account_circle"},
+                                            {"icon": "notifications"}
+                                        ]}" 
+                                        .buttons="${[
+                                            {"label": "Home"},
+                                            {"label": "Settings"}
+                                        ]}" 
+                                    >Body</md-pane>
+                                </div>
+                            </div>
                         </div>
                         <div class="md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                             <md-carousel
