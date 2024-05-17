@@ -9,61 +9,6 @@ class DevMain extends MDElement {
         super();
         this.list = [
             {
-                label: "App Bar",
-                nodeIcons: ["deployed_code", "deployed_code"],
-                children: [
-                    { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
-                    { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
-                ],
-            },
-            { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
-            {
-                label: "Button",
-                nodeIcons: ["deployed_code", "deployed_code"],
-                children: [
-                    { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
-                    { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
-                    { leafIcon: "deployed_code", label: "Extended Fab", routerLink: "/extended-fab" },
-                    { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
-                    { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
-                ],
-            },
-            { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
-            { leafIcon: "deployed_code", label: "Carousel", routerLink: "/carousel" },
-            { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
-            { leafIcon: "deployed_code", label: "Chip", routerLink: "/chip" },
-            { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },
-            { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
-            { leafIcon: "deployed_code", label: "Divider", routerLink: "/divider" },
-            { leafIcon: "deployed_code", label: "List", routerLink: "/list" },
-            { leafIcon: "deployed_code", label: "Menu", routerLink: "/menu" },
-            {
-                label: "Navigation",
-                nodeIcons: ["deployed_code", "deployed_code"],
-                children: [
-                    { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
-                    { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
-                    { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
-                ],
-            },
-            { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
-            { leafIcon: "deployed_code", label: "Radio Button", routerLink: "/radio-button" },
-            {
-                label: "Sheet",
-                nodeIcons: ["deployed_code", "deployed_code"],
-                children: [
-                    { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
-                    { leafIcon: "deployed_code", label: "Side Sheet", routerLink: "/side-sheet" },
-                ],
-            },
-            { leafIcon: "deployed_code", label: "Slider", routerLink: "/slider" },
-            { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
-            { leafIcon: "deployed_code", label: "Switch", routerLink: "/switch" },
-            { leafIcon: "deployed_code", label: "Tab", routerLink: "/tab" },
-            { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
-            { leafIcon: "deployed_code", label: "Time Picker", routerLink: "/time-picker" },
-            { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
-            {
                 label: "Foundations",
                 nodeIcons: ["deployed_code", "deployed_code"],
                 children: [
@@ -81,6 +26,69 @@ class DevMain extends MDElement {
                     { leafIcon: "deployed_code", label: "Element", routerLink: "/element" },
                 ],
             },
+            
+            {
+                label: "Components",
+                nodeIcons: ["deployed_code", "deployed_code"],
+                children: [
+                    {
+                        label: "App Bar",
+                        nodeIcons: ["deployed_code", "deployed_code"],
+                        children: [
+                            { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
+                            { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
+                        ],
+                    },
+                    { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
+                    {
+                        label: "Button",
+                        nodeIcons: ["deployed_code", "deployed_code"],
+                        children: [
+                            { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
+                            { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
+                            { leafIcon: "deployed_code", label: "Extended Fab", routerLink: "/extended-fab" },
+                            { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
+                            { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
+                        ],
+                    },
+                    { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
+                    { leafIcon: "deployed_code", label: "Carousel", routerLink: "/carousel" },
+                    { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
+                    { leafIcon: "deployed_code", label: "Chip", routerLink: "/chip" },
+                    { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },
+                    { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
+                    { leafIcon: "deployed_code", label: "Divider", routerLink: "/divider" },
+                    { leafIcon: "deployed_code", label: "List", routerLink: "/list" },
+                    { leafIcon: "deployed_code", label: "Menu", routerLink: "/menu" },
+                    {
+                        label: "Navigation",
+                        nodeIcons: ["deployed_code", "deployed_code"],
+                        children: [
+                            { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
+                            { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
+                            { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
+                        ],
+                    },
+                    { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
+                    { leafIcon: "deployed_code", label: "Radio Button", routerLink: "/radio-button" },
+                    {
+                        label: "Sheet",
+                        nodeIcons: ["deployed_code", "deployed_code"],
+                        children: [
+                            { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
+                            { leafIcon: "deployed_code", label: "Side Sheet", routerLink: "/side-sheet" },
+                        ],
+                    },
+                    { leafIcon: "deployed_code", label: "Slider", routerLink: "/slider" },
+                    { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
+                    { leafIcon: "deployed_code", label: "Switch", routerLink: "/switch" },
+                    { leafIcon: "deployed_code", label: "Tab", routerLink: "/tab" },
+                    { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
+                    { leafIcon: "deployed_code", label: "Time Picker", routerLink: "/time-picker" },
+                    { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
+                ],
+            },
+            
             {
                 label: "Supporting components",
                 nodeIcons: ["deployed_code", "deployed_code"],
