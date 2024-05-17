@@ -93,7 +93,6 @@ class DevMain extends MDElement {
             {
                 label: "Supporting components",
                 nodeIcons: ["deployed_code", "deployed_code"],
-                expanded: true,
                 children: [
                     { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
                     { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
