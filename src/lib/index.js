@@ -46,7 +46,6 @@ import "./time-picker/time-picker.js";
 import "./week-picker/week-picker.js";
 
 import "./form/form.js";
-
 import "./color-field/color-field.js";
 import "./date-field/date-field.js";
 import "./datetime-field/datetime-field.js";
@@ -63,26 +62,21 @@ import "./textarea-field/textarea-field.js";
 import "./time-field/time-field.js";
 import "./url-field/url-field.js";
 import "./week-field/week-field.js";
-
 import "./checkbox/checkbox.js";
 import "./radio-button/radio-button.js";
 import "./switch/switch.js";
-
 import "./slider/slider.js";
 
 import "./pane/pane.js";
 import "./card/card.js";
-
 import "./dialog/dialog.js";
 
 import "./side-sheet/side-sheet.js";
 import "./bottom-sheet/bottom-sheet.js";
-
 import "./bottom-app-bar/bottom-app-bar.js";
 import "./top-app-bar/top-app-bar.js";
 
 import "./menu/menu.js";
-
 import "./navigation-bar/navigation-bar.js";
 import "./navigation-rail/navigation-rail.js";
 import "./navigation-drawer/navigation-drawer.js";
