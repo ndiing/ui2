@@ -8,7 +8,7 @@ class DevList extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {avatar:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -17,7 +17,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingCheckbox:{},avatar:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -26,10 +26,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {image:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -38,7 +36,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingCheckbox:{},image:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -47,10 +45,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {video:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -59,7 +55,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingCheckbox:{},video:'https://placehold.co/600x400',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -68,10 +64,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {icon:'image',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -80,7 +74,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingCheckbox:{},icon:'image',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -89,10 +83,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -101,7 +93,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingCheckbox:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -110,10 +102,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {leadingCheckbox:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -122,7 +112,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {leadingCheckbox:{},text:'100+',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -131,10 +121,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {leadingRadioButton:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -143,7 +131,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {leadingRadioButton:{},text:'100+',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -152,10 +140,8 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingSwitch:{},label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -164,7 +150,7 @@ class DevList extends MDElement {
                         ]}"
                     ></md-list>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list
                         .list="${[
                             {trailingSwitch:{},icon:'image',label:'Headline',labelSecondary:'Supporting text that is long enough to fill up multiple lines'},
@@ -172,8 +158,6 @@ class DevList extends MDElement {
                             {trailingSwitch:{},icon:'image',label:'Headline'},
                         ]}"
                     ></md-list>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                 </div>
                 
                 

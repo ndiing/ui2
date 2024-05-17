@@ -96,18 +96,20 @@ class MDListItem extends MDElement {
 
     firstUpdated(changedProperties) {
         if (changedProperties.has("labelSecondary")) {
-            if (this.labelSecondary) {
-                const lineHeight = parseFloat(window.getComputedStyle(this.labelSecondaryElement).getPropertyValue("line-height"));
-
-                if (this.labelSecondaryElement.clientHeight > lineHeight) {
-                    this.classList.add("md-list__item--three-line");
+            window.requestAnimationFrame(() => {
+                if (this.labelSecondary) {
+                    const lineHeight = parseFloat(window.getComputedStyle(this.labelSecondaryElement).getPropertyValue("line-height"));
+    
+                    if (this.labelSecondaryElement.scrollHeight > lineHeight) {
+                        this.classList.add("md-list__item--three-line");
+                    } else {
+                        this.classList.add("md-list__item--two-line");
+                    }
                 } else {
                     this.classList.add("md-list__item--two-line");
+                    this.classList.add("md-list__item--three-line");
                 }
-            } else {
-                this.classList.add("md-list__item--two-line");
-                this.classList.add("md-list__item--three-line");
-            }
+            })
         }
     }
 
