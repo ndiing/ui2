@@ -125,7 +125,7 @@ function processCommand(answer) {
     }
 }
 
-function createComponent(name,template='template') {
+function createComponent(name, template = "template") {
     var fileJs = `./src/lib/${name}/${name}.js`;
     var fileScss = `./src/lib/${name}/${name}.scss`;
 
@@ -136,26 +136,26 @@ function createComponent(name,template='template') {
         console.log(`Creating component: ${name}`);
 
         var templateJs = read(`./cli/component/${template}.js`);
-        templateJs=templateJs.replaceAll(`${template}`, name)
-        templateJs=templateJs.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`)
-        templateJs=templateJs.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
+        templateJs = templateJs.replaceAll(`${template}`, name);
+        templateJs = templateJs.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`);
+        templateJs = templateJs.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
         write(fileJs, templateJs);
 
         var templateScss = read(`./cli/component/${template}.scss`);
-        templateScss=templateScss.replaceAll(`${template}`, name)
-        templateScss=templateScss.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`)
-        templateScss=templateScss.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
+        templateScss = templateScss.replaceAll(`${template}`, name);
+        templateScss = templateScss.replaceAll(`this.${name}`, `this.${toCamelCase(name)}`);
+        templateScss = templateScss.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
         write(fileScss, templateScss);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/)//.filter(Boolean);
+        var listJs = indexJs.split(/\r\n/); ////.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         listJs.push(js);
         indexJs = listJs.join("\r\n");
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/)//.filter(Boolean);
+        var listScss = indexScss.split(/\r\n/); ////.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         listScss.push(scss);
         indexScss = listScss.join("\r\n");
@@ -177,7 +177,7 @@ function deleteComponent(name) {
         removeDir(dir);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/)//.filter(Boolean);
+        var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         var iJs = listJs.indexOf(js);
         if (iJs >= -1) {
@@ -187,7 +187,7 @@ function deleteComponent(name) {
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/)//.filter(Boolean);
+        var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         var iScss = listScss.indexOf(scss);
         if (iScss >= -1) {
@@ -217,14 +217,14 @@ function createController(name) {
         write(fileScss, templateScss);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/).filter(Boolean);
+        var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         listJs.push(js);
         indexJs = listJs.join("\r\n");
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/).filter(Boolean);
+        var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         listScss.push(scss);
         indexScss = listScss.join("\r\n");
@@ -246,7 +246,7 @@ function deleteController(name) {
         removeDir(dir);
 
         var indexJs = read("./src/lib/index.js");
-        var listJs = indexJs.split(/\r\n/).filter(Boolean);
+        var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         var iJs = listJs.indexOf(js);
         if (iJs >= -1) {
@@ -256,7 +256,7 @@ function deleteController(name) {
         write("./src/lib/index.js", indexJs);
 
         var indexScss = read("./src/lib/index.scss");
-        var listScss = indexScss.split(/\r\n/).filter(Boolean);
+        var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         var iScss = listScss.indexOf(scss);
         if (iScss >= -1) {
@@ -348,9 +348,9 @@ function deleteApp(name) {
 // CLI
 //
 
-const [,,method,type,name,template] = process.argv
+const [, , method, type, name, template] = process.argv;
 
-const cli={
+const cli = {
     createComponent,
     deleteComponent,
     createController,
@@ -359,6 +359,6 @@ const cli={
     deleteDev,
     createApp,
     deleteApp,
-}
+};
 
-cli[toCamelCase([method,type].join())](name,template)
+cli[toCamelCase([method, type].join())](name, template);
