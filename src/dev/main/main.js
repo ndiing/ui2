@@ -11,7 +11,6 @@ class DevMain extends MDElement {
             {
                 label: "Foundations",
                 nodeIcons: ["deployed_code", "deployed_code"],
-                expanded: true,
                 children: [
                     { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
                     { leafIcon: "deployed_code", label: "Localization", routerLink: "/localization" },
