@@ -2,6 +2,7 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { MDList } from "../list/list";
+import { classMap } from "lit/directives/class-map.js";
 
 class MDTab extends MDElement {
     static get properties() {
@@ -19,10 +20,14 @@ class MDTab extends MDElement {
         // prettier-ignore
         return html`
             <md-list
-                class="md-tab__list"
+                class="${classMap({
+                    'md-tab__list':true,
+                    'md-tab__list--primary':this.ui=='primary',
+                    'md-tab__list--secondary':this.ui=='secondary',
+                })}"
                 .list="${this.list}"
                 .singleSelection="${true}"
-                @onListContainerSelected="${this.handleListContainerSelected}"
+                @onListItemSelected="${this.handleTabListItemSelected}"
             ></md-list>
         `
     }
@@ -48,14 +53,26 @@ class MDTab extends MDElement {
         }
     }
 
-    handleListContainerSelected(event) {
-        const rect = this.getBoundingClientRect();
-        const tabRect = event.detail.getBoundingClientRect();
-        const left = tabRect.left - rect.left;
-        const width = tabRect.width;
-        this.style.setProperty("--md-tab-width", width + "px");
-        this.style.setProperty("--md-tab-left", left + "px");
-        this.emit('onTabListContainerSelected',event)
+    handleTabListItemSelected(event) {
+        window.requestAnimationFrame(() => {
+            let width;
+            let left;
+    
+            width = event.detail.clientWidth;
+            left = event.detail.offsetLeft;
+    
+            if (this.ui == "primary") {
+                const label = event.detail.querySelector(".md-list__label");
+    
+                width = label.clientWidth;
+                left = event.detail.offsetLeft + label.offsetLeft;
+            }
+    
+            this.style.setProperty("--md-tab-width", width + "px");
+            this.style.setProperty("--md-tab-left", left + "px");
+    
+            this.emit("onTabListItemSelected", event);
+        })
     }
 }
 

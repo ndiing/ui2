@@ -80,6 +80,7 @@ const routes = [
             { path: "scrolling", load: () => import("./scrolling/scrolling.js").then((m) => m.default) },
             { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
             { path: "example2", load: () => import("./example2/example2.js").then((m) => m.default) },
+            { path: "example3", load: () => import("./example3/example3.js").then((m) => m.default) },
         ],
     },
     {
