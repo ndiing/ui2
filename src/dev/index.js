@@ -36,7 +36,6 @@ const routes = [
             { path: "layout", load: () => import("./layout/layout.js").then((m) => m.default) },
             { path: "list", load: () => import("./list/list.js").then((m) => m.default) },
             { path: "localization", load: () => import("./localization/localization.js").then((m) => m.default) },
-            { path: "main", load: () => import("./main/main.js").then((m) => m.default) },
             { path: "marker", load: () => import("./marker/marker.js").then((m) => m.default) },
             { path: "menu", load: () => import("./menu/menu.js").then((m) => m.default) },
             { path: "month-field", load: () => import("./month-field/month-field.js").then((m) => m.default) },
