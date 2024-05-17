@@ -22,8 +22,8 @@ cardInnerYear | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onWeekPickerListYearVirtualScroll | event | no description
-onWeekPickerListMonthVirtualScroll | event | no description
+onWeekPickerListYearScrolling | event | no description
+onWeekPickerListMonthScrolling | event | no description
 onWeekPickerItemYearClick | event | no description
 onWeekPickerItemMonthClick | event | no description
 onWeekPickerItemDayClick | event | no description

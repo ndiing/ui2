@@ -25,8 +25,8 @@ cardInnerYear | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onDatetimePickerListYearVirtualScroll | event | no description
-onDatetimePickerListMonthVirtualScroll | event | no description
+onDatetimePickerListYearScrolling | event | no description
+onDatetimePickerListMonthScrolling | event | no description
 onDatetimePickerItemYearClick | event | no description
 onDatetimePickerItemMonthClick | event | no description
 onDatetimePickerItemDayClick | event | no description

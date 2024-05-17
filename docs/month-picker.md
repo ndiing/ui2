@@ -23,8 +23,8 @@ listMonthItemSelected | no args | no description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onMonthPickerListYearVirtualScroll | event | no description
-onMonthPickerListMonthVirtualScroll | event | no description
+onMonthPickerListYearScrolling | event | no description
+onMonthPickerListMonthScrolling | event | no description
 onMonthPickerItemYearClick | event | no description
 onMonthPickerItemMonthClick | event | no description
 onMonthPickerLabelClick | event | no description

@@ -18,6 +18,6 @@ close | no args | no description
 Name | Details | Description
 --- | --- | ---
 onBottomAppBarActionClick | event | no description
-onBottomAppBarButtonClick | event | no description
+onBottomAppBarFabClick | event | no description
 onBottomAppBarScrimClick | event | no description
 

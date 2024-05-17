@@ -12,5 +12,5 @@ Name | Arguments | Description
 ## Events
 Name | Details | Description
 --- | --- | ---
-onTabListContainerSelected | event | no description
+onTabListItemSelected | event | no description
 
