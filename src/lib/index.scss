@@ -2,16 +2,17 @@
 @import "./element/element.scss";
 @import "./localization/localization.scss";
 
+@import "./animate/animate.scss";
+@import "./gesture/gesture.scss";
+@import "./ripple/ripple.scss";
+@import "./popper/popper.scss";
+@import "./scrolling/scrolling.scss";
+
 @import "./observer/observer.scss";
 @import "./marker/marker.scss";
 @import "./progress/progress.scss";
 @import "./store/store.scss";
 @import "./router/router.scss";
-
-@import "./gesture/gesture.scss";
-@import "./ripple/ripple.scss";
-@import "./popper/popper.scss";
-@import "./scrolling/scrolling.scss";
 
 @import "./layout/layout.scss";
 @import "./divider/divider.scss";
