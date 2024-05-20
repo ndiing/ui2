@@ -2,7 +2,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { MDList } from "../list/list";
-import { Popper } from "../../lib/popper/popper";
+import { Popper } from "../../com/popper/popper";
 
 class MDMenu extends MDElement {
     static get properties() {

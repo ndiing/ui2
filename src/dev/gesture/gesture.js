@@ -1,7 +1,7 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Gesture } from "../../lib/gesture/gesture";
+import { Gesture } from "../../com/gesture/gesture";
 
 class DevGesture extends MDElement {
     render() {

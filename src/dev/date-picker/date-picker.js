@@ -1,4 +1,4 @@
-import { MDElement } from "../../lib/element/element.js";
+import { MDElement } from "../../com/element/element.js";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 

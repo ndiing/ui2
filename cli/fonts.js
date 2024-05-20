@@ -24,14 +24,14 @@ function write(file, data) {
     fs.writeFileSync(file, data);
 }
 
-var data=fs.readFileSync('./src/lib/element/fonts.scss',{encoding:'utf8'})
+var data=fs.readFileSync('./src/com/element/fonts.scss',{encoding:'utf8'})
 
 
 // fetcher()
 async function fetcher(){
     for(let [,url] of data.matchAll(/url\((.*?)\)/g)){
         url=new URL(url)
-        let file= (`./src/lib/element/fonts/${url.pathname}`)
+        let file= (`./src/com/element/fonts/${url.pathname}`)
         url=url.toString()
         write(file,'')
         const stream = fs.createWriteStream(file);

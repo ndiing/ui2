@@ -1,7 +1,7 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Scrolling } from "../../lib/scrolling/scrolling";
+import { Scrolling } from "../../com/scrolling/scrolling";
 
 let emojis = [
     {

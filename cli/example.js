@@ -82,7 +82,7 @@ function readAllFiles(filePaths) {
     return code;
 }
 
-const jsFiles = getAllFiles("./src/lib");
+const jsFiles = getAllFiles("./src/com");
 const jsFilesContents = readAllFiles(jsFiles);
 
 fs.writeFileSync('./cli/example.html',jsFilesContents)

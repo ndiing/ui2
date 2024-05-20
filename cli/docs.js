@@ -47,7 +47,7 @@ function generateCustomElementHtml(codeSnippet) {
     return "";
 }
 
-var data = fs.readFileSync(`./src/lib/${name}/${name}.js`, { encoding: "utf8" });
+var data = fs.readFileSync(`./src/com/${name}/${name}.js`, { encoding: "utf8" });
 var properties = [];
 var methods = [];
 var events = [];

@@ -1,5 +1,5 @@
-import "./lib/index.scss";
-import "./lib/index.js";
+import "./com/index.scss";
+import "./com/index.js";
 
 import "./dev/index.scss";
 import "./dev/index.js";

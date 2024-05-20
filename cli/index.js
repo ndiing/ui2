@@ -126,8 +126,8 @@ function processCommand(answer) {
 }
 
 function createComponent(name, template = "template") {
-    var fileJs = `./src/lib/${name}/${name}.js`;
-    var fileScss = `./src/lib/${name}/${name}.scss`;
+    var fileJs = `./src/com/${name}/${name}.js`;
+    var fileScss = `./src/com/${name}/${name}.scss`;
 
     var exist = fs.existsSync(fileJs);
     if (exist) {
@@ -147,25 +147,25 @@ function createComponent(name, template = "template") {
         templateScss = templateScss.replaceAll(`${toPascalCase(template)}`, toPascalCase(name));
         write(fileScss, templateScss);
 
-        var indexJs = read("./src/lib/index.js");
+        var indexJs = read("./src/com/index.js");
         var listJs = indexJs.split(/\r\n/); ////.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         listJs.push(js);
         indexJs = listJs.join("\r\n");
-        write("./src/lib/index.js", indexJs);
+        write("./src/com/index.js", indexJs);
 
-        var indexScss = read("./src/lib/index.scss");
+        var indexScss = read("./src/com/index.scss");
         var listScss = indexScss.split(/\r\n/); ////.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         listScss.push(scss);
         indexScss = listScss.join("\r\n");
-        write("./src/lib/index.scss", indexScss);
+        write("./src/com/index.scss", indexScss);
     }
 }
 
 function deleteComponent(name) {
-    var fileJs = `./src/lib/${name}/${name}.js`;
-    var fileScss = `./src/lib/${name}/${name}.scss`;
+    var fileJs = `./src/com/${name}/${name}.js`;
+    var fileScss = `./src/com/${name}/${name}.scss`;
     var dir = path.dirname(fileJs);
 
     var exist = fs.existsSync(fileJs);
@@ -176,7 +176,7 @@ function deleteComponent(name) {
 
         removeDir(dir);
 
-        var indexJs = read("./src/lib/index.js");
+        var indexJs = read("./src/com/index.js");
         var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         var iJs = listJs.indexOf(js);
@@ -184,9 +184,9 @@ function deleteComponent(name) {
             listJs.splice(iJs, 1);
         }
         indexJs = listJs.join("\r\n");
-        write("./src/lib/index.js", indexJs);
+        write("./src/com/index.js", indexJs);
 
-        var indexScss = read("./src/lib/index.scss");
+        var indexScss = read("./src/com/index.scss");
         var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         var iScss = listScss.indexOf(scss);
@@ -194,13 +194,13 @@ function deleteComponent(name) {
             listScss.splice(iScss, 1);
         }
         indexScss = listScss.join("\r\n");
-        write("./src/lib/index.scss", indexScss);
+        write("./src/com/index.scss", indexScss);
     }
 }
 
 function createController(name) {
-    var fileJs = `./src/lib/${name}/${name}.js`;
-    var fileScss = `./src/lib/${name}/${name}.scss`;
+    var fileJs = `./src/com/${name}/${name}.js`;
+    var fileScss = `./src/com/${name}/${name}.scss`;
 
     var exist = fs.existsSync(fileJs);
     if (exist) {
@@ -216,25 +216,25 @@ function createController(name) {
         templateScss = templateScss.replaceAll("template", name).replaceAll("Template", toPascalCase(name));
         write(fileScss, templateScss);
 
-        var indexJs = read("./src/lib/index.js");
+        var indexJs = read("./src/com/index.js");
         var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         listJs.push(js);
         indexJs = listJs.join("\r\n");
-        write("./src/lib/index.js", indexJs);
+        write("./src/com/index.js", indexJs);
 
-        var indexScss = read("./src/lib/index.scss");
+        var indexScss = read("./src/com/index.scss");
         var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         listScss.push(scss);
         indexScss = listScss.join("\r\n");
-        write("./src/lib/index.scss", indexScss);
+        write("./src/com/index.scss", indexScss);
     }
 }
 
 function deleteController(name) {
-    var fileJs = `./src/lib/${name}/${name}.js`;
-    var fileScss = `./src/lib/${name}/${name}.scss`;
+    var fileJs = `./src/com/${name}/${name}.js`;
+    var fileScss = `./src/com/${name}/${name}.scss`;
     var dir = path.dirname(fileJs);
 
     var exist = fs.existsSync(fileJs);
@@ -245,7 +245,7 @@ function deleteController(name) {
 
         removeDir(dir);
 
-        var indexJs = read("./src/lib/index.js");
+        var indexJs = read("./src/com/index.js");
         var listJs = indexJs.split(/\r\n/); //.filter(Boolean);
         var js = `import "./${name}/${name}.js";`;
         var iJs = listJs.indexOf(js);
@@ -253,9 +253,9 @@ function deleteController(name) {
             listJs.splice(iJs, 1);
         }
         indexJs = listJs.join("\r\n");
-        write("./src/lib/index.js", indexJs);
+        write("./src/com/index.js", indexJs);
 
-        var indexScss = read("./src/lib/index.scss");
+        var indexScss = read("./src/com/index.scss");
         var listScss = indexScss.split(/\r\n/); //.filter(Boolean);
         var scss = `@import "./${name}/${name}.scss";`;
         var iScss = listScss.indexOf(scss);
@@ -263,7 +263,7 @@ function deleteController(name) {
             listScss.splice(iScss, 1);
         }
         indexScss = listScss.join("\r\n");
-        write("./src/lib/index.scss", indexScss);
+        write("./src/com/index.scss", indexScss);
     }
 }
 

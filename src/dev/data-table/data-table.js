@@ -1,10 +1,10 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Store } from "../../lib/store/store";
-// import { VirtualScroll } from "../../lib/virtual-scroll/virtual-scroll";
-import { Scrolling } from "../../lib/scrolling/scrolling";
-import { layout } from "../../lib/observer/observer";
+import { Store } from "../../com/store/store";
+// import { VirtualScroll } from "../../com/virtual-scroll/virtual-scroll";
+import { Scrolling } from "../../com/scrolling/scrolling";
+import { layout } from "../../com/observer/observer";
 
 class DevDataTable extends MDElement {
     static get properties() {
@@ -52,17 +52,21 @@ class DevDataTable extends MDElement {
 
         await this.updateComplete;
 
-        const response = await fetch("https://jsonplaceholder.typicode.com/photos");
-        const json = await response.json();
-        this.store.docs = json;
+        // const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+        // const json = await response.json();
+        // this.store.docs = json;
+        this.store.docs = Array.from({length:100000}, (v,k) => ({
+            "albumId": `albumId ${k+1}`,
+            "id": `id ${k+1}`,
+            "title": `title ${k+1}`,
+            "url": `url ${k+1}`,
+            "thumbnailUrl": `thumbnailUrl ${k+1}`,
+        }));
         const { docs, total } = this.store.getAll({ _start: 0, _end: 20 });
         this.total = total;
         this.rows = docs;
 
         this.viewport = this.querySelector("md-data-table > table");
-
-        this.handleScrolling = this.handleScrolling.bind(this);
-        this.viewport.addEventListener("onScrolling", this.handleScrolling);
 
         this.scrolling = new Scrolling(this.viewport, {
             scrollbar: this.querySelector("md-data-table > table > caption"),
@@ -71,6 +75,9 @@ class DevDataTable extends MDElement {
             // itemHeight
             // threshold
         });
+
+        this.handleScrolling = this.handleScrolling.bind(this);
+        this.viewport.addEventListener("onScrolling", this.handleScrolling);
 
         // this.viewport.scrollTop = Math.floor(this.total * 52) / 2;
 

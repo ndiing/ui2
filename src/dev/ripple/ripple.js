@@ -1,7 +1,7 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Ripple } from "../../lib/ripple/ripple";
+import { Ripple } from "../../com/ripple/ripple";
 
 class DevRipple extends MDElement {
     render() {

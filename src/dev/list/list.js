@@ -1,7 +1,7 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Router } from "../../lib/router/router";
+import { Router } from "../../com/router/router";
 
 class DevList extends MDElement {
     render() {

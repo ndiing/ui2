@@ -1,7 +1,7 @@
-import { MDElement } from "../../lib/element/element";
+import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Popper } from "../../lib/popper/popper";
+import { Popper } from "../../com/popper/popper";
 
 class DevPopper extends MDElement {
     render() {

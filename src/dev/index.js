@@ -1,4 +1,4 @@
-import { Router } from "../lib/router/router";
+import { Router } from "../com/router/router";
 
 const routes = [
     {
