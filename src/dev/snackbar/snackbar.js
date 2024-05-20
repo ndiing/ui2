@@ -8,7 +8,7 @@ class DevSnackbar extends MDElement {
         return html`
             <div class="md-layout-column" style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-snackbar>Single-line snackbar</md-snackbar>
+                    <md-snackbar>Single-line snackbarSingle-line snackbarSingle-line snackbar</md-snackbar>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-snackbar .action="${"Action"}">Single-line snackbar with action</md-snackbar>

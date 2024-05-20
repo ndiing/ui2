@@ -4,7 +4,7 @@
 
     border-radius: var(--md-sys-shape-corner-medium);
     background: var((--md-sys-color-surface-container-lowest));
-    box-shadow: var(--md-sys-elevation-level0);
+    // box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-navigation-rail__header {
@@ -81,7 +81,7 @@
 .md-navigation-rail {
     border-radius: var(--md-sys-shape-corner-none);
     background: var((--md-sys-color-surface-container-low));
-    box-shadow: var(--md-sys-elevation-level0);
+    // box-shadow: var(--md-sys-elevation-level0);
 
     overflow: auto;
 
@@ -97,7 +97,7 @@
 
     border-radius: var(--md-sys-shape-corner-large);
     background: var((--md-sys-color-surface-container-low));
-    box-shadow: var(--md-sys-elevation-level1);
+    // box-shadow: var(--md-sys-elevation-level1);
 }
 
 .md-navigation-rail {
@@ -113,7 +113,7 @@
 
         &:not(.md-navigation-rail--open) {
             transform: translate3d(-100%, 0%, 0);
-            box-shadow: var(--md-sys-elevation-level0);
+            // box-shadow: var(--md-sys-elevation-level0);
         }
     }
 

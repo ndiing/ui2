@@ -4,7 +4,7 @@
 
     border-radius: var(--md-sys-shape-corner-medium);
     background: var((--md-sys-color-surface-container-lowest));
-    box-shadow: var(--md-sys-elevation-level0);
+    // box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-bottom-sheet__header {
@@ -81,7 +81,7 @@
 .md-bottom-sheet {
     border-radius: var(--md-sys-shape-corner-large-top);
     background: var((--md-sys-color-surface-container-low));
-    box-shadow: var(--md-sys-elevation-level0);
+    // box-shadow: var(--md-sys-elevation-level0);
 
     overflow: auto;
 
@@ -97,7 +97,7 @@
 
     border-radius: var(--md-sys-shape-corner-large);
     background: var((--md-sys-color-surface-container-low));
-    box-shadow: var(--md-sys-elevation-level1);
+    // box-shadow: var(--md-sys-elevation-level1);
 }
 
 
@@ -121,7 +121,7 @@
 
         &:not(.md-bottom-sheet--open) {
             transform: translate3d(0%, 100%, 0);
-            box-shadow: var(--md-sys-elevation-level0);
+            // box-shadow: var(--md-sys-elevation-level0);
         }
     }
 

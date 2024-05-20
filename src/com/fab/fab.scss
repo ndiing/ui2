@@ -8,7 +8,7 @@
     border-radius: var(--md-sys-shape-corner-large);
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
-    box-shadow: var(--md-sys-elevation-level1);
+    // box-shadow: var(--md-sys-elevation-level1);
 }
 
 .md-fab__icon {
@@ -16,7 +16,7 @@
 }
 
 .md-fab--unelevated {
-    box-shadow: var(--md-sys-elevation-level0);
+    // box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-fab--small {
