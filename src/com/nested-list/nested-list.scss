@@ -3,9 +3,6 @@
     flex-direction: column;
 
     padding: 8px 0;
-
-    background-color: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
 }
 
 .md-nested-list__row {
@@ -63,7 +60,6 @@
 .md-nested-list__label-secondary {
     height: 20px;
     overflow: hidden;
-    color: var(--md-sys-color-on-surface-variant);
 
     @extend .md-typography--body-medium;
 }
@@ -83,7 +79,6 @@
 
 .md-nested-list__item {
     min-height: 56px;
-    color: var(--md-sys-color-on-surface-variant);
 }
 
 .md-nested-list__item--two-line {
@@ -402,42 +397,4 @@
         left: 0;
         bottom: 0;
     }
-}
-
-
-.md-nested-list--tree {
-    padding-top: 0;
-    padding-bottom: 0;
-
-    .md-nested-list__action {
-        + .md-nested-list__icon {
-            margin-left: -12px;
-        }
-        + .md-nested-list__indent {
-            margin-left: -12px;
-        }
-    }
-    .md-nested-list__indent {
-        + .md-nested-list__indent {
-            margin-left: -12px;
-        }
-        + .md-nested-list__action {
-            margin-left: -12px;
-        }
-        + .md-nested-list__icon {
-            margin-left: -12px;
-        }
-    }
-
-}
-.md-nested-list--card {
-    .md-nested-list__item {
-        &[activated] {
-            @extend .md-ripple--selected;
-        }
-    }
-}
-.md-nested-list--accordion {
-    padding-top: 0;
-    padding-bottom: 0;
 }

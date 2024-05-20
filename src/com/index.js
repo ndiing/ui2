@@ -35,8 +35,6 @@ import "./nested-list/nested-list.js";
 import "./tab/tab.js";
 import "./chip/chip.js";
 
-import "./data-table/data-table.js";
-import "./pagination/pagination.js";
 
 import "./color-picker/color-picker.js";
 import "./date-picker/date-picker.js";
@@ -80,3 +78,6 @@ import "./menu/menu.js";
 import "./navigation-bar/navigation-bar.js";
 import "./navigation-rail/navigation-rail.js";
 import "./navigation-drawer/navigation-drawer.js";
+
+import "./data-table/data-table.js";
+import "./pagination/pagination.js";

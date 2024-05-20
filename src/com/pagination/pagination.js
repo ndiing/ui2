@@ -1,6 +1,5 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
 
 class MDPagination extends MDElement {
     static get properties() {
@@ -13,13 +12,11 @@ class MDPagination extends MDElement {
 
     render() {
         // prettier-ignore
-        return html`
-        `
+        return html``;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-pagination");
     }
 
@@ -27,6 +24,8 @@ class MDPagination extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-pagination");
     }
+
+    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {}
 }

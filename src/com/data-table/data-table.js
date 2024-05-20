@@ -1,136 +1,202 @@
+import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
-import { Gesture } from "../gesture/gesture";
+import { Ripple } from "../ripple/ripple";
 import { styleMap } from "lit/directives/style-map.js";
-import { ifDefined } from "lit/directives/if-defined.js";
-import { classMap } from "lit/directives/class-map.js";
 
-class MDDataTableColumn extends HTMLTableCellElement {
-    connectedCallback() {
-        this.gesture = new Gesture(this, { dragStartWaitForLongPress: true, resizeHandles: ["e"] });
-    }
-
-    disconnectedCallback() {
-        this.gesture.destroy();
-    }
+function notNull(value) {
+    return value !== null && value !== undefined;
 }
 
-customElements.define("md-data-table-column", MDDataTableColumn, { extends: "th" });
-
-class MDDataTableRow extends HTMLTableRowElement {
-    connectedCallback() {
-        this.gesture = new Gesture(this, { dragStartWaitForLongPress: true, resizeHandles: [] });
-    }
-
-    disconnectedCallback() {
-        this.gesture.destroy();
-    }
-}
-
-customElements.define("md-data-table-row", MDDataTableRow, { extends: "tr" });
-
-class MDDataTableContainer extends MDElement {
+class MDDataTableItem extends MDElement {
     static get properties() {
         return {
+            avatar: { type: String },
+            image: { type: String },
+            video: { type: String },
+
+            icon: { type: String },
+
             label: { type: String },
-            sortable: { type: Boolean },
-            type: { type: String },
-            order: { type: String },
-            actions: { type: Array },
+            labelSecondary: { type: String },
+
+            text: { type: String },
+
+            leadingCheckbox: { type: Object },
+            leadingRadioButton: { type: Object },
+            leadingSwitch: { type: Object },
+
+            trailingCheckbox: { type: Object },
+            trailingRadioButton: { type: Object },
+            trailingSwitch: { type: Object },
+
+
+            selected: { type: Boolean, reflect: true },
+
         };
     }
 
-    get sortableIcon() {
-        return this.order == "asc" ? "arrow_upward" : this.order == "desc" ? "arrow_downward" : "";
+    get labelSecondaryElement() {
+        return this.querySelector(".md-data-table__label-secondary");
     }
 
     constructor() {
         super();
-
-        this.type = "string";
-    }
-
-    renderIcon() {
-        // prettier-ignore
-        return html`
-            <md-icon-button 
-                class="md-data-table__icon"
-                .icon="${this.sortableIcon}"
-                .type="${undefined}"
-                .ui="${undefined}"
-                @click="${this.handleDataTableIconClick}"
-            ></md-icon-button>
-        `
     }
 
     render() {
         // prettier-ignore
         return html`
-            ${this.sortable&&this.type!=='string'?this.renderIcon():nothing}
-            ${this.label?html`<div class="md-data-table__label">${this.label}</div>`:nothing}
-            ${this.sortable&&this.type=='string'?this.renderIcon():nothing}
-            ${this.actions?.length?html`
-                <div class="md-data-table__actions">
-                    ${this.actions.map(action => html`
-                        <md-icon-button 
-                            class="md-data-table__action" 
-                            .icon="${action?.icon??action}"
-                            .type="${action.type}"
-                            .ui="${action.ui}"
-                            @click="${this.handleDataTableActionClick}"
-                        ></md-icon-button>
-                    `)}
+            ${this.avatar?html`<md-image class="md-data-table__avatar" .src="${this.avatar}" .ratio="${"1/1"}" .rounded="${true}"></md-image>`:nothing}
+            ${this.image?html`<md-image class="md-data-table__image" .src="${this.image}" .ratio="${"1/1"}" .rounded="${false}"></md-image>`:nothing}
+            ${this.video?html`<md-image class="md-data-table__video" .src="${this.video}" .ratio="${"4/3"}" .rounded="${false}"></md-image>`:nothing}
+
+            ${this.icon?html`<md-icon class="md-data-table__icon">${this.icon}</md-icon>`:nothing}
+
+            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxInput}" .checked="${this.selected}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
+            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonInput}" .checked="${this.selected}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
+            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchInput}" .checked="${this.selected}" class="md-data-table__switch"></md-switch>`:nothing}
+
+            ${this.label||this.labelSecondary?html`
+                <div class="md-data-table__label">
+                    ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
+                    ${this.labelSecondary?html`<div class="md-data-table__label-secondary">${this.labelSecondary}</div>`:nothing}
                 </div>
             `:nothing}
-        `
+            ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
+
+            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxInput}" .checked="${this.selected}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
+            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonInput}" .checked="${this.selected}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
+            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchInput}" .checked="${this.selected}" class="md-data-table__switch"></md-switch>`:nothing}
+
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
-        this.classList.add("md-data-table__container");
+
+        await this.updateComplete;
+
+        this.classList.add("md-data-table__item");
+
+        // this.ripple = new Ripple(this, {
+        //     fadeout: true,
+        // });
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
-        this.classList.remove("md-data-table__container");
+        this.classList.remove("md-data-table__item");
+
+        // this.ripple?.destroy();
     }
 
-    updated(changedProperties) {}
-
-    handleDataTableIconClick(event) {
-        this.emit("onDataTableIconClick", event);
+    firstUpdated(changedProperties) {
+        if (changedProperties.has("labelSecondary")) {
+            window.requestAnimationFrame(() => {
+                if (this.labelSecondary) {
+                    const lineHeight = parseFloat(window.getComputedStyle(this.labelSecondaryElement).getPropertyValue("line-height"));
+    
+                    if (this.labelSecondaryElement.scrollHeight > lineHeight) {
+                        this.classList.add("md-data-table__item--three-line");
+                    } else {
+                        this.classList.add("md-data-table__item--two-line");
+                    }
+                } else {
+                    this.classList.add("md-data-table__item--two-line");
+                    this.classList.add("md-data-table__item--three-line");
+                }
+            })
+        }
     }
 
-    handleDataTableActionClick(event) {
-        this.emit("onDataTableActionClick", event);
+    updated(changedProperties) {
+        if (changedProperties.has("selected")) {
+            if (this.selected) {
+                this.emit("onDataTableItemSelected", this);
+            }
+        }
+    }
+
+    handleDataTableItemCheckboxInput(event) {
+        this.emit("onDataTableItemCheckboxInput", event);
+    }
+    handleDataTableItemRadioButtonInput(event) {
+        this.emit("onDataTableItemRadioButtonInput", event);
+    }
+    handleDataTableItemSwitchInput(event) {
+        this.emit("onDataTableItemSwitchInput", event);
     }
 }
 
-customElements.define("md-data-table-container", MDDataTableContainer);
+customElements.define("md-data-table-item", MDDataTableItem);
 
 class MDDataTable extends MDElement {
     static get properties() {
         return {
             columns: { type: Array },
             rows: { type: Array },
-            selectAll: { type: Boolean },
-            selectRange: { type: Boolean },
-            selectMulti: { type: Boolean },
-            selectSingle: { type: Boolean },
-        };
-    }
 
-    getLabel(data,name){
-        return name.split('.')
-        .reduce((p,c) => p[c],data)
+            allSelection:{type:Boolean},
+            rangeSelection:{type:Boolean},
+            multiSelection:{type:Boolean},
+            singleSelection:{type:Boolean},
+        };
     }
 
     constructor() {
         super();
-        this.columns = [];
-        this.rows = [];
+    }
+
+    renderColumnItem(item) {
+        // prettier-ignore
+        return html`
+            <md-data-table-item
+                .data="${item}"
+                .avatar="${ifDefined(item.avatar)}"
+                .image="${ifDefined(item.image)}"
+                .video="${ifDefined(item.video)}"
+                .icon="${ifDefined(item.icon)}"
+                .label="${ifDefined(item.label)}"
+                .labelSecondary="${ifDefined(item.labelSecondary)}"
+                .text="${ifDefined(item.text)}"
+                .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
+                .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
+                .leadingSwitch="${ifDefined(item.leadingSwitch)}"
+                .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
+                .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
+                .trailingSwitch="${ifDefined(item.trailingSwitch)}"
+                .selected="${ifDefined(item.selected)}"
+            ></md-data-table-item>
+        `;
+    }
+
+    renderRowItem(item) {
+        // prettier-ignore
+        return html`
+            <md-data-table-item
+                .data="${item}"
+                .avatar="${ifDefined(item.avatar)}"
+                .image="${ifDefined(item.image)}"
+                .video="${ifDefined(item.video)}"
+                .icon="${ifDefined(item.icon)}"
+                .label="${ifDefined(item.label)}"
+                .labelSecondary="${ifDefined(item.labelSecondary)}"
+                .text="${ifDefined(item.text)}"
+                .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
+                .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
+                .leadingSwitch="${ifDefined(item.leadingSwitch)}"
+                .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
+                .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
+                .trailingSwitch="${ifDefined(item.trailingSwitch)}"
+                .selected="${ifDefined(item.selected)}"
+            ></md-data-table-item>
+        `;
+    }
+
+    getLabel(object,path){
+        return path.split('.').reduce((p,c) => p[c], object)
     }
 
     render() {
@@ -140,184 +206,74 @@ class MDDataTable extends MDElement {
                 <caption></caption>
                 <thead>
                     <tr>
-                        ${this.columns?.map(column => html`
+                        ${this.columns?.map(col => html`
                             <th
-                                is="md-data-table-column"
-                                .data="${column}"
-                                tabindex="0"
                                 style="${styleMap({
-                                    ...(column.width&&{'min-width':column.width+'px'})
+                                    ...(col.width&&{width: col.width+'px'})
                                 })}"
-                                class="${classMap({
-                                    "md-data-table__th":true,
-                                    "md-data-table__th--order":column.order,
-                                })}"
-                                @onResizeStart="${true&&this.handleDataTableColumnResizeStart||(() => {})}"
-                                @onResize="${true&&this.handleDataTableColumnResize||(() => {})}"
-                                @onResizeEnd="${true&&this.handleDataTableColumnResizeEnd||(() => {})}"
-                                @onResizeHandleDoubleTap="${true&&this.handleDataTableColumnResizeHandleDoubleTap||(() => {})}"
-                                @onDragStart="${false&&this.handleDataTableColumnDragStart||(() => {})}"
-                                @onDrag="${false&&this.handleDataTableColumnDrag||(() => {})}"
-                                @onDragEnd="${false&&this.handleDataTableColumnDragEnd||(() => {})}"
-                                @onDataTableIconClick="${this.handleDataTableColumnIconClick}"
-                                @onDataTableActionClick="${this.handleDataTableColumnActionClick}"
-                                @contextmenu="${this.handleDataTableColumnContextmenu}"
-                            >
-                                <md-data-table-container
-                                    class="${classMap({
-                                        "md-data-table__container":true,
-                                        "md-data-table__container--number":column.type=='number',
-                                    })}"
-                                    .label="${ifDefined(column.label)}"
-                                    .sortable="${ifDefined(column.sortable)}"
-                                    .type="${ifDefined(column.type)}"
-                                    .order="${ifDefined(column.order)}"
-                                    .actions="${ifDefined(column.actions)}"
-                                ></md-data-table-container>
-                            </th>
+                            >${this.renderColumnItem(col)}</th>
                         `)}
                     </tr>
                 </thead>
                 <tbody>
                     ${this.rows?.map(row=>html`
                         <tr
-                            is="md-data-table-row"
                             .data="${row}"
-                            tabindex="0"
+                            .tabIndex="${0}"
                             ?selected="${row.selected}"
                             @click="${this.handleDataTableRowClick}"
-                            @onDragStart="${false&&this.handleDataTableRowDragStart||(() => {})}"
-                            @onDrag="${false&&this.handleDataTableRowDrag||(() => {})}"
-                            @onDragEnd="${false&&this.handleDataTableRowDragEnd||(() => {})}"
-                            @onDataTableActionClick="${this.handleDataTableRowActionClick}"
-                            @contextmenu="${this.handleDataTableRowContextmenu}"
                         >
-                            ${this.columns?.map(column => html`
-                                <td>
-                                    <md-data-table-container
-                                        class="${classMap({
-                                            "md-data-table__container":true,
-                                            "md-data-table__container--number":column.type=='number',
-                                        })}"
-                                        .label="${(column.rowConverter||((value) => value))(this.getLabel(row,column.name))}"
-                                        .actions="${ifDefined(column.rowActions)}"
-                                    ></md-data-table-container>
-                                </td>
+                            ${this.columns?.map(col=>html`
+                                <td>${this.renderRowItem({
+                                    label:this.getLabel(row,col.name)
+                                })}</td>
                             `)}
                         </tr>
                     `)}
                 </tbody>
             </table>
-        `
+        `;
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-data-table");
+
+        this.handleDataTableKeydown = this.handleDataTableKeydown.bind(this);
         this.addEventListener("keydown", this.handleDataTableKeydown);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-data-table");
-        this.addEventListener("keydown", this.handleDataTableKeydown);
+
+        this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
+
+    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {}
 
-    handleDataTableColumnIconClick(event) {
-        const data = event.currentTarget.data;
-
-        if (data.sortable) {
-            if (!data.order) {
-                data.order = "asc";
-            } else if (data.order == "asc") {
-                data.order = "desc";
-            } else if (data.order == "desc") {
-                data.order = undefined;
-            }
-        }
-
-        this.requestUpdate();
-
-        this.emit("onDataTableColumnIconClick", event);
-    }
-
-    handleDataTableColumnActionClick(event) {
-        this.emit("onDataTableColumnActionClick",event);
-    }
-
-    handleDataTableRowActionClick(event) {
-        this.emit("onDataTableRowActionClick",event);
-    }
-
-    handleDataTableColumnContextmenu(event){
-        this.emit('onDataTableColumnContextmenu',event)
-    }
-    handleDataTableRowContextmenu(event){
-        this.emit('onDataTableRowContextmenu',event)
-    }
-
-    handleDataTableColumnResizeStart(event) {
-        const th = event.currentTarget;
-        th.startOffsetWidth = th.offsetWidth - event.detail.clientX;
-        this.emit("onDataTableColumnResizeStart", event);
-    }
-
-    handleDataTableColumnResize(event) {
-        const th = event.currentTarget;
-        const data = th.data;
-        const width = th.startOffsetWidth + event.detail.clientX;
-        data.width = width;
-        this.requestUpdate();
-        this.emit("onDataTableColumnResize", event);
-    }
-
-    handleDataTableColumnResizeEnd(event) {
-        this.emit("onDataTableColumnResizeEnd", event);
-    }
-
-    handleDataTableColumnResizeHandleDoubleTap(event) {
-        const th = event.currentTarget;
-        const data = th.data;
-        const index = this.columns.indexOf(data);
-        const tds = Array.from(this.querySelectorAll("td:nth-child(" + (index + 1) + ")"));
-
-        tds.forEach((td) => td.style.setProperty("max-width", "100%"));
-
-        th.style.setProperty("min-width", "0px");
-
-        const width = Math.max(...tds.map((td) => td.scrollWidth));
-
-        th.style.setProperty("min-width", width + "px");
-        th.style.setProperty("max-width", width + "px");
-
-        tds.forEach((td) => td.style.setProperty("max-width", "0px"));
-
-        data.width = width;
-
-        this.requestUpdate();
-
-        this.emit("onDataTableColumnResizeHandleDoubleTap", event);
-    }
-
     handleDataTableKeydown(event) {
-        if (this.selectAll && event.ctrlKey && event.key === "a") {
+        if (this.allSelection && event.ctrlKey && event.key === "a") {
             event.preventDefault();
             this.rows.forEach((item) => {
                 item.selected = true;
             });
             this.requestUpdate();
-            this.emit("onDataTableKeydownCtrlA", event);
+            this.emit("onDataTableKeydown", event);
         }
     }
 
     handleDataTableRowClick(event) {
+        if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
+            return;
+        }
+
         const data = event.currentTarget.data;
         this.currentSelectedIndex = this.rows.indexOf(data);
 
-        if (this.selectRange && event.shiftKey) {
+        if (this.rangeSelection && event.shiftKey) {
             this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
 
             if (this.lastSelectedIndex > this.currentSelectedIndex) {
@@ -326,114 +282,51 @@ class MDDataTable extends MDElement {
             this.rows.forEach((item, index) => {
                 item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
             });
-        } else if (this.selectMulti && event.ctrlKey) {
+        } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
-        } else if (this.selectSingle) {
+        } else if (this.singleSelection) {
             this.rows.forEach((item) => {
                 item.selected = item === data;
             });
         }
         this.lastSelectedIndex = this.currentSelectedIndex;
+
         this.requestUpdate();
+
         this.emit("onDataTableRowClick", event);
     }
 
-    handleDataTableColumnDragStart(event) {
-        this.fromColumn = event.currentTarget;
-        this.fromColumnRect = this.fromColumn.getBoundingClientRect();
-        this.fromColumnDragged = this.fromColumn.cloneNode(true);
-        this.parentElement.insertBefore(this.fromColumnDragged, this.nextElementSibling);
-        this.fromColumnDragged.style.setProperty("width", this.fromColumnRect.width + "px");
-        this.fromColumnDragged.style.setProperty("height", this.fromColumnRect.height + "px");
-        this.fromColumnDragged.style.setProperty("position", "absolute");
-        this.fromColumnDragged.style.setProperty("left", this.fromColumnRect.left + "px");
-        this.fromColumnDragged.style.setProperty("top", this.fromColumnRect.top + "px");
-        this.fromColumnDragged.style.setProperty("z-index", 1);
-        this.fromColumnDragged.style.setProperty("pointer-events", "none");
-        this.fromColumnDragged.classList.add("md-ripple");
-        this.fromColumnDragged.classList.add("md-ripple--containment");
-        this.fromColumnDragged.classList.add("md-ripple--button");
-        this.fromColumnDragged.classList.add("md-ripple--dragged");
-        this.emit("onDataTableColumnDragStart", event);
+    handleDataTableCheckboxInput(event) {
+        const data = event.currentTarget.data;
+
+        data.selected = !data.selected;
+
+        this.requestUpdate();
+
+        this.emit("onDataTableCheckboxInput", event);
     }
+    handleDataTableRadioButtonInput(event) {
+        const data = event.currentTarget.data;
 
-    handleDataTableColumnDrag(event) {
-        this.fromColumnDragged.style.setProperty("transform", `translate3d(${event.detail.moveX}px,0px,0)`);
-        this.emit("onDataTableColumnDrag", event);
-    }
-
-    handleDataTableColumnDragEnd(event) {
-        const toColumn = event.detail.target?.closest("th");
-
-        if (toColumn && this.toColumn !== toColumn && !this.fromColumn !== toColumn) {
-            this.toColumn = toColumn;
-            const oldIndex = this.columns.indexOf(this.fromColumn.data);
-            const newIndex = this.columns.indexOf(this.toColumn.data);
-            this.reorderArray(this.columns, oldIndex, newIndex);
-            this.requestUpdate();
-        }
-        this.fromColumn = null;
-        this.toColumn = null;
-        this.fromColumnDragged.remove();
-        this.emit("onDataTableColumnDragEnd", event);
-    }
-
-    handleDataTableRowDragStart(event) {
-        this.fromRow = event.currentTarget;
-        this.fromRowRect = this.fromRow.getBoundingClientRect();
-        const tds = Array.from(this.fromRow.children).map((td) => {
-            return td.getBoundingClientRect();
+        this.list.forEach((item) => {
+            item.selected = item === data;
         });
-        this.fromRowDragged = this.fromRow.cloneNode(true);
-        this.parentElement.insertBefore(this.fromRowDragged, this.nextElementSibling);
-        this.fromRowDragged.style.setProperty("width", this.fromRowRect.width + "px");
-        this.fromRowDragged.style.setProperty("height", this.fromRowRect.height + "px");
-        this.fromRowDragged.style.setProperty("position", "absolute");
-        this.fromRowDragged.style.setProperty("left", this.fromRowRect.left + "px");
-        this.fromRowDragged.style.setProperty("top", this.fromRowRect.top + "px");
-        this.fromRowDragged.style.setProperty("z-index", 1);
-        this.fromRowDragged.style.setProperty("pointer-events", "none");
-        this.fromRowDragged.classList.add("md-ripple");
-        this.fromRowDragged.classList.add("md-ripple--containment");
-        this.fromRowDragged.classList.add("md-ripple--button");
-        this.fromRowDragged.classList.add("md-ripple--dragged");
-        Array.from(this.fromRowDragged.children).map((td, index) => {
-            const rect = tds[index];
-            td.style.setProperty("min-width", rect.width + "px");
-            td.style.setProperty("max-width", rect.width + "px");
-            td.style.setProperty("min-height", rect.height + "px");
-            td.style.setProperty("max-height", rect.height + "px");
-        });
-        this.emit("onDataTableRowDragStart", event);
+
+        this.requestUpdate();
+
+        this.emit("onDataTableRadioButtonInput", event);
     }
+    handleDataTableSwitchInput(event) {
+        const data = event.currentTarget.data;
 
-    handleDataTableRowDrag(event) {
-        this.fromRowDragged.style.setProperty("transform", `translate3d(0px,${event.detail.moveY}px,0)`);
-        this.emit("onDataTableRowDrag", event);
-    }
+        data.selected = !data.selected;
 
-    handleDataTableRowDragEnd(event) {
-        const toRow = event.detail.target?.closest("tr");
+        this.requestUpdate();
 
-        if (toRow && this.toRow !== toRow && !this.fromRow !== toRow) {
-            this.toRow = toRow;
-            const oldIndex = this.rows.indexOf(this.fromRow.data);
-            const newIndex = this.rows.indexOf(this.toRow.data);
-            this.reorderArray(this.rows, oldIndex, newIndex);
-            this.requestUpdate();
-        }
-        this.fromRow = null;
-        this.toRow = null;
-        this.fromRowDragged.remove();
-        this.emit("onDataTableRowDragEnd", event);
-    }
-
-    reorderArray(array, oldIndex, newIndex) {
-        const element = array.splice(oldIndex, 1)[0];
-        array.splice(newIndex, 0, element);
-        return array;
+        this.emit("onDataTableSwitchInput", event);
     }
 }
 
 customElements.define("md-data-table", MDDataTable);
+
 export { MDDataTable };
