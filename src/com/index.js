@@ -20,7 +20,6 @@ import "./emoji/emoji.js";
 import "./image/image.js";
 import "./badge/badge.js";
 import "./progress-indicator/progress-indicator.js";
-import "./snackbar/snackbar.js";
 import "./tooltip/tooltip.js";
 
 import "./button/button.js";
@@ -29,6 +28,7 @@ import "./fab/fab.js";
 import "./icon-button/icon-button.js";
 import "./segmented-button/segmented-button.js";
 
+import "./snackbar/snackbar.js";
 import "./carousel/carousel.js";
 import "./list/list.js";
 import "./nested-list/nested-list.js";
