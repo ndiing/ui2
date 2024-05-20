@@ -1,56 +1,7 @@
 class Store {
     constructor(docs = [], options = {}) {
-        this.options = {
-            primaryKey: "_id",
-            ...options,
-        };
-        this.docs = new Map(docs.map((doc) => [doc[this.options.primaryKey], doc]));
-    }
-
-    post(doc) {
-        const primaryKey = this.options.primaryKey;
-
-        if (!doc[primaryKey]) {
-            throw new Error("Document must have a non-empty primary key.");
-        }
-
-        if (this.docs.has(doc[primaryKey])) {
-            throw new Error("Document with the same primary key already exists.");
-        }
-        this.docs.set(doc[primaryKey], doc);
-    }
-
-    get(_id) {
-        return this.docs.get(_id);
-    }
-
-    patch(_id, doc) {
-        if (!this.docs.has(_id)) {
-            throw new Error("Document with the specified primary key does not exist.");
-        }
-        const originalDoc = this.docs.get(_id);
-        const patchedDoc = {
-            ...originalDoc,
-            ...doc,
-        };
-        this.docs.set(_id, patchedDoc);
-    }
-
-    put(doc) {
-        const primaryKeyValue = doc[this.options.primaryKey];
-
-        if (this.docs.has(primaryKeyValue)) {
-            this.patch(primaryKeyValue, doc);
-        } else {
-            this.post(doc);
-        }
-    }
-
-    delete(_id) {
-        if (!this.docs.has(_id)) {
-            throw new Error("Document with the specified primary key does not exist.");
-        }
-        this.docs.delete(_id);
+        this.docs = docs;
+        this.primaryKey = options.primaryKey || "_id";
     }
 
     sort(docs, sorters) {
@@ -137,20 +88,31 @@ class Store {
         return docs.slice(_start, _end);
     }
 
-    getAll(options = {}) {
+    post(doc) {
+        const index = this.docs.findIndex((oldDoc) => oldDoc[this.primaryKey] === doc[this.primaryKey]);
+        if (index === -1) {
+            this.docs.push(doc);
+        }
+    }
+
+    get(_id) {
+        return this.docs.find((doc) => doc[this.primaryKey] === _id);
+    }
+
+    allDocs(options = {}) {
         let { _sort, _order, q, _page, _limit, _start, _end, ...rest } = options;
-        let docs = Array.from(this.docs.values());
+        let rows = Array.from(this.docs.values());
 
         if (_sort && _order) {
             const sorters = _sort.split(",").map((name, index) => ({
                 name,
                 order: _order.split(",")[index],
             }));
-            docs = this.sort(docs, sorters);
+            rows = this.sort(rows, sorters);
         }
 
         if (q) {
-            docs = this.search(docs, q);
+            rows = this.search(rows, q);
         }
 
         if (Object.keys(rest).length) {
@@ -165,16 +127,16 @@ class Store {
                     operator,
                 });
             }
-            docs = this.filter(docs, filters);
+            rows = this.filter(rows, filters);
         }
-        const total = docs.length;
+        const total = rows.length;
         let first, prev, next, last;
 
         if (_page && _limit) {
             _page = Number(_page);
             _limit = Number(_limit);
             const totalPages = Math.ceil(total / _limit);
-            docs = this.paginate(docs, _page, _limit);
+            rows = this.paginate(rows, _page, _limit);
             first = _page === 1 ? null : 1;
             prev = _page > 1 ? _page - 1 : null;
             next = _page < totalPages ? _page + 1 : null;
@@ -182,16 +144,76 @@ class Store {
         } else if (_start !== undefined && _end !== undefined) {
             _start = Number(_start);
             _end = Number(_end);
-            docs = this.range(docs, _start, _end);
+            rows = this.range(rows, _start, _end);
         }
         return {
             total,
-            docs,
+            rows,
             first,
             prev,
             next,
             last,
         };
     }
+
+    put(doc) {
+        const index = this.docs.findIndex((oldDoc) => oldDoc[this.primaryKey] === doc[this.primaryKey]);
+        if (index !== -1) {
+            // Replace the old document with the new one
+            this.docs.splice(index, 1, doc);
+        } else {
+            this.post(doc);
+        }
+    }
+
+    remove(_id) {
+        const index = this.docs.findIndex((doc) => doc[this.primaryKey] === _id);
+        if (index !== -1) {
+            // Remove the document at the found index
+            this.docs.splice(index, 1);
+        }
+    }
 }
+
 export { Store };
+
+// // Define some sample documents
+// const documents = [
+//     { _id: 1, name: "Document 1", category: "Category A", price: 10 },
+//     { _id: 2, name: "Document 2", category: "Category B", price: 20 },
+//     { _id: 3, name: "Document 3", category: "Category A", price: 30 },
+//     // Add more documents as needed
+// ];
+
+// // Instantiate a Store with the sample documents
+// const store = new Store(documents);
+
+// // Perform CRUD operations and other data manipulations
+
+// // Get a document by ID
+// const docById = store.get(1);
+// console.log("Document with ID 1:", docById);
+
+// // Add a new document
+// const newDoc = { _id: 4, name: "Document 4", category: "Category C", price: 40 };
+// store.post(newDoc);
+
+// // Update an existing document
+// const updatedDoc = { _id: 2, name: "Updated Document 2", category: "Category D", price: 25 };
+// store.put(updatedDoc);
+
+// // Remove a document by ID
+// store.remove(3);
+
+// // Retrieve all documents with sorting, filtering, and pagination
+// const options = {
+//     _sort: 'price', // Sort by price
+//     _order: 'desc', // Sort in descending order
+//     category: 'Category A', // Filter by category
+//     q: 'Document', // Search for documents containing "Document" in name or category
+//     _page: 1, // Pagination: Page 1
+//     _limit: 2 // Pagination: Limit to 2 documents per page
+// };
+
+// const result = store.allDocs(options);
+// console.log("Filtered, sorted, and paginated documents:", result);

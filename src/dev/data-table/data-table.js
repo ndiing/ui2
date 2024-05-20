@@ -1,7 +1,6 @@
 import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Store } from "../../com/store/store";
 // import { VirtualScroll } from "../../com/virtual-scroll/virtual-scroll";
 import { Scrolling } from "../../com/scrolling/scrolling";
 import { layout } from "../../com/observer/observer";
@@ -16,8 +15,6 @@ class DevDataTable extends MDElement {
 
     constructor() {
         super();
-
-        this.store = new Store();
 
         this.columns = [
             {name:'userId',label:'userId',width:56*1},
