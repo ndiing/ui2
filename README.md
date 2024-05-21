@@ -1,73 +1,83 @@
-## Docs
+# UI2 Framework
 
--   **<code>controller</code> [polyfill](./docs/polyfill.md)**
--   **<code>controller</code> [element](./docs/element.md)**
--   **<code>controller</code> [localization](./docs/localization.md)**
--   **<code>controller</code> [gesture](./docs/gesture.md)**
--   **<code>controller</code> [ripple](./docs/ripple.md)**
--   **<code>controller</code> [popper](./docs/popper.md)**
--   **<code>controller</code> [scrolling](./docs/scrolling.md)**
--   **<code>controller</code> [observer](./docs/observer.md)**
--   **<code>controller</code> [marker](./docs/marker.md)**
--   **<code>controller</code> [progress](./docs/progress.md)**
--   **<code>controller</code> [store](./docs/store.md)**
--   **<code>controller</code> [router](./docs/router.md)**
--   **<code>component</code> [layout](./docs/layout.md)**
--   **<code>component</code> [divider](./docs/divider.md)**
--   **<code>component</code> [icon](./docs/icon.md)**
--   **<code>component</code> [emoji](./docs/emoji.md)**
--   **<code>component</code> [image](./docs/image.md)**
--   **<code>component</code> [badge](./docs/badge.md)**
--   **<code>component</code> [button](./docs/button.md)**
--   **<code>component</code> [segmented-button](./docs/segmented-button.md)**
--   **<code>component</code> [fab](./docs/fab.md)**
--   **<code>component</code> [extended-fab](./docs/extended-fab.md)**
--   **<code>component</code> [icon-button](./docs/icon-button.md)**
--   **<code>component</code> [chip](./docs/chip.md)**
--   **<code>component</code> [list](./docs/list.md)**
--   **<code>component</code> [nested-list](./docs/nested-list.md)**
--   **<code>component</code> [tab](./docs/tab.md)**
--   **<code>component</code> [color-picker](./docs/color-picker.md)**
--   **<code>component</code> [date-picker](./docs/date-picker.md)**
--   **<code>component</code> [datetime-picker](./docs/datetime-picker.md)**
--   **<code>component</code> [month-picker](./docs/month-picker.md)**
--   **<code>component</code> [time-picker](./docs/time-picker.md)**
--   **<code>component</code> [week-picker](./docs/week-picker.md)**
--   **<code>component</code> [form](./docs/form.md)**
--   **<code>component</code> [color-field](./docs/color-field.md)**
--   **<code>component</code> [date-field](./docs/date-field.md)**
--   **<code>component</code> [datetime-field](./docs/datetime-field.md)**
--   **<code>component</code> [email-field](./docs/email-field.md)**
--   **<code>component</code> [file-field](./docs/file-field.md)**
--   **<code>component</code> [month-field](./docs/month-field.md)**
--   **<code>component</code> [number-field](./docs/number-field.md)**
--   **<code>component</code> [password-field](./docs/password-field.md)**
--   **<code>component</code> [search-field](./docs/search-field.md)**
--   **<code>component</code> [select-field](./docs/select-field.md)**
--   **<code>component</code> [tel-field](./docs/tel-field.md)**
--   **<code>component</code> [text-field](./docs/text-field.md)**
--   **<code>component</code> [textarea-field](./docs/textarea-field.md)**
--   **<code>component</code> [time-field](./docs/time-field.md)**
--   **<code>component</code> [url-field](./docs/url-field.md)**
--   **<code>component</code> [week-field](./docs/week-field.md)**
--   **<code>component</code> [checkbox](./docs/checkbox.md)**
--   **<code>component</code> [radio-button](./docs/radio-button.md)**
--   **<code>component</code> [switch](./docs/switch.md)**
--   **<code>component</code> [slider](./docs/slider.md)**
--   **<code>component</code> [progress-indicator](./docs/progress-indicator.md)**
--   **<code>component</code> [pane](./docs/pane.md)**
--   **<code>component</code> [card](./docs/card.md)**
--   **<code>component</code> [dialog](./docs/dialog.md)**
--   **<code>component</code> [snackbar](./docs/snackbar.md)**
--   **<code>component</code> [tooltip](./docs/tooltip.md)**
--   **<code>component</code> [carousel](./docs/carousel.md)**
--   **<code>component</code> [side-sheet](./docs/side-sheet.md)**
--   **<code>component</code> [bottom-sheet](./docs/bottom-sheet.md)**
--   **<code>component</code> [bottom-app-bar](./docs/bottom-app-bar.md)**
--   **<code>component</code> [top-app-bar](./docs/top-app-bar.md)**
--   **<code>component</code> [menu](./docs/menu.md)**
--   **<code>component</code> [navigation-bar](./docs/navigation-bar.md)**
--   **<code>component</code> [navigation-rail](./docs/navigation-rail.md)**
--   **<code>component</code> [navigation-drawer](./docs/navigation-drawer.md)**
--   **<code>component</code> [data-table](./docs/data-table.md)**
--   **<code>component</code> [pagination](./docs/pagination.md)**
+UI2 is a UI framework developed to adhere to Material Design 3 guidelines, providing developers with a comprehensive toolkit for building modern and visually appealing user interfaces.
+
+## Features
+
+- Built using Node.js and Webpack for efficient development and bundling.
+- Components follow Material Design 3 guidelines, ensuring consistency and familiarity for users.
+- Organized file structure:
+  - Resources are located in the `./src` folder.
+  - Components are placed within the `./src/com` folder.
+- Highly customizable components for versatile UI development.
+
+## Getting Started
+
+To start using UI2 in your project, follow these simple steps:
+
+1. Clone the UI2 repository to your local machine:
+
+<pre>
+git clone https://github.com/your-username/ui2.git
+</pre>
+
+2. Install dependencies using npm:
+
+<pre>
+npm install
+</pre>
+
+3. Start the development server:
+
+<pre>
+npm start
+</pre>
+
+This will launch the application and provide you with a development environment where you can create and test your UI components.
+
+## Usage
+
+UI2 provides a range of components designed according to Material Design 3 guidelines. To use a component, simply import it into your project:
+
+<pre>
+import { Button, Card, TextField } from 'ui2';
+</pre>
+
+Then, incorporate the component into your UI:
+
+<pre>
+const MyComponent = () => {
+  return (
+    <div>
+      <Button label="Click me" onClick={() => console.log('Button clicked!')} />
+      <Card>
+        <TextField label="Username" />
+      </Card>
+    </div>
+  );
+};
+</pre>
+
+For more detailed documentation on each component and its props, refer to the documentation provided in the `./docs` folder.
+
+## Contributing
+
+We welcome contributions from the community to help improve UI2. If you'd like to contribute, please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and ensure tests pass.
+4. Submit a pull request with a clear description of your changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- Material Design for providing comprehensive guidelines for UI design.
+- Node.js and Webpack for enabling efficient development and bundling.
+
+## Contact
+
+For any inquiries or feedback, please contact [your-email@example.com](mailto:your-email@example.com).
