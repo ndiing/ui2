@@ -5,6 +5,9 @@ const routes = [
         path: "",
         load: () => import("./main/main.js").then((m) => m.default),
         children: [
+            { path: "navigation", load: () => import("./navigation/navigation.js").then((m) => m.default) },
+            { path: "picker", load: () => import("./picker/picker.js").then((m) => m.default) },
+            { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
 
             { path: "polyfill", load: () => import("./polyfill/polyfill.js").then((m) => m.default) },
             { path: "element", load: () => import("./element/element.js").then((m) => m.default) },
@@ -90,11 +93,6 @@ const routes = [
             { path: "month-picker", load: () => import("./month-picker/month-picker.js").then((m) => m.default) },
             { path: "time-picker", load: () => import("./time-picker/time-picker.js").then((m) => m.default) },
             { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((m) => m.default) },
-
-            { path: "navigation", load: () => import("./navigation/navigation.js").then((m) => m.default) },
-            { path: "picker", load: () => import("./picker/picker.js").then((m) => m.default) },
-
-            { path: "example", load: () => import("./example/example.js").then((m) => m.default) },
         ],
     },
     {
