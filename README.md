@@ -1,6 +1,6 @@
 # UI2 Framework
 
-```
+UI2 is an advanced UI framework meticulously designed to adhere to Material Design 3 guidelines. Leveraging the power of Node.js, Webpack, and LitElement, UI2 offers developers a comprehensive toolkit for crafting modern, visually captivating user interfaces.
 
 ## Key Features
 
@@ -14,19 +14,19 @@ To seamlessly integrate UI2 into your project, follow these steps:
 
 1. **Clone the Repository:**
 
-```
+```html
 git clone https://github.com/ndiing/ui2.git
 ```
 
 2. **Install Dependencies:**
 
-```
+```html
 npm install
 ```
 
 3. **Start the Development Server:**
 
-```
+```html
 npm start
 ```
 
@@ -36,13 +36,13 @@ This command launches the development server, providing an optimal environment f
 
 UI2 offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. Components are developed following LitElement patterns for creating web components. To incorporate a component into your project, simply import it as follows:
 
-```
+```html
 import { MdButton, MdCard, MdTextField } from 'ui2';
 ```
 
 Then, integrate the component into your UI using LitElement patterns:
 
-```
+```html
 class MyComponent extends LitElement {
   render() {
     return html`
@@ -61,7 +61,7 @@ class MyComponent extends LitElement {
 }
 ```
 
-```
+For comprehensive documentation on each component and its respective properties, refer to the documentation available in the `./docs` folder.
 
 ## Contributing
 
@@ -78,7 +78,7 @@ This project is licensed under the MIT License. For further details, refer to th
 
 ## Acknowledgements
 
-```
+- Material Design for providing comprehensive UI design guidelines.
 - Node.js, Webpack, and LitElement for facilitating efficient development workflows.
 
 ## Contact
