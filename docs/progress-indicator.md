@@ -1,24 +1,29 @@
-# MDProgressIndicator => MDElement
+# MDProgressIndicator Component
 
-## Example
-```html
-<md-progress-indicator
-    max=""
-    value=""
-></md-progress-indicator>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDProgressIndicator digunakan sebagai elemen `md-progress-indicator`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-max | Number | no description
-value | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| max | `Number` |
+| value | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

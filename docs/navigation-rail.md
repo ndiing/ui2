@@ -1,29 +1,38 @@
-# MDNavigationRail => MDElement
+# MDNavigationRail Component
 
-## Example
-```html
-<md-navigation-rail
-    ui=""
-    open
-></md-navigation-rail>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDNavigationRail digunakan sebagai elemen `md-navigation-rail`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleNavigationRailActionClick | event |
+| handleNavigationRailButtonClick | event |
+| handleNavigationRailScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onNavigationRailActionClick | event | no description
-onNavigationRailButtonClick | event | no description
-onNavigationRailScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onNavigationRailActionClick | event |
+| onNavigationRailButtonClick | event |
+| onNavigationRailScrimClick | event |
 

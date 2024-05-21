@@ -1,50 +1,54 @@
-# MDWeekField => MDElement
+# MDWeekField Component
 
-## Example
-```html
-<md-week-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-week-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDWeekField digunakan sebagai elemen `md-week-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-weekFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| weekFieldNative |  |
+| render |  |
+| handleWeekFieldActionClick | event |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleWeekFieldNativeFocus | event |
+| handleWeekFieldNativeBlur | event |
+| handleWeekFieldNativeInput | event |
+| handleWeekFieldNativeInvalid | event |
+| handleWeekFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onWeekFieldNativeFocus | event | no description
-onWeekFieldNativeBlur | event | no description
-onWeekFieldNativeInput | event | no description
-onWeekFieldNativeInvalid | event | no description
-onWeekFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onWeekFieldNativeFocus | event |
+| onWeekFieldNativeBlur | event |
+| onWeekFieldNativeInput | event |
+| onWeekFieldNativeInvalid | event |
+| onWeekFieldNativeReset | event |
 

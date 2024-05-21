@@ -1,50 +1,40 @@
-# MDListItem => MDElement
+# MDList Component
 
-## Example
-```html
-<md-list-item
-    avatar=""
-    image=""
-    video=""
-    icon="image"
-    label="Title"
-    labelSecondary=""
-    text=""
-    leadingCheckbox=""
-    leadingRadioButton=""
-    leadingSwitch=""
-    trailingCheckbox=""
-    trailingRadioButton=""
-    trailingSwitch=""
-    badge=""
-></md-list-item>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDList digunakan sebagai elemen `md-list`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-list | Array | no description
-allSelection | Boolean | no description
-rangeSelection | Boolean | no description
-multiSelection | Boolean | no description
-singleSelection | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| list | `Array` |
+| allSelection | `Boolean` |
+| rangeSelection | `Boolean` |
+| multiSelection | `Boolean` |
+| singleSelection | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-notNull | value | no description
-labelSecondaryElement | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleListKeydown | event |
+| handleListItemClick | event |
+| handleListCheckboxInput | event |
+| handleListRadioButtonInput | event |
+| handleListSwitchInput | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onListItemSelected | this | no description
-onListItemCheckboxInput | event | no description
-onListItemRadioButtonInput | event | no description
-onListItemSwitchInput | event | no description
-onListKeydown | event | no description
-onListItemClick | event | no description
-onListCheckboxInput | event | no description
-onListRadioButtonInput | event | no description
-onListSwitchInput | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onListCheckboxInput | event |
+| onListSwitchInput | event |
 

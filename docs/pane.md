@@ -1,39 +1,43 @@
-# MDPane => MDElement
+# MDPane Component
 
-## Example
-```html
-<md-pane
-    leadingActions=""
-    label="Title"
-    labelSecondary=""
-    trailingActions=""
-    buttons=""
-    ui=""
-    open
-></md-pane>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDPane digunakan sebagai elemen `md-pane`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-leadingActions | Array | no description
-label | String | no description
-labelSecondary | String | no description
-trailingActions | Array | no description
-buttons | Array | no description
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| leadingActions | `Array` |
+| label | `String` |
+| labelSecondary | `String` |
+| trailingActions | `Array` |
+| buttons | `Array` |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handlePaneActionClick | event |
+| handlePaneButtonClick | event |
+| handlePaneScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onPaneActionClick | event | no description
-onPaneButtonClick | event | no description
-onPaneScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onPaneActionClick | event |
+| onPaneButtonClick | event |
+| onPaneScrimClick | event |
 

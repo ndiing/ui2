@@ -1,48 +1,50 @@
-# MDCheckbox => MDElement
+# MDCheckbox Component
 
-## Example
-```html
-<md-checkbox
-    type=""
-    name=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    indeterminate
-    checked
-    defaultChecked
-></md-checkbox>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDCheckbox digunakan sebagai elemen `md-checkbox`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-type | String | no description
-name | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-indeterminate | Boolean | no description
-checked | Boolean | no description
-defaultChecked | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| type | `String` |
+| name | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| indeterminate | `Boolean` |
+| checked | `Boolean` |
+| defaultChecked | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-checkboxNative | no args | no description
-checkboxTrack | no args | no description
-checkboxThumb | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| checkboxNative |  |
+| checkboxTrack |  |
+| checkboxThumb |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| handleCheckboxNativeFocus | event |
+| handleCheckboxNativeBlur | event |
+| handleCheckboxNativeInput | event |
+| handleCheckboxNativeInvalid | event |
+| handleCheckboxNativeReset | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onCheckboxNativeFocus | event | no description
-onCheckboxNativeBlur | event | no description
-onCheckboxNativeInput | event | no description
-onCheckboxNativeInvalid | event | no description
-onCheckboxNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onCheckboxNativeFocus | event |
+| onCheckboxNativeBlur | event |
+| onCheckboxNativeInput | event |
+| onCheckboxNativeInvalid | event |
+| onCheckboxNativeReset | event |
 

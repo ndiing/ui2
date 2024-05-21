@@ -1,45 +1,49 @@
-# MDRadioButton => MDElement
+# MDRadioButton Component
 
-## Example
-```html
-<md-radio-button
-    type=""
-    name=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    indeterminate
-    checked
-    defaultChecked
-></md-radio-button>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDRadioButton digunakan sebagai elemen `md-radio-button`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-return | String | no description
-name | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-indeterminate | Boolean | no description
-checked | Boolean | no description
-defaultChecked | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| type | `String` |
+| name | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| indeterminate | `Boolean` |
+| checked | `Boolean` |
+| defaultChecked | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-radioButtonTrack | no args | no description
-radioButtonThumb | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| radioButtonNative |  |
+| radioButtonTrack |  |
+| radioButtonThumb |  |
+| handleRadioButtonNativeFocus | event |
+| handleRadioButtonNativeBlur | event |
+| handleRadioButtonNativeInput | event |
+| handleRadioButtonNativeInvalid | event |
+| handleRadioButtonNativeReset | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onRadioButtonNativeFocus | event | no description
-onRadioButtonNativeBlur | event | no description
-onRadioButtonNativeInput | event | no description
-onRadioButtonNativeInvalid | event | no description
-onRadioButtonNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onRadioButtonNativeFocus | event |
+| onRadioButtonNativeBlur | event |
+| onRadioButtonNativeInput | event |
+| onRadioButtonNativeInvalid | event |
+| onRadioButtonNativeReset | event |
 

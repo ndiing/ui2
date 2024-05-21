@@ -1,20 +1,31 @@
-# MDChip => MDElement
+# MDChip Component
 
-## Example
-```html
-<md-chip
-></md-chip>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDChip digunakan sebagai elemen `md-chip`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
+| avatar | `String` |
+| leadingIcon | `String` |
+| label | `String` |
+| trailingIcon | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

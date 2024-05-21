@@ -1,24 +1,29 @@
-# MDFab => MDElement
+# MDFab Component
 
-## Example
-```html
-<md-fab
-    icon="image"
-    ui=""
-></md-fab>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDFab digunakan sebagai elemen `md-fab`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-icon | String | no description
-ui | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| icon | `String` |
+| ui | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

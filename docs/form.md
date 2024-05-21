@@ -1,30 +1,36 @@
-# MDForm => MDElement
+# MDForm Component
 
-## Example
-```html
-<md-form
-    action=""
-    enctype=""
-    method=""
-></md-form>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDForm digunakan sebagai elemen `md-form`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-action | String | no description
-enctype | String | no description
-method | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| action | `String` |
+| enctype | `String` |
+| method | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-reset | no args | no description
-submit | button | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| formNative |  |
+| handleFormNativeReset | event |
+| handleFormNativeSubmit | event |
+| reset |  |
+| submit | button |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onFormNativeReset | event | no description
-onFormNativeSubmit | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onFormNativeSubmit | event |
 

@@ -1,43 +1,58 @@
-# MDDatePickerYear => HTMLDivElement
+# MDDatePicker Component
 
-## Example
-```html
-<md-date-picker
-    value=""
-    index=""
-></md-date-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDDatePicker digunakan sebagai elemen `md-date-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-first | no args | no description
-last | no args | no description
-years | no args | no description
-years | value | no description
-months | no args | no description
-weekdays | no args | no description
-days | no args | no description
-label | no args | no description
-cardInnerYear | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| first |  |
+| last |  |
+| years |  |
+| years | value |
+| months |  |
+| weekdays |  |
+| days |  |
+| label |  |
+| constructor |  |
+| cardInnerYear |  |
+| renderCardItemYears |  |
+| renderCardItemMonths |  |
+| renderCardItemDays |  |
+| renderInner |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleDatePickerYearScrolling | event |
+| handleDatePickerMonthScrolling | event |
+| handleDatePickerItemYearClick | event |
+| handleDatePickerItemMonthClick | event |
+| handleDatePickerItemDayClick | event |
+| handleDatePickerLabelClick | event |
+| handleDatePickerActionBeforeClick | event |
+| handleDatePickerActionNextClick | event |
+| handleDatePickerButtonCancelClick | event |
+| handleDatePickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onDatePickerListYearScrolling | event | no description
-onDatePickerListMonthScrolling | event | no description
-onDatePickerItemYearClick | event | no description
-onDatePickerItemMonthClick | event | no description
-onDatePickerItemDayClick | event | no description
-onDatePickerLabelClick | event | no description
-onDatePickerActionBeforeClick | event | no description
-onDatePickerActionNextClick | event | no description
-onDatePickerButtonCancelClick | event | no description
-onDatePickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onDatePickerItemYearClick | event |
+| onDatePickerItemMonthClick | event |
+| onDatePickerItemDayClick | event |
+| onDatePickerButtonCancelClick | event |
+| onDatePickerButtonOkClick | event |
 

@@ -1,31 +1,39 @@
-# MDNavigationDrawer => MDElement
+# MDNavigationDrawer Component
 
-## Example
-```html
-<md-navigation-drawer
-    ui=""
-    uiList=""
-    open
-></md-navigation-drawer>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDNavigationDrawer digunakan sebagai elemen `md-navigation-drawer`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-ui | String | no description
-uiList | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| ui | `String` |
+| uiList | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleNavigationDrawerActionClick | event |
+| handleNavigationDrawerButtonClick | event |
+| handleNavigationDrawerScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onNavigationDrawerActionClick | event | no description
-onNavigationDrawerButtonClick | event | no description
-onNavigationDrawerScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onNavigationDrawerActionClick | event |
+| onNavigationDrawerButtonClick | event |
+| onNavigationDrawerScrimClick | event |
 

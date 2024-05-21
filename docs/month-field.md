@@ -1,51 +1,54 @@
-# MDMonthField => MDElement
+# MDMonthField Component
 
-## Example
-```html
-<md-month-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-month-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDMonthField digunakan sebagai elemen `md-month-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-monthFieldNative | no args | no description
-handlMonthFieldActionClick | event | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| monthFieldNative |  |
+| render |  |
+| handlMonthFieldActionClick | event |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleMonthFieldNativeFocus | event |
+| handleMonthFieldNativeBlur | event |
+| handleMonthFieldNativeInput | event |
+| handleMonthFieldNativeInvalid | event |
+| handleMonthFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onMonthFieldNativeFocus | event | no description
-onMonthFieldNativeBlur | event | no description
-onMonthFieldNativeInput | event | no description
-onMonthFieldNativeInvalid | event | no description
-onMonthFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onMonthFieldNativeFocus | event |
+| onMonthFieldNativeBlur | event |
+| onMonthFieldNativeInput | event |
+| onMonthFieldNativeInvalid | event |
+| onMonthFieldNativeReset | event |
 

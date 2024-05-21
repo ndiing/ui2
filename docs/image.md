@@ -1,28 +1,32 @@
-# MDImage => MDElement
+# MDImage Component
 
-## Example
-```html
-<md-image
-    src=""
-    alt=""
-    ratio=""
-    rounded
-></md-image>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDImage digunakan sebagai elemen `md-image`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-src | String | no description
-alt | String | no description
-ratio | String | no description
-rounded | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| src | `String` |
+| alt | `String` |
+| ratio | `String` |
+| rounded | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

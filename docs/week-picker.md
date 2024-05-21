@@ -1,43 +1,58 @@
-# MDWeekPickerYear => HTMLDivElement
+# MDWeekPicker Component
 
-## Example
-```html
-<md-week-picker
-    value=""
-    index=""
-></md-week-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDWeekPicker digunakan sebagai elemen `md-week-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-first | no args | no description
-last | no args | no description
-years | no args | no description
-years | value | no description
-months | no args | no description
-weekdays | no args | no description
-days | no args | no description
-label | no args | no description
-cardInnerYear | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| first |  |
+| last |  |
+| years |  |
+| years | value |
+| months |  |
+| weekdays |  |
+| days |  |
+| label |  |
+| constructor |  |
+| cardInnerYear |  |
+| renderCardItemYears |  |
+| renderCardItemMonths |  |
+| renderCardItemDays |  |
+| renderInner |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleWeekPickerYearScrolling | event |
+| handleWeekPickerMonthScrolling | event |
+| handleWeekPickerItemYearClick | event |
+| handleWeekPickerItemMonthClick | event |
+| handleWeekPickerItemDayClick | event |
+| handleWeekPickerLabelClick | event |
+| handleWeekPickerActionBeforeClick | event |
+| handleWeekPickerActionNextClick | event |
+| handleWeekPickerButtonCancelClick | event |
+| handleWeekPickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onWeekPickerListYearScrolling | event | no description
-onWeekPickerListMonthScrolling | event | no description
-onWeekPickerItemYearClick | event | no description
-onWeekPickerItemMonthClick | event | no description
-onWeekPickerItemDayClick | event | no description
-onWeekPickerLabelClick | event | no description
-onWeekPickerActionBeforeClick | event | no description
-onWeekPickerActionNextClick | event | no description
-onWeekPickerButtonCancelClick | event | no description
-onWeekPickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onWeekPickerItemYearClick | event |
+| onWeekPickerItemMonthClick | event |
+| onWeekPickerItemDayClick | event |
+| onWeekPickerButtonCancelClick | event |
+| onWeekPickerButtonOkClick | event |
 

@@ -1,34 +1,38 @@
-# MDCard => MDElement
+# MDCard Component
 
-## Example
-```html
-<md-card
-    leadingActions=""
-    label="Title"
-    labelSecondary=""
-    trailingActions=""
-    buttons=""
-    ui=""
-></md-card>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDCard digunakan sebagai elemen `md-card`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-leadingActions | Array | no description
-label | String | no description
-labelSecondary | String | no description
-trailingActions | Array | no description
-buttons | Array | no description
-ui | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| leadingActions | `Array` |
+| label | `String` |
+| labelSecondary | `String` |
+| trailingActions | `Array` |
+| buttons | `Array` |
+| ui | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleCardActionClick | event |
+| handleCardButtonClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onCardActionClick | event | no description
-onCardButtonClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onCardActionClick | event |
+| onCardButtonClick | event |
 

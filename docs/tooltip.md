@@ -1,22 +1,29 @@
-# MDTooltip => MDElement
+# MDTooltip Component
 
-## Example
-```html
-<md-tooltip
-></md-tooltip>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTooltip digunakan sebagai elemen `md-tooltip`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | button,options = {} | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| close |  |
+| show | button, options = {} |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

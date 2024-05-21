@@ -1,50 +1,54 @@
-# MDDatetimeField => MDElement
+# MDDatetimeField Component
 
-## Example
-```html
-<md-datetime-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-datetime-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDDatetimeField digunakan sebagai elemen `md-datetime-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-datetimeFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| datetimeFieldNative |  |
+| render |  |
+| handleDatetimeFieldActionClick | event |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleDatetimeFieldNativeFocus | event |
+| handleDatetimeFieldNativeBlur | event |
+| handleDatetimeFieldNativeInput | event |
+| handleDatetimeFieldNativeInvalid | event |
+| handleDatetimeFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onDatetimeFieldNativeFocus | event | no description
-onDatetimeFieldNativeBlur | event | no description
-onDatetimeFieldNativeInput | event | no description
-onDatetimeFieldNativeInvalid | event | no description
-onDatetimeFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onDatetimeFieldNativeFocus | event |
+| onDatetimeFieldNativeBlur | event |
+| onDatetimeFieldNativeInput | event |
+| onDatetimeFieldNativeInvalid | event |
+| onDatetimeFieldNativeReset | event |
 

@@ -1,24 +1,27 @@
-# MDExtendedFab => MDElement
+# MDExtendedFab Component
 
-## Example
-```html
-<md-extended-fab
-    icon="image"
-    label="Title"
-></md-extended-fab>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDExtendedFab digunakan sebagai elemen `md-extended-fab`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-icon | String | no description
-label | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| icon | `String` |
+| label | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

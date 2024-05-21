@@ -1,20 +1,27 @@
-# MDLayout => MDElement
+# MDLayout Component
 
-## Example
-```html
-<md-layout
-></md-layout>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDLayout digunakan sebagai elemen `md-layout`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

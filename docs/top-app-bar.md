@@ -1,37 +1,42 @@
-# MDTopAppBar => MDElement
+# MDTopAppBar Component
 
-## Example
-```html
-<md-top-app-bar
-    leadingActions=""
-    label="Title"
-    labelSecondary=""
-    trailingActions=""
-    ui=""
-    open
-></md-top-app-bar>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTopAppBar digunakan sebagai elemen `md-top-app-bar`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-leadingActions | Array | no description
-label | String | no description
-labelSecondary | String | no description
-trailingActions | Array | no description
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| leadingActions | `Array` |
+| label | `String` |
+| labelSecondary | `String` |
+| trailingActions | `Array` |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleTopAppBarActionClick | event |
+| handleTopAppBarButtonClick | event |
+| handleTopAppBarScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onTopAppBarActionClick | event | no description
-onTopAppBarButtonClick | event | no description
-onTopAppBarScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onTopAppBarActionClick | event |
+| onTopAppBarButtonClick | event |
+| onTopAppBarScrimClick | event |
 

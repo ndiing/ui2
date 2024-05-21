@@ -1,24 +1,29 @@
-# MDBadge => MDElement
+# MDBadge Component
 
-## Example
-```html
-<md-badge
-    label="Title"
-    max=""
-></md-badge>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDBadge digunakan sebagai elemen `md-badge`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | Number | no description
-max | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `Number` |
+| max | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

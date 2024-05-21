@@ -1,49 +1,68 @@
-# MDDatetimePickerYear => HTMLDivElement
+# MDDatetimePicker Component
 
-## Example
-```html
-<md-datetime-picker
-    value=""
-    index=""
-></md-datetime-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDDatetimePicker digunakan sebagai elemen `md-datetime-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-first | no args | no description
-last | no args | no description
-years | no args | no description
-years | value | no description
-months | no args | no description
-weekdays | no args | no description
-days | no args | no description
-hours | no args | no description
-minutes | no args | no description
-label | no args | no description
-label2 | no args | no description
-cardInnerYear | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| first |  |
+| last |  |
+| years |  |
+| years | value |
+| months |  |
+| weekdays |  |
+| days |  |
+| hours |  |
+| minutes |  |
+| label |  |
+| label2 |  |
+| constructor |  |
+| cardInnerYear |  |
+| renderCardItemYears |  |
+| renderCardItemMonths |  |
+| renderCardItemDays |  |
+| renderCardItemHours |  |
+| renderCardItemMinutes |  |
+| renderInner |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleDatetimePickerYearScrolling | event |
+| handleDatetimePickerMonthScrolling | event |
+| handleDatetimePickerItemYearClick | event |
+| handleDatetimePickerItemMonthClick | event |
+| handleDatetimePickerItemDayClick | event |
+| handleDatetimePickerItemHourClick | event |
+| handleDatetimePickerItemMinuteClick | event |
+| handleDatetimePickerLabelClick | event |
+| handleDatetimePickerLabel2Click | event |
+| handleDatetimePickerActionBeforeClick | event |
+| handleDatetimePickerActionNextClick | event |
+| handleDatetimePickerButtonCancelClick | event |
+| handleDatetimePickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onDatetimePickerListYearScrolling | event | no description
-onDatetimePickerListMonthScrolling | event | no description
-onDatetimePickerItemYearClick | event | no description
-onDatetimePickerItemMonthClick | event | no description
-onDatetimePickerItemDayClick | event | no description
-onDatetimePickerItemHourClick | event | no description
-onDatetimePickerItemMinuteClick | event | no description
-onDatetimePickerLabelClick | event | no description
-onDatetimePickerLabelClick | event | no description
-onDatetimePickerActionBeforeClick | event | no description
-onDatetimePickerActionNextClick | event | no description
-onDatetimePickerButtonCancelClick | event | no description
-onDatetimePickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onDatetimePickerItemYearClick | event |
+| onDatetimePickerItemMonthClick | event |
+| onDatetimePickerItemDayClick | event |
+| onDatetimePickerItemHourClick | event |
+| onDatetimePickerItemMinuteClick | event |
+| onDatetimePickerButtonCancelClick | event |
+| onDatetimePickerButtonOkClick | event |
 

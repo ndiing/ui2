@@ -1,27 +1,31 @@
-# MDButton => MDElement
+# MDIconButton Component
 
-## Example
-```html
-<md-icon-button
-    icon="image"
-    type=""
-    ui=""
-></md-icon-button>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDIconButton digunakan sebagai elemen `md-icon-button`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-icon | String | no description
-type | String | no description
-ui | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| icon | `String` |
+| type | `String` |
+| ui | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-iconButtonNative | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| iconButtonNative |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

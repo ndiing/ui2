@@ -1,20 +1,27 @@
-# MDDivider => MDElement
+# MDDivider Component
 
-## Example
-```html
-<md-divider
-></md-divider>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDDivider digunakan sebagai elemen `md-divider`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

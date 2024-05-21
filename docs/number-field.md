@@ -1,50 +1,54 @@
-# MDNumberField => MDElement
+# MDNumberField Component
 
-## Example
-```html
-<md-number-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-number-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDNumberField digunakan sebagai elemen `md-number-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-numberFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| numberFieldNative |  |
+| render |  |
+| handleNumberFieldActionClick | event |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleNumberFieldNativeFocus | event |
+| handleNumberFieldNativeBlur | event |
+| handleNumberFieldNativeInput | event |
+| handleNumberFieldNativeInvalid | event |
+| handleNumberFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onNumberFieldNativeFocus | event | no description
-onNumberFieldNativeBlur | event | no description
-onNumberFieldNativeInput | event | no description
-onNumberFieldNativeInvalid | event | no description
-onNumberFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onNumberFieldNativeFocus | event |
+| onNumberFieldNativeBlur | event |
+| onNumberFieldNativeInput | event |
+| onNumberFieldNativeInvalid | event |
+| onNumberFieldNativeReset | event |
 

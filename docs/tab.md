@@ -1,22 +1,28 @@
-# MDTab => MDElement
+# MDTab Component
 
-## Example
-```html
-<md-tab
-></md-tab>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTab digunakan sebagai elemen `md-tab`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-ui | String | no description
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| handleTabListItemSelected | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onTabListItemSelected | event | no description
+
+| Nama | Argumen |
+| --- | --- |
 

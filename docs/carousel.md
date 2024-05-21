@@ -1,20 +1,27 @@
-# MDCarousel => MDElement
+# MDCarousel Component
 
-## Example
-```html
-<md-carousel
-></md-carousel>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDCarousel digunakan sebagai elemen `md-carousel`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

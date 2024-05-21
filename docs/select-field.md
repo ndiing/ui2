@@ -1,50 +1,53 @@
-# MDSelectField => MDElement
+# MDSelectField Component
 
-## Example
-```html
-<md-select-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-select-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDSelectField digunakan sebagai elemen `md-select-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-selectFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| selectFieldNative |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleSelectFieldNativeFocus | event |
+| handleSelectFieldNativeBlur | event |
+| handleSelectFieldNativeInput | event |
+| handleSelectFieldNativeInvalid | event |
+| handleSelectFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onSelectFieldNativeFocus | event | no description
-onSelectFieldNativeBlur | event | no description
-onSelectFieldNativeInput | event | no description
-onSelectFieldNativeInvalid | event | no description
-onSelectFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onSelectFieldNativeFocus | event |
+| onSelectFieldNativeBlur | event |
+| onSelectFieldNativeInput | event |
+| onSelectFieldNativeInvalid | event |
+| onSelectFieldNativeReset | event |
 

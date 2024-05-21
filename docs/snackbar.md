@@ -1,20 +1,29 @@
-# MDSnackbar => MDElement
+# MDSnackbar Component
 
-## Example
-```html
-<md-snackbar
-></md-snackbar>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDSnackbar digunakan sebagai elemen `md-snackbar`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
+| action | `String` |
+| icon | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

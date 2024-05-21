@@ -1,30 +1,32 @@
-# MDButton => MDElement
+# MDButton Component
 
-## Example
-```html
-<md-button
-    icon="image"
-    label="Title"
-    type=""
-    ui=""
-></md-button>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDButton digunakan sebagai elemen `md-button`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-icon | String | no description
-label | String | no description
-type | String | no description
-ui | String | no description
-selected | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| icon | `String` |
+| label | `String` |
+| type | `String` |
+| ui | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-buttonNative | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| buttonNative |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

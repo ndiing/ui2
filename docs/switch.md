@@ -1,47 +1,50 @@
-# MDSwitch => MDElement
+# MDSwitch Component
 
-## Example
-```html
-<md-switch
-    type=""
-    name=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    indeterminate
-    checked
-    defaultChecked
-></md-switch>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDSwitch digunakan sebagai elemen `md-switch`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-type | String | no description
-name | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-indeterminate | Boolean | no description
-checked | Boolean | no description
-defaultChecked | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| type | `String` |
+| name | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| indeterminate | `Boolean` |
+| checked | `Boolean` |
+| defaultChecked | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-switchTrack | no args | no description
-switchThumb | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| switchNative |  |
+| switchTrack |  |
+| switchThumb |  |
+| handleSwitchNativeFocus | event |
+| handleSwitchNativeBlur | event |
+| handleSwitchNativeInput | event |
+| handleSwitchNativeInvalid | event |
+| handleSwitchNativeReset | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onSwitchNativeFocus | event | no description
-onSwitchNativeBlur | event | no description
-onSwitchNativeInput | event | no description
-onSwitchNativeInvalid | event | no description
-onSwitchNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onSwitchNativeFocus | event |
+| onSwitchNativeBlur | event |
+| onSwitchNativeInput | event |
+| onSwitchNativeInvalid | event |
+| onSwitchNativeReset | event |
 

@@ -1,43 +1,57 @@
-# MDColorPicker => MDElement
+# MDColorPicker Component
 
-## Example
-```html
-<md-color-picker
-    value=""
-    currentValue=""
-    index=""
-></md-color-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDColorPicker digunakan sebagai elemen `md-color-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-currentValue | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| currentValue | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-hexToRgba | hex | no description
-rgbaToHsla | r,g,b,a = 1 | no description
-rgbaToHex | r,g,b,a = 1 | no description
-hslaToRgba | h,s,l,a = 1 | no description
-label | no args | no description
-draw | no args | no description
-setValue | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| hexToRgba | hex |
+| rgbaToHsla | r, g, b, a = 1 |
+| rgbaToHex | r, g, b, a = 1 |
+| hslaToRgba | h, s, l, a = 1 |
+| label |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| draw |  |
+| handleColorPickerLabelClick | event |
+| handleColorPickerActionColorizeClick | event |
+| handleColorPickerActionNextClick | event |
+| handleColorPickerGradientMousedown | event |
+| handleColorPickerGradientMousemove | event |
+| handleColorPickerGradientMouseup | event |
+| setValue | event |
+| handleColorPickerHueInput | event |
+| handleColorPickerOpacityInput | event |
+| handleColorPickerButtonCancelClick | event |
+| handleColorPickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onColorPickerLabelClick | event | no description
-onColorPickerActionColorizeClick | event | no description
-onColorPickerActionNextClick | event | no description
-onColorPickerGradientMousedown | event | no description
-onColorPickerGradientMousemove | event | no description
-onColorPickerGradientMouseup | event | no description
-onColorPickerHueInput | event | no description
-onColorPickerOpacityInput | event | no description
-onColorPickerButtonCancelClick | event | no description
-onColorPickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onColorPickerLabelClick | event |
+| onColorPickerActionColorizeClick | event |
+| onColorPickerActionNextClick | event |
+| onColorPickerGradientMousedown | event |
+| onColorPickerGradientMousemove | event |
+| onColorPickerGradientMouseup | event |
+| onColorPickerOpacityInput | event |
+| onColorPickerButtonCancelClick | event |
+| onColorPickerButtonOkClick | event |
 

@@ -1,50 +1,53 @@
-# MDTextField => MDElement
+# MDTextField Component
 
-## Example
-```html
-<md-text-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-text-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTextField digunakan sebagai elemen `md-text-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-textFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| textFieldNative |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleTextFieldNativeFocus | event |
+| handleTextFieldNativeBlur | event |
+| handleTextFieldNativeInput | event |
+| handleTextFieldNativeInvalid | event |
+| handleTextFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onTextFieldNativeFocus | event | no description
-onTextFieldNativeBlur | event | no description
-onTextFieldNativeInput | event | no description
-onTextFieldNativeInvalid | event | no description
-onTextFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onTextFieldNativeFocus | event |
+| onTextFieldNativeBlur | event |
+| onTextFieldNativeInput | event |
+| onTextFieldNativeInvalid | event |
+| onTextFieldNativeReset | event |
 

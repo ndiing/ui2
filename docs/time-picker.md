@@ -1,34 +1,47 @@
-# MDTimePicker => MDElement
+# MDTimePicker Component
 
-## Example
-```html
-<md-time-picker
-    value=""
-    index=""
-></md-time-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTimePicker digunakan sebagai elemen `md-time-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-hours | no args | no description
-minutes | no args | no description
-label2 | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| hours |  |
+| minutes |  |
+| label2 |  |
+| constructor |  |
+| renderCardItemHours |  |
+| renderCardItemMinutes |  |
+| renderInner |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleTimePickerItemHourClick | event |
+| handleTimePickerItemMinuteClick | event |
+| handleTimePickerLabel2Click | event |
+| handleTimePickerActionBeforeClick | event |
+| handleTimePickerActionNextClick | event |
+| handleTimePickerButtonCancelClick | event |
+| handleTimePickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onTimePickerItemHourClick | event | no description
-onTimePickerItemMinuteClick | event | no description
-onTimePickerLabelClick | event | no description
-onTimePickerActionBeforeClick | event | no description
-onTimePickerActionNextClick | event | no description
-onTimePickerButtonCancelClick | event | no description
-onTimePickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onTimePickerItemHourClick | event |
+| onTimePickerItemMinuteClick | event |
+| onTimePickerButtonCancelClick | event |
+| onTimePickerButtonOkClick | event |
 

@@ -1,20 +1,23 @@
-# MDEmojiElement => MDElement
+# MDEmoji Component
 
-## Example
-```html
-<md-emoji
-></md-emoji>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDEmoji digunakan sebagai elemen `md-emoji`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
+
+| Nama | Tipe |
+| --- | --- |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| connectedCallback |  |
+| disconnectedCallback |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
 

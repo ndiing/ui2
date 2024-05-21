@@ -1,39 +1,37 @@
-# MDNestedListItem => MDElement
+# MDNestedList Component
 
-## Example
-```html
-<md-nested-list-item
-    nodeIcons=""
-    leafIcon=""
-    label="Title"
-    indent=""
-    isNode
-    ui=""
-    isParent
-    hasNode
-></md-nested-list-item>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDNestedList digunakan sebagai elemen `md-nested-list`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-list | Array | no description
-ui | String | no description
+
+| Nama | Tipe |
+| --- | --- |
+| list | `Array` |
+| ui | `String` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-nodeIcons_ | no args | no description
-leafIcon_ | no args | no description
-select | list,data | no description
-expand | list,data | no description
-getList | list | no description
-setList | list,indent = 0 | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| renderRowItem | item |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleListItemClick | event |
+| select | list, data |
+| handleNestedListItemActionClick | event |
+| expand | list, data |
+| getList | list |
+| setList | list, indent = 0 |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onListItemSelected | this | no description
-onNestedListItemActionClick | event | no description
-onListItemClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
 

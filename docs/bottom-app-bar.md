@@ -1,33 +1,40 @@
-# MDBottomAppBar => MDElement
+# MDBottomAppBar Component
 
-## Example
-```html
-<md-bottom-app-bar
-    actions=""
-    fab=""
-    ui=""
-    open
-></md-bottom-app-bar>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDBottomAppBar digunakan sebagai elemen `md-bottom-app-bar`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-actions | Array | no description
-fab | Object | no description
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| actions | `Array` |
+| fab | `Object` |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleBottomAppBarActionClick | event |
+| handleBottomAppBarFabClick | event |
+| handleBottomAppBarScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onBottomAppBarActionClick | event | no description
-onBottomAppBarFabClick | event | no description
-onBottomAppBarScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onBottomAppBarActionClick | event |
+| onBottomAppBarFabClick | event |
+| onBottomAppBarScrimClick | event |
 

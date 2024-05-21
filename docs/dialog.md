@@ -1,39 +1,43 @@
-# MDDialog => MDElement
+# MDDialog Component
 
-## Example
-```html
-<md-dialog
-    leadingActions=""
-    label="Title"
-    labelSecondary=""
-    trailingActions=""
-    buttons=""
-    ui=""
-    open
-></md-dialog>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDDialog digunakan sebagai elemen `md-dialog`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-leadingActions | Array | no description
-label | String | no description
-labelSecondary | String | no description
-trailingActions | Array | no description
-buttons | Array | no description
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| leadingActions | `Array` |
+| label | `String` |
+| labelSecondary | `String` |
+| trailingActions | `Array` |
+| buttons | `Array` |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleDialogActionClick | event |
+| handleDialogButtonClick | event |
+| handleDialogScrimClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onDialogActionClick | event | no description
-onDialogButtonClick | event | no description
-onDialogScrimClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onDialogActionClick | event |
+| onDialogButtonClick | event |
+| onDialogScrimClick | event |
 

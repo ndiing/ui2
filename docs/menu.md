@@ -1,28 +1,39 @@
-# MDMenu => MDElement
+# MDMenu Component
 
-## Example
-```html
-<md-menu
-    open
-></md-menu>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDMenu digunakan sebagai elemen `md-menu`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | button,options={} | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show | button, options={} |
+| close |  |
+| handleMenuActionClick | event |
+| handleMenuButtonClick | event |
+| handleMenuScrimClick | event |
+| handleMenuListItemClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onMenuActionClick | event | no description
-onMenuButtonClick | event | no description
-onMenuScrimClick | event | no description
-onMenuListItemClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onMenuActionClick | event |
+| onMenuButtonClick | event |
+| onMenuScrimClick | event |
+| onMenuListItemClick | event |
 

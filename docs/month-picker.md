@@ -1,43 +1,55 @@
-# MDMonthPickerYear => HTMLDivElement
+# MDMonthPicker Component
 
-## Example
-```html
-<md-month-picker
-    value=""
-    index=""
-></md-month-picker>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDMonthPicker digunakan sebagai elemen `md-month-picker`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-value | String | no description
-index | Number | no description
+
+| Nama | Tipe |
+| --- | --- |
+| value | `String` |
+| index | `Number` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-attributeChangedCallback | no args | no description
-first | no args | no description
-last | no args | no description
-years | no args | no description
-years | value | no description
-months | no args | no description
-weekdays | no args | no description
-label | no args | no description
-cardInnerYear | no args | no description
-listMonthItemSelected | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| first |  |
+| last |  |
+| years |  |
+| years | value |
+| months |  |
+| weekdays |  |
+| label |  |
+| constructor |  |
+| cardInnerYear |  |
+| renderCardItemYears |  |
+| renderCardItemMonths |  |
+| renderInner |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| listMonthItemSelected |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleMonthPickerYearScrolling | event |
+| handleMonthPickerMonthScrolling | event |
+| handleMonthPickerItemYearClick | event |
+| handleMonthPickerItemMonthClick | event |
+| handleMonthPickerLabelClick | event |
+| handleMonthPickerActionBeforeClick | event |
+| handleMonthPickerActionNextClick | event |
+| handleMonthPickerButtonCancelClick | event |
+| handleMonthPickerButtonOkClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onMonthPickerListYearScrolling | event | no description
-onMonthPickerListMonthScrolling | event | no description
-onMonthPickerItemYearClick | event | no description
-onMonthPickerItemMonthClick | event | no description
-onMonthPickerLabelClick | event | no description
-onMonthPickerActionBeforeClick | event | no description
-onMonthPickerActionNextClick | event | no description
-onMonthPickerButtonCancelClick | event | no description
-onMonthPickerButtonOkClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onMonthPickerItemYearClick | event |
+| onMonthPickerItemMonthClick | event |
+| onMonthPickerButtonCancelClick | event |
+| onMonthPickerButtonOkClick | event |
 

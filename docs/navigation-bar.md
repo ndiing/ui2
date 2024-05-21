@@ -1,30 +1,40 @@
-# MDNavigationBar => MDElement
+# MDNavigationBar Component
 
-## Example
-```html
-<md-navigation-bar
-    ui=""
-    open
-></md-navigation-bar>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDNavigationBar digunakan sebagai elemen `md-navigation-bar`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-ui | String | no description
-open | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| ui | `String` |
+| open | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-show | no args | no description
-close | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| show |  |
+| close |  |
+| handleNavigationBarActionClick | event |
+| handleNavigationBarButtonClick | event |
+| handleNavigationBarScrimClick | event |
+| handleNavigationBarListItemClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onNavigationBarActionClick | event | no description
-onNavigationBarButtonClick | event | no description
-onNavigationBarScrimClick | event | no description
-onNavigationBarListItemClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onNavigationBarActionClick | event |
+| onNavigationBarButtonClick | event |
+| onNavigationBarScrimClick | event |
+| onNavigationBarListItemClick | event |
 

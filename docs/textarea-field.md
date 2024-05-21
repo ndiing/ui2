@@ -1,50 +1,53 @@
-# MDTextareaField => MDElement
+# MDTextareaField Component
 
-## Example
-```html
-<md-textarea-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-textarea-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDTextareaField digunakan sebagai elemen `md-textarea-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-textareaFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| textareaFieldNative |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleTextareaFieldNativeFocus | event |
+| handleTextareaFieldNativeBlur | event |
+| handleTextareaFieldNativeInput | event |
+| handleTextareaFieldNativeInvalid | event |
+| handleTextareaFieldNativeReset | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onTextareaFieldNativeFocus | event | no description
-onTextareaFieldNativeBlur | event | no description
-onTextareaFieldNativeInput | event | no description
-onTextareaFieldNativeInvalid | event | no description
-onTextareaFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onTextareaFieldNativeFocus | event |
+| onTextareaFieldNativeBlur | event |
+| onTextareaFieldNativeInput | event |
+| onTextareaFieldNativeInvalid | event |
+| onTextareaFieldNativeReset | event |
 

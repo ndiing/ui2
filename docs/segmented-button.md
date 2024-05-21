@@ -1,23 +1,29 @@
-# MDSegmentedButton => MDElement
+# MDSegmentedButton Component
 
-## Example
-```html
-<md-segmented-button
-    buttons=""
-></md-segmented-button>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDSegmentedButton digunakan sebagai elemen `md-segmented-button`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-buttons | Array | no description
+
+| Nama | Tipe |
+| --- | --- |
+| buttons | `Array` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| constructor |  |
+| render |  |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| updated | changedProperties |
+| handleSegmentedButtonClick | event |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onSegmentedButtonClick | event | no description
+
+| Nama | Argumen |
+| --- | --- |
 

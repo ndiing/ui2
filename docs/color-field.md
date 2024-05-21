@@ -1,51 +1,57 @@
-# MDColorField => MDElement
+# MDColorField Component
 
-## Example
-```html
-<md-color-field
-    label="Title"
-    name=""
-    placeholder=""
-    required
-    readOnly
-    value=""
-    defaultValue=""
-    ui=""
-    text=""
-    validationMessage=""
-    error
-></md-color-field>
-```
+## Element
+
+Dalam penggunaan sehari-hari, MDColorField digunakan sebagai elemen `md-color-field`. Perhatikan bahwa elemen kustom seperti ini mungkin tidak memerlukan tag penutup terpisah seperti elemen HTML standar.
 
 ## Properties
-Name | Type | Description
---- | --- | ---
-label | String | no description
-name | String | no description
-placeholder | String | no description
-required | Boolean | no description
-readOnly | Boolean | no description
-value | String | no description
-defaultValue | String | no description
-ui | String | no description
-text | String | no description
-validationMessage | String | no description
-error | Boolean | no description
+
+| Nama | Tipe |
+| --- | --- |
+| label | `String` |
+| name | `String` |
+| placeholder | `String` |
+| required | `Boolean` |
+| readOnly | `Boolean` |
+| value | `String` |
+| defaultValue | `String` |
+| ui | `String` |
+| text | `String` |
+| validationMessage | `String` |
+| error | `Boolean` |
 
 ## Methods
-Name | Arguments | Description
---- | --- | ---
-textFieldNative | no args | no description
-colorFieldNative | no args | no description
-resetClassPopulated | no args | no description
-resetClassError | no args | no description
+
+| Nama | Argumen |
+| --- | --- |
+| properties |  |
+| textFieldNative |  |
+| colorFieldNative |  |
+| constructor |  |
+| render |  |
+| handleColorFieldActionClick | event |
+| connectedCallback |  |
+| disconnectedCallback |  |
+| firstUpdated | changedProperties |
+| updated | changedProperties |
+| handleColorFieldNativeFocus | event |
+| handleColorFieldNativeBlur | event |
+| handleColorFieldNativeInput | event |
+| handleColorFieldNativeInvalid | event |
+| handleColorFieldNativeReset | event |
+| handleColorFieldNativeClick | event |
+| updateClassPopulated |  |
+| updateClassError |  |
+| resetClassPopulated |  |
+| resetClassError |  |
 
 ## Events
-Name | Details | Description
---- | --- | ---
-onColorFieldNativeFocus | event | no description
-onColorFieldNativeBlur | event | no description
-onColorFieldNativeInput | event | no description
-onColorFieldNativeInvalid | event | no description
-onColorFieldNativeReset | event | no description
+
+| Nama | Argumen |
+| --- | --- |
+| onColorFieldNativeFocus | event |
+| onColorFieldNativeBlur | event |
+| onColorFieldNativeInput | event |
+| onColorFieldNativeInvalid | event |
+| onColorFieldNativeReset | event |
 
