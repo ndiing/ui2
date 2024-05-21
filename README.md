@@ -14,19 +14,19 @@ To seamlessly integrate UI2 into your project, follow these steps:
 
 1. **Clone the Repository:**
 
-```html
+```bash
 git clone https://github.com/ndiing/ui2.git
 ```
 
 2. **Install Dependencies:**
 
-```html
+```bash
 npm install
 ```
 
 3. **Start the Development Server:**
 
-```html
+```bash
 npm start
 ```
 
@@ -42,7 +42,7 @@ import { MdButton, MdCard, MdTextField } from 'ui2';
 
 Then, integrate the component into your UI using LitElement patterns:
 
-```html
+```js
 class MyComponent extends LitElement {
   render() {
     return html`
