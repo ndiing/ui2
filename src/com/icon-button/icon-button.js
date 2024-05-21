@@ -2,7 +2,7 @@ import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
 import { Ripple } from "../ripple/ripple";
-class MDButton extends MDElement {
+class MDIconButton extends MDElement {
     static get properties() {
         return {
             icon: { type: String },
@@ -58,5 +58,5 @@ class MDButton extends MDElement {
         return this.querySelector(".md-icon-button__native");
     }
 }
-customElements.define("md-icon-button", MDButton);
-export { MDButton };
+customElements.define("md-icon-button", MDIconButton);
+export { MDIconButton };

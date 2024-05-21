@@ -81,3 +81,5 @@ class Progress {
     }
 }
 Progress.init();
+
+export{Progress}
