@@ -117,6 +117,29 @@ function generateMarkdown(data) {
     return markdown;
 }
 
+function generateHTMLElementString(data) {
+    // Membuat elemen dasar
+    let elementString = `<${data.element}`;
+
+    // Menambahkan properti sebagai atribut pada elemen
+    for (let prop of data.properties) {
+        let attributeValue = '';
+        if (prop.type === 'Array') {
+            attributeValue = '[]';
+        } else if (prop.type === 'Boolean') {
+            attributeValue = 'false';
+        } else {
+            attributeValue = '';
+        }
+        elementString += ` ${prop.name}="${attributeValue}"`;
+    }
+
+    // Menutup tag elemen
+    elementString += `></${data.element}>`;
+
+    return elementString;
+}
+
 const fs = require("fs");
 const path = require("path");
 
@@ -150,8 +173,13 @@ function bacaFileJS(folderPath) {
                                 return;
                             }
                             generateCustomElementsInfo(data).map((data) => {
-                                let content = generateMarkdown(data);
-                                fs.writeFileSync(`./docs/${file.replace('.js','.md')}`,content)
+                                console.log(data)
+                                
+                                // let content = generateMarkdown(data);
+                                // fs.writeFileSync(`./docs/${file.replace('.js','.md')}`,content)
+
+                                // console.log(generateHTMLElementString(data))
+
                             }); // Lakukan apa yang ingin Anda lakukan dengan isi file di sini
                         });
                     }
