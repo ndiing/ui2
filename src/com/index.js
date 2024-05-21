@@ -19,22 +19,17 @@ import "./icon/icon.js";
 import "./emoji/emoji.js";
 import "./image/image.js";
 import "./badge/badge.js";
-import "./progress-indicator/progress-indicator.js";
-import "./tooltip/tooltip.js";
 
 import "./button/button.js";
-import "./extended-fab/extended-fab.js";
-import "./fab/fab.js";
-import "./icon-button/icon-button.js";
 import "./segmented-button/segmented-button.js";
+import "./fab/fab.js";
+import "./extended-fab/extended-fab.js";
+import "./icon-button/icon-button.js";
 
-import "./snackbar/snackbar.js";
-import "./carousel/carousel.js";
+import "./chip/chip.js";
 import "./list/list.js";
 import "./nested-list/nested-list.js";
 import "./tab/tab.js";
-import "./chip/chip.js";
-
 
 import "./color-picker/color-picker.js";
 import "./date-picker/date-picker.js";
@@ -65,9 +60,13 @@ import "./radio-button/radio-button.js";
 import "./switch/switch.js";
 import "./slider/slider.js";
 
+import "./progress-indicator/progress-indicator.js";
 import "./pane/pane.js";
 import "./card/card.js";
 import "./dialog/dialog.js";
+import "./snackbar/snackbar.js";
+import "./tooltip/tooltip.js";
+import "./carousel/carousel.js";
 
 import "./side-sheet/side-sheet.js";
 import "./bottom-sheet/bottom-sheet.js";
