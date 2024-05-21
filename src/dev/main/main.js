@@ -53,7 +53,7 @@ class DevMain extends MDElement {
                         ],
                     },
                     { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
-                    { leafIcon: "deployed_code", label: "Carousel", routerLink: "/carousel" },
+                    // { leafIcon: "deployed_code", label: "Carousel", routerLink: "/carousel" },
                     { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
                     { leafIcon: "deployed_code", label: "Chip", routerLink: "/chip" },
                     { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },

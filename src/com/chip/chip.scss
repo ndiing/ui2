@@ -1,4 +1,4 @@
-.md-chip{
+.md-chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -8,28 +8,34 @@
     border-radius: var(--md-sys-shape-corner-small);
     box-shadow: 0 0 0 1px var(--md-sys-color-outline);
 }
-.md-chip__indicator{
+.md-chip__indicator {
     width: 18px;
     height: 18px;
     font-size: 18px;
     margin-left: -8px;
 }
-.md-chip__avatar{
+.md-chip__avatar {
     width: 24px;
     height: 24px;
     margin-left: -12px;
 }
-.md-chip__icon{
+.md-chip__icon {
     width: 18px;
     height: 18px;
     font-size: 18px;
     margin-left: -8px;
 }
-.md-chip__label{
+.md-chip__label {
     @extend .md-typography--label-large;
 
-    +.md-chip__icon{
+    + .md-chip__icon {
         margin-left: 0;
         margin-right: -8px;
+    }
+}
+
+.md-chip {
+    &[selected] {
+        box-shadow: none;
     }
 }
