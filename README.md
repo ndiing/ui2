@@ -1,10 +1,10 @@
 # UI2 Framework
 
-UI2 is an advanced UI framework meticulously designed to adhere to Material Design 3 guidelines. Leveraging the power of Node.js and Webpack, UI2 offers developers a comprehensive toolkit for crafting modern, visually captivating user interfaces.
+UI2 is an advanced UI framework meticulously designed to adhere to Material Design 3 guidelines. Leveraging the power of Node.js, Webpack, and LitElement, UI2 offers developers a comprehensive toolkit for crafting modern, visually captivating user interfaces.
 
 ## Key Features
 
-- **Modern Development Stack:** Built with Node.js and Webpack, ensuring efficient development and bundling of resources.
+- **Modern Development Stack:** Built with Node.js, Webpack, and LitElement, ensuring efficient development and bundling of resources.
 - **Organized Structure:** Resources are neatly organized within the `./src` folder, while components reside in the `./src/com` directory, promoting clarity and maintainability.
 - **Material Design 3 Compliant:** UI2 components strictly follow Material Design 3 guidelines, guaranteeing consistency and familiarity for end-users.
 
@@ -34,28 +34,34 @@ This command launches the development server, providing an optimal environment f
 
 ## Usage
 
-UI2 offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. To incorporate a component into your project, simply import it as follows:
+UI2 offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. Components are developed following LitElement patterns for creating web components. To incorporate a component into your project, simply import it as follows:
 
 <pre>
-import { Button, Card, TextField } from 'ui2';
+import { MdButton, MdCard, MdTextField } from 'ui2';
 </pre>
 
-Then, integrate the component into your UI:
+Then, integrate the component into your UI using LitElement patterns:
 
 <pre>
-const MyComponent = () => {
-  return (
-    <div>
-      <Button label="Click me" onClick={() => console.log('Button clicked!')} />
-      <Card>
-        <TextField label="Username" />
-      </Card>
-    </div>
-  );
-};
+class MyComponent extends LitElement {
+  render() {
+    return html`
+      <div>
+        <md-button label="Click me" @click="${this.handleClick}"></md-button>
+        <md-card>
+          <md-text-field label="Username"></md-text-field>
+        </md-card>
+      </div>
+    `;
+  }
+
+  handleClick() {
+    console.log('Button clicked!');
+  }
+}
 </pre>
 
-For comprehensive documentation on each component and its respective props, refer to the documentation available in the `./docs` folder.
+For comprehensive documentation on each component and its respective properties, refer to the documentation available in the `./docs` folder.
 
 ## Contributing
 
@@ -73,7 +79,7 @@ This project is licensed under the MIT License. For further details, refer to th
 ## Acknowledgements
 
 - Material Design for providing comprehensive UI design guidelines.
-- Node.js and Webpack for facilitating efficient development workflows.
+- Node.js, Webpack, and LitElement for facilitating efficient development workflows.
 
 ## Contact
 
