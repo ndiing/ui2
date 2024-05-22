@@ -76,7 +76,7 @@ class DevMain extends MDElement {
             { leafIcon: 'deployed_code', label: "dialog", routerLink: "/dialog" },
             { leafIcon: 'deployed_code', label: "snackbar", routerLink: "/snackbar" },
             { leafIcon: 'deployed_code', label: "tooltip", routerLink: "/tooltip" },
-            { leafIcon: 'deployed_code', label: "carousel", routerLink: "/carousel" },
+            // { leafIcon: 'deployed_code', label: "carousel", routerLink: "/carousel" },
 
             { leafIcon: 'deployed_code', label: "side-sheet", routerLink: "/side-sheet" },
             { leafIcon: 'deployed_code', label: "bottom-sheet", routerLink: "/bottom-sheet" },
