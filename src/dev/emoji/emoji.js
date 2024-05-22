@@ -1,6 +1,7 @@
 import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
+import { Scrolling } from "../../com/scrolling/scrolling";
 
 
 const emojis = [
@@ -59,15 +60,20 @@ for (const emoji of emojis) {
 }
 
 class DevEmoji extends MDElement {
+    constructor(){
+        super()
+
+        this.data=data.slice(0,10)
+    }
     render() {
         // prettier-ignore
         return html`
             <div class="md-layout-column" style="margin: 24px;">
                 <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    <div class="viewport" style="height:calc(40px * 10);">
+                    <div class="viewport" style="height:calc(40px * 10);" @onScrolling="${this.handleScrolling}">
                         <div class="scrollbar"></div>
                         <div class="container">
-                            ${data.map(row=>html`
+                            ${this.data?.map(row=>html`
                                 <div class="row">
                                     ${Array.isArray(row)?row.map(item=>html`
                                         <md-emoji class="item" style="height:40px;line-height:40px;">${item}</md-emoji>
@@ -82,6 +88,38 @@ class DevEmoji extends MDElement {
 
             </div>
         `;
+    }
+
+
+    async connectedCallback(){
+        super.connectedCallback()
+
+        await this.updateComplete
+
+        this.viewport = this.querySelector('.viewport')
+        this.scrollbar = this.querySelector('.scrollbar')
+        this.container = this.querySelector('.container')
+
+        this.scrolling = new Scrolling(this.viewport,{
+            scrollbar: this.scrollbar,
+            container: this.container,
+            itemHeight:40,
+            total: data.length
+        })
+    }
+
+    handleScrolling(event){
+        const {start,end} = event.detail
+
+        this.data=data.slice(start,end)
+
+        this.requestUpdate()
+    }
+
+    disconnectedCallback(){
+        super.disconnectedCallback()
+
+        this.scrolling?.destroy()
     }
 }
 

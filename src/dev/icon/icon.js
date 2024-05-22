@@ -151,6 +151,8 @@ class DevIcon extends MDElement {
 
     disconnectedCallback(){
         super.disconnectedCallback()
+
+        this.scrolling?.destroy()
     }
 }
 

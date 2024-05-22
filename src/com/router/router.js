@@ -37,10 +37,6 @@ class Router {
         window.dispatchEvent(event);
     }
 
-    static getQuery() {
-        return Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    }
-
     static getRoute(path) {
         return this.routes.find((route) => {
             const pattern = "^" + route.fullpath.replace(/\:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
@@ -96,8 +92,23 @@ class Router {
         });
     }
 
+    static get location() {
+        if (this.options.historyApiFallback) {
+            return window.location;
+        } else {
+            return new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
+        }
+    }
+
+    static get path() {
+        return this.location.pathname;
+    }
+
+    static getQuery() {
+        return Object.fromEntries(new URLSearchParams(this.location.search).entries());
+    }
+
     static async handleLoad(event) {
-        this.path = window.location.pathname;
         this.params = {};
         this.query = this.getQuery();
         this.route = this.getRoute(this.path);
@@ -162,7 +173,11 @@ class Router {
     }
 
     static navigate(url) {
-        window.history.pushState({}, null, url);
+        if (this.options.historyApiFallback) {
+            window.history.pushState({}, null, url);
+        } else {
+            window.location.hash = url;
+        }
     }
 
     static handleClick(event) {
@@ -174,16 +189,26 @@ class Router {
         }
     }
 
-    static init(routes = []) {
-        this.routes = this.setRoutes(routes);
-        this.on("DOMContentLoaded", this.handleLoad);
-        this.on("popstate", this.handleLoad);
-        const pushState = window.history.pushState;
-
-        window.history.pushState = function () {
-            pushState.apply(this, arguments);
-            Router.emit("popstate");
+    static init(routes = [], options = {}) {
+        this.options = {
+            historyApiFallback: true,
+            ...options,
         };
+        this.routes = this.setRoutes(routes);
+
+        this.on("DOMContentLoaded", this.handleLoad);
+
+        if (this.options.historyApiFallback) {
+            const pushState = window.history.pushState;
+            window.history.pushState = function () {
+                pushState.apply(this, arguments);
+                Router.emit("popstate");
+            };
+            this.on("popstate", this.handleLoad);
+        } else {
+            this.on("hashchange", this.handleLoad);
+        }
+
         this.on("click", this.handleClick);
     }
 }
