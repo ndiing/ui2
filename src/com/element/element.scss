@@ -1,5 +1,4 @@
 
-
 @mixin color-light(){
     --md-sys-color-primary: #6750a4;
     --md-sys-color-on-primary: #ffffff;
@@ -52,6 +51,7 @@
     --md-sys-color-scrim: #000000;
     --md-sys-color-shadow: #000000;
 }
+
 @mixin color-dark(){
     --md-sys-color-primary: #d0bcff;
     --md-sys-color-on-primary: #381e72;
@@ -107,18 +107,22 @@
 }
 
 @media (prefers-color-scheme: light) {
+
     :root {
         @include color-light()
     }
+
     .md-color--inverse {
         @include color-dark()
     }
 }
 
 @media (prefers-color-scheme: dark) {
+
     :root {
         @include color-dark()
     }
+
     .md-color--inverse {
         @include color-light()
     }
@@ -387,6 +391,7 @@
     font: inherit;
     &,
     &::before,
+
     &::after {
         box-sizing: border-box;
     }
@@ -399,28 +404,32 @@
     //     width: 16px;
     //     height: 16px;
     // }
+
     // &::-webkit-scrollbar-thumb {
     //     border-radius: calc(16px / 2);
     //     background: var(--md-sys-color-surface-container-highest);
     //     border: 4px solid transparent;
     //     background-clip: content-box;
         
+
     //     &:hover{
     //         background: var(--md-sys-color-surface-container-highest);
     //         background-clip: content-box;
     //         cursor: pointer;
     //     }
     // }
+
     // &::-webkit-scrollbar-track {
     //     border-radius: calc(16px / 2);
     //     background: transparent;
     // }
+
     // &::-webkit-scrollbar-corner {
     //     background: transparent;
     // }
 }
-
 html,
+
 body {
     width: 100%;
     height: 100%;

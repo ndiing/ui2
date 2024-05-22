@@ -1,3 +1,4 @@
+
 .md-layout-border {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -8,21 +9,27 @@
         "south south south";
     overflow: hidden;
 }
+
 .md-layout-border__item {
     overflow: auto;
 }
+
 .md-layout-border__item--north {
     grid-area: north;
 }
+
 .md-layout-border__item--east {
     grid-area: east;
 }
+
 .md-layout-border__item--south {
     grid-area: south;
 }
+
 .md-layout-border__item--west {
     grid-area: west;
 }
+
 .md-layout-border__item--center {
     grid-area: center;
 }
@@ -30,6 +37,7 @@
 .md-layout-absolute {
     position: relative;
 }
+
 .md-layout-absolute__item {
     position: absolute;
 }
@@ -38,9 +46,11 @@
     display: flex;
     flex-direction: column;
 }
+
 .md-layout-accordion__item {
     flex: 0;
 }
+
 .md-layout-accordion__item--expanded {
     flex: 1;
 }
@@ -50,6 +60,7 @@
     display: flex;
     overflow: hidden;
 }
+
 .md-layout-card__item {
     flex: 1 0 100%;
     transform: translate3d(calc((0 - var(--md-layout-card-index)) * 100%), 0px, 0px);
@@ -65,6 +76,7 @@
         grid-gap: 24px;
 
         @for $i from 1 through 12 {
+
             .md-layout-column__item--expanded#{$i} {
                 grid-column-end: span $i;
             }
@@ -76,6 +88,7 @@
         grid-gap: 16px;
 
         @for $i from 1 through 8 {
+
             .md-layout-column__item--medium#{$i} {
                 grid-column-end: span $i;
             }
@@ -87,6 +100,7 @@
         grid-gap: 8px;
 
         @for $i from 1 through 4 {
+
             .md-layout-column__item--compact#{$i} {
                 grid-column-end: span $i;
             }

@@ -1,10 +1,13 @@
+
 @keyframes md-ripple {
+
     0% {
         width: 0;
     }
 }
 
 @keyframes md-ripple-fadeout {
+
     0% {
         opacity: 10%;
     }
@@ -43,13 +46,16 @@
 }
 
 .md-ripple--inverse {
+
     &::after {
         background: var(--md-sys-color-background);
     }
 }
 
 .md-ripple--fadeout {
+
     &.md-ripple--focused {
+
         &::after {
             opacity: 0;
             animation-name: var(--md-ripple-animation, md-ripple), var(--md-ripple-animation, md-ripple-fadeout);
@@ -59,6 +65,7 @@
     }
 }
 .md-ripple[selected],
+
 .md-ripple--selected {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
@@ -69,12 +76,14 @@
 }
 
 .md-ripple--hover {
+
     &::after {
         opacity: 8%;
     }
 }
 
 .md-ripple--focused {
+
     &::after {
         opacity: 10%;
         animation-name: var(--md-ripple-animation, md-ripple);
@@ -84,6 +93,7 @@
 }
 
 .md-ripple--pressed {
+
     &::after {
         opacity: 10%;
     }
@@ -97,6 +107,7 @@
     }
 }
 .md-ripple[disabled],
+
 .md-ripple--disabled {
     opacity: 38%;
 

@@ -1,3 +1,4 @@
+
 .md-data-table {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,6 @@
     table {
         display: block;
         overflow: auto;
-
         border-collapse: collapse;
         border-spacing: 0;
 
@@ -16,6 +16,7 @@
             background: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
         }
+
         th {
             text-align: left;
 
@@ -28,20 +29,27 @@
                 @extend .md-typography--label-large;
             }
         }
+
         tbody {
+
             tr {
+
                 &:hover {
+
                     .md-data-table__item {
                         @extend .md-ripple--hover;
                     }
                 }
+
                 &[selected]{
+
                     .md-data-table__item {
                         @extend .md-ripple--selected;
                     }
                 }
             }
         }
+
         td {
             max-width: 0;
 
@@ -60,10 +68,8 @@
 .md-data-table__item {
     display: flex;
     align-items: center;
-
     padding: 8px 16px;
     gap: 0 16px;
-
     @extend .md-ripple;
     @extend .md-ripple--containment;
     @extend .md-ripple--button;
@@ -92,10 +98,8 @@
 
 .md-data-table__label {
     flex: 1;
-
     min-width: 0%;
     max-width: 100%;
-
     display: flex;
     flex-direction: column;
 }
@@ -104,14 +108,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     @extend .md-typography--body-medium;
 }
 
 .md-data-table__label-secondary {
     height: 20px;
     overflow: hidden;
-
     @extend .md-typography--body-medium;
 }
 
@@ -138,7 +140,6 @@
 
 .md-data-table__item--three-line {
     align-items: flex-start;
-
     min-height: 88px;
     padding-top: 12px;
     padding-bottom: 12px;

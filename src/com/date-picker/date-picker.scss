@@ -1,3 +1,4 @@
+
 .md-date-picker {
     display: inline-flex;
     flex-direction: column;
@@ -134,6 +135,7 @@
 }
 
 .md-date-picker__table-row--body {
+
     .md-date-picker__table-item {
         @extend .md-ripple;
         @extend .md-ripple--containment;

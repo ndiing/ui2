@@ -19,6 +19,7 @@
     appearance: none;
 
     &:checked {
+
         + .md-radio-button__track {
             border-color: var(--md-sys-color-primary);
 

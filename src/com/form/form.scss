@@ -1,3 +1,4 @@
+
 .md-form {
     display: flex;
     flex-direction: column;
@@ -7,8 +8,6 @@
     display: flex;
     flex-direction: column;
 }
-
-
 input::-webkit-search-cancel-button,
 input::-webkit-inner-spin-button,
 input[type="week" i]::-webkit-calendar-picker-indicator,
@@ -18,6 +17,7 @@ input[type="datetime-local" i]::-webkit-calendar-picker-indicator,
 input[type="date" i]::-webkit-calendar-picker-indicator,
 input[type="color" i]::-webkit-color-swatch-wrapper,
 input[type="color" i]::-webkit-color-swatch,
+
 input[type="file" i]::-webkit-file-upload-button{
     appearance: none;
     margin: 0;
@@ -26,23 +26,21 @@ input[type="file" i]::-webkit-file-upload-button{
     width: 0;
     height: 0;
 }
-
-
 .md-week-field:not(.md-week-field--populated):not(.md-week-field--focus),
 .md-time-field:not(.md-time-field--populated):not(.md-time-field--focus),
 .md-month-field:not(.md-month-field--populated):not(.md-month-field--focus),
 .md-datetime-field:not(.md-datetime-field--populated):not(.md-datetime-field--focus),
+
 .md-date-field:not(.md-date-field--populated):not(.md-date-field--focus) {
     .md-week-field__native::-webkit-datetime-edit,
     .md-time-field__native::-webkit-datetime-edit,
     .md-month-field__native::-webkit-datetime-edit,
     .md-datetime-field__native::-webkit-datetime-edit,
+
     .md-date-field__native::-webkit-datetime-edit {
         visibility: hidden;
     }
 }
-
-
 .md-email-field,
 .md-password-field,
 .md-text-field,
@@ -58,9 +56,9 @@ input[type="file" i]::-webkit-file-upload-button{
 .md-textarea-field,
 .md-select-field,
 .md-number-field,
+
 .md-search-field{
     
-
     .md-email-field__native,
     .md-password-field__native,
     .md-text-field__native,
@@ -76,10 +74,10 @@ input[type="file" i]::-webkit-file-upload-button{
     .md-textarea-field__native,
     .md-select-field__native,
     .md-number-field__native,
+
     .md-search-field__native{
         appearance: none;
     }
-
     .md-email-field__action,
     .md-password-field__action,
     .md-text-field__action,
@@ -95,6 +93,7 @@ input[type="file" i]::-webkit-file-upload-button{
     .md-textarea-field__action,
     .md-select-field__action,
     .md-number-field__action,
+
     .md-search-field__action{
         color: var(--md-sys-color-on-surface-variant);
     }

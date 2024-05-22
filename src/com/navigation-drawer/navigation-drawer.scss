@@ -1,7 +1,7 @@
+
 .md-navigation-drawer {
     display: flex;
     flex-direction: column;
-
     border-radius: var(--md-sys-shape-corner-medium);
     background: var((--md-sys-color-surface-container-lowest));
     box-shadow: var(--md-sys-elevation-level0);
@@ -10,7 +10,6 @@
 .md-navigation-drawer__header {
     display: flex;
     align-items: center;
-
     padding: 24px;
     gap: 0 16px;
 
@@ -22,9 +21,9 @@
 .md-navigation-drawer__actions {
     display: inline-flex;
     align-items: center;
-
     gap: 0 16px;
 }
+
 .md-navigation-drawer__action {
     color: var(--md-sys-color-on-surface-variant);
 }
@@ -37,9 +36,11 @@
         margin-left: auto;
     }
 }
+
 .md-navigation-drawer__label-primary {
     @extend .md-typography--title-large;
 }
+
 .md-navigation-drawer__label-secondary {
     @extend .md-typography--body-medium;
 }
@@ -47,7 +48,6 @@
 .md-navigation-drawer__body {
     flex: 1;
     overflow: auto;
-
     display: flex;
     flex-direction: column;
 }
@@ -55,8 +55,6 @@
 .md-navigation-drawer__inner {
     flex: 1;
     overflow: auto;
-
-
     @extend .md-typography--body-medium;
 
     + .md-navigation-drawer__footer {
@@ -68,19 +66,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-
     padding: 24px;
     gap: 0 8px;
 }
-
 
 .md-navigation-drawer {
     border-radius: var(--md-sys-shape-corner-none);
     background: var((--md-sys-color-surface));
     box-shadow: var(--md-sys-elevation-level0);
-
     overflow: auto;
-
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);
@@ -90,7 +84,6 @@
     position: absolute;
     z-index: 2;
     transform: translate3d(0, 0, 0);
-
     border-radius: var(--md-sys-shape-corner-large);
     background: var((--md-sys-color-surface-container-low));
     box-shadow: var(--md-sys-elevation-level1);
@@ -100,7 +93,6 @@
     grid-area: west;
     height: 100%;
     width: 360px;
-
 
     @media (max-width: 599px) {
         width: calc(100vw - 56px);
@@ -128,15 +120,12 @@
 .md-navigation-drawer__scrim {
     width: 100%;
     height: 100%;
-
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
-
     background: var(--md-sys-color-scrim);
     opacity: 32%;
-
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
     transition-timing-function: var(--md-sys-motion-easing-standard);

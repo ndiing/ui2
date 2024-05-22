@@ -11,6 +11,7 @@
     position: relative;
 
     &:hover {
+
         .md-slider__label {
             top: calc(0px - (((44px - 16px) / 2) + 44px + 4px));
             transform: translate3d(-50%, 0%, 0) scale(1);
@@ -78,17 +79,17 @@
 }
 
 .md-slider--centered {
+
     .md-slider__native {
 
         &::-webkit-slider-runnable-track {
             background: var(--md-sys-color-primary-container);
         }
-
     }
 }
 
-
 .md-slider--discrete {
+
     .md-slider__item {
         background: var(--md-sys-color-primary);
 
@@ -99,6 +100,7 @@
 }
 
 .md-slider--range-selection {
+
     .md-slider__container {
         pointer-events: none;
     }
@@ -119,7 +121,9 @@
 }
 
 .md-slider__container2 {
+
     .md-slider__native {
+
         &::-webkit-slider-container {
         }
 

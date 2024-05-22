@@ -1,3 +1,4 @@
+
 .md-snackbar {
     display: inline-flex;
     flex-direction: column;
@@ -7,6 +8,7 @@
     color: var(--md-sys-color-inverse-on-surface);
     box-shadow: var(--md-sys-elevation-level3);
 }
+
 .md-snackbar__body {
     display: flex;
     align-items: center;
@@ -14,35 +16,43 @@
     padding-left: 16px;
     padding-right: 8px;
 }
+
 .md-snackbar__inner {
     flex: 1 0 65%;
     padding-top: 14px;
     padding-bottom: 14px;
     @extend .md-typography--body-medium;
 }
+
 .md-snackbar__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
 }
+
 .md-snackbar__action {
     margin-top: 2px;
     margin-bottom: 2px;
     color: var(--md-sys-color-inverse-primary);
 }
+
 .md-snackbar__icon {
     margin-top: 2px;
     margin-bottom: 2px;
     margin-right: 4px;
+
     .md-icon-button__icon {
         color: var(--md-sys-color-inverse-on-surface);
     }
 }
+
 .md-snackbar--longer-action{
+
     .md-snackbar__inner{
         padding-bottom: 4px;
     }
+
     .md-snackbar__footer{
         padding-bottom: 10px;
     }

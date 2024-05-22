@@ -1,9 +1,11 @@
+
 .md-gesture {
     position: relative;
 }
 
 .md-gesture--start {
     &,
+
     & * {
         user-select: none;
     }

@@ -1,3 +1,4 @@
+
 .md-color-picker {
     display: inline-flex;
     flex-direction: column;
@@ -103,6 +104,7 @@
     pointer-events: none;
 }
 .md-color-picker__hue,
+
 .md-color-picker__opacity {
     appearance: none;
     display: flex;
@@ -134,12 +136,14 @@
 }
 
 .md-color-picker__hue {
+
     &::-webkit-slider-runnable-track {
         background: linear-gradient(to right, hsl(0deg, 100%, 50%), hsl(60deg, 100%, 50%), hsl(120deg, 100%, 50%), hsl(160deg, 100%, 50%), hsl(240deg, 100%, 50%), hsl(300deg, 100%, 50%), hsl(360deg, 100%, 50%));
     }
 }
 
 .md-color-picker__opacity {
+
     &::-webkit-slider-container {
         background-image: repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface)), repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, #e5e5f7 25%, #e5e5f7 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface));
         background-position:

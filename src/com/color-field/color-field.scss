@@ -63,6 +63,7 @@
 }
 
 .md-color-field--focus {
+
     .md-color-field__label {
         color: var(--md-sys-color-primary);
     }
@@ -73,6 +74,7 @@
 }
 
 .md-color-field--error {
+
     .md-color-field__label {
         color: var(--md-sys-color-error);
     }
@@ -105,18 +107,22 @@
     }
 
     &:not(.md-color-field--populated):not(.md-color-field--focus) {
+
         .md-color-field__label + .md-color-field__container .md-color-field__native::placeholder {
             visibility: hidden;
         }
     }
     &.md-color-field--focus,
+
     &.md-color-field--populated {
+
         .md-color-field__label {
             @extend .md-typography--body-small;
             padding-top: calc(((var(--md-color-field-height) - 16px) / 2) - 8px);
             padding-bottom: calc(((var(--md-color-field-height) - 16px) / 2) + 8px);
 
             + .md-color-field__container {
+
                 .md-color-field__native {
                     padding-top: calc(((var(--md-color-field-height) - 24px) / 2) + 8px);
                     padding-bottom: calc(((var(--md-color-field-height) - 24px) / 2) - 8px);
@@ -126,12 +132,14 @@
     }
 
     &.md-color-field--focus {
+
         .md-color-field__container {
             box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
         }
     }
 
     &.md-color-field--error {
+
         .md-color-field__container {
             box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);
         }
@@ -175,12 +183,15 @@
     }
 
     &:not(.md-color-field--populated):not(.md-color-field--focus) {
+
         .md-color-field__label + .md-color-field__container .md-color-field__native::placeholder {
             visibility: hidden;
         }
     }
     &.md-color-field--focus,
+
     &.md-color-field--populated {
+
         .md-color-field__label {
             @extend .md-typography--body-small;
             padding-top: calc(((var(--md-color-field-height) - 16px) / 2));
@@ -196,12 +207,14 @@
     }
 
     &.md-color-field--focus {
+
         .md-color-field__container {
             box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
         }
     }
 
     &.md-color-field--error {
+
         .md-color-field__container {
             box-shadow: inset 0 0 0 2px var(--md-sys-color-error);
         }

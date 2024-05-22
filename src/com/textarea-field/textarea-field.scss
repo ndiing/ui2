@@ -52,6 +52,7 @@
 }
 
 .md-textarea-field--focus {
+
     .md-textarea-field__label {
         color: var(--md-sys-color-primary);
     }
@@ -62,6 +63,7 @@
 }
 
 .md-textarea-field--error {
+
     .md-textarea-field__label {
         color: var(--md-sys-color-error);
     }
@@ -94,18 +96,22 @@
     }
 
     &:not(.md-textarea-field--populated):not(.md-textarea-field--focus) {
+
         .md-textarea-field__label + .md-textarea-field__container .md-textarea-field__native::placeholder {
             visibility: hidden;
         }
     }
     &.md-textarea-field--focus,
+
     &.md-textarea-field--populated {
+
         .md-textarea-field__label {
             @extend .md-typography--body-small;
             padding-top: calc(((var(--md-textarea-field-height) - 16px) / 2) - 8px);
             padding-bottom: calc(((var(--md-textarea-field-height) - 16px) / 2) + 8px);
 
             + .md-textarea-field__container {
+
                 .md-textarea-field__native {
                     padding-top: calc(((var(--md-textarea-field-height) - 24px) / 2) + 8px);
                     padding-bottom: calc(((var(--md-textarea-field-height) - 24px) / 2) - 8px);
@@ -115,12 +121,14 @@
     }
 
     &.md-textarea-field--focus {
+
         .md-textarea-field__container {
             box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
         }
     }
 
     &.md-textarea-field--error {
+
         .md-textarea-field__container {
             box-shadow: inset 0 -2px 0 0 var(--md-sys-color-error);
         }
@@ -163,12 +171,15 @@
     }
 
     &:not(.md-textarea-field--populated):not(.md-textarea-field--focus) {
+
         .md-textarea-field__label + .md-textarea-field__container .md-textarea-field__native::placeholder {
             visibility: hidden;
         }
     }
     &.md-textarea-field--focus,
+
     &.md-textarea-field--populated {
+
         .md-textarea-field__label {
             @extend .md-typography--body-small;
             padding-top: calc(((var(--md-textarea-field-height) - 16px) / 2));
@@ -184,12 +195,14 @@
     }
 
     &.md-textarea-field--focus {
+
         .md-textarea-field__container {
             box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
         }
     }
 
     &.md-textarea-field--error {
+
         .md-textarea-field__container {
             box-shadow: inset 0 0 0 2px var(--md-sys-color-error);
         }

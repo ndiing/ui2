@@ -19,6 +19,7 @@
     appearance: none;
 
     &:indeterminate {
+
         + .md-checkbox__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);
@@ -32,6 +33,7 @@
     }
 
     &:checked {
+
         + .md-checkbox__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);

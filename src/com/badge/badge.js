@@ -1,5 +1,6 @@
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
+
 class MDBadge extends MDElement {
     static get properties() {
         return {
@@ -20,16 +21,21 @@ class MDBadge extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
+
         await this.updateComplete;
+
         this.classList.add("md-badge");
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
+
         this.classList.remove("md-badge");
     }
 
     updated(changedProperties) {}
 }
+
 customElements.define("md-badge", MDBadge);
+
 export { MDBadge };

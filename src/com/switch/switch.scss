@@ -19,6 +19,7 @@
     appearance: none;
 
     &:checked {
+
         + .md-switch__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);
@@ -33,7 +34,9 @@
         }
 
         &:active {
+
             + .md-switch__track {
+
                 .md-switch__thumb {
                     height: 28px;
                     width: 28px;
@@ -46,8 +49,11 @@
     }
 
     &:not(:checked) {
+
         &:active {
+
             + .md-switch__track {
+
                 .md-switch__thumb {
                     height: 28px;
                     width: 28px;

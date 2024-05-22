@@ -1,3 +1,4 @@
+
 .md-time-picker {
     display: inline-flex;
     flex-direction: column;
@@ -121,12 +122,15 @@
 }
 
 .md-time-picker__absolute--hour {
+
     @for $i from 1 through 24 {
+
         .md-time-picker__absolute-item:nth-child(#{($i % 12) + 1}) {
             left: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * cos($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * sin($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
 
             &.md-time-picker__absolute-item--selected {
+
                 &:before {
                     transform: rotate(calc(360deg / 12) * $i);
                 }
@@ -138,6 +142,7 @@
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px - 4px - 32px) * sin($i / 12 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
 
             &.md-time-picker__absolute-item--selected {
+
                 &:before {
                     width: calc((((32px * 7) + (4px * 6) - 32px) / 2) - 4px - 4px - 32px);
                     transform: rotate(calc(360deg / 12) * $i);
@@ -148,12 +153,15 @@
 }
 
 .md-time-picker__absolute--minute {
+
     @for $i from 1 through 60 {
+
         .md-time-picker__absolute-item:nth-child(#{($i % 60) + 1}) {
             left: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * cos($i / 60 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
             top: calc((((((32px * 7) + (4px * 6) - 32px) / 2) - 4px) * sin($i / 60 * 2 * pi)) + (((32px * 7) + (4px * 6) - 32px) / 2));
 
             &.md-time-picker__absolute-item--selected {
+
                 &:before {
                     transform: rotate(calc(360deg / 60) * $i);
                 }

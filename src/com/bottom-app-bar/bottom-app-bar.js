@@ -14,6 +14,7 @@ class MDBottomAppBar extends MDElement {
 
     constructor() {
         super();
+
         this.body = Array.from(this.childNodes);
     }
 
@@ -45,20 +46,31 @@ class MDBottomAppBar extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
+        
+        await this.updateComplete
+
         this.classList.add("md-bottom-app-bar");
+
         this.bottomAppBarScrim = document.createElement("div");
+
         this.parentElement.insertBefore(this.bottomAppBarScrim, this.nextElementSibling);
+
         this.bottomAppBarScrim.classList.add("md-bottom-app-bar__scrim");
+
         this.handleBottomAppBarScrimClick = this.handleBottomAppBarScrimClick.bind(this);
+
         this.bottomAppBarScrim.addEventListener("click", this.handleBottomAppBarScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
+
         this.classList.remove("md-bottom-app-bar");
+
         this.bottomAppBarScrim.removeEventListener("click", this.handleBottomAppBarScrimClick);
+        
         this.bottomAppBarScrim.remove();
     }
 
@@ -82,6 +94,7 @@ class MDBottomAppBar extends MDElement {
                 }
             } else {
                 this.classList.remove("md-bottom-app-bar--open");
+
                 this.bottomAppBarScrim.classList.remove("md-bottom-app-bar--open");
             }
         }
@@ -105,6 +118,7 @@ class MDBottomAppBar extends MDElement {
 
     handleBottomAppBarScrimClick(event) {
         this.close();
+        
         this.emit("onBottomAppBarScrimClick", event);
     }
 }
