@@ -4,103 +4,6 @@ import { msg } from "@lit/localize";
 import { Router } from "../../com/router/router";
 import { color, layout } from "../../com/observer/observer";
 
-let sorters=[
-    "m3-portal",
-    "search",
-    "home",
-    "get-started",
-    "develop",
-    "develop-overview",
-    "android",
-    "mdc-android",
-    "jetpack-compose",
-    "flutter",
-    "web",
-    "foundation",
-    "foundations-overview",
-    "accessibility",
-    "overview",
-    "designing",
-    "writing-and-text",
-    "content-design",
-    "overview",
-    "alt-text",
-    "global-writing",
-    "style-guide",
-    "customizing-material",
-    "design-token",
-    "interaction",
-    "gesture",
-    "input",
-    "selection",
-    "state",
-    "layout",
-    "layout-basic",
-    "applying-layout",
-    "canonical-layout",
-    "material-a-z",
-    "style",
-    "styles-overview",
-    "color",
-    "color-system",
-    "color-role",
-    "color-scheme",
-    "choosing-a-scheme",
-    "static",
-    "dynamic",
-    "advanced",
-    "color-resource",
-    "elevation",
-    "icon",
-    "motion",
-    "overview",
-    "easing-and-duration",
-    "transition",
-    "shape",
-    "typography",
-    "component",
-    "components-overview",
-    "app-bar",
-    "bottom-app-bar",
-    "top-app-bar",
-    "badge",
-    "button",
-    "all-button",
-    "common-button",
-    "fab",
-    "extended-fab",
-    "icon-button",
-    "segmented-button",
-    "card",
-    "carousel",
-    "checkbox",
-    "chip",
-    "date-picker",
-    "dialog",
-    "divider",
-    "list",
-    "menu",
-    "navigation",
-    "navigation-bar",
-    "navigation-drawer",
-    "navigation-rail",
-    "progress-indicator",
-    "radio-button",
-    "search",
-    "sheet",
-    "bottom-sheet",
-    "side-sheet",
-    "slider",
-    "snackbar",
-    "switch",
-    "tab",
-    "text-field",
-    "time-picker",
-    "tooltip",
-    "blog",
-    
-]
-
 class DevMain extends MDElement {
     constructor() {
         super();
@@ -188,6 +91,14 @@ class DevMain extends MDElement {
             { leafIcon: 'deployed_code', label: "data-table", routerLink: "/data-table" },
             { leafIcon: 'deployed_code', label: "pagination", routerLink: "/pagination" },
         ];
+
+        this.list=this.list.map(item=>{
+            item.label=
+            item.label.replace(/(^|[^a-zA-Z0-9])([a-zA-Z])/g,($,$1,$2,$x)=>{
+                return ($x==0?'':' ')+$2.toUpperCase()
+            })
+            return item
+        })
 
         this.select(this.list);
     }
