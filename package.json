@@ -21,8 +21,8 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "version": "0.1",
-  "description": "My webpack project",
-  "name": "my-webpack-project",
+  "description": "material",
+  "name": "material",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",

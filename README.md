@@ -1,48 +1,50 @@
-# UI2 Framework
+# Material Framework
 
-UI2 is an advanced UI framework meticulously designed to adhere to Material Design 3 guidelines. Leveraging the power of Node.js, Webpack, and LitElement, UI2 offers developers a comprehensive toolkit for crafting modern, visually captivating user interfaces.
+Material is an advanced UI framework meticulously designed to adhere to Material Design 3 guidelines. Leveraging the power of Node.js, Webpack, and LitElement, Material offers developers a comprehensive toolkit for crafting modern, visually captivating user interfaces.
 
 ## Key Features
 
 - **Modern Development Stack:** Built with Node.js, Webpack, and LitElement, ensuring efficient development and bundling of resources.
 - **Organized Structure:** Resources are neatly organized within the `./src` folder, while components reside in the `./src/com` directory, promoting clarity and maintainability.
-- **Material Design 3 Compliant:** UI2 components strictly follow Material Design 3 guidelines, guaranteeing consistency and familiarity for end-users.
+- **Material Design 3 Compliant:** Material components strictly follow Material Design 3 guidelines, guaranteeing consistency and familiarity for end-users.
 
 ## Getting Started
 
-To seamlessly integrate UI2 into your project, follow these steps:
+To seamlessly integrate Material into your project, follow these steps:
 
 1. **Clone the Repository:**
 
-```bash
-git clone https://github.com/ndiing/ui2.git
-```
+<pre>
+git clone https://github.com/ndiing/material.git
+</pre>
 
 2. **Install Dependencies:**
 
-```bash
+<pre>
 npm install
-```
+</pre>
 
 3. **Start the Development Server:**
 
-```bash
+<pre>
 npm start
-```
+</pre>
 
 This command launches the development server, providing an optimal environment for developing and testing UI components.
 
 ## Usage
 
-UI2 offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. Components are developed following LitElement patterns for creating web components. To incorporate a component into your project, simply import it as follows:
+Material offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. Components are developed following LitElement patterns for creating web components. To incorporate a component into your project, simply import it as follows:
 
-```html
-import { MdButton, MdCard, MdTextField } from 'ui2';
-```
+<pre>
+import { MdButton, MdCard, MdTextField } from 'material';
+</pre>
 
 Then, integrate the component into your UI using LitElement patterns:
 
-```js
+<pre>
+import { LitElement, html } from 'lit';
+
 class MyComponent extends LitElement {
   render() {
     return html`
@@ -59,13 +61,15 @@ class MyComponent extends LitElement {
     console.log('Button clicked!');
   }
 }
-```
+
+customElements.define('my-component', MyComponent);
+</pre>
 
 For comprehensive documentation on each component and its respective properties, refer to the documentation available in the `./docs` folder.
 
 ## Contributing
 
-We welcome contributions to UI2! To contribute effectively:
+We welcome contributions to Material! To contribute effectively:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
