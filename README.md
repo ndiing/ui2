@@ -14,21 +14,21 @@ To seamlessly integrate Material into your project, follow these steps:
 
 1. **Clone the Repository:**
 
-<pre>
+```js
 git clone https://github.com/ndiing/material.git
-</pre>
+```
 
 2. **Install Dependencies:**
 
-<pre>
+```js
 npm install
-</pre>
+```
 
 3. **Start the Development Server:**
 
-<pre>
+```js
 npm start
-</pre>
+```
 
 This command launches the development server, providing an optimal environment for developing and testing UI components.
 
@@ -36,13 +36,13 @@ This command launches the development server, providing an optimal environment f
 
 Material offers an extensive collection of components designed to align seamlessly with Material Design 3 principles. Components are developed following LitElement patterns for creating web components. To incorporate a component into your project, simply import it as follows:
 
-<pre>
+```js
 import { MdButton, MdCard, MdTextField } from 'material';
-</pre>
+```
 
 Then, integrate the component into your UI using LitElement patterns:
 
-<pre>
+```js
 import { LitElement, html } from 'lit';
 
 class MyComponent extends LitElement {
@@ -63,7 +63,7 @@ class MyComponent extends LitElement {
 }
 
 customElements.define('my-component', MyComponent);
-</pre>
+```
 
 For comprehensive documentation on each component and its respective properties, refer to the documentation available in the `./docs` folder.
 
