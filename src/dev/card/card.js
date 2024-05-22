@@ -6,22 +6,17 @@ class DevCard extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-card ui="elevated">
-                        Elevated
-                    </md-card>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-card leadingActions="[]" label="" labelSecondary="" trailingActions="[]" buttons="[]" ui="elevated">elevated</md-card>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-card ui="filled">
-                        Filled
-                    </md-card>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-card leadingActions="[]" label="" labelSecondary="" trailingActions="[]" buttons="[]" ui="filled">filled</md-card>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-card ui="outlined">
-                        Outlined
-                    </md-card>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-card leadingActions="[]" label="" labelSecondary="" trailingActions="[]" buttons="[]" ui="outlined">outlined</md-card>
                 </div>
+
             </div>
         `;
     }

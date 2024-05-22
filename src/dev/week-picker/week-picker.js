@@ -6,12 +6,13 @@ class DevWeekPicker extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+            <div class="md-layout-column" style="margin: 24px;">
+                
+                
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <md-week-picker></md-week-picker>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4"></div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4"></div>
+
             </div>
         `;
     }

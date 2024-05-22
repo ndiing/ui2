@@ -159,7 +159,6 @@ class Store {
     put(doc) {
         const index = this.docs.findIndex((oldDoc) => oldDoc[this.primaryKey] === doc[this.primaryKey]);
         if (index !== -1) {
-            // Replace the old document with the new one
             this.docs.splice(index, 1, doc);
         } else {
             this.post(doc);
@@ -169,51 +168,9 @@ class Store {
     remove(_id) {
         const index = this.docs.findIndex((doc) => doc[this.primaryKey] === _id);
         if (index !== -1) {
-            // Remove the document at the found index
             this.docs.splice(index, 1);
         }
     }
 }
 
 export { Store };
-
-// // Define some sample documents
-// const documents = [
-//     { _id: 1, name: "Document 1", category: "Category A", price: 10 },
-//     { _id: 2, name: "Document 2", category: "Category B", price: 20 },
-//     { _id: 3, name: "Document 3", category: "Category A", price: 30 },
-//     // Add more documents as needed
-// ];
-
-// // Instantiate a Store with the sample documents
-// const store = new Store(documents);
-
-// // Perform CRUD operations and other data manipulations
-
-// // Get a document by ID
-// const docById = store.get(1);
-// console.log("Document with ID 1:", docById);
-
-// // Add a new document
-// const newDoc = { _id: 4, name: "Document 4", category: "Category C", price: 40 };
-// store.post(newDoc);
-
-// // Update an existing document
-// const updatedDoc = { _id: 2, name: "Updated Document 2", category: "Category D", price: 25 };
-// store.put(updatedDoc);
-
-// // Remove a document by ID
-// store.remove(3);
-
-// // Retrieve all documents with sorting, filtering, and pagination
-// const options = {
-//     _sort: 'price', // Sort by price
-//     _order: 'desc', // Sort in descending order
-//     category: 'Category A', // Filter by category
-//     q: 'Document', // Search for documents containing "Document" in name or category
-//     _page: 1, // Pagination: Page 1
-//     _limit: 2 // Pagination: Limit to 2 documents per page
-// };
-
-// const result = store.allDocs(options);
-// console.log("Filtered, sorted, and paginated documents:", result);

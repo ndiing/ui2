@@ -106,8 +106,8 @@ class MDListItem extends MDElement {
                         this.classList.add("md-list__item--two-line");
                     }
                 } else {
-                    this.classList.add("md-list__item--two-line");
-                    this.classList.add("md-list__item--three-line");
+                    this.classList.remove("md-list__item--two-line");
+                    this.classList.remove("md-list__item--three-line");
                 }
             })
         }

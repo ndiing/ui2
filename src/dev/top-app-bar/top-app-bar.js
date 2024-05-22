@@ -6,40 +6,13 @@ class DevTopAppBar extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-border md-layout-fit">
-                <div class="md-layout-border__item md-layout-border__item--north">
-                    <md-top-app-bar
-                        id="top-app-bar"
-                        .leadingActions="${[
-                            {icon:"arrow_back"},
-                        ]}"
-                        .label="${"Title large"}"
-                        .trailingActions="${[
-                            {icon:"attach_file"},
-                            {icon:"today"},
-                            {icon:"more_vert"},
-                        ]}"
-                        .open="${true}"
-                        @onTopAppBarActionClick="${console.log}"
-                    ></md-top-app-bar>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-top-app-bar leadingActions="[]" label="Label" labelSecondary="" trailingActions="[]" ui="" open="false"></md-top-app-bar>
                 </div>
-                <div class="md-layout-border__item md-layout-border__item--center" style="padding:24px;">
-                    <md-button ui="filled-tonal" label="Small top app bar" @click="${this.handleClick}"></md-button>
-                </div>
+
             </div>
         `;
-    }
-
-    get topAppBar() {
-        return this.querySelector("#top-app-bar");
-    }
-
-    handleClick() {
-        if (this.topAppBar.open) {
-            this.topAppBar.close();
-        } else {
-            this.topAppBar.show();
-        }
     }
 }
 

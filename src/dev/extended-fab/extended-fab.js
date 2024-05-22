@@ -6,15 +6,14 @@ class DevExtendedFab extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-extended-fab label="Navigate" icon="navigation"></md-extended-fab>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-extended-fab icon="favorite" label="Label"></md-extended-fab>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-extended-fab label="Reroute"></md-extended-fab>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-extended-fab label="Label"></md-extended-fab>
                 </div>
-                
-                
+
             </div>
         `;
     }

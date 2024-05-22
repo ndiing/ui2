@@ -6,49 +6,50 @@ class DevDialog extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-dialog 
-                        id="dialog1"
-                        @onDialogActionClick="${this.handleClick1}"
-                        @onDialogButtonClick="${this.handleClick1}"
-                        leadingActions='["home"]' 
-                        label="Label" 
-                        trailingActions='["close"]' 
-                        buttons='[{"label":"save","ui":"filled"}]'
-                    >
-                        body
-                    </md-dialog>
-                    <md-button ui="filled-tonal" label="Basic dialog" @click="${this.handleClick1}"></md-button>
+            <div class="md-layout-column" style="margin: 24px;">
+                <!-- dialog -->
+                <div class="md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-dialog
+                        label="Label"
+                        .leadingActions="${[{icon:"favorite"}]}"
+                        .trailingActions="${[{icon:"close"}]}"
+                        .buttons="${[{label:"Button"}]}"
+                        ui="dialog"
+                        id="dialog"
+                        @onDialogActionClick="${this.handleClickDialog}"
+                        @onDialogButtonClick="${this.handleClickDialog}"
+                    >dialog</md-dialog>
+                    <md-button label="dialog" @click="${this.handleClickDialog}"></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-dialog 
+                <div class="md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-dialog
+                        label="Label"
+                        .leadingActions="${[{icon:"favorite"}]}"
+                        .trailingActions="${[{icon:"close"}]}"
+                        .buttons="${[{label:"Button"}]}"
+                        ui="dialog full-screen"
                         id="dialog2"
-                        ui="full-screen"
-                        @onDialogActionClick="${this.handleClick2}"
-                        @onDialogButtonClick="${this.handleClick2}"
-                        leadingActions='["home"]' 
-                        label="Label" 
-                        trailingActions='["close"]' 
-                        buttons='[{"label":"save","ui":"filled"}]'
-                    >
-                        body
-                    </md-dialog>
-                    <md-button ui="filled-tonal" label="Full-screen dialog" @click="${this.handleClick2}"></md-button>
+                        @onDialogActionClick="${this.handleClickDialog2}"
+                        @onDialogButtonClick="${this.handleClickDialog2}"
+                    >dialog</md-dialog>
+                    <md-button label="dialog full-screen" @click="${this.handleClickDialog2}"></md-button>
                 </div>
-                
-                
+
             </div>
         `;
     }
-    handleClick1(event) {
-        if (dialog1.open) dialog1.close();
-        else dialog1.show();
+
+
+    get dialog(){return this.querySelector('#dialog')}
+    get dialog2(){return this.querySelector('#dialog2')}
+
+    handleClickDialog(){
+        if(this.dialog.open){this.dialog.close()}else{this.dialog.show()}
     }
-    handleClick2(event) {
-        if (dialog2.open) dialog2.close();
-        else dialog2.show();
+    handleClickDialog2(){
+        if(this.dialog2.open){this.dialog2.close()}else{this.dialog2.show()}
     }
+
 }
 
 customElements.define("dev-dialog", DevDialog);

@@ -4,7 +4,7 @@
 
     border-radius: var(--md-sys-shape-corner-medium);
     background: var((--md-sys-color-surface-container-lowest));
-    // box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-dialog__header {
@@ -75,9 +75,6 @@
     gap: 0 8px;
 }
 
-// .md-dialog__button {
-// }
-
 .md-dialog {
     display: inline-flex;
 
@@ -86,7 +83,7 @@
 
     border-radius: var(--md-sys-shape-corner-extra-large);
     background: var((--md-sys-color-surface-container-high));
-    // box-shadow: var(--md-sys-elevation-level3);
+    box-shadow: var(--md-sys-elevation-level3);
 
     position: absolute;
     left: 50%;
@@ -113,7 +110,7 @@
 
     border-radius: var(--md-sys-shape-corner-none);
     background: var((--md-sys-color-surface));
-    // box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 

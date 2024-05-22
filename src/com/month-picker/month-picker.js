@@ -3,7 +3,6 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
-// import { Scrolling } from "../virtual-scroll/virtual-scroll";
 
 class MDMonthPickerYear extends HTMLDivElement {
     connectedCallback() {
@@ -42,7 +41,6 @@ class MDMonthPickerListMonthItem extends HTMLDivElement {
     connectedCallback() {}
     disconnectedCallback() {}
     attributeChangedCallback() {
-        // this.scrollIntoView({});
     }
 }
 

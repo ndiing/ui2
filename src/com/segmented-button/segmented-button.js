@@ -1,6 +1,7 @@
 import { MDElement } from "../element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
+import { ifDefined } from "lit/directives/if-defined.js";
 class MDSegmentedButton extends MDElement {
     static get properties() {
         return {
@@ -17,10 +18,11 @@ class MDSegmentedButton extends MDElement {
         return html`
             ${this.buttons?.map(button=>html`
                 <md-button
-                    .label="${button?.label??button}"
-                    .type="${button?.type}"
-                    .ui="${button?.ui??"outlined"}"
-                    .selected="${button?.selected}"
+                    .icon="${ifDefined(button?.selected?button?.icon??'check':undefined)}"
+                    .label="${ifDefined(button?.label??button)}"
+                    .type="${ifDefined(button?.type)}"
+                    .ui="${ifDefined(button?.ui??"outlined")}"
+                    .selected="${ifDefined(button?.selected)}"
                     .data="${button}"
                     @click="${this.handleSegmentedButtonClick}"
                 ></md-button>

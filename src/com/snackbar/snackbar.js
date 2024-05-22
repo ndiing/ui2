@@ -4,15 +4,15 @@ import { msg } from "@lit/localize";
 class MDSnackbar extends MDElement {
     static get properties() {
         return {
-            action: {type:String},
-            icon: {type:String},
+            action: { type: String },
+            icon: { type: String },
         };
     }
 
     constructor() {
         super();
 
-        this.body = Array.from(this.childNodes)
+        this.body = Array.from(this.childNodes);
     }
 
     render() {
@@ -39,6 +39,23 @@ class MDSnackbar extends MDElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-snackbar");
+    }
+
+    get innerElement() {
+        return this.querySelector(".md-snackbar__inner");
+    }
+
+    firstUpdated(changedProperties) {
+        window.requestAnimationFrame(() => {
+            if (this.clientHeight > this.innerElement.clientHeight) {
+                this.classList.add("md-snackbar--longer-action");
+            }
+
+            const lineHeight = parseFloat(window.getComputedStyle(this.innerElement).getPropertyValue("line-height"));
+            if (this.innerElement.scrollHeight > lineHeight) {
+                this.classList.add("md-snackbar--two-line");
+            }
+        });
     }
 
     updated(changedProperties) {}

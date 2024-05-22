@@ -6,18 +6,17 @@ class DevIconButton extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-icon-button icon="favorite"></md-icon-button>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-icon-button icon="favorite" type="" ui="filled"></md-icon-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-icon-button ui="filled-tonal" icon="settings"></md-icon-button>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-icon-button icon="favorite" type="" ui="filled-tonal"></md-icon-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-icon-button ui="filled" icon="more_vert"></md-icon-button>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-icon-button icon="favorite" type="" ui=""></md-icon-button>
                 </div>
-                
-                
+
             </div>
         `;
     }

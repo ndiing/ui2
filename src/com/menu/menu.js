@@ -96,7 +96,7 @@ class MDMenu extends MDElement {
     close() {
         this.open = false;
 
-        this.poper.destroy()
+        this.poper?.destroy()
     }
 
     handleMenuActionClick(event) {

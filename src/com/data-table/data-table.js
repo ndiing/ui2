@@ -80,16 +80,12 @@ class MDDataTableItem extends MDElement {
 
         this.classList.add("md-data-table__item");
 
-        // this.ripple = new Ripple(this, {
-        //     fadeout: true,
-        // });
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-data-table__item");
 
-        // this.ripple?.destroy();
     }
 
     firstUpdated(changedProperties) {

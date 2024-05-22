@@ -3,28 +3,32 @@ import { html } from "lit";
 import { msg } from "@lit/localize";
 
 class DevSegmentedButton extends MDElement {
+    constructor(){
+        super()
+
+        this.buttons=[
+            {label:'Button 1',selected:true},
+            {label:'Button 2'},
+            {label:'Button 3'},
+        ]
+
+        this.buttons2=[
+            {label:'Button 1',selected:true},
+            {label:'Button 2',selected:true},
+            {label:'Button 3'},
+        ]
+    }
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-segmented-button
-                        .buttons="${[
-                            {label:'Day',selected:true},
-                            {label:'Week'},
-                            {label:'Month'},
-                        ]}"
-                    ></md-segmented-button>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-segmented-button .buttons="${this.buttons}"></md-segmented-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-segmented-button
-                        .buttons="${[
-                            {label:'$',selected:true},
-                            {label:'$$',selected:true},
-                            {label:'$$$'},
-                        ]}"
-                    ></md-segmented-button>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-segmented-button .buttons="${this.buttons2}"></md-segmented-button>
                 </div>
+
             </div>
         `;
     }

@@ -28,7 +28,6 @@ class MDIconButton extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-icon-button");
-        // await this.updateComplete;
         this.ripple = new Ripple(this, {
             button: this.iconButtonNative,
             containment: false,

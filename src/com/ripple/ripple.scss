@@ -90,7 +90,7 @@
 }
 
 .md-ripple--dragged {
-    // box-shadow: var(--md-sys-elevation-level4);
+    box-shadow: var(--md-sys-elevation-level4);
 
     &::after {
         opacity: 16%;

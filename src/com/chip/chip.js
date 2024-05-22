@@ -44,7 +44,7 @@ class MDChip extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-chip");
 
-        this.ripple.destroy()
+        this.ripple?.destroy()
     }
 
     updated(changedProperties) {}

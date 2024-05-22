@@ -2,13 +2,13 @@
     display: inline-flex;
     align-items: center;
     min-height: 24px;
-    max-width: 210px;
     padding: 4px 8px;
     border-radius: 4px;
     background: var(--md-sys-color-inverse-surface);
     color: var(--md-sys-color-inverse-on-surface);
     position: absolute;
     z-index: 1;
+    pointer-events: none;
 
     &:not([open]) {
         opacity: 0;

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
+const { generateCustomElementsInfo, generateHTMLElementString } = require("./example2");
 
 //
 // HELPER
@@ -277,8 +278,19 @@ function createDev(name) {
     } else {
         console.log(`Creating dev: ${name}`);
 
+        let code = "";
+
+        try {
+            const content = fs.readFileSync(`./src/com/${name}/${name}.js`, { encoding: "utf8" });
+            generateCustomElementsInfo(content).map((data) => {
+                code += `                <div class="md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">\r\n`;
+                code += `                    ${generateHTMLElementString(data)}\r\n`;
+                code += `                </div>\r\n`;
+            });
+        } catch (error) {}
+
         var templateJs = read("./cli/dev/template.js");
-        templateJs = templateJs.replaceAll("template", name).replaceAll("Template", toPascalCase(name));
+        templateJs = templateJs.replaceAll("template", name).replaceAll("Template", toPascalCase(name)).replace("{{placeholder}}", code);
         write(fileJs, templateJs);
 
         var templateScss = read("./cli/dev/template.scss");

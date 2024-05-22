@@ -115,7 +115,6 @@ class MDNavigationBar extends MDElement {
     }
 
     handleNavigationBarListItemClick(event) {
-        // this.close();
         this.emit("onNavigationBarListItemClick", event);
     }
 }

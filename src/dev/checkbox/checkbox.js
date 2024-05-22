@@ -6,25 +6,18 @@ class DevCheckbox extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <md-form
-                @onFormNativeSubmit="${console.log}"
-            >
-                <div class="md-layout-column" style="margin:24px;">
-                    <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-checkbox></md-checkbox>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-checkbox indeterminate></md-checkbox>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-checkbox checked defaultChecked></md-checkbox>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-button ui="filled-tonal" type="reset" label="Reset"></md-button>
-                        <md-button ui="filled" type="submit" label="Submit"></md-button>
-                    </div>
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-checkbox></md-checkbox>
                 </div>
-            </md-form>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-checkbox indeterminate></md-checkbox>
+                </div>
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-checkbox checked defaultChecked></md-checkbox>
+                </div>
+
+            </div>
         `;
     }
 }

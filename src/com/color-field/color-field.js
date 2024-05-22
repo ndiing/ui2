@@ -135,7 +135,6 @@ class MDColorField extends MDElement {
     }
 
     handleColorFieldNativeClick(event){
-        // event.preventDefault()
     }
 
     updateClassPopulated() {

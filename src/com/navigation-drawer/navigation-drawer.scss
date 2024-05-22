@@ -4,7 +4,7 @@
 
     border-radius: var(--md-sys-shape-corner-medium);
     background: var((--md-sys-color-surface-container-lowest));
-    // box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level0);
 }
 
 .md-navigation-drawer__header {
@@ -56,8 +56,6 @@
     flex: 1;
     overflow: auto;
 
-    // padding: 0 24px;
-    // margin: 24px 0;
 
     @extend .md-typography--body-medium;
 
@@ -75,13 +73,11 @@
     gap: 0 8px;
 }
 
-// .md-navigation-drawer__button {
-// }
 
 .md-navigation-drawer {
     border-radius: var(--md-sys-shape-corner-none);
     background: var((--md-sys-color-surface));
-    // box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level0);
 
     overflow: auto;
 
@@ -97,7 +93,7 @@
 
     border-radius: var(--md-sys-shape-corner-large);
     background: var((--md-sys-color-surface-container-low));
-    // box-shadow: var(--md-sys-elevation-level1);
+    box-shadow: var(--md-sys-elevation-level1);
 }
 
 .md-navigation-drawer {
@@ -120,7 +116,7 @@
 
         &:not(.md-navigation-drawer--open) {
             transform: translate3d(-100%, 0%, 0);
-            // box-shadow: var(--md-sys-elevation-level0);
+            box-shadow: var(--md-sys-elevation-level0);
         }
     }
 

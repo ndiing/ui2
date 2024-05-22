@@ -3,7 +3,6 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
-// import { Scrolling } from "../virtual-scroll/virtual-scroll";
 
 class MDDatePickerYear extends HTMLDivElement {
     connectedCallback() {

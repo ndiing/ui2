@@ -1,58 +1,45 @@
 import { MDElement } from "../../com/element/element";
 import { html } from "lit";
 import { msg } from "@lit/localize";
-import { Popper } from "../../com/popper/popper";
 
 class DevTooltip extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip id="tooltip">Lorem, ipsum.</md-tooltip>
-                    <md-button ui="filled-tonal" label="tooltip" 
-                        @click="${this.handleClick}"
-                        @mouseenter="${this.handleMouseenter}"
-                        @mouseleave="${this.handleMouseleave}"
+            <div class="md-layout-column" style="margin: 24px;">
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-tooltip id="tooltip">
+                        Save to favorites
+                    </md-tooltip>
+                    <md-button label="Tooltip"
+                        @pointerenter="${this.handlePointerenter}"
+                        @pointerleave="${this.handlePointerleave}"
                     ></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip id="tooltip2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, doloribus.</md-tooltip>
-                    <md-button ui="filled-tonal" label="tooltip" 
-                        @click="${this.handleClick2}"
-                        @mouseenter="${this.handleMouseenter2}"
-                        @mouseleave="${this.handleMouseleave2}"
+                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-tooltip id="tooltip2">
+                        Grant value is calculated using the<br>
+                        closing stock price from the day<br>
+                        before the grant date. Amounts do<br>
+                        not reflect tax witholdings.
+                    </md-tooltip>
+                    <md-button label="Tooltip"
+                        @pointerenter="${this.handlePointerenter1}"
+                        @pointerleave="${this.handlePointerleave1}"
                     ></md-button>
                 </div>
+
             </div>
         `;
     }
-    handleClick(event) {
-        if (tooltip.open) {
-            tooltip.close();
-        } else {
-            tooltip.show(event.currentTarget);
-        }
-    }
-    handleMouseenter(event) {
-        tooltip.show(event.currentTarget);
-    }
-    handleMouseleave(event) {
-        tooltip.close();
-    }
-    handleClick2(event) {
-        if (tooltip2.open) {
-            tooltip2.close();
-        } else {
-            tooltip2.show(event.currentTarget);
-        }
-    }
-    handleMouseenter2(event) {
-        tooltip2.show(event.currentTarget);
-    }
-    handleMouseleave2(event) {
-        tooltip2.close();
-    }
+
+    get tooltip(){return this.querySelector('#tooltip')}
+    get tooltip2(){return this.querySelector('#tooltip2')}
+
+    handlePointerenter(event){this.tooltip.show(event.currentTarget)}
+    handlePointerleave(){this.tooltip.close()}
+    handlePointerenter1(event){this.tooltip2.show(event.currentTarget)}
+    handlePointerleave1(){this.tooltip2.close()}
 }
 
 customElements.define("dev-tooltip", DevTooltip);

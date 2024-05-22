@@ -140,58 +140,64 @@ function generateHTMLElementString(data) {
     return elementString;
 }
 
-const fs = require("fs");
-const path = require("path");
-
-function bacaFileJS(folderPath) {
-    // Membaca isi direktori
-    fs.readdir(folderPath, (err, files) => {
-        if (err) {
-            console.error("Error membaca direktori:", err);
-            return;
-        }
-
-        // Iterasi melalui setiap file/direktori
-        files.forEach((file) => {
-            const filePath = path.join(folderPath, file);
-
-            // Mengambil info file
-            fs.stat(filePath, (err, stats) => {
-                if (err) {
-                    console.error("Error mendapatkan info file:", err);
-                    return;
-                }
-
-                // Memeriksa apakah file atau direktori
-                if (stats.isFile()) {
-                    // Memeriksa apakah file adalah file JavaScript
-                    if (path.extname(filePath) === ".js") {
-                        // Membaca isi file jika adalah file JavaScript
-                        fs.readFile(filePath, "utf8", (err, data) => {
-                            if (err) {
-                                console.error("Error membaca file:", err);
-                                return;
-                            }
-                            generateCustomElementsInfo(data).map((data) => {
-                                console.log(data)
-                                
-                                // let content = generateMarkdown(data);
-                                // fs.writeFileSync(`./docs/${file.replace('.js','.md')}`,content)
-
-                                // console.log(generateHTMLElementString(data))
-
-                            }); // Lakukan apa yang ingin Anda lakukan dengan isi file di sini
-                        });
-                    }
-                } else if (stats.isDirectory()) {
-                    // Jika direktori, panggil kembali fungsi untuk membaca direktori tersebut secara rekursif
-                    bacaFileJS(filePath);
-                }
-            });
-        });
-    });
+module.exports={
+    generateCustomElementsInfo,
+    generateMarkdown,
+    generateHTMLElementString,
 }
 
-// Contoh pemanggilan fungsi
-const folderPath = "./src/com";
-bacaFileJS(folderPath);
+// const fs = require("fs");
+// const path = require("path");
+
+// function bacaFileJS(folderPath) {
+//     // Membaca isi direktori
+//     fs.readdir(folderPath, (err, files) => {
+//         if (err) {
+//             console.error("Error membaca direktori:", err);
+//             return;
+//         }
+
+//         // Iterasi melalui setiap file/direktori
+//         files.forEach((file) => {
+//             const filePath = path.join(folderPath, file);
+
+//             // Mengambil info file
+//             fs.stat(filePath, (err, stats) => {
+//                 if (err) {
+//                     console.error("Error mendapatkan info file:", err);
+//                     return;
+//                 }
+
+//                 // Memeriksa apakah file atau direktori
+//                 if (stats.isFile()) {
+//                     // Memeriksa apakah file adalah file JavaScript
+//                     if (path.extname(filePath) === ".js") {
+//                         // Membaca isi file jika adalah file JavaScript
+//                         fs.readFile(filePath, "utf8", (err, data) => {
+//                             if (err) {
+//                                 console.error("Error membaca file:", err);
+//                                 return;
+//                             }
+//                             generateCustomElementsInfo(data).map((data) => {
+//                                 console.log(data)
+                                
+//                                 // let content = generateMarkdown(data);
+//                                 // fs.writeFileSync(`./docs/${file.replace('.js','.md')}`,content)
+
+//                                 // console.log(generateHTMLElementString(data))
+
+//                             }); // Lakukan apa yang ingin Anda lakukan dengan isi file di sini
+//                         });
+//                     }
+//                 } else if (stats.isDirectory()) {
+//                     // Jika direktori, panggil kembali fungsi untuk membaca direktori tersebut secara rekursif
+//                     bacaFileJS(filePath);
+//                 }
+//             });
+//         });
+//     });
+// }
+
+// // Contoh pemanggilan fungsi
+// const folderPath = "./src/com";
+// bacaFileJS(folderPath);
