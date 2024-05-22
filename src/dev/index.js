@@ -76,8 +76,6 @@ const routes = [
             { path: "tooltip", load: () => import("./tooltip/tooltip.js").then((m) => m.default) },
             { path: "carousel", load: () => import("./carousel/carousel.js").then((m) => m.default) },
 
-            // kan kene mandek sek
-
             { path: "side-sheet", load: () => import("./side-sheet/side-sheet.js").then((m) => m.default) },
             { path: "bottom-sheet", load: () => import("./bottom-sheet/bottom-sheet.js").then((m) => m.default) },
             { path: "bottom-app-bar", load: () => import("./bottom-app-bar/bottom-app-bar.js").then((m) => m.default) },

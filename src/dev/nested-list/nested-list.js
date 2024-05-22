@@ -74,13 +74,13 @@ class DevNestedList extends MDElement {
         // prettier-ignore
         return html`
             <div class="md-layout-column" style="margin: 24px;">
-                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                <div class="md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <md-nested-list .list="${this.list}" ui="tree"></md-nested-list>
                 </div>
-                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                <div class="md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <md-nested-list .list="${this.list2}" ui="card"></md-nested-list>
                 </div>
-                <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                <div class="md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <md-nested-list .list="${this.list3}" ui="accordion"></md-nested-list>
                 </div>
 

@@ -92,14 +92,6 @@ class DevMain extends MDElement {
             { leafIcon: 'deployed_code', label: "pagination", routerLink: "/pagination" },
         ];
 
-        this.list=this.list.map(item=>{
-            item.label=
-            item.label.replace(/(^|[^a-zA-Z0-9])([a-zA-Z])/g,($,$1,$2,$x)=>{
-                return ($x==0?'':' ')+$2.toUpperCase()
-            })
-            return item
-        })
-
         this.select(this.list);
     }
 
