@@ -195,10 +195,10 @@
     }
 
     &.md-pane--north {
-        border-radius: var(--md-sys-shape-corner-large-bottom);
         top: 0;
         left: 0;
         right: 0;
+        border-radius: var(--md-sys-shape-corner-large-bottom);
 
         &:not(.md-pane--open) {
             transform: translate3d(0, -100%, 0);
@@ -206,10 +206,10 @@
     }
 
     &.md-pane--east {
-        border-radius: var(--md-sys-shape-corner-large-start);
         right: 0;
         top: 0;
         bottom: 0;
+        border-radius: var(--md-sys-shape-corner-large-start);
 
         &:not(.md-pane--open) {
             transform: translate3d(100%, 0, 0);
@@ -217,10 +217,10 @@
     }
 
     &.md-pane--south {
-        border-radius: var(--md-sys-shape-corner-large-top);
         bottom: 0;
         left: 0;
         right: 0;
+        border-radius: var(--md-sys-shape-corner-large-top);
 
         &:not(.md-pane--open) {
             transform: translate3d(0, 100%, 0);
@@ -228,10 +228,10 @@
     }
 
     &.md-pane--west {
-        border-radius: var(--md-sys-shape-corner-large-end);
         left: 0;
         top: 0;
         bottom: 0;
+        border-radius: var(--md-sys-shape-corner-large-end);
 
         &:not(.md-pane--open) {
             transform: translate3d(-100%, 0, 0);
