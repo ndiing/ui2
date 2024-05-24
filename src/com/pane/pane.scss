@@ -155,7 +155,7 @@
     grid-area: east;
 
     &:not(.md-pane--open) {
-        margin-right: -100vh;
+        margin-right: -100vw;
     }
 }
 
@@ -171,7 +171,7 @@
     grid-area: west;
 
     &:not(.md-pane--open) {
-        margin-left: -100vh;
+        margin-left: -100vw;
     }
 }
 
