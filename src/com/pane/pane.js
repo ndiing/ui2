@@ -10,9 +10,7 @@ class MDPane extends MDElement {
             labelSecondary: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
-
             ui: { type: String },
-
             open: { type: Boolean },
         };
     }
@@ -32,10 +30,10 @@ class MDPane extends MDElement {
                         <div class="md-pane__actions">
                             ${this.leadingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-pane__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-pane__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handlePaneActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -51,10 +49,10 @@ class MDPane extends MDElement {
                         <div class="md-pane__actions">
                             ${this.trailingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-pane__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-pane__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handlePaneActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -62,47 +60,47 @@ class MDPane extends MDElement {
                     `:nothing}
                 </div>
             `:nothing}
-            ${this.body?.length||this.buttons?.length?html`
-                <div class="md-pane__body">
-                    ${this.body?.length?html`<div class="md-pane__inner">${this.body}</div>`:nothing}
-                    ${this.buttons?.length?html`
-                        <div class="md-pane__footer">
-                            ${this.buttons.map(action => html`
-                                <md-button 
-                                    class="md-pane__button"
-                                    .icon="${ifDefined(action.icon)}"
-                                    .label="${ifDefined(action.label??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
-                                    .selected="${ifDefined(action.selected)}"
-                                    @click="${this.handlePaneButtonClick}"
-                                ></md-button>
-                            `)}
-                        </div>
-                    `:nothing}
-                </div>
-            `:nothing}
+            <div class="md-pane__body">
+                <div class="md-pane__inner">${this.body}</div>
+                ${this.buttons?.length?html`
+                    <div class="md-pane__footer">
+                        ${this.buttons.map(action => html`
+                            <md-button 
+                                class="md-pane__button" 
+                                .icon="${ifDefined(action?.icon)}"
+                                .label="${ifDefined(action?.label??action)}"
+                                .type="${ifDefined(action?.type)}"
+                                .ui="${ifDefined(action?.ui)}"
+                                .selected="${ifDefined(action?.selected)}"
+                                @click="${this.handlePaneButtonClick}"
+                            ></md-button>
+                        `)}
+                    </div>
+                `:nothing}
+            </div>
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
+
+        await this.updateComplete;
 
         this.classList.add("md-pane");
 
-        this.paneScrim = document.createElement("div");
-        this.parentElement.insertBefore(this.paneScrim, this.nextElementSibling);
-        this.paneScrim.classList.add("md-pane__scrim");
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-pane__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
         this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
-        this.paneScrim.addEventListener("click", this.handlePaneScrimClick);
+        this.scrimElement.addEventListener("click", this.handlePaneScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-pane");
 
-        this.paneScrim.removeEventListener("click", this.handlePaneScrimClick);
-        this.paneScrim.remove();
+        this.scrimElement.removeEventListener("click", this.handlePaneScrimClick);
+        this.scrimElement.remove();
     }
 
     firstUpdated(changedProperties) {}
@@ -114,11 +112,12 @@ class MDPane extends MDElement {
                 "dialog",
                 "full-screen",
                 "sheet",
+                "modal",
                 "north",
                 "east",
                 "south",
                 "west",
-                "modal",
+                "center",
             ].forEach((ui) => {
                 this.classList.remove("md-pane--" + ui);
             });
@@ -131,18 +130,19 @@ class MDPane extends MDElement {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-pane--open");
+
                 if (
-                    [
+                    this.ui.split(' ').some(ui => [
                         //
                         "dialog",
                         "modal",
-                    ].some((ui) => this.ui?.includes(ui))
+                    ].includes(ui))
                 ) {
-                    this.paneScrim.classList.add("md-pane--open");
+                    this.scrimElement.classList.add("md-pane--open");
                 }
             } else {
                 this.classList.remove("md-pane--open");
-                this.paneScrim.classList.remove("md-pane--open");
+                this.scrimElement.classList.remove("md-pane--open");
             }
         }
     }
@@ -155,17 +155,18 @@ class MDPane extends MDElement {
         this.open = false;
     }
 
+    handlePaneScrimClick(event) {
+        this.close();
+
+        this.emit("onPaneScrimClick", event);
+    }
+
     handlePaneActionClick(event) {
         this.emit("onPaneActionClick", event);
     }
 
     handlePaneButtonClick(event) {
         this.emit("onPaneButtonClick", event);
-    }
-
-    handlePaneScrimClick(event) {
-        this.close();
-        this.emit("onPaneScrimClick", event);
     }
 }
 

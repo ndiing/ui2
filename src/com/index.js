@@ -61,7 +61,6 @@ import "./switch/switch.js";
 import "./slider/slider.js";
 
 import "./progress-indicator/progress-indicator.js";
-import "./pane/pane.js";
 import "./card/card.js";
 import "./dialog/dialog.js";
 import "./snackbar/snackbar.js";
@@ -80,3 +79,5 @@ import "./navigation-drawer/navigation-drawer.js";
 
 import "./data-table/data-table.js";
 import "./pagination/pagination.js";
+
+import "./pane/pane.js";

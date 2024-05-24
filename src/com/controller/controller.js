@@ -1,4 +1,4 @@
-class Template {
+class Controller {
     constructor(host, options = {}) {
         this.options = {
             ...options,
@@ -25,12 +25,12 @@ class Template {
     }
 
     init() {
-        this.host.classList.add("md-template");
+        this.host.classList.add("md-controller");
     }
 
     destroy() {
-        this.host.classList.remove("md-template");
+        this.host.classList.remove("md-controller");
     }
-}
 
-export { Template };
+}
+export { Controller };
