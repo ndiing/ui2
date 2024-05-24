@@ -31,6 +31,18 @@
 @import "./nested-list/nested-list.scss";
 @import "./tab/tab.scss";
 
+@import "./pane/pane.scss";
+@import "./card/card.scss";
+@import "./dialog/dialog.scss";
+@import "./side-sheet/side-sheet.scss";
+@import "./bottom-sheet/bottom-sheet.scss";
+@import "./bottom-app-bar/bottom-app-bar.scss";
+@import "./top-app-bar/top-app-bar.scss";
+@import "./menu/menu.scss";
+@import "./navigation-bar/navigation-bar.scss";
+@import "./navigation-rail/navigation-rail.scss";
+@import "./navigation-drawer/navigation-drawer.scss";
+
 @import "./color-picker/color-picker.scss";
 @import "./date-picker/date-picker.scss";
 @import "./datetime-picker/datetime-picker.scss";
@@ -67,15 +79,3 @@
 
 @import "./data-table/data-table.scss";
 @import "./pagination/pagination.scss";
-
-@import "./pane/pane.scss";
-@import "./card/card.scss";
-@import "./dialog/dialog.scss";
-@import "./side-sheet/side-sheet.scss";
-@import "./bottom-sheet/bottom-sheet.scss";
-@import "./bottom-app-bar/bottom-app-bar.scss";
-@import "./top-app-bar/top-app-bar.scss";
-@import "./menu/menu.scss";
-@import "./navigation-bar/navigation-bar.scss";
-@import "./navigation-rail/navigation-rail.scss";
-@import "./navigation-drawer/navigation-drawer.scss";
