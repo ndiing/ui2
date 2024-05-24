@@ -322,3 +322,24 @@
         width: 100%;
     }
 }
+
+.md-color-picker__scrim{@extend .md-menu__scrim;}
+.md-date-picker__scrim{@extend .md-menu__scrim;}
+.md-datetime-picker__scrim{@extend .md-menu__scrim;}
+.md-month-picker__scrim{@extend .md-menu__scrim;}
+.md-time-picker__scrim{@extend .md-menu__scrim;}
+.md-week-picker__scrim{@extend .md-menu__scrim;}
+
+.md-color-picker--dialog{@extend .md-menu--dialog;}
+.md-date-picker--dialog{@extend .md-menu--dialog;}
+.md-datetime-picker--dialog{@extend .md-menu--dialog;}
+.md-month-picker--dialog{@extend .md-menu--dialog;}
+.md-time-picker--dialog{@extend .md-menu--dialog;}
+.md-week-picker--dialog{@extend .md-menu--dialog;}
+
+.md-color-picker--open{@extend .md-menu--open;}
+.md-date-picker--open{@extend .md-menu--open;}
+.md-datetime-picker--open{@extend .md-menu--open;}
+.md-month-picker--open{@extend .md-menu--open;}
+.md-time-picker--open{@extend .md-menu--open;}
+.md-week-picker--open{@extend .md-menu--open;}

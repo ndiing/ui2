@@ -2,6 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
+import { Popper } from "../popper/popper";
 
 class MDColorPicker extends MDElement {
     static get properties() {
@@ -9,6 +10,8 @@ class MDColorPicker extends MDElement {
             value: { type: String },
             currentValue: { type: String },
             index: { type: Number },
+            ui: { type: String },
+            open: { type: Boolean },
         };
     }
 
@@ -207,15 +210,26 @@ class MDColorPicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-color-picker");
+        this.classList.add("md-color-picker--dialog");
 
         this.handleColorPickerGradientMousedown = this.handleColorPickerGradientMousedown.bind(this);
         this.handleColorPickerGradientMousemove = this.handleColorPickerGradientMousemove.bind(this);
         this.handleColorPickerGradientMouseup = this.handleColorPickerGradientMouseup.bind(this);
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-color-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleColorPickerScrimClick = this.handleColorPickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleColorPickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-picker");
+        this.classList.remove("md-color-picker--dialog");
+
+        this.scrimElement.removeEventListener("click", this.handleColorPickerScrimClick);
+        this.scrimElement.remove();
     }
 
     async firstUpdated(changedProperties) {
@@ -283,6 +297,59 @@ class MDColorPicker extends MDElement {
         this.style.setProperty("--md-color-picker-green", this.green);
         this.style.setProperty("--md-color-picker-blue", this.blue);
         this.style.setProperty("--md-color-picker-alpha", this.alpha);
+
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-color-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-color-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-color-picker--open");
+                this.scrimElement.classList.remove("md-color-picker--open");
+            }
+        }
+    }
+
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleColorPickerScrimClick(event) {
+        this.close();
+
+        this.emit("onColorPickerScrimClick", event);
     }
 
     draw() {

@@ -8,6 +8,8 @@ class MDTimePicker extends MDElement {
         return {
             value: { type: String },
             index: { type: Number },
+            ui: { type: String },
+            open: { type: Boolean },
         };
     }
 
