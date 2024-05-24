@@ -3,6 +3,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { MDList } from "../list/list";
 import { Popper } from "../popper/popper";
+import { MDNestedList } from "../nested-list/nested-list";
 
 
 class MDNavigationDrawer extends MDElement {
@@ -15,7 +16,7 @@ class MDNavigationDrawer extends MDElement {
             buttons: { type: Array },
             ui: { type: String },
             open: { type: Boolean },
-            ...MDList.properties
+            ...MDNestedList.properties
         };
     }
 
@@ -66,15 +67,11 @@ class MDNavigationDrawer extends MDElement {
             `:nothing}
                 <div class="md-navigation-drawer__body">
                     <div class="md-navigation-drawer__inner">
-                        <md-list 
-                            class="md-navigation-drawer__list"
+                        <md-nested-list 
+                            class="md-navigation-drawer__nested-list"
                             .list="${ifDefined(this.list)}"
-                            .allSelection="${ifDefined(this.allSelection)}"
-                            .rangeSelection="${ifDefined(this.rangeSelection)}"
-                            .multiSelection="${ifDefined(this.multiSelection)}"
-                            .singleSelection="${ifDefined(this.singleSelection??true)}"
                             @onListItemClick="${this.handleNavigationDrawerListItemClick}"
-                        ></md-list>
+                        ></md-nested-list>
                     </div>
                     ${this.buttons?.length?html`
                         <div class="md-navigation-drawer__footer">
