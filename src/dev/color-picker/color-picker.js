@@ -8,7 +8,7 @@ class DevColorPicker extends MDElement {
         return html`
             <div class="md-layout-column" style="margin: 24px;">
                 <div class="md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    <md-color-picker value="" currentValue="" index=""></md-color-picker>
+                    <md-color-picker></md-color-picker>
                 </div>
 
             </div>
