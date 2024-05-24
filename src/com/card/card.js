@@ -10,8 +10,8 @@ class MDCard extends MDElement {
             labelSecondary: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
-
             ui: { type: String },
+            open: { type: Boolean },
         };
     }
 
@@ -30,10 +30,10 @@ class MDCard extends MDElement {
                         <div class="md-card__actions">
                             ${this.leadingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-card__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-card__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleCardActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -49,10 +49,10 @@ class MDCard extends MDElement {
                         <div class="md-card__actions">
                             ${this.trailingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-card__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-card__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleCardActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -62,17 +62,17 @@ class MDCard extends MDElement {
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
                 <div class="md-card__body">
-                    <div class="md-card__inner">${this.body}</div>
+                    ${this.body?.length?html`<div class="md-card__inner">${this.body}</div>`:nothing}
                     ${this.buttons?.length?html`
                         <div class="md-card__footer">
                             ${this.buttons.map(action => html`
                                 <md-button 
-                                    class="md-card__button"
-                                    .icon="${ifDefined(action.icon)}"
-                                    .label="${ifDefined(action.label??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
-                                    .selected="${ifDefined(action.selected)}"
+                                    class="md-card__button" 
+                                    .icon="${ifDefined(action?.icon)}"
+                                    .label="${ifDefined(action?.label??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    .selected="${ifDefined(action?.selected)}"
                                     @click="${this.handleCardButtonClick}"
                                 ></md-button>
                             `)}
@@ -83,15 +83,26 @@ class MDCard extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
 
+        await this.updateComplete;
+
         this.classList.add("md-card");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-card__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleCardScrimClick = this.handleCardScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleCardScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-card");
+
+        this.scrimElement.removeEventListener("click", this.handleCardScrimClick);
+        this.scrimElement.remove();
     }
 
     firstUpdated(changedProperties) {}
@@ -100,6 +111,15 @@ class MDCard extends MDElement {
         if (changedProperties.has("ui")) {
             [
                 //
+                "dialog",
+                "full-screen",
+                "sheet",
+                "modal",
+                "north",
+                "east",
+                "south",
+                "west",
+                "center",
                 "elevated",
                 "filled",
                 "outlined",
@@ -112,6 +132,41 @@ class MDCard extends MDElement {
                 });
             }
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-card--open");
+
+                if (
+                    this.ui &&
+                    this.ui.split(" ").some((ui) =>
+                        [
+                            //
+                            "dialog",
+                            "modal",
+                        ].includes(ui)
+                    )
+                ) {
+                    this.scrimElement.classList.add("md-card--open");
+                }
+            } else {
+                this.classList.remove("md-card--open");
+                this.scrimElement.classList.remove("md-card--open");
+            }
+        }
+    }
+
+    show() {
+        this.open = true;
+    }
+
+    close() {
+        this.open = false;
+    }
+
+    handleCardScrimClick(event) {
+        this.close();
+
+        this.emit("onCardScrimClick", event);
     }
 
     handleCardActionClick(event) {

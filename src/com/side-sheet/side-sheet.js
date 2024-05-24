@@ -5,15 +5,12 @@ import { html, nothing } from "lit";
 class MDSideSheet extends MDElement {
     static get properties() {
         return {
-
             leadingActions: { type: Array },
             label: { type: String },
             labelSecondary: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
-
             ui: { type: String },
-
             open: { type: Boolean },
         };
     }
@@ -33,10 +30,10 @@ class MDSideSheet extends MDElement {
                         <div class="md-side-sheet__actions">
                             ${this.leadingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-side-sheet__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-side-sheet__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleSideSheetActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -52,10 +49,10 @@ class MDSideSheet extends MDElement {
                         <div class="md-side-sheet__actions">
                             ${this.trailingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-side-sheet__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-side-sheet__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleSideSheetActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -65,17 +62,17 @@ class MDSideSheet extends MDElement {
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
                 <div class="md-side-sheet__body">
-                    <div class="md-side-sheet__inner">${this.body}</div>
+                    ${this.body?.length?html`<div class="md-side-sheet__inner">${this.body}</div>`:nothing}
                     ${this.buttons?.length?html`
                         <div class="md-side-sheet__footer">
                             ${this.buttons.map(action => html`
                                 <md-button 
-                                    class="md-side-sheet__button"
-                                    .icon="${ifDefined(action.icon)}"
-                                    .label="${ifDefined(action.label??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
-                                    .selected="${ifDefined(action.selected)}"
+                                    class="md-side-sheet__button" 
+                                    .icon="${ifDefined(action?.icon)}"
+                                    .label="${ifDefined(action?.label??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    .selected="${ifDefined(action?.selected)}"
                                     @click="${this.handleSideSheetButtonClick}"
                                 ></md-button>
                             `)}
@@ -86,24 +83,30 @@ class MDSideSheet extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-side-sheet");
+        await this.updateComplete;
 
-        this.sideSheetScrim = document.createElement("div");
-        this.parentElement.insertBefore(this.sideSheetScrim, this.nextElementSibling);
-        this.sideSheetScrim.classList.add("md-side-sheet__scrim");
+        this.classList.add("md-side-sheet");
+        this.classList.add("md-side-sheet--sheet");
+        this.classList.add("md-side-sheet--east");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-side-sheet__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
         this.handleSideSheetScrimClick = this.handleSideSheetScrimClick.bind(this);
-        this.sideSheetScrim.addEventListener("click", this.handleSideSheetScrimClick);
+        this.scrimElement.addEventListener("click", this.handleSideSheetScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-side-sheet");
+        this.classList.remove("md-side-sheet--sheet");
+        this.classList.remove("md-side-sheet--east");
 
-        this.sideSheetScrim.removeEventListener("click", this.handleSideSheetScrimClick);
-        this.sideSheetScrim.remove();
+        this.scrimElement.removeEventListener("click", this.handleSideSheetScrimClick);
+        this.scrimElement.remove();
     }
 
     firstUpdated(changedProperties) {}
@@ -112,7 +115,15 @@ class MDSideSheet extends MDElement {
         if (changedProperties.has("ui")) {
             [
                 //
+                "dialog",
+                "full-screen",
+                // "sheet",
                 "modal",
+                "north",
+                // "east",
+                "south",
+                "west",
+                "center",
             ].forEach((ui) => {
                 this.classList.remove("md-side-sheet--" + ui);
             });
@@ -125,17 +136,22 @@ class MDSideSheet extends MDElement {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-side-sheet--open");
+
                 if (
-                    [
-                        //
-                        "modal",
-                    ].some((ui) => this.ui?.includes(ui))
+                    this.ui &&
+                    this.ui.split(" ").some((ui) =>
+                        [
+                            //
+                            "dialog",
+                            "modal",
+                        ].includes(ui)
+                    )
                 ) {
-                    this.sideSheetScrim.classList.add("md-side-sheet--open");
+                    this.scrimElement.classList.add("md-side-sheet--open");
                 }
             } else {
                 this.classList.remove("md-side-sheet--open");
-                this.sideSheetScrim.classList.remove("md-side-sheet--open");
+                this.scrimElement.classList.remove("md-side-sheet--open");
             }
         }
     }
@@ -148,17 +164,18 @@ class MDSideSheet extends MDElement {
         this.open = false;
     }
 
+    handleSideSheetScrimClick(event) {
+        this.close();
+
+        this.emit("onSideSheetScrimClick", event);
+    }
+
     handleSideSheetActionClick(event) {
         this.emit("onSideSheetActionClick", event);
     }
 
     handleSideSheetButtonClick(event) {
         this.emit("onSideSheetButtonClick", event);
-    }
-
-    handleSideSheetScrimClick(event) {
-        this.close();
-        this.emit("onSideSheetScrimClick", event);
     }
 }
 

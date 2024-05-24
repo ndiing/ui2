@@ -5,15 +5,12 @@ import { html, nothing } from "lit";
 class MDBottomSheet extends MDElement {
     static get properties() {
         return {
-
             leadingActions: { type: Array },
             label: { type: String },
             labelSecondary: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
-
             ui: { type: String },
-
             open: { type: Boolean },
         };
     }
@@ -33,10 +30,10 @@ class MDBottomSheet extends MDElement {
                         <div class="md-bottom-sheet__actions">
                             ${this.leadingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-bottom-sheet__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-bottom-sheet__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleBottomSheetActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -52,10 +49,10 @@ class MDBottomSheet extends MDElement {
                         <div class="md-bottom-sheet__actions">
                             ${this.trailingActions.map(action => html`
                                 <md-icon-button 
-                                    class="md-bottom-sheet__action"
-                                    .icon="${ifDefined(action.icon??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
+                                    class="md-bottom-sheet__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
                                     @click="${this.handleBottomSheetActionClick}"
                                 ></md-icon-button>
                             `)}
@@ -65,17 +62,17 @@ class MDBottomSheet extends MDElement {
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
                 <div class="md-bottom-sheet__body">
-                    <div class="md-bottom-sheet__inner">${this.body}</div>
+                    ${this.body?.length?html`<div class="md-bottom-sheet__inner">${this.body}</div>`:nothing}
                     ${this.buttons?.length?html`
                         <div class="md-bottom-sheet__footer">
                             ${this.buttons.map(action => html`
                                 <md-button 
-                                    class="md-bottom-sheet__button"
-                                    .icon="${ifDefined(action.icon)}"
-                                    .label="${ifDefined(action.label??action)}"
-                                    .type="${ifDefined(action.type)}"
-                                    .ui="${ifDefined(action.ui)}"
-                                    .selected="${ifDefined(action.selected)}"
+                                    class="md-bottom-sheet__button" 
+                                    .icon="${ifDefined(action?.icon)}"
+                                    .label="${ifDefined(action?.label??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    .selected="${ifDefined(action?.selected)}"
                                     @click="${this.handleBottomSheetButtonClick}"
                                 ></md-button>
                             `)}
@@ -86,24 +83,30 @@ class MDBottomSheet extends MDElement {
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-bottom-sheet");
+        await this.updateComplete;
 
-        this.bottomSheetScrim = document.createElement("div");
-        this.parentElement.insertBefore(this.bottomSheetScrim, this.nextElementSibling);
-        this.bottomSheetScrim.classList.add("md-bottom-sheet__scrim");
+        this.classList.add("md-bottom-sheet");
+        this.classList.add("md-bottom-sheet--sheet");
+        this.classList.add("md-bottom-sheet--south");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-bottom-sheet__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
         this.handleBottomSheetScrimClick = this.handleBottomSheetScrimClick.bind(this);
-        this.bottomSheetScrim.addEventListener("click", this.handleBottomSheetScrimClick);
+        this.scrimElement.addEventListener("click", this.handleBottomSheetScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-sheet");
+        this.classList.remove("md-bottom-sheet--sheet");
+        this.classList.remove("md-bottom-sheet--south");
 
-        this.bottomSheetScrim.removeEventListener("click", this.handleBottomSheetScrimClick);
-        this.bottomSheetScrim.remove();
+        this.scrimElement.removeEventListener("click", this.handleBottomSheetScrimClick);
+        this.scrimElement.remove();
     }
 
     firstUpdated(changedProperties) {}
@@ -112,7 +115,15 @@ class MDBottomSheet extends MDElement {
         if (changedProperties.has("ui")) {
             [
                 //
+                "dialog",
+                "full-screen",
+                // "sheet",
                 "modal",
+                "north",
+                "east",
+                // "south",
+                "west",
+                "center",
             ].forEach((ui) => {
                 this.classList.remove("md-bottom-sheet--" + ui);
             });
@@ -125,17 +136,22 @@ class MDBottomSheet extends MDElement {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-bottom-sheet--open");
+
                 if (
-                    [
-                        //
-                        "modal",
-                    ].some((ui) => this.ui?.includes(ui))
+                    this.ui &&
+                    this.ui.split(" ").some((ui) =>
+                        [
+                            //
+                            "dialog",
+                            "modal",
+                        ].includes(ui)
+                    )
                 ) {
-                    this.bottomSheetScrim.classList.add("md-bottom-sheet--open");
+                    this.scrimElement.classList.add("md-bottom-sheet--open");
                 }
             } else {
                 this.classList.remove("md-bottom-sheet--open");
-                this.bottomSheetScrim.classList.remove("md-bottom-sheet--open");
+                this.scrimElement.classList.remove("md-bottom-sheet--open");
             }
         }
     }
@@ -148,17 +164,18 @@ class MDBottomSheet extends MDElement {
         this.open = false;
     }
 
+    handleBottomSheetScrimClick(event) {
+        this.close();
+
+        this.emit("onBottomSheetScrimClick", event);
+    }
+
     handleBottomSheetActionClick(event) {
         this.emit("onBottomSheetActionClick", event);
     }
 
     handleBottomSheetButtonClick(event) {
         this.emit("onBottomSheetButtonClick", event);
-    }
-
-    handleBottomSheetScrimClick(event) {
-        this.close();
-        this.emit("onBottomSheetScrimClick", event);
     }
 }
 

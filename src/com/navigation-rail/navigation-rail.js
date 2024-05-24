@@ -2,15 +2,20 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { MDList } from "../list/list";
+import { Popper } from "../popper/popper";
+
 
 class MDNavigationRail extends MDElement {
     static get properties() {
         return {
-            ...MDList.properties,
-
+            leadingActions: { type: Array },
+            label: { type: String },
+            labelSecondary: { type: String },
+            trailingActions: { type: Array },
+            buttons: { type: Array },
             ui: { type: String },
-
             open: { type: Boolean },
+            ...MDList.properties
         };
     }
 
@@ -23,39 +28,97 @@ class MDNavigationRail extends MDElement {
     render() {
         // prettier-ignore
         return html`
-            <div class="md-navigation-rail__body">
-                <div class="md-navigation-rail__inner">
-                    <md-list
-                        class="md-navigation-rail__list"
-                        .list="${ifDefined(this.list)}"
-                        .allSelection="${ifDefined(this.allSelection)}"
-                        .rangeSelection="${ifDefined(this.rangeSelection)}"
-                        .multiSelection="${ifDefined(this.multiSelection)}"
-                        .singleSelection="${ifDefined(this.singleSelection??true)}"
-                    ></md-list>
+            ${this.leadingActions?.length||this.label||this.labelSecondary||this.trailingActions?.length?html`
+                <div class="md-navigation-rail__header">
+                    ${this.leadingActions?.length?html`
+                        <div class="md-navigation-rail__actions">
+                            ${this.leadingActions.map(action => html`
+                                <md-icon-button 
+                                    class="md-navigation-rail__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    @click="${this.handleNavigationRailActionClick}"
+                                ></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                    ${this.label||this.labelSecondary?html`
+                        <div class="md-navigation-rail__label">
+                            ${this.label?html`<div class="md-navigation-rail__label-primary">${this.label}</div>`:nothing}
+                            ${this.labelSecondary?html`<div class="md-navigation-rail__label-secondary">${this.labelSecondary}</div>`:nothing}
+                        </div>
+                    `:nothing}
+                    ${this.trailingActions?.length?html`
+                        <div class="md-navigation-rail__actions">
+                            ${this.trailingActions.map(action => html`
+                                <md-icon-button 
+                                    class="md-navigation-rail__action" 
+                                    .icon="${ifDefined(action?.icon??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    @click="${this.handleNavigationRailActionClick}"
+                                ></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
                 </div>
-            </div>
+            `:nothing}
+                <div class="md-navigation-rail__body">
+                    <div class="md-navigation-rail__inner">
+                        <md-list 
+                            class="md-navigation-rail__list"
+                            .list="${ifDefined(this.list)}"
+                            .allSelection="${ifDefined(this.allSelection)}"
+                            .rangeSelection="${ifDefined(this.rangeSelection)}"
+                            .multiSelection="${ifDefined(this.multiSelection)}"
+                            .singleSelection="${ifDefined(this.singleSelection??true)}"
+                            @onListItemClick="${this.handleNavigationRailListItemClick}"
+                        ></md-list>
+                    </div>
+                    ${this.buttons?.length?html`
+                        <div class="md-navigation-rail__footer">
+                            ${this.buttons.map(action => html`
+                                <md-button 
+                                    class="md-navigation-rail__button" 
+                                    .icon="${ifDefined(action?.icon)}"
+                                    .label="${ifDefined(action?.label??action)}"
+                                    .type="${ifDefined(action?.type)}"
+                                    .ui="${ifDefined(action?.ui)}"
+                                    .selected="${ifDefined(action?.selected)}"
+                                    @click="${this.handleNavigationRailButtonClick}"
+                                ></md-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                </div>
         `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-navigation-rail");
+        await this.updateComplete;
 
-        this.navigationRailScrim = document.createElement("div");
-        this.parentElement.insertBefore(this.navigationRailScrim, this.nextElementSibling);
-        this.navigationRailScrim.classList.add("md-navigation-rail__scrim");
+        this.classList.add("md-navigation-rail");
+        this.classList.add("md-navigation-rail--sheet");
+        this.classList.add("md-navigation-rail--west");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-navigation-rail__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
         this.handleNavigationRailScrimClick = this.handleNavigationRailScrimClick.bind(this);
-        this.navigationRailScrim.addEventListener("click", this.handleNavigationRailScrimClick);
+        this.scrimElement.addEventListener("click", this.handleNavigationRailScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-rail");
+        this.classList.remove("md-navigation-rail--sheet");
+        this.classList.remove("md-navigation-rail--west");
 
-        this.navigationRailScrim.removeEventListener("click", this.handleNavigationRailScrimClick);
-        this.navigationRailScrim.remove();
+        this.scrimElement.removeEventListener("click", this.handleNavigationRailScrimClick);
+        this.scrimElement.remove();
     }
 
     firstUpdated(changedProperties) {}
@@ -64,7 +127,15 @@ class MDNavigationRail extends MDElement {
         if (changedProperties.has("ui")) {
             [
                 //
+                "dialog",
+                "full-screen",
+                // "sheet",
                 "modal",
+                "north",
+                "east",
+                "south",
+                // "west",
+                "center",
             ].forEach((ui) => {
                 this.classList.remove("md-navigation-rail--" + ui);
             });
@@ -77,27 +148,45 @@ class MDNavigationRail extends MDElement {
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.classList.add("md-navigation-rail--open");
+
                 if (
-                    [
-                        //
-                        "modal",
-                    ].some((ui) => this.ui?.includes(ui))
+                    this.ui &&
+                    this.ui.split(" ").some((ui) =>
+                        [
+                            //
+                            "dialog",
+                            "modal",
+                        ].includes(ui)
+                    )
                 ) {
-                    this.navigationRailScrim.classList.add("md-navigation-rail--open");
+                    this.scrimElement.classList.add("md-navigation-rail--open");
                 }
             } else {
                 this.classList.remove("md-navigation-rail--open");
-                this.navigationRailScrim.classList.remove("md-navigation-rail--open");
+                this.scrimElement.classList.remove("md-navigation-rail--open");
             }
         }
     }
 
-    show() {
+    show(button,options={}) {
         this.open = true;
+
     }
 
     close() {
         this.open = false;
+
+    }
+
+    handleNavigationRailScrimClick(event) {
+        this.close();
+
+        this.emit("onNavigationRailScrimClick", event);
+    }
+
+    handleNavigationRailListItemClick(event) {
+
+        this.emit("onNavigationRailListItemClick", event);
     }
 
     handleNavigationRailActionClick(event) {
@@ -106,11 +195,6 @@ class MDNavigationRail extends MDElement {
 
     handleNavigationRailButtonClick(event) {
         this.emit("onNavigationRailButtonClick", event);
-    }
-
-    handleNavigationRailScrimClick(event) {
-        this.close();
-        this.emit("onNavigationRailScrimClick", event);
     }
 }
 
