@@ -170,6 +170,17 @@ class Router {
         }
         Router.emit("onNavigateSuccess");
         marker.stop();
+
+        this.routes.forEach(route=>{
+            let routerLink = document.querySelector('[routerLink="'+route.fullpath+'"]')
+            if(routerLink){
+                if(this.stacks.includes(route)){
+                    routerLink.setAttribute('activated','')
+                }else{
+                    routerLink.removeAttribute('activated')
+                }
+            }
+        })
     }
 
     static navigate(url) {

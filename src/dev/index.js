@@ -5,6 +5,21 @@ const routes = [
         path: "",
         load: () => import("./main/main.js").then((m) => m.default),
         children: [
+            {path:'a',load: () => import("./main/main.js").then((m) => m.default),children:[
+                {path:'b',load: () => import("./main/main.js").then((m) => m.default),children:[
+                    {path:'c',load: () => import("./main/main.js").then((m) => m.default),children:[
+                        {path:'d',load: () => import("./main/main.js").then((m) => m.default),children:[
+                            {path:'e',load: () => import("./main/main.js").then((m) => m.default),children:[
+                
+                            ]}
+            
+                        ]}
+        
+                    ]}
+    
+                ]}
+                
+            ]},
             // {path:'polyfill',load: () => import('./polyfill/polyfill.js').then(m=>m.default)},
             // {path:'element',load: () => import('./element/element.js').then(m=>m.default)},
             // {path:'localization',load: () => import('./localization/localization.js').then(m=>m.default)},
