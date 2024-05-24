@@ -228,8 +228,8 @@ class MDColorPicker extends MDElement {
         this.classList.remove("md-color-picker");
         this.classList.remove("md-color-picker--dialog");
 
-        this.scrimElement.removeEventListener("click", this.handleColorPickerScrimClick);
-        this.scrimElement.remove();
+        this.scrimElement?.removeEventListener("click", this.handleColorPickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     async firstUpdated(changedProperties) {
@@ -462,10 +462,14 @@ class MDColorPicker extends MDElement {
     }
 
     handleColorPickerButtonCancelClick(event) {
+        this.close()
+        
         this.emit("onColorPickerButtonCancelClick", event);
     }
 
     handleColorPickerButtonOkClick(event) {
+        this.close()
+        
         this.emit("onColorPickerButtonOkClick", event);
     }
 }

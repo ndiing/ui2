@@ -3,6 +3,7 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
+import { Popper } from "../popper/popper";
 
 class MDDatePickerYear extends HTMLDivElement {
     connectedCallback() {
@@ -282,11 +283,23 @@ class MDDatePicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-date-picker");
+        this.classList.add("md-date-picker--dialog");
+
+        
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-date-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleDatePickerScrimClick = this.handleDatePickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleDatePickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-date-picker");
+        this.classList.remove("md-date-picker--dialog");
+
+        this.scrimElement?.removeEventListener("click", this.handleDatePickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     async firstUpdated(changedProperties) {}
@@ -310,6 +323,58 @@ class MDDatePicker extends MDElement {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-date-picker-index", this.index);
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-date-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-date-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-date-picker--open");
+                this.scrimElement.classList.remove("md-date-picker--open");
+            }
+        }
+    }
+
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleDatePickerScrimClick(event) {
+        this.close();
+
+        this.emit("onDatePickerScrimClick", event);
     }
 
     async handleDatePickerYearScrolling(event) {
@@ -445,6 +510,8 @@ class MDDatePicker extends MDElement {
 
         this.index = 2;
 
+        this.close()
+
         this.emit("onDatePickerButtonCancelClick", event);
     }
 
@@ -456,6 +523,8 @@ class MDDatePicker extends MDElement {
         this.requestUpdate();
 
         this.index = 2;
+
+        this.close()
 
         this.emit("onDatePickerButtonOkClick", event);
     }
