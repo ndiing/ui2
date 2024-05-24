@@ -67,6 +67,9 @@ import "./snackbar/snackbar.js";
 import "./tooltip/tooltip.js";
 import "./carousel/carousel.js";
 
+import "./side-sheet/side-sheet.js";
+import "./bottom-sheet/bottom-sheet.js";
+import "./bottom-app-bar/bottom-app-bar.js";
 import "./top-app-bar/top-app-bar.js";
 
 import "./menu/menu.js";
@@ -78,7 +81,3 @@ import "./data-table/data-table.js";
 import "./pagination/pagination.js";
 
 import "./pane/pane.js";
-
-import "./side-sheet/side-sheet.js";
-import "./bottom-sheet/bottom-sheet.js";
-import "./bottom-app-bar/bottom-app-bar.js";
