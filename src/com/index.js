@@ -1,3 +1,4 @@
+import "./helper/helper.js";
 import "./polyfill/polyfill.js";
 import "./element/element.js";
 import "./localization/localization.js";
