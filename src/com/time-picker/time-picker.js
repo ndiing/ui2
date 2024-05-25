@@ -2,6 +2,7 @@ import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
+import { Popper } from "../popper/popper";
 
 class MDTimePicker extends MDElement {
     static get properties() {
@@ -156,11 +157,22 @@ class MDTimePicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-time-picker");
+        this.classList.add("md-time-picker--dialog");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-time-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleTimePickerScrimClick = this.handleTimePickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleTimePickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-time-picker");
+        this.classList.remove("md-time-picker--dialog");
+
+        this.scrimElement?.removeEventListener("click", this.handleTimePickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     async firstUpdated(changedProperties) {}
@@ -183,6 +195,58 @@ class MDTimePicker extends MDElement {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-time-picker-index", this.index);
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-time-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-time-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-time-picker--open");
+                this.scrimElement.classList.remove("md-time-picker--open");
+            }
+        }
+    }
+
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleTimePickerScrimClick(event) {
+        this.close();
+
+        this.emit("onTimePickerScrimClick", event);
     }
 
     handleTimePickerItemHourClick(event) {

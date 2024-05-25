@@ -46,6 +46,7 @@ class MDDatetimeField extends MDElement {
                     @input="${this.handleDatetimeFieldNativeInput}"
                     @invalid="${this.handleDatetimeFieldNativeInvalid}"
                     @reset="${this.handleDatetimeFieldNativeReset}"
+                    @click="${this.handleDatetimeFieldNativeClick}"
                 >
                 <div class="md-datetime-field__actions"><md-icon-button class="md-datetime-field__action" .icon="${"calendar_clock"}" @click="${this.handleDatetimeFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-datetime-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -113,6 +114,10 @@ class MDDatetimeField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onDatetimeFieldNativeReset", event);
+    }
+
+    handleDatetimeFieldNativeClick(event) {
+        event.preventDefault()
     }
 
     updateClassPopulated() {

@@ -3,6 +3,7 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
+import { Popper } from "../popper/popper";
 
 class MDDatetimePickerYear extends HTMLDivElement {
     connectedCallback() {
@@ -387,11 +388,22 @@ class MDDatetimePicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-datetime-picker");
+        this.classList.add("md-datetime-picker--dialog");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-datetime-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleDatetimePickerScrimClick = this.handleDatetimePickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleDatetimePickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-datetime-picker");
+        this.classList.remove("md-datetime-picker--dialog");
+
+        this.scrimElement?.removeEventListener("click", this.handleDatetimePickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     async firstUpdated(changedProperties) {}
@@ -419,7 +431,60 @@ class MDDatetimePicker extends MDElement {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-datetime-picker-index", this.index);
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-datetime-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-datetime-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-datetime-picker--open");
+                this.scrimElement.classList.remove("md-datetime-picker--open");
+            }
+        }
     }
+
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleDatetimePickerScrimClick(event) {
+        this.close();
+
+        this.emit("onDatetimePickerScrimClick", event);
+    }
+
 
     async handleDatetimePickerYearScrolling(event) {
         await this.updateComplete;

@@ -46,6 +46,7 @@ class MDWeekField extends MDElement {
                     @input="${this.handleWeekFieldNativeInput}"
                     @invalid="${this.handleWeekFieldNativeInvalid}"
                     @reset="${this.handleWeekFieldNativeReset}"
+                    @click="${this.handleWeekFieldNativeClick}"
                 >
                 <div class="md-week-field__actions"><md-icon-button class="md-week-field__action" .icon="${"date_range"}" @click="${this.handleWeekFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-week-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -113,6 +114,10 @@ class MDWeekField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onWeekFieldNativeReset", event);
+    }
+
+    handleWeekFieldNativeClick(event) {
+        event.preventDefault()
     }
 
     updateClassPopulated() {

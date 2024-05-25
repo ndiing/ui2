@@ -173,6 +173,10 @@
 .md-navigation-drawer--west {
     grid-area: west;
 
+    @media (max-width: 599px) {
+        width: calc(100% - 56px);
+    }
+
     &:not(.md-navigation-drawer--open) {
         margin-left: -360px;
     }

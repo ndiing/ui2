@@ -46,6 +46,7 @@ class MDTimeField extends MDElement {
                     @input="${this.handleTimeFieldNativeInput}"
                     @invalid="${this.handleTimeFieldNativeInvalid}"
                     @reset="${this.handleTimeFieldNativeReset}"
+                    @click="${this.handleTimeFieldNativeClick}"
                 >
                 <div class="md-time-field__actions"><md-icon-button class="md-time-field__action" .icon="${"schedule"}" @click="${this.handleTimeFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-time-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -113,6 +114,10 @@ class MDTimeField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onTimeFieldNativeReset", event);
+    }
+
+    handleTimeFieldNativeClick(event) {
+        event.preventDefault()
     }
 
     updateClassPopulated() {

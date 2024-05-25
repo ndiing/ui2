@@ -46,6 +46,7 @@ class MDMonthField extends MDElement {
                     @input="${this.handleMonthFieldNativeInput}"
                     @invalid="${this.handleMonthFieldNativeInvalid}"
                     @reset="${this.handleMonthFieldNativeReset}"
+                    @click="${this.handleMonthFieldNativeClick}"
                 >
                 <div class="md-month-field__actions"><md-icon-button class="md-month-field__action" .icon="${"calendar_month"}" @click="${this.handlMonthFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-month-field__icon">error</md-icon>`:nothing}</div>
             </div>
@@ -113,6 +114,10 @@ class MDMonthField extends MDElement {
         this.resetClassError();
         this.resetClassPopulated();
         this.emit("onMonthFieldNativeReset", event);
+    }
+
+    handleMonthFieldNativeClick(event) {
+        event.preventDefault()
     }
 
     updateClassPopulated() {

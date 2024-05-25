@@ -3,6 +3,7 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
+import { Popper } from "../popper/popper";
 
 class MDMonthPickerYear extends HTMLDivElement {
     connectedCallback() {
@@ -217,11 +218,22 @@ class MDMonthPicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-month-picker");
+        this.classList.add("md-month-picker--dialog");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-month-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleMonthPickerScrimClick = this.handleMonthPickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleMonthPickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-month-picker");
+        this.classList.remove("md-month-picker--dialog");
+
+        this.scrimElement?.removeEventListener("click", this.handleMonthPickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     get listMonthItemSelected() {
@@ -247,7 +259,61 @@ class MDMonthPicker extends MDElement {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-month-picker-index", this.index);
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-month-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-month-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-month-picker--open");
+                this.scrimElement.classList.remove("md-month-picker--open");
+            }
+        }
     }
+
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleMonthPickerScrimClick(event) {
+        this.close();
+
+        this.emit("onMonthPickerScrimClick", event);
+    }
+
+
 
     async handleMonthPickerYearScrolling(event) {
         await this.updateComplete;

@@ -3,6 +3,7 @@ import { html, nothing } from "lit";
 import { msg } from "@lit/localize";
 import { classMap } from "lit/directives/class-map.js";
 import { Scrolling } from "../scrolling/scrolling";
+import { Popper } from "../popper/popper";
 
 class MDWeekPickerYear extends HTMLDivElement {
     connectedCallback() {
@@ -293,11 +294,22 @@ class MDWeekPicker extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
         this.classList.add("md-week-picker");
+        this.classList.add("md-week-picker--dialog");
+
+        this.scrimElement = document.createElement("div");
+        this.scrimElement.classList.add("md-week-picker__scrim");
+        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        this.handleWeekPickerScrimClick = this.handleWeekPickerScrimClick.bind(this);
+        this.scrimElement.addEventListener("click", this.handleWeekPickerScrimClick);
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-week-picker");
+        this.classList.remove("md-week-picker--dialog");
+
+        this.scrimElement?.removeEventListener("click", this.handleWeekPickerScrimClick);
+        this.scrimElement?.remove();
     }
 
     async firstUpdated(changedProperties) {}
@@ -323,6 +335,57 @@ class MDWeekPicker extends MDElement {
         if (changedProperties.has("index")) {
             this.style.setProperty("--md-week-picker-index", this.index);
         }
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.classList.add("md-week-picker--open");
+
+                // if (
+                //     this.ui &&
+                //     this.ui.split(" ").some((ui) =>
+                //         [
+                //             //
+                //             "dialog",
+                //             "modal",
+                //         ].includes(ui)
+                //     )
+                // ) {
+                    this.scrimElement.classList.add("md-week-picker--open");
+                // }
+            } else {
+                this.classList.remove("md-week-picker--open");
+                this.scrimElement.classList.remove("md-week-picker--open");
+            }
+        }
+    }
+    show(button,options={}) {
+        this.open = true;
+
+        this.popper=new Popper(this,{
+            button,
+            placements: [
+                'bottom-start',
+                'bottom-end',
+                'bottom',
+                'top-start',
+                'top-end',
+                'top',
+                'center',
+            ],
+            ...options
+        })
+        this.popper.setPlacement()
+    }
+    
+    close() {
+        this.open = false;
+
+        this.popper?.destroy()
+    }
+
+    handleWeekPickerScrimClick(event) {
+        this.close();
+
+        this.emit("onWeekPickerScrimClick", event);
     }
 
     async handleWeekPickerYearScrolling(event) {
