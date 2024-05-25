@@ -7,7 +7,8 @@ export const { getLocale, setLocale } = configureLocalization({
 });
 
 new MutationObserver(() => {
-    const lang = document.documentElement.langsetLocale(lang);
+    const lang = document.documentElement.lang
+    setLocale(lang);
 }).observe(document.documentElement, {
     attributes: ["lang"],
 });
