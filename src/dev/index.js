@@ -108,5 +108,5 @@ const routes = [
 ];
 
 Router.init(routes,{
-    historyApiFallback:false
+    // historyApiFallback:false
 });
