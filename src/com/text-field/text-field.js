@@ -104,14 +104,9 @@ class MDTextFieldComponent extends MDElement {
         this.classList.remove("md-text-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-text-field__meta,.md-text-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-text-field__meta,.md-text-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-text-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-text-field-offset-left", offsetLeft + "px");
         }
     }
 

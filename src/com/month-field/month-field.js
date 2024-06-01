@@ -99,14 +99,9 @@ class MDMonthFieldComponent extends MDElement {
         this.classList.remove("md-month-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-month-field__meta,.md-month-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-month-field__meta,.md-month-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-month-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-month-field-offset-left", offsetLeft + "px");
         }
     }
 
@@ -147,52 +142,25 @@ class MDMonthFieldComponent extends MDElement {
 
     handleColorPicker() {
         this.monthFieldPicker = document.createElement("md-month-picker");
-        this.parentElement.insertBefore(
-            this.monthFieldPicker,
-            this.nextElementSibling,
-        );
+        this.parentElement.insertBefore(this.monthFieldPicker, this.nextElementSibling);
         if (this.value) this.monthFieldPicker.value = this.value;
 
         const callback = () => {
-            this.monthFieldPicker.removeEventListener(
-                "onMonthPickerChange",
-                this.handleMonthFieldPickerChange,
-            );
-            this.monthFieldPicker.removeEventListener(
-                "onMonthPickerButtonCancelClick",
-                this.handleMonthFieldPickerButtonCancelClick,
-            );
-            this.monthFieldPicker.removeEventListener(
-                "onMonthPickerButtonOkClick",
-                this.handleMonthFieldPickerButtonOkClick,
-            );
-            this.monthFieldPicker.removeEventListener(
-                "onMonthPickerClose",
-                callback,
-            );
+            this.monthFieldPicker.removeEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
+            this.monthFieldPicker.removeEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
+            this.monthFieldPicker.removeEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
+            this.monthFieldPicker.removeEventListener("onMonthPickerClose", callback);
             this.monthFieldPicker.remove();
         };
 
-        this.handleMonthFieldPickerChange =
-            this.handleMonthFieldPickerChange.bind(this);
-        this.handleMonthFieldPickerButtonCancelClick =
-            this.handleMonthFieldPickerButtonCancelClick.bind(this);
-        this.handleMonthFieldPickerButtonOkClick =
-            this.handleMonthFieldPickerButtonOkClick.bind(this);
+        this.handleMonthFieldPickerChange = this.handleMonthFieldPickerChange.bind(this);
+        this.handleMonthFieldPickerButtonCancelClick = this.handleMonthFieldPickerButtonCancelClick.bind(this);
+        this.handleMonthFieldPickerButtonOkClick = this.handleMonthFieldPickerButtonOkClick.bind(this);
 
         this.monthFieldPicker.addEventListener("onMonthPickerClose", callback);
-        this.monthFieldPicker.addEventListener(
-            "onMonthPickerChange",
-            this.handleMonthFieldPickerChange,
-        );
-        this.monthFieldPicker.addEventListener(
-            "onMonthPickerButtonCancelClick",
-            this.handleMonthFieldPickerButtonCancelClick,
-        );
-        this.monthFieldPicker.addEventListener(
-            "onMonthPickerButtonOkClick",
-            this.handleMonthFieldPickerButtonOkClick,
-        );
+        this.monthFieldPicker.addEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
+        this.monthFieldPicker.addEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
+        this.monthFieldPicker.addEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
             this.monthFieldPicker.show(this);
@@ -204,10 +172,7 @@ class MDMonthFieldComponent extends MDElement {
         this.colorFieldNative.value = [
             //
             this.monthFieldPicker.selected.getFullYear(),
-            ("" + (this.monthFieldPicker.selected.getMonth() + 1)).padStart(
-                2,
-                "0",
-            ),
+            ("" + (this.monthFieldPicker.selected.getMonth() + 1)).padStart(2, "0"),
         ].join("-");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;

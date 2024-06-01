@@ -10,22 +10,14 @@ class AppTabsElement extends MDElement {
             { leadingIcon: "image", label: "Label 2" },
             { leadingIcon: "image", label: "Label 3" },
         ];
-        this.list2 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2" },
-            { label: "Label 3" },
-        ];
+        this.list2 = [{ label: "Label 1", selected: true }, { label: "Label 2" }, { label: "Label 3" }];
 
         this.list3 = [
             { leadingIcon: "image", label: "Label 1", selected: true },
             { leadingIcon: "image", label: "Label 2" },
             { leadingIcon: "image", label: "Label 3" },
         ];
-        this.list4 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2" },
-            { label: "Label 3" },
-        ];
+        this.list4 = [{ label: "Label 1", selected: true }, { label: "Label 2" }, { label: "Label 3" }];
 
         this.list5 = [
             { leadingIcon: "image", label: "Label 1", selected: true },
@@ -41,20 +33,7 @@ class AppTabsElement extends MDElement {
             { leadingIcon: "image", label: "Label 11" },
             { leadingIcon: "image", label: "Label 12" },
         ];
-        this.list6 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2", badge: { label: 0 } },
-            { label: "Label 3", badge: { label: 1 } },
-            { label: "Label 4", badge: { label: 1000 } },
-            { label: "Label 5" },
-            { label: "Label 6" },
-            { label: "Label 7" },
-            { label: "Label 8" },
-            { label: "Label 9" },
-            { label: "Label 10" },
-            { label: "Label 11" },
-            { label: "Label 12" },
-        ];
+        this.list6 = [{ label: "Label 1", selected: true }, { label: "Label 2", badge: { label: 0 } }, { label: "Label 3", badge: { label: 1 } }, { label: "Label 4", badge: { label: 1000 } }, { label: "Label 5" }, { label: "Label 6" }, { label: "Label 7" }, { label: "Label 8" }, { label: "Label 9" }, { label: "Label 10" }, { label: "Label 11" }, { label: "Label 12" }];
 
         this.list7 = [
             { leadingIcon: "image", label: "Label 1", selected: true },
@@ -70,20 +49,7 @@ class AppTabsElement extends MDElement {
             { leadingIcon: "image", label: "Label 11" },
             { leadingIcon: "image", label: "Label 12" },
         ];
-        this.list8 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2", badge: { label: 0 } },
-            { label: "Label 3", badge: { label: 1 } },
-            { label: "Label 4", badge: { label: 1000 } },
-            { label: "Label 5" },
-            { label: "Label 6" },
-            { label: "Label 7" },
-            { label: "Label 8" },
-            { label: "Label 9" },
-            { label: "Label 10" },
-            { label: "Label 11" },
-            { label: "Label 12" },
-        ];
+        this.list8 = [{ label: "Label 1", selected: true }, { label: "Label 2", badge: { label: 0 } }, { label: "Label 3", badge: { label: 1 } }, { label: "Label 4", badge: { label: 1000 } }, { label: "Label 5" }, { label: "Label 6" }, { label: "Label 7" }, { label: "Label 8" }, { label: "Label 9" }, { label: "Label 10" }, { label: "Label 11" }, { label: "Label 12" }];
     }
 
     /* prettier-ignore */

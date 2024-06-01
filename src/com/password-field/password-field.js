@@ -97,14 +97,9 @@ class MDPasswordFieldComponent extends MDElement {
         this.classList.remove("md-password-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-password-field__meta,.md-password-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-password-field__meta,.md-password-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-password-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-password-field-offset-left", offsetLeft + "px");
         }
     }
 

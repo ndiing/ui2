@@ -17,9 +17,7 @@
     z-index: 4;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(
-        var(--md-sys-motion-easing-legacy)
-    );
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
     &:not([open]) {
         opacity: 0;

@@ -36,23 +36,7 @@ class AppGestureElement extends MDElement {
             const output = gesture.querySelector("output");
 
             const log = (event) => {
-                const {
-                    resize,
-                    startWidth,
-                    startHeight,
-                    endX,
-                    endY,
-                    startX,
-                    startY,
-                    press,
-                    drag,
-                    swipe,
-                    currentX,
-                    currentY,
-                    currentHeight,
-                    currentWidth,
-                    options,
-                } = event.detail;
+                const { resize, startWidth, startHeight, endX, endY, startX, startY, press, drag, swipe, currentX, currentY, currentHeight, currentWidth, options } = event.detail;
                 output.textContent = JSON.stringify(
                     {
                         resize,

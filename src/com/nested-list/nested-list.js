@@ -238,8 +238,7 @@ class MDNestedListComponent extends MDElement {
         let activated = false;
         list.forEach((item, index, array) => {
             item.indent = indent;
-            item.hasLevel =
-                array.find((item) => item.children?.length) || this.indent > 0;
+            item.hasLevel = array.find((item) => item.children?.length) || this.indent > 0;
             if (item.expanded || item.selected) {
                 expanded = true;
                 item.expanded = true;
@@ -303,21 +302,14 @@ class MDNestedListComponent extends MDElement {
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [
-                    this.lastIndex,
-                    this.currentIndex,
-                ];
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
             this.list.forEach((item, index) => {
-                item.selected =
-                    index >= this.lastIndex && index <= this.currentIndex;
+                item.selected = index >= this.lastIndex && index <= this.currentIndex;
             });
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [
-                    this.lastIndex,
-                    this.currentIndex,
-                ];
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
@@ -375,8 +367,4 @@ class MDNestedListComponent extends MDElement {
 
 customElements.define("md-nested-list", MDNestedListComponent);
 
-export {
-    MDNestedListComponent,
-    MDNestedListRowComponent,
-    MDNestedListItemComponent,
-};
+export { MDNestedListComponent, MDNestedListRowComponent, MDNestedListItemComponent };

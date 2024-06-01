@@ -16,9 +16,7 @@ let b = [];
 let i = 0;
 let code = "";
 let j = [];
-for (const el of document.querySelectorAll(
-    ".token-list .token .token-value:last-child",
-)) {
+for (const el of document.querySelectorAll(".token-list .token .token-value:last-child")) {
     b.push(el.textContent.trim().replace("content_copy", ""));
     let [name, value] = [a[i], b[i]];
     ++i;

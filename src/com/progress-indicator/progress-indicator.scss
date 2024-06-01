@@ -52,7 +52,5 @@
     stroke-linecap: round;
     stroke: var(--md-sys-color-primary);
     stroke-dasharray: calc(pi * (45 * 2));
-    stroke-dashoffset: calc(
-        (100 - var(--md-progress-indicator-percentage)) * (pi * (45 * 2)) / 100
-    );
+    stroke-dashoffset: calc((100 - var(--md-progress-indicator-percentage)) * (pi * (45 * 2)) / 100);
 }

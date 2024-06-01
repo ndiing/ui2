@@ -100,14 +100,9 @@ class MDColorFieldComponent extends MDElement {
         this.classList.remove("md-color-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-color-field__meta,.md-color-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-color-field__meta,.md-color-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-color-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-color-field-offset-left", offsetLeft + "px");
         }
     }
 
@@ -148,52 +143,25 @@ class MDColorFieldComponent extends MDElement {
 
     handleColorPicker() {
         this.colorFieldPicker = document.createElement("md-color-picker");
-        this.parentElement.insertBefore(
-            this.colorFieldPicker,
-            this.nextElementSibling,
-        );
+        this.parentElement.insertBefore(this.colorFieldPicker, this.nextElementSibling);
         this.colorFieldPicker.value = this.value;
 
         const callback = () => {
-            this.colorFieldPicker.removeEventListener(
-                "onColorPickerChange",
-                this.handleColorFieldPickerChange,
-            );
-            this.colorFieldPicker.removeEventListener(
-                "onColorPickerButtonCancelClick",
-                this.handleColorFieldPickerButtonCancelClick,
-            );
-            this.colorFieldPicker.removeEventListener(
-                "onColorPickerButtonOkClick",
-                this.handleColorFieldPickerButtonOkClick,
-            );
-            this.colorFieldPicker.removeEventListener(
-                "onColorPickerClose",
-                callback,
-            );
+            this.colorFieldPicker.removeEventListener("onColorPickerChange", this.handleColorFieldPickerChange);
+            this.colorFieldPicker.removeEventListener("onColorPickerButtonCancelClick", this.handleColorFieldPickerButtonCancelClick);
+            this.colorFieldPicker.removeEventListener("onColorPickerButtonOkClick", this.handleColorFieldPickerButtonOkClick);
+            this.colorFieldPicker.removeEventListener("onColorPickerClose", callback);
             this.colorFieldPicker.remove();
         };
 
-        this.handleColorFieldPickerChange =
-            this.handleColorFieldPickerChange.bind(this);
-        this.handleColorFieldPickerButtonCancelClick =
-            this.handleColorFieldPickerButtonCancelClick.bind(this);
-        this.handleColorFieldPickerButtonOkClick =
-            this.handleColorFieldPickerButtonOkClick.bind(this);
+        this.handleColorFieldPickerChange = this.handleColorFieldPickerChange.bind(this);
+        this.handleColorFieldPickerButtonCancelClick = this.handleColorFieldPickerButtonCancelClick.bind(this);
+        this.handleColorFieldPickerButtonOkClick = this.handleColorFieldPickerButtonOkClick.bind(this);
 
         this.colorFieldPicker.addEventListener("onColorPickerClose", callback);
-        this.colorFieldPicker.addEventListener(
-            "onColorPickerChange",
-            this.handleColorFieldPickerChange,
-        );
-        this.colorFieldPicker.addEventListener(
-            "onColorPickerButtonCancelClick",
-            this.handleColorFieldPickerButtonCancelClick,
-        );
-        this.colorFieldPicker.addEventListener(
-            "onColorPickerButtonOkClick",
-            this.handleColorFieldPickerButtonOkClick,
-        );
+        this.colorFieldPicker.addEventListener("onColorPickerChange", this.handleColorFieldPickerChange);
+        this.colorFieldPicker.addEventListener("onColorPickerButtonCancelClick", this.handleColorFieldPickerButtonCancelClick);
+        this.colorFieldPicker.addEventListener("onColorPickerButtonOkClick", this.handleColorFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
             this.colorFieldPicker.show(this);
@@ -201,10 +169,7 @@ class MDColorFieldComponent extends MDElement {
     }
 
     handleColorFieldPickerChange(event) {
-        this.colorFieldNative.value = this.colorFieldPicker.selected.slice(
-            0,
-            7,
-        );
+        this.colorFieldNative.value = this.colorFieldPicker.selected.slice(0, 7);
         this.value = this.colorFieldNative.value;
     }
     handleColorFieldPickerButtonCancelClick(event) {

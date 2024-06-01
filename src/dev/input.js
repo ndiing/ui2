@@ -40,15 +40,7 @@ const attributesData = [
     },
     {
         attribute: "max",
-        type: [
-            "date",
-            "month",
-            "week",
-            "time",
-            "datetime-local",
-            "number",
-            "range",
-        ],
+        type: ["date", "month", "week", "time", "datetime-local", "number", "range"],
         except: [],
     },
     {
@@ -58,15 +50,7 @@ const attributesData = [
     },
     {
         attribute: "min",
-        type: [
-            "date",
-            "month",
-            "week",
-            "time",
-            "datetime-local",
-            "number",
-            "range",
-        ],
+        type: ["date", "month", "week", "time", "datetime-local", "number", "range"],
         except: [],
     },
     {
@@ -91,15 +75,7 @@ const attributesData = [
     },
     {
         attribute: "step",
-        type: [
-            "date",
-            "month",
-            "week",
-            "time",
-            "datetime-local",
-            "number",
-            "range",
-        ],
+        type: ["date", "month", "week", "time", "datetime-local", "number", "range"],
         except: [],
     },
     { attribute: "popovertarget", type: ["button"], except: [] },
@@ -118,13 +94,7 @@ const attributesData = [
     { attribute: "indeterminate", type: ["checkbox", "radio"], except: [] },
 ];
 function getAllAttribute(type) {
-    return attributesData
-        .filter(
-            (attr) =>
-                (attr.type.includes(type) || attr.type.includes("all")) &&
-                !attr.except.includes(type),
-        )
-        .map((attr) => attr.attribute);
+    return attributesData.filter((attr) => (attr.type.includes(type) || attr.type.includes("all")) && !attr.except.includes(type)).map((attr) => attr.attribute);
 }
 
 let [, , type] = process.argv;

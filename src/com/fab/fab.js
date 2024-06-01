@@ -41,15 +41,7 @@ class MDFabComponent extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                "small",
-                "large",
-                "extended",
-                "surface",
-                "secondary",
-                "tertiary",
-                "unelevated",
-            ].forEach((ui) => {
+            ["small", "large", "extended", "surface", "secondary", "tertiary", "unelevated"].forEach((ui) => {
                 this.classList.remove("md-fab--" + ui);
             });
 

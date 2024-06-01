@@ -5,16 +5,8 @@ class AppSegmentedButtonElement extends MDElement {
     constructor() {
         super();
 
-        this.buttons1 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2" },
-            { label: "Label 3" },
-        ];
-        this.buttons2 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2", selected: true },
-            { label: "Label 3" },
-        ];
+        this.buttons1 = [{ label: "Label 1", selected: true }, { label: "Label 2" }, { label: "Label 3" }];
+        this.buttons2 = [{ label: "Label 1", selected: true }, { label: "Label 2", selected: true }, { label: "Label 3" }];
     }
 
     /* prettier-ignore */

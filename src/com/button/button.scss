@@ -44,9 +44,7 @@
 .md-button--elevated {
     padding-left: 24px;
     padding-right: 24px;
-    background: var(
-        --md-sys-color-surface-container
-    ); // var(--md-sys-color-surface-container-low);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-low);
     color: var(--md-sys-color-primary);
     box-shadow: var(--md-sys-elevation-level1);
 

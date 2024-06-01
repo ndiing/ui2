@@ -6,8 +6,7 @@ class MDLocalizationModule {
         const { getLocale, setLocale } = configureLocalization({
             sourceLocale,
             targetLocales,
-            loadLocale: (locale) =>
-                import(`../../generated/locales/${locale}.js`),
+            loadLocale: (locale) => import(`../../generated/locales/${locale}.js`),
         });
         this.getLocale = getLocale;
         this.setLocale = setLocale;

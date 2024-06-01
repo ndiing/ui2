@@ -11,16 +11,12 @@
     border-radius: var(--md-sys-shape-corner-extra-large);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background: var(
-        --md-sys-color-surface-container
-    ); // var(--md-sys-color-surface-container-low);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-low);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level1);
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(
-        var(--md-sys-motion-easing-legacy)
-    );
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -110,9 +106,7 @@
     opacity: 32%;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(
-        var(--md-sys-motion-easing-legacy)
-    );
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
     &:not([open]) {
         margin-right: 0;

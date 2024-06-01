@@ -100,14 +100,9 @@ class MDNumberFieldComponent extends MDElement {
         this.classList.remove("md-number-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-number-field__meta,.md-number-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-number-field__meta,.md-number-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-number-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-number-field-offset-left", offsetLeft + "px");
         }
     }
 

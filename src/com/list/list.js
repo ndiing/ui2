@@ -73,10 +73,7 @@ class MDListItemComponent extends MDElement {
         await this.updateComplete;
 
         if (this.labelSecondary) {
-            if (
-                this.labelSecondary.scrollHeight >
-                this.labelSecondary.clientHeight
-            ) {
+            if (this.labelSecondary.scrollHeight > this.labelSecondary.clientHeight) {
                 this.classList.add("md-list__item--three-line");
             } else {
                 this.classList.add("md-list__item--two-line");
@@ -227,11 +224,7 @@ class MDListComponent extends MDElement {
     updated(changedProperties) {}
 
     handleListItemClick(event) {
-        if (
-            event.target.closest(
-                ".md-list__checkbox,.md-list__radio-button,.md-list__switch",
-            )
-        ) {
+        if (event.target.closest(".md-list__checkbox,.md-list__radio-button,.md-list__switch")) {
             return;
         }
         const data = event.currentTarget.data;
@@ -244,21 +237,14 @@ class MDListComponent extends MDElement {
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [
-                    this.lastIndex,
-                    this.currentIndex,
-                ];
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
             this.list.forEach((item, index) => {
-                item.selected =
-                    index >= this.lastIndex && index <= this.currentIndex;
+                item.selected = index >= this.lastIndex && index <= this.currentIndex;
             });
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [
-                    this.lastIndex,
-                    this.currentIndex,
-                ];
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;

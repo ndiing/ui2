@@ -46,10 +46,7 @@ class MDVirtualScrollModule {
         this.translateY = this.start * itemHeight;
 
         this.scrollbar.style.setProperty("height", this.containerHeight + "px");
-        this.container.style.setProperty(
-            "transform",
-            `translate3d(0%,${this.translateY}px,0px)`,
-        );
+        this.container.style.setProperty("transform", `translate3d(0%,${this.translateY}px,0px)`);
 
         this.emit("onVirtualScroll", this);
 

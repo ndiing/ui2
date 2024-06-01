@@ -128,9 +128,7 @@
                 @include md-ripple--focused;
                 animation-name: md-navigation-bar-icon;
                 animation-duration: var(--md-sys-motion-duration-short4);
-                animation-timing-function: cubic-bezier(
-                    var(--md-sys-motion-easing-legacy)
-                );
+                animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
             }
         }
 
@@ -260,9 +258,7 @@
                 @include md-ripple--focused;
                 animation-name: md-navigation-rail-icon;
                 animation-duration: var(--md-sys-motion-duration-short4);
-                animation-timing-function: cubic-bezier(
-                    var(--md-sys-motion-easing-legacy)
-                );
+                animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
             }
         }
 
@@ -355,9 +351,7 @@
     &::after {
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: cubic-bezier(
-            var(--md-sys-motion-easing-legacy)
-        );
+        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
     }
 
     .md-list__row {

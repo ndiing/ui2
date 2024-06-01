@@ -14,19 +14,13 @@ class MDMonthPickerComponent extends MDElement {
     }
 
     get first() {
-        return new Date(
-            this.selected.getFullYear(),
-            this.selected.getMonth(),
-        ).getDay();
+        return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
     get last() {}
 
     get years() {
         return Array.from({ length: 10 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear() + (k - 10 / 2),
-                0,
-            );
+            const date = new Date(this.selected.getFullYear() + (k - 10 / 2), 0);
             const year = date.getFullYear();
             return {
                 year,
@@ -44,12 +38,8 @@ class MDMonthPickerComponent extends MDElement {
             return {
                 year,
                 month,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth(),
                 label: this.monthFormat(date),
             };
         });
@@ -67,11 +57,7 @@ class MDMonthPickerComponent extends MDElement {
         return Array.from({ length: 6 }, (v, k) => {
             return {
                 children: Array.from({ length: 7 }, (v2, k2) => {
-                    const date = new Date(
-                        this.selected.getFullYear(),
-                        this.selected.getMonth(),
-                        k * 7 + k2 + 1 - this.first,
-                    );
+                    const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), k * 7 + k2 + 1 - this.first);
                     const year = date.getFullYear();
                     const month = date.getMonth();
                     const day = date.getDate();
@@ -80,14 +66,8 @@ class MDMonthPickerComponent extends MDElement {
                         year,
                         month,
                         day,
-                        activated:
-                            year == this.date.getFullYear() &&
-                            month == this.date.getMonth() &&
-                            day == this.date.getDate(),
-                        selected:
-                            year == this.selected.getFullYear() &&
-                            month == this.selected.getMonth() &&
-                            day == this.selected.getDate(),
+                        activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate(),
+                        selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate(),
                         label: this.dayFormat(date),
                     };
                 }),
@@ -96,12 +76,7 @@ class MDMonthPickerComponent extends MDElement {
     }
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear(),
-                this.selected.getMonth(),
-                this.selected.getDate(),
-                k,
-            );
+            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
@@ -111,29 +86,15 @@ class MDMonthPickerComponent extends MDElement {
                 month,
                 day,
                 hour,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth() &&
-                    day == this.date.getDate() &&
-                    hour == this.date.getHours(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth() &&
-                    day == this.selected.getDate() &&
-                    hour == this.selected.getHours(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours(),
                 label: this.hourFormat(date),
             };
         });
     }
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear(),
-                this.selected.getMonth(),
-                this.selected.getDate(),
-                this.selected.getHours(),
-                k,
-            );
+            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
@@ -145,18 +106,8 @@ class MDMonthPickerComponent extends MDElement {
                 day,
                 hour,
                 minute,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth() &&
-                    day == this.date.getDate() &&
-                    hour == this.date.getHours() &&
-                    minute == this.date.getMinutes(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth() &&
-                    day == this.selected.getDate() &&
-                    hour == this.selected.getHours() &&
-                    minute == this.selected.getMinutes(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours() && minute == this.date.getMinutes(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours() && minute == this.selected.getMinutes(),
                 label: k % 5 == 0 ? this.minuteFormat(date) : "",
             };
         });
@@ -164,10 +115,7 @@ class MDMonthPickerComponent extends MDElement {
 
     get label() {
         if (this.index == 0) {
-            return [
-                this.years[0].year,
-                this.years[this.years.length - 1].year,
-            ].join("-");
+            return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
         }
         if (this.index == 1) {
             return this.yearFormat(this.selected);
@@ -381,8 +329,7 @@ class MDMonthPickerComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-month-picker__scrim");
-        this.handleMonthPickerScrimClick =
-            this.handleMonthPickerScrimClick.bind(this);
+        this.handleMonthPickerScrimClick = this.handleMonthPickerScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handleMonthPickerScrimClick);
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
@@ -391,10 +338,7 @@ class MDMonthPickerComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-month-picker");
         await this.updateComplete;
-        this.scrim.removeEventListener(
-            "click",
-            this.handleMonthPickerScrimClick,
-        );
+        this.scrim.removeEventListener("click", this.handleMonthPickerScrimClick);
         this.scrim.remove();
     }
 
@@ -458,14 +402,7 @@ class MDMonthPickerComponent extends MDElement {
         this.open = true;
         this.popper = new MDPopperModule(this, {
             button,
-            placements: [
-                "bottom-start",
-                "bottom-end",
-                "bottom",
-                "top-start",
-                "top-end",
-                "top",
-            ],
+            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top"],
             ...options,
         });
         this.popper.set();

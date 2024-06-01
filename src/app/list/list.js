@@ -9,8 +9,7 @@ class AppListElement extends MDElement {
             {
                 avatar: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 avatar: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
@@ -27,8 +26,7 @@ class AppListElement extends MDElement {
                 trailingCheckbox: {},
                 avatar: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingCheckbox: {},
@@ -45,44 +43,36 @@ class AppListElement extends MDElement {
 
         this.list3 = [
             {
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
                 subLabel: "Supporting text",
             },
             {
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
             },
         ];
         this.list4 = [
             {
                 trailingCheckbox: {},
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingCheckbox: {},
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
                 subLabel: "Supporting text",
             },
             {
                 trailingCheckbox: {},
-                thumbnail:
-                    "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
+                thumbnail: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
             },
         ];
@@ -91,8 +81,7 @@ class AppListElement extends MDElement {
             {
                 video: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 video: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
@@ -109,8 +98,7 @@ class AppListElement extends MDElement {
                 trailingCheckbox: {},
                 video: "https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingCheckbox: {},
@@ -129,8 +117,7 @@ class AppListElement extends MDElement {
             {
                 leadingIcon: "image",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 leadingIcon: "image",
@@ -144,8 +131,7 @@ class AppListElement extends MDElement {
                 trailingCheckbox: {},
                 leadingIcon: "image",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingCheckbox: {},
@@ -159,8 +145,7 @@ class AppListElement extends MDElement {
         this.list9 = [
             {
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             { label: "Headline", subLabel: "Supporting text" },
             { label: "Headline" },
@@ -169,8 +154,7 @@ class AppListElement extends MDElement {
             {
                 trailingCheckbox: {},
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingCheckbox: {},
@@ -184,8 +168,7 @@ class AppListElement extends MDElement {
             {
                 leadingCheckbox: {},
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 leadingCheckbox: {},
@@ -199,8 +182,7 @@ class AppListElement extends MDElement {
                 leadingCheckbox: {},
                 text: "100+",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 leadingCheckbox: {},
@@ -215,8 +197,7 @@ class AppListElement extends MDElement {
             {
                 leadingRadioButton: {},
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 leadingRadioButton: {},
@@ -230,8 +211,7 @@ class AppListElement extends MDElement {
                 leadingRadioButton: {},
                 text: "100+",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 leadingRadioButton: {},
@@ -246,8 +226,7 @@ class AppListElement extends MDElement {
             {
                 trailingSwitch: {},
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingSwitch: {},
@@ -261,8 +240,7 @@ class AppListElement extends MDElement {
                 trailingSwitch: {},
                 leadingIcon: "image",
                 label: "Headline",
-                subLabel:
-                    "Supporting text that is long enough to fill up multiple lines",
+                subLabel: "Supporting text that is long enough to fill up multiple lines",
             },
             {
                 trailingSwitch: {},

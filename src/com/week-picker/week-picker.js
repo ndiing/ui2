@@ -14,19 +14,13 @@ class MDWeekPickerComponent extends MDElement {
     }
 
     get first() {
-        return new Date(
-            this.selected.getFullYear(),
-            this.selected.getMonth(),
-        ).getDay();
+        return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
     get last() {}
 
     get years() {
         return Array.from({ length: 10 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear() + (k - 10 / 2),
-                0,
-            );
+            const date = new Date(this.selected.getFullYear() + (k - 10 / 2), 0);
             const year = date.getFullYear();
             return {
                 year,
@@ -44,12 +38,8 @@ class MDWeekPickerComponent extends MDElement {
             return {
                 year,
                 month,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth(),
                 label: this.monthFormat(date),
             };
         });
@@ -67,11 +57,7 @@ class MDWeekPickerComponent extends MDElement {
         return Array.from({ length: 6 }, (v, k) => {
             return {
                 children: Array.from({ length: 7 }, (v2, k2) => {
-                    const date = new Date(
-                        this.selected.getFullYear(),
-                        this.selected.getMonth(),
-                        k * 7 + k2 + 1 - this.first + 1,
-                    );
+                    const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), k * 7 + k2 + 1 - this.first + 1);
                     const year = date.getFullYear();
                     const month = date.getMonth();
                     const day = date.getDate();
@@ -98,12 +84,7 @@ class MDWeekPickerComponent extends MDElement {
     }
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear(),
-                this.selected.getMonth(),
-                this.selected.getDate(),
-                k,
-            );
+            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
@@ -113,29 +94,15 @@ class MDWeekPickerComponent extends MDElement {
                 month,
                 day,
                 hour,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth() &&
-                    day == this.date.getDate() &&
-                    hour == this.date.getHours(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth() &&
-                    day == this.selected.getDate() &&
-                    hour == this.selected.getHours(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours(),
                 label: this.hourFormat(date),
             };
         });
     }
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
-            const date = new Date(
-                this.selected.getFullYear(),
-                this.selected.getMonth(),
-                this.selected.getDate(),
-                this.selected.getHours(),
-                k,
-            );
+            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
@@ -147,18 +114,8 @@ class MDWeekPickerComponent extends MDElement {
                 day,
                 hour,
                 minute,
-                activated:
-                    year == this.date.getFullYear() &&
-                    month == this.date.getMonth() &&
-                    day == this.date.getDate() &&
-                    hour == this.date.getHours() &&
-                    minute == this.date.getMinutes(),
-                selected:
-                    year == this.selected.getFullYear() &&
-                    month == this.selected.getMonth() &&
-                    day == this.selected.getDate() &&
-                    hour == this.selected.getHours() &&
-                    minute == this.selected.getMinutes(),
+                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours() && minute == this.date.getMinutes(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours() && minute == this.selected.getMinutes(),
                 label: k % 5 == 0 ? this.minuteFormat(date) : "",
             };
         });
@@ -166,22 +123,14 @@ class MDWeekPickerComponent extends MDElement {
 
     get label() {
         if (this.index == 0) {
-            return [
-                this.years[0].year,
-                this.years[this.years.length - 1].year,
-            ].join("-");
+            return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
         }
         if (this.index == 1) {
             return this.yearFormat(this.selected);
         }
         if (this.index == 2) {
             // return this.dateFormat(this.selected);
-            return (
-                "Week " +
-                [this.selected.getWeek(), this.selected.getFullYear()].join(
-                    ", ",
-                )
-            );
+            return "Week " + [this.selected.getWeek(), this.selected.getFullYear()].join(", ");
         }
     }
 
@@ -389,8 +338,7 @@ class MDWeekPickerComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-week-picker__scrim");
-        this.handleWeekPickerScrimClick =
-            this.handleWeekPickerScrimClick.bind(this);
+        this.handleWeekPickerScrimClick = this.handleWeekPickerScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handleWeekPickerScrimClick);
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
@@ -399,10 +347,7 @@ class MDWeekPickerComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-week-picker");
         await this.updateComplete;
-        this.scrim.removeEventListener(
-            "click",
-            this.handleWeekPickerScrimClick,
-        );
+        this.scrim.removeEventListener("click", this.handleWeekPickerScrimClick);
         this.scrim.remove();
     }
 
@@ -453,8 +398,7 @@ class MDWeekPickerComponent extends MDElement {
     updateFromValue() {
         const date = new Date();
 
-        const [year, week] = (typeof this.value == "string" &&
-            this.value.split("-W")) || [date.getFullYear(), date.getWeek()];
+        const [year, week] = (typeof this.value == "string" && this.value.split("-W")) || [date.getFullYear(), date.getWeek()];
 
         date.setWeek(week, year);
 
@@ -471,14 +415,7 @@ class MDWeekPickerComponent extends MDElement {
         this.open = true;
         this.popper = new MDPopperModule(this, {
             button,
-            placements: [
-                "bottom-start",
-                "bottom-end",
-                "bottom",
-                "top-start",
-                "top-end",
-                "top",
-            ],
+            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top"],
             ...options,
         });
         this.popper.set();

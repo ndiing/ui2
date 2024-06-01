@@ -24,9 +24,7 @@
     padding: 0 16px;
     gap: 0 16px;
     border-radius: 4px;
-    background: var(
-        --md-sys-color-surface-container
-    ); // var(--md-sys-color-surface-container-highest);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
 }
 
 .md-tel-field__icon {
@@ -121,9 +119,7 @@
         pointer-events: none;
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: cubic-bezier(
-            var(--md-sys-motion-easing-legacy)
-        );
+        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
         + .md-tel-field__container {
             .md-tel-field__meta {
@@ -193,9 +189,7 @@
         pointer-events: none;
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: cubic-bezier(
-            var(--md-sys-motion-easing-legacy)
-        );
+        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
         &::before {
             content: "";
@@ -209,9 +203,7 @@
             z-index: -1;
             transition-property: all;
             transition-duration: var(--md-sys-motion-duration-short4);
-            transition-timing-function: cubic-bezier(
-                var(--md-sys-motion-easing-legacy)
-            );
+            transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
         }
 
         + .md-tel-field__container {

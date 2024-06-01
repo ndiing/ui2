@@ -95,14 +95,9 @@ class MDSearchFieldComponent extends MDElement {
         this.classList.remove("md-search-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-search-field__meta,.md-search-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-search-field__meta,.md-search-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-search-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-search-field-offset-left", offsetLeft + "px");
         }
     }
 

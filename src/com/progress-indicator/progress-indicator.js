@@ -68,15 +68,8 @@ class MDProgressIndicatorComponent extends MDElement {
             }
         }
 
-        this.percentageValue = this.calculatePercentage(
-            0,
-            this.max,
-            this.value,
-        );
-        this.style.setProperty(
-            "--md-progress-indicator-percentage",
-            this.percentageValue,
-        );
+        this.percentageValue = this.calculatePercentage(0, this.max, this.value);
+        this.style.setProperty("--md-progress-indicator-percentage", this.percentageValue);
     }
 
     calculatePercentage(min, max, value) {

@@ -4,9 +4,7 @@ function toPascalCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + " " + $2)
         .toLowerCase()
-        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) =>
-            $2.toUpperCase(),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => $2.toUpperCase())
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 // camelCase
@@ -15,9 +13,7 @@ function toCamelCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + " " + $2)
         .toLowerCase()
-        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) =>
-            $0 == 0 ? $2.toLowerCase() : $2.toUpperCase(),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => ($0 == 0 ? $2.toLowerCase() : $2.toUpperCase()))
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 // snake_case
@@ -62,10 +58,7 @@ function toPascalSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + "_" + $2)
         .toLowerCase()
-        .replace(
-            /(^|[^a-zA-Z0-9]+)([a-zA-Z])/g,
-            ($, $1, $2, $0) => "_" + $2.toUpperCase(),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => "_" + $2.toUpperCase())
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 // camel_Snake_Case
@@ -74,11 +67,7 @@ function toCamelSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + "_" + $2)
         .toLowerCase()
-        .replace(
-            /(^|[^a-zA-Z0-9]+)([a-zA-Z])/g,
-            ($, $1, $2, $0) =>
-                "_" + ($0 == 0 ? $2.toLowerCase() : $2.toUpperCase()),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => "_" + ($0 == 0 ? $2.toLowerCase() : $2.toUpperCase()))
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 // SCREAMING_SNAKE_CASE
@@ -96,10 +85,7 @@ function toTrainCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + "-" + $2)
         .toLowerCase()
-        .replace(
-            /(^|[^a-zA-Z0-9]+)([a-zA-Z])/g,
-            ($, $1, $2, $0) => "-" + $2.toUpperCase(),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => "-" + $2.toUpperCase())
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 // COBOL-CASE
@@ -117,10 +103,7 @@ function toTitleCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, ($, $1, $2, $0) => $1 + " " + $2)
         .toLowerCase()
-        .replace(
-            /(^|[^a-zA-Z0-9]+)([a-zA-Z])/g,
-            ($, $1, $2, $0) => " " + $2.toUpperCase(),
-        )
+        .replace(/(^|[^a-zA-Z0-9]+)([a-zA-Z])/g, ($, $1, $2, $0) => " " + $2.toUpperCase())
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
@@ -182,15 +165,7 @@ Date.prototype.getWeek = function () {
     let week1 = new Date(date.getFullYear(), 0, 4);
 
     // Adjust to Thursday in week 1 and count the number of weeks from week1 to date
-    return (
-        1 +
-        Math.round(
-            ((date.getTime() - week1.getTime()) / 86400000 -
-                3 +
-                ((week1.getDay() + 6) % 7)) /
-                7,
-        )
-    );
+    return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7);
 };
 
 Date.prototype.setWeek = function (week, year) {

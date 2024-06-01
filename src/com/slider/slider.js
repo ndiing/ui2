@@ -94,11 +94,7 @@ class MDSliderComponent extends MDElement {
         await this.updateComplete;
         this.min = this.min ?? 0;
         this.max = this.max ?? 100;
-        this.value = this.value ?? [
-            this.max < this.min
-                ? this.min
-                : this.min + (this.max - this.min) / 2,
-        ];
+        this.value = this.value ?? [this.max < this.min ? this.min : this.min + (this.max - this.min) / 2];
         this.defaultValue = this.value.slice();
         this.ticks = this.step ?? 2;
         await this.updateComplete;
@@ -127,38 +123,18 @@ class MDSliderComponent extends MDElement {
         }
 
         this.value?.forEach((value, index) => {
-            this.percentageValue = this.calculatePercentage(
-                this.min,
-                this.max,
-                this.value[index],
-            );
-            this.decimalValue = this.calculateDecimal(
-                this.min,
-                this.max,
-                this.value[index],
-            );
+            this.percentageValue = this.calculatePercentage(this.min, this.max, this.value[index]);
+            this.decimalValue = this.calculateDecimal(this.min, this.max, this.value[index]);
 
-            this.style.setProperty(
-                `--md-slider${index + 1}-percentage`,
-                this.percentageValue,
-            );
-            this.style.setProperty(
-                `--md-slider${index + 1}-decimal`,
-                this.decimalValue,
-            );
+            this.style.setProperty(`--md-slider${index + 1}-percentage`, this.percentageValue);
+            this.style.setProperty(`--md-slider${index + 1}-decimal`, this.decimalValue);
         });
     }
 
     handleSliderNativeInput(event) {
         if (this.sliderNative2) {
-            this.sliderNative1.value = Math.min(
-                this.sliderNative1.value,
-                this.value[1],
-            );
-            this.sliderNative2.value = Math.max(
-                this.value[0],
-                this.sliderNative2.value,
-            );
+            this.sliderNative1.value = Math.min(this.sliderNative1.value, this.value[1]);
+            this.sliderNative2.value = Math.max(this.value[0], this.sliderNative2.value);
             this.value[1] = this.sliderNative2.value;
         }
         this.value[0] = this.sliderNative1.value;

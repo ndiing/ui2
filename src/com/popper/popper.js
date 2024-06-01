@@ -23,42 +23,29 @@ class MDPopperModule {
             {
                 placement: "top",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        (containerRect.width - buttonRect.width) / 2,
-                    top:
-                        buttonRect.top -
-                        containerRect.height -
-                        this.options.offset,
+                    left: buttonRect.left - (containerRect.width - buttonRect.width) / 2,
+                    top: buttonRect.top - containerRect.height - this.options.offset,
                 }),
             },
             {
                 placement: "top-start",
                 calc: () => ({
                     left: buttonRect.left,
-                    top:
-                        buttonRect.top -
-                        containerRect.height -
-                        this.options.offset,
+                    top: buttonRect.top - containerRect.height - this.options.offset,
                 }),
             },
             {
                 placement: "top-end",
                 calc: () => ({
                     left: buttonRect.right - containerRect.width,
-                    top:
-                        buttonRect.top -
-                        containerRect.height -
-                        this.options.offset,
+                    top: buttonRect.top - containerRect.height - this.options.offset,
                 }),
             },
             {
                 placement: "right",
                 calc: () => ({
                     left: buttonRect.right + this.options.offset,
-                    top:
-                        buttonRect.top -
-                        (containerRect.height - buttonRect.height) / 2,
+                    top: buttonRect.top - (containerRect.height - buttonRect.height) / 2,
                 }),
             },
             {
@@ -78,9 +65,7 @@ class MDPopperModule {
             {
                 placement: "bottom",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        (containerRect.width - buttonRect.width) / 2,
+                    left: buttonRect.left - (containerRect.width - buttonRect.width) / 2,
                     top: buttonRect.bottom + this.options.offset,
                 }),
             },
@@ -101,57 +86,39 @@ class MDPopperModule {
             {
                 placement: "left",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        containerRect.width -
-                        this.options.offset,
-                    top:
-                        buttonRect.top -
-                        (containerRect.height - buttonRect.height) / 2,
+                    left: buttonRect.left - containerRect.width - this.options.offset,
+                    top: buttonRect.top - (containerRect.height - buttonRect.height) / 2,
                 }),
             },
             {
                 placement: "left-start",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        containerRect.width -
-                        this.options.offset,
+                    left: buttonRect.left - containerRect.width - this.options.offset,
                     top: buttonRect.top,
                 }),
             },
             {
                 placement: "left-end",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        containerRect.width -
-                        this.options.offset,
+                    left: buttonRect.left - containerRect.width - this.options.offset,
                     top: buttonRect.bottom - containerRect.height,
                 }),
             },
             {
                 placement: "center",
                 calc: () => ({
-                    left:
-                        buttonRect.left -
-                        (containerRect.width - buttonRect.width) / 2,
-                    top:
-                        buttonRect.top -
-                        (containerRect.height - buttonRect.height) / 2,
+                    left: buttonRect.left - (containerRect.width - buttonRect.width) / 2,
+                    top: buttonRect.top - (containerRect.height - buttonRect.height) / 2,
                 }),
             },
         ];
-        let { left, top } = list
-            .find((item) => item.placement == placement)
-            .calc();
+        let { left, top } = list.find((item) => item.placement == placement).calc();
         let right = left + containerRect.width;
         let bottom = top + containerRect.height;
         let exceed;
 
         if (this.options.containment) {
-            const containmentRect =
-                this.options.containment.getBoundingClientRect();
+            const containmentRect = this.options.containment.getBoundingClientRect();
 
             if (this.options.shift) {
                 if (left < containmentRect.left) {
@@ -174,11 +141,7 @@ class MDPopperModule {
                     bottom = top + containerRect.height;
                 }
             }
-            exceed =
-                left < containmentRect.left ||
-                top < containmentRect.top ||
-                right > containmentRect.right ||
-                bottom > containmentRect.bottom;
+            exceed = left < containmentRect.left || top < containmentRect.top || right > containmentRect.right || bottom > containmentRect.bottom;
         }
         return {
             exceed,

@@ -50,23 +50,11 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.1.1",
-                                children: [
-                                    { label: "Item 1.1.1.1" },
-                                    { label: "Item 1.1.1.2" },
-                                    { label: "Item 1.1.1.3" },
-                                    { label: "Item 1.1.1.4" },
-                                    { label: "Item 1.1.1.5" },
-                                ],
+                                children: [{ label: "Item 1.1.1.1" }, { label: "Item 1.1.1.2" }, { label: "Item 1.1.1.3" }, { label: "Item 1.1.1.4" }, { label: "Item 1.1.1.5" }],
                             },
                             {
                                 label: "Item 1.1.2",
-                                children: [
-                                    { label: "Item 1.1.2.1" },
-                                    { label: "Item 1.1.2.2" },
-                                    { label: "Item 1.1.2.3" },
-                                    { label: "Item 1.1.2.4" },
-                                    { label: "Item 1.1.2.5" },
-                                ],
+                                children: [{ label: "Item 1.1.2.1" }, { label: "Item 1.1.2.2" }, { label: "Item 1.1.2.3" }, { label: "Item 1.1.2.4" }, { label: "Item 1.1.2.5" }],
                             },
                             { label: "Item 1.1.3" },
                             { label: "Item 1.1.4" },
@@ -78,13 +66,7 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.2.1",
-                                children: [
-                                    { label: "Item 1.2.1.1" },
-                                    { label: "Item 1.2.1.2" },
-                                    { label: "Item 1.2.1.3" },
-                                    { label: "Item 1.2.1.4" },
-                                    { label: "Item 1.2.1.5" },
-                                ],
+                                children: [{ label: "Item 1.2.1.1" }, { label: "Item 1.2.1.2" }, { label: "Item 1.2.1.3" }, { label: "Item 1.2.1.4" }, { label: "Item 1.2.1.5" }],
                             },
                             { label: "Item 1.2.2" },
                             { label: "Item 1.2.3" },
@@ -99,13 +81,7 @@ class AppNestedListElement extends MDElement {
             },
             {
                 label: "Item 2",
-                children: [
-                    { label: "Item 2.1" },
-                    { label: "Item 2.2" },
-                    { label: "Item 2.3" },
-                    { label: "Item 2.4" },
-                    { label: "Item 2.5" },
-                ],
+                children: [{ label: "Item 2.1" }, { label: "Item 2.2" }, { label: "Item 2.3" }, { label: "Item 2.4" }, { label: "Item 2.5" }],
             },
             { label: "Item 3" },
             { label: "Item 4" },
@@ -121,23 +97,11 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.1.1",
-                                children: [
-                                    { label: "Item 1.1.1.1" },
-                                    { label: "Item 1.1.1.2" },
-                                    { label: "Item 1.1.1.3" },
-                                    { label: "Item 1.1.1.4" },
-                                    { label: "Item 1.1.1.5" },
-                                ],
+                                children: [{ label: "Item 1.1.1.1" }, { label: "Item 1.1.1.2" }, { label: "Item 1.1.1.3" }, { label: "Item 1.1.1.4" }, { label: "Item 1.1.1.5" }],
                             },
                             {
                                 label: "Item 1.1.2",
-                                children: [
-                                    { label: "Item 1.1.2.1" },
-                                    { label: "Item 1.1.2.2" },
-                                    { label: "Item 1.1.2.3" },
-                                    { label: "Item 1.1.2.4" },
-                                    { label: "Item 1.1.2.5" },
-                                ],
+                                children: [{ label: "Item 1.1.2.1" }, { label: "Item 1.1.2.2" }, { label: "Item 1.1.2.3" }, { label: "Item 1.1.2.4" }, { label: "Item 1.1.2.5" }],
                             },
                             { label: "Item 1.1.3" },
                             { label: "Item 1.1.4" },
@@ -149,13 +113,7 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.2.1",
-                                children: [
-                                    { label: "Item 1.2.1.1" },
-                                    { label: "Item 1.2.1.2" },
-                                    { label: "Item 1.2.1.3" },
-                                    { label: "Item 1.2.1.4" },
-                                    { label: "Item 1.2.1.5" },
-                                ],
+                                children: [{ label: "Item 1.2.1.1" }, { label: "Item 1.2.1.2" }, { label: "Item 1.2.1.3" }, { label: "Item 1.2.1.4" }, { label: "Item 1.2.1.5" }],
                             },
                             { label: "Item 1.2.2" },
                             { label: "Item 1.2.3" },
@@ -170,13 +128,7 @@ class AppNestedListElement extends MDElement {
             },
             {
                 label: "Item 2",
-                children: [
-                    { label: "Item 2.1" },
-                    { label: "Item 2.2" },
-                    { label: "Item 2.3" },
-                    { label: "Item 2.4" },
-                    { label: "Item 2.5" },
-                ],
+                children: [{ label: "Item 2.1" }, { label: "Item 2.2" }, { label: "Item 2.3" }, { label: "Item 2.4" }, { label: "Item 2.5" }],
             },
             { label: "Item 3" },
             { label: "Item 4" },
@@ -192,23 +144,11 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.1.1",
-                                children: [
-                                    { label: "Item 1.1.1.1" },
-                                    { label: "Item 1.1.1.2" },
-                                    { label: "Item 1.1.1.3" },
-                                    { label: "Item 1.1.1.4" },
-                                    { label: "Item 1.1.1.5" },
-                                ],
+                                children: [{ label: "Item 1.1.1.1" }, { label: "Item 1.1.1.2" }, { label: "Item 1.1.1.3" }, { label: "Item 1.1.1.4" }, { label: "Item 1.1.1.5" }],
                             },
                             {
                                 label: "Item 1.1.2",
-                                children: [
-                                    { label: "Item 1.1.2.1" },
-                                    { label: "Item 1.1.2.2" },
-                                    { label: "Item 1.1.2.3" },
-                                    { label: "Item 1.1.2.4" },
-                                    { label: "Item 1.1.2.5" },
-                                ],
+                                children: [{ label: "Item 1.1.2.1" }, { label: "Item 1.1.2.2" }, { label: "Item 1.1.2.3" }, { label: "Item 1.1.2.4" }, { label: "Item 1.1.2.5" }],
                             },
                             { label: "Item 1.1.3" },
                             { label: "Item 1.1.4" },
@@ -220,13 +160,7 @@ class AppNestedListElement extends MDElement {
                         children: [
                             {
                                 label: "Item 1.2.1",
-                                children: [
-                                    { label: "Item 1.2.1.1" },
-                                    { label: "Item 1.2.1.2" },
-                                    { label: "Item 1.2.1.3" },
-                                    { label: "Item 1.2.1.4" },
-                                    { label: "Item 1.2.1.5" },
-                                ],
+                                children: [{ label: "Item 1.2.1.1" }, { label: "Item 1.2.1.2" }, { label: "Item 1.2.1.3" }, { label: "Item 1.2.1.4" }, { label: "Item 1.2.1.5" }],
                             },
                             { label: "Item 1.2.2" },
                             { label: "Item 1.2.3" },
@@ -241,13 +175,7 @@ class AppNestedListElement extends MDElement {
             },
             {
                 label: "Item 2",
-                children: [
-                    { label: "Item 2.1" },
-                    { label: "Item 2.2" },
-                    { label: "Item 2.3" },
-                    { label: "Item 2.4" },
-                    { label: "Item 2.5" },
-                ],
+                children: [{ label: "Item 2.1" }, { label: "Item 2.2" }, { label: "Item 2.3" }, { label: "Item 2.4" }, { label: "Item 2.5" }],
             },
             { label: "Item 3" },
             { label: "Item 4" },

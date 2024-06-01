@@ -2,11 +2,7 @@ class MDRouterModule {
     static setRoutes(routes = [], parent) {
         return routes.reduce((acc, route) => {
             route.parent = parent;
-            route.pathname = (
-                (route.parent?.pathname ?? "") +
-                "/" +
-                route.path
-            ).replace(/\/+/g, "/");
+            route.pathname = ((route.parent?.pathname ?? "") + "/" + route.path).replace(/\/+/g, "/");
             acc = acc.concat(route);
 
             if (route.children) {
@@ -17,12 +13,7 @@ class MDRouterModule {
     }
 
     static get location() {
-        return this.options.historyApiFallback
-            ? window.location
-            : new URL(
-                  window.location.hash.replace(/^#/, ""),
-                  window.location.origin,
-              );
+        return this.options.historyApiFallback ? window.location : new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
     }
 
     static get path() {
@@ -30,19 +21,12 @@ class MDRouterModule {
     }
 
     static get query() {
-        return Object.fromEntries(
-            new URLSearchParams(this.location.search).entries(),
-        );
+        return Object.fromEntries(new URLSearchParams(this.location.search).entries());
     }
 
     static getRoute(path) {
         return this.routes.find((route) => {
-            const pattern =
-                "^" +
-                route.pathname
-                    .replace(/:(\w+)/g, "(?<$1>[^/]+)")
-                    .replace(/\*/, "(?:.*)") +
-                "(?:/?$)";
+            const pattern = "^" + route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
             this.params = {
@@ -62,9 +46,7 @@ class MDRouterModule {
         return new Promise((resolve) => {
             let outlet;
             let observer;
-            const selector = name
-                ? `md-outlet[name="${name}"]`
-                : "md-outlet:not([name])";
+            const selector = name ? `md-outlet[name="${name}"]` : "md-outlet:not([name])";
             const target = name ? document.body : container;
 
             const callback = () => {
@@ -134,10 +116,7 @@ class MDRouterModule {
             const outlet = await this.getOutlet(container, stack.outlet);
 
             if (!stack.component.isConnected) {
-                outlet.parentElement.insertBefore(
-                    stack.component,
-                    outlet.nextElementSibling,
-                );
+                outlet.parentElement.insertBefore(stack.component, outlet.nextElementSibling);
                 stack.component.isComponent = true;
             }
             const outlets = Array.from(document.querySelectorAll("md-outlet"));
@@ -146,18 +125,10 @@ class MDRouterModule {
                 let nextElement = outlet.nextElementSibling;
 
                 while (nextElement) {
-                    const unusedComponent = !stacks.find(
-                        (stack) => stack.component === nextElement,
-                    );
-                    const unusedOutlet = !outlets.find(
-                        (outlet) => outlet === nextElement,
-                    );
+                    const unusedComponent = !stacks.find((stack) => stack.component === nextElement);
+                    const unusedOutlet = !outlets.find((outlet) => outlet === nextElement);
 
-                    if (
-                        nextElement.isComponent &&
-                        unusedComponent &&
-                        unusedOutlet
-                    ) {
+                    if (nextElement.isComponent && unusedComponent && unusedOutlet) {
                         nextElement.remove();
                     }
                     nextElement = nextElement.nextElementSibling;

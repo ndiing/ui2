@@ -214,25 +214,19 @@ class MDColorPickerComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-color-picker__scrim");
-        this.handleColorPickerScrimClick =
-            this.handleColorPickerScrimClick.bind(this);
+        this.handleColorPickerScrimClick = this.handleColorPickerScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handleColorPickerScrimClick);
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
 
-        this.handleColorPickerSolidPointermove =
-            this.handleColorPickerSolidPointermove.bind(this);
-        this.handleColorPickerSolidPointerup =
-            this.handleColorPickerSolidPointerup.bind(this);
+        this.handleColorPickerSolidPointermove = this.handleColorPickerSolidPointermove.bind(this);
+        this.handleColorPickerSolidPointerup = this.handleColorPickerSolidPointerup.bind(this);
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-picker");
         await this.updateComplete;
-        this.scrim.removeEventListener(
-            "click",
-            this.handleColorPickerScrimClick,
-        );
+        this.scrim.removeEventListener("click", this.handleColorPickerScrimClick);
         this.scrim.remove();
     }
 
@@ -280,20 +274,9 @@ class MDColorPickerComponent extends MDElement {
         }
 
         // this.style.setProperty("--md-color-picker-index", this.index);
-        this.selected = this.rgbaToHex(
-            this.red,
-            this.green,
-            this.blue,
-            this.alpha,
-        );
-        this.style.setProperty(
-            "--md-color-picker-rgb",
-            `rgb(${this.red},${this.green},${this.blue})`,
-        );
-        this.style.setProperty(
-            "--md-color-picker-hsl",
-            `hsl(${this.hue}deg 100% 50%)`,
-        );
+        this.selected = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.style.setProperty("--md-color-picker-rgb", `rgb(${this.red},${this.green},${this.blue})`);
+        this.style.setProperty("--md-color-picker-hsl", `hsl(${this.hue}deg 100% 50%)`);
         this.style.setProperty("--md-color-picker-hex", this.selected);
     }
 
@@ -348,12 +331,7 @@ class MDColorPickerComponent extends MDElement {
 
     drawOpacityGradient() {
         const { width, height } = this.opacityCanvas;
-        let gradientOpacity = this.opacityCtx.createLinearGradient(
-            0,
-            0,
-            width,
-            0,
-        );
+        let gradientOpacity = this.opacityCtx.createLinearGradient(0, 0, width, 0);
         gradientOpacity.addColorStop(0, "transparent");
         gradientOpacity.addColorStop(1, "#ff0000");
         this.opacityCtx.fillStyle = gradientOpacity;
@@ -363,9 +341,7 @@ class MDColorPickerComponent extends MDElement {
     resizeCanvas() {
         this.solidCanvas = document.querySelector(".md-color-picker__track");
         this.hueCanvas = document.querySelector(".md-color-picker__hue");
-        this.opacityCanvas = document.querySelector(
-            ".md-color-picker__opacity",
-        );
+        this.opacityCanvas = document.querySelector(".md-color-picker__opacity");
 
         this.solidCtx = this.solidCanvas.getContext("2d", {
             willReadFrequently: true,
@@ -386,12 +362,7 @@ class MDColorPickerComponent extends MDElement {
 
         this.solidThumb = document.querySelector(".md-color-picker__thumb");
 
-        const imageData = this.solidCtx.getImageData(
-            0,
-            0,
-            this.solidCanvas.width,
-            this.solidCanvas.height,
-        );
+        const imageData = this.solidCtx.getImageData(0, 0, this.solidCanvas.width, this.solidCanvas.height);
         const data = imageData.data;
 
         let xy = [];
@@ -400,11 +371,7 @@ class MDColorPickerComponent extends MDElement {
             for (let x = 0; x < this.solidCanvas.width; x++) {
                 const index = (y * this.solidCanvas.width + x) * 4;
 
-                if (
-                    this.red == data[index] &&
-                    this.green == data[index + 1] &&
-                    this.blue == data[index + 2]
-                ) {
+                if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
                     xy = [x, y];
                     break;
                 }
@@ -425,14 +392,7 @@ class MDColorPickerComponent extends MDElement {
         this.open = true;
         this.popper = new MDPopperModule(this, {
             button,
-            placements: [
-                "bottom-start",
-                "bottom-end",
-                "bottom",
-                "top-start",
-                "top-end",
-                "top",
-            ],
+            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top"],
             ...options,
         });
         this.popper.set();
@@ -474,14 +434,8 @@ class MDColorPickerComponent extends MDElement {
     }
 
     handleColorPickerSolidPointerdown(event) {
-        window.addEventListener(
-            "pointermove",
-            this.handleColorPickerSolidPointermove,
-        );
-        window.addEventListener(
-            "pointerup",
-            this.handleColorPickerSolidPointerup,
-        );
+        window.addEventListener("pointermove", this.handleColorPickerSolidPointermove);
+        window.addEventListener("pointerup", this.handleColorPickerSolidPointerup);
         document.documentElement.classList.add("md-gesture--dragged");
 
         this.updateFromSolid(event);
@@ -491,8 +445,7 @@ class MDColorPickerComponent extends MDElement {
     }
 
     updateFromSolid(event) {
-        const { left, top, width, height } =
-            this.solidCanvas.getBoundingClientRect();
+        const { left, top, width, height } = this.solidCanvas.getBoundingClientRect();
         const x = Math.max(0, Math.min(event.clientX - left, width) - 1);
         const y = Math.max(0, Math.min(event.clientY - top, height));
         const pixel = this.solidCtx.getImageData(x, y, 1, 1).data;
@@ -520,14 +473,8 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerChange", event);
     }
     handleColorPickerSolidPointerup(event) {
-        window.removeEventListener(
-            "pointermove",
-            this.handleColorPickerSolidPointermove,
-        );
-        window.removeEventListener(
-            "pointerup",
-            this.handleColorPickerSolidPointerup,
-        );
+        window.removeEventListener("pointermove", this.handleColorPickerSolidPointermove);
+        window.removeEventListener("pointerup", this.handleColorPickerSolidPointerup);
         document.documentElement.classList.remove("md-gesture--dragged");
 
         this.updateFromSolid(event);
@@ -538,12 +485,7 @@ class MDColorPickerComponent extends MDElement {
     handleColorPickerHueInput(event) {
         this.hue = parseFloat(this.hueCanvas.value);
 
-        const { r, g, b } = this.hslaToRgba(
-            this.hue,
-            this.saturation,
-            this.lightness,
-            this.alpha,
-        );
+        const { r, g, b } = this.hslaToRgba(this.hue, this.saturation, this.lightness, this.alpha);
         this.red = r;
         this.green = g;
         this.blue = b;

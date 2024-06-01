@@ -2,18 +2,14 @@
     display: inline-flex;
     flex-direction: column;
     border-radius: var(--md-sys-shape-corner-large);
-    background: var(
-        --md-sys-color-surface-container
-    ); // var(--md-sys-color-surface-container-high);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level3);
     position: absolute;
     z-index: 4;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(
-        var(--md-sys-motion-easing-legacy)
-    );
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
     &:not([open]) {
         opacity: 0;
@@ -85,9 +81,7 @@
     z-index: 3;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(
-        var(--md-sys-motion-easing-legacy)
-    );
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
     &:not([open]) {
         opacity: 0;
@@ -104,11 +98,7 @@
 .md-datetime-picker__card-item {
     flex: 1 0 100%;
     overflow: auto;
-    transform: translate3d(
-        calc((0 - var(--md-datetime-picker-index)) * 100%),
-        0%,
-        0px
-    );
+    transform: translate3d(calc((0 - var(--md-datetime-picker-index)) * 100%), 0%, 0px);
 }
 
 .md-datetime-picker__list {
@@ -208,9 +198,7 @@
     width: calc(100% - (16px * 2));
     height: 100%;
     border-radius: calc(100% / 2);
-    background: var(
-        --md-sys-color-surface-container
-    ); // var(--md-sys-color-surface-container-highest);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
     position: relative;
@@ -285,37 +273,25 @@
     --size: 32px;
     --gap: 4px;
     --margin: 16px;
-    --viewport: calc(
-        (var(--size) * 7) + (var(--gap) * 6) + (var(--margin) * 2)
-    );
+    --viewport: calc((var(--size) * 7) + (var(--gap) * 6) + (var(--margin) * 2));
 
-    --circle: calc(
-        var(--viewport) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size)
-    );
+    --circle: calc(var(--viewport) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size));
     --radius: calc(var(--circle) / 2);
     --offset: calc(var(--radius) + var(--gap));
 
-    --circle2: calc(
-        var(--circle) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size)
-    );
+    --circle2: calc(var(--circle) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size));
     --radius2: calc(var(--circle2) / 2);
     --offset2: calc(var(--radius2) + var(--gap) + var(--gap) + var(--size));
 
-    --circle3: calc(
-        var(--viewport) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size)
-    );
+    --circle3: calc(var(--viewport) - (var(--margin) * 2) - (var(--gap) * 2) - var(--size));
     --radius3: calc(var(--circle3) / 2);
     --offset3: calc(var(--radius3) + var(--gap) + (var(--size) / 4));
 }
 .md-datetime-picker__absolute--hours {
     @for $i from 1 through 12 {
         .md-datetime-picker__absolute-item:nth-child(#{$i}) {
-            left: calc(
-                var(--radius) * cos(($i - 4) / 12 * 2 * pi) + var(--offset)
-            );
-            top: calc(
-                var(--radius) * sin(($i - 4) / 12 * 2 * pi) + var(--offset)
-            );
+            left: calc(var(--radius) * cos(($i - 4) / 12 * 2 * pi) + var(--offset));
+            top: calc(var(--radius) * sin(($i - 4) / 12 * 2 * pi) + var(--offset));
 
             &:before {
                 transform: rotate(calc((360deg / 12) * ($i - 4)));
@@ -325,12 +301,8 @@
     }
     @for $i from 1 through 12 {
         .md-datetime-picker__absolute-item:nth-child(#{$i + 12}) {
-            left: calc(
-                var(--radius2) * cos(($i - 4) / 12 * 2 * pi) + var(--offset2)
-            );
-            top: calc(
-                var(--radius2) * sin(($i - 4) / 12 * 2 * pi) + var(--offset2)
-            );
+            left: calc(var(--radius2) * cos(($i - 4) / 12 * 2 * pi) + var(--offset2));
+            top: calc(var(--radius2) * sin(($i - 4) / 12 * 2 * pi) + var(--offset2));
 
             &:before {
                 transform: rotate(calc((360deg / 12) * ($i - 4)));
@@ -343,27 +315,15 @@
     @for $i from 1 through 60 {
         .md-datetime-picker__absolute-item:nth-child(#{$i}) {
             @if (($i - 16) % 5 == 0) {
-                left: calc(
-                    var(--radius) * cos(($i - 16) / 60 * 2 * pi) + var(--offset)
-                );
-                top: calc(
-                    var(--radius) * sin(($i - 16) / 60 * 2 * pi) + var(--offset)
-                );
+                left: calc(var(--radius) * cos(($i - 16) / 60 * 2 * pi) + var(--offset));
+                top: calc(var(--radius) * sin(($i - 16) / 60 * 2 * pi) + var(--offset));
                 &:before {
                     transform: rotate(calc((360deg / 60) * ($i - 16)));
                     width: var(--radius);
                 }
             } @else {
-                left: calc(
-                    var(--radius3) *
-                        cos(($i - 16) / 60 * 2 * pi) +
-                        var(--offset3)
-                );
-                top: calc(
-                    var(--radius3) *
-                        sin(($i - 16) / 60 * 2 * pi) +
-                        var(--offset3)
-                );
+                left: calc(var(--radius3) * cos(($i - 16) / 60 * 2 * pi) + var(--offset3));
+                top: calc(var(--radius3) * sin(($i - 16) / 60 * 2 * pi) + var(--offset3));
                 &:before {
                     transform: rotate(calc((360deg / 60) * ($i - 16)));
                     width: var(--radius3);

@@ -94,14 +94,9 @@ class MDFileFieldComponent extends MDElement {
         this.classList.remove("md-file-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(
-            ".md-file-field__meta,.md-file-field__native",
-        )?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-file-field__meta,.md-file-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty(
-                "--md-file-field-offset-left",
-                offsetLeft + "px",
-            );
+            this.style.setProperty("--md-file-field-offset-left", offsetLeft + "px");
         }
     }
 

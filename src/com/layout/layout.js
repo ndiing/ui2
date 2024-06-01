@@ -7,9 +7,7 @@ class MDLayoutModule {
             },
             {
                 name: "medium",
-                query: window.matchMedia(
-                    "(min-width: 600px) and (max-width: 839px)",
-                ),
+                query: window.matchMedia("(min-width: 600px) and (max-width: 839px)"),
             },
             {
                 name: "expanded",

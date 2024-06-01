@@ -33,18 +33,7 @@ class AppChipsElement extends MDElement {
             },
         ];
 
-        this.list2 = [
-            { label: "Label 1", selected: true },
-            { label: "Label 2", selected: true },
-            { label: "Label 3", selected: true },
-            { label: "Label 4", selected: true },
-            { label: "Label 5", selected: true },
-            { label: "Label 6" },
-            { label: "Label 7" },
-            { label: "Label 8" },
-            { label: "Label 9" },
-            { label: "Label 10" },
-        ];
+        this.list2 = [{ label: "Label 1", selected: true }, { label: "Label 2", selected: true }, { label: "Label 3", selected: true }, { label: "Label 4", selected: true }, { label: "Label 5", selected: true }, { label: "Label 6" }, { label: "Label 7" }, { label: "Label 8" }, { label: "Label 9" }, { label: "Label 10" }];
 
         this.list3 = [
             { label: "Label 1", action: "close" },
@@ -59,18 +48,7 @@ class AppChipsElement extends MDElement {
             { label: "Label 10", action: "close" },
         ];
 
-        this.list4 = [
-            { label: "Label 1" },
-            { label: "Label 2" },
-            { label: "Label 3" },
-            { label: "Label 4" },
-            { label: "Label 5" },
-            { label: "Label 6" },
-            { label: "Label 7" },
-            { label: "Label 8" },
-            { label: "Label 9" },
-            { label: "Label 10" },
-        ];
+        this.list4 = [{ label: "Label 1" }, { label: "Label 2" }, { label: "Label 3" }, { label: "Label 4" }, { label: "Label 5" }, { label: "Label 6" }, { label: "Label 7" }, { label: "Label 8" }, { label: "Label 9" }, { label: "Label 10" }];
 
         this.list5 = [
             { label: "Label 1", action: "close" },
