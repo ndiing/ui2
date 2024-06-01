@@ -1,19 +1,18 @@
 # MDBadgeComponent
-The `MDBadgeComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-badge>` elements.
+
+The `MDBadgeComponent` class provides functionality for managing `<md-badge>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-label|`Number`|-
-max|`Number`|-
+| Name  | Type    | Description                                          |
+|-------|---------|------------------------------------------------------|
+| label | `Number`| Represents the current value of the badge.          |
+| max   | `Number`| Represents the maximum value allowed for the badge. |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
+No specific instance methods are defined in this interface.
 
 ## Events
 
-name|desc
----|---
+No specific events are defined in this interface.

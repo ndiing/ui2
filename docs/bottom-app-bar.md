@@ -1,30 +1,31 @@
 # MDBottomAppBarComponent
-The `MDBottomAppBarComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-bottom-app-bar>` elements.
+
+The `MDBottomAppBarComponent` class provides functionality for managing `<md-bottom-app-bar>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-leadingActions|`Array`|-
-label|`String`|-
-subLabel|`String`|-
-trailingActions|`Array`|-
-buttons|`Array`|-
-ui|`String`|possible values 
-open|`Boolean`|-
-fab|`Object`|-
+| name           | type      | desc                                                  |
+| -------------- | --------- | ----------------------------------------------------- |
+| leadingActions | `Array`   | Array of leading actions.                             |
+| label          | `String`  | Label for the bottom app bar.                         |
+| subLabel       | `String`  | Sub-label for the bottom app bar.                     |
+| trailingActions| `Array`   | Array of trailing actions.                            |
+| buttons        | `Array`   | Array of buttons.                                     |
+| ui             | `String`  | UI design configuration. Possible values: [insert values here] |
+| open           | `Boolean` | Boolean flag indicating whether the bottom app bar is open. |
+| fab            | `Object`  | Floating action button configuration.                |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|-|show|-
--|-|-|close|-
--|-|-|toggle|-
+| static | asynchronous | accessor | name    | parameters |
+| ------ | ------------ | -------- | ------- | ---------- |
+| -      | -            | -        | show    | -          |
+| -      | -            | -        | close   | -          |
+| -      | -            | -        | toggle  | -          |
 
 ## Events
 
-name|desc
----|---
-`onBottomAppBarActionClick`|-
-`onBottomAppBarButtonClick`|-
+| name                      | desc                                                |
+| ------------------------- | --------------------------------------------------- |
+| `onBottomAppBarActionClick` | Event emitted when an action in the bottom app bar is clicked. |
+| `onBottomAppBarButtonClick` | Event emitted when a button in the bottom app bar is clicked. |

@@ -1,24 +1,23 @@
 # MDCardComponent
-The `MDCardComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-card>` elements.
+
+The `MDCardComponent` class provides functionality for managing `<md-card>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-leadingActions|`Array`|-
-label|`String`|-
-subLabel|`String`|-
-trailingActions|`Array`|-
-image|`String`|-
-buttons|`Array`|-
-ui|`String`|possible values elevated,filled,outlined
+| Name           | Type      | Description                                       |
+| -------------- | --------- | ------------------------------------------------- |
+| leadingActions | `Array`   | Array of leading actions.                         |
+| label          | `String`  | Label for the card.                               |
+| subLabel       | `String`  | Sub-label for the card.                           |
+| trailingActions| `Array`   | Array of trailing actions.                        |
+| image          | `String`  | Image source for the card.                        |
+| buttons        | `Array`   | Array of buttons.                                 |
+| ui             | `String`  | UI design configuration. Possible values: `elevated`, `filled`, `outlined` |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
+No specific instance methods are defined in this interface.
 
 ## Events
 
-name|desc
----|---
+No specific events are defined in this interface.
