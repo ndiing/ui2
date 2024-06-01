@@ -30,7 +30,6 @@ indeterminate|`String`|
 name|parameters
 ---|---
 `labelSecondary`|
-`firstUpdated`|changedProperties
 
 ## Events
 

@@ -20,8 +20,6 @@ name|parameters
 `hslaToRgba`|h, s, l, a = 1
 `label`|
 `subLabel`|
-`firstUpdated`|
-`updateFromValue`|
 `drawSolidGradient`|
 `drawHueGradient`|
 `drawOpacityGradient`|
@@ -29,7 +27,6 @@ name|parameters
 `show`|button, options
 `close`|
 `toggle`|
-`updateFromSolid`|event
 
 ## Events
 

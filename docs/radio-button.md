@@ -22,7 +22,6 @@ defaultIndeterminate|`Boolean`|
 
 name|parameters
 ---|---
-`firstUpdated`|changedProperties
 `radioButtonNative`|
 `radioButtonTrack`|
 

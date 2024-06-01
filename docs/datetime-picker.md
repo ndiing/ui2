@@ -24,8 +24,6 @@ name|parameters
 `minutes`|
 `label`|
 `subLabel`|
-`firstUpdated`|
-`updateFromValue`|
 `show`|button, options
 `close`|
 `toggle`|

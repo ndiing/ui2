@@ -24,7 +24,6 @@ name|parameters
 ---|---
 `sliderNative1`|
 `sliderNative2`|
-`firstUpdated`|changedProperties
 `calculatePercentage`|min, max, value
 `calculateDecimal`|min, max, value
 

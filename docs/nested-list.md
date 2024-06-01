@@ -21,7 +21,6 @@ hasLevel|`Boolean`|
 name|parameters
 ---|---
 `labelSecondary`|
-`firstUpdated`|changedProperties
 
 ## Events
 

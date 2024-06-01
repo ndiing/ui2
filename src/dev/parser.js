@@ -23,7 +23,7 @@ function parse(content) {
     const tagName = content.match(/customElements.define\("([^"]+)",/)?.[1];
 
     const events = [];
-    for (const [, name] of content.matchAll(/this\.emit\("([^"]+)",/g)) {
+    for (const [, name] of content.matchAll(/emit\("([^"]+)",/g)) {
         events.push(name);
     }
 
@@ -74,7 +74,21 @@ function parse(content) {
     code += `name|parameters\r\n`;
     code += `---|---\r\n`;
     for (const { name, parameters } of methods) {
-        if (["properties", "constructor", "renderItem", "render", "connectedCallback", "disconnectedCallback", "updated"].includes(name) || /^(render|handle)/.test(name)) continue;
+        if (
+            [
+                //
+                "properties",
+                "constructor",
+                "renderItem",
+                "render",
+                "connectedCallback",
+                "disconnectedCallback",
+                "updated",
+                "firstUpdated",
+            ].includes(name) ||
+            /^(render|handle|update)/.test(name)
+        )
+            continue;
         code += `\`${name}\`|${parameters}\r\n`;
     }
     code += `\r\n`;

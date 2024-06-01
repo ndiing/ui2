@@ -39,7 +39,6 @@ ui|`String`|possible values filled,outlined,rounded
 
 name|parameters
 ---|---
-`firstUpdated`|changedProperties
 `emailFieldNative`|
 
 ## Events

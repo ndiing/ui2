@@ -23,7 +23,6 @@ icons|`Array`|
 
 name|parameters
 ---|---
-`firstUpdated`|changedProperties
 `switchNative`|
 `switchTrack`|
 `switchThumb`|
