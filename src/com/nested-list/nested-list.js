@@ -238,7 +238,7 @@ class MDNestedListComponent extends MDElement {
         let activated = false;
         list.forEach((item, index, array) => {
             item.indent = indent;
-            item.hasLevel = array.find((item) => item.children?.length) || this.indent > 0;
+            item.hasLevel = array.find((item) => item.children?.length) || item.indent > 0;
             if (item.expanded || item.selected) {
                 expanded = true;
                 item.expanded = true;
