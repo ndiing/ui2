@@ -10,6 +10,7 @@ import "./ripple/ripple.js";
 import "./popper/popper.js";
 import "./virtual-scroll/virtual-scroll.js";
 import "./gesture/gesture.js";
+import "./data/data.js";
 
 import "./element/element.js";
 
@@ -62,3 +63,4 @@ import "./date-field/date-field.js";
 import "./month-field/month-field.js";
 import "./week-field/week-field.js";
 import "./time-field/time-field.js";
+import "./data-table/data-table.js";

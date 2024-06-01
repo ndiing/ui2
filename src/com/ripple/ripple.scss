@@ -155,26 +155,6 @@
     @include md-ripple--inverse;
 }
 
-.md-ripple--focused {
-    @include md-ripple--focused;
-}
-
-.md-ripple--fadeout {
-    @include md-ripple--fadeout;
-}
-
-.md-ripple--hover {
-    @include md-ripple--hover;
-}
-
-.md-ripple--pressed {
-    @include md-ripple--pressed;
-}
-
-.md-ripple--draged {
-    @include md-ripple--draged;
-}
-
 .md-ripple--selected {
     @include md-ripple--selected;
 }
@@ -185,6 +165,26 @@
 
 [selected] {
     @include md-ripple--selected-attr;
+}
+
+.md-ripple--fadeout {
+    @include md-ripple--fadeout;
+}
+
+.md-ripple--focused {
+    @include md-ripple--focused;
+}
+
+.md-ripple--pressed {
+    @include md-ripple--pressed;
+}
+
+.md-ripple--hover {
+    @include md-ripple--hover;
+}
+
+.md-ripple--draged {
+    @include md-ripple--draged;
 }
 
 .md-ripple[disabled] {

@@ -65,6 +65,7 @@ class AppMainElement extends MDElement {
             { path: "month-field" }, //
             { path: "week-field" }, //
             { path: "time-field" }, //
+            { path: "data-table" }, //
         ].map((doc) => ({
             leadingIcon: "package_2",
             label: toTitleCase(doc.path),
