@@ -1,0 +1,29 @@
+# MDNavigationRailComponent
+The `MDNavigationRailComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-navigation-rail>` elements.
+
+## Instance properties
+
+name|type|desc
+---|---|---
+leadingActions|`Array`|
+label|`String`|
+subLabel|`String`|
+trailingActions|`Array`|
+buttons|`Array`|
+ui|`String`|possible values 
+open|`Boolean`|
+
+## Instance methods
+
+name|parameters
+---|---
+`show`|
+`close`|
+`toggle`|
+
+## Events
+
+name|desc
+---|---
+`onNavigationRailActionClick`|
+`onNavigationRailButtonClick`|

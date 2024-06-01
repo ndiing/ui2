@@ -1,28 +1,99 @@
 const fs = require("fs");
 const path = require("path");
-const { JSDOM } = require("jsdom");
 
-const content = fs.readFileSync("./src/dev/response.html", {
-    encoding: "utf8",
-});
-const { window } = new JSDOM(content);
-const { document } = window;
+const [, , name] = process.argv;
 
-let a = [];
-for (const el of document.querySelectorAll(".token-list .token .token-name")) {
-    a.push(el.textContent.trim().replace("content_copy", ""));
+const content = fs.readFileSync("./src/com/" + name + "/" + name + ".js", { encoding: "utf8" });
+
+let data = "";
+content
+    .split(/^class /gm)
+    .slice(1)
+    .forEach((content2) => {
+        let content3 = "class " + content2;
+        let { code } = parse(content3);
+        data += code;
+    });
+fs.writeFileSync("./docs/" + name + ".md", data);
+
+function parse(content) {
+    let code = "";
+    const className = content.match(/class (\w+)/)?.[1];
+    const inheritName = content.match(/class \w+( extends (\w+))?/)?.[2];
+    const tagName = content.match(/customElements.define\("([^"]+)",/)?.[1];
+
+    const events = [];
+    for (const [, name] of content.matchAll(/this\.emit\("([^"]+)",/g)) {
+        events.push(name);
+    }
+
+    const methods = [];
+    for (const [, block, asynchronous, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) \{/gm)) {
+        methods.push({
+            block,
+            asynchronous,
+            accessor,
+            name,
+            parameters,
+        });
+    }
+
+    const matchesProperties = content.match(/static get properties\(\) {[\s\S]+?return {([\s\S]+?)};[\s\S]+?}/)?.[1];
+    const properties = [];
+    if (matchesProperties) {
+        for (const [, name, type] of matchesProperties.matchAll(/(\w+): \{ type: (\w+)/g)) {
+            properties.push({ name, type });
+        }
+    }
+
+    const matchesUi = content.match(/if \(changedProperties.has\("ui"\)\) {[\s\S]+?\[([\s\S]+?)\]\.forEach\(\(ui\)/)?.[1];
+    const variants = [];
+    if (matchesUi) {
+        for (const [, name] of matchesUi.matchAll(/"([^"]+)"/g)) {
+            variants.push(name);
+        }
+    }
+
+    code += `# ${className}\r\n`;
+    code += `The \`${className}\` interface provides special properties (beyond the regular \`${inheritName}\` interface it also has available to it by inheritance) for manipulating \`<${tagName}>\` elements.\r\n`;
+    code += `\r\n`;
+    code += `## Instance properties\r\n`;
+    code += `\r\n`;
+    code += `name|type|desc\r\n`;
+    code += `---|---|---\r\n`;
+    for (const { name, type } of properties) {
+        if (name == "ui") {
+            code += `${name}|\`${type}\`|possible values ${variants}\r\n`;
+        } else {
+            code += `${name}|\`${type}\`|\r\n`;
+        }
+    }
+    code += `\r\n`;
+    code += `## Instance methods\r\n`;
+    code += `\r\n`;
+    code += `name|parameters\r\n`;
+    code += `---|---\r\n`;
+    for (const { name, parameters } of methods) {
+        if (["properties", "constructor", "renderItem", "render", "connectedCallback", "disconnectedCallback", "updated"].includes(name) || /^(render|handle)/.test(name)) continue;
+        code += `\`${name}\`|${parameters}\r\n`;
+    }
+    code += `\r\n`;
+    code += `## Events\r\n`;
+    code += `\r\n`;
+    code += `name|desc\r\n`;
+    code += `---|---\r\n`;
+    for (const name of events) {
+        code += `\`${name}\`|\r\n`;
+    }
+
+    return {
+        className,
+        inheritName,
+        tagName,
+        properties,
+        variants,
+        methods,
+        events,
+        code,
+    };
 }
-let b = [];
-let i = 0;
-let code = "";
-let j = [];
-for (const el of document.querySelectorAll(".token-list .token .token-value:last-child")) {
-    b.push(el.textContent.trim().replace("content_copy", ""));
-    let [name, value] = [a[i], b[i]];
-    ++i;
-    // if(j.includes(name)){continue}
-    // j.push(name)
-    // console.log(j)
-    code += `--${name.replace(/[^\w]/g, "-")}: ${value.replace(/(\d)pt/g, "$1px")};\n`;
-}
-console.log(code);
