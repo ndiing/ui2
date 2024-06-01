@@ -68,3 +68,9 @@ const routes = [
     { path: "*", load: () => import("./main/main.js").then((m) => m.default) },
 ];
 MDRouterModule.init(routes, { historyApiFallback: false });
+
+// node src/dev/cli remove app data-table
+// node src/dev/cli remove component data-table
+
+// node src/dev/cli create app data-table icon
+// node src/dev/cli create component data-table list

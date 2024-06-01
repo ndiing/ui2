@@ -167,10 +167,6 @@
     @include md-ripple--selected-attr;
 }
 
-.md-ripple--fadeout {
-    @include md-ripple--fadeout;
-}
-
 .md-ripple--focused {
     @include md-ripple--focused;
 }
@@ -181,6 +177,10 @@
 
 .md-ripple--hover {
     @include md-ripple--hover;
+}
+
+.md-ripple--fadeout {
+    @include md-ripple--fadeout;
 }
 
 .md-ripple--draged {

@@ -3,27 +3,8 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 import { styleMap } from "lit/directives/style-map.js";
+import { isDefined } from "../mixin/mixin";
 
-class MDDataTableColumnCell extends HTMLTableCellElement {
-    constructor() {
-        super();
-        this.callback = this.callback.bind(this);
-        this.resizeObserver = new ResizeObserver(this.callback);
-    }
-    connectedCallback() {
-        this.resizeObserver.observe(this);
-    }
-    disconnectedCallback() {
-        this.resizeObserver.disconnect();
-    }
-    callback(entries) {
-        // for(const entry of entries){
-        //     const {width,height}=(entry.contentRect)
-        //     console.log(width,height)
-        // }
-    }
-}
-customElements.define("md-data-table-column-cell", MDDataTableColumnCell, { extends: "th" });
 
 class MDDataTableItemComponent extends MDElement {
     static get properties() {
@@ -36,7 +17,9 @@ class MDDataTableItemComponent extends MDElement {
             leadingSwitch: { type: Object },
             leadingIcon: { type: String },
             label: { type: String },
+            leadingAction: {type:String},
             subLabel: { type: String },
+            trailingAction: {type:String},
             trailingIcon: { type: String },
             trailingCheckbox: { type: Object },
             trailingRadioButton: { type: Object },
@@ -44,8 +27,7 @@ class MDDataTableItemComponent extends MDElement {
             text: { type: String },
             badge: { type: Object },
             selected: { type: Boolean, reflect: true },
-            routerLink: { type: String, reflect: true },
-            indeterminate: { type: Boolean },
+            indeterminate: { type: String },
         };
     }
 
@@ -65,15 +47,17 @@ class MDDataTableItemComponent extends MDElement {
             ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
             ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
-            ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
-
-            ${this.label||this.subLabel||this.badge?html`
+            ${isDefined(this.leadingIcon)?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
+            
+            ${this.leadingAction?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action" .icon="${this.leadingAction}"></md-icon-button>`:nothing}
+            ${isDefined(this.label)||this.subLabel||this.badge?html`
                 <div class="md-data-table__label">
-                    ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
+                    ${isDefined(this.label)?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
                     ${this.subLabel?html`<div class="md-data-table__label-secondary">${this.subLabel}</div>`:nothing}
                     ${this.badge?html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
                 </div>
             `:nothing}
+            ${isDefined(this.trailingAction)?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action" .icon="${this.trailingAction}"></md-icon-button>`:nothing}
 
             ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
 
@@ -102,8 +86,7 @@ class MDDataTableItemComponent extends MDElement {
                 this.classList.add("md-data-table__item--two-line");
             }
         }
-        await this.updateComplete;
-        // this.ripple = new MDRippleModule(this, {});
+        
     }
 
     async disconnectedCallback() {
@@ -111,7 +94,7 @@ class MDDataTableItemComponent extends MDElement {
 
         this.classList.remove("md-data-table__item");
         await this.updateComplete;
-        // this.ripple.destroy();
+        
     }
 
     firstUpdated(changedProperties) {}
@@ -122,6 +105,10 @@ class MDDataTableItemComponent extends MDElement {
                 this.emit("onDataTableItemSelected", this);
             }
         }
+    }
+
+    handleDataTableItemActionClick(event) {
+        this.emit("onDataTableItemActionClick", event);
     }
 
     handleDataTableItemCheckboxNativeInput(event) {
@@ -187,10 +174,11 @@ class MDDataTableComponent extends MDElement {
 
     constructor() {
         super();
-        this.rangeSelection = true;
-        this.multiSelection = true;
-        this.singleSelection = true;
-        this.allSelection = true;
+
+        this.rangeSelection=true
+        this.multiSelection=true
+        this.singleSelection=true
+        this.allSelection=true
     }
 
     /* prettier-ignore */
@@ -207,8 +195,10 @@ class MDDataTableComponent extends MDElement {
                     .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
                     .leadingSwitch="${ifDefined(item.leadingSwitch)}"
                     .leadingIcon="${ifDefined(item.leadingIcon)}"
+                    .leadingAction="${ifDefined(item.leadingAction)}"
                     .label="${ifDefined(item.label)}"
                     .subLabel="${ifDefined(item.subLabel)}"
+                    .trailingAction="${ifDefined(item.trailingAction)}"
                     .trailingIcon="${ifDefined(item.trailingIcon)}"
                     .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
                     .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
@@ -216,7 +206,6 @@ class MDDataTableComponent extends MDElement {
                     .badge="${ifDefined(item.badge)}"
                     .text="${ifDefined(item.text)}"
                     .selected="${ifDefined(item.selected)}"
-                    .routerLink="${ifDefined(item.routerLink)}"
                     .indeterminate="${ifDefined(item.indeterminate)}"
                 ></md-data-table-item>
             </md-data-table-row>
@@ -227,12 +216,11 @@ class MDDataTableComponent extends MDElement {
 
     render() {
         return html`
-            <table class="md-data-table__native">
+            <table>
+                <caption></caption>
                 <thead>
                     <tr>
-                        <th 
-                            is="md-data-table-column-cell"
-                            id="checkbox"
+                        <th
                             @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCheckboxNativeInput}"
                         >${this.renderItem({
                             leadingCheckbox:{},
@@ -240,12 +228,18 @@ class MDDataTableComponent extends MDElement {
                             indeterminate:this.indeterminate,
                         })}</th>
                         ${this.columns?.map(column => html`
-                            <th 
-                                is="md-data-table-column-cell"
+                            <th
+                                .data="${column}"
                                 style="${styleMap({
                                     width: column.width+'px'
                                 })}"
-                            >${this.renderItem(column)}</th>
+                                @pointerenter="${this.handleDataTableColumnCellPointerenter}"
+                                @onDataTableItemActionClick="${this.handleDataTableColumnCellActionClick}"
+                                @pointerleave="${this.handleDataTableColumnCellPointerleave}"
+                            >${this.renderItem({
+                                label:column.label,
+                                trailingAction:column.trailingAction??'',
+                            })}</th>
                         `)}
                     </tr>
                 </thead>
@@ -264,7 +258,7 @@ class MDDataTableComponent extends MDElement {
                             })}</td>
                             ${this.columns?.map(column => html`
                                 <td>${this.renderItem({
-                                    label:row[column.name],
+                                    label:row[column.name]
                                 })}</td>
                             `)}
                         </tr>
@@ -292,6 +286,48 @@ class MDDataTableComponent extends MDElement {
     }
 
     updated(changedProperties) {}
+
+    handleDataTableColumnCellPointerenter(event) {
+        const data=event.currentTarget.data
+
+        if(!data.order){
+            data.trailingAction='arrow_upward'
+            this.requestUpdate()
+        }
+
+        this.emit('onDataTableColumnCellPointerenter',event)
+    }
+
+    handleDataTableColumnCellActionClick(event) {
+        const data=event.currentTarget.data
+
+        if(!data.order){
+            data.order='asc'
+            data.trailingAction='arrow_upward'
+        }
+        else if(data.order=='asc'){
+            data.order='desc'
+            data.trailingAction='arrow_downward'
+        }
+        else {
+            data.order=undefined
+            data.trailingAction=''
+        }
+        this.requestUpdate()
+
+        this.emit('onDataTableColumnCellPointerleave',event)
+    }
+
+    handleDataTableColumnCellPointerleave(event) {
+        const data=event.currentTarget.data
+
+        if(!data.order){
+            data.trailingAction=''
+            this.requestUpdate()
+        }
+
+        this.emit('onDataTableColumnCellPointerleave',event)
+    }
 
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
@@ -324,9 +360,8 @@ class MDDataTableComponent extends MDElement {
             });
             this.lastIndex = this.rows.indexOf(data);
         }
-
         this.requestUpdate();
-        this.emit("onDataTableRowClick", event);
+        this.emit("onDataTableItemClick", event);
     }
 
     handleDataTableKeydown(event) {
@@ -340,32 +375,28 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableKeydown", event);
     }
 
+    get selected(){
+        return this.rows?.length==this.rows?.filter(row=>row.selected)?.length
+    }
+    get indeterminate(){
+        let selected=this.rows?.filter(row=>row.selected).length
+        return selected&&selected<this.rows?.length
+    }
+
+    handleDataTableColumnCheckboxNativeInput(event) {
+        const checkbox = event.detail.currentTarget
+        this.rows.forEach(row=>{
+            row.selected=checkbox.checked
+        })
+        this.requestUpdate()
+    }
+
     handleDataTableRowCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
     }
 
-    get dataTableColumnCheckbox() {
-        return this.querySelector("th .md-data-table__checkbox");
-    }
-
-    get selected() {
-        return this.rows?.filter((row) => row.selected).length == this.rows?.length;
-    }
-
-    get indeterminate() {
-        let selected = this.rows?.filter((row) => row.selected).length;
-        return selected && selected < this.rows?.length;
-    }
-
-    handleDataTableColumnCheckboxNativeInput(event) {
-        const checkbox = event.detail.currentTarget;
-        this.rows.forEach((row) => {
-            row.selected = checkbox.checked;
-        });
-        this.requestUpdate();
-    }
 }
 
 customElements.define("md-data-table", MDDataTableComponent);

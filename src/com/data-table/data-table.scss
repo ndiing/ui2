@@ -1,7 +1,6 @@
 .md-data-table {
     display: flex;
     flex-direction: column;
-    // padding: 8px 0;
 }
 
 .md-data-table__row {
@@ -16,6 +15,12 @@
     gap: 0 16px;
     background: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
+
+    &.md-ripple--focused {
+        &::after {
+            opacity: 0;
+        }
+    }
 }
 
 .md-data-table__avatar {
@@ -36,7 +41,6 @@
 }
 
 .md-data-table__label {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,6 +65,11 @@
 }
 
 // .md-data-table__icon{}
+
+.md-data-table__action{
+    width: 24px;
+    height: 24px;
+}
 
 // .md-data-table__checkbox{}
 
@@ -97,101 +106,48 @@
     }
 }
 
-.md-data-table__item {
-    @include md-ripple;
-    @include md-ripple--containment;
-    @include md-ripple--button;
-}
-
-.md-data-table {
+.md-data-table{
     width: 100%;
     height: 100%;
 
-    .md-data-table__native {
+    table{
         display: block;
-        overflow: auto;
-        // width: 100%;
-        // height: 100%;
+        width: 100%;
+        height: 100%;
         border-spacing: 0;
         border-collapse: separate;
+    }
+    // thead{}
+    // tr{}
+    th{
+        text-align: left;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        position: sticky;
+        top: 0;
+        z-index: 2;
 
-        // thead {}
-
-        // tr {}
-
-        th {
-            // width: 1%;
-            // border-right: 1px solid var(--md-sys-color-outline-variant);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            // border-top: 1px solid var(--md-sys-color-outline-variant);
-
-            // &:first-child {
-            //     border-left: 1px solid var(--md-sys-color-outline-variant);
-            // }
-
-            text-align: left;
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            .md-data-table__label-primary {
-                @include md-typography-label-large;
-            }
+        .md-data-table__label-primary {
+            @include md-typography-label-large;
         }
-
-        tbody {
-            tr {
-                &[selected] {
-                    .md-data-table__item {
-                        @include md-ripple--selected;
-                    }
-                }
-                &:focus {
-                    .md-data-table__item {
-                        @include md-ripple--focused;
-                    }
-                }
-                &:active {
-                    .md-data-table__item {
-                        @include md-ripple--pressed;
-                    }
-                }
-                &:hover {
-                    .md-data-table__item {
-                        @include md-ripple--hover;
-                    }
-                }
-            }
+    }
+    tbody{
+        tr{
+            &:hover{.md-data-table__item{@include md-ripple--hover;}}
+            &[selected]{.md-data-table__item{@include md-ripple--selected;}}
+            &:focus{.md-data-table__item{@include md-ripple--focused;}}
+            &:active{.md-data-table__item{@include md-ripple--pressed;}}
+            &:hover{.md-data-table__item{@include md-ripple--hover;}}
         }
+    }
+    td{
+        max-width: 0;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
-        td {
-            max-width: 0;
-            // border-right: 1px solid var(--md-sys-color-outline-variant);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-
-            // &:first-child {
-            //     border-left: 1px solid var(--md-sys-color-outline-variant);
-            // }
-
-            .md-data-table__item {
-                min-height: 52px;
-            }
-        }
-
-        //
-
-        th {
-            &:nth-child(1) {
-                position: sticky;
-                left: 0;
-                z-index: 4;
-            }
-        }
-        td {
-            &:nth-child(1) {
-                position: sticky;
-                left: 0;
-                z-index: 3;
-            }
+        .md-data-table__item {
+            min-height: 52px;
+            @include md-ripple;
+            @include md-ripple--button;
+            @include md-ripple--containment;
         }
     }
 }
