@@ -288,6 +288,6 @@ class AppNestedListElement extends MDElement{
     }
 }
 
-customElements.define('app-list',AppNestedListElement)
+customElements.define('app-nested-list',AppNestedListElement)
 
-export default document.createElement('app-list')
+export default document.createElement('app-nested-list')
