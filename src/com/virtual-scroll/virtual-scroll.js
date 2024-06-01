@@ -2,8 +2,8 @@ class MDVirtualScrollModule {
     constructor(host, options) {
         this.host = host;
         this.options = {
-            scrollbar:null,
-            container:null,
+            scrollbar: null,
+            container: null,
             total: 1000,
             itemHeight: 40,
             threshold: 2,

@@ -66,7 +66,7 @@
 
 // .md-data-table__icon{}
 
-.md-data-table__action{
+.md-data-table__action {
     width: 24px;
     height: 24px;
 }
@@ -106,11 +106,11 @@
     }
 }
 
-.md-data-table{
+.md-data-table {
     width: 100%;
     height: 100%;
 
-    table{
+    table {
         display: block;
         width: 100%;
         height: 100%;
@@ -119,7 +119,7 @@
     }
     // thead{}
     // tr{}
-    th{
+    th {
         text-align: left;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
         position: sticky;
@@ -130,16 +130,36 @@
             @include md-typography-label-large;
         }
     }
-    tbody{
-        tr{
-            &:hover{.md-data-table__item{@include md-ripple--hover;}}
-            &[selected]{.md-data-table__item{@include md-ripple--selected;}}
-            &:focus{.md-data-table__item{@include md-ripple--focused;}}
-            &:active{.md-data-table__item{@include md-ripple--pressed;}}
-            &:hover{.md-data-table__item{@include md-ripple--hover;}}
+    tbody {
+        tr {
+            &:hover {
+                .md-data-table__item {
+                    @include md-ripple--hover;
+                }
+            }
+            &[selected] {
+                .md-data-table__item {
+                    @include md-ripple--selected;
+                }
+            }
+            &:focus {
+                .md-data-table__item {
+                    @include md-ripple--focused;
+                }
+            }
+            &:active {
+                .md-data-table__item {
+                    @include md-ripple--pressed;
+                }
+            }
+            &:hover {
+                .md-data-table__item {
+                    @include md-ripple--hover;
+                }
+            }
         }
     }
-    td{
+    td {
         max-width: 0;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 

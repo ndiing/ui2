@@ -195,8 +195,8 @@ Date.prototype.setWeek = function (week, year) {
 // myDate.setWeek(20, 2023);
 // console.log(myDate); // Outputs the date corresponding to the 20th week of 2023
 
-function isDefined(value){
-    return value!==null&&value!==undefined
+function isDefined(value) {
+    return value !== null && value !== undefined;
 }
 
 // console.log(isDefined())
