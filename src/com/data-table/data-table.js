@@ -85,19 +85,6 @@ class MDDataTableItemComponent extends MDElement {
         `;
     }
 
-    render() {
-        return html`
-            ${this.leadingCheckbox
-                ? html`<md-checkbox
-                      @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}"
-                      .checked="${this.selected}"
-                      .indeterminate="${this.indeterminate}"
-                      class="md-data-table__checkbox"></md-checkbox>`
-                : nothing}
-            ${this.label || this.subLabel || this.badge ? html` <div class="md-data-table__label">${this.label ? html`<div class="md-data-table__label-primary">${this.label}</div>` : nothing}</div> ` : nothing}
-        `;
-    }
-
     get labelSecondary() {
         return this.querySelector(".md-data-table__label-secondary");
     }
