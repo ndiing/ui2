@@ -72,5 +72,5 @@ MDRouterModule.init(routes, {
 
 
 
-// node src/dev/cli remove component nested-list list
-// node src/dev/cli remove app nested-list list
+// node src/dev/cli create component nested-list list
+// node src/dev/cli create app nested-list list
