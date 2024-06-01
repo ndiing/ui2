@@ -16,11 +16,7 @@
     background: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
 
-    &.md-ripple--focused {
-        &::after {
-            opacity: 0;
-        }
-    }
+    
 }
 
 .md-data-table__avatar {
