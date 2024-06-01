@@ -18,9 +18,12 @@ fab|`Object`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | | show| 
-|  | | close| 
-|  | | toggle| 
+
+    |  | | show| 
+
+    |  | | close| 
+
+    |  | | toggle| 
 
 ## Events
 

@@ -29,7 +29,8 @@ indeterminate|`String`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| labelSecondary| 
+
+    |  | get | labelSecondary| 
 
 ## Events
 
@@ -75,8 +76,9 @@ allSelection|`Boolean`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| selected| 
-|  | get| indeterminate| 
+
+    |  | get | selected| 
+    |  | get | indeterminate| 
 
 ## Events
 

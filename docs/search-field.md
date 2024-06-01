@@ -35,7 +35,8 @@ ui|`String`|possible values filled,outlined,rounded
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| searchFieldNative| 
+
+    |  | get | searchFieldNative| 
 
 ## Events
 

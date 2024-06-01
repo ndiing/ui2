@@ -10,9 +10,12 @@ name|type|desc
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | | init| 
-|  | | emit| type, detail
-|  | | destroy| 
+
+    |  | | init| 
+
+    |  | | emit| type, detail
+
+    |  | | destroy| 
 
 ## Events
 

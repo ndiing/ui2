@@ -10,8 +10,10 @@ name|type|desc
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | | init| 
-|  | | callback| 
+
+    |  | | init| 
+
+    |  | | callback| 
 
 ## Events
 

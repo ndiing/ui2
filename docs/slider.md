@@ -22,10 +22,13 @@ convertLabel|`Function`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| sliderNative1| 
-|  | get| sliderNative2| 
-|  | | calculatePercentage| min, max, value
-|  | | calculateDecimal| min, max, value
+
+    |  | get | sliderNative1| 
+    |  | get | sliderNative2| 
+
+    |  | | calculatePercentage| min, max, value
+
+    |  | | calculateDecimal| min, max, value
 
 ## Events
 

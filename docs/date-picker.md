@@ -14,19 +14,26 @@ value|`String`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| first| 
-|  | get| last| 
-|  | get| years| 
-|  | get| months| 
-|  | get| weekdays| 
-|  | get| days| 
-|  | get| hours| 
-|  | get| minutes| 
-|  | get| label| 
-|  | get| subLabel| 
-|  | | show| button, options
-|  | | close| 
-|  | | toggle| 
+
+    |  | get | first| 
+    |  | get | last| 
+
+    |  | get | years| 
+    |  | get | months| 
+    |  | get | weekdays| 
+    |  | get | days| 
+    |  | get | hours| 
+    |  | get | minutes| 
+
+    |  | get | label| 
+
+    |  | get | subLabel| 
+
+    |  | | show| button, options
+
+    |  | | close| 
+
+    |  | | toggle| 
 
 ## Events
 

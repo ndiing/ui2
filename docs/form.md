@@ -19,9 +19,12 @@ target|`String`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | get| formNative| 
-|  | | reset| 
-|  | | submit| button
+
+    |  | get | formNative| 
+
+    |  | | reset| 
+
+    |  | | submit| button
 
 ## Events
 

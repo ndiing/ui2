@@ -27,14 +27,18 @@ function parse(content) {
         events.push(name);
     }
 
+    const methodsRegex = /^(\s*)(static )?(async )?((get|set) )?(\w+)\((.*?)\) {/gm;
     const methods = [];
-    for (const [, block, asynchronous, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) \{/gm)) {
+    let match;
+    while ((match = methodsRegex.exec(content)) !== null) {
+        const [, leadingWhitespace, staticKeyword, asyncKeyword, accessor, , name, parameters] = match;
         methods.push({
-            block,
-            asynchronous,
-            accessor,
+            block: leadingWhitespace,
+            static: staticKeyword !== undefined,
+            async: asyncKeyword !== undefined,
+            accessor: accessor || "",
             name,
-            parameters,
+            parameters: parameters || "",
         });
     }
 
@@ -73,7 +77,7 @@ function parse(content) {
     code += `\r\n`;
     code += `block| asynchronous | accessor| name| parameters\r\n`;
     code += `---| --- | ---| ---| ---\r\n`;
-    for (const { block, asynchronous , accessor, name, parameters } of methods) {
+    for (const { block, asynchronous, accessor, name, parameters } of methods) {
         if (
             [
                 //
@@ -89,7 +93,7 @@ function parse(content) {
             /^(render|handle|update)/.test(name)
         )
             continue;
-            code += `${block??''}| ${asynchronous??''} | ${accessor??''}| ${name??''}| ${parameters??''}\r\n`;
+        code += `${block ?? ""}| ${asynchronous ?? ""} | ${accessor ?? ""}| ${name ?? ""}| ${parameters ?? ""}\r\n`;
     }
     code += `\r\n`;
     code += `## Events\r\n`;

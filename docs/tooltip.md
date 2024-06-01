@@ -17,9 +17,12 @@ open|`Boolean`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-|  | | show| button, options
-|  | | close| 
-|  | | toggle| 
+
+    |  | | show| button, options
+
+    |  | | close| 
+
+    |  | | toggle| 
 
 ## Events
 
