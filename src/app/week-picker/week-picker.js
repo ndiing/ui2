@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppWeekPickerElement extends MDElement{
-
+class AppWeekPickerElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -29,6 +28,6 @@ class AppWeekPickerElement extends MDElement{
     }
 }
 
-customElements.define('app-week-picker',AppWeekPickerElement)
+customElements.define("app-week-picker", AppWeekPickerElement);
 
-export default document.createElement('app-week-picker')
+export default document.createElement("app-week-picker");

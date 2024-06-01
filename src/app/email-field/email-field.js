@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppEmailFieldElement extends MDElement{
-
+class AppEmailFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppEmailFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-email-field',AppEmailFieldElement)
+customElements.define("app-email-field", AppEmailFieldElement);
 
-export default document.createElement('app-email-field')
+export default document.createElement("app-email-field");

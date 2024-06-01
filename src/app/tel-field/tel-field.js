@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppTelFieldElement extends MDElement{
-
+class AppTelFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppTelFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-tel-field',AppTelFieldElement)
+customElements.define("app-tel-field", AppTelFieldElement);
 
-export default document.createElement('app-tel-field')
+export default document.createElement("app-tel-field");

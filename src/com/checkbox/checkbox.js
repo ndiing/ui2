@@ -59,7 +59,12 @@ class MDCheckboxComponent extends MDElement {
 
         this.classList.add("md-checkbox");
         await this.updateComplete;
-        this.ripple = new MDRippleModule(this.checkboxTrack, { button: this.checkboxNative, containment: false, size: (40 / (18 - 2 * 2)) * 100, fadeout: true });
+        this.ripple = new MDRippleModule(this.checkboxTrack, {
+            button: this.checkboxNative,
+            containment: false,
+            size: (40 / (18 - 2 * 2)) * 100,
+            fadeout: true,
+        });
     }
 
     async disconnectedCallback() {

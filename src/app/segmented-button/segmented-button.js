@@ -1,21 +1,20 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppSegmentedButtonElement extends MDElement{
+class AppSegmentedButtonElement extends MDElement {
+    constructor() {
+        super();
 
-    constructor(){
-        super()
-
-        this.buttons1=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2'},
-            {label:'Label 3'},
-        ]
-        this.buttons2=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',selected:true},
-            {label:'Label 3'},
-        ]
+        this.buttons1 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2" },
+            { label: "Label 3" },
+        ];
+        this.buttons2 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", selected: true },
+            { label: "Label 3" },
+        ];
     }
 
     /* prettier-ignore */
@@ -33,6 +32,6 @@ class AppSegmentedButtonElement extends MDElement{
     }
 }
 
-customElements.define('app-segmented-button',AppSegmentedButtonElement)
+customElements.define("app-segmented-button", AppSegmentedButtonElement);
 
-export default document.createElement('app-segmented-button')
+export default document.createElement("app-segmented-button");

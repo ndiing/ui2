@@ -69,7 +69,8 @@ class MDSideSheetComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-side-sheet__scrim");
-        this.handleSideSheetScrimClick = this.handleSideSheetScrimClick.bind(this);
+        this.handleSideSheetScrimClick =
+            this.handleSideSheetScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handleSideSheetScrimClick);
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }

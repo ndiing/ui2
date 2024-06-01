@@ -1,4 +1,4 @@
-.md-tabs{
+.md-tabs {
     display: block;
 }
 
@@ -12,7 +12,9 @@
     &::after {
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+        transition-timing-function: cubic-bezier(
+            var(--md-sys-motion-easing-legacy)
+        );
     }
 
     .md-list__row {
@@ -98,11 +100,13 @@
     }
 }
 
-.md-tabs--scrollable{
+.md-tabs--scrollable {
     overflow: auto;
-    &::-webkit-scrollbar{display: none;}
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
-    .md-list__row{
+    .md-list__row {
         flex: 0 0 auto;
     }
 }

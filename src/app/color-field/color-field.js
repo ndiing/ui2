@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppColorFieldElement extends MDElement{
-
+class AppColorFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppColorFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-color-field',AppColorFieldElement)
+customElements.define("app-color-field", AppColorFieldElement);
 
-export default document.createElement('app-color-field')
+export default document.createElement("app-color-field");

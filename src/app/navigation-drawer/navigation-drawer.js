@@ -1,25 +1,22 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppNavigationDrawerElement extends MDElement{
+class AppNavigationDrawerElement extends MDElement {
+    constructor() {
+        super();
 
-    constructor(){
-        super()
-
-    
-        this.list1=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list2=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',badge:{label:0}},
-            {label:'Label 3',badge:{label:1}},
-            {label:'Label 4',badge:{label:1000}},
-        ]
-        
+        this.list1 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list2 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", badge: { label: 0 } },
+            { label: "Label 3", badge: { label: 1 } },
+            { label: "Label 4", badge: { label: 1000 } },
+        ];
     }
 
     /* prettier-ignore */
@@ -54,6 +51,6 @@ class AppNavigationDrawerElement extends MDElement{
     }
 }
 
-customElements.define('app-navigation-drawer',AppNavigationDrawerElement)
+customElements.define("app-navigation-drawer", AppNavigationDrawerElement);
 
-export default document.createElement('app-navigation-drawer')
+export default document.createElement("app-navigation-drawer");

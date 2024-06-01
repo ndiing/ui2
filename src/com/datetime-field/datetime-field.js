@@ -99,9 +99,14 @@ class MDDatetimeFieldComponent extends MDElement {
         this.classList.remove("md-datetime-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-datetime-field__meta,.md-datetime-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-datetime-field__meta,.md-datetime-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-datetime-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-datetime-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
@@ -142,25 +147,55 @@ class MDDatetimeFieldComponent extends MDElement {
 
     handleColorPicker() {
         this.datetimeFieldPicker = document.createElement("md-datetime-picker");
-        this.parentElement.insertBefore(this.datetimeFieldPicker, this.nextElementSibling);
+        this.parentElement.insertBefore(
+            this.datetimeFieldPicker,
+            this.nextElementSibling,
+        );
         if (this.value) this.datetimeFieldPicker.value = this.value;
 
         const callback = () => {
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerClose", callback);
+            this.datetimeFieldPicker.removeEventListener(
+                "onDatetimePickerChange",
+                this.handleDatetimeFieldPickerChange,
+            );
+            this.datetimeFieldPicker.removeEventListener(
+                "onDatetimePickerButtonCancelClick",
+                this.handleDatetimeFieldPickerButtonCancelClick,
+            );
+            this.datetimeFieldPicker.removeEventListener(
+                "onDatetimePickerButtonOkClick",
+                this.handleDatetimeFieldPickerButtonOkClick,
+            );
+            this.datetimeFieldPicker.removeEventListener(
+                "onDatetimePickerClose",
+                callback,
+            );
             this.datetimeFieldPicker.remove();
         };
 
-        this.handleDatetimeFieldPickerChange = this.handleDatetimeFieldPickerChange.bind(this);
-        this.handleDatetimeFieldPickerButtonCancelClick = this.handleDatetimeFieldPickerButtonCancelClick.bind(this);
-        this.handleDatetimeFieldPickerButtonOkClick = this.handleDatetimeFieldPickerButtonOkClick.bind(this);
+        this.handleDatetimeFieldPickerChange =
+            this.handleDatetimeFieldPickerChange.bind(this);
+        this.handleDatetimeFieldPickerButtonCancelClick =
+            this.handleDatetimeFieldPickerButtonCancelClick.bind(this);
+        this.handleDatetimeFieldPickerButtonOkClick =
+            this.handleDatetimeFieldPickerButtonOkClick.bind(this);
 
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerClose", callback);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
+        this.datetimeFieldPicker.addEventListener(
+            "onDatetimePickerClose",
+            callback,
+        );
+        this.datetimeFieldPicker.addEventListener(
+            "onDatetimePickerChange",
+            this.handleDatetimeFieldPickerChange,
+        );
+        this.datetimeFieldPicker.addEventListener(
+            "onDatetimePickerButtonCancelClick",
+            this.handleDatetimeFieldPickerButtonCancelClick,
+        );
+        this.datetimeFieldPicker.addEventListener(
+            "onDatetimePickerButtonOkClick",
+            this.handleDatetimeFieldPickerButtonOkClick,
+        );
 
         window.requestAnimationFrame(() => {
             this.datetimeFieldPicker.show(this);
@@ -169,7 +204,29 @@ class MDDatetimeFieldComponent extends MDElement {
 
     handleDatetimeFieldPickerChange(event) {
         // console.log(this.datetimeFieldPicker.selected)
-        this.colorFieldNative.value = [[this.datetimeFieldPicker.selected.getFullYear(), ("" + (this.datetimeFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.datetimeFieldPicker.selected.getDate()).padStart(2, "0")].join("-"), [("" + this.datetimeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.datetimeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":")].join("T");
+        this.colorFieldNative.value = [
+            [
+                this.datetimeFieldPicker.selected.getFullYear(),
+                (
+                    "" +
+                    (this.datetimeFieldPicker.selected.getMonth() + 1)
+                ).padStart(2, "0"),
+                ("" + this.datetimeFieldPicker.selected.getDate()).padStart(
+                    2,
+                    "0",
+                ),
+            ].join("-"),
+            [
+                ("" + this.datetimeFieldPicker.selected.getHours()).padStart(
+                    2,
+                    "0",
+                ),
+                ("" + this.datetimeFieldPicker.selected.getMinutes()).padStart(
+                    2,
+                    "0",
+                ),
+            ].join(":"),
+        ].join("T");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = this.colorFieldNative.validationMessage;

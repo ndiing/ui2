@@ -5,16 +5,16 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDProgressIndicatorComponent extends MDElement {
     static get properties() {
         return {
-            max:{type:Number},
-            value:{type:Number},
-            ui:{type:String},
+            max: { type: Number },
+            value: { type: Number },
+            ui: { type: String },
         };
     }
 
     constructor() {
         super();
-        this.max=100
-        this.value=0
+        this.max = 100;
+        this.value = 0;
     }
 
     /* prettier-ignore */
@@ -57,24 +57,26 @@ class MDProgressIndicatorComponent extends MDElement {
     }
 
     updated(changedProperties) {
-        if(changedProperties.has('ui')){
-            [
-                'linear',
-                'circular',
-            ]
-            .forEach(ui => {
-                this.classList.remove('md-progress-indicator--'+ui)
-            })
-            if(this.ui){
-                this.ui.split(' ')
-                .forEach(ui => {
-                    this.classList.add('md-progress-indicator--'+ui)
-                })
+        if (changedProperties.has("ui")) {
+            ["linear", "circular"].forEach((ui) => {
+                this.classList.remove("md-progress-indicator--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-progress-indicator--" + ui);
+                });
             }
         }
 
-        this.percentageValue=this.calculatePercentage(0,this.max,this.value)
-        this.style.setProperty('--md-progress-indicator-percentage',this.percentageValue)
+        this.percentageValue = this.calculatePercentage(
+            0,
+            this.max,
+            this.value,
+        );
+        this.style.setProperty(
+            "--md-progress-indicator-percentage",
+            this.percentageValue,
+        );
     }
 
     calculatePercentage(min, max, value) {

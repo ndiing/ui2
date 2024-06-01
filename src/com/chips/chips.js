@@ -142,14 +142,21 @@ class MDChipsComponent extends MDElement {
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+                [this.currentIndex, this.lastIndex] = [
+                    this.lastIndex,
+                    this.currentIndex,
+                ];
             }
             this.list.forEach((item, index) => {
-                item.selected = index >= this.lastIndex && index <= this.currentIndex;
+                item.selected =
+                    index >= this.lastIndex && index <= this.currentIndex;
             });
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+                [this.currentIndex, this.lastIndex] = [
+                    this.lastIndex,
+                    this.currentIndex,
+                ];
             }
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;

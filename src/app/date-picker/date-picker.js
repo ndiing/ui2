@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppDatePickerElement extends MDElement{
-
+class AppDatePickerElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -30,6 +29,6 @@ class AppDatePickerElement extends MDElement{
     }
 }
 
-customElements.define('app-date-picker',AppDatePickerElement)
+customElements.define("app-date-picker", AppDatePickerElement);
 
-export default document.createElement('app-date-picker')
+export default document.createElement("app-date-picker");

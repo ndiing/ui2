@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppSnackbarElement extends MDElement{
-
+class AppSnackbarElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -71,6 +70,6 @@ class AppSnackbarElement extends MDElement{
     }
 }
 
-customElements.define('app-snackbar',AppSnackbarElement)
+customElements.define("app-snackbar", AppSnackbarElement);
 
-export default document.createElement('app-snackbar')
+export default document.createElement("app-snackbar");

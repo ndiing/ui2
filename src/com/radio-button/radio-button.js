@@ -59,7 +59,12 @@ class MDRadioButtonComponent extends MDElement {
 
         this.classList.add("md-radio-button");
         await this.updateComplete;
-        this.ripple = new MDRippleModule(this.radioButtonTrack, { button: this.radioButtonNative, containment: false, size: (40 / (20 - 2 * 2)) * 100, fadeout: true });
+        this.ripple = new MDRippleModule(this.radioButtonTrack, {
+            button: this.radioButtonNative,
+            containment: false,
+            size: (40 / (20 - 2 * 2)) * 100,
+            fadeout: true,
+        });
     }
 
     async disconnectedCallback() {

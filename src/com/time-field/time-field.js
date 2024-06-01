@@ -99,9 +99,14 @@ class MDTimeFieldComponent extends MDElement {
         this.classList.remove("md-time-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-time-field__meta,.md-time-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-time-field__meta,.md-time-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-time-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-time-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
@@ -142,25 +147,52 @@ class MDTimeFieldComponent extends MDElement {
 
     handleColorPicker() {
         this.timeFieldPicker = document.createElement("md-time-picker");
-        this.parentElement.insertBefore(this.timeFieldPicker, this.nextElementSibling);
+        this.parentElement.insertBefore(
+            this.timeFieldPicker,
+            this.nextElementSibling,
+        );
         if (this.value) this.timeFieldPicker.value = this.value;
 
         const callback = () => {
-            this.timeFieldPicker.removeEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
-            this.timeFieldPicker.removeEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
-            this.timeFieldPicker.removeEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
-            this.timeFieldPicker.removeEventListener("onTimePickerClose", callback);
+            this.timeFieldPicker.removeEventListener(
+                "onTimePickerChange",
+                this.handleTimeFieldPickerChange,
+            );
+            this.timeFieldPicker.removeEventListener(
+                "onTimePickerButtonCancelClick",
+                this.handleTimeFieldPickerButtonCancelClick,
+            );
+            this.timeFieldPicker.removeEventListener(
+                "onTimePickerButtonOkClick",
+                this.handleTimeFieldPickerButtonOkClick,
+            );
+            this.timeFieldPicker.removeEventListener(
+                "onTimePickerClose",
+                callback,
+            );
             this.timeFieldPicker.remove();
         };
 
-        this.handleTimeFieldPickerChange = this.handleTimeFieldPickerChange.bind(this);
-        this.handleTimeFieldPickerButtonCancelClick = this.handleTimeFieldPickerButtonCancelClick.bind(this);
-        this.handleTimeFieldPickerButtonOkClick = this.handleTimeFieldPickerButtonOkClick.bind(this);
+        this.handleTimeFieldPickerChange =
+            this.handleTimeFieldPickerChange.bind(this);
+        this.handleTimeFieldPickerButtonCancelClick =
+            this.handleTimeFieldPickerButtonCancelClick.bind(this);
+        this.handleTimeFieldPickerButtonOkClick =
+            this.handleTimeFieldPickerButtonOkClick.bind(this);
 
         this.timeFieldPicker.addEventListener("onTimePickerClose", callback);
-        this.timeFieldPicker.addEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
-        this.timeFieldPicker.addEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
-        this.timeFieldPicker.addEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
+        this.timeFieldPicker.addEventListener(
+            "onTimePickerChange",
+            this.handleTimeFieldPickerChange,
+        );
+        this.timeFieldPicker.addEventListener(
+            "onTimePickerButtonCancelClick",
+            this.handleTimeFieldPickerButtonCancelClick,
+        );
+        this.timeFieldPicker.addEventListener(
+            "onTimePickerButtonOkClick",
+            this.handleTimeFieldPickerButtonOkClick,
+        );
 
         window.requestAnimationFrame(() => {
             this.timeFieldPicker.show(this);
@@ -169,7 +201,10 @@ class MDTimeFieldComponent extends MDElement {
 
     handleTimeFieldPickerChange(event) {
         // console.log(this.timeFieldPicker.selected)
-        this.colorFieldNative.value = [("" + this.timeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.timeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":")
+        this.colorFieldNative.value = [
+            ("" + this.timeFieldPicker.selected.getHours()).padStart(2, "0"),
+            ("" + this.timeFieldPicker.selected.getMinutes()).padStart(2, "0"),
+        ].join(":");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = this.colorFieldNative.validationMessage;

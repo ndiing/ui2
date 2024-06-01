@@ -69,7 +69,8 @@ class MDBottomSheetComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-bottom-sheet__scrim");
-        this.handleBottomSheetScrimClick = this.handleBottomSheetScrimClick.bind(this);
+        this.handleBottomSheetScrimClick =
+            this.handleBottomSheetScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handleBottomSheetScrimClick);
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
@@ -78,7 +79,10 @@ class MDBottomSheetComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-sheet");
         await this.updateComplete;
-        this.scrim.removeEventListener("click", this.handleBottomSheetScrimClick);
+        this.scrim.removeEventListener(
+            "click",
+            this.handleBottomSheetScrimClick,
+        );
         this.scrim.remove();
     }
 

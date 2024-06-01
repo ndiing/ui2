@@ -2,8 +2,7 @@ import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 import { MDGestureModule } from "../../com/gesture/gesture";
 
-class AppGestureElement extends MDElement{
-
+class AppGestureElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -32,9 +31,9 @@ class AppGestureElement extends MDElement{
         `
     }
 
-    firstUpdated(){
-        const usageExample = (gesture,options) => {
-            const output=gesture.querySelector('output')
+    firstUpdated() {
+        const usageExample = (gesture, options) => {
+            const output = gesture.querySelector("output");
 
             const log = (event) => {
                 const {
@@ -53,50 +52,51 @@ class AppGestureElement extends MDElement{
                     currentHeight,
                     currentWidth,
                     options,
-                    
-                }=event.detail
-                output.textContent=JSON.stringify({
-                    resize,
-                    // startWidth,
-                    // startHeight,
-                    // endX,
-                    // endY,
-                    // startX,
-                    // startY,
-                    press,
-                    drag,
-                    swipe,
-                    currentX,
-                    currentY,
-                    currentHeight,
-                    currentWidth,
-                    options,
-                    
-                },null,4)
-                
-            }
-            gesture.addEventListener('onPress',log)
-            gesture.addEventListener('onDragStart',log)
-            gesture.addEventListener('onResizeStart',log)
-            gesture.addEventListener('onDrag',log)
-            gesture.addEventListener('onResize',log)
-            gesture.addEventListener('onTap',log)
-            gesture.addEventListener('onDoubleTap',log)
-            gesture.addEventListener('onSwipeTop',log)
-            gesture.addEventListener('onSwipeRight',log)
-            gesture.addEventListener('onSwipeBottom',log)
-            gesture.addEventListener('onSwipeLeft',log)
-            gesture.addEventListener('onDragEnd',log)
-            gesture.addEventListener('onResizeEnd',log)
-    
-            new MDGestureModule(gesture,options)
-        }
-        usageExample(this.querySelector('#gesture'))
-        usageExample(this.querySelector('#gesture2'),{
+                } = event.detail;
+                output.textContent = JSON.stringify(
+                    {
+                        resize,
+                        // startWidth,
+                        // startHeight,
+                        // endX,
+                        // endY,
+                        // startX,
+                        // startY,
+                        press,
+                        drag,
+                        swipe,
+                        currentX,
+                        currentY,
+                        currentHeight,
+                        currentWidth,
+                        options,
+                    },
+                    null,
+                    4,
+                );
+            };
+            gesture.addEventListener("onPress", log);
+            gesture.addEventListener("onDragStart", log);
+            gesture.addEventListener("onResizeStart", log);
+            gesture.addEventListener("onDrag", log);
+            gesture.addEventListener("onResize", log);
+            gesture.addEventListener("onTap", log);
+            gesture.addEventListener("onDoubleTap", log);
+            gesture.addEventListener("onSwipeTop", log);
+            gesture.addEventListener("onSwipeRight", log);
+            gesture.addEventListener("onSwipeBottom", log);
+            gesture.addEventListener("onSwipeLeft", log);
+            gesture.addEventListener("onDragEnd", log);
+            gesture.addEventListener("onResizeEnd", log);
+
+            new MDGestureModule(gesture, options);
+        };
+        usageExample(this.querySelector("#gesture"));
+        usageExample(this.querySelector("#gesture2"), {
             resizeAfterPress: true,
             dragAfterPress: true,
-        })
-        usageExample(this.querySelector('#gesture3'),{
+        });
+        usageExample(this.querySelector("#gesture3"), {
             resize: [
                 //
                 // "nw",
@@ -113,8 +113,8 @@ class AppGestureElement extends MDElement{
                 "x",
                 // "y",
             ],
-        })
-        usageExample(this.querySelector('#gesture4'),{
+        });
+        usageExample(this.querySelector("#gesture4"), {
             resize: [
                 //
                 // "nw",
@@ -131,10 +131,10 @@ class AppGestureElement extends MDElement{
                 // "x",
                 "y",
             ],
-        })
+        });
     }
 }
 
-customElements.define('app-gesture',AppGestureElement)
+customElements.define("app-gesture", AppGestureElement);
 
-export default document.createElement('app-gesture')
+export default document.createElement("app-gesture");

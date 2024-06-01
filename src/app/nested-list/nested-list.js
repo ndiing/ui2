@@ -1,260 +1,258 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppNestedListElement extends MDElement{
+class AppNestedListElement extends MDElement {
+    constructor() {
+        super();
 
-    constructor(){
-        super()
-
-        this.list1=[
+        this.list1 = [
             {
-              "label": "Root",
+                label: "Root",
             },
             {
-              "label": "Node",
+                label: "Node",
             },
-            { "label": "With" },
-            { "label": "No" },
-            { "label": "Children" }
-          ]
+            { label: "With" },
+            { label: "No" },
+            { label: "Children" },
+        ];
 
-        this.list2=[
-          {
-            "label": "Root",
-          },
-          {
-            "label": "Node",
-          },
-          { "label": "With" },
-          { "label": "No" },
-          { "label": "Children" }
-        ]
-
-        this.list3=[
-          {
-            "label": "Root",
-          },
-          {
-            "label": "Node",
-          },
-          { "label": "With" },
-          { "label": "No" },
-          { "label": "Children" }
-        ]
-
-        this.list4=[
+        this.list2 = [
             {
-              "label": "Item 1",
-              "children": [
-                {
-                  "label": "Item 1.1",
-                  "children": [
-                    {
-                      "label": "Item 1.1.1",
-                      "children": [
-                        { "label": "Item 1.1.1.1" },
-                        { "label": "Item 1.1.1.2" },
-                        { "label": "Item 1.1.1.3" },
-                        { "label": "Item 1.1.1.4" },
-                        { "label": "Item 1.1.1.5" }
-                      ]
-                    },
-                    {
-                      "label": "Item 1.1.2",
-                      "children": [
-                        { "label": "Item 1.1.2.1" },
-                        { "label": "Item 1.1.2.2" },
-                        { "label": "Item 1.1.2.3" },
-                        { "label": "Item 1.1.2.4" },
-                        { "label": "Item 1.1.2.5" }
-                      ]
-                    },
-                    { "label": "Item 1.1.3" },
-                    { "label": "Item 1.1.4" },
-                    { "label": "Item 1.1.5" }
-                  ]
-                },
-                {
-                  "label": "Item 1.2",
-                  "children": [
-                    {
-                      "label": "Item 1.2.1",
-                      "children": [
-                        { "label": "Item 1.2.1.1" },
-                        { "label": "Item 1.2.1.2" },
-                        { "label": "Item 1.2.1.3" },
-                        { "label": "Item 1.2.1.4" },
-                        { "label": "Item 1.2.1.5" }
-                      ]
-                    },
-                    { "label": "Item 1.2.2" },
-                    { "label": "Item 1.2.3" },
-                    { "label": "Item 1.2.4" },
-                    { "label": "Item 1.2.5" }
-                  ]
-                },
-                { "label": "Item 1.3" },
-                { "label": "Item 1.4" },
-                { "label": "Item 1.5" }
-              ]
+                label: "Root",
             },
             {
-              "label": "Item 2",
-              "children": [
-                { "label": "Item 2.1" },
-                { "label": "Item 2.2" },
-                { "label": "Item 2.3" },
-                { "label": "Item 2.4" },
-                { "label": "Item 2.5" }
-              ]
+                label: "Node",
             },
-            { "label": "Item 3" },
-            { "label": "Item 4" },
-            { "label": "Item 5" }
-          ]
+            { label: "With" },
+            { label: "No" },
+            { label: "Children" },
+        ];
 
-        this.list5=[
+        this.list3 = [
             {
-              "label": "Item 1",
-              "children": [
-                {
-                  "label": "Item 1.1",
-                  "children": [
-                    {
-                      "label": "Item 1.1.1",
-                      "children": [
-                        { "label": "Item 1.1.1.1" },
-                        { "label": "Item 1.1.1.2" },
-                        { "label": "Item 1.1.1.3" },
-                        { "label": "Item 1.1.1.4" },
-                        { "label": "Item 1.1.1.5" }
-                      ]
-                    },
-                    {
-                      "label": "Item 1.1.2",
-                      "children": [
-                        { "label": "Item 1.1.2.1" },
-                        { "label": "Item 1.1.2.2" },
-                        { "label": "Item 1.1.2.3" },
-                        { "label": "Item 1.1.2.4" },
-                        { "label": "Item 1.1.2.5" }
-                      ]
-                    },
-                    { "label": "Item 1.1.3" },
-                    { "label": "Item 1.1.4" },
-                    { "label": "Item 1.1.5" }
-                  ]
-                },
-                {
-                  "label": "Item 1.2",
-                  "children": [
-                    {
-                      "label": "Item 1.2.1",
-                      "children": [
-                        { "label": "Item 1.2.1.1" },
-                        { "label": "Item 1.2.1.2" },
-                        { "label": "Item 1.2.1.3" },
-                        { "label": "Item 1.2.1.4" },
-                        { "label": "Item 1.2.1.5" }
-                      ]
-                    },
-                    { "label": "Item 1.2.2" },
-                    { "label": "Item 1.2.3" },
-                    { "label": "Item 1.2.4" },
-                    { "label": "Item 1.2.5" }
-                  ]
-                },
-                { "label": "Item 1.3" },
-                { "label": "Item 1.4" },
-                { "label": "Item 1.5" }
-              ]
+                label: "Root",
             },
             {
-              "label": "Item 2",
-              "children": [
-                { "label": "Item 2.1" },
-                { "label": "Item 2.2" },
-                { "label": "Item 2.3" },
-                { "label": "Item 2.4" },
-                { "label": "Item 2.5" }
-              ]
+                label: "Node",
             },
-            { "label": "Item 3" },
-            { "label": "Item 4" },
-            { "label": "Item 5" }
-          ]
+            { label: "With" },
+            { label: "No" },
+            { label: "Children" },
+        ];
 
-        this.list6=[
+        this.list4 = [
             {
-              "label": "Item 1",
-              "children": [
-                {
-                  "label": "Item 1.1",
-                  "children": [
+                label: "Item 1",
+                children: [
                     {
-                      "label": "Item 1.1.1",
-                      "children": [
-                        { "label": "Item 1.1.1.1" },
-                        { "label": "Item 1.1.1.2" },
-                        { "label": "Item 1.1.1.3" },
-                        { "label": "Item 1.1.1.4" },
-                        { "label": "Item 1.1.1.5" }
-                      ]
+                        label: "Item 1.1",
+                        children: [
+                            {
+                                label: "Item 1.1.1",
+                                children: [
+                                    { label: "Item 1.1.1.1" },
+                                    { label: "Item 1.1.1.2" },
+                                    { label: "Item 1.1.1.3" },
+                                    { label: "Item 1.1.1.4" },
+                                    { label: "Item 1.1.1.5" },
+                                ],
+                            },
+                            {
+                                label: "Item 1.1.2",
+                                children: [
+                                    { label: "Item 1.1.2.1" },
+                                    { label: "Item 1.1.2.2" },
+                                    { label: "Item 1.1.2.3" },
+                                    { label: "Item 1.1.2.4" },
+                                    { label: "Item 1.1.2.5" },
+                                ],
+                            },
+                            { label: "Item 1.1.3" },
+                            { label: "Item 1.1.4" },
+                            { label: "Item 1.1.5" },
+                        ],
                     },
                     {
-                      "label": "Item 1.1.2",
-                      "children": [
-                        { "label": "Item 1.1.2.1" },
-                        { "label": "Item 1.1.2.2" },
-                        { "label": "Item 1.1.2.3" },
-                        { "label": "Item 1.1.2.4" },
-                        { "label": "Item 1.1.2.5" }
-                      ]
+                        label: "Item 1.2",
+                        children: [
+                            {
+                                label: "Item 1.2.1",
+                                children: [
+                                    { label: "Item 1.2.1.1" },
+                                    { label: "Item 1.2.1.2" },
+                                    { label: "Item 1.2.1.3" },
+                                    { label: "Item 1.2.1.4" },
+                                    { label: "Item 1.2.1.5" },
+                                ],
+                            },
+                            { label: "Item 1.2.2" },
+                            { label: "Item 1.2.3" },
+                            { label: "Item 1.2.4" },
+                            { label: "Item 1.2.5" },
+                        ],
                     },
-                    { "label": "Item 1.1.3" },
-                    { "label": "Item 1.1.4" },
-                    { "label": "Item 1.1.5" }
-                  ]
-                },
-                {
-                  "label": "Item 1.2",
-                  "children": [
-                    {
-                      "label": "Item 1.2.1",
-                      "children": [
-                        { "label": "Item 1.2.1.1" },
-                        { "label": "Item 1.2.1.2" },
-                        { "label": "Item 1.2.1.3" },
-                        { "label": "Item 1.2.1.4" },
-                        { "label": "Item 1.2.1.5" }
-                      ]
-                    },
-                    { "label": "Item 1.2.2" },
-                    { "label": "Item 1.2.3" },
-                    { "label": "Item 1.2.4" },
-                    { "label": "Item 1.2.5" }
-                  ]
-                },
-                { "label": "Item 1.3" },
-                { "label": "Item 1.4" },
-                { "label": "Item 1.5" }
-              ]
+                    { label: "Item 1.3" },
+                    { label: "Item 1.4" },
+                    { label: "Item 1.5" },
+                ],
             },
             {
-              "label": "Item 2",
-              "children": [
-                { "label": "Item 2.1" },
-                { "label": "Item 2.2" },
-                { "label": "Item 2.3" },
-                { "label": "Item 2.4" },
-                { "label": "Item 2.5" }
-              ]
+                label: "Item 2",
+                children: [
+                    { label: "Item 2.1" },
+                    { label: "Item 2.2" },
+                    { label: "Item 2.3" },
+                    { label: "Item 2.4" },
+                    { label: "Item 2.5" },
+                ],
             },
-            { "label": "Item 3" },
-            { "label": "Item 4" },
-            { "label": "Item 5" }
-          ]
+            { label: "Item 3" },
+            { label: "Item 4" },
+            { label: "Item 5" },
+        ];
 
+        this.list5 = [
+            {
+                label: "Item 1",
+                children: [
+                    {
+                        label: "Item 1.1",
+                        children: [
+                            {
+                                label: "Item 1.1.1",
+                                children: [
+                                    { label: "Item 1.1.1.1" },
+                                    { label: "Item 1.1.1.2" },
+                                    { label: "Item 1.1.1.3" },
+                                    { label: "Item 1.1.1.4" },
+                                    { label: "Item 1.1.1.5" },
+                                ],
+                            },
+                            {
+                                label: "Item 1.1.2",
+                                children: [
+                                    { label: "Item 1.1.2.1" },
+                                    { label: "Item 1.1.2.2" },
+                                    { label: "Item 1.1.2.3" },
+                                    { label: "Item 1.1.2.4" },
+                                    { label: "Item 1.1.2.5" },
+                                ],
+                            },
+                            { label: "Item 1.1.3" },
+                            { label: "Item 1.1.4" },
+                            { label: "Item 1.1.5" },
+                        ],
+                    },
+                    {
+                        label: "Item 1.2",
+                        children: [
+                            {
+                                label: "Item 1.2.1",
+                                children: [
+                                    { label: "Item 1.2.1.1" },
+                                    { label: "Item 1.2.1.2" },
+                                    { label: "Item 1.2.1.3" },
+                                    { label: "Item 1.2.1.4" },
+                                    { label: "Item 1.2.1.5" },
+                                ],
+                            },
+                            { label: "Item 1.2.2" },
+                            { label: "Item 1.2.3" },
+                            { label: "Item 1.2.4" },
+                            { label: "Item 1.2.5" },
+                        ],
+                    },
+                    { label: "Item 1.3" },
+                    { label: "Item 1.4" },
+                    { label: "Item 1.5" },
+                ],
+            },
+            {
+                label: "Item 2",
+                children: [
+                    { label: "Item 2.1" },
+                    { label: "Item 2.2" },
+                    { label: "Item 2.3" },
+                    { label: "Item 2.4" },
+                    { label: "Item 2.5" },
+                ],
+            },
+            { label: "Item 3" },
+            { label: "Item 4" },
+            { label: "Item 5" },
+        ];
+
+        this.list6 = [
+            {
+                label: "Item 1",
+                children: [
+                    {
+                        label: "Item 1.1",
+                        children: [
+                            {
+                                label: "Item 1.1.1",
+                                children: [
+                                    { label: "Item 1.1.1.1" },
+                                    { label: "Item 1.1.1.2" },
+                                    { label: "Item 1.1.1.3" },
+                                    { label: "Item 1.1.1.4" },
+                                    { label: "Item 1.1.1.5" },
+                                ],
+                            },
+                            {
+                                label: "Item 1.1.2",
+                                children: [
+                                    { label: "Item 1.1.2.1" },
+                                    { label: "Item 1.1.2.2" },
+                                    { label: "Item 1.1.2.3" },
+                                    { label: "Item 1.1.2.4" },
+                                    { label: "Item 1.1.2.5" },
+                                ],
+                            },
+                            { label: "Item 1.1.3" },
+                            { label: "Item 1.1.4" },
+                            { label: "Item 1.1.5" },
+                        ],
+                    },
+                    {
+                        label: "Item 1.2",
+                        children: [
+                            {
+                                label: "Item 1.2.1",
+                                children: [
+                                    { label: "Item 1.2.1.1" },
+                                    { label: "Item 1.2.1.2" },
+                                    { label: "Item 1.2.1.3" },
+                                    { label: "Item 1.2.1.4" },
+                                    { label: "Item 1.2.1.5" },
+                                ],
+                            },
+                            { label: "Item 1.2.2" },
+                            { label: "Item 1.2.3" },
+                            { label: "Item 1.2.4" },
+                            { label: "Item 1.2.5" },
+                        ],
+                    },
+                    { label: "Item 1.3" },
+                    { label: "Item 1.4" },
+                    { label: "Item 1.5" },
+                ],
+            },
+            {
+                label: "Item 2",
+                children: [
+                    { label: "Item 2.1" },
+                    { label: "Item 2.2" },
+                    { label: "Item 2.3" },
+                    { label: "Item 2.4" },
+                    { label: "Item 2.5" },
+                ],
+            },
+            { label: "Item 3" },
+            { label: "Item 4" },
+            { label: "Item 5" },
+        ];
     }
 
     /* prettier-ignore */
@@ -288,6 +286,6 @@ class AppNestedListElement extends MDElement{
     }
 }
 
-customElements.define('app-nested-list',AppNestedListElement)
+customElements.define("app-nested-list", AppNestedListElement);
 
-export default document.createElement('app-nested-list')
+export default document.createElement("app-nested-list");

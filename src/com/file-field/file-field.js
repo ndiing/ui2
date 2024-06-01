@@ -5,20 +5,20 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDFileFieldComponent extends MDElement {
     static get properties() {
         return {
-            autocapitalize:{type:Boolean},
-            autocomplete:{type:String},
-            disabled:{type:Boolean},
-            form:{type:String},
-            list:{type:String},
-            name:{type:String},
-            readonly:{type:Boolean},
-            required:{type:Boolean},
-            type:{type:String},
-            value:{type:String},
-            accept:{type:String},
-            capture:{type:String},
-            multiple:{type:Boolean},
-            defaultValue:{type:String},
+            autocapitalize: { type: Boolean },
+            autocomplete: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            list: { type: String },
+            name: { type: String },
+            readonly: { type: Boolean },
+            required: { type: Boolean },
+            type: { type: String },
+            value: { type: String },
+            accept: { type: String },
+            capture: { type: String },
+            multiple: { type: Boolean },
+            defaultValue: { type: String },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -94,15 +94,20 @@ class MDFileFieldComponent extends MDElement {
         this.classList.remove("md-file-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-file-field__meta,.md-file-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-file-field__meta,.md-file-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-file-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-file-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
     async firstUpdated(changedProperties) {
         await this.updateComplete;
-        this.defaultValue = this.value??'';
+        this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
@@ -124,7 +129,7 @@ class MDFileFieldComponent extends MDElement {
     }
 
     handleFileFieldNativeActionUploadClick(event) {
-        this.fileFieldNative.showPicker()
+        this.fileFieldNative.showPicker();
         this.emit("onFileFieldNativeActionUploadClick", event);
     }
 

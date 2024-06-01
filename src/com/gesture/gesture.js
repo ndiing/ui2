@@ -77,7 +77,9 @@ class MDGestureModule {
 
     handlePointerdown(event) {
         this.resize = false;
-        const resize = event.target.closest(".md-resize__item")?.classList.value.match(/--(\w+)$/)[1];
+        const resize = event.target
+            .closest(".md-resize__item")
+            ?.classList.value.match(/--(\w+)$/)[1];
 
         window.addEventListener("pointermove", this.handlePointermove);
         window.addEventListener("pointerup", this.handlePointerup);
@@ -145,27 +147,54 @@ class MDGestureModule {
         }
 
         if (this.resize) {
-            if (this.options.resize.some((resize) => ["n", "ne", "nw"].includes(resize)) && /n/.test(this.resize)) {
+            if (
+                this.options.resize.some((resize) =>
+                    ["n", "ne", "nw"].includes(resize),
+                ) &&
+                /n/.test(this.resize)
+            ) {
                 this.currentY = currentY;
-                this.currentHeight = this.startHeight - this.currentY + this.endY;
+                this.currentHeight =
+                    this.startHeight - this.currentY + this.endY;
 
                 this.host.style.setProperty("top", this.currentY + "px");
-                this.host.style.setProperty("height", this.currentHeight + "px");
+                this.host.style.setProperty(
+                    "height",
+                    this.currentHeight + "px",
+                );
             }
 
-            if (this.options.resize.some((resize) => ["e", "ne", "se"].includes(resize)) && /e/.test(this.resize)) {
+            if (
+                this.options.resize.some((resize) =>
+                    ["e", "ne", "se"].includes(resize),
+                ) &&
+                /e/.test(this.resize)
+            ) {
                 this.currentWidth = this.startWidth + currentX - this.endX;
 
                 this.host.style.setProperty("width", this.currentWidth + "px");
             }
 
-            if (this.options.resize.some((resize) => ["s", "se", "sw"].includes(resize)) && /s/.test(this.resize)) {
+            if (
+                this.options.resize.some((resize) =>
+                    ["s", "se", "sw"].includes(resize),
+                ) &&
+                /s/.test(this.resize)
+            ) {
                 this.currentHeight = this.startHeight + currentY - this.endY;
 
-                this.host.style.setProperty("height", this.currentHeight + "px");
+                this.host.style.setProperty(
+                    "height",
+                    this.currentHeight + "px",
+                );
             }
 
-            if (this.options.resize.some((resize) => ["w", "sw", "nw"].includes(resize)) && /w/.test(this.resize)) {
+            if (
+                this.options.resize.some((resize) =>
+                    ["w", "sw", "nw"].includes(resize),
+                ) &&
+                /w/.test(this.resize)
+            ) {
                 this.currentX = currentX;
                 this.currentWidth = this.startWidth - this.currentX + this.endX;
 

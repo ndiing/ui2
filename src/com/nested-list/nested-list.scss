@@ -59,15 +59,15 @@
 
 // .md-nested-list__icon{}
 
-.md-nested-list__indent{
+.md-nested-list__indent {
     width: 24px;
     height: 24px;
 }
-.md-nested-list__action{
+.md-nested-list__action {
     width: 24px;
     height: 24px;
 }
-.md-nested-list__icon{
+.md-nested-list__icon {
     width: 24px;
     height: 24px;
 }
@@ -86,7 +86,7 @@
 .md-nested-list__item {
     min-height: 56px;
 
-    &[activated]{
+    &[activated] {
         box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
     }
 }
@@ -111,17 +111,16 @@
     }
 }
 
-.md-nested-list--tree{
-    .md-nested-list{
+.md-nested-list--tree {
+    .md-nested-list {
         padding-top: 0;
         padding-bottom: 0;
     }
 }
-.md-nested-list--level{
-
+.md-nested-list--level {
 }
-.md-nested-list--accordion{
-    .md-nested-list{
+.md-nested-list--accordion {
+    .md-nested-list {
         padding-top: 0;
         padding-bottom: 0;
     }
@@ -161,7 +160,9 @@
                 @include md-ripple--focused;
                 animation-name: md-navigation-bar-icon;
                 animation-duration: var(--md-sys-motion-duration-short4);
-                animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+                animation-timing-function: cubic-bezier(
+                    var(--md-sys-motion-easing-legacy)
+                );
             }
         }
 
@@ -291,7 +292,9 @@
                 @include md-ripple--focused;
                 animation-name: md-navigation-rail-icon;
                 animation-duration: var(--md-sys-motion-duration-short4);
-                animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+                animation-timing-function: cubic-bezier(
+                    var(--md-sys-motion-easing-legacy)
+                );
             }
         }
 
@@ -384,7 +387,9 @@
     &::after {
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+        transition-timing-function: cubic-bezier(
+            var(--md-sys-motion-easing-legacy)
+        );
     }
 
     .md-nested-list__row {

@@ -142,7 +142,7 @@ ${this.buttons.map(button=>choose(button.is,[
                         this.close();
                     }, 5 * 1000);
                     this.open = true;
-                })
+                }),
         );
     }
 

@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppSearchFieldElement extends MDElement{
-
+class AppSearchFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppSearchFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-search-field',AppSearchFieldElement)
+customElements.define("app-search-field", AppSearchFieldElement);
 
-export default document.createElement('app-search-field')
+export default document.createElement("app-search-field");

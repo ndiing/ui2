@@ -5,20 +5,20 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDPasswordFieldComponent extends MDElement {
     static get properties() {
         return {
-            type:{type:String},
-            autocomplete:{type:String},
-            disabled:{type:Boolean},
-            form:{type:String},
-            name:{type:String},
-            readonly:{type:Boolean},
-            required:{type:Boolean},
-            value:{type:String},
-            maxlength:{type:Number},
-            minlength:{type:Number},
-            pattern:{type:String},
-            placeholder:{type:String},
-            size:{type:Number},
-            defaultValue:{type:String},
+            type: { type: String },
+            autocomplete: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            name: { type: String },
+            readonly: { type: Boolean },
+            required: { type: Boolean },
+            value: { type: String },
+            maxlength: { type: Number },
+            minlength: { type: Number },
+            pattern: { type: String },
+            placeholder: { type: String },
+            size: { type: Number },
+            defaultValue: { type: String },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -39,7 +39,7 @@ class MDPasswordFieldComponent extends MDElement {
 
     constructor() {
         super();
-        this.type='password'
+        this.type = "password";
     }
 
     /* prettier-ignore */
@@ -97,15 +97,20 @@ class MDPasswordFieldComponent extends MDElement {
         this.classList.remove("md-password-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-password-field__meta,.md-password-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-password-field__meta,.md-password-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-password-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-password-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
     async firstUpdated(changedProperties) {
-        await this.updateComplete
-        this.defaultValue = this.value??''
+        await this.updateComplete;
+        this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
@@ -131,8 +136,11 @@ class MDPasswordFieldComponent extends MDElement {
     }
 
     handlePasswordFieldNativeActionVisibilityClick(event) {
-        if(this.type=='password'){this.type='text'}
-        else{this.type='password'}
+        if (this.type == "password") {
+            this.type = "text";
+        } else {
+            this.type = "password";
+        }
         this.emit("onPasswordFieldNativeActionVisibilityClick", event);
     }
 

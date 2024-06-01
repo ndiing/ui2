@@ -30,7 +30,7 @@ class AppPopperElement extends MDElement {
             // "left-start",
             // "left",
             // "left-end",
-            "center"
+            "center",
         ];
 
         const container = this.querySelector("#container");
@@ -38,10 +38,10 @@ class AppPopperElement extends MDElement {
             button: this.querySelector("#button"),
             // containment: container.parentElement,
             // shift: true,
-            offset:8,
+            offset: 8,
             placements,
         });
-        popper.set()
+        popper.set();
     }
 }
 

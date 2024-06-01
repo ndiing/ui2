@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppCardElement extends MDElement{
-
+class AppCardElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -78,6 +77,6 @@ class AppCardElement extends MDElement{
     }
 }
 
-customElements.define('app-card',AppCardElement)
+customElements.define("app-card", AppCardElement);
 
-export default document.createElement('app-card')
+export default document.createElement("app-card");

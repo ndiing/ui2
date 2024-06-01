@@ -144,11 +144,11 @@ class AppMainElement extends MDElement {
     handleListItemSelected(event) {
         window.requestAnimationFrame(() => {
             event.detail.scrollIntoView({
-                block:'center',
-                inline:'center',
-                behavior:'smooth',
-            })
-        })
+                block: "center",
+                inline: "center",
+                behavior: "smooth",
+            });
+        });
     }
 }
 

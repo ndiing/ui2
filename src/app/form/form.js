@@ -124,10 +124,10 @@ import { MDElement } from "../../com/element/element";
 */
 
 class AppFormElement extends MDElement {
-    constructor(){
-        super()
+    constructor() {
+        super();
 
-        this.data={
+        this.data = {
             "text-field": "ndiing",
             "number-field": "2",
             "tel-field": "+6281935155404",
@@ -142,11 +142,11 @@ class AppFormElement extends MDElement {
             "month-field": "2024-01",
             "week-field": "2024-W28",
             "time-field": "",
-            "checkbox": "",
+            checkbox: "",
             "radio-button": "",
-            "switch": "",
-            "slider": "50"
-        }
+            switch: "",
+            slider: "50",
+        };
     }
     /* prettier-ignore */
     render() {

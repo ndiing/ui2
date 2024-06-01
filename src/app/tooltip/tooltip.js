@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppTooltipElement extends MDElement{
-
+class AppTooltipElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -89,6 +88,6 @@ class AppTooltipElement extends MDElement{
     }
 }
 
-customElements.define('app-tooltip',AppTooltipElement)
+customElements.define("app-tooltip", AppTooltipElement);
 
-export default document.createElement('app-tooltip')
+export default document.createElement("app-tooltip");

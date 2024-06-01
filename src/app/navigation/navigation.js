@@ -1,90 +1,87 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppNavigationElement extends MDElement{
-    constructor(){
-        super()
+class AppNavigationElement extends MDElement {
+    constructor() {
+        super();
 
-        
-        this.list1=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list2=[
-            {leadingIcon:'image',selected:true},
-            {leadingIcon:'image',badge:{label:0}},
-            {leadingIcon:'image',badge:{label:1}},
-            {leadingIcon:'image',badge:{label:1000}},
-        ]
-        
-        this.list3=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list4=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',badge:{label:0}},
-            {label:'Label 3',badge:{label:1}},
-            {label:'Label 4',badge:{label:1000}},
-        ]
-        
-        this.list5=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list6=[
-            {leadingIcon:'image',selected:true},
-            {leadingIcon:'image',badge:{label:0}},
-            {leadingIcon:'image',badge:{label:1}},
-            {leadingIcon:'image',badge:{label:1000}},
-        ]
-        
-        this.list9=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list10=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',badge:{label:0}},
-            {label:'Label 3',badge:{label:1}},
-            {label:'Label 4',badge:{label:1000}},
-        ]
+        this.list1 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list2 = [
+            { leadingIcon: "image", selected: true },
+            { leadingIcon: "image", badge: { label: 0 } },
+            { leadingIcon: "image", badge: { label: 1 } },
+            { leadingIcon: "image", badge: { label: 1000 } },
+        ];
 
-    
-        this.list7=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list8=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',badge:{label:0}},
-            {label:'Label 3',badge:{label:1}},
-            {label:'Label 4',badge:{label:1000}},
-        ]
-        
-        this.list11=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2',badge:{label:0}},
-            {leadingIcon:'image',label:'Label 3',badge:{label:1}},
-            {leadingIcon:'image',label:'Label 4',badge:{label:1000}},
-        ]
-        this.list12=[
-            {label:'Label 1',selected:true},
-            {label:'Label 2',badge:{label:0}},
-            {label:'Label 3',badge:{label:1}},
-            {label:'Label 4',badge:{label:1000}},
-        ]
-        
+        this.list3 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list4 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", badge: { label: 0 } },
+            { label: "Label 3", badge: { label: 1 } },
+            { label: "Label 4", badge: { label: 1000 } },
+        ];
+
+        this.list5 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list6 = [
+            { leadingIcon: "image", selected: true },
+            { leadingIcon: "image", badge: { label: 0 } },
+            { leadingIcon: "image", badge: { label: 1 } },
+            { leadingIcon: "image", badge: { label: 1000 } },
+        ];
+
+        this.list9 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list10 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", badge: { label: 0 } },
+            { label: "Label 3", badge: { label: 1 } },
+            { label: "Label 4", badge: { label: 1000 } },
+        ];
+
+        this.list7 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list8 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", badge: { label: 0 } },
+            { label: "Label 3", badge: { label: 1 } },
+            { label: "Label 4", badge: { label: 1000 } },
+        ];
+
+        this.list11 = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
+            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
+            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
+        ];
+        this.list12 = [
+            { label: "Label 1", selected: true },
+            { label: "Label 2", badge: { label: 0 } },
+            { label: "Label 3", badge: { label: 1 } },
+            { label: "Label 4", badge: { label: 1000 } },
+        ];
     }
 
     /* prettier-ignore */
@@ -187,6 +184,6 @@ class AppNavigationElement extends MDElement{
     }
 }
 
-customElements.define('app-navigation',AppNavigationElement)
+customElements.define("app-navigation", AppNavigationElement);
 
-export default document.createElement('app-navigation')
+export default document.createElement("app-navigation");

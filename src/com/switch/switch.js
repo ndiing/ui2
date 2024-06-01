@@ -60,7 +60,12 @@ class MDSwitchComponent extends MDElement {
 
         this.classList.add("md-switch");
         await this.updateComplete;
-        this.ripple = new MDRippleModule(this.switchThumb, { button: this.switchNative, containment: false, fadeout: true, centered: true });
+        this.ripple = new MDRippleModule(this.switchThumb, {
+            button: this.switchNative,
+            containment: false,
+            fadeout: true,
+            centered: true,
+        });
     }
 
     async disconnectedCallback() {

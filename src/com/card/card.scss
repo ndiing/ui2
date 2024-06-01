@@ -3,7 +3,9 @@
     flex-direction: column;
     overflow: hidden;
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
+    background: var(
+        --md-sys-color-surface-container
+    ); // var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
 }
@@ -84,14 +86,18 @@
 
 .md-card--elevated {
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-low);
+    background: var(
+        --md-sys-color-surface-container
+    ); // var(--md-sys-color-surface-container-low);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level1);
 }
 
 .md-card--filled {
     border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
+    background: var(
+        --md-sys-color-surface-container
+    ); // var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
 }

@@ -107,25 +107,20 @@ class MDTooltipComponent extends MDElement {
         }
     }
 
-    show(button,options) {
+    show(button, options) {
         this.open = true;
-        this.popper=new MDPopperModule(this,{
+        this.popper = new MDPopperModule(this, {
             button,
-            placements:[
-                'bottom',
-                'top',
-                'right',
-                'left',
-            ],
-            offset:8,
+            placements: ["bottom", "top", "right", "left"],
+            offset: 8,
             options,
-        })
-        this.popper.set()
+        });
+        this.popper.set();
     }
 
     close() {
         this.open = false;
-        this.popper.destroy()
+        this.popper.destroy();
     }
 
     toggle() {

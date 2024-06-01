@@ -99,9 +99,14 @@ class MDWeekFieldComponent extends MDElement {
         this.classList.remove("md-week-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-week-field__meta,.md-week-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-week-field__meta,.md-week-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-week-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-week-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
@@ -142,25 +147,52 @@ class MDWeekFieldComponent extends MDElement {
 
     handleColorPicker() {
         this.weekFieldPicker = document.createElement("md-week-picker");
-        this.parentElement.insertBefore(this.weekFieldPicker, this.nextElementSibling);
+        this.parentElement.insertBefore(
+            this.weekFieldPicker,
+            this.nextElementSibling,
+        );
         if (this.value) this.weekFieldPicker.value = this.value;
 
         const callback = () => {
-            this.weekFieldPicker.removeEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
-            this.weekFieldPicker.removeEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
-            this.weekFieldPicker.removeEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
-            this.weekFieldPicker.removeEventListener("onWeekPickerClose", callback);
+            this.weekFieldPicker.removeEventListener(
+                "onWeekPickerChange",
+                this.handleWeekFieldPickerChange,
+            );
+            this.weekFieldPicker.removeEventListener(
+                "onWeekPickerButtonCancelClick",
+                this.handleWeekFieldPickerButtonCancelClick,
+            );
+            this.weekFieldPicker.removeEventListener(
+                "onWeekPickerButtonOkClick",
+                this.handleWeekFieldPickerButtonOkClick,
+            );
+            this.weekFieldPicker.removeEventListener(
+                "onWeekPickerClose",
+                callback,
+            );
             this.weekFieldPicker.remove();
         };
 
-        this.handleWeekFieldPickerChange = this.handleWeekFieldPickerChange.bind(this);
-        this.handleWeekFieldPickerButtonCancelClick = this.handleWeekFieldPickerButtonCancelClick.bind(this);
-        this.handleWeekFieldPickerButtonOkClick = this.handleWeekFieldPickerButtonOkClick.bind(this);
+        this.handleWeekFieldPickerChange =
+            this.handleWeekFieldPickerChange.bind(this);
+        this.handleWeekFieldPickerButtonCancelClick =
+            this.handleWeekFieldPickerButtonCancelClick.bind(this);
+        this.handleWeekFieldPickerButtonOkClick =
+            this.handleWeekFieldPickerButtonOkClick.bind(this);
 
         this.weekFieldPicker.addEventListener("onWeekPickerClose", callback);
-        this.weekFieldPicker.addEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
-        this.weekFieldPicker.addEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
-        this.weekFieldPicker.addEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
+        this.weekFieldPicker.addEventListener(
+            "onWeekPickerChange",
+            this.handleWeekFieldPickerChange,
+        );
+        this.weekFieldPicker.addEventListener(
+            "onWeekPickerButtonCancelClick",
+            this.handleWeekFieldPickerButtonCancelClick,
+        );
+        this.weekFieldPicker.addEventListener(
+            "onWeekPickerButtonOkClick",
+            this.handleWeekFieldPickerButtonOkClick,
+        );
 
         window.requestAnimationFrame(() => {
             this.weekFieldPicker.show(this);
@@ -172,7 +204,7 @@ class MDWeekFieldComponent extends MDElement {
         this.colorFieldNative.value = [
             //
             this.weekFieldPicker.selected.getFullYear(),
-            (''+this.weekFieldPicker.selected.getWeek()).padStart(2,'0'),
+            ("" + this.weekFieldPicker.selected.getWeek()).padStart(2, "0"),
         ].join("-W");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;

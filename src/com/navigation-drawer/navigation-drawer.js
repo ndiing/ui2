@@ -77,8 +77,12 @@ class MDNavigationDrawerComponent extends MDElement {
         await this.updateComplete;
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-navigation-drawer__scrim");
-        this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
-        this.scrim.addEventListener("click", this.handleNavigationDrawerScrimClick);
+        this.handleNavigationDrawerScrimClick =
+            this.handleNavigationDrawerScrimClick.bind(this);
+        this.scrim.addEventListener(
+            "click",
+            this.handleNavigationDrawerScrimClick,
+        );
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
@@ -86,7 +90,10 @@ class MDNavigationDrawerComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
         await this.updateComplete;
-        this.scrim.removeEventListener("click", this.handleNavigationDrawerScrimClick);
+        this.scrim.removeEventListener(
+            "click",
+            this.handleNavigationDrawerScrimClick,
+        );
         this.scrim.remove();
     }
 

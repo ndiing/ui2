@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppBottomSheetElement extends MDElement{
-
+class AppBottomSheetElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -42,6 +41,6 @@ class AppBottomSheetElement extends MDElement{
     }
 }
 
-customElements.define('app-bottom-sheet',AppBottomSheetElement)
+customElements.define("app-bottom-sheet", AppBottomSheetElement);
 
-export default document.createElement('app-bottom-sheet')
+export default document.createElement("app-bottom-sheet");

@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppColorPickerElement extends MDElement{
-
+class AppColorPickerElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -29,6 +28,6 @@ class AppColorPickerElement extends MDElement{
     }
 }
 
-customElements.define('app-color-picker',AppColorPickerElement)
+customElements.define("app-color-picker", AppColorPickerElement);
 
-export default document.createElement('app-color-picker')
+export default document.createElement("app-color-picker");

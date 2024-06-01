@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppFileFieldElement extends MDElement{
-
+class AppFileFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -31,6 +30,6 @@ class AppFileFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-file-field',AppFileFieldElement)
+customElements.define("app-file-field", AppFileFieldElement);
 
-export default document.createElement('app-file-field')
+export default document.createElement("app-file-field");

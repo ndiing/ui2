@@ -41,7 +41,6 @@ class MDImageComponent extends MDElement {
     }
 
     updated(changedProperties) {
-        
         if (changedProperties.has("ratio")) {
             this.style.removeProperty("aspect-ratio");
 
@@ -62,15 +61,19 @@ class MDImageComponent extends MDElement {
 
             this.style.removeProperty("border-radius");
 
-            if (this.ui?.includes('rounded')) {
-                const ratioValues = this.ratio ? this.ratio.split("/").map((ratio) => ratio.trim()) : [1, 1];
-                const [width, height] = ratioValues.map((value) => parseFloat(value));
-                const borderRadius = this.ratio ? `50% / ${(width / height) * 50}%` : "50%";
+            if (this.ui?.includes("rounded")) {
+                const ratioValues = this.ratio
+                    ? this.ratio.split("/").map((ratio) => ratio.trim())
+                    : [1, 1];
+                const [width, height] = ratioValues.map((value) =>
+                    parseFloat(value),
+                );
+                const borderRadius = this.ratio
+                    ? `50% / ${(width / height) * 50}%`
+                    : "50%";
                 this.style.setProperty("border-radius", borderRadius);
             }
         }
-
-
     }
 }
 

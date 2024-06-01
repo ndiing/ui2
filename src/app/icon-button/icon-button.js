@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppIconButtonElement extends MDElement{
-
+class AppIconButtonElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -30,6 +29,6 @@ class AppIconButtonElement extends MDElement{
     }
 }
 
-customElements.define('app-icon-button',AppIconButtonElement)
+customElements.define("app-icon-button", AppIconButtonElement);
 
-export default document.createElement('app-icon-button')
+export default document.createElement("app-icon-button");

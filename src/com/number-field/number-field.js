@@ -5,21 +5,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDNumberFieldComponent extends MDElement {
     static get properties() {
         return {
-            autocapitalize:{type:Boolean},
-            autocomplete:{type:String},
-            disabled:{type:Boolean},
-            form:{type:String},
-            list:{type:String},
-            name:{type:String},
-            readonly:{type:Boolean},
-            required:{type:Boolean},
-            type:{type:String},
-            value:{type:Number},
-            max:{type:Number},
-            min:{type:Number},
-            placeholder:{type:String},
-            step:{type:Number},
-            defaultValue:{type:Number},
+            autocapitalize: { type: Boolean },
+            autocomplete: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            list: { type: String },
+            name: { type: String },
+            readonly: { type: Boolean },
+            required: { type: Boolean },
+            type: { type: String },
+            value: { type: Number },
+            max: { type: Number },
+            min: { type: Number },
+            placeholder: { type: String },
+            step: { type: Number },
+            defaultValue: { type: Number },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -100,15 +100,20 @@ class MDNumberFieldComponent extends MDElement {
         this.classList.remove("md-number-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-number-field__meta,.md-number-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-number-field__meta,.md-number-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-number-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-number-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
     async firstUpdated(changedProperties) {
-        await this.updateComplete
-        this.defaultValue = this.value??''
+        await this.updateComplete;
+        this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
@@ -134,17 +139,17 @@ class MDNumberFieldComponent extends MDElement {
     }
 
     handleNumberFieldNativeActionStepDownClick(event) {
-        this.numberFieldNative.stepDown()
+        this.numberFieldNative.stepDown();
 
-        this.numberFieldNative.dispatchEvent(new CustomEvent('input',{}))
+        this.numberFieldNative.dispatchEvent(new CustomEvent("input", {}));
 
         this.emit("onNumberFieldNativeActionStepDownClick", event);
     }
 
     handleNumberFieldNativeActionStepUpClick(event) {
-        this.numberFieldNative.stepUp()
+        this.numberFieldNative.stepUp();
 
-        this.numberFieldNative.dispatchEvent(new CustomEvent('input',{}))
+        this.numberFieldNative.dispatchEvent(new CustomEvent("input", {}));
 
         this.emit("onNumberFieldNativeActionStepUpClick", event);
     }

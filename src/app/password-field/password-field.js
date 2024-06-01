@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppPasswordFieldElement extends MDElement{
-
+class AppPasswordFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppPasswordFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-password-field',AppPasswordFieldElement)
+customElements.define("app-password-field", AppPasswordFieldElement);
 
-export default document.createElement('app-password-field')
+export default document.createElement("app-password-field");

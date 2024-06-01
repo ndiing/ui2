@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppFabElement extends MDElement{
-
+class AppFabElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -29,6 +28,6 @@ class AppFabElement extends MDElement{
     }
 }
 
-customElements.define('app-fab',AppFabElement)
+customElements.define("app-fab", AppFabElement);
 
-export default document.createElement('app-fab')
+export default document.createElement("app-fab");

@@ -15,8 +15,8 @@ class MDNestedListItemComponent extends MDElement {
             ui: { type: String },
             expanded: { type: Boolean, reflect: true },
             activated: { type: Boolean, reflect: true },
-            isParent: { type: Boolean,  },
-            hasLevel: { type: Boolean,  },
+            isParent: { type: Boolean },
+            hasLevel: { type: Boolean },
         };
     }
 
@@ -103,8 +103,8 @@ class MDNestedListItemComponent extends MDElement {
         }
     }
 
-    handleNestedListItemActionClick(event){
-        this.emit('onNestedListItemActionClick',event)
+    handleNestedListItemActionClick(event) {
+        this.emit("onNestedListItemActionClick", event);
     }
 }
 
@@ -159,7 +159,7 @@ class MDNestedListComponent extends MDElement {
     constructor() {
         super();
 
-        this.singleSelection=true
+        this.singleSelection = true;
     }
 
     /* prettier-ignore */
@@ -216,78 +216,77 @@ class MDNestedListComponent extends MDElement {
     }
 
     async updated(changedProperties) {
-        if(changedProperties.has('ui')){
-            [
-                'tree',
-                'level',
-                'accordion',
-            ]
-            .forEach(ui => {
-                this.classList.remove('md-nested-list--'+ui)
-            })
-            if(this.ui){
-                this.ui.split(' ')
-                .forEach(ui => {
-                    this.classList.add('md-nested-list--'+ui)
-                })
+        if (changedProperties.has("ui")) {
+            ["tree", "level", "accordion"].forEach((ui) => {
+                this.classList.remove("md-nested-list--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-nested-list--" + ui);
+                });
             }
         }
-        if(changedProperties.has('list')){
-            await this.updateComplete
-            this.createList(this.list)
-            this.requestUpdate()
+        if (changedProperties.has("list")) {
+            await this.updateComplete;
+            this.createList(this.list);
+            this.requestUpdate();
         }
     }
 
-    createList(list,indent=0){
-        let expanded=false
-        let activated=false
-        list.forEach((item,index,array)=>{
-            item.indent=indent
-            item.hasLevel=array.find(item=>item.children?.length)||this.indent>0
-            if(item.expanded||item.selected){
-                expanded=true
-                item.expanded=true
+    createList(list, indent = 0) {
+        let expanded = false;
+        let activated = false;
+        list.forEach((item, index, array) => {
+            item.indent = indent;
+            item.hasLevel =
+                array.find((item) => item.children?.length) || this.indent > 0;
+            if (item.expanded || item.selected) {
+                expanded = true;
+                item.expanded = true;
             }
-            item.activated=false
-            if(item.selected){
-                activated=true
+            item.activated = false;
+            if (item.selected) {
+                activated = true;
             }
-            if(item.children?.length){
-                if(this.ui=='level'){
-                    const {label} = item
-                    item.children.unshift({label,isParent:true,parent:item})
+            if (item.children?.length) {
+                if (this.ui == "level") {
+                    const { label } = item;
+                    item.children.unshift({
+                        label,
+                        isParent: true,
+                        parent: item,
+                    });
                 }
 
-                item.isNode=true
-                const child=this.createList(item.children,indent+1)
-                if(child.expanded){
-                    expanded=true
-                    item.expanded=true
+                item.isNode = true;
+                const child = this.createList(item.children, indent + 1);
+                if (child.expanded) {
+                    expanded = true;
+                    item.expanded = true;
                 }
-                if(child.activated){
-                    activated=true
-                    item.activated=true
+                if (child.activated) {
+                    activated = true;
+                    item.activated = true;
                 }
             }
-        })
-        return {expanded,activated}
+        });
+        return { expanded, activated };
     }
 
-    lastList(list,){
-        let last
-        list.forEach(item=>{
-            if(item.expanded){
-                last=item.children
+    lastList(list) {
+        let last;
+        list.forEach((item) => {
+            if (item.expanded) {
+                last = item.children;
             }
-            if(item.children?.length){
-                const child=this.lastList(item.children)
-                if(child){
-                    last=child
+            if (item.children?.length) {
+                const child = this.lastList(item.children);
+                if (child) {
+                    last = child;
                 }
             }
-        })
-        return last
+        });
+        return last;
     }
 
     handleNestedListItemClick(event) {
@@ -304,22 +303,29 @@ class MDNestedListComponent extends MDElement {
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+                [this.currentIndex, this.lastIndex] = [
+                    this.lastIndex,
+                    this.currentIndex,
+                ];
             }
             this.list.forEach((item, index) => {
-                item.selected = index >= this.lastIndex && index <= this.currentIndex;
+                item.selected =
+                    index >= this.lastIndex && index <= this.currentIndex;
             });
 
             if (this.swapIndex) {
-                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+                [this.currentIndex, this.lastIndex] = [
+                    this.lastIndex,
+                    this.currentIndex,
+                ];
             }
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
         } else if (this.singleSelection) {
-            if(!data.isNode&&!data.isParent){
-                this.selectList(this.list,data);
-            }else{
-                this.expandList(this.list,data.isParent?data.parent:data)
+            if (!data.isNode && !data.isParent) {
+                this.selectList(this.list, data);
+            } else {
+                this.expandList(this.list, data.isParent ? data.parent : data);
             }
             this.lastIndex = this.list.indexOf(data);
         }
@@ -327,22 +333,22 @@ class MDNestedListComponent extends MDElement {
         this.emit("onNestedListItemClick", event);
     }
 
-    selectList(list,data) {
-        let activated=false
+    selectList(list, data) {
+        let activated = false;
         list.forEach((item) => {
             item.selected = item == data;
-            item.activated=false
-            if(item.selected){
-                activated=true
+            item.activated = false;
+            if (item.selected) {
+                activated = true;
             }
-            if(item.children?.length){
-                if(this.selectList(item.children,data)){
-                    activated=true     
-                    item.activated=true     
+            if (item.children?.length) {
+                if (this.selectList(item.children, data)) {
+                    activated = true;
+                    item.activated = true;
                 }
             }
         });
-        return activated
+        return activated;
     }
 
     handleNestedListKeydown(event) {
@@ -356,18 +362,21 @@ class MDNestedListComponent extends MDElement {
         this.emit("onNestedListKeydown", event);
     }
 
-    expandList(list,data){
-        data.expanded=
-        !data.expanded
+    expandList(list, data) {
+        data.expanded = !data.expanded;
     }
 
-    handleNestedListItemActionClick(event){
-        const data=event.currentTarget.data
-        this.expandList(this.list,data.isParent?data.parent:data)
-        this.requestUpdate()
+    handleNestedListItemActionClick(event) {
+        const data = event.currentTarget.data;
+        this.expandList(this.list, data.isParent ? data.parent : data);
+        this.requestUpdate();
     }
 }
 
 customElements.define("md-nested-list", MDNestedListComponent);
 
-export { MDNestedListComponent, MDNestedListRowComponent, MDNestedListItemComponent };
+export {
+    MDNestedListComponent,
+    MDNestedListRowComponent,
+    MDNestedListItemComponent,
+};

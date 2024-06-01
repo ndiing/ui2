@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppBadgeElement extends MDElement{
-
+class AppBadgeElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -24,6 +23,6 @@ class AppBadgeElement extends MDElement{
     }
 }
 
-customElements.define('app-badge',AppBadgeElement)
+customElements.define("app-badge", AppBadgeElement);
 
-export default document.createElement('app-badge')
+export default document.createElement("app-badge");

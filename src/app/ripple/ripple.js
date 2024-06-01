@@ -69,13 +69,13 @@ class AppRippleElement extends MDElement {
         new MDRippleModule(this.querySelector("#ripple2"), {});
         new MDRippleModule(this.querySelector("#ripple3"), {});
         new MDRippleModule(this.querySelector("#ripple4"), {
-            centered:true
+            centered: true,
         });
         new MDRippleModule(this.querySelector("#ripple5"), {
-            fadeout:true
+            fadeout: true,
         });
         new MDRippleModule(this.querySelector("#ripple6"), {
-            button:this.querySelector("#ripple1")
+            button: this.querySelector("#ripple1"),
         });
     }
 }

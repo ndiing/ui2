@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppTimePickerElement extends MDElement{
-
+class AppTimePickerElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -29,6 +28,6 @@ class AppTimePickerElement extends MDElement{
     }
 }
 
-customElements.define('app-time-picker',AppTimePickerElement)
+customElements.define("app-time-picker", AppTimePickerElement);
 
-export default document.createElement('app-time-picker')
+export default document.createElement("app-time-picker");

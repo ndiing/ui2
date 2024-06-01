@@ -1,17 +1,16 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppMenuElement extends MDElement{
+class AppMenuElement extends MDElement {
+    constructor() {
+        super();
 
-    constructor(){
-        super()
-
-        this.list=[
-            {leadingIcon:'image',label:'Label 1',selected:true},
-            {leadingIcon:'image',label:'Label 2'},
-            {leadingIcon:'image',label:'Label 3'},
-            {leadingIcon:'image',label:'Label 4'},
-        ]
+        this.list = [
+            { leadingIcon: "image", label: "Label 1", selected: true },
+            { leadingIcon: "image", label: "Label 2" },
+            { leadingIcon: "image", label: "Label 3" },
+            { leadingIcon: "image", label: "Label 4" },
+        ];
     }
 
     /* prettier-ignore */
@@ -33,6 +32,6 @@ class AppMenuElement extends MDElement{
     }
 }
 
-customElements.define('app-menu',AppMenuElement)
+customElements.define("app-menu", AppMenuElement);
 
-export default document.createElement('app-menu')
+export default document.createElement("app-menu");

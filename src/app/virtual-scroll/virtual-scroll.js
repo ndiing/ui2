@@ -44,7 +44,7 @@ class AppVirtualScrollElement extends MDElement {
         await this.updateComplete;
 
         this.data = Array.from({ length: 500000 }, (v, k) => ({
-            label: k+1,
+            label: k + 1,
         }));
         this.virtualScroll = new MDVirtualScrollModule(this.viewport, {
             scrollbar: this.scrollbar,

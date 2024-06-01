@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppTextFieldElement extends MDElement{
-
+class AppTextFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -252,6 +251,6 @@ class AppTextFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-text-field',AppTextFieldElement)
+customElements.define("app-text-field", AppTextFieldElement);
 
-export default document.createElement('app-text-field')
+export default document.createElement("app-text-field");

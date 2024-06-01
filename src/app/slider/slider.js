@@ -1,14 +1,12 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-const format = new Intl.NumberFormat('id',{
-    currency:'IDR',
-    style:'currency'
+const format = new Intl.NumberFormat("id", {
+    currency: "IDR",
+    style: "currency",
+}).format;
 
-}).format
-
-class AppSliderElement extends MDElement{
-
+class AppSliderElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -69,6 +67,6 @@ class AppSliderElement extends MDElement{
     }
 }
 
-customElements.define('app-slider',AppSliderElement)
+customElements.define("app-slider", AppSliderElement);
 
-export default document.createElement('app-slider')
+export default document.createElement("app-slider");

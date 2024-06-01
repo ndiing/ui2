@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppProgressIndicatorElement extends MDElement{
-
+class AppProgressIndicatorElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -31,6 +30,6 @@ class AppProgressIndicatorElement extends MDElement{
     }
 }
 
-customElements.define('app-progress-indicator',AppProgressIndicatorElement)
+customElements.define("app-progress-indicator", AppProgressIndicatorElement);
 
-export default document.createElement('app-progress-indicator')
+export default document.createElement("app-progress-indicator");

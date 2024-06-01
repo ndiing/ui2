@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppDialogElement extends MDElement{
-
+class AppDialogElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -36,6 +35,6 @@ class AppDialogElement extends MDElement{
     }
 }
 
-customElements.define('app-dialog',AppDialogElement)
+customElements.define("app-dialog", AppDialogElement);
 
-export default document.createElement('app-dialog')
+export default document.createElement("app-dialog");

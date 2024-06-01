@@ -12,7 +12,11 @@ class MDElement extends LitElement {
     }
 
     emit(type, detail) {
-        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
         this.dispatchEvent(event);
     }
 }

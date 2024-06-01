@@ -106,7 +106,15 @@ class MDMenuComponent extends MDElement {
         window.requestAnimationFrame(() => {
             this.popper = new MDPopperModule(this, {
                 button,
-                placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top", "center"],
+                placements: [
+                    "bottom-start",
+                    "bottom-end",
+                    "bottom",
+                    "top-start",
+                    "top-end",
+                    "top",
+                    "center",
+                ],
                 shift: true,
                 ...options,
             });

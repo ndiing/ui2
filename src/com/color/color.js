@@ -1,4 +1,9 @@
-import { Hct, applyTheme, argbFromHex, themeFromSourceColor } from "@material/material-color-utilities";
+import {
+    Hct,
+    applyTheme,
+    argbFromHex,
+    themeFromSourceColor,
+} from "@material/material-color-utilities";
 
 class MDColorModule {
     constructor() {
@@ -19,10 +24,13 @@ class MDColorModule {
 
     init() {
         this.callback();
-        new MutationObserver(this.callback).observe(document.querySelector('[name="theme-color"]'), {
-            attributes: true,
-            attributeFilter: ["content"],
-        });
+        new MutationObserver(this.callback).observe(
+            document.querySelector('[name="theme-color"]'),
+            {
+                attributes: true,
+                attributeFilter: ["content"],
+            },
+        );
     }
 
     callback() {
@@ -31,7 +39,9 @@ class MDColorModule {
         }
         this.item = this.list.find((item) => item.query.matches);
 
-        const hex = document.querySelector('[name="theme-color"]').getAttribute("content");
+        const hex = document
+            .querySelector('[name="theme-color"]')
+            .getAttribute("content");
         const theme = themeFromSourceColor(argbFromHex(hex), []);
         applyTheme(theme, {
             target: document.body,

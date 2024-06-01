@@ -26,7 +26,8 @@
         position: absolute;
         left: var(--md-ripple-left, 50%);
         top: var(--md-ripple-top, 50%);
-        transform: translate3d(-50%, -50%, 0px) translate3d(var(--md-ripple-x, 0%), var(--md-ripple-y, 0%), 0px);
+        transform: translate3d(-50%, -50%, 0px)
+            translate3d(var(--md-ripple-x, 0%), var(--md-ripple-y, 0%), 0px);
         background: var(--md-sys-color-primary);
         opacity: 0;
         pointer-events: none;
@@ -54,7 +55,9 @@
         opacity: 10%;
         animation-name: var(--md-ripple-animation,);
         animation-duration: var(--md-sys-motion-duration-short4);
-        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+        animation-timing-function: cubic-bezier(
+            var(--md-sys-motion-easing-legacy)
+        );
     }
 }
 
@@ -62,9 +65,14 @@
     &::after {
         opacity: 0%;
 
-        animation-name: var(--md-ripple-animation,), var(--md-ripple-animation-fadeout,);
-        animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
-        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy)), cubic-bezier(var(--md-sys-motion-easing-legacy));
+        animation-name: var(--md-ripple-animation,),
+            var(--md-ripple-animation-fadeout,);
+        animation-duration: var(--md-sys-motion-duration-short4),
+            var(--md-sys-motion-duration-long4);
+        animation-timing-function: cubic-bezier(
+                var(--md-sys-motion-easing-legacy)
+            ),
+            cubic-bezier(var(--md-sys-motion-easing-legacy));
     }
 }
 
@@ -105,7 +113,7 @@
 @mixin md-ripple--selected {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
-    
+
     &.md-icon,
     .md-icon {
         font-variation-settings:
@@ -119,7 +127,7 @@
 @mixin md-ripple--selected-attr {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
-    
+
     &.md-icon,
     .md-icon {
         font-variation-settings:

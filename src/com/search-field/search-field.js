@@ -5,19 +5,19 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDSearchFieldComponent extends MDElement {
     static get properties() {
         return {
-            autocomplete:{type:String},
-            disabled:{type:Boolean},
-            form:{type:String},
-            name:{type:String},
-            readonly:{type:Boolean},
-            required:{type:Boolean},
-            value:{type:String},
-            maxlength:{type:Number},
-            minlength:{type:Number},
-            pattern:{type:String},
-            placeholder:{type:String},
-            size:{type:Number},
-            defaultValue:{type:String},
+            autocomplete: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            name: { type: String },
+            readonly: { type: Boolean },
+            required: { type: Boolean },
+            value: { type: String },
+            maxlength: { type: Number },
+            minlength: { type: Number },
+            pattern: { type: String },
+            placeholder: { type: String },
+            size: { type: Number },
+            defaultValue: { type: String },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -95,15 +95,20 @@ class MDSearchFieldComponent extends MDElement {
         this.classList.remove("md-search-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-search-field__meta,.md-search-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(
+            ".md-search-field__meta,.md-search-field__native",
+        )?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-search-field-offset-left", offsetLeft + "px");
+            this.style.setProperty(
+                "--md-search-field-offset-left",
+                offsetLeft + "px",
+            );
         }
     }
 
     async firstUpdated(changedProperties) {
-        await this.updateComplete
-        this.defaultValue = this.value??''
+        await this.updateComplete;
+        this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
@@ -129,10 +134,10 @@ class MDSearchFieldComponent extends MDElement {
     }
 
     handleSearchFieldNativeActionCancelClick(event) {
-        this.searchFieldNative.value=''
-        this.value=this.searchFieldNative.value
-        this.populated=!!this.value
-        
+        this.searchFieldNative.value = "";
+        this.value = this.searchFieldNative.value;
+        this.populated = !!this.value;
+
         this.emit("onSearchFieldNativeActionCancelClick", event);
     }
 

@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppLayoutElement extends MDElement{
-
+class AppLayoutElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -79,6 +78,6 @@ class AppLayoutElement extends MDElement{
     }
 }
 
-customElements.define('app-layout',AppLayoutElement)
+customElements.define("app-layout", AppLayoutElement);
 
-export default document.createElement('app-layout')
+export default document.createElement("app-layout");

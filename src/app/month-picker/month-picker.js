@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppMonthPickerElement extends MDElement{
-
+class AppMonthPickerElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -29,6 +28,6 @@ class AppMonthPickerElement extends MDElement{
     }
 }
 
-customElements.define('app-month-picker',AppMonthPickerElement)
+customElements.define("app-month-picker", AppMonthPickerElement);
 
-export default document.createElement('app-month-picker')
+export default document.createElement("app-month-picker");

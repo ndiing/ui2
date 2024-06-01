@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppUrlFieldElement extends MDElement{
-
+class AppUrlFieldElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -34,6 +33,6 @@ class AppUrlFieldElement extends MDElement{
     }
 }
 
-customElements.define('app-url-field',AppUrlFieldElement)
+customElements.define("app-url-field", AppUrlFieldElement);
 
-export default document.createElement('app-url-field')
+export default document.createElement("app-url-field");

@@ -50,11 +50,7 @@ class MDTabsComponent extends MDElement {
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                "scrollable",
-                "primary",
-                "secondary",
-            ].forEach((ui) => {
+            ["scrollable", "primary", "secondary"].forEach((ui) => {
                 this.classList.remove("md-tabs--" + ui);
             });
             if (this.ui) {
@@ -78,12 +74,12 @@ class MDTabsComponent extends MDElement {
             }
             this.style.setProperty("--md-tabs-width", width + "px");
             this.style.setProperty("--md-tabs-left", left + "px");
-            if(this.ui?.includes('scrollable')){
+            if (this.ui?.includes("scrollable")) {
                 item.scrollIntoView({
-                    block:'center',
-                    inline:'center',
-                    behavior:'smooth',
-                })
+                    block: "center",
+                    inline: "center",
+                    behavior: "smooth",
+                });
             }
         });
     }

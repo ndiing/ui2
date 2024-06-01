@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppBottomAppBarElement extends MDElement{
-
+class AppBottomAppBarElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -41,6 +40,6 @@ class AppBottomAppBarElement extends MDElement{
     }
 }
 
-customElements.define('app-bottom-app-bar',AppBottomAppBarElement)
+customElements.define("app-bottom-app-bar", AppBottomAppBarElement);
 
-export default document.createElement('app-bottom-app-bar')
+export default document.createElement("app-bottom-app-bar");

@@ -73,7 +73,9 @@
     height: 32px;
     border-radius: calc(32px / 2);
     border: 2px solid var(--md-sys-color-outline);
-    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
+    background: var(
+        --md-sys-color-surface-container
+    ); // var(--md-sys-color-surface-container-highest);
 }
 
 .md-switch__thumb {
@@ -89,7 +91,9 @@
     left: calc((32px - 16px) / 2);
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+    transition-timing-function: cubic-bezier(
+        var(--md-sys-motion-easing-legacy)
+    );
 
     &.md-ripple {
         &::after {
@@ -107,5 +111,7 @@
 
 .md-switch__icon {
     font-size: 16px;
-    color: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
+    color: var(
+        --md-sys-color-surface-container
+    ); // var(--md-sys-color-surface-container-highest);
 }

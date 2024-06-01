@@ -1,8 +1,7 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
-class AppImageElement extends MDElement{
-
+class AppImageElement extends MDElement {
     /* prettier-ignore */
     render(){
         return html`
@@ -48,6 +47,6 @@ class AppImageElement extends MDElement{
     }
 }
 
-customElements.define('app-image',AppImageElement)
+customElements.define("app-image", AppImageElement);
 
-export default document.createElement('app-image')
+export default document.createElement("app-image");
