@@ -1,61 +1,71 @@
-import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
-import { Ripple } from "../ripple/ripple";
-class MDIconButton extends MDElement {
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { MDRippleModule } from "../ripple/ripple";
+class MDIconButtonComponent extends MDElement {
     static get properties() {
         return {
             icon: { type: String },
-            type: { type: String },
             ui: { type: String },
+            toggle: { type: Boolean, reflect: true },
+            selected: { type: Boolean, reflect: true },
         };
     }
 
     constructor() {
         super();
-        this.type = "icon-button";
+        this.icon = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
-        return html`
-            <icon-button class="md-icon-button__native" .type="${this.type}"></icon-button>
-            <div class="md-icon-button__icon">${this.icon}</div>
-        `
+        return this.icon;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-icon-button");
-        this.ripple = new Ripple(this, {
-            button: this.iconButtonNative,
+        await this.updateComplete;
+        this.ripple = new MDRippleModule(this, {
             containment: false,
-            size: this.ui ? (40 / 40) * 100 : (40 / 24) * 100,
+            size: (40 / (this.ui ? 40 : 24)) * 100,
             fadeout: true,
         });
+        this.handleIconButtonClick = this.handleIconButtonClick.bind(this);
+        this.addEventListener("click", this.handleIconButtonClick);
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon-button");
-        this.ripple?.destroy();
+        await this.updateComplete;
+        this.ripple.destroy();
+        this.removeEventListener("click", this.handleIconButtonClick);
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            this.classList.remove("md-icon-button--filled");
-            this.classList.remove("md-icon-button--filled-tonal");
+            ["filled", "tonal", "outlined"].forEach((ui) => {
+                this.classList.remove("md-icon-button--" + ui);
+            });
 
             if (this.ui) {
-                this.classList.add("md-icon-button--" + this.ui);
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-icon-button--" + ui);
+                });
             }
         }
     }
 
-    get iconButtonNative() {
-        return this.querySelector(".md-icon-button__native");
+    handleIconButtonClick(event) {
+        if (this.toggle) {
+            this.selected = !this.selected;
+        }
+        this.emit("onIconButtonClick", event);
     }
 }
-customElements.define("md-icon-button", MDIconButton);
-export { MDIconButton };
+
+customElements.define("md-icon-button", MDIconButtonComponent);
+
+export { MDIconButtonComponent };

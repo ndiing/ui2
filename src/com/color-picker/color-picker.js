@@ -1,17 +1,15 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
-import { classMap } from "lit/directives/class-map.js";
-import { Popper } from "../popper/popper";
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { MDPopperModule } from "../popper/popper";
 
-class MDColorPicker extends MDElement {
+class MDColorPickerComponent extends MDElement {
     static get properties() {
         return {
-            value: { type: String },
-            currentValue: { type: String },
-            index: { type: Number },
             ui: { type: String },
-            open: { type: Boolean },
+            open: { type: Boolean, reflect: true },
+            index: { type: Number },
+            value: { type: String },
         };
     }
 
@@ -126,224 +124,292 @@ class MDColorPicker extends MDElement {
     }
 
     get label() {
-        if (this.index === 0) {
-            return this.currentValue;
-        } else if (this.index === 1) {
-            return `rgba(${this.red}, ${this.green}, ${this.blue}, ${this.alpha})`;
-        } else if (this.index === 2) {
-            return `hsla(${this.hue.toFixed(2)}, ${this.saturation.toFixed(2)}, ${this.lightness.toFixed(2)}, ${this.alpha})`;
-        }
+        return this.selected;
     }
+
+    get subLabel() {}
 
     constructor() {
         super();
+
+        this.value='#000000'
+
         this.index = 0;
-
-        this.value = "#000000";
-        this.currentValue = "#000000";
-
-        const { r, g, b, a } = this.hexToRgba(this.currentValue);
-        this.red = r;
-        this.green = g;
-        this.blue = b;
-        this.alpha = a;
-
-        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
-        this.hue = h;
-        this.saturation = s;
-        this.lightness = l;
     }
 
-    render() {
-        // prettier-ignore
+    /* prettier-ignore */
+    renderCard(){
         return html`
-            <div class="md-color-picker__header">
-                <md-button 
-                    @click="${this.handleColorPickerLabelClick}" 
-                    class="md-color-picker__label" 
-                    .label="${this.label}"
-                    .icon="${"lens"}"
-                ></md-button>
-                
-            </div>
-            <div class="md-color-picker__body">
-                <div class="md-color-picker__inner">
-                    <div class="md-color-picker__area">
-                        
-                        <div class="md-color-picker__gradient">
-                            <canvas 
-                                class="md-color-picker__gradient-track" 
-                                @mousedown="${this.handleColorPickerGradientMousedown}"
-                            ></canvas>
-                            <div class="md-color-picker__gradient-thumb"></div>
-                        </div>
-                        
-                        <input 
-                            type="range" 
-                            class="md-color-picker__hue" 
-                            min="0" 
-                            max="360" 
-                            .value="${this.hue}" 
-                            @input="${this.handleColorPickerHueInput}"
-                        >
+            <div class="md-color-picker__card">
+                <div class="md-color-picker__card-item">
 
+                    <div class="md-color-picker__container">
+                        <div class="md-color-picker__solid">
+                            <canvas 
+                                class="md-color-picker__track"
+                                @pointerdown="${this.handleColorPickerSolidPointerdown}"
+                            ></canvas>
+                            <div class="md-color-picker__thumb"></div>
+                        </div>
+                        <!-- <canvas class="md-color-picker__hue"></canvas> -->
                         <input 
-                            type="range" 
-                            class="md-color-picker__opacity" 
-                            min="0" 
-                            max="100" 
-                            .value="${this.alpha*100}" 
+                            class="md-color-picker__hue"
+                            type="range"
+                            min="0"
+                            max="360"
+                            @input="${this.handleColorPickerHueInput}"
+                            .value="${this.hue}"
+                        >
+                        <!-- <canvas class="md-color-picker__opacity"></canvas> -->
+                        <input 
+                            class="md-color-picker__opacity"
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            .value="${this.alpha}"
                             @input="${this.handleColorPickerOpacityInput}"
                         >
-
                     </div>
-                </div>
-                <div class="md-color-picker__footer">
-                    <md-button @click="${this.handleColorPickerButtonCancelClick}" class="md-color-picker__button" label="Cancel"></md-button>
-                    <md-button @click="${this.handleColorPickerButtonOkClick}" class="md-color-picker__button" label="Ok"></md-button>
+
                 </div>
             </div>
         `
     }
 
+    /* prettier-ignore */
+
+    render() {
+        return html`
+                <div class="md-color-picker__header">
+                    ${this.leadingActions?.length?html`
+                        <div class="md-color-picker__actions">
+                            ${this.leadingActions.map(action=>html`
+                                <md-icon-button @click="${this.handleColorPickerActionClick}" class="md-color-picker__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                    <div class="md-color-picker__label">
+                        <div @click="${this.handleColorPickerLabelPrimaryClick}" class="md-color-picker__label-primary">${this.label}</div>
+                        <!-- <div @click="${this.handleColorPickerLabelSecondaryClick}" class="md-color-picker__label-secondary">${this.subLabel}</div> -->
+                    </div>
+                    <!-- <div class="md-color-picker__actions">
+                        <md-icon-button @click="${this.handleColorPickerActionNavigateBeforeClick}" class="md-color-picker__action" .icon="${"navigate_before"}"></md-icon-button>
+                        <md-icon-button @click="${this.handleColorPickerActionNavigateNextClick}" class="md-color-picker__action" .icon="${"navigate_next"}"></md-icon-button>
+                    </div> -->
+                </div>
+            <div class="md-color-picker__body">
+                <div class="md-color-picker__inner">${this.renderCard()}</div>
+                <div class="md-color-picker__footer">
+                    <md-button @click="${this.handleColorPickerButtonCancelClick}" class="md-color-picker__button" .label="${"Cancel"}"></md-button>
+                    <md-button @click="${this.handleColorPickerButtonOkClick}" class="md-color-picker__button" .label="${"Ok"}"></md-button>
+                </div>
+            </div>
+        `;
+    }
+
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-color-picker");
-        this.classList.add("md-color-picker--dialog");
-
-        this.handleColorPickerGradientMousedown = this.handleColorPickerGradientMousedown.bind(this);
-        this.handleColorPickerGradientMousemove = this.handleColorPickerGradientMousemove.bind(this);
-        this.handleColorPickerGradientMouseup = this.handleColorPickerGradientMouseup.bind(this);
-
-        this.scrimElement = document.createElement("div");
-        this.scrimElement.classList.add("md-color-picker__scrim");
-        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        await this.updateComplete;
+        this.scrim = document.createElement("div");
+        this.scrim.classList.add("md-color-picker__scrim");
         this.handleColorPickerScrimClick = this.handleColorPickerScrimClick.bind(this);
-        this.scrimElement.addEventListener("click", this.handleColorPickerScrimClick);
+        this.scrim.addEventListener("click", this.handleColorPickerScrimClick);
+        this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
+
+        this.handleColorPickerSolidPointermove = this.handleColorPickerSolidPointermove.bind(this);
+        this.handleColorPickerSolidPointerup = this.handleColorPickerSolidPointerup.bind(this);
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-picker");
-        this.classList.remove("md-color-picker--dialog");
-
-        this.scrimElement?.removeEventListener("click", this.handleColorPickerScrimClick);
-        this.scrimElement?.remove();
+        await this.updateComplete;
+        this.scrim.removeEventListener("click", this.handleColorPickerScrimClick);
+        this.scrim.remove();
     }
 
-    async firstUpdated(changedProperties) {
-        this.canvas = this.querySelector(".md-color-picker__gradient-track");
-        this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
+    async firstUpdated() {
+        await this.updateComplete;
 
-        this.canvas.width = this.canvas.clientWidth;
-        this.canvas.height = this.canvas.clientHeight;
+        this.updateFromValue();
 
-        this.ctx = this.canvas.getContext("2d", { willReadFrequently: true });
-
-        this.ctx.rect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.draw();
+        this.resizeCanvas();
     }
 
     async updated(changedProperties) {
+        if (changedProperties.has("ui")) {
+            ["full-screen"].forEach((ui) => {
+                this.classList.remove("md-color-picker--" + ui);
+            });
+
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-color-picker--" + ui);
+                });
+            }
+        }
+
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                // if (!this.ui?.includes("full-screen")) {
+                // }
+                this.scrim.setAttribute("open", "");
+                this.emit('onColorPickerShow',this)
+            } else {
+                this.scrim.removeAttribute("open", "");
+                this.emit('onColorPickerClose',this)
+            }
+        }
+
         if (changedProperties.has("value")) {
-            await this.updateComplete;
+            if (this.value) {
+                await this.updateComplete;
 
-            this.currentValue = this.value;
+                this.updateFromValue();
 
-            const { r, g, b, a } = this.hexToRgba(this.currentValue);
-            this.red = r;
-            this.green = g;
-            this.blue = b;
-            this.alpha = a;
+                this.emit("onColorPickerChange", { detail: this });
+            }
+        }
 
-            const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, 1);
-            this.hue = h;
-            this.saturation = s;
-            this.lightness = l;
+        
+        // this.style.setProperty("--md-color-picker-index", this.index);
+        this.selected = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.style.setProperty("--md-color-picker-rgb", `rgb(${this.red},${this.green},${this.blue})`);
+        this.style.setProperty("--md-color-picker-hsl", `hsl(${this.hue}deg 100% 50%)`);
+        this.style.setProperty("--md-color-picker-hex", this.selected);
 
-            this.requestUpdate();
+    }
 
-            this.draw();
+    updateFromValue() {
+        this.selected = this.value;
 
-            const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-            const data = imageData.data;
+        const { r, g, b, a } = this.hexToRgba(this.selected);
+        const { h, s, l } = this.rgbaToHsla(r, g, b, a);
 
-            let xy = [];
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+        this.alpha = a;
+        this.hue = h;
+        this.saturation = s;
+        this.lightness = l;
 
-            for (let y = 0; y < this.canvas.height; y++) {
-                for (let x = 0; x < this.canvas.width; x++) {
-                    const index = (y * this.canvas.width + x) * 4;
+        this.requestUpdate();
+    }
 
-                    if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
-                        xy = [x, y];
-                        break;
-                    }
-                }
+    drawSolidGradient() {
+        const { width, height } = this.solidCanvas;
+        this.solidCtx.fillStyle = `hsl(${this.hue} 100% 50%)`;
+        this.solidCtx.fillRect(0, 0, width, height);
 
-                if (xy.length) {
+        let gradientWhite = this.solidCtx.createLinearGradient(0, 0, width, 0);
+        gradientWhite.addColorStop(0.01, "white");
+        gradientWhite.addColorStop(1, "transparent");
+        this.solidCtx.fillStyle = gradientWhite;
+        this.solidCtx.fillRect(0, 0, width, height);
+
+        let gradientBlack = this.solidCtx.createLinearGradient(0, 0, 0, height);
+        gradientBlack.addColorStop(0.01, "transparent");
+        gradientBlack.addColorStop(1, "black");
+        this.solidCtx.fillStyle = gradientBlack;
+        this.solidCtx.fillRect(0, 0, width, height);
+    }
+
+    drawHueGradient() {
+        const { width, height } = this.hueCanvas;
+        let gradientHue = this.hueCtx.createLinearGradient(0, 0, width, 0);
+        gradientHue.addColorStop(0, "hsl(0, 100%, 50%)");
+        gradientHue.addColorStop(1 / 6, "hsl(60, 100%, 50%)");
+        gradientHue.addColorStop(2 / 6, "hsl(120, 100%, 50%)");
+        gradientHue.addColorStop(3 / 6, "hsl(180, 100%, 50%)");
+        gradientHue.addColorStop(4 / 6, "hsl(240, 100%, 50%)");
+        gradientHue.addColorStop(5 / 6, "hsl(300, 100%, 50%)");
+        gradientHue.addColorStop(1, "hsl(360, 100%, 50%)");
+        this.hueCtx.fillStyle = gradientHue;
+        this.hueCtx.fillRect(0, 0, width, height);
+    }
+
+    drawOpacityGradient() {
+        const { width, height } = this.opacityCanvas;
+        let gradientOpacity = this.opacityCtx.createLinearGradient(0, 0, width, 0);
+        gradientOpacity.addColorStop(0, "transparent");
+        gradientOpacity.addColorStop(1, "#ff0000");
+        this.opacityCtx.fillStyle = gradientOpacity;
+        this.opacityCtx.fillRect(0, 0, width, height);
+    }
+
+    resizeCanvas() {
+        this.solidCanvas = document.querySelector(".md-color-picker__track");
+        this.hueCanvas = document.querySelector(".md-color-picker__hue");
+        this.opacityCanvas = document.querySelector(".md-color-picker__opacity");
+
+        this.solidCtx = this.solidCanvas.getContext("2d", { willReadFrequently: true });
+        // this.hueCtx = this.hueCanvas.getContext('2d',{ willReadFrequently: true });
+        // this.opacityCtx = this.opacityCanvas.getContext('2d',{ willReadFrequently: true });
+
+        this.solidCanvas.width = this.solidCanvas.clientWidth;
+        this.solidCanvas.height = this.solidCanvas.clientHeight;
+        // this.hueCanvas.width = this.hueCanvas.clientWidth;
+        // this.hueCanvas.height = this.hueCanvas.clientHeight;
+        // this.opacityCanvas.width = this.opacityCanvas.clientWidth;
+        // this.opacityCanvas.height = this.opacityCanvas.clientHeight;
+
+        this.drawSolidGradient();
+        // this.drawHueGradient();
+        // this.drawOpacityGradient();
+
+        this.solidThumb = document.querySelector(".md-color-picker__thumb");
+
+    
+        const imageData = this.solidCtx.getImageData(0, 0, this.solidCanvas.width, this.solidCanvas.height);
+        const data = imageData.data;
+
+        let xy = [];
+
+        for (let y = 0; y < this.solidCanvas.height; y++) {
+            for (let x = 0; x < this.solidCanvas.width; x++) {
+                const index = (y * this.solidCanvas.width + x) * 4;
+
+                if (this.red == data[index] && this.green == data[index + 1] && this.blue == data[index + 2]) {
+                    xy = [x, y];
                     break;
                 }
             }
 
-            const [x = this.canvas.width, y = this.canvas.height] = xy;
-
-            this.thumb.style.left = x + "px";
-            this.thumb.style.top = y + "px";
-        }
-
-        this.style.setProperty("--md-color-picker-red", this.red);
-        this.style.setProperty("--md-color-picker-green", this.green);
-        this.style.setProperty("--md-color-picker-blue", this.blue);
-        this.style.setProperty("--md-color-picker-alpha", this.alpha);
-
-        if (changedProperties.has("open")) {
-            if (this.open) {
-                this.classList.add("md-color-picker--open");
-
-                // if (
-                //     this.ui &&
-                //     this.ui.split(" ").some((ui) =>
-                //         [
-                //             //
-                //             "dialog",
-                //             "modal",
-                //         ].includes(ui)
-                //     )
-                // ) {
-                    this.scrimElement.classList.add("md-color-picker--open");
-                // }
-            } else {
-                this.classList.remove("md-color-picker--open");
-                this.scrimElement.classList.remove("md-color-picker--open");
+            if (xy.length) {
+                break;
             }
         }
+
+        const [x = this.solidCanvas.width, y = this.solidCanvas.height] = xy;
+
+        this.solidThumb.style.left = x + "px";
+        this.solidThumb.style.top = y + "px";
     }
 
-    show(button,options={}) {
+    show(button, options) {
         this.open = true;
-
-        this.popper=new Popper(this,{
+        this.popper = new MDPopperModule(this, {
             button,
-            placements: [
-                'bottom-start',
-                'bottom-end',
-                'bottom',
-                'top-start',
-                'top-end',
-                'top',
-                'center',
-            ],
-            ...options
-        })
-        this.popper.setPlacement()
+            placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top"],
+            ...options,
+        });
+        this.popper.set();
     }
-    
+
     close() {
         this.open = false;
+        this.popper.destroy();
+    }
 
-        this.popper?.destroy()
+    toggle() {
+        if (this.open) {
+            this.close();
+        } else {
+            this.show();
+        }
     }
 
     handleColorPickerScrimClick(event) {
@@ -352,128 +418,105 @@ class MDColorPicker extends MDElement {
         this.emit("onColorPickerScrimClick", event);
     }
 
-    draw() {
-        const { r, b, g, a } = this.hslaToRgba(this.hue, 100, 50, this.alpha);
-        this.ctx.fillStyle = `rgba(${r},${g},${b},1)`;
-
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-        const gradient1 = this.ctx.createLinearGradient(0, 0, this.canvas.width, 0);
-        gradient1.addColorStop(1 / 255, "rgba(255, 255, 255, 1)");
-        gradient1.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-        this.ctx.fillStyle = gradient1;
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-        const gradient2 = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient2.addColorStop(1 / 255, "rgba(0, 0, 0, 0)");
-        gradient2.addColorStop(1, "rgba(0, 0, 0, 1)");
-
-        this.ctx.fillStyle = gradient2;
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    handleColorPickerLabelPrimaryClick(event) {
+        this.emit("onColorPickerLabelPrimaryClick", event);
     }
 
-    handleColorPickerLabelClick(event) {
-        this.index = (this.index + 3 + 1) % 3;
-
-        this.emit("onColorPickerLabelClick", event);
+    handleColorPickerLabelSecondaryClick(event) {
+        this.emit("onColorPickerLabelSecondaryClick", event);
     }
 
-    handleColorPickerActionColorizeClick(event) {
-        this.emit("onColorPickerActionColorizeClick", event);
+    handleColorPickerActionNavigateBeforeClick(event) {
+        this.emit("onColorPickerActionNavigateBeforeClick", event);
     }
 
-    handleColorPickerActionNextClick(event) {
-        this.emit("onColorPickerActionNextClick", event);
+    handleColorPickerActionNavigateNextClick(event) {
+        this.emit("onColorPickerActionNavigateNextClick", event);
     }
 
-    handleColorPickerGradientMousedown(event) {
-        this.drag = true;
+    handleColorPickerSolidPointerdown(event) {
+        window.addEventListener("pointermove", this.handleColorPickerSolidPointermove);
+        window.addEventListener("pointerup", this.handleColorPickerSolidPointerup);
+        document.documentElement.classList.add("md-gesture--dragged");
 
-        window.addEventListener("mousemove", this.handleColorPickerGradientMousemove);
-        window.addEventListener("mouseup", this.handleColorPickerGradientMouseup);
+        this.updateFromSolid(event);
 
-        this.setValue(event);
-
-        this.emit("onColorPickerGradientMousedown", event);
+        this.emit("onColorPickerSolidPointerdown", event);
+        this.emit("onColorPickerChange", event);
     }
 
-    handleColorPickerGradientMousemove(event) {
-        if (this.drag) {
-            this.setValue(event);
+    updateFromSolid(event) {
+        const {left,top,width,height} = this.solidCanvas.getBoundingClientRect()
+        const x = Math.max(0, Math.min(event.clientX - left, width)-1);
+        const y = Math.max(0, Math.min(event.clientY - top, height));
+        const pixel = this.solidCtx.getImageData(x, y, 1, 1).data;
+        const [r, g, b, a] = pixel;
+        const {h,s,l} = this.rgbaToHsla(r, g, b, a)
 
-            this.emit("onColorPickerGradientMousemove", event);
-        }
-    }
-
-    handleColorPickerGradientMouseup(event) {
-        if (this.drag) {
-            this.emit("onColorPickerGradientMouseup", event);
-
-            window.removeEventListener("mousemove", this.handleColorPickerGradientMousemove);
-            window.removeEventListener("mouseup", this.handleColorPickerGradientMouseup);
-
-            this.drag = false;
-        }
-    }
-
-    setValue(event) {
-        this.rect = this.canvas.getBoundingClientRect();
-
-        const x = Math.max(0, Math.min(event.clientX - this.rect.left, this.canvas.width) - 1);
-        const y = Math.max(0, Math.min(event.clientY - this.rect.top, this.canvas.height));
-
-        const [r, g, b] = this.ctx.getImageData(x, y, 1, 1).data;
+        // a/255
         this.red = r;
         this.green = g;
         this.blue = b;
-
-        const { h, s, l } = this.rgbaToHsla(this.red, this.green, this.blue, this.alpha);
+        // this.hue = h;
         this.saturation = s;
         this.lightness = l;
 
-        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
-
-        this.thumb.style.left = x + "px";
-        this.thumb.style.top = y + "px";
+        this.solidThumb.style.setProperty("left", x + "px");
+        this.solidThumb.style.setProperty("top", y + "px");
+        
+        this.requestUpdate();
     }
 
-    handleColorPickerHueInput(event) {
-        this.hue = parseFloat(event.currentTarget.value);
+    handleColorPickerSolidPointermove(event) {
+        this.updateFromSolid(event);
 
-        const { r, g, b, a } = this.hslaToRgba(this.hue, this.saturation, this.lightness, 1);
+        this.emit("onColorPickerSolidPointermove", event);
+        this.emit("onColorPickerChange", event);
+    }
+    handleColorPickerSolidPointerup(event) {
+        window.removeEventListener("pointermove", this.handleColorPickerSolidPointermove);
+        window.removeEventListener("pointerup", this.handleColorPickerSolidPointerup);
+        document.documentElement.classList.remove("md-gesture--dragged");
+
+        this.updateFromSolid(event);
+
+        this.emit("onColorPickerSolidPointerup", event);
+        this.emit("onColorPickerChange", event);
+    }
+    handleColorPickerHueInput(event) {
+        this.hue = parseFloat(this.hueCanvas.value);
+
+        const { r, g, b } = this.hslaToRgba(this.hue, this.saturation, this.lightness, this.alpha);
         this.red = r;
         this.green = g;
         this.blue = b;
 
-        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.drawSolidGradient();
 
-        this.draw();
+        this.requestUpdate();
 
         this.emit("onColorPickerHueInput", event);
+        this.emit("onColorPickerChange", event);
     }
-
     handleColorPickerOpacityInput(event) {
-        this.alpha = parseFloat(event.currentTarget.value) / 100;
+        this.alpha = parseFloat(this.opacityCanvas.value);
 
-        this.currentValue = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
+        this.requestUpdate();
 
         this.emit("onColorPickerOpacityInput", event);
+        this.emit("onColorPickerChange", event);
     }
 
     handleColorPickerButtonCancelClick(event) {
-        this.close()
-        
         this.emit("onColorPickerButtonCancelClick", event);
+        // this.emit("onColorPickerChange", event);
     }
-
     handleColorPickerButtonOkClick(event) {
-        this.close()
-        
         this.emit("onColorPickerButtonOkClick", event);
+        // this.emit("onColorPickerChange", event);
     }
 }
 
-customElements.define("md-color-picker", MDColorPicker);
+customElements.define("md-color-picker", MDColorPickerComponent);
 
-export { MDColorPicker };
+export { MDColorPickerComponent };

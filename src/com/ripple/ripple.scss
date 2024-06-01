@@ -1,117 +1,192 @@
-
 @keyframes md-ripple {
-
     0% {
-        width: 0;
+        width: 0%;
     }
 }
 
 @keyframes md-ripple-fadeout {
-
     0% {
         opacity: 10%;
     }
 }
 
-.md-ripple {
+@mixin md-ripple {
+    --md-ripple-size: 141.4213562373095%;
+    --md-ripple-left: 50%;
+    --md-ripple-top: 50%;
+    --md-ripple-x: 0%;
+    --md-ripple-y: 0%;
     position: relative;
+
+    &::after {
+        content: "";
+        width: var(--md-ripple-size, 141.4213562373095%);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        position: absolute;
+        left: var(--md-ripple-left, 50%);
+        top: var(--md-ripple-top, 50%);
+        transform: translate3d(-50%, -50%, 0px) translate3d(var(--md-ripple-x, 0%), var(--md-ripple-y, 0%), 0px);
+        background: var(--md-sys-color-primary);
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
-.md-ripple--containment {
+@mixin md-ripple--containment {
     overflow: hidden;
 }
 
-.md-ripple--button {
+@mixin md-ripple--button {
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 
-.md-ripple::after {
-    content: "";
-    width: var(--md-ripple-size, 141.4213562373095%);
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    position: absolute;
-    left: var(--md-ripple-left, 50%);
-    top: var(--md-ripple-top, 50%);
-    z-index: 1;
-    transform: translate3d(-50%, -50%, 0) translate3d(var(--md-ripple-x, 0), var(--md-ripple-y, 0), 0);
-    background: var(--md-sys-color-on-background);
-    opacity: 0;
-    pointer-events: none;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-}
-
-.md-ripple--inverse {
-
+@mixin md-ripple--inverse {
     &::after {
-        background: var(--md-sys-color-background);
+        background: var(--md-sys-color-on-primary);
     }
 }
 
-.md-ripple--fadeout {
-
-    &.md-ripple--focused {
-
-        &::after {
-            opacity: 0;
-            animation-name: var(--md-ripple-animation, md-ripple), var(--md-ripple-animation, md-ripple-fadeout);
-            animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
-            animation-timing-function: var(--md-sys-motion-easing-standard), var(--md-sys-motion-easing-standard);
-        }
+@mixin md-ripple--focused {
+    &::after {
+        opacity: 10%;
+        animation-name: var(--md-ripple-animation,);
+        animation-duration: var(--md-sys-motion-duration-short4);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
     }
 }
-.md-ripple[selected],
 
-.md-ripple--selected {
-    background: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
-
+@mixin md-ripple--fadeout {
     &::after {
         opacity: 0%;
+
+        animation-name: var(--md-ripple-animation,), var(--md-ripple-animation-fadeout,);
+        animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy)), cubic-bezier(var(--md-sys-motion-easing-legacy));
     }
 }
 
-.md-ripple--hover {
-
+@mixin md-ripple--hover {
     &::after {
         opacity: 8%;
     }
-}
-
-.md-ripple--focused {
-
-    &::after {
-        opacity: 10%;
-        animation-name: var(--md-ripple-animation, md-ripple);
-        animation-duration: var(--md-sys-motion-duration-short4);
-        animation-timing-function: var(--md-sys-motion-easing-standard);
+    &.md-icon,
+    .md-icon {
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 100,
+            "opsz" 24;
     }
 }
 
-.md-ripple--pressed {
-
+@mixin md-ripple--pressed {
     &::after {
         opacity: 10%;
     }
+    &.md-icon,
+    .md-icon {
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" -100,
+            "opsz" 24;
+    }
 }
 
-.md-ripple--dragged {
-    box-shadow: var(--md-sys-elevation-level4);
-
+@mixin md-ripple--draged {
     &::after {
         opacity: 16%;
     }
 }
-.md-ripple[disabled],
 
-.md-ripple--disabled {
+@mixin md-ripple--selected {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    
+    &.md-icon,
+    .md-icon {
+        font-variation-settings:
+            "FILL" 1,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
+    }
+}
+
+@mixin md-ripple--selected-attr {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    
+    &.md-icon,
+    .md-icon {
+        font-variation-settings:
+            "FILL" 1,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
+    }
+}
+
+@mixin md-ripple--disabled {
     opacity: 38%;
 
     &::after {
         opacity: 0%;
     }
+}
+
+// Contoh penggunaan mixin untuk class .md-ripple
+.md-ripple {
+    @include md-ripple;
+}
+
+.md-ripple--containment {
+    @include md-ripple--containment;
+}
+
+.md-ripple--button {
+    @include md-ripple--button;
+}
+
+.md-ripple--inverse {
+    @include md-ripple--inverse;
+}
+
+.md-ripple--focused {
+    @include md-ripple--focused;
+}
+
+.md-ripple--fadeout {
+    @include md-ripple--fadeout;
+}
+
+.md-ripple--hover {
+    @include md-ripple--hover;
+}
+
+.md-ripple--pressed {
+    @include md-ripple--pressed;
+}
+
+.md-ripple--draged {
+    @include md-ripple--draged;
+}
+
+.md-ripple--selected {
+    @include md-ripple--selected;
+}
+
+.md-ripple[selected] {
+    @include md-ripple--selected-attr;
+}
+
+[selected] {
+    @include md-ripple--selected-attr;
+}
+
+.md-ripple[disabled] {
+    @include md-ripple--disabled;
 }

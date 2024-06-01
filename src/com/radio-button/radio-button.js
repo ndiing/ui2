@@ -1,55 +1,80 @@
+import { html } from "lit";
 import { MDElement } from "../element/element";
-import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { Ripple } from "../ripple/ripple";
-class MDRadioButton extends MDElement {
+import { MDRippleModule } from "../ripple/ripple";
+
+class MDRadioButtonComponent extends MDElement {
     static get properties() {
-        return { type: { type: String }, name: { type: String }, required: { type: Boolean }, readOnly: { type: Boolean }, value: { type: String }, defaultValue: { type: String }, indeterminate: { type: Boolean }, checked: { type: Boolean }, defaultChecked: { type: Boolean } };
+        return {
+            autocapitalize: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            name: { type: String },
+            required: { type: Boolean },
+            type: { type: String },
+            value: { type: String },
+            checked: { type: Boolean },
+            defaultValue: { type: String },
+            defaultChecked: { type: Boolean },
+            indeterminate: { type: Boolean },
+            defaultIndeterminate: { type: Boolean },
+        };
     }
 
     constructor() {
         super();
-        this.type = "radio";
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            <input 
-                class="md-radio-button__native"
-                .type="${ifDefined(this.type)}"
+            <input
+                type="radio"  
+                .autocapitalize="${ifDefined(this.autocapitalize)}"
+                .disabled="${ifDefined(this.disabled)}"      
+                .form="${ifDefined(this.form)}"
                 .name="${ifDefined(this.name)}"
-                .required="${ifDefined(this.required)}"
-                .readOnly="${ifDefined(this.readOnly)}"
+                .required="${ifDefined(this.required)}"      
+                .type="${ifDefined(this.type)}"
                 .value="${ifDefined(this.value)}"
-                .defaultValue="${ifDefined(this.defaultValue)}"
-                .indeterminate="${ifDefined(this.indeterminate)}"
-                .checked="${ifDefined(this.checked)}"
+                .checked="${ifDefined(this.checked)}"       
+                .defaultValue="${ifDefined(this.defaultValue)}"  
                 .defaultChecked="${ifDefined(this.defaultChecked)}"
-                @focus="${this.handleRadioButtonNativeFocus}"
-                @blur="${this.handleRadioButtonNativeBlur}"
+                .indeterminate="${ifDefined(this.indeterminate)}" 
+                .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
+                class="md-radio-button__native"
                 @input="${this.handleRadioButtonNativeInput}"
                 @invalid="${this.handleRadioButtonNativeInvalid}"
                 @reset="${this.handleRadioButtonNativeReset}"
-            >
+            />
             <div class="md-radio-button__track">
                 <div class="md-radio-button__thumb"></div>
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
+
         this.classList.add("md-radio-button");
         await this.updateComplete;
-        this.ripple = new Ripple(this.radioButtonTrack, { button: this.radioButtonNative, containment: false, fadeout: true, size: (40 / this.radioButtonTrack.clientWidth) * 100 });
+        this.ripple = new MDRippleModule(this.radioButtonTrack, { button: this.radioButtonNative, containment: false, size: (40 / (20 - 2 * 2)) * 100, fadeout: true });
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
+
         this.classList.remove("md-radio-button");
+        await this.updateComplete;
+        this.ripple.destroy();
+    }
+
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+        this.defaultValue = this.value;
+        this.defaultChecked = this.checked;
+        this.defaultIndeterminate = this.indeterminate;
     }
 
     updated(changedProperties) {}
@@ -62,30 +87,26 @@ class MDRadioButton extends MDElement {
         return this.querySelector(".md-radio-button__track");
     }
 
-    get radioButtonThumb() {
-        return this.querySelector(".md-radio-button__thumb");
-    }
-
-    handleRadioButtonNativeFocus(event) {
-        this.emit("onRadioButtonNativeFocus", event);
-    }
-
-    handleRadioButtonNativeBlur(event) {
-        this.emit("onRadioButtonNativeBlur", event);
-    }
-
     handleRadioButtonNativeInput(event) {
+        this.checked = this.radioButtonNative.checked;
+        this.indeterminate = this.radioButtonNative.indeterminate;
         this.emit("onRadioButtonNativeInput", event);
     }
 
     handleRadioButtonNativeInvalid(event) {
-        event.preventDefault();
         this.emit("onRadioButtonNativeInvalid", event);
     }
 
     handleRadioButtonNativeReset(event) {
+        this.radioButtonNative.value = this.defaultValue;
+        this.radioButtonNative.checked = this.defaultChecked;
+        this.radioButtonNative.indeterminate = this.defaultIndeterminate;
+        this.checked = this.radioButtonNative.checked;
+        this.indeterminate = this.radioButtonNative.indeterminate;
         this.emit("onRadioButtonNativeReset", event);
     }
 }
-customElements.define("md-radio-button", MDRadioButton);
-export { MDRadioButton };
+
+customElements.define("md-radio-button", MDRadioButtonComponent);
+
+export { MDRadioButtonComponent };

@@ -1,4 +1,3 @@
-
 .md-switch {
     display: inline-flex;
     align-items: center;
@@ -10,55 +9,55 @@
 }
 
 .md-switch__native {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
     appearance: none;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(-50%, -50%, 0px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
 
     &:checked {
-
         + .md-switch__track {
             background: var(--md-sys-color-primary);
             border-color: var(--md-sys-color-primary);
 
             .md-switch__thumb {
-                height: 24px;
                 width: 24px;
+                height: 24px;
                 border-radius: calc(24px / 2);
                 background: var(--md-sys-color-on-primary);
-                left: calc(52px - 24px - ((32px - 24px) / 2) - 2px);
-            }
-        }
+                left: calc(52px - 24px - ((32px - 24px) / 2));
 
-        &:active {
-
-            + .md-switch__track {
-
-                .md-switch__thumb {
-                    height: 28px;
-                    width: 28px;
-                    border-radius: calc(28px / 2);
-                    background: var(--md-sys-color-on-primary);
-                    left: calc(52px - 28px - ((32px - 28px) / 2) - 2px);
+                .md-switch__icon {
+                    color: var(--md-sys-color-primary);
                 }
             }
         }
     }
 
-    &:not(:checked) {
+    &:active {
+        + .md-switch__track {
+            .md-switch__thumb {
+                width: 28px;
+                height: 28px;
+                border-radius: calc(28px / 2);
+            }
+        }
 
-        &:active {
-
+        &:not(:checked) {
             + .md-switch__track {
-
                 .md-switch__thumb {
-                    height: 28px;
-                    width: 28px;
-                    border-radius: calc(28px / 2);
-                    left: calc(((32px - 28px) / 2) - 2px);
+                    left: calc((32px - 28px) / 2);
+                }
+            }
+        }
+
+        &:checked {
+            + .md-switch__track {
+                .md-switch__thumb {
+                    left: calc(52px - 28px - ((32px - 28px) / 2));
                 }
             }
         }
@@ -69,29 +68,44 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
     width: 52px;
     height: 32px;
-    border: 2px solid var(--md-sys-color-outline);
     border-radius: calc(32px / 2);
-    background: var(--md-sys-color-surface-container-highest);
-    position: relative;
+    border: 2px solid var(--md-sys-color-outline);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
 }
 
 .md-switch__thumb {
-    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
     width: 16px;
+    height: 16px;
     border-radius: calc(16px / 2);
     background: var(--md-sys-color-outline);
     position: absolute;
-    left: calc(((32px - 16px) / 2) - 2px);
+    left: calc((32px - 16px) / 2);
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
-    &::after {
-        width: 40px;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%, -50%, 0);
+    &.md-ripple {
+        &::after {
+            width: 40px;
+        }
     }
+
+    &:not(:empty) {
+        width: 24px;
+        height: 24px;
+        border-radius: calc(24px / 2);
+        left: calc((32px - 24px) / 2);
+    }
+}
+
+.md-switch__icon {
+    font-size: 16px;
+    color: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-highest);
 }

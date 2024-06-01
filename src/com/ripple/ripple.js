@@ -1,42 +1,20 @@
-class Ripple {
-    constructor(host, options = {}) {
+class MDRippleModule {
+    constructor(host, options) {
+        this.host = host;
         this.options = {
-            button: host,
+            button: this.host,
             containment: true,
+            // size:Math.sqrt(Math.pow(40,2)+Math.pow(40,2))/40*100,// in %
+            centered: false,
             fadeout: false,
             inverse: false,
-            size: undefined,
             ...options,
         };
-        this.host = host;
         this.init();
-    }
-
-    on(type, listener) {
-        this.host.addEventListener(type, listener);
-    }
-
-    off(type, listener) {
-        this.host.removeEventListener(type, listener);
-    }
-
-    emit(type, detail) {
-        const event = new CustomEvent(type, {
-            bubbles: true,
-            cancelable: true,
-            detail,
-        });
-        this.host.dispatchEvent(event);
     }
 
     init() {
         this.host.classList.add("md-ripple");
-
-        if (!this.options.size) {
-            this.rect = this.host.getBoundingClientRect();
-            this.options.size = (Math.sqrt(Math.pow(this.rect.width, 2) + Math.pow(this.rect.height, 2)) / this.rect.width) * 100;
-        }
-        this.host.style.setProperty("--md-ripple-size", this.options.size + "%");
 
         if (this.options.containment) {
             this.host.classList.add("md-ripple--containment");
@@ -55,69 +33,111 @@ class Ripple {
         } else {
             this.host.classList.remove("md-ripple--inverse");
         }
-        this.options.button.setAttribute("tabIndex", 0);
+
+        if (!this.options.size) {
+            const { width, height } = this.host.getBoundingClientRect();
+            this.options.size = (Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) / width) * 100;
+        }
+
+        this.host.style.setProperty("--md-ripple-size", this.options.size + "%");
+
         this.options.button.classList.add("md-ripple--button");
-        this.handleMousedown = this.handleMousedown.bind(this);
-        this.handleMouseup = this.handleMouseup.bind(this);
-        this.handleMouseenter = this.handleMouseenter.bind(this);
-        this.handleMouseleave = this.handleMouseleave.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.options.button.addEventListener("mousedown", this.handleMousedown);
-        this.options.button.addEventListener("mouseenter", this.handleMouseenter);
-        this.options.button.addEventListener("mouseleave", this.handleMouseleave);
-        this.options.button.addEventListener("focus", this.handleFocus);
-        this.options.button.addEventListener("blur", this.handleBlur);
+
+        this.options.button.setAttribute("tabIndex", "0");
+
+        this.handleRippleButtonPointerenter = this.handleRippleButtonPointerenter.bind(this);
+        this.handleRippleButtonPointerleave = this.handleRippleButtonPointerleave.bind(this);
+        this.handleRippleButtonPointerdown = this.handleRippleButtonPointerdown.bind(this);
+        this.handleRippleButtonPointerup = this.handleRippleButtonPointerup.bind(this);
+        this.handleRippleButtonFocus = this.handleRippleButtonFocus.bind(this);
+        this.handleRippleButtonBlur = this.handleRippleButtonBlur.bind(this);
+        this.handleRippleButtonAnimationend = this.handleRippleButtonAnimationend.bind(this);
+
+        this.options.button.addEventListener("pointerenter", this.handleRippleButtonPointerenter);
+        this.options.button.addEventListener("pointerleave", this.handleRippleButtonPointerleave);
+        this.options.button.addEventListener("pointerdown", this.handleRippleButtonPointerdown);
+        this.options.button.addEventListener("focus", this.handleRippleButtonFocus);
+        this.options.button.addEventListener("blur", this.handleRippleButtonBlur);
+        this.options.button.addEventListener("animationend", this.handleRippleButtonAnimationend);
+    }
+
+    handleRippleButtonPointerenter(event) {
+        this.host.classList.add("md-ripple--hover");
+    }
+
+    handleRippleButtonPointerleave(event) {
+        this.host.classList.remove("md-ripple--hover");
+    }
+
+    handleRippleButtonPointerdown(event) {
+        window.addEventListener("pointerup", this.handleRippleButtonPointerup);
+        this.host.classList.add("md-ripple--pressed");
+
+        this.host.style.setProperty("--md-ripple-animation", "none");
+        this.host.style.setProperty("--md-ripple-animation-fadeout", "none");
+
+        const { left: _left, top: _top, width, height } = this.host.getBoundingClientRect();
+
+        if (!this.options.centered) {
+            const { offsetX, offsetY } = event;
+            const size = this.options.size;
+            const left = offsetX / width;
+            const top = offsetY / height;
+            const x = (0.5 - left) * (100 / size);
+            const y = (0.5 - top) * ((100 / size) * (height / width));
+
+            this.host.style.setProperty("--md-ripple-left", left * 100 + "%");
+            this.host.style.setProperty("--md-ripple-top", top * 100 + "%");
+            this.host.style.setProperty("--md-ripple-x", x * 100 + "%");
+            this.host.style.setProperty("--md-ripple-y", y * 100 + "%");
+        }
+
+        this.host.style.setProperty("--md-ripple-animation", "md-ripple");
+        this.host.style.setProperty("--md-ripple-animation-fadeout", "md-ripple-fadeout");
+    }
+
+    handleRippleButtonPointerup(event) {
+        this.host.classList.remove("md-ripple--pressed");
+        window.removeEventListener("pointerup", this.handleRippleButtonPointerup);
+    }
+
+    handleRippleButtonAnimationend(event) {
+        if (event.animationName == "md-ripple-fadeout") {
+            this.host.style.removeProperty("--md-ripple-animation");
+            this.host.style.removeProperty("--md-ripple-animation-fadeout");
+        }
+    }
+
+    handleRippleButtonFocus(event) {
+        this.host.classList.add("md-ripple--focused");
+    }
+
+    handleRippleButtonBlur(event) {
+        this.host.classList.remove("md-ripple--focused");
     }
 
     destroy() {
         this.host.classList.remove("md-ripple");
+
+        this.host.classList.remove("md-ripple--containment");
+
+        this.host.classList.remove("md-ripple--fadeout");
+
+        this.host.classList.remove("md-ripple--inverse");
+
         this.host.style.removeProperty("--md-ripple-size");
-        this.options.button.removeAttribute("tabIndex");
+
         this.options.button.classList.remove("md-ripple--button");
-        this.options.button.removeEventListener("mousedown", this.handleMousedown);
-        this.options.button.removeEventListener("mouseup", this.handleMouseup);
-        this.options.button.removeEventListener("mouseenter", this.handleMouseenter);
-        this.options.button.removeEventListener("mouseleave", this.handleMouseleave);
-        this.options.button.removeEventListener("focus", this.handleFocus);
-        this.options.button.removeEventListener("blur", this.handleBlur);
-    }
 
-    handleMousedown(event) {
-        window.addEventListener("mouseup", this.handleMouseup);
-        this.host.classList.add("md-ripple--pressed");
-        this.host.style.setProperty("--md-ripple-animation", "none");
-        this.rect = this.host.getBoundingClientRect();
-        const left = (event.clientX - this.rect.left) / this.rect.width;
-        const top = (event.clientY - this.rect.top) / this.rect.height;
-        const x = (0.5 - left) * (100 / this.options.size);
-        const y = (0.5 - top) * ((100 / this.options.size) * (this.rect.height / this.rect.width));
-        this.host.style.removeProperty("--md-ripple-animation");
-        this.host.style.setProperty("--md-ripple-left", left * 100 + "%");
-        this.host.style.setProperty("--md-ripple-top", top * 100 + "%");
-        this.host.style.setProperty("--md-ripple-x", x * 100 + "%");
-        this.host.style.setProperty("--md-ripple-y", y * 100 + "%");
-    }
+        this.options.button.removeAttribute("tabIndex");
 
-    handleMouseup(event) {
-        this.host.classList.remove("md-ripple--pressed");
-        window.removeEventListener("mouseup", this.handleMouseup);
-    }
-
-    handleMouseenter(event) {
-        this.host.classList.add("md-ripple--hover");
-    }
-
-    handleMouseleave(event) {
-        this.host.classList.remove("md-ripple--hover");
-    }
-
-    handleFocus(event) {
-        this.host.classList.add("md-ripple--focused");
-    }
-
-    handleBlur(event) {
-        this.host.classList.remove("md-ripple--focused");
+        this.options.button.removeEventListener("pointerenter", this.handleRippleButtonPointerenter);
+        this.options.button.removeEventListener("pointerleave", this.handleRippleButtonPointerleave);
+        this.options.button.removeEventListener("pointerdown", this.handleRippleButtonPointerdown);
+        this.options.button.removeEventListener("focus", this.handleRippleButtonFocus);
+        this.options.button.removeEventListener("blur", this.handleRippleButtonBlur);
+        this.options.button.removeEventListener("animationend", this.handleRippleButtonAnimationend);
     }
 }
-export { Ripple };
+
+export { MDRippleModule };

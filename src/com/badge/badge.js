@@ -1,7 +1,8 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
 
-class MDBadge extends MDElement {
+class MDBadgeComponent extends MDElement {
     static get properties() {
         return {
             label: { type: Number },
@@ -14,28 +15,29 @@ class MDBadge extends MDElement {
         this.max = 999;
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
-        return this.label?html`<div class="md-badge__label">${this.label>this.max?this.max+'+':this.label}</div>`:nothing
+        return this.label?this.label>this.max?this.max+'+':this.label:nothing;
     }
 
     async connectedCallback() {
         super.connectedCallback();
 
-        await this.updateComplete;
-
         this.classList.add("md-badge");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
 
         this.classList.remove("md-badge");
+        await this.updateComplete;
     }
 
     updated(changedProperties) {}
 }
 
-customElements.define("md-badge", MDBadge);
+customElements.define("md-badge", MDBadgeComponent);
 
-export { MDBadge };
+export { MDBadgeComponent };

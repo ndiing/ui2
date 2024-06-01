@@ -1,0 +1,13 @@
+// viewport
+.md-virtual-scroll{
+    overflow: auto;
+    position: relative;
+}
+.md-virtual-scroll__scrollbar{
+    width: 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+// .md-virtual-scroll__container{}
+// .md-virtual-scroll__item{}

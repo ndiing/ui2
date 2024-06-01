@@ -1,23 +1,22 @@
-
 .md-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
     min-width: 16px;
+    max-width: 34px;
     height: 16px;
-    padding: 4px;
     border-radius: calc(16px / 2);
+    padding: 0 4px;
     background: var(--md-sys-color-error);
     color: var(--md-sys-color-on-error);
+    @include md-typography-label-small;
 
     &:empty {
-        height: 6px;
         min-width: 6px;
+        max-width: 6px;
+        width: 6px;
+        height: 6px;
         padding: 0;
-        border-radius: calc(6px / 2);
     }
-}
-
-.md-badge__label {
-    @extend .md-typography--label-small;
 }

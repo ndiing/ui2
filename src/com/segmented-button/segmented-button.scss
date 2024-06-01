@@ -1,14 +1,17 @@
-
 .md-segmented-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
 
-    .md-button {
-        flex: 1;
-        
+    .md-segmented-button__button {
+        flex: 1 0 auto;
 
-        &:first-child {
+        + .md-segmented-button__button.md-button--outlined {
+            margin-left: -1px;
+        }
+
+        &:first-child:not(:last-child) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
@@ -17,17 +20,9 @@
             border-radius: 0;
         }
 
-        &:last-child {
+        &:last-child:not(:first-child) {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
-        }
-
-        + .md-button {
-            margin-left: -1px;
-        }
-
-        .md-button__label{
-            overflow: visible;
         }
     }
 }

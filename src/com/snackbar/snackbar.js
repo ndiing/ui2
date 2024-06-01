@@ -1,64 +1,172 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
-class MDSnackbar extends MDElement {
+
+import { MDElement } from "../element/element";
+
+import { ifDefined } from "lit/directives/if-defined.js";
+
+import { choose } from "lit/directives/choose.js";
+
+import { queue } from "../mixin/mixin";
+
+class MDSnackbarComponent extends MDElement {
     static get properties() {
         return {
-            action: { type: String },
-            icon: { type: String },
+            leadingActions: { type: Array },
+
+            label: { type: String },
+
+            subLabel: { type: String },
+
+            trailingActions: { type: Array },
+
+            buttons: { type: Array },
+
+            ui: { type: String },
+
+            open: { type: Boolean, reflect: true },
         };
     }
 
+    static task = queue();
+
     constructor() {
         super();
-
         this.body = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            <div class="md-snackbar__body">
-                ${this.body?html`<div class="md-snackbar__inner">${this.body}</div>`:nothing}
-                ${this.icon||this.action?html`
-                    <div class="md-snackbar__footer">
-                        ${this.action?html`<md-button class="md-snackbar__action" .label="${this.action}"></md-button>`:nothing}
-                        ${this.icon?html`<md-icon-button class="md-snackbar__icon" .icon="${this.icon}"></md-icon-button>`:nothing}
-                    </div>
-                `:nothing}
-            </div>
-        `
+
+${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
+                <div class="md-snackbar__header">
+
+                ${this.leadingActions?.length?html`
+                        <div class="md-snackbar__actions">
+
+                        ${this.leadingActions.map(action=>html`
+
+                            <md-icon-button @click="${this.handleSnackbarActionClick}" class="md-snackbar__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
+
+                    ${this.label||this.subLabel?html`
+                        <div class="md-snackbar__label">
+
+                        ${this.label?html`<div class="md-snackbar__label-primary">${this.label}</div>`:nothing}
+
+                            ${this.subLabel?html`<div class="md-snackbar__label-secondary">${this.subLabel}</div>`:nothing}
+                        </div>
+                    `:nothing}
+
+                    ${this.trailingActions?.length?html`
+                        <div class="md-snackbar__actions">
+
+                        ${this.trailingActions.map(action=>html`
+
+                            <md-icon-button @click="${this.handleSnackbarActionClick}" class="md-snackbar__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                </div>
+            `:nothing}
+
+            ${this.body?.length||this.buttons?.length?html`
+                <div class="md-snackbar__body">
+
+                ${this.body?.length?html`<div class="md-snackbar__inner">${this.body}</div>`:nothing}
+
+                    ${this.buttons?.length?html`
+                        <div class="md-snackbar__footer">
+
+${this.buttons.map(button=>choose(button.is,[
+                                ['icon-button',() => html`
+
+<md-icon-button @click="${this.handleSnackbarButtonClick}" class="md-snackbar__icon-button" .icon="${ifDefined(button?.icon)}" .ui="${ifDefined(button?.ui)}"></md-icon-button>
+                                `]
+                            ],() => html`
+
+<md-button @click="${this.handleSnackbarButtonClick}" class="md-snackbar__button" .label="${ifDefined(button?.label??button)}" .icon="${ifDefined(button?.icon)}" .ui="${ifDefined(button?.ui)}"></md-button>
+                            `))}
+                        </div>
+                    `:nothing}
+                </div>
+            `:nothing}
+        `;
+    }
+
+    get snackbarInner() {
+        return this.querySelector(".md-snackbar__inner");
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-snackbar");
+        await this.updateComplete;
+
+        if (this.clientHeight > this.snackbarInner.clientHeight) {
+            this.classList.add("md-snackbar--longer-action");
+        }
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-snackbar");
+        await this.updateComplete;
     }
 
-    get innerElement() {
-        return this.querySelector(".md-snackbar__inner");
-    }
-
-    firstUpdated(changedProperties) {
-        window.requestAnimationFrame(() => {
-            if (this.clientHeight > this.innerElement.clientHeight) {
-                this.classList.add("md-snackbar--longer-action");
+    updated(changedProperties) {
+        if (changedProperties.has("open")) {
+            if (this.open) {
+                this.emit("onSnackbarShow", this);
+            } else {
+                this.emit("onSnackbarClose", this);
             }
-
-            const lineHeight = parseFloat(window.getComputedStyle(this.innerElement).getPropertyValue("line-height"));
-            if (this.innerElement.scrollHeight > lineHeight) {
-                this.classList.add("md-snackbar--two-line");
-            }
-        });
+        }
     }
 
-    updated(changedProperties) {}
+    show() {
+        MDSnackbarComponent.task(
+            () =>
+                new Promise((resolve) => {
+                    const callback = () => {
+                        window.clearTimeout(this.timeout);
+                        this.removeEventListener("onSnackbarClose", callback);
+                        resolve();
+                    };
+                    this.addEventListener("onSnackbarClose", callback);
+
+                    this.timeout = window.setTimeout(() => {
+                        this.close();
+                    }, 5 * 1000);
+                    this.open = true;
+                })
+        );
+    }
+
+    close() {
+        this.open = false;
+    }
+
+    toggle() {
+        if (this.open) {
+            this.close();
+        } else {
+            this.show();
+        }
+    }
+
+    handleSnackbarActionClick(event) {
+        this.emit("onSnackbarActionClick", event);
+    }
+
+    handleSnackbarButtonClick(event) {
+        this.emit("onSnackbarButtonClick", event);
+    }
 }
-customElements.define("md-snackbar", MDSnackbar);
-export { MDSnackbar };
+
+customElements.define("md-snackbar", MDSnackbarComponent);
+
+export { MDSnackbarComponent };

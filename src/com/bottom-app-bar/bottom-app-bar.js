@@ -1,71 +1,53 @@
-import { ifDefined } from "lit/directives/if-defined.js";
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
 
-class MDBottomAppBar extends MDElement {
+class MDBottomAppBarComponent extends MDElement {
     static get properties() {
         return {
-            actions: { type: Array },
+            leadingActions: { type: Array },
             label: { type: String },
-            labelSecondary: { type: String },
+            subLabel: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
             ui: { type: String },
-            open: { type: Boolean },
+            open: { type: Boolean, reflect: true },
             fab: { type: Object },
         };
     }
 
     constructor() {
         super();
-
         this.body = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            ${this.actions?.length||this.label||this.labelSecondary||this.trailingActions?.length||this.fab?html`
+            ${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
                 <div class="md-bottom-app-bar__header">
-                    ${this.actions?.length?html`
+                    ${this.leadingActions?.length?html`
                         <div class="md-bottom-app-bar__actions">
-                            ${this.actions.map(action => html`
-                                <md-icon-button 
-                                    class="md-bottom-app-bar__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleBottomAppBarActionClick}"
-                                ></md-icon-button>
+                            ${this.leadingActions.map(action=>html`
+                                <md-icon-button @click="${this.handleBottomAppBarActionClick}" class="md-bottom-app-bar__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
-                    ${this.label||this.labelSecondary?html`
+                    ${this.label||this.subLabel?html`
                         <div class="md-bottom-app-bar__label">
                             ${this.label?html`<div class="md-bottom-app-bar__label-primary">${this.label}</div>`:nothing}
-                            ${this.labelSecondary?html`<div class="md-bottom-app-bar__label-secondary">${this.labelSecondary}</div>`:nothing}
+                            ${this.subLabel?html`<div class="md-bottom-app-bar__label-secondary">${this.subLabel}</div>`:nothing}
                         </div>
                     `:nothing}
                     ${this.trailingActions?.length?html`
                         <div class="md-bottom-app-bar__actions">
-                            ${this.trailingActions.map(action => html`
-                                <md-icon-button 
-                                    class="md-bottom-app-bar__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleBottomAppBarActionClick}"
-                                ></md-icon-button>
+                            ${this.trailingActions.map(action=>html`
+                                <md-icon-button @click="${this.handleBottomAppBarActionClick}" class="md-bottom-app-bar__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
-                    ${this.fab?html`
-                        <md-fab 
-                            class="md-bottom-app-bar__fab"
-                            .icon="${ifDefined(this.fab?.icon??this.fab)}"
-                            .ui="${ifDefined(this.fab?.ui??'unelevated')}"
-                        ></md-fab>
-                    `:nothing}
+                    ${this.fab?html`<md-fab class="md-bottom-app-bar__fab" .icon="${ifDefined(this.fab?.icon??this.fab)}" .ui="${ifDefined(this.fab?.ui??"unelevated secondary")}"></md-fab>`:nothing}
                 </div>
             `:nothing}
             ${this.body?.length||this.buttons?.length?html`
@@ -73,16 +55,8 @@ class MDBottomAppBar extends MDElement {
                     ${this.body?.length?html`<div class="md-bottom-app-bar__inner">${this.body}</div>`:nothing}
                     ${this.buttons?.length?html`
                         <div class="md-bottom-app-bar__footer">
-                            ${this.buttons.map(action => html`
-                                <md-button 
-                                    class="md-bottom-app-bar__button" 
-                                    .icon="${ifDefined(action?.icon)}"
-                                    .label="${ifDefined(action?.label??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    .selected="${ifDefined(action?.selected)}"
-                                    @click="${this.handleBottomAppBarButtonClick}"
-                                ></md-button>
+                            ${this.buttons.map(button=>html`
+                                <md-button @click="${this.handleBottomAppBarButtonClick}" class="md-bottom-app-bar__button" .label="${ifDefined(button?.label??button)}" .icon="${ifDefined(button?.icon)}" .ui="${ifDefined(button?.ui)}"></md-button>
                             `)}
                         </div>
                     `:nothing}
@@ -93,76 +67,17 @@ class MDBottomAppBar extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-
-        await this.updateComplete;
-
         this.classList.add("md-bottom-app-bar");
-        this.classList.add("md-bottom-app-bar--sheet");
-        this.classList.add("md-bottom-app-bar--south");
-
-        this.scrimElement = document.createElement("div");
-        this.scrimElement.classList.add("md-bottom-app-bar__scrim");
-        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
-        this.handleBottomAppBarScrimClick = this.handleBottomAppBarScrimClick.bind(this);
-        this.scrimElement.addEventListener("click", this.handleBottomAppBarScrimClick);
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-app-bar");
-        this.classList.remove("md-bottom-app-bar--sheet");
-        this.classList.remove("md-bottom-app-bar--south");
-
-        this.scrimElement.removeEventListener("click", this.handleBottomAppBarScrimClick);
-        this.scrimElement.remove();
+        await this.updateComplete;
     }
 
-    firstUpdated(changedProperties) {}
-
-    updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            [
-                //
-                "dialog",
-                "full-screen",
-                // "sheet",
-                "modal",
-                "north",
-                "east",
-                // "south",
-                "west",
-                "center",
-            ].forEach((ui) => {
-                this.classList.remove("md-bottom-app-bar--" + ui);
-            });
-            if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-bottom-app-bar--" + ui);
-                });
-            }
-        }
-        if (changedProperties.has("open")) {
-            if (this.open) {
-                this.classList.add("md-bottom-app-bar--open");
-
-                if (
-                    this.ui &&
-                    this.ui.split(" ").some((ui) =>
-                        [
-                            //
-                            "dialog",
-                            "modal",
-                        ].includes(ui)
-                    )
-                ) {
-                    this.scrimElement.classList.add("md-bottom-app-bar--open");
-                }
-            } else {
-                this.classList.remove("md-bottom-app-bar--open");
-                this.scrimElement.classList.remove("md-bottom-app-bar--open");
-            }
-        }
-    }
+    updated(changedProperties) {}
 
     show() {
         this.open = true;
@@ -172,10 +87,12 @@ class MDBottomAppBar extends MDElement {
         this.open = false;
     }
 
-    handleBottomAppBarScrimClick(event) {
-        this.close();
-
-        this.emit("onBottomAppBarScrimClick", event);
+    toggle() {
+        if (this.open) {
+            this.close();
+        } else {
+            this.show();
+        }
     }
 
     handleBottomAppBarActionClick(event) {
@@ -187,6 +104,6 @@ class MDBottomAppBar extends MDElement {
     }
 }
 
-customElements.define("md-bottom-app-bar", MDBottomAppBar);
+customElements.define("md-bottom-app-bar", MDBottomAppBarComponent);
 
-export { MDBottomAppBar };
+export { MDBottomAppBarComponent };

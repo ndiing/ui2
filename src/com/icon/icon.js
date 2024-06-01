@@ -1,7 +1,8 @@
-import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
-class MDIcon extends MDElement {
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
+
+class MDIconComponent extends MDElement {
     static get properties() {
         return {};
     }
@@ -10,24 +11,27 @@ class MDIcon extends MDElement {
         super();
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
-        return html`
-        `
+        return html``;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-icon");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon");
+        await this.updateComplete;
     }
 
     updated(changedProperties) {}
 }
-customElements.define("md-icon", MDIcon);
-export { MDIcon };
+
+customElements.define("md-icon", MDIconComponent);
+
+export { MDIconComponent };

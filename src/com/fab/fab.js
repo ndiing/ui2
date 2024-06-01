@@ -1,11 +1,13 @@
+import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
-import { html } from "lit";
-import { msg } from "@lit/localize";
-import { Ripple } from "../ripple/ripple";
-class MDFab extends MDElement {
+import { ifDefined } from "lit/directives/if-defined.js";
+import { MDRippleModule } from "../ripple/ripple";
+
+class MDFabComponent extends MDElement {
     static get properties() {
         return {
             icon: { type: String },
+            label: { type: String },
             ui: { type: String },
         };
     }
@@ -14,31 +16,34 @@ class MDFab extends MDElement {
         super();
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            <div class="md-fab__icon">${this.icon}</div>
-        `
+            ${this.icon?html`<md-icon class="md-fab__icon">${this.icon}</md-icon>`:nothing}
+            ${this.label?html`<div class="md-fab__label">${this.label}</div>`:nothing}
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-fab");
-        this.ripple = new Ripple(this, {});
+        await this.updateComplete;
+        this.ripple = new MDRippleModule(this, {});
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-fab");
-        this.ripple?.destroy();
+        await this.updateComplete;
+        this.ripple.destroy();
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            this.classList.remove("md-fab--small");
-            this.classList.remove("md-fab--large");
-            this.classList.remove("md-fab--unelevated");
+            ["small", "large", "extended", "surface", "secondary", "tertiary", "unelevated"].forEach((ui) => {
+                this.classList.remove("md-fab--" + ui);
+            });
 
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
@@ -48,5 +53,7 @@ class MDFab extends MDElement {
         }
     }
 }
-customElements.define("md-fab", MDFab);
-export { MDFab };
+
+customElements.define("md-fab", MDFabComponent);
+
+export { MDFabComponent };

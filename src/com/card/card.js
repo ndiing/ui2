@@ -1,80 +1,61 @@
-import { ifDefined } from "lit/directives/if-defined.js";
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
 
-class MDCard extends MDElement {
+class MDCardComponent extends MDElement {
     static get properties() {
         return {
             leadingActions: { type: Array },
             label: { type: String },
-            labelSecondary: { type: String },
+            subLabel: { type: String },
             trailingActions: { type: Array },
+            image: { type: String },
             buttons: { type: Array },
             ui: { type: String },
-            open: { type: Boolean },
         };
     }
 
     constructor() {
         super();
-
         this.body = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            ${this.leadingActions?.length||this.label||this.labelSecondary||this.trailingActions?.length?html`
+            ${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
                 <div class="md-card__header">
                     ${this.leadingActions?.length?html`
                         <div class="md-card__actions">
-                            ${this.leadingActions.map(action => html`
-                                <md-icon-button 
-                                    class="md-card__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleCardActionClick}"
-                                ></md-icon-button>
+                            ${this.leadingActions.map(action=>html`
+                                <md-icon-button class="md-card__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
-                    ${this.label||this.labelSecondary?html`
+                    ${this.label||this.subLabel?html`
                         <div class="md-card__label">
                             ${this.label?html`<div class="md-card__label-primary">${this.label}</div>`:nothing}
-                            ${this.labelSecondary?html`<div class="md-card__label-secondary">${this.labelSecondary}</div>`:nothing}
+                            ${this.subLabel?html`<div class="md-card__label-secondary">${this.subLabel}</div>`:nothing}
                         </div>
                     `:nothing}
                     ${this.trailingActions?.length?html`
                         <div class="md-card__actions">
-                            ${this.trailingActions.map(action => html`
-                                <md-icon-button 
-                                    class="md-card__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleCardActionClick}"
-                                ></md-icon-button>
+                            ${this.trailingActions.map(action=>html`
+                                <md-icon-button class="md-card__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
                 </div>
             `:nothing}
-            ${this.body?.length||this.buttons?.length?html`
+            ${this.body?.length||this.image||this.buttons?.length?html`
                 <div class="md-card__body">
+                    ${this.image?html`<md-image class="md-card__image" .src="${ifDefined(this.image?.src??this.image)}" .ratio="${ifDefined(this.image?.ratio??"16/9")}"></md-image>`:nothing}
                     ${this.body?.length?html`<div class="md-card__inner">${this.body}</div>`:nothing}
                     ${this.buttons?.length?html`
                         <div class="md-card__footer">
-                            ${this.buttons.map(action => html`
-                                <md-button 
-                                    class="md-card__button" 
-                                    .icon="${ifDefined(action?.icon)}"
-                                    .label="${ifDefined(action?.label??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    .selected="${ifDefined(action?.selected)}"
-                                    @click="${this.handleCardButtonClick}"
-                                ></md-button>
+                            ${this.buttons.map(button=>html`
+                                <md-button class="md-card__button" .label="${ifDefined(button?.label??button)}" .icon="${ifDefined(button?.icon)}" .ui="${ifDefined(button?.ui)}"></md-button>
                             `)}
                         </div>
                     `:nothing}
@@ -85,99 +66,31 @@ class MDCard extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-
-        await this.updateComplete;
-
         this.classList.add("md-card");
-
-        this.scrimElement = document.createElement("div");
-        this.scrimElement.classList.add("md-card__scrim");
-        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
-        this.handleCardScrimClick = this.handleCardScrimClick.bind(this);
-        this.scrimElement.addEventListener("click", this.handleCardScrimClick);
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-card");
-
-        this.scrimElement.removeEventListener("click", this.handleCardScrimClick);
-        this.scrimElement.remove();
+        await this.updateComplete;
     }
-
-    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            [
-                //
-                "dialog",
-                "full-screen",
-                "sheet",
-                "modal",
-                "north",
-                "east",
-                "south",
-                "west",
-                "center",
-                "elevated",
-                "filled",
-                "outlined",
-            ].forEach((ui) => {
+            ["elevated", "filled", "outlined"].forEach((ui) => {
                 this.classList.remove("md-card--" + ui);
             });
+
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
                     this.classList.add("md-card--" + ui);
                 });
             }
         }
-        if (changedProperties.has("open")) {
-            if (this.open) {
-                this.classList.add("md-card--open");
-
-                if (
-                    this.ui &&
-                    this.ui.split(" ").some((ui) =>
-                        [
-                            //
-                            "dialog",
-                            "modal",
-                        ].includes(ui)
-                    )
-                ) {
-                    this.scrimElement.classList.add("md-card--open");
-                }
-            } else {
-                this.classList.remove("md-card--open");
-                this.scrimElement.classList.remove("md-card--open");
-            }
-        }
-    }
-
-    show() {
-        this.open = true;
-    }
-
-    close() {
-        this.open = false;
-    }
-
-    handleCardScrimClick(event) {
-        this.close();
-
-        this.emit("onCardScrimClick", event);
-    }
-
-    handleCardActionClick(event) {
-        this.emit("onCardActionClick", event);
-    }
-
-    handleCardButtonClick(event) {
-        this.emit("onCardButtonClick", event);
     }
 }
 
-customElements.define("md-card", MDCard);
+customElements.define("md-card", MDCardComponent);
 
-export { MDCard };
+export { MDCardComponent };

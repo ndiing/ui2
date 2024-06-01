@@ -1,3 +1,17 @@
+.md-layout-absolute {
+    position: relative;
+}
+
+.md-layout-absolute__item {
+    position: absolute;
+}
+
+.md-layout-accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+// .md-layout-accordion__item {}
 
 .md-layout-border {
     display: grid;
@@ -18,14 +32,6 @@
     grid-area: north;
 }
 
-.md-layout-border__item--east {
-    grid-area: east;
-}
-
-.md-layout-border__item--south {
-    grid-area: south;
-}
-
 .md-layout-border__item--west {
     grid-area: west;
 }
@@ -34,81 +40,69 @@
     grid-area: center;
 }
 
-.md-layout-absolute {
-    position: relative;
+.md-layout-border__item--east {
+    grid-area: east;
 }
 
-.md-layout-absolute__item {
-    position: absolute;
-}
-
-.md-layout-accordion {
-    display: flex;
-    flex-direction: column;
-}
-
-.md-layout-accordion__item {
-    flex: 0;
-}
-
-.md-layout-accordion__item--expanded {
-    flex: 1;
+.md-layout-border__item--south {
+    grid-area: south;
 }
 
 .md-layout-card {
-    --md-layout-card-index: 0;
     display: flex;
     overflow: hidden;
 }
 
 .md-layout-card__item {
     flex: 1 0 100%;
-    transform: translate3d(calc((0 - var(--md-layout-card-index)) * 100%), 0px, 0px);
 }
 
 .md-layout-column {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-gap: 24px;
+    gap: 24px;
 
-    @media (min-width: 840px) {
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        grid-gap: 24px;
+    @include md-layout-compact() {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
 
-        @for $i from 1 through 12 {
-
-            .md-layout-column__item--expanded#{$i} {
+        @for $i from 1 through 4 {
+            .md-layout-column__item--compact#{$i} {
                 grid-column-end: span $i;
             }
         }
     }
 
-    @media (min-width: 600px) and (max-width: 839px) {
+    @include md-layout-medium() {
         grid-template-columns: repeat(8, minmax(0, 1fr));
-        grid-gap: 16px;
+        gap: 16px;
 
         @for $i from 1 through 8 {
-
             .md-layout-column__item--medium#{$i} {
                 grid-column-end: span $i;
             }
         }
     }
 
-    @media (max-width: 599px) {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-gap: 8px;
+    @include md-layout-expanded() {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 24px;
 
-        @for $i from 1 through 4 {
-
-            .md-layout-column__item--compact#{$i} {
+        @for $i from 1 through 12 {
+            .md-layout-column__item--expanded#{$i} {
                 grid-column-end: span $i;
             }
         }
     }
 }
 
+.md-layout-column__item {
+    grid-column-end: span 4;
+}
+
 .md-layout-fit {
     width: 100%;
     height: 100%;
 }
+
+// .md-layout-fit__item{}

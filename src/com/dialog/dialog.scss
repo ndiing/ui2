@@ -1,13 +1,27 @@
 .md-dialog {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container-highest);
+    overflow: hidden;
+    min-width: 280px;
+    max-width: 560px;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface);
-    box-shadow: var(--md-sys-elevation-level0);
+    box-shadow: var(--md-sys-elevation-level3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
     transition-property: all;
     transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+
+    &:not([open]) {
+        transform: translate3d(-50%, -50%, 0) scale(0.84);
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .md-dialog__header {
@@ -17,7 +31,9 @@
     gap: 0 16px;
 
     + .md-dialog__body {
-        margin-top: -24px;
+        .md-dialog__inner {
+            margin-top: 0px;
+        }
     }
 }
 
@@ -27,25 +43,20 @@
     gap: 0 16px;
 }
 
-.md-dialog__action {
-    color: var(--md-sys-color-on-surface-variant);
-}
+// .md-dialog__action {}
 
 .md-dialog__label {
+    flex: 1;
     display: flex;
     flex-direction: column;
-
-    + .md-dialog__actions {
-        margin-left: auto;
-    }
 }
 
 .md-dialog__label-primary {
-    @extend .md-typography--title-large;
+    @include md-typography-title-large;
 }
 
 .md-dialog__label-secondary {
-    @extend .md-typography--title-small;
+    @include md-typography-title-small;
 }
 
 .md-dialog__body {
@@ -60,7 +71,7 @@
     overflow: auto;
     padding: 0 24px;
     margin: 24px 0;
-    @extend .md-typography--body-medium;
+    @include md-typography-body-medium;
 
     + .md-dialog__footer {
         margin-top: -24px;
@@ -75,170 +86,45 @@
     gap: 0 8px;
 }
 
-.md-dialog__scrim {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 32%;
-    transition-property: all;
-    transition-duration: var(--md-sys-motion-duration-short4);
-    transition-timing-function: var(--md-sys-motion-easing-standard);
-    user-select: none;
+// .md-dialog__button {}
 
-    &:not(.md-dialog--open) {
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-
-// dialog
-.md-dialog--dialog {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 3;
-    min-width: 280px;
-    max-width: 560px;
-    transform: translate3d(-50%, -50%, 0) scale(1);
-    border-radius: var(--md-sys-shape-corner-extra-large);
-    background: var(--md-sys-color-surface-container-high);
-    color: var(--md-sys-color-on-surface);
-    box-shadow: var(--md-sys-elevation-level3);
-
-    &:not(.md-dialog--open) {
-        transform: translate3d(-50%, -50%, 0) scale(0.84);
-        opacity: 0;
-        pointer-events: none;
-    }
-}
-
-// full-screen
 .md-dialog--full-screen {
-    left: 0;
-    top: 0;
     min-width: 100%;
     max-width: 100%;
     width: 100%;
     height: 100%;
-    transform: translate3d(0, 0, 0) scale(1);
     border-radius: var(--md-sys-shape-corner-none);
     background: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
 
-    &:not(.md-dialog--open) {
-        transform: translate3d(0, 0, 0) scale(0.92);
+    // .md-dialog__header{
+    //     border-radius: var(--md-sys-shape-corner-none);
+    //     background: var(--md-sys-color-surface-container);
+    //     color: var(--md-sys-color-on-surface);
+    //     box-shadow: var(--md-sys-elevation-level2);
+    // }
+
+    &:not([open]) {
+        transform: translate3d(-50%, -50%, 0) scale(0.92);
     }
 }
 
-// sheet
-.md-dialog--sheet {
-    border-radius: var(--md-sys-shape-corner-none);
-    background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
-    box-shadow: var(--md-sys-elevation-level0);
-
-    &:not(.md-dialog--open) {
-        pointer-events: none;
-    }
-}
-
-.md-dialog--north {
-    grid-area: north;
-
-    &:not(.md-dialog--open) {
-        margin-top: -100vh;
-    }
-}
-
-.md-dialog--east {
-    grid-area: east;
-
-    &:not(.md-dialog--open) {
-        margin-right: -100vw;
-    }
-}
-
-.md-dialog--south {
-    grid-area: south;
-
-    &:not(.md-dialog--open) {
-        margin-bottom: -100vh;
-    }
-}
-
-.md-dialog--west {
-    grid-area: west;
-
-    &:not(.md-dialog--open) {
-        margin-left: -100vw;
-    }
-}
-
-.md-dialog--center {
-    grid-area: center;
-}
-
-// modal
-.md-dialog--modal {
+.md-dialog__scrim {
+    width: 100%;
+    height: 100%;
     position: absolute;
+    left: 0;
+    top: 0;
     z-index: 3;
-    grid-area: 1/1/4/4;
-    border-radius: var(--md-sys-shape-corner-large-start);
-    background: var(--md-sys-color-surface-container-low);
-    color: var(--md-sys-color-on-surface);
-    box-shadow: var(--md-sys-elevation-level1);
+    background: var(--md-sys-color-scrim);
+    opacity: 32%;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
 
-    &:not(.md-dialog--open) {
-        margin: 0;
-        box-shadow: var(--md-sys-elevation-level0);
-    }
-
-    &.md-dialog--north {
-        top: 0;
-        left: 0;
-        right: 0;
-        border-radius: var(--md-sys-shape-corner-large-bottom);
-
-        &:not(.md-dialog--open) {
-            transform: translate3d(0, -100%, 0);
-        }
-    }
-
-    &.md-dialog--east {
-        right: 0;
-        top: 0;
-        bottom: 0;
-        border-radius: var(--md-sys-shape-corner-large-start);
-
-        &:not(.md-dialog--open) {
-            transform: translate3d(100%, 0, 0);
-        }
-    }
-
-    &.md-dialog--south {
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: var(--md-sys-shape-corner-large-top);
-
-        &:not(.md-dialog--open) {
-            transform: translate3d(0, 100%, 0);
-        }
-    }
-
-    &.md-dialog--west {
-        left: 0;
-        top: 0;
-        bottom: 0;
-        border-radius: var(--md-sys-shape-corner-large-end);
-
-        &:not(.md-dialog--open) {
-            transform: translate3d(-100%, 0, 0);
-        }
+    &:not([open]) {
+        opacity: 0;
+        pointer-events: none;
     }
 }

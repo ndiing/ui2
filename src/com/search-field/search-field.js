@@ -1,85 +1,115 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
+import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
-class MDSearchField extends MDElement {
+class MDSearchFieldComponent extends MDElement {
     static get properties() {
         return {
+            autocomplete:{type:String},
+            disabled:{type:Boolean},
+            form:{type:String},
+            name:{type:String},
+            readonly:{type:Boolean},
+            required:{type:Boolean},
+            value:{type:String},
+            maxlength:{type:Number},
+            minlength:{type:Number},
+            pattern:{type:String},
+            placeholder:{type:String},
+            size:{type:Number},
+            defaultValue:{type:String},
+
             label: { type: String },
-            name: { type: String },
-            placeholder: { type: String },
-            required: { type: Boolean },
-            readOnly: { type: Boolean },
-            value: { type: String },
-            defaultValue: { type: String },
-            ui: { type: String },
+            leadingIcon: { type: String },
+            leadingMeta: { type: String },
+            trailingMeta: { type: String },
+            trailingActions: { type: Array },
+            trailingIcon: { type: String },
             text: { type: String },
+
+            focused: { type: Boolean, reflect: true },
+            populated: { type: Boolean, reflect: true },
+            invalid: { type: Boolean, reflect: true },
             validationMessage: { type: String },
-            error: { type: Boolean },
+
+            ui: { type: String },
         };
     }
 
-    get searchFieldNative() {
-        return this.querySelector(".md-search-field__native");
+    constructor() {
+        super();
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            ${this.label?html`
-                <div class="md-search-field__label">${this.label}</div>
-            `:nothing}
+            ${this.label?html`<div class="md-search-field__label">${this.label}</div>`:nothing}
             <div class="md-search-field__container">
-                <input 
+                ${this.leadingIcon?html`<md-icon class="md-search-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                ${this.leadingMeta?html`<div class="md-search-field__meta">${this.leadingMeta}</div>`:nothing}
+                <input
                     class="md-search-field__native"
-                    type="search"
+                    .type="${"search"}"
+                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .disabled="${ifDefined(this.disabled)}"
+                    .form="${ifDefined(this.form)}"
                     .name="${ifDefined(this.name)}"
-                    .placeholder="${ifDefined(this.placeholder)}"
+                    .readonly="${ifDefined(this.readonly)}"
                     .required="${ifDefined(this.required)}"
-                    .readOnly="${ifDefined(this.readOnly)}"
                     .value="${ifDefined(this.value)}"
+                    .maxlength="${ifDefined(this.maxlength)}"
+                    .minlength="${ifDefined(this.minlength)}"
+                    .pattern="${ifDefined(this.pattern)}"
+                    .placeholder="${ifDefined(this.placeholder)}"
+                    .size="${ifDefined(this.size)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
-                    autocomplete="off"
                     @focus="${this.handleSearchFieldNativeFocus}"
                     @blur="${this.handleSearchFieldNativeBlur}"
                     @input="${this.handleSearchFieldNativeInput}"
-                    @search="${this.handleSearchFieldNativeSearch}"
                     @invalid="${this.handleSearchFieldNativeInvalid}"
                     @reset="${this.handleSearchFieldNativeReset}"
-                >
-                <div class="md-search-field__actions">${this.value?html`<md-icon-button class="md-search-field__action" .icon="${"cancel"}" @click="${this.handleSearchFieldActionClick}"></md-icon-button>`:nothing}${this.error?html`<md-icon class="md-search-field__icon">error</md-icon>`:nothing}</div>
+                />
+                ${this.trailingMeta?html`<div class="md-search-field__meta">${this.trailingMeta}</div>`:nothing}
+                ${this.trailingIcon?html`<md-icon class="md-search-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                ${this.invalid?html`<md-icon class="md-search-field__icon">error</md-icon>`:nothing}
+                <div class="md-search-field__actions">
+                    ${this.trailingActions?.map(action => html`
+                        <md-icon-button @click="${this.handleSearchFieldNativeActionClick}" class="md-search-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                    `)}
+                    ${this.populated?html`<md-icon-button @click="${this.handleSearchFieldNativeActionCancelClick}" class="md-search-field__action" .icon="${"cancel"}"></md-icon-button>`:nothing}
+                </div>
             </div>
-            ${this.validationMessage||this.text?html`
-                <div class="md-search-field__text">${this.validationMessage||this.text}</div>
-            `:nothing}
-        `
-    }
-
-    handleSearchFieldActionClick(event){
-        this.searchFieldNative.value=''
-        this.value=this.searchFieldNative.value
-        this.updateClassPopulated();
+            ${this.validationMessage||this.text?html`<div class="md-search-field__text">${this.validationMessage||this.text}</div>`:nothing}
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-search-field");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-search-field");
+        await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-search-field__meta,.md-search-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-search-field-offset-left", offsetLeft + "px");
+        }
     }
 
-    firstUpdated(changedProperties) {
-        this.updateClassPopulated();
+    async firstUpdated(changedProperties) {
+        await this.updateComplete
+        this.defaultValue = this.value??''
+        this.populated = !!this.value;
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            ["filled", "outlined"].forEach((ui) => {
+            ["filled", "outlined", "rounded"].forEach((ui) => {
                 this.classList.remove("md-search-field--" + ui);
             });
             if (this.ui) {
@@ -90,70 +120,54 @@ class MDSearchField extends MDElement {
         }
     }
 
+    get searchFieldNative() {
+        return this.querySelector(".md-search-field__native");
+    }
+
+    handleSearchFieldNativeActionClick(event) {
+        this.emit("onSearchFieldNativeActionClick", event);
+    }
+
+    handleSearchFieldNativeActionCancelClick(event) {
+        this.searchFieldNative.value=''
+        this.value=this.searchFieldNative.value
+        this.populated=!!this.value
+        
+        this.emit("onSearchFieldNativeActionCancelClick", event);
+    }
+
     handleSearchFieldNativeFocus(event) {
-        this.classList.add("md-search-field--focus");
+        this.focused = true;
         this.emit("onSearchFieldNativeFocus", event);
     }
-
     handleSearchFieldNativeBlur(event) {
-        this.classList.remove("md-search-field--focus");
+        this.focused = false;
         this.emit("onSearchFieldNativeBlur", event);
     }
-
     handleSearchFieldNativeInput(event) {
-        this.value=this.searchFieldNative.value
-        this.updateClassPopulated();
-        this.updateClassError();
+        this.value = this.searchFieldNative.value;
+        this.populated = !!this.value;
+        this.validationMessage = this.searchFieldNative.validationMessage;
+        this.invalid = !!this.validationMessage;
         this.emit("onSearchFieldNativeInput", event);
     }
-
-    handleSearchFieldNativeSearch(event) {
-        this.emit("onSearchFieldNativeSearch", event);
-    }
-
     handleSearchFieldNativeInvalid(event) {
         event.preventDefault();
-        this.updateClassError();
+        this.validationMessage = this.searchFieldNative.validationMessage;
+        this.invalid = !!this.validationMessage;
         this.emit("onSearchFieldNativeInvalid", event);
     }
-
     handleSearchFieldNativeReset(event) {
-        this.resetClassError();
-        this.resetClassPopulated();
+        this.searchFieldNative.value = this.defaultValue;
+        this.value = this.searchFieldNative.value;
+        this.populated = !!this.value;
+        this.validationMessage = "";
+        this.invalid = !!this.validationMessage;
+
         this.emit("onSearchFieldNativeReset", event);
-    }
-
-    updateClassPopulated() {
-        if (this.searchFieldNative.value) {
-            this.classList.add("md-search-field--populated");
-        } else {
-            this.classList.remove("md-search-field--populated");
-        }
-    }
-
-    updateClassError() {
-        this.error = !this.searchFieldNative.validity.valid;
-        this.validationMessage = this.searchFieldNative.validationMessage;
-
-        if (this.error) {
-            this.classList.add("md-search-field--error");
-        } else {
-            this.classList.remove("md-search-field--error");
-        }
-    }
-
-    resetClassPopulated() {
-        this.searchFieldNative.value = this.searchFieldNative.defaultValue;
-        this.updateClassPopulated();
-    }
-
-    resetClassError() {
-        this.error = false;
-        this.validationMessage = undefined;
-        this.classList.remove("md-search-field--error");
     }
 }
 
-customElements.define("md-search-field", MDSearchField);
+customElements.define("md-search-field", MDSearchFieldComponent);
 
-export { MDSearchField };
+export { MDSearchFieldComponent };

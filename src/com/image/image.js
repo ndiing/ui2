@@ -1,14 +1,14 @@
-import { ifDefined } from "lit/directives/if-defined.js";
-import { MDElement } from "../element/element";
 import { html } from "lit";
-import { styleMap } from "lit/directives/style-map.js";
-class MDImage extends MDElement {
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
+
+class MDImageComponent extends MDElement {
     static get properties() {
         return {
             src: { type: String },
             alt: { type: String },
             ratio: { type: String },
-            rounded: { type: Boolean },
+            ui: { type: String },
         };
     }
 
@@ -16,8 +16,9 @@ class MDImage extends MDElement {
         super();
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
             <img 
                 .src="${ifDefined(this.src)}" 
@@ -29,37 +30,50 @@ class MDImage extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-image");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-image");
+        await this.updateComplete;
     }
-
-    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
+        
         if (changedProperties.has("ratio")) {
+            this.style.removeProperty("aspect-ratio");
+
             if (this.ratio) {
-                this.style.aspectRatio = this.ratio;
+                this.style.setProperty("aspect-ratio", this.ratio);
             }
         }
 
-        if (changedProperties.has("rounded")) {
-            if (this.rounded) {
-                this.classList.add("md-image--rounded");
+        if (changedProperties.has("ui")) {
+            ["rounded"].forEach((ui) => {
+                this.classList.remove("md-image--" + ui);
+            });
+            if (this.ui) {
+                this.ui.split(" ").forEach((ui) => {
+                    this.classList.add("md-image--" + ui);
+                });
+            }
 
-                if (this.ratio) {
-                    const [width, height] = this.ratio.split("/").map((ratio) => Number(ratio.trim()));
-                    this.style.borderRadius = `calc(50% / ${width} * ${height}) / 50%`;
-                }
-            } else {
-                this.classList.remove("md-image--rounded");
+            this.style.removeProperty("border-radius");
+
+            if (this.ui?.includes('rounded')) {
+                const ratioValues = this.ratio ? this.ratio.split("/").map((ratio) => ratio.trim()) : [1, 1];
+                const [width, height] = ratioValues.map((value) => parseFloat(value));
+                const borderRadius = this.ratio ? `50% / ${(width / height) * 50}%` : "50%";
+                this.style.setProperty("border-radius", borderRadius);
             }
         }
+
+
     }
 }
-customElements.define("md-image", MDImage);
-export { MDImage };
+
+customElements.define("md-image", MDImageComponent);
+
+export { MDImageComponent };

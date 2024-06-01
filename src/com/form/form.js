@@ -1,47 +1,59 @@
-import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
+import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
-class MDForm extends MDElement {
+
+class MDFormComponent extends MDElement {
     static get properties() {
         return {
+            acceptCharset: { type: String },
             action: { type: String },
+            elements: { type: String },
+            encoding: { type: String },
             enctype: { type: String },
+            length: { type: String },
             method: { type: String },
+            name: { type: String },
+            target: { type: String },
         };
     }
 
     constructor() {
         super();
-        this.action = "/";
-        this.enctype = "application/json";
-        this.method = "post";
-        this.childNodes_ = Array.from(this.childNodes);
+        this.body = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
             <form
-                class="md-form__native"
+                .acceptCharset="${ifDefined(this.acceptCharset)}"
                 .action="${ifDefined(this.action)}"
+                .elements="${ifDefined(this.elements)}"
+                .encoding="${ifDefined(this.encoding)}"
                 .enctype="${ifDefined(this.enctype)}"
+                .length="${ifDefined(this.length)}"
                 .method="${ifDefined(this.method)}"
+                .name="${ifDefined(this.name)}"
+                .target="${ifDefined(this.target)}"
+                class="md-form__native"
+                @formdata="${this.handleFormNativeFormdata}"
                 @reset="${this.handleFormNativeReset}"
                 @submit="${this.handleFormNativeSubmit}"
-            >${this.childNodes_}</form>
-        `
+            >${this.body}</form>
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-form");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-form");
+        await this.updateComplete;
     }
 
     updated(changedProperties) {}
@@ -50,9 +62,16 @@ class MDForm extends MDElement {
         return this.querySelector(".md-form__native");
     }
 
+    handleFormNativeFormdata(event) {
+        this.emit("onFormNativeFormdata", event);
+    }
+
     handleFormNativeReset(event) {
         for (const element of this.formNative.elements) {
-            const event = new CustomEvent("reset", { bubbles: true, cancelable: true, detail: event });
+            const event = new CustomEvent("reset", {
+                bubbles: true,
+                cancelable: true,
+            });
             element.dispatchEvent(event);
         }
         this.emit("onFormNativeReset", event);
@@ -68,18 +87,18 @@ class MDForm extends MDElement {
     }
 
     submit(button) {
-        let formNative = this.formNative;
-
-        if (formNative.requestSubmit) {
+        if (this.formNative.requestSubmit) {
             if (button) {
-                formNative.requestSubmit(button);
+                this.formNative.requestSubmit(button);
             } else {
-                formNative.requestSubmit();
+                this.formNative.requestSubmit();
             }
         } else {
-            formNative.submit();
+            this.formNative.submit();
         }
     }
 }
-customElements.define("md-form", MDForm);
-export { MDForm };
+
+customElements.define("md-form", MDFormComponent);
+
+export { MDFormComponent };

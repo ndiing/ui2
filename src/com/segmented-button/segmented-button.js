@@ -1,11 +1,15 @@
-import { MDElement } from "../element/element";
 import { html } from "lit";
-import { msg } from "@lit/localize";
+import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
-class MDSegmentedButton extends MDElement {
+
+class MDSegmentedButtonComponent extends MDElement {
     static get properties() {
         return {
             buttons: { type: Array },
+            rangeSelection: { type: Boolean },
+            multiSelection: { type: Boolean },
+            singleSelection: { type: Boolean },
+            allSelection: { type: Boolean },
         };
     }
 
@@ -13,60 +17,93 @@ class MDSegmentedButton extends MDElement {
         super();
     }
 
-    render() {
-        // prettier-ignore
+    /* prettier-ignore */
+
+    renderButton(button) {
         return html`
-            ${this.buttons?.map(button=>html`
-                <md-button
-                    .icon="${ifDefined(button?.selected?button?.icon??'check':undefined)}"
-                    .label="${ifDefined(button?.label??button)}"
-                    .type="${ifDefined(button?.type)}"
-                    .ui="${ifDefined(button?.ui??"outlined")}"
-                    .selected="${ifDefined(button?.selected)}"
-                    .data="${button}"
-                    @click="${this.handleSegmentedButtonClick}"
-                ></md-button>
-            `)}
-        `
+            <md-button 
+                class="md-segmented-button__button"
+                .data="${button}"
+                .icon="${ifDefined(button?.icon??button.selected?"check":undefined)}"
+                .label="${ifDefined(button?.label??button)}"
+                .ui="${ifDefined(button?.ui??"outlined")}"
+                .type="${ifDefined(button?.type)}"
+                .selected="${ifDefined(button?.selected)}"
+                @click="${this.handleSegmentedButtonButtonClick}"
+            ></md-button>
+        `;
+    }
+
+    /* prettier-ignore */
+
+    render() {
+        return this.buttons?.map(button=>this.renderButton(button));
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-segmented-button");
+        await this.updateComplete;
+        this.handleSegmentedButtonKeydown = this.handleSegmentedButtonKeydown.bind(this);
+        this.addEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-segmented-button");
+        await this.updateComplete;
+        this.removeEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
 
     updated(changedProperties) {}
 
-    handleSegmentedButtonClick(event) {
-        const data = event.currentTarget.data;
-        this.currentSelectedIndex = this.buttons.indexOf(data);
-
-        if (event.shiftKey) {
-            this.lastSelectedIndex = this.lastSelectedIndex ?? 0;
-
-            if (this.lastSelectedIndex > this.currentSelectedIndex) {
-                [this.lastSelectedIndex, this.currentSelectedIndex] = [this.currentSelectedIndex, this.lastSelectedIndex];
-            }
-            this.buttons.forEach((item, index) => {
-                item.selected = index >= this.lastSelectedIndex && index <= this.currentSelectedIndex;
-            });
-        } else if (event.ctrlKey) {
-            data.selected = !data.selected;
-        } else {
-            this.buttons.forEach((item) => {
-                item.selected = item === data;
-            });
+    handleSegmentedButtonButtonClick(event) {
+        if (event.target.closest(".md-list__checkbox,.md-list__radio-button,.md-list__switch")) {
+            return;
         }
-        this.lastSelectedIndex = this.currentSelectedIndex;
+        const data = event.currentTarget.data;
+
+        if (this.rangeSelection && event.shiftKey) {
+            if (this.lastIndex == undefined) {
+                this.lastIndex = 0;
+            }
+            this.currentIndex = this.buttons.indexOf(data);
+            this.swapIndex = this.lastIndex > this.currentIndex;
+
+            if (this.swapIndex) {
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+            }
+            this.buttons.forEach((button, index) => {
+                button.selected = index >= this.lastIndex && index <= this.currentIndex;
+            });
+
+            if (this.swapIndex) {
+                [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
+            }
+        } else if (this.multiSelection && event.ctrlKey) {
+            data.selected = !data.selected;
+        } else if (this.singleSelection) {
+            this.buttons.forEach((button) => {
+                button.selected = button == data;
+            });
+            this.lastIndex = this.buttons.indexOf(data);
+        }
         this.requestUpdate();
-        this.emit("onSegmentedButtonClick", event);
+        this.emit("onSegmentedButtonButtonClick", event);
+    }
+
+    handleSegmentedButtonKeydown(event) {
+        if (this.allSelection && event.ctrlKey && event.key == "a") {
+            event.preventDefault();
+            this.buttons.forEach((button) => {
+                button.selected = true;
+            });
+            this.requestUpdate();
+        }
+        this.emit("onSegmentedButtonKeydown", event);
     }
 }
-customElements.define("md-segmented-button", MDSegmentedButton);
-export { MDSegmentedButton };
+
+customElements.define("md-segmented-button", MDSegmentedButtonComponent);
+
+export { MDSegmentedButtonComponent };

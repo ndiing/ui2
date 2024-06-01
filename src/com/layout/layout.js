@@ -1,33 +1,46 @@
-import { MDElement } from "../element/element";
-import { html } from "lit";
-import { msg } from "@lit/localize";
-class MDLayout extends MDElement {
-    static get properties() {
-        return {};
-    }
-
+class MDLayoutModule {
     constructor() {
-        super();
+        this.list = [
+            {
+                name: "compact",
+                query: window.matchMedia("(max-width: 599px)"),
+            },
+            {
+                name: "medium",
+                query: window.matchMedia("(min-width: 600px) and (max-width: 839px)"),
+            },
+            {
+                name: "expanded",
+                query: window.matchMedia("(min-width: 840px)"),
+            },
+        ];
+        this.item = null;
+        this.callback = this.callback.bind(this);
+        this.init();
     }
 
-    render() {
-        // prettier-ignore
-        return html`
-        `
+    init() {
+        this.callback();
     }
 
-    async connectedCallback() {
-        super.connectedCallback();
-        await this.updateComplete;
-        this.classList.add("md-layout");
-    }
+    callback() {
+        if (this.item) {
+            this.item.query.removeEventListener("change", this.callback);
+        }
+        this.item = this.list.find((item) => item.query.matches);
+        const event = new CustomEvent("onLayoutChange", {
+            bubbles: true,
+            cancelable: true,
+            detail: this.item,
+        });
+        window.dispatchEvent(event);
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-layout");
+        if (this.item) {
+            this.item.query.addEventListener("change", this.callback);
+        }
     }
-
-    updated(changedProperties) {}
 }
-customElements.define("md-layout", MDLayout);
-export { MDLayout };
+
+const layout = new MDLayoutModule();
+
+export { layout };

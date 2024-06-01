@@ -1,62 +1,64 @@
-
 .md-color-picker {
     display: inline-flex;
     flex-direction: column;
-    border-radius: var(--md-sys-shape-corner-medium);
-    background: var(--md-sys-color-surface-container-high);
-    box-shadow: var(--md-sys-elevation-level0);
+    border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-surface-container); // var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface);
+    box-shadow: var(--md-sys-elevation-level3);
+    position: absolute;
+    z-index: 4;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+
+    &:not([open]) {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .md-color-picker__header {
     display: flex;
     align-items: center;
     padding: 16px;
-
-    + .md-color-picker__body {
-        margin-top: -16px;
-    }
+    gap: 0 16px;
 }
 
 .md-color-picker__actions {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
-    margin-left: auto;
+    gap: 0 16px;
 }
 
-.md-color-picker__action {
-    color: var(--md-sys-color-on-surface-variant);
-}
+// .md-color-picker__action {}
 
 .md-color-picker__label {
-    --md-button-density: -2;
-    color: var(--md-sys-color-on-surface-variant);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 0 8px;
+}
 
-    + .md-color-picker__label {
-        margin-left: -12px;
-    }
+.md-color-picker__label-primary {
+    @include md-typography-title-small;
+    @include md-ripple--button;
+}
 
-    .md-button__icon {
-        color: rgba(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue), var(--md-color-picker-alpha));
-        @extend .md-icon--selected;
-    }
+.md-color-picker__label-secondary {
+    @include md-typography-title-small;
+    @include md-ripple--button;
 }
 
 .md-color-picker__body {
     flex: 1;
-    overflow: hidden auto;
     display: flex;
     flex-direction: column;
 }
 
 .md-color-picker__inner {
     flex: 1;
-    overflow: hidden auto;
-    @extend .md-typography--body-small;
-
-    + .md-color-picker__footer {
-        margin-top: -16px;
-    }
+    @include md-typography-body-medium;
 }
 
 .md-color-picker__footer {
@@ -64,95 +66,125 @@
     align-items: center;
     justify-content: flex-end;
     padding: 16px;
-    gap: 8px;
+    gap: 0 8px;
 }
 
-.md-color-picker__button {
-    --md-button-density: -2;
-}
+// .md-color-picker__button {
+// }
 
-.md-color-picker__area {
-    display: flex;
-    flex-direction: column;
-    margin: 16px 0;
-    gap: 4px;
-}
-
-.md-color-picker__gradient {
-    user-select: none;
-    width: calc((32px * 7) + (4px * 6) + (16px * 2));
-    height: calc((32px * 7) + (4px * 6) - 4px - 32px - 4px - 32px);
-    position: relative;
-    overflow: hidden;
-}
-
-.md-color-picker__gradient-track {
+.md-color-picker__scrim {
     width: 100%;
     height: 100%;
-}
-
-.md-color-picker__gradient-thumb {
-    width: calc(32px - (6px * 2));
-    height: calc(32px - (6px * 2));
-    border-radius: calc((32px - (6px * 2)) / 2);
-    margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
-    box-shadow: inset 0 0 0 2px white;
     position: absolute;
     left: 0;
     top: 0;
-    transform: translate3d(-50%, -50%, 0);
+    z-index: 3;
+    transition-property: all;
+    transition-duration: var(--md-sys-motion-duration-short4);
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-legacy));
+
+    &:not([open]) {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.md-color-picker__card {
+    display: flex;
+    overflow: hidden;
+    width: calc((32px * 7) + (4px * 6) + (16px * 2));
+    height: calc((32px * 7) + (4px * 6));
+}
+.md-color-picker__card-item {
+    flex: 1 0 100%;
+    overflow: auto;
+    transform: translate3d(calc((0 - var(--md-color-picker-index)) * 100%), 0%, 0px);
+}
+
+.md-color-picker__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 4px 0;
+}
+.md-color-picker__solid {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+.md-color-picker__track {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, black), linear-gradient(to right, white, transparent), #ff0000;
+}
+.md-color-picker__thumb {
+    width: 20px;
+    height: 20px;
+    transform: translate3d(-50%,-50%,0);
+    border-radius: calc(20px / 2);
+    background: var(--md-color-picker-rgb);
+    border: 2px solid var(--md-sys-color-background);
+    position: absolute;
+    left: 0;
+    top: 0;
     pointer-events: none;
 }
-.md-color-picker__hue,
+
+
+.md-color-picker__hue {
+    appearance: none;
+    height: 32px;
+    transform: rotate(-180deg);
+    background: transparent;
+}
+.md-color-picker__hue::-webkit-slider-container {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+}
+.md-color-picker__hue::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, hsl(0deg 100% 50%), hsl(60deg 100% 50%), hsl(120deg 100% 50%), hsl(160deg 100% 50%), hsl(240deg 100% 50%), hsl(300deg 100% 50%), hsl(360deg 100% 50%));
+}
+.md-color-picker__hue::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: calc((32px - 20px) / 2);
+    border-radius: calc(20px / 2);
+    background: var(--md-color-picker-hsl);
+    border: 2px solid var(--md-sys-color-background);
+    
+}
+
 
 .md-color-picker__opacity {
     appearance: none;
-    display: flex;
-    align-items: center;
-    width: calc((32px * 7) + (4px * 6) + (16px * 2));
     height: 32px;
     background: transparent;
-
-    &::-webkit-slider-container {
-        appearance: none;
-        background: transparent;
-        height: 32px;
-    }
-
-    &::-webkit-slider-runnable-track {
-        height: 32px;
-        background: transparent;
-    }
-
-    &::-webkit-slider-thumb {
-        appearance: none;
-        width: calc(32px - (6px * 2));
-        height: calc(32px - (6px * 2));
-        border-radius: calc((32px - (6px * 2)) / 2);
-        margin-top: calc((32px - calc(32px - (6px * 2))) / 2);
-        background: transparent;
-        box-shadow: inset 0 0 0 2px white;
-    }
+}
+.md-color-picker__opacity::-webkit-slider-container {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    background-image:  repeating-linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface-container-high) 75%, var(--md-sys-color-surface-container-high)), repeating-linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, var(--md-sys-color-background) 25%, var(--md-sys-color-background) 75%, var(--md-sys-color-surface-container-high) 75%, var(--md-sys-color-surface-container-high));
+    background-position: 0 0, calc(16px / 2) calc(16px / 2);
+    background-size: 16px 16px;
+}
+.md-color-picker__opacity::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--md-color-picker-rgb));
+}
+.md-color-picker__opacity::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: calc((32px - 20px) / 2);
+    border-radius: calc(20px / 2);
+    background: var(--md-color-picker-hex);
+    border: 2px solid var(--md-sys-color-background);
 }
 
-.md-color-picker__hue {
-
-    &::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, hsl(0deg, 100%, 50%), hsl(60deg, 100%, 50%), hsl(120deg, 100%, 50%), hsl(160deg, 100%, 50%), hsl(240deg, 100%, 50%), hsl(300deg, 100%, 50%), hsl(360deg, 100%, 50%));
-    }
-}
-
-.md-color-picker__opacity {
-
-    &::-webkit-slider-container {
-        background-image: repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface)), repeating-linear-gradient(45deg, var(--md-sys-color-surface) 25%, #e5e5f7 25%, #e5e5f7 75%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface));
-        background-position:
-            0 0,
-            10px 10px;
-        background-size: 20px 20px;
-    }
-
-    &::-webkit-slider-runnable-track {
-        background: linear-gradient(to right, transparent, rgb(var(--md-color-picker-red), var(--md-color-picker-green), var(--md-color-picker-blue)));
-    }
-}

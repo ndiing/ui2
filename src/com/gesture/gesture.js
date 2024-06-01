@@ -1,21 +1,29 @@
-class Gesture {
+class MDGestureModule {
+    // static zIndex=1000
     constructor(host, options = {}) {
+        this.host = host;
         this.options = {
-            dragStartWaitForLongPress: false,
-            resizeStartWaitForLongPress: false,
-            resizeHandles: ["n", "ne", "e", "se", "s", "sw", "w", "nw"],
+            resize: [
+                //
+                "nw",
+                "n",
+                "ne",
+                "w",
+                "e",
+                "sw",
+                "s",
+                "se",
+            ],
+            drag: [
+                //
+                "x",
+                "y",
+            ],
+            resizeAfterPress: false,
+            dragAfterPress: false,
             ...options,
         };
-        this.host = host;
         this.init();
-    }
-
-    on(type, listener) {
-        this.host.addEventListener(type, listener);
-    }
-
-    off(type, listener) {
-        this.host.removeEventListener(type, listener);
     }
 
     emit(type, detail) {
@@ -30,144 +38,194 @@ class Gesture {
     init() {
         this.host.classList.add("md-gesture");
 
-        if (this.options.resizeHandles.length) {
-            this.resizeElement = document.createElement("div");
-            this.resizeElement.classList.add("md-resize");
-            let innerHTML = "";
+        this.handlePointerdown = this.handlePointerdown.bind(this);
+        this.handlePointermove = this.handlePointermove.bind(this);
+        this.handlePointerup = this.handlePointerup.bind(this);
 
-            if (this.options.resizeHandles.includes("n")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--n"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("ne")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--ne"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("e")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--e"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("se")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--se"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("s")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--s"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("sw")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--sw"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("w")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--w"></div>`;
-            }
-
-            if (this.options.resizeHandles.includes("nw")) {
-                innerHTML += `<div class="md-resize__handle md-resize__handle--nw"></div>`;
-            }
-            this.resizeElement.innerHTML = innerHTML;
-            this.host.append(this.resizeElement);
+        let text = "";
+        text += `<div class="md-resize">`;
+        if (this.options.resize.includes("nw")) {
+            text += `    <div class="md-resize__item md-resize__item--nw"></div>`;
         }
-        this.handleMousedown = this.handleMousedown.bind(this);
-        this.handleMousemove = this.handleMousemove.bind(this);
-        this.handleMouseup = this.handleMouseup.bind(this);
-        this.host.addEventListener("mousedown", this.handleMousedown);
+        if (this.options.resize.includes("n")) {
+            text += `    <div class="md-resize__item md-resize__item--n"></div>`;
+        }
+        if (this.options.resize.includes("ne")) {
+            text += `    <div class="md-resize__item md-resize__item--ne"></div>`;
+        }
+        if (this.options.resize.includes("w")) {
+            text += `    <div class="md-resize__item md-resize__item--w"></div>`;
+        }
+        // text += `    <div class="md-resize__item md-resize__item--c"></div>`;
+        if (this.options.resize.includes("e")) {
+            text += `    <div class="md-resize__item md-resize__item--e"></div>`;
+        }
+        if (this.options.resize.includes("sw")) {
+            text += `    <div class="md-resize__item md-resize__item--sw"></div>`;
+        }
+        if (this.options.resize.includes("s")) {
+            text += `    <div class="md-resize__item md-resize__item--s"></div>`;
+        }
+        if (this.options.resize.includes("se")) {
+            text += `    <div class="md-resize__item md-resize__item--se"></div>`;
+        }
+        text += `</div>`;
+        this.host.insertAdjacentHTML("afterbegin", text);
+
+        this.host.addEventListener("pointerdown", this.handlePointerdown);
     }
 
-    destroy() {}
+    handlePointerdown(event) {
+        this.resize = false;
+        const resize = event.target.closest(".md-resize__item")?.classList.value.match(/--(\w+)$/)[1];
 
-    handleMousedown(event) {
-        window.addEventListener("mousemove", this.handleMousemove);
-        window.addEventListener("mouseup", this.handleMouseup);
-        document.body.classList.add("md-gesture--start");
-        this.resizeHandleElement = event.target.closest(".md-resize__handle");
-        this.startX = event.clientX - (this.endX ?? 0);
-        this.startY = event.clientY - (this.endY ?? 0);
-        this.longPress = false;
-        this.longPressTimeout = window.setTimeout(() => {
-            this.longPress = true;
-            this.emit("onLongPress", event);
+        window.addEventListener("pointermove", this.handlePointermove);
+        window.addEventListener("pointerup", this.handlePointerup);
 
-            if (this.resizeHandleElement && this.options.resizeStartWaitForLongPress) {
-                this.resize = true;
-                this.emit("onResizeStart", event);
-            }
+        this.startWidth = this.host.clientWidth;
+        this.startHeight = this.host.clientHeight;
 
-            if (!this.resize && this.options.dragStartWaitForLongPress) {
+        this.endX = this.endX ?? 0;
+        this.endY = this.endY ?? 0;
+
+        this.startX = event.clientX - this.endX;
+        this.startY = event.clientY - this.endY;
+
+        document.documentElement.classList.add("md-gesture--dragged");
+        // this.host.style.setProperty('z-index',++MDGestureModule.zIndex)
+
+        this.press = false;
+
+        this.presTimeout = window.setTimeout(() => {
+            this.press = true;
+            this.emit("onPress", this);
+            if (this.options.dragAfterPress) {
                 this.drag = true;
-                this.emit("onDragStart", event);
+                this.emit("onDragStart", this);
+            }
+            if (resize && this.options.resizeAfterPress) {
+                this.resize = resize;
+                this.emit("onResizeStart", this);
             }
         }, 300);
-        this.swipeDirection = "";
-        this.swipe = false;
-        this.resize = false;
 
-        if (this.resizeHandleElement && !this.options.resizeStartWaitForLongPress) {
-            this.resize = true;
-            this.emit("onResizeStart", event);
-        }
+        this.swipe = false;
+
         this.drag = false;
 
-        if (!this.resize && !this.options.dragStartWaitForLongPress) {
+        if (!this.options.dragAfterPress) {
             this.drag = true;
-            this.emit("onDragStart", event);
+            this.emit("onDragStart", this);
+        }
+
+        if (resize && !this.options.resizeAfterPress) {
+            this.resize = resize;
+            this.emit("onResizeStart", this);
         }
     }
 
-    handleMousemove(event) {
-        window.clearTimeout(this.longPressTimeout);
-        this.moveX = event.clientX - this.startX;
-        this.moveY = event.clientY - this.startY;
-        event.moveX = this.moveX;
-        event.moveY = this.moveY;
-        this.swipeDirection = (this.moveX < -30 && "Left") || (this.moveX > 30 && "Right") || (this.moveY < -30 && "Top") || (this.moveY > 30 && "Bottom");
+    handlePointermove(event) {
+        const currentX = event.clientX - this.startX;
+        const currentY = event.clientY - this.startY;
 
-        if (this.swipeDirection) {
-            this.swipe = true;
-        }
+        window.clearTimeout(this.presTimeout);
 
-        if (this.drag) {
-            this.emit("onDrag", event);
-        }
-
-        if (this.resize) {
-            this.emit("onResize", event);
-        }
-    }
-
-    handleMouseup(event) {
-        window.clearTimeout(this.longPressTimeout);
-        this.endX = 0;
-        this.endY = 0;
-
-        if (!this.longPress && !this.swipe) {
-            if (Date.now() - this.lastTapTimestamp < 300) {
-                this.emit("onDoubleTap", event);
-
-                if (this.resize) {
-                    this.emit("onResizeHandleDoubleTap", event);
-                }
-            } else {
-                this.emit("onTap", event);
+        if (this.drag && !this.resize) {
+            if (this.options.drag.includes("x")) {
+                this.currentX = currentX;
             }
-            this.lastTapTimestamp = Date.now();
-        }
+            if (this.options.drag.includes("y")) {
+                this.currentY = currentY;
+            }
 
-        if (this.swipe && !this.drag && !this.resize) {
-            this.emit("onSwipe" + this.swipeDirection, event);
-        }
+            this.host.style.setProperty("left", this.currentX + "px");
+            this.host.style.setProperty("top", this.currentY + "px");
 
-        if (this.drag) {
-            this.emit("onDragEnd", event);
+            this.emit("onDrag", this);
         }
 
         if (this.resize) {
-            this.emit("onResizeEnd", event);
+            if (this.options.resize.some((resize) => ["n", "ne", "nw"].includes(resize)) && /n/.test(this.resize)) {
+                this.currentY = currentY;
+                this.currentHeight = this.startHeight - this.currentY + this.endY;
+
+                this.host.style.setProperty("top", this.currentY + "px");
+                this.host.style.setProperty("height", this.currentHeight + "px");
+            }
+
+            if (this.options.resize.some((resize) => ["e", "ne", "se"].includes(resize)) && /e/.test(this.resize)) {
+                this.currentWidth = this.startWidth + currentX - this.endX;
+
+                this.host.style.setProperty("width", this.currentWidth + "px");
+            }
+
+            if (this.options.resize.some((resize) => ["s", "se", "sw"].includes(resize)) && /s/.test(this.resize)) {
+                this.currentHeight = this.startHeight + currentY - this.endY;
+
+                this.host.style.setProperty("height", this.currentHeight + "px");
+            }
+
+            if (this.options.resize.some((resize) => ["w", "sw", "nw"].includes(resize)) && /w/.test(this.resize)) {
+                this.currentX = currentX;
+                this.currentWidth = this.startWidth - this.currentX + this.endX;
+
+                this.host.style.setProperty("left", this.currentX + "px");
+                this.host.style.setProperty("width", this.currentWidth + "px");
+            }
+
+            this.emit("onResize", this);
         }
-        document.body.classList.remove("md-gesture--start");
-        window.removeEventListener("mousemove", this.handleMousemove);
-        window.removeEventListener("mouseup", this.handleMouseup);
+
+        this.swipe =
+            !this.drag &&
+            !this.resize &&
+            (currentX > 30 //
+                ? "Right"
+                : currentX < -30
+                  ? "Left"
+                  : currentY > 30
+                    ? "Bottom"
+                    : currentY < -30
+                      ? "Top"
+                      : false);
+    }
+
+    handlePointerup(event) {
+        window.clearTimeout(this.presTimeout);
+
+        if (!this.press && !this.swipe && !this.drag) {
+            this.emit("onTap", this);
+
+            if (Date.now() - this.lastTap < 300) {
+                this.emit("onDoubleTap", this);
+            }
+
+            this.lastTap = Date.now();
+        }
+
+        if (this.swipe) {
+            this.emit("onSwipe" + this.swipe, this);
+        }
+
+        if (this.drag) {
+            this.emit("onDragEnd", this);
+        }
+
+        if (this.resize) {
+            this.emit("onResizeEnd", this);
+        }
+
+        this.endX = this.currentX;
+        this.endY = this.currentY;
+
+        document.documentElement.classList.remove("md-gesture--dragged");
+
+        window.removeEventListener("pointermove", this.handlePointermove);
+        window.removeEventListener("pointerup", this.handlePointerup);
+    }
+
+    destroy() {
+        this.host.classList.remove("md-gesture");
     }
 }
-export { Gesture };
+export { MDGestureModule };

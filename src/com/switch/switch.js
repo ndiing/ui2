@@ -1,67 +1,81 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
+import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { Ripple } from "../ripple/ripple";
+import { MDRippleModule } from "../ripple/ripple";
 
-class MDSwitch extends MDElement {
+class MDSwitchComponent extends MDElement {
     static get properties() {
         return {
-            type: { type: String },
+            autocapitalize: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
             name: { type: String },
             required: { type: Boolean },
-            readOnly: { type: Boolean },
+            type: { type: String },
             value: { type: String },
-            defaultValue: { type: String },
-            ui: { type: String },
-            indeterminate: { type: Boolean },
             checked: { type: Boolean },
+            defaultValue: { type: String },
             defaultChecked: { type: Boolean },
+            indeterminate: { type: Boolean },
+            defaultIndeterminate: { type: Boolean },
+            icons: { type: Array },
         };
     }
 
     constructor() {
         super();
-        this.type = "checkbox";
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            <input 
-                class="md-switch__native"
-                .type="${ifDefined(this.type)}"
+            <input
+                type="checkbox"  
+                .autocapitalize="${ifDefined(this.autocapitalize)}"
+                .disabled="${ifDefined(this.disabled)}"      
+                .form="${ifDefined(this.form)}"
                 .name="${ifDefined(this.name)}"
-                .required="${ifDefined(this.required)}"
-                .readOnly="${ifDefined(this.readOnly)}"
+                .required="${ifDefined(this.required)}"      
+                .type="${ifDefined(this.type)}"
                 .value="${ifDefined(this.value)}"
-                .defaultValue="${ifDefined(this.defaultValue)}"
-                .indeterminate="${ifDefined(this.indeterminate)}"
-                .checked="${ifDefined(this.checked)}"
+                .checked="${ifDefined(this.checked)}"       
+                .defaultValue="${ifDefined(this.defaultValue)}"  
                 .defaultChecked="${ifDefined(this.defaultChecked)}"
-                @focus="${this.handleSwitchNativeFocus}"
-                @blur="${this.handleSwitchNativeBlur}"
+                .indeterminate="${ifDefined(this.indeterminate)}" 
+                .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
+                class="md-switch__native"
                 @input="${this.handleSwitchNativeInput}"
                 @invalid="${this.handleSwitchNativeInvalid}"
                 @reset="${this.handleSwitchNativeReset}"
-            >
+            />
             <div class="md-switch__track">
-                <div class="md-switch__thumb"></div>
+                <div class="md-switch__thumb">${this.icons?.length?html`<md-icon class="md-switch__icon">${this.icons[~~this.checked]}</md-icon>`:nothing}</div>
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
+
         this.classList.add("md-switch");
         await this.updateComplete;
-        this.ripple = new Ripple(this.switchThumb, { button: this.switchNative, containment: false, fadeout: true, size: (40 / this.switchThumb.clientWidth) * 100 });
+        this.ripple = new MDRippleModule(this.switchThumb, { button: this.switchNative, containment: false, fadeout: true, centered: true });
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
+
         this.classList.remove("md-switch");
+        await this.updateComplete;
+        this.ripple.destroy();
+    }
+
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+        this.defaultValue = this.value;
+        this.defaultChecked = this.checked;
+        this.defaultIndeterminate = this.indeterminate;
     }
 
     updated(changedProperties) {}
@@ -78,26 +92,26 @@ class MDSwitch extends MDElement {
         return this.querySelector(".md-switch__thumb");
     }
 
-    handleSwitchNativeFocus(event) {
-        this.emit("onSwitchNativeFocus", event);
-    }
-
-    handleSwitchNativeBlur(event) {
-        this.emit("onSwitchNativeBlur", event);
-    }
-
     handleSwitchNativeInput(event) {
+        this.checked = this.switchNative.checked;
+        this.indeterminate = this.switchNative.indeterminate;
         this.emit("onSwitchNativeInput", event);
     }
 
     handleSwitchNativeInvalid(event) {
-        event.preventDefault();
         this.emit("onSwitchNativeInvalid", event);
     }
 
     handleSwitchNativeReset(event) {
+        this.switchNative.value = this.defaultValue;
+        this.switchNative.checked = this.defaultChecked;
+        this.switchNative.indeterminate = this.defaultIndeterminate;
+        this.checked = this.switchNative.checked;
+        this.indeterminate = this.switchNative.indeterminate;
         this.emit("onSwitchNativeReset", event);
     }
 }
-customElements.define("md-switch", MDSwitch);
-export { MDSwitch };
+
+customElements.define("md-switch", MDSwitchComponent);
+
+export { MDSwitchComponent };

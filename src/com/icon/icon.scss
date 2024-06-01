@@ -1,24 +1,13 @@
-
 .md-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    vertical-align: middle;
     font-size: 24px;
     line-height: 1;
     font-family: "Material Symbols Outlined";
     font-variation-settings:
         "FILL" 0,
-        "wght" 400,
-        "GRAD" 0,
-        "opsz" 48;
-}
-.md-icon--activated,
-
-.md-icon--selected {
-    font-variation-settings:
-        "FILL" 1,
         "wght" 400,
         "GRAD" 0,
         "opsz" 24;

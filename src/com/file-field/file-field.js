@@ -1,81 +1,114 @@
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
+import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
-class MDFileField extends MDElement {
+class MDFileFieldComponent extends MDElement {
     static get properties() {
         return {
+            autocapitalize:{type:Boolean},
+            autocomplete:{type:String},
+            disabled:{type:Boolean},
+            form:{type:String},
+            list:{type:String},
+            name:{type:String},
+            readonly:{type:Boolean},
+            required:{type:Boolean},
+            type:{type:String},
+            value:{type:String},
+            accept:{type:String},
+            capture:{type:String},
+            multiple:{type:Boolean},
+            defaultValue:{type:String},
+
             label: { type: String },
-            name: { type: String },
-            placeholder: { type: String },
-            required: { type: Boolean },
-            readOnly: { type: Boolean },
-            value: { type: String },
-            defaultValue: { type: String },
-            ui: { type: String },
+            leadingIcon: { type: String },
+            leadingMeta: { type: String },
+            trailingMeta: { type: String },
+            trailingActions: { type: Array },
+            trailingIcon: { type: String },
             text: { type: String },
+
+            focused: { type: Boolean, reflect: true },
+            populated: { type: Boolean, reflect: true },
+            invalid: { type: Boolean, reflect: true },
             validationMessage: { type: String },
-            error: { type: Boolean },
+
+            ui: { type: String },
         };
     }
 
-    get fileFieldNative() {
-        return this.querySelector(".md-file-field__native");
+    constructor() {
+        super();
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            ${this.label?html`
-                <div class="md-file-field__label">${this.label}</div>
-            `:nothing}
+            ${this.label?html`<div class="md-file-field__label">${this.label}</div>`:nothing}
             <div class="md-file-field__container">
-                <input 
+                ${this.leadingIcon?html`<md-icon class="md-file-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                ${this.leadingMeta?html`<div class="md-file-field__meta">${this.leadingMeta}</div>`:nothing}
+                <input
                     class="md-file-field__native"
                     type="file"
+                    .autocapitalize="${ifDefined(this.autocapitalize)}"
+                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .disabled="${ifDefined(this.disabled)}"
+                    .form="${ifDefined(this.form)}"
+                    .list="${ifDefined(this.list)}"
                     .name="${ifDefined(this.name)}"
-                    .placeholder="${ifDefined(this.placeholder)}"
+                    .readonly="${ifDefined(this.readonly)}"
                     .required="${ifDefined(this.required)}"
-                    .readOnly="${ifDefined(this.readOnly)}"
-                    .defaultValue="${ifDefined(this.defaultValue)}"
-                    autocomplete="off"
+                    .accept="${ifDefined(this.accept)}"
+                    .capture="${ifDefined(this.capture)}"
+                    .multiple="${ifDefined(this.multiple)}"
                     @focus="${this.handleFileFieldNativeFocus}"
                     @blur="${this.handleFileFieldNativeBlur}"
                     @input="${this.handleFileFieldNativeInput}"
                     @invalid="${this.handleFileFieldNativeInvalid}"
                     @reset="${this.handleFileFieldNativeReset}"
-                >
-                <div class="md-file-field__actions"><md-icon-button class="md-file-field__action" .icon="${"upload"}" @click="${this.handleFileFieldActionClick}"></md-icon-button>${this.error?html`<md-icon class="md-file-field__icon">error</md-icon>`:nothing}</div>
+                />
+                ${this.trailingMeta?html`<div class="md-file-field__meta">${this.trailingMeta}</div>`:nothing}
+                ${this.trailingIcon?html`<md-icon class="md-file-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                ${this.invalid?html`<md-icon class="md-file-field__icon">error</md-icon>`:nothing}
+                <div class="md-file-field__actions">
+                    ${this.trailingActions?.map(action => html`
+                        <md-icon-button @click="${this.handleFileFieldNativeActionClick}" class="md-file-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                    `)}
+                    <md-icon-button @click="${this.handleFileFieldNativeActionUploadClick}" class="md-file-field__action" .icon="${"upload"}"></md-icon-button>
+                </div>
             </div>
-            ${this.validationMessage||this.text?html`
-                <div class="md-file-field__text">${this.validationMessage||this.text}</div>
-            `:nothing}
-        `
-    }
-
-    handleFileFieldActionClick(event){
-        this.fileFieldNative.showPicker()
+            ${this.validationMessage||this.text?html`<div class="md-file-field__text">${this.validationMessage||this.text}</div>`:nothing}
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-file-field");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-file-field");
+        await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-file-field__meta,.md-file-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-file-field-offset-left", offsetLeft + "px");
+        }
     }
 
-    firstUpdated(changedProperties) {
-        this.updateClassPopulated();
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+        this.defaultValue = this.value??'';
+        this.populated = !!this.value;
     }
 
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
-            ["filled", "outlined"].forEach((ui) => {
+            ["filled", "outlined", "rounded"].forEach((ui) => {
                 this.classList.remove("md-file-field--" + ui);
             });
             if (this.ui) {
@@ -86,65 +119,51 @@ class MDFileField extends MDElement {
         }
     }
 
+    get fileFieldNative() {
+        return this.querySelector(".md-file-field__native");
+    }
+
+    handleFileFieldNativeActionUploadClick(event) {
+        this.fileFieldNative.showPicker()
+        this.emit("onFileFieldNativeActionUploadClick", event);
+    }
+
+    handleFileFieldNativeActionClick(event) {
+        this.emit("onFileFieldNativeActionClick", event);
+    }
+
     handleFileFieldNativeFocus(event) {
-        this.classList.add("md-file-field--focus");
+        this.focused = true;
         this.emit("onFileFieldNativeFocus", event);
     }
-
     handleFileFieldNativeBlur(event) {
-        this.classList.remove("md-file-field--focus");
+        this.focused = false;
         this.emit("onFileFieldNativeBlur", event);
     }
-
     handleFileFieldNativeInput(event) {
-        this.updateClassPopulated();
-        this.updateClassError();
+        this.value = this.fileFieldNative.value;
+        this.populated = !!this.value;
+        this.validationMessage = this.fileFieldNative.validationMessage;
+        this.invalid = !!this.validationMessage;
         this.emit("onFileFieldNativeInput", event);
     }
-
     handleFileFieldNativeInvalid(event) {
         event.preventDefault();
-        this.updateClassError();
+        this.validationMessage = this.fileFieldNative.validationMessage;
+        this.invalid = !!this.validationMessage;
         this.emit("onFileFieldNativeInvalid", event);
     }
-
     handleFileFieldNativeReset(event) {
-        this.resetClassError();
-        this.resetClassPopulated();
+        this.fileFieldNative.value = this.defaultValue;
+        this.value = this.fileFieldNative.value;
+        this.populated = !!this.value;
+        this.validationMessage = "";
+        this.invalid = !!this.validationMessage;
+
         this.emit("onFileFieldNativeReset", event);
-    }
-
-    updateClassPopulated() {
-        if (this.fileFieldNative.value) {
-            this.classList.add("md-file-field--populated");
-        } else {
-            this.classList.remove("md-file-field--populated");
-        }
-    }
-
-    updateClassError() {
-        this.error = !this.fileFieldNative.validity.valid;
-        this.validationMessage = this.fileFieldNative.validationMessage;
-
-        if (this.error) {
-            this.classList.add("md-file-field--error");
-        } else {
-            this.classList.remove("md-file-field--error");
-        }
-    }
-
-    resetClassPopulated() {
-        this.fileFieldNative.value = this.fileFieldNative.defaultValue;
-        this.updateClassPopulated();
-    }
-
-    resetClassError() {
-        this.error = false;
-        this.validationMessage = undefined;
-        this.classList.remove("md-file-field--error");
     }
 }
 
-customElements.define("md-file-field", MDFileField);
+customElements.define("md-file-field", MDFileFieldComponent);
 
-export { MDFileField };
+export { MDFileFieldComponent };

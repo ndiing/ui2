@@ -1,100 +1,56 @@
-
 .md-form {
     display: flex;
     flex-direction: column;
 }
 
-.md-form__native {
-    display: flex;
-    flex-direction: column;
-}
-input::-webkit-search-cancel-button,
-input::-webkit-inner-spin-button,
-input[type="week" i]::-webkit-calendar-picker-indicator,
-input[type="time" i]::-webkit-calendar-picker-indicator,
-input[type="month" i]::-webkit-calendar-picker-indicator,
-input[type="datetime-local" i]::-webkit-calendar-picker-indicator,
-input[type="date" i]::-webkit-calendar-picker-indicator,
-input[type="color" i]::-webkit-color-swatch-wrapper,
-input[type="color" i]::-webkit-color-swatch,
+// .md-form__native{}
 
-input[type="file" i]::-webkit-file-upload-button{
-    appearance: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    width: 0;
-    height: 0;
-}
-.md-week-field:not(.md-week-field--populated):not(.md-week-field--focus),
-.md-time-field:not(.md-time-field--populated):not(.md-time-field--focus),
-.md-month-field:not(.md-month-field--populated):not(.md-month-field--focus),
-.md-datetime-field:not(.md-datetime-field--populated):not(.md-datetime-field--focus),
+// form{}
 
-.md-date-field:not(.md-date-field--populated):not(.md-date-field--focus) {
-    .md-week-field__native::-webkit-datetime-edit,
-    .md-time-field__native::-webkit-datetime-edit,
-    .md-month-field__native::-webkit-datetime-edit,
-    .md-datetime-field__native::-webkit-datetime-edit,
+// fieldset{}
+// legend{}
 
-    .md-date-field__native::-webkit-datetime-edit {
-        visibility: hidden;
-    }
-}
-.md-email-field,
-.md-password-field,
-.md-text-field,
-.md-url-field,
-.md-tel-field,
-.md-date-field,
-.md-datetime-field,
-.md-month-field,
-.md-time-field,
-.md-week-field,
-.md-color-field,
-.md-file-field,
-.md-textarea-field,
-.md-select-field,
-.md-number-field,
+// label{}
+// input{}
+// datalist{}
 
-.md-search-field{
-    
-    .md-email-field__native,
-    .md-password-field__native,
-    .md-text-field__native,
-    .md-url-field__native,
-    .md-tel-field__native,
-    .md-date-field__native,
-    .md-datetime-field__native,
-    .md-month-field__native,
-    .md-time-field__native,
-    .md-week-field__native,
-    .md-color-field__native,
-    .md-file-field__native,
-    .md-textarea-field__native,
-    .md-select-field__native,
-    .md-number-field__native,
+// select{}
+// optgroup{}
+// option{}
 
-    .md-search-field__native{
-        appearance: none;
-    }
-    .md-email-field__action,
-    .md-password-field__action,
-    .md-text-field__action,
-    .md-url-field__action,
-    .md-tel-field__action,
-    .md-date-field__action,
-    .md-datetime-field__action,
-    .md-month-field__action,
-    .md-time-field__action,
-    .md-week-field__action,
-    .md-color-field__action,
-    .md-file-field__action,
-    .md-textarea-field__action,
-    .md-select-field__action,
-    .md-number-field__action,
+// textarea{}
 
-    .md-search-field__action{
-        color: var(--md-sys-color-on-surface-variant);
-    }
-}
+// button{}
+
+// output{}
+// meter{}
+// progress{}
+
+// input[type="hidden"]{}
+// input[type="image"]{}
+
+// input[type="text"]{}
+// input[type="tel"]{}
+// input[type="email"]{}
+// input[type="url"]{}
+
+// input[type="number"]{}
+// input[type="password"]{}
+// input[type="search"]{}
+// input[type="color"]{}
+
+// input[type="range"]{}
+// input[type="file"]{}
+
+// input[type="datetime-local"]{}
+// input[type="date"]{}
+// input[type="month"]{}
+// input[type="week"]{}
+// input[type="time"]{}
+
+// input[type="checkbox"]{}
+// input[type="radio"]{}
+
+// input[type="button"]{}
+// input[type="reset"]{}
+// input[type="submit"]{}

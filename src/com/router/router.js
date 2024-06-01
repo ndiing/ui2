@@ -1,45 +1,32 @@
-import { Marker } from "../marker/marker";
-class Router {
-    static setRoutes(routes = [], parent = null) {
-        return routes.reduce((p, c) => {
-            c.parent = parent;
-            c.fullpath = `${c.parent?.fullpath ?? ""}/${c.path}`.replace(/\/+/g, "/");
-            p = p.concat(c);
+class MDRouterModule {
+    static setRoutes(routes = [], parent) {
+        return routes.reduce((acc, route) => {
+            route.parent = parent;
+            route.pathname = ((route.parent?.pathname ?? "") + "/" + route.path).replace(/\/+/g, "/");
+            acc = acc.concat(route);
 
-            if (c.children) {
-                p = p.concat(this.setRoutes(c.children, c));
+            if (route.children) {
+                acc = acc.concat(this.setRoutes(route.children, route));
             }
-            return p;
+            return acc;
         }, []);
     }
 
-    static on(type, listener) {
-        listener = listener.bind(this);
-        window.addEventListener(type, listener);
+    static get location() {
+        return this.options.historyApiFallback ? window.location : new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
     }
 
-    static off(type, listener) {
-        listener = listener.bind(this);
-        window.removeEventListener(type, listener);
+    static get path() {
+        return this.location.pathname;
     }
 
-    static emit(
-        type,
-        detail = {
-            ...this,
-        }
-    ) {
-        const event = new CustomEvent(type, {
-            bubbles: true,
-            cancelable: true,
-            detail,
-        });
-        window.dispatchEvent(event);
+    static get query() {
+        return Object.fromEntries(new URLSearchParams(this.location.search).entries());
     }
 
     static getRoute(path) {
         return this.routes.find((route) => {
-            const pattern = "^" + route.fullpath.replace(/\:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
+            const pattern = "^" + route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
             this.params = {
@@ -49,34 +36,24 @@ class Router {
         });
     }
 
-    static getRoutes(route = []) {
-        return [route].reduce((p, c) => {
-            if (c.parent) {
-                p = p.concat(this.getRoutes(c.parent));
-            }
-            p = p.concat(c);
-            return p;
-        }, []);
+    static getRoutes(route) {
+        if (!route) return [];
+        const parentRoutes = route.parent ? this.getRoutes(route.parent) : [];
+        return [...parentRoutes, route];
     }
 
-    static async getOutlet(stack, container) {
-        return await new Promise((resolve) => {
-            let observer;
+    static getOutlet(container, name) {
+        return new Promise((resolve) => {
             let outlet;
-            let selector = "md-outlet:not([name])";
-            let target = container;
+            let observer;
+            const selector = name ? `md-outlet[name="${name}"]` : "md-outlet:not([name])";
+            const target = name ? document.body : container;
 
-            if (stack.outlet) {
-                selector = 'md-outlet[name="' + stack.outlet + '"]';
-                target = document.body;
-            }
             const callback = () => {
                 outlet = target.querySelector(selector);
 
                 if (outlet) {
-                    if (observer) {
-                        observer.disconnect();
-                    }
+                    observer?.disconnect();
                     resolve(outlet);
                 }
             };
@@ -92,51 +69,42 @@ class Router {
         });
     }
 
-    static get location() {
-        if (this.options.historyApiFallback) {
-            return window.location;
-        } else {
-            return new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
-        }
+    static emit(type, detail) {
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
+        window.dispatchEvent(event);
     }
 
-    static get path() {
-        return this.location.pathname;
+    static beforeLoad(beforeLoad) {
+        return new Promise((resolve, reject) => {
+            const callback = (event) => {
+                reject(event);
+                this.controller.signal.removeEventListener("abort", callback);
+            };
+            this.controller.signal.addEventListener("abort", callback);
+            beforeLoad(resolve, reject);
+        });
     }
 
-    static getQuery() {
-        return Object.fromEntries(new URLSearchParams(this.location.search).entries());
-    }
-
-    static async handleLoad(event) {
+    static async render() {
         this.params = {};
-        this.query = this.getQuery();
-        this.route = this.getRoute(this.path);
-        this.stacks = this.getRoutes(this.route);
+        const route = this.getRoute(this.path);
+        const stacks = this.getRoutes(route);
+        if (this.controller) this.controller.abort();
+        this.controller = new AbortController();
+        this.emit("onCurrentEntryChange");
 
-        if (this.controller && !this.controller.signal.aborted) {
-            this.controller.abort();
-        }
-
-        if (!this.controller || (this.controller && this.controller.signal.aborted)) {
-            this.controller = new AbortController();
-        }
-        Router.emit("onCurrentEntryChange");
-        const marker = new Marker();
-        marker.start();
-
-        for (const stack of this.stacks) {
-            Router.emit("onNavigate");
+        for (const stack of stacks) {
+            this.emit("onNavigate");
 
             if (stack.beforeLoad) {
                 try {
-                    await new Promise((resolve, reject) => {
-                        this.controller.signal.addEventListener("abort", reject);
-                        stack.beforeLoad(resolve, reject);
-                    });
+                    await this.beforeLoad(stack.beforeLoad);
                 } catch (error) {
-                    Router.emit("onNavigateError");
-                    marker.stop();
+                    this.emit("onNavigateError");
                     break;
                 }
             }
@@ -145,53 +113,40 @@ class Router {
                 stack.component = await stack.load();
             }
             const container = stack.parent?.component ?? document.body;
-            const outlet = await this.getOutlet(stack, container);
+            const outlet = await this.getOutlet(container, stack.outlet);
 
             if (!stack.component.isConnected) {
                 outlet.parentElement.insertBefore(stack.component, outlet.nextElementSibling);
                 stack.component.isComponent = true;
             }
-
-            const outlets = Array.from(document.body.querySelectorAll("md-outlet"));
+            const outlets = Array.from(document.querySelectorAll("md-outlet"));
 
             for (const outlet of outlets) {
                 let nextElement = outlet.nextElementSibling;
 
                 while (nextElement) {
-                    const notStack = !this.stacks.find((stack) => stack.component === nextElement);
-                    const notOutlet = !outlets.find((outlet) => outlet === nextElement);
+                    const unusedComponent = !stacks.find((stack) => stack.component === nextElement);
+                    const unusedOutlet = !outlets.find((outlet) => outlet === nextElement);
 
-                    if (nextElement.isComponent && notStack && notOutlet) {
+                    if (nextElement.isComponent && unusedComponent && unusedOutlet) {
                         nextElement.remove();
                     }
                     nextElement = nextElement.nextElementSibling;
                 }
             }
+            this.emit("onNavigateSuccess");
         }
-        Router.emit("onNavigateSuccess");
-        marker.stop();
-
-        this.routes.forEach(route=>{
-            let routerLink = document.querySelector('[routerLink="'+route.fullpath+'"]')
-            if(routerLink){
-                if(this.stacks.includes(route)){
-                    routerLink.setAttribute('activated','')
-                }else{
-                    routerLink.removeAttribute('activated')
-                }
-            }
-        })
     }
 
     static navigate(url) {
         if (this.options.historyApiFallback) {
-            window.history.pushState({}, null, url);
+            window.history.pushState(null, "", url);
         } else {
             window.location.hash = url;
         }
     }
 
-    static handleClick(event) {
+    static change(event) {
         const routerLink = event.target.closest("[routerLink]");
 
         if (routerLink) {
@@ -206,21 +161,26 @@ class Router {
             ...options,
         };
         this.routes = this.setRoutes(routes);
-
-        this.on("DOMContentLoaded", this.handleLoad);
+        this.render = this.render.bind(this);
+        window.addEventListener("load", this.render);
 
         if (this.options.historyApiFallback) {
             const pushState = window.history.pushState;
+
             window.history.pushState = function () {
                 pushState.apply(this, arguments);
-                Router.emit("popstate");
+                const event = new CustomEvent("popstate", {
+                    bubbles: true,
+                    cancelable: true,
+                });
+                window.dispatchEvent(event);
             };
-            this.on("popstate", this.handleLoad);
+            window.addEventListener("popstate", this.render);
         } else {
-            this.on("hashchange", this.handleLoad);
+            window.addEventListener("hashchange", this.render);
         }
-
-        this.on("click", this.handleClick);
+        this.change = this.change.bind(this);
+        window.addEventListener("click", this.change);
     }
 }
-export { Router };
+export { MDRouterModule };

@@ -1,203 +1,173 @@
+import { html } from "lit";
 import { MDElement } from "../element/element";
-import { html, nothing } from "lit";
-import { msg } from "@lit/localize";
 import { ifDefined } from "lit/directives/if-defined.js";
+import { classMap } from "lit/directives/class-map.js";
 
-function converter(value) {
-    value = JSON.parse(value);
-    return [].concat(value).map(Number);
-}
-
-class MDSlider extends MDElement {
+class MDSliderComponent extends MDElement {
     static get properties() {
         return {
+            autocapitalize: { type: Boolean },
+            autocomplete: { type: Boolean },
+            disabled: { type: Boolean },
+            form: { type: String },
+            list: { type: String },
             name: { type: String },
-            required: { type: Boolean },
-            readOnly: { type: Boolean },
-            value: { converter },
-            defaultValue: { converter },
-            min: { type: Number },
+            type: { type: String },
+            value: { type: Array, converter: (value) => [].concat(JSON.parse(value)) },
             max: { type: Number },
+            min: { type: Number },
             step: { type: Number },
-            ui: { type: String },
-            list: { type: Array },
+            defaultValue: { type: Array },
+            convertLabel: { type: Function },
         };
     }
 
     constructor() {
         super();
-        this.ui = "continuous";
+        this.convertLabel = (value) => value;
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            <input 
-                class="md-slider__native"
-                type="hidden"
-                .name="${ifDefined(this.name)}"
-                .value="${ifDefined(this.value)}"
-            >
+            <input type="hidden" .name="${ifDefined(this.name)}" .value="${ifDefined(this.value)}">
             ${this.value?.map((value,index)=>html`
-                <div class="md-slider__container md-slider__container${index+1}">
-                    <input 
+                <!-- <div class="md-slider__track"> -->
+                    <input
                         class="md-slider__native md-slider__native${index+1}"
-                        type="range"
-                        .required="${ifDefined(this.required)}"
-                        .readOnly="${ifDefined(this.readOnly)}"
-                        .value="${ifDefined(this.value[index])}"
-                        .defaultValue="${ifDefined(this.defaultValue[index])}"
-                        .min="${ifDefined(this.min)}"
+                        type="range"     
+                        .autocapitalize="${ifDefined(this.autocapitalize)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .form="${ifDefined(this.form)}"
+                        .list="${ifDefined(this.list)}"
+                        .type="${ifDefined(this.type)}"
+                        .value="${ifDefined(value)}"
                         .max="${ifDefined(this.max)}"
+                        .min="${ifDefined(this.min)}"
                         .step="${ifDefined(this.step)}"
-                        @focus="${this.handleSliderNativeFocus}"
-                        @blur="${this.handleSliderNativeBlur}"
+                        .defaultValue="${ifDefined(this.defaultValue?.[index])}"
                         @input="${this.handleSliderNativeInput}"
-                        @invalid="${this.handleSliderNativeInvalid}"
                         @reset="${this.handleSliderNativeReset}"
-                    >
-                    <output class="md-slider__label">${this.value[index]}</output>
-                </div>
+                    />
+                    <div class="md-slider__label md-slider__label${index+1}">${this.convertLabel(value)}</div>
+                <!-- </div> -->
             `)}
-            <div class="md-slider__list">
-                ${this.list?.map(item=>html`
-                    <span class="md-slider__item" ?selected="${this.value?.[0]>item}"></span>
+            <div class="md-slider__indicator">
+                ${Array.from({length:this.ticks+1},(v,k) => html`
+                    <div 
+                        class="${classMap({
+                            "md-slider__stop":true,
+                            "md-slider__stop--active":((this.max/this.ticks)*k)>this.value?.[0],
+                        })}" 
+                        value="${(this.max/this.ticks)*k}"
+                    ></div>
                 `)}
             </div>
-        `
+        `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
         this.classList.add("md-slider");
+        await this.updateComplete;
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-slider");
-    }
-
-    async firstUpdated() {
         await this.updateComplete;
-
-        if (this.ui === "centered") {
-            this.min = this.min ?? -100;
-            this.max = this.max ?? 100;
-            this.value = this.value ?? [this.getHalf(this.min, this.max)];
-            this.defaultValue = this.defaultValue ?? this.value;
-            this.list = [this.min, this.getHalf(this.min, this.max), this.max];
-        }
-
-        if (this.ui === "continuous") {
-            this.min = this.min ?? 0;
-            this.max = this.max ?? 100;
-            this.value = this.value ?? [this.getHalf(this.min, this.max)];
-            this.defaultValue = this.defaultValue ?? this.value;
-            this.list = [this.min, this.getHalf(this.min, this.max), this.max];
-        }
-
-        if (this.ui === "discrete") {
-            this.min = this.min ?? 0;
-            this.max = this.max ?? 100;
-            this.step = this.step ?? 10;
-            this.value = this.value ?? [this.getHalf(this.min, this.max)];
-            this.defaultValue = this.defaultValue ?? this.value;
-            this.list = Array.from({ length: this.step + 1 }, (value, index) => {
-                return (this.max / this.step) * index;
-            });
-        }
-
-        if (this.ui === "range-selection") {
-            this.min = this.min ?? 0;
-            this.max = this.max ?? 100;
-            this.value = this.value ?? [25, 75];
-            this.defaultValue = this.defaultValue ?? this.value;
-            this.list = [this.min, this.getHalf(this.min, this.max) / 2, this.max];
-        }
-        await this.updateComplete;
-
-        if (["centered", "continuous", "discrete"].includes(this.ui)) {
-            this.sliderNative1.value = this.value?.[0];
-        } else if (this.ui === "range-selection") {
-            this.sliderNative1.value = this.value?.[0];
-
-            if (this.sliderNative2) {
-                this.sliderNative2.value = this.value?.[1];
-            }
-        }
-        this.updateStyle();
-    }
-
-    updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            this.classList.remove("md-slider--centered");
-            this.classList.remove("md-slider--continuous");
-            this.classList.remove("md-slider--discrete");
-            this.classList.remove("md-slider--range-selection");
-            if (this.ui) {
-                this.classList.add("md-slider--" + this.ui);
-            } 
-        }
     }
 
     get sliderNative1() {
-        return this.querySelector(".md-slider__native.md-slider__native1");
+        return this.querySelector(".md-slider__native1");
     }
-
     get sliderNative2() {
-        return this.querySelector(".md-slider__native.md-slider__native2");
+        return this.querySelector(".md-slider__native2");
     }
 
-    getHalf(min, max) {
-        return (min + max) / 2;
+    async firstUpdated(changedProperties) {
+        await this.updateComplete;
+        this.min = this.min ?? 0;
+        this.max = this.max ?? 100;
+        this.value = this.value ?? [this.max < this.min ? this.min : this.min + (this.max - this.min) / 2];
+        this.defaultValue = this.value.slice();
+        this.ticks = this.step ?? 2;
+        await this.updateComplete;
+        this.sliderNative1.value = this.value[0];
+        if (this.sliderNative2) this.sliderNative2.value = this.value[1];
     }
 
-    getDecimal(value, min, max) {
-        return (value - min) / (max - min);
-    }
+    updated(changedProperties) {
+        if (changedProperties.has("step")) {
+            this.classList.remove("md-slider--discrete");
+            if (this.step) {
+                this.classList.add("md-slider--discrete");
+            }
+        }
+        if (changedProperties.has("min")) {
+            this.classList.remove("md-slider--centered");
+            if (this.min < 0) {
+                this.classList.add("md-slider--centered");
+            }
+        }
+        if (changedProperties.has("value")) {
+            this.classList.remove("md-slider--range-selection");
+            if (this.value?.length > 1) {
+                this.classList.add("md-slider--range-selection");
+            }
+        }
 
-    getPercentage(value, min, max) {
-        return ((value - min) / (max - min)) * 100;
-    }
+        this.value?.forEach((value, index) => {
+            this.percentageValue = this.calculatePercentage(this.min, this.max, this.value[index]);
+            this.decimalValue = this.calculateDecimal(this.min, this.max, this.value[index]);
 
-    handleSliderNativeFocus(event) {
-        this.emit("onSliderNativeFocus", event);
-    }
-
-    handleSliderNativeBlur(event) {
-        this.emit("onSliderNativeBlur", event);
+            this.style.setProperty(`--md-slider${index + 1}-percentage`, this.percentageValue);
+            this.style.setProperty(`--md-slider${index + 1}-decimal`, this.decimalValue);
+        });
     }
 
     handleSliderNativeInput(event) {
         if (this.sliderNative2) {
             this.sliderNative1.value = Math.min(this.sliderNative1.value, this.value[1]);
             this.sliderNative2.value = Math.max(this.value[0], this.sliderNative2.value);
+            this.value[1] = this.sliderNative2.value;
         }
-        this.value = [this.sliderNative1.value, this.sliderNative2?.value].filter(Boolean);
-        this.updateStyle();
-        this.emit("onSliderNativeInput", event);
-    }
+        this.value[0] = this.sliderNative1.value;
 
-    updateStyle() {
-        this.value?.forEach((value, index) => {
-            const decimal = this.getDecimal(this.value[index], this.min, this.max);
-            const percentage = this.getPercentage(this.value[index], this.min, this.max);
-            this.style.setProperty("--md-slider-decimal" + (index + 1), decimal);
-            this.style.setProperty("--md-slider-percentage" + (index + 1), percentage + "%");
-        });
-    }
-
-    handleSliderNativeInvalid(event) {
-        event.preventDefault();
-        this.emit("onSliderNativeInvalid", event);
+        this.requestUpdate();
+        this.emit("onSliderNativeInput");
     }
 
     handleSliderNativeReset(event) {
-        this.value = this.defaultValue;
-        this.updateStyle();
-        this.emit("onSliderNativeReset", event);
+        this.sliderNative1.value = this.defaultValue[0];
+        if (this.sliderNative2) this.sliderNative2.value = this.defaultValue[1];
+        this.requestUpdate();
+        this.emit("onSliderNativeReset");
+    }
+
+    calculatePercentage(min, max, value) {
+        if (min >= max) {
+            throw new Error("Min should be less than Max");
+        }
+        if (value < min || value > max) {
+            throw new Error("Value should be between Min and Max");
+        }
+        return ((value - min) / (max - min)) * 100;
+    }
+
+    calculateDecimal(min, max, value) {
+        if (min >= max) {
+            throw new Error("Min should be less than Max");
+        }
+        if (value < min || value > max) {
+            throw new Error("Value should be between Min and Max");
+        }
+        return (value - min) / (max - min);
     }
 }
-customElements.define("md-slider", MDSlider);
-export { MDSlider };
+
+customElements.define("md-slider", MDSliderComponent);
+
+export { MDSliderComponent };

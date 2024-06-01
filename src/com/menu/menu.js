@@ -1,206 +1,130 @@
-import { ifDefined } from "lit/directives/if-defined.js";
-import { MDElement } from "../element/element";
 import { html, nothing } from "lit";
-import { MDList } from "../list/list";
-import { Popper } from "../popper/popper";
+import { MDElement } from "../element/element";
+import { ifDefined } from "lit/directives/if-defined.js";
+import { MDListComponent } from "../list/list";
+import { MDPopperModule } from "../popper/popper";
 
-
-class MDMenu extends MDElement {
+class MDMenuComponent extends MDElement {
     static get properties() {
         return {
             leadingActions: { type: Array },
             label: { type: String },
-            labelSecondary: { type: String },
+            subLabel: { type: String },
             trailingActions: { type: Array },
             buttons: { type: Array },
             ui: { type: String },
-            open: { type: Boolean },
-            ...MDList.properties
+            open: { type: Boolean, reflect: true },
+            ...MDListComponent.properties,
         };
     }
 
     constructor() {
         super();
-
-        this.body = Array.from(this.childNodes);
     }
 
+    /* prettier-ignore */
+
     render() {
-        // prettier-ignore
         return html`
-            ${this.leadingActions?.length||this.label||this.labelSecondary||this.trailingActions?.length?html`
+            ${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
                 <div class="md-menu__header">
                     ${this.leadingActions?.length?html`
                         <div class="md-menu__actions">
-                            ${this.leadingActions.map(action => html`
-                                <md-icon-button 
-                                    class="md-menu__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleMenuActionClick}"
-                                ></md-icon-button>
+                            ${this.leadingActions.map(action=>html`
+                                <md-icon-button @click="${this.handleMenuActionClick}" class="md-menu__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
-                    ${this.label||this.labelSecondary?html`
+                    ${this.label||this.subLabel?html`
                         <div class="md-menu__label">
                             ${this.label?html`<div class="md-menu__label-primary">${this.label}</div>`:nothing}
-                            ${this.labelSecondary?html`<div class="md-menu__label-secondary">${this.labelSecondary}</div>`:nothing}
+                            ${this.subLabel?html`<div class="md-menu__label-secondary">${this.subLabel}</div>`:nothing}
                         </div>
                     `:nothing}
                     ${this.trailingActions?.length?html`
                         <div class="md-menu__actions">
-                            ${this.trailingActions.map(action => html`
-                                <md-icon-button 
-                                    class="md-menu__action" 
-                                    .icon="${ifDefined(action?.icon??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    @click="${this.handleMenuActionClick}"
-                                ></md-icon-button>
+                            ${this.trailingActions.map(action=>html`
+                                <md-icon-button @click="${this.handleMenuActionClick}" class="md-menu__action" .icon="${ifDefined(action?.icon??action)}" .ui="${ifDefined(action?.ui)}"></md-icon-button>
                             `)}
                         </div>
                     `:nothing}
                 </div>
             `:nothing}
-                <div class="md-menu__body">
-                    <div class="md-menu__inner">
-                        <md-list 
-                            class="md-menu__list"
-                            .list="${ifDefined(this.list)}"
-                            .allSelection="${ifDefined(this.allSelection)}"
-                            .rangeSelection="${ifDefined(this.rangeSelection)}"
-                            .multiSelection="${ifDefined(this.multiSelection)}"
-                            .singleSelection="${ifDefined(this.singleSelection??true)}"
-                            @onListItemClick="${this.handleMenuListItemClick}"
-                        ></md-list>
-                    </div>
-                    ${this.buttons?.length?html`
-                        <div class="md-menu__footer">
-                            ${this.buttons.map(action => html`
-                                <md-button 
-                                    class="md-menu__button" 
-                                    .icon="${ifDefined(action?.icon)}"
-                                    .label="${ifDefined(action?.label??action)}"
-                                    .type="${ifDefined(action?.type)}"
-                                    .ui="${ifDefined(action?.ui)}"
-                                    .selected="${ifDefined(action?.selected)}"
-                                    @click="${this.handleMenuButtonClick}"
-                                ></md-button>
-                            `)}
-                        </div>
-                    `:nothing}
+            <div class="md-menu__body">
+                <div class="md-menu__inner">
+                    <md-list 
+                        class="md-menu__list"
+                        .list="${ifDefined(this.list)}"
+                        .rangeSelection="${ifDefined(this.rangeSelection)}"
+                        .multiSelection="${ifDefined(this.multiSelection)}"
+                        .singleSelection="${ifDefined(this.singleSelection??true)}"
+                        .allSelection="${ifDefined(this.allSelection)}"
+                    ></md-list>
                 </div>
+                ${this.buttons?.length?html`
+                    <div class="md-menu__footer">
+                        ${this.buttons.map(button=>html`
+                            <md-button @click="${this.handleMenuButtonClick}" class="md-menu__button" .label="${ifDefined(button?.label??button)}" .icon="${ifDefined(button?.icon)}" .ui="${ifDefined(button?.ui)}"></md-button>
+                        `)}
+                    </div>
+                `:nothing}
+            </div>
         `;
     }
 
     async connectedCallback() {
         super.connectedCallback();
-
-        await this.updateComplete;
-
         this.classList.add("md-menu");
-        this.classList.add("md-menu--dialog");
-
-        this.scrimElement = document.createElement("div");
-        this.scrimElement.classList.add("md-menu__scrim");
-        this.parentElement.insertBefore(this.scrimElement, this.nextElementSibling);
+        await this.updateComplete;
+        this.scrim = document.createElement("div");
+        this.scrim.classList.add("md-menu__scrim");
         this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
-        this.scrimElement.addEventListener("click", this.handleMenuScrimClick);
+        this.scrim.addEventListener("click", this.handleMenuScrimClick);
+        this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
-    disconnectedCallback() {
+    async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
-        this.classList.remove("md-menu--dialog");
-
-        this.scrimElement.removeEventListener("click", this.handleMenuScrimClick);
-        this.scrimElement.remove();
+        await this.updateComplete;
+        this.scrim.removeEventListener("click", this.handleMenuScrimClick);
+        this.scrim.remove();
     }
-
-    firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
-        if (changedProperties.has("ui")) {
-            [
-                //
-                // "dialog",
-                "full-screen",
-                "sheet",
-                "modal",
-                "north",
-                "east",
-                "south",
-                "west",
-                "center",
-            ].forEach((ui) => {
-                this.classList.remove("md-menu--" + ui);
-            });
-            if (this.ui) {
-                this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-menu--" + ui);
-                });
-            }
-        }
         if (changedProperties.has("open")) {
             if (this.open) {
-                this.classList.add("md-menu--open");
-
-                // if (
-                //     this.ui &&
-                //     this.ui.split(" ").some((ui) =>
-                //         [
-                //             //
-                //             "dialog",
-                //             "modal",
-                //         ].includes(ui)
-                //     )
-                // ) {
-                    this.scrimElement.classList.add("md-menu--open");
-                // }
+                this.scrim.setAttribute("open", "");
             } else {
-                this.classList.remove("md-menu--open");
-                this.scrimElement.classList.remove("md-menu--open");
+                this.scrim.removeAttribute("open", "");
             }
         }
     }
 
-    show(button,options={}) {
+    show(button, options = {}) {
         this.open = true;
-
-        this.popper=new Popper(this,{
-            button,
-            placements: [
-                'bottom-start',
-                'bottom-end',
-                'bottom',
-                'top-start',
-                'top-end',
-                'top',
-                'center',
-            ],
-            ...options
-        })
-        this.popper.setPlacement()
+        window.requestAnimationFrame(() => {
+            this.popper = new MDPopperModule(this, {
+                button,
+                placements: ["bottom-start", "bottom-end", "bottom", "top-start", "top-end", "top", "center"],
+                shift: true,
+                ...options,
+            });
+            this.popper.set();
+        });
     }
 
     close() {
         this.open = false;
-
-        this.popper?.destroy()
+        this.popper.destroy();
     }
 
-    handleMenuScrimClick(event) {
-        this.close();
-
-        this.emit("onMenuScrimClick", event);
-    }
-
-    handleMenuListItemClick(event) {
-        this.close();
-
-        this.emit("onMenuListItemClick", event);
+    toggle() {
+        if (this.open) {
+            this.close();
+        } else {
+            this.show();
+        }
     }
 
     handleMenuActionClick(event) {
@@ -210,8 +134,14 @@ class MDMenu extends MDElement {
     handleMenuButtonClick(event) {
         this.emit("onMenuButtonClick", event);
     }
+
+    handleMenuScrimClick(event) {
+        this.close();
+
+        this.emit("onMenuScrimClick", event);
+    }
 }
 
-customElements.define("md-menu", MDMenu);
+customElements.define("md-menu", MDMenuComponent);
 
-export { MDMenu };
+export { MDMenuComponent };
