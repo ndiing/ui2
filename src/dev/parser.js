@@ -3,18 +3,38 @@ const path = require("path");
 
 const [, , name] = process.argv;
 
-const content = fs.readFileSync("./src/com/" + name + "/" + name + ".js", { encoding: "utf8" });
+let code = "";
 
-let data = "";
-content
-    .split(/^class /gm)
-    .slice(1)
-    .forEach((content2) => {
-        let content3 = "class " + content2;
-        let { code } = parse(content3);
-        data += code;
-    });
-fs.writeFileSync("./docs/" + name + ".md", data);
+function open(pathname) {
+    for (const dir of fs.readdirSync(pathname, { withFileTypes: true })) {
+        let pathname2 = path.join(pathname, dir.name);
+        if (dir.isDirectory()) {
+            open(pathname2);
+        } else {
+            if (pathname2.endsWith(".js")) {
+                const content = fs.readFileSync(pathname2, { encoding: "utf8" });
+                const { tagName, properties, variants } = parse("class " + content.split(/^class /gm).slice(-1));
+                if (tagName) {
+                    for (const ui of variants) {
+                        code += `<${tagName}\r\n`;
+                        for (const { name } of properties) {
+                            if (name == "ui") {
+                                code += `    ${name}="${ui}"\r\n`;
+                            } else {
+                                // code += `    ${name}=""\r\n`;
+                            }
+                        }
+                        code += `>`;
+                        code += `</${tagName}>\r\n`;
+                    }
+                }
+            }
+        }
+    }
+}
+open(path.join(process.cwd(), "src", "com"));
+// console.log(code);
+fs.writeFileSync(path.join(__dirname,'code',),code)
 
 function parse(content) {
     let code = "";

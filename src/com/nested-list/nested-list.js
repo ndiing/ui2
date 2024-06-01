@@ -274,7 +274,7 @@ class MDNestedListComponent extends MDElement {
 
     lastList(list) {
         let last;
-        list.forEach((item) => {
+        list?.forEach((item) => {
             if (item.expanded) {
                 last = item.children;
             }
