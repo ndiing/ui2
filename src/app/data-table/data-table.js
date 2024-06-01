@@ -13,7 +13,7 @@ class AppDataTableElement extends MDElement {
             { name: "title", label: "title", width: 56 * 5 },
             { name: "body", label: "body", width: 56 * 10 },
         ];
-        this.rows = data.slice(0,20)
+        this.rows = data.slice(0, 20);
     }
     /* prettier-ignore */
     render(){

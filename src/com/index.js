@@ -1,9 +1,7 @@
 import "./mixin/mixin.js";
-
 import "./layout/layout.js";
 import "./color/color.js";
 import "./typography/typography.js";
-
 import "./localization/localization.js";
 import "./router/router.js";
 import "./ripple/ripple.js";
@@ -11,9 +9,7 @@ import "./popper/popper.js";
 import "./virtual-scroll/virtual-scroll.js";
 import "./gesture/gesture.js";
 import "./data/data.js";
-
 import "./element/element.js";
-
 import "./image/image.js";
 import "./icon/icon.js";
 import "./icon-button/icon-button.js";
