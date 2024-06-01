@@ -24,11 +24,11 @@ icons|`Array`|
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | switchNative| 
+    |   | get | switchNative| 
 
-    |  | get | switchTrack| 
+    |   | get | switchTrack| 
 
-    |  | get | switchThumb| 
+    |   | get | switchThumb| 
 
 ## Events
 

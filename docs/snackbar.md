@@ -18,13 +18,13 @@ open|`Boolean`|
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | snackbarInner| 
+    |   | get | snackbarInner| 
 
-    |  | | show| 
+    |   | | show| 
 
-    |  | | close| 
+    |   | | close| 
 
-    |  | | toggle| 
+    |   | | toggle| 
 
 ## Events
 

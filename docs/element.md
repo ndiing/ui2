@@ -11,9 +11,9 @@ name|type|desc
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | | createRenderRoot| 
+    |   | | createRenderRoot| 
 
-    |  | | emit| type, detail
+    |   | | emit| type, detail
 
 ## Events
 

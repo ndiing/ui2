@@ -93,7 +93,7 @@ function parse(content) {
             /^(render|handle|update)/.test(name)
         )
             continue;
-        code += `${block ?? ""}| ${asynchronous ?? ""} | ${accessor ?? ""}| ${name ?? ""}| ${parameters ?? ""}\r\n`;
+        code += `${block ?? " "}| ${asynchronous ?? " "} | ${accessor ?? " "}| ${name ?? " "}| ${parameters ?? " "}\r\n`;
     }
     code += `\r\n`;
     code += `## Events\r\n`;

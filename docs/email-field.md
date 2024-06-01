@@ -40,7 +40,7 @@ ui|`String`|possible values filled,outlined,rounded
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | emailFieldNative| 
+    |   | get | emailFieldNative| 
 
 ## Events
 

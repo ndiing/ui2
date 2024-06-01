@@ -16,7 +16,7 @@ selected|`Boolean`|
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | buttonNative| 
+    |   | get | buttonNative| 
 
 ## Events
 

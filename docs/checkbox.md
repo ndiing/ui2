@@ -23,9 +23,9 @@ defaultIndeterminate|`Boolean`|
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | checkboxNative| 
+    |   | get | checkboxNative| 
 
-    |  | get | checkboxTrack| 
+    |   | get | checkboxTrack| 
 
 ## Events
 

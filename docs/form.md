@@ -20,11 +20,11 @@ target|`String`|
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | get | formNative| 
+    |   | get | formNative| 
 
-    |  | | reset| 
+    |   | | reset| 
 
-    |  | | submit| button
+    |   | | submit| button
 
 ## Events
 

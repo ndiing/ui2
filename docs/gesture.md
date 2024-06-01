@@ -11,11 +11,11 @@ name|type|desc
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |  | | emit| type, detail
+    |   | | emit| type, detail
 
-    |  | | init| 
+    |   | | init| 
 
-    |  | | destroy| 
+    |   | | destroy| 
 
 ## Events
 
