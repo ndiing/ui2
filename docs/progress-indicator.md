@@ -13,7 +13,7 @@ ui|`String`|possible values linear,circular
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | undefined| calculatePercentage| min, max, value
+|  | | calculatePercentage| min, max, value
 
 ## Events
 

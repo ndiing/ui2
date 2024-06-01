@@ -17,9 +17,9 @@ open|`Boolean`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | undefined| show| button, options = {}
-undefined| undefined | undefined| close| 
-undefined| undefined | undefined| toggle| 
+|  | | show| button, options = {}
+|  | | close| 
+|  | | toggle| 
 
 ## Events
 

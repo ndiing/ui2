@@ -10,8 +10,8 @@ name|type|desc
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | undefined| createRenderRoot| 
-undefined| undefined | undefined| emit| type, detail
+|  | | createRenderRoot| 
+|  | | emit| type, detail
 
 ## Events
 

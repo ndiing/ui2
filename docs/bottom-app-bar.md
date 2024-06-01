@@ -18,9 +18,9 @@ fab|`Object`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | undefined| show| 
-undefined| undefined | undefined| close| 
-undefined| undefined | undefined| toggle| 
+|  | | show| 
+|  | | close| 
+|  | | toggle| 
 
 ## Events
 

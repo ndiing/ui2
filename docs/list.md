@@ -27,7 +27,7 @@ routerLink|`String`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| labelSecondary| 
+|  | get| labelSecondary| 
 
 ## Events
 

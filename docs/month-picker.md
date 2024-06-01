@@ -14,19 +14,19 @@ value|`String`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| first| 
-undefined| undefined | get| last| 
-undefined| undefined | get| years| 
-undefined| undefined | get| months| 
-undefined| undefined | get| weekdays| 
-undefined| undefined | get| days| 
-undefined| undefined | get| hours| 
-undefined| undefined | get| minutes| 
-undefined| undefined | get| label| 
-undefined| undefined | get| subLabel| 
-undefined| undefined | undefined| show| button, options
-undefined| undefined | undefined| close| 
-undefined| undefined | undefined| toggle| 
+|  | get| first| 
+|  | get| last| 
+|  | get| years| 
+|  | get| months| 
+|  | get| weekdays| 
+|  | get| days| 
+|  | get| hours| 
+|  | get| minutes| 
+|  | get| label| 
+|  | get| subLabel| 
+|  | | show| button, options
+|  | | close| 
+|  | | toggle| 
 
 ## Events
 

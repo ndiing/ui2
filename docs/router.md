@@ -10,18 +10,18 @@ name|type|desc
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-static | undefined | undefined| setRoutes| routes = [], parent
-static | undefined | get| location| 
-static | undefined | get| path| 
-static | undefined | get| query| 
-static | undefined | undefined| getRoute| path
-static | undefined | undefined| getRoutes| route
-static | undefined | undefined| getOutlet| container, name
-static | undefined | undefined| emit| type, detail
-static | undefined | undefined| beforeLoad| beforeLoad
-static | undefined | undefined| navigate| url
-static | undefined | undefined| change| event
-static | undefined | undefined| init| routes = [], options = {}
+static |  | | setRoutes| routes = [], parent
+static |  | get| location| 
+static |  | get| path| 
+static |  | get| query| 
+static |  | | getRoute| path
+static |  | | getRoutes| route
+static |  | | getOutlet| container, name
+static |  | | emit| type, detail
+static |  | | beforeLoad| beforeLoad
+static |  | | navigate| url
+static |  | | change| event
+static |  | | init| routes = [], options = {}
 
 ## Events
 

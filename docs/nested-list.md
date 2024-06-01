@@ -20,7 +20,7 @@ hasLevel|`Boolean`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| labelSecondary| 
+|  | get| labelSecondary| 
 
 ## Events
 
@@ -63,10 +63,10 @@ ui|`String`|possible values tree,level,accordion
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | undefined| createList| list, indent = 0
-undefined| undefined | undefined| lastList| list
-undefined| undefined | undefined| selectList| list, data
-undefined| undefined | undefined| expandList| list, data
+|  | | createList| list, indent = 0
+|  | | lastList| list
+|  | | selectList| list, data
+|  | | expandList| list, data
 
 ## Events
 

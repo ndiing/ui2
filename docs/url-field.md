@@ -39,7 +39,7 @@ ui|`String`|possible values filled,outlined,rounded
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| urlFieldNative| 
+|  | get| urlFieldNative| 
 
 ## Events
 

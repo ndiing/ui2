@@ -37,7 +37,7 @@ ui|`String`|possible values filled,outlined,rounded
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| numberFieldNative| 
+|  | get| numberFieldNative| 
 
 ## Events
 

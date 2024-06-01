@@ -23,9 +23,9 @@ icons|`Array`|
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
-undefined| undefined | get| switchNative| 
-undefined| undefined | get| switchTrack| 
-undefined| undefined | get| switchThumb| 
+|  | get| switchNative| 
+|  | get| switchTrack| 
+|  | get| switchThumb| 
 
 ## Events
 
