@@ -90,8 +90,8 @@ class AppMainElement extends MDElement {
                     id="drawer"
                     .list="${this.list}"
                     .open="${true}"
-                    @onListItemClick="${this.handleListItemClick}"
-                    @onListItemSelected="${this.handleListItemSelected}"
+                    @onNestedListItemClick="${this.handleListItemClick}"
+                    @onNestedListItemSelected="${this.handleListItemSelected}"
                 ></md-navigation-drawer>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
