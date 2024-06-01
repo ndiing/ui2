@@ -142,10 +142,10 @@ class AppFormElement extends MDElement {
             "month-field": "2024-01",
             "week-field": "2024-W28",
             "time-field": "",
-            checkbox: "",
+            "checkbox": "",
             "radio-button": "",
-            switch: "",
-            slider: "50",
+            "switch": "",
+            "slider": "50",
         };
     }
     /* prettier-ignore */
