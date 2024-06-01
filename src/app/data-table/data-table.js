@@ -15,10 +15,10 @@ class AppDataTableElement extends MDElement {
             { name: "body", label: "body", width: 56 * 10 },
         ];
         const { rows } = data.getAll({
-            _start: 0,
-            _end: 20,
+            // _start: 0,
+            // _end: 20,
         });
-        this.rows = rows;
+        this.rows = rows
     }
     /* prettier-ignore */
     render(){
