@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaterial=self.webpackChunkmaterial||[]).push([[4092],{4092:(a,e,s)=>{s.r(e),s.d(e,{templates:()=>l});var l={s49e763aed00877a8:"Principal"}}}]);

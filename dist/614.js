@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaterial=self.webpackChunkmaterial||[]).push([[614],{614:(e,a,s)=>{s.r(a),s.d(a,{templates:()=>t});var t={s49e763aed00877a8:"主要的"}}}]);
