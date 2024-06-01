@@ -12,8 +12,8 @@ ui|`String`|possible values rounded
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 

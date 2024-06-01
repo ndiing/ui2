@@ -12,8 +12,8 @@ selected|`Boolean`|
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 

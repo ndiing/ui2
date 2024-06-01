@@ -10,8 +10,8 @@ max|`Number`|
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 

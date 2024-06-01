@@ -9,8 +9,8 @@ ui|`String`|possible values scrollable,primary,secondary
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 

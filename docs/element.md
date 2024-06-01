@@ -8,10 +8,10 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`createRenderRoot`|
-`emit`|type, detail
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| createRenderRoot| 
+undefined| undefined | undefined| emit| type, detail
 
 ## Events
 

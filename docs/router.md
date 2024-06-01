@@ -8,20 +8,20 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`setRoutes`|routes = [], parent
-`location`|
-`path`|
-`query`|
-`getRoute`|path
-`getRoutes`|route
-`getOutlet`|container, name
-`emit`|type, detail
-`beforeLoad`|beforeLoad
-`navigate`|url
-`change`|event
-`init`|routes = [], options = {}
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+static | undefined | undefined| setRoutes| routes = [], parent
+static | undefined | get| location| 
+static | undefined | get| path| 
+static | undefined | get| query| 
+static | undefined | undefined| getRoute| path
+static | undefined | undefined| getRoutes| route
+static | undefined | undefined| getOutlet| container, name
+static | undefined | undefined| emit| type, detail
+static | undefined | undefined| beforeLoad| beforeLoad
+static | undefined | undefined| navigate| url
+static | undefined | undefined| change| event
+static | undefined | undefined| init| routes = [], options = {}
 
 ## Events
 

@@ -8,12 +8,12 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`init`|
-`get`|placement
-`set`|
-`destroy`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| init| 
+undefined| undefined | undefined| get| placement
+undefined| undefined | undefined| set| 
+undefined| undefined | undefined| destroy| 
 
 ## Events
 

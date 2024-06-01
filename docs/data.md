@@ -8,16 +8,16 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`sort`|docs, options
-`search`|docs, options
-`deepSearch`|obj, query
-`filter`|docs, options
-`getValue`|obj, path
-`slice`|docs, options
-`paginate`|docs, options
-`getAll`|options = {}
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| sort| docs, options
+undefined| undefined | undefined| search| docs, options
+undefined| undefined | undefined| deepSearch| obj, query
+undefined| undefined | undefined| filter| docs, options
+undefined| undefined | undefined| getValue| obj, path
+undefined| undefined | undefined| slice| docs, options
+undefined| undefined | undefined| paginate| docs, options
+undefined| undefined | undefined| getAll| options = {}
 
 ## Events
 

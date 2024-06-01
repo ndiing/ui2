@@ -33,9 +33,9 @@ ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
 
-name|parameters
----|---
-`searchFieldNative`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| searchFieldNative| 
 
 ## Events
 

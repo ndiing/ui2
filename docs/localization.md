@@ -8,10 +8,10 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`init`|
-`callback`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| init| 
+undefined| undefined | undefined| callback| 
 
 ## Events
 

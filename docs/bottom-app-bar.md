@@ -16,11 +16,11 @@ fab|`Object`|
 
 ## Instance methods
 
-name|parameters
----|---
-`show`|
-`close`|
-`toggle`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| show| 
+undefined| undefined | undefined| close| 
+undefined| undefined | undefined| toggle| 
 
 ## Events
 

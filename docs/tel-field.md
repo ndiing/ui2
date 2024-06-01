@@ -37,9 +37,9 @@ ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
 
-name|parameters
----|---
-`telFieldNative`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| telFieldNative| 
 
 ## Events
 

@@ -20,12 +20,12 @@ convertLabel|`Function`|
 
 ## Instance methods
 
-name|parameters
----|---
-`sliderNative1`|
-`sliderNative2`|
-`calculatePercentage`|min, max, value
-`calculateDecimal`|min, max, value
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| sliderNative1| 
+undefined| undefined | get| sliderNative2| 
+undefined| undefined | undefined| calculatePercentage| min, max, value
+undefined| undefined | undefined| calculateDecimal| min, max, value
 
 ## Events
 

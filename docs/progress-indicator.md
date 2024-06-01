@@ -11,9 +11,9 @@ ui|`String`|possible values linear,circular
 
 ## Instance methods
 
-name|parameters
----|---
-`calculatePercentage`|min, max, value
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| calculatePercentage| min, max, value
 
 ## Events
 

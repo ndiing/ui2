@@ -71,9 +71,9 @@ function parse(content) {
     code += `\r\n`;
     code += `## Instance methods\r\n`;
     code += `\r\n`;
-    code += `name|parameters\r\n`;
-    code += `---|---\r\n`;
-    for (const { name, parameters } of methods) {
+    code += `block| asynchronous | accessor| name| parameters\r\n`;
+    code += `---| --- | ---| ---| ---\r\n`;
+    for (const { block, asynchronous , accessor, name, parameters } of methods) {
         if (
             [
                 //
@@ -89,7 +89,7 @@ function parse(content) {
             /^(render|handle|update)/.test(name)
         )
             continue;
-        code += `\`${name}\`|${parameters}\r\n`;
+            code += `${block}| ${asynchronous} | ${accessor}| ${name}| ${parameters}\r\n`;
     }
     code += `\r\n`;
     code += `## Events\r\n`;

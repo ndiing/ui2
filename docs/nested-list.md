@@ -18,9 +18,9 @@ hasLevel|`Boolean`|
 
 ## Instance methods
 
-name|parameters
----|---
-`labelSecondary`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| labelSecondary| 
 
 ## Events
 
@@ -38,8 +38,8 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 
@@ -61,12 +61,12 @@ ui|`String`|possible values tree,level,accordion
 
 ## Instance methods
 
-name|parameters
----|---
-`createList`|list, indent = 0
-`lastList`|list
-`selectList`|list, data
-`expandList`|list, data
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| createList| list, indent = 0
+undefined| undefined | undefined| lastList| list
+undefined| undefined | undefined| selectList| list, data
+undefined| undefined | undefined| expandList| list, data
 
 ## Events
 

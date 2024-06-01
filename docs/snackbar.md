@@ -15,12 +15,12 @@ open|`Boolean`|
 
 ## Instance methods
 
-name|parameters
----|---
-`snackbarInner`|
-`show`|
-`close`|
-`toggle`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| snackbarInner| 
+undefined| undefined | undefined| show| 
+undefined| undefined | undefined| close| 
+undefined| undefined | undefined| toggle| 
 
 ## Events
 

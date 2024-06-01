@@ -27,9 +27,9 @@ indeterminate|`String`|
 
 ## Instance methods
 
-name|parameters
----|---
-`labelSecondary`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| labelSecondary| 
 
 ## Events
 
@@ -50,8 +50,8 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
 
 ## Events
 
@@ -73,10 +73,10 @@ allSelection|`Boolean`|
 
 ## Instance methods
 
-name|parameters
----|---
-`selected`|
-`indeterminate`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| selected| 
+undefined| undefined | get| indeterminate| 
 
 ## Events
 

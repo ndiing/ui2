@@ -13,9 +13,9 @@ selected|`Boolean`|
 
 ## Instance methods
 
-name|parameters
----|---
-`buttonNative`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | get| buttonNative| 
 
 ## Events
 

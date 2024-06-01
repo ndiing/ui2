@@ -8,11 +8,11 @@ name|type|desc
 
 ## Instance methods
 
-name|parameters
----|---
-`init`|
-`emit`|type, detail
-`destroy`|
+block| asynchronous | accessor| name| parameters
+---| --- | ---| ---| ---
+undefined| undefined | undefined| init| 
+undefined| undefined | undefined| emit| type, detail
+undefined| undefined | undefined| destroy| 
 
 ## Events
 
