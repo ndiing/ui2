@@ -23,9 +23,9 @@ defaultIndeterminate|`Boolean`|-
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    | - | get | radioButtonNative| 
+    | - | get | radioButtonNative| -
 
-    | - | get | radioButtonTrack| 
+    | - | get | radioButtonTrack| -
 
 ## Events
 

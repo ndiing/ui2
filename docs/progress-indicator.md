@@ -14,7 +14,7 @@ ui|`String`|possible values linear,circular
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    | - | | calculatePercentage| min, max, value
+    | - | -| calculatePercentage| min, max, value
 
 ## Events
 

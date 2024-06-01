@@ -11,9 +11,9 @@ name|type|desc
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    | - | | init| 
+    | - | -| init| -
 
-    | - | | destroy| 
+    | - | -| destroy| -
 
 ## Events
 

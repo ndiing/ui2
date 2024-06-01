@@ -21,7 +21,7 @@ hasLevel|`Boolean`|-
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    | - | get | labelSecondary| 
+    | - | get | labelSecondary| -
 
 ## Events
 
@@ -65,13 +65,13 @@ ui|`String`|possible values tree,level,accordion
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    | - | | createList| list, indent = 0
+    | - | -| createList| list, indent = 0
 
-    | - | | lastList| list
+    | - | -| lastList| list
 
-    | - | | selectList| list, data
+    | - | -| selectList| list, data
 
-    | - | | expandList| list, data
+    | - | -| expandList| list, data
 
 ## Events
 
