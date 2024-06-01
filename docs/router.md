@@ -8,31 +8,31 @@ name|type|desc
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
-    | - | -| setRoutes| routes = [], parent
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
+    |-|-|setRoutes|routes = [], parent
 
-    | - | get | location| -
+    |-|get |location|-
 
-    | - | get | path| -
+    |-|get |path|-
 
-    | - | get | query| -
+    |-|get |query|-
 
-    | - | -| getRoute| path
+    |-|-|getRoute|path
 
-    | - | -| getRoutes| route
+    |-|-|getRoutes|route
 
-    | - | -| getOutlet| container, name
+    |-|-|getOutlet|container, name
 
-    | - | -| emit| type, detail
+    |-|-|emit|type, detail
 
-    | - | -| beforeLoad| beforeLoad
+    |-|-|beforeLoad|beforeLoad
 
-    | - | -| navigate| url
+    |-|-|navigate|url
 
-    | - | -| change| event
+    |-|-|change|event
 
-    | - | -| init| routes = [], options = {}
+    |-|-|init|routes = [], options = {}
 
 ## Events
 

@@ -15,14 +15,14 @@ open|`Boolean`|-
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
-    | - | -| show| -
+    |-|-|show|-
 
-    | - | -| close| -
+    |-|-|close|-
 
-    | - | -| toggle| -
+    |-|-|toggle|-
 
 ## Events
 

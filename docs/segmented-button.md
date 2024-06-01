@@ -13,8 +13,8 @@ allSelection|`Boolean`|-
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
 ## Events
 

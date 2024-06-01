@@ -8,12 +8,12 @@ name|type|desc
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
-    | - | -| createRenderRoot| -
+    |-|-|createRenderRoot|-
 
-    | - | -| emit| type, detail
+    |-|-|emit|type, detail
 
 ## Events
 

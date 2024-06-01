@@ -12,28 +12,28 @@ value|`String`|-
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
-    | - | get | first| -
-    | - | get | last| -
+    |-|get |first|-
+    |-|get |last|-
 
-    | - | get | years| -
-    | - | get | months| -
-    | - | get | weekdays| -
-    | - | get | days| -
-    | - | get | hours| -
-    | - | get | minutes| -
+    |-|get |years|-
+    |-|get |months|-
+    |-|get |weekdays|-
+    |-|get |days|-
+    |-|get |hours|-
+    |-|get |minutes|-
 
-    | - | get | label| -
+    |-|get |label|-
 
-    | - | get | subLabel| -
+    |-|get |subLabel|-
 
-    | - | -| show| button, options
+    |-|-|show|button, options
 
-    | - | -| close| -
+    |-|-|close|-
 
-    | - | -| toggle| -
+    |-|-|toggle|-
 
 ## Events
 

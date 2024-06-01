@@ -13,10 +13,10 @@ selected|`Boolean`|-
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
-    | - | get | buttonNative| -
+    |-|get |buttonNative|-
 
 ## Events
 

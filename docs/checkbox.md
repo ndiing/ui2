@@ -20,12 +20,12 @@ defaultIndeterminate|`Boolean`|-
 
 ## Instance methods
 
-block| asynchronous | accessor| name| parameters
----| --- | ---| ---| ---
+block|asynchronous|accessor|name|parameters
+---|---|---|---|---
 
-    | - | get | checkboxNative| -
+    |-|get |checkboxNative|-
 
-    | - | get | checkboxTrack| -
+    |-|get |checkboxTrack|-
 
 ## Events
 
