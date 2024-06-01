@@ -11,15 +11,15 @@ name|type|desc
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | init| 
+    | - | | init| 
 
-    |   | | emit| type, detail
+    | - | | emit| type, detail
 
-    |   | | destroy| 
+    | - | | destroy| 
 
 ## Events
 
 name|desc
 ---|---
-`onVirtualScroll`|
-`onVirtualScrollChange`|
+`onVirtualScroll`|-
+`onVirtualScrollChange`|-

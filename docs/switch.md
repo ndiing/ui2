@@ -5,35 +5,35 @@ The `MDSwitchComponent` interface provides special properties (beyond the regula
 
 name|type|desc
 ---|---|---
-autocapitalize|`String`|
-disabled|`Boolean`|
-form|`String`|
-name|`String`|
-required|`Boolean`|
-type|`String`|
-value|`String`|
-checked|`Boolean`|
-defaultValue|`String`|
-defaultChecked|`Boolean`|
-indeterminate|`Boolean`|
-defaultIndeterminate|`Boolean`|
-icons|`Array`|
+autocapitalize|`String`|-
+disabled|`Boolean`|-
+form|`String`|-
+name|`String`|-
+required|`Boolean`|-
+type|`String`|-
+value|`String`|-
+checked|`Boolean`|-
+defaultValue|`String`|-
+defaultChecked|`Boolean`|-
+indeterminate|`Boolean`|-
+defaultIndeterminate|`Boolean`|-
+icons|`Array`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | switchNative| 
+    | - | get | switchNative| 
 
-    |   | get | switchTrack| 
+    | - | get | switchTrack| 
 
-    |   | get | switchThumb| 
+    | - | get | switchThumb| 
 
 ## Events
 
 name|desc
 ---|---
-`onSwitchNativeInput`|
-`onSwitchNativeInvalid`|
-`onSwitchNativeReset`|
+`onSwitchNativeInput`|-
+`onSwitchNativeInvalid`|-
+`onSwitchNativeReset`|-

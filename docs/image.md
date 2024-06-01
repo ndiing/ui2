@@ -5,9 +5,9 @@ The `MDImageComponent` interface provides special properties (beyond the regular
 
 name|type|desc
 ---|---|---
-src|`String`|
-alt|`String`|
-ratio|`String`|
+src|`String`|-
+alt|`String`|-
+ratio|`String`|-
 ui|`String`|possible values rounded
 
 ## Instance methods

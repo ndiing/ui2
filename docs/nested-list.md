@@ -5,30 +5,30 @@ The `MDNestedListItemComponent` interface provides special properties (beyond th
 
 name|type|desc
 ---|---|---
-label|`String`|
-selected|`Boolean`|
-routerLink|`String`|
-indent|`Number`|
-isNode|`Boolean`|
+label|`String`|-
+selected|`Boolean`|-
+routerLink|`String`|-
+indent|`Number`|-
+isNode|`Boolean`|-
 ui|`String`|possible values 
-expanded|`Boolean`|
-activated|`Boolean`|
-isParent|`Boolean`|
-hasLevel|`Boolean`|
+expanded|`Boolean`|-
+activated|`Boolean`|-
+isParent|`Boolean`|-
+hasLevel|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | labelSecondary| 
+    | - | get | labelSecondary| 
 
 ## Events
 
 name|desc
 ---|---
-`onNestedListItemSelected`|
-`onNestedListItemActionClick`|
+`onNestedListItemSelected`|-
+`onNestedListItemActionClick`|-
 # MDNestedListRowComponent
 The `MDNestedListRowComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-nested-list-row>` elements.
 
@@ -53,11 +53,11 @@ The `MDNestedListComponent` interface provides special properties (beyond the re
 
 name|type|desc
 ---|---|---
-list|`Array`|
-rangeSelection|`Boolean`|
-multiSelection|`Boolean`|
-singleSelection|`Boolean`|
-allSelection|`Boolean`|
+list|`Array`|-
+rangeSelection|`Boolean`|-
+multiSelection|`Boolean`|-
+singleSelection|`Boolean`|-
+allSelection|`Boolean`|-
 ui|`String`|possible values tree,level,accordion
 
 ## Instance methods
@@ -65,17 +65,17 @@ ui|`String`|possible values tree,level,accordion
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | createList| list, indent = 0
+    | - | | createList| list, indent = 0
 
-    |   | | lastList| list
+    | - | | lastList| list
 
-    |   | | selectList| list, data
+    | - | | selectList| list, data
 
-    |   | | expandList| list, data
+    | - | | expandList| list, data
 
 ## Events
 
 name|desc
 ---|---
-`onNestedListItemClick`|
-`onNestedListKeydown`|
+`onNestedListItemClick`|-
+`onNestedListKeydown`|-

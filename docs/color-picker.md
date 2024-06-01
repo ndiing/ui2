@@ -6,64 +6,64 @@ The `MDColorPickerComponent` interface provides special properties (beyond the r
 name|type|desc
 ---|---|---
 ui|`String`|possible values full-screen
-open|`Boolean`|
-index|`Number`|
-value|`String`|
+open|`Boolean`|-
+index|`Number`|-
+value|`String`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | hexToRgba| hex
+    | - | | hexToRgba| hex
 
-    |   | | rgbaToHsla| r, g, b, a = 1
+    | - | | rgbaToHsla| r, g, b, a = 1
 
-    |   | | rgbaToHex| r, g, b, a = 1
+    | - | | rgbaToHex| r, g, b, a = 1
 
-    |   | | hslaToRgba| h, s, l, a = 1
+    | - | | hslaToRgba| h, s, l, a = 1
 
-    |   | get | label| 
+    | - | get | label| 
 
-    |   | get | subLabel| 
+    | - | get | subLabel| 
 
-    |   | | drawSolidGradient| 
+    | - | | drawSolidGradient| 
 
-    |   | | drawHueGradient| 
+    | - | | drawHueGradient| 
 
-    |   | | drawOpacityGradient| 
+    | - | | drawOpacityGradient| 
 
-    |   | | resizeCanvas| 
+    | - | | resizeCanvas| 
 
-    |   | | show| button, options
+    | - | | show| button, options
 
-    |   | | close| 
+    | - | | close| 
 
-    |   | | toggle| 
+    | - | | toggle| 
 
 ## Events
 
 name|desc
 ---|---
-`onColorPickerShow`|
-`onColorPickerClose`|
-`onColorPickerChange`|
-`onColorPickerScrimClick`|
-`onColorPickerLabelPrimaryClick`|
-`onColorPickerLabelSecondaryClick`|
-`onColorPickerActionNavigateBeforeClick`|
-`onColorPickerActionNavigateNextClick`|
-`onColorPickerSolidPointerdown`|
-`onColorPickerChange`|
-`onColorPickerSolidPointermove`|
-`onColorPickerChange`|
-`onColorPickerSolidPointerup`|
-`onColorPickerChange`|
-`onColorPickerHueInput`|
-`onColorPickerChange`|
-`onColorPickerOpacityInput`|
-`onColorPickerChange`|
-`onColorPickerButtonCancelClick`|
-`onColorPickerChange`|
-`onColorPickerButtonOkClick`|
-`onColorPickerChange`|
+`onColorPickerShow`|-
+`onColorPickerClose`|-
+`onColorPickerChange`|-
+`onColorPickerScrimClick`|-
+`onColorPickerLabelPrimaryClick`|-
+`onColorPickerLabelSecondaryClick`|-
+`onColorPickerActionNavigateBeforeClick`|-
+`onColorPickerActionNavigateNextClick`|-
+`onColorPickerSolidPointerdown`|-
+`onColorPickerChange`|-
+`onColorPickerSolidPointermove`|-
+`onColorPickerChange`|-
+`onColorPickerSolidPointerup`|-
+`onColorPickerChange`|-
+`onColorPickerHueInput`|-
+`onColorPickerChange`|-
+`onColorPickerOpacityInput`|-
+`onColorPickerChange`|-
+`onColorPickerButtonCancelClick`|-
+`onColorPickerChange`|-
+`onColorPickerButtonOkClick`|-
+`onColorPickerChange`|-

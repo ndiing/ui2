@@ -5,29 +5,29 @@ The `MDDialogComponent` interface provides special properties (beyond the regula
 
 name|type|desc
 ---|---|---
-leadingActions|`Array`|
-label|`String`|
-subLabel|`String`|
-trailingActions|`Array`|
-buttons|`Array`|
+leadingActions|`Array`|-
+label|`String`|-
+subLabel|`String`|-
+trailingActions|`Array`|-
+buttons|`Array`|-
 ui|`String`|possible values full-screen
-open|`Boolean`|
+open|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | show| 
+    | - | | show| 
 
-    |   | | close| 
+    | - | | close| 
 
-    |   | | toggle| 
+    | - | | toggle| 
 
 ## Events
 
 name|desc
 ---|---
-`onDialogActionClick`|
-`onDialogButtonClick`|
-`onDialogScrimClick`|
+`onDialogActionClick`|-
+`onDialogButtonClick`|-
+`onDialogScrimClick`|-

@@ -5,31 +5,31 @@ The `MDFormComponent` interface provides special properties (beyond the regular 
 
 name|type|desc
 ---|---|---
-acceptCharset|`String`|
-action|`String`|
-elements|`String`|
-encoding|`String`|
-enctype|`String`|
-length|`String`|
-method|`String`|
-name|`String`|
-target|`String`|
+acceptCharset|`String`|-
+action|`String`|-
+elements|`String`|-
+encoding|`String`|-
+enctype|`String`|-
+length|`String`|-
+method|`String`|-
+name|`String`|-
+target|`String`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | formNative| 
+    | - | get | formNative| 
 
-    |   | | reset| 
+    | - | | reset| 
 
-    |   | | submit| button
+    | - | | submit| button
 
 ## Events
 
 name|desc
 ---|---
-`onFormNativeFormdata`|
-`onFormNativeReset`|
-`onFormNativeSubmit`|
+`onFormNativeFormdata`|-
+`onFormNativeReset`|-
+`onFormNativeSubmit`|-

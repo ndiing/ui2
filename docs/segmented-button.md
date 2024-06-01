@@ -5,11 +5,11 @@ The `MDSegmentedButtonComponent` interface provides special properties (beyond t
 
 name|type|desc
 ---|---|---
-buttons|`Array`|
-rangeSelection|`Boolean`|
-multiSelection|`Boolean`|
-singleSelection|`Boolean`|
-allSelection|`Boolean`|
+buttons|`Array`|-
+rangeSelection|`Boolean`|-
+multiSelection|`Boolean`|-
+singleSelection|`Boolean`|-
+allSelection|`Boolean`|-
 
 ## Instance methods
 
@@ -20,5 +20,5 @@ block| asynchronous | accessor| name| parameters
 
 name|desc
 ---|---
-`onSegmentedButtonButtonClick`|
-`onSegmentedButtonKeydown`|
+`onSegmentedButtonButtonClick`|-
+`onSegmentedButtonKeydown`|-

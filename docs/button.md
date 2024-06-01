@@ -5,18 +5,18 @@ The `MDButtonComponent` interface provides special properties (beyond the regula
 
 name|type|desc
 ---|---|---
-icon|`String`|
-label|`String`|
+icon|`String`|-
+label|`String`|-
 ui|`String`|possible values elevated,filled,tonal,outlined
-type|`String`|
-selected|`Boolean`|
+type|`String`|-
+selected|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | buttonNative| 
+    | - | get | buttonNative| 
 
 ## Events
 

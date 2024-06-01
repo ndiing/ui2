@@ -11,21 +11,21 @@ name|type|desc
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | sort| docs, options
+    | - | | sort| docs, options
 
-    |   | | search| docs, options
+    | - | | search| docs, options
 
-    |   | | deepSearch| obj, query
+    | - | | deepSearch| obj, query
 
-    |   | | filter| docs, options
+    | - | | filter| docs, options
 
-    |   | | getValue| obj, path
+    | - | | getValue| obj, path
 
-    |   | | slice| docs, options
+    | - | | slice| docs, options
 
-    |   | | paginate| docs, options
+    | - | | paginate| docs, options
 
-    |   | | getAll| options = {}
+    | - | | getAll| options = {}
 
 ## Events
 

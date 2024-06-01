@@ -5,8 +5,8 @@ The `MDFabComponent` interface provides special properties (beyond the regular `
 
 name|type|desc
 ---|---|---
-icon|`String`|
-label|`String`|
+icon|`String`|-
+label|`String`|-
 ui|`String`|possible values small,large,extended,surface,secondary,tertiary,unelevated
 
 ## Instance methods

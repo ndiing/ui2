@@ -5,32 +5,32 @@ The `MDCheckboxComponent` interface provides special properties (beyond the regu
 
 name|type|desc
 ---|---|---
-autocapitalize|`String`|
-disabled|`Boolean`|
-form|`String`|
-name|`String`|
-required|`Boolean`|
-type|`String`|
-value|`String`|
-checked|`Boolean`|
-defaultValue|`String`|
-defaultChecked|`Boolean`|
-indeterminate|`Boolean`|
-defaultIndeterminate|`Boolean`|
+autocapitalize|`String`|-
+disabled|`Boolean`|-
+form|`String`|-
+name|`String`|-
+required|`Boolean`|-
+type|`String`|-
+value|`String`|-
+checked|`Boolean`|-
+defaultValue|`String`|-
+defaultChecked|`Boolean`|-
+indeterminate|`Boolean`|-
+defaultIndeterminate|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | checkboxNative| 
+    | - | get | checkboxNative| 
 
-    |   | get | checkboxTrack| 
+    | - | get | checkboxTrack| 
 
 ## Events
 
 name|desc
 ---|---
-`onCheckboxNativeInput`|
-`onCheckboxNativeInvalid`|
-`onCheckboxNativeReset`|
+`onCheckboxNativeInput`|-
+`onCheckboxNativeInvalid`|-
+`onCheckboxNativeReset`|-

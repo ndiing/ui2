@@ -69,7 +69,7 @@ function parse(content) {
         if (name == "ui") {
             code += `${name}|\`${type}\`|possible values ${variants}\r\n`;
         } else {
-            code += `${name}|\`${type}\`|\r\n`;
+            code += `${name}|\`${type}\`|-\r\n`;
         }
     }
     code += `\r\n`;
@@ -93,7 +93,7 @@ function parse(content) {
             /^(render|handle|update)/.test(name)
         )
             continue;
-        code += `${block ?? " "}| ${asynchronous ?? " "} | ${accessor ?? " "}| ${name ?? " "}| ${parameters ?? " "}\r\n`;
+        code += `${block ?? "-"}| ${asynchronous ?? "-"} | ${accessor ?? "-"}| ${name ?? "-"}| ${parameters ?? "-"}\r\n`;
     }
     code += `\r\n`;
     code += `## Events\r\n`;
@@ -101,7 +101,7 @@ function parse(content) {
     code += `name|desc\r\n`;
     code += `---|---\r\n`;
     for (const name of events) {
-        code += `\`${name}\`|\r\n`;
+        code += `\`${name}\`|-\r\n`;
     }
 
     return {

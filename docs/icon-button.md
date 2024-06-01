@@ -5,10 +5,10 @@ The `MDIconButtonComponent` interface provides special properties (beyond the re
 
 name|type|desc
 ---|---|---
-icon|`String`|
+icon|`String`|-
 ui|`String`|possible values filled,tonal,outlined
-toggle|`Boolean`|
-selected|`Boolean`|
+toggle|`Boolean`|-
+selected|`Boolean`|-
 
 ## Instance methods
 
@@ -19,4 +19,4 @@ block| asynchronous | accessor| name| parameters
 
 name|desc
 ---|---
-`onIconButtonClick`|
+`onIconButtonClick`|-

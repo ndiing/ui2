@@ -6,56 +6,56 @@ The `MDDatePickerComponent` interface provides special properties (beyond the re
 name|type|desc
 ---|---|---
 ui|`String`|possible values full-screen
-open|`Boolean`|
-index|`Number`|
-value|`String`|
+open|`Boolean`|-
+index|`Number`|-
+value|`String`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | first| 
-    |   | get | last| 
+    | - | get | first| 
+    | - | get | last| 
 
-    |   | get | years| 
-    |   | get | months| 
-    |   | get | weekdays| 
-    |   | get | days| 
-    |   | get | hours| 
-    |   | get | minutes| 
+    | - | get | years| 
+    | - | get | months| 
+    | - | get | weekdays| 
+    | - | get | days| 
+    | - | get | hours| 
+    | - | get | minutes| 
 
-    |   | get | label| 
+    | - | get | label| 
 
-    |   | get | subLabel| 
+    | - | get | subLabel| 
 
-    |   | | show| button, options
+    | - | | show| button, options
 
-    |   | | close| 
+    | - | | close| 
 
-    |   | | toggle| 
+    | - | | toggle| 
 
 ## Events
 
 name|desc
 ---|---
-`onDatePickerChange`|
-`onDatePickerScrimClick`|
-`onDatePickerLabelPrimaryClick`|
-`onDatePickerLabelSecondaryClick`|
-`onDatePickerActionNavigateBeforeClick`|
-`onDatePickerActionNavigateNextClick`|
-`onDatePickerYearClick`|
-`onDatePickerChange`|
-`onDatePickerMonthClick`|
-`onDatePickerChange`|
-`onDatePickerDayClick`|
-`onDatePickerChange`|
-`onDatePickerHourClick`|
-`onDatePickerChange`|
-`onDatePickerMinuteClick`|
-`onDatePickerChange`|
-`onDatePickerButtonCancelClick`|
-`onDatePickerChange`|
-`onDatePickerButtonOkClick`|
-`onDatePickerChange`|
+`onDatePickerChange`|-
+`onDatePickerScrimClick`|-
+`onDatePickerLabelPrimaryClick`|-
+`onDatePickerLabelSecondaryClick`|-
+`onDatePickerActionNavigateBeforeClick`|-
+`onDatePickerActionNavigateNextClick`|-
+`onDatePickerYearClick`|-
+`onDatePickerChange`|-
+`onDatePickerMonthClick`|-
+`onDatePickerChange`|-
+`onDatePickerDayClick`|-
+`onDatePickerChange`|-
+`onDatePickerHourClick`|-
+`onDatePickerChange`|-
+`onDatePickerMinuteClick`|-
+`onDatePickerChange`|-
+`onDatePickerButtonCancelClick`|-
+`onDatePickerChange`|-
+`onDatePickerButtonOkClick`|-
+`onDatePickerChange`|-

@@ -5,12 +5,12 @@ The `MDCardComponent` interface provides special properties (beyond the regular 
 
 name|type|desc
 ---|---|---
-leadingActions|`Array`|
-label|`String`|
-subLabel|`String`|
-trailingActions|`Array`|
-image|`String`|
-buttons|`Array`|
+leadingActions|`Array`|-
+label|`String`|-
+subLabel|`String`|-
+trailingActions|`Array`|-
+image|`String`|-
+buttons|`Array`|-
 ui|`String`|possible values elevated,filled,outlined
 
 ## Instance methods

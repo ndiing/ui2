@@ -5,8 +5,8 @@ The `MDBadgeComponent` interface provides special properties (beyond the regular
 
 name|type|desc
 ---|---|---
-label|`Number`|
-max|`Number`|
+label|`Number`|-
+max|`Number`|-
 
 ## Instance methods
 

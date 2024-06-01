@@ -5,8 +5,8 @@ The `MDProgressIndicatorComponent` interface provides special properties (beyond
 
 name|type|desc
 ---|---|---
-max|`Number`|
-value|`Number`|
+max|`Number`|-
+value|`Number`|-
 ui|`String`|possible values linear,circular
 
 ## Instance methods
@@ -14,7 +14,7 @@ ui|`String`|possible values linear,circular
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | calculatePercentage| min, max, value
+    | - | | calculatePercentage| min, max, value
 
 ## Events
 

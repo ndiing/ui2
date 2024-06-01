@@ -6,58 +6,58 @@ The `MDDatetimePickerComponent` interface provides special properties (beyond th
 name|type|desc
 ---|---|---
 ui|`String`|possible values full-screen
-open|`Boolean`|
-index|`Number`|
-value|`String`|
+open|`Boolean`|-
+index|`Number`|-
+value|`String`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | first| 
-    |   | get | last| 
+    | - | get | first| 
+    | - | get | last| 
 
-    |   | get | years| 
-    |   | get | months| 
-    |   | get | weekdays| 
-    |   | get | days| 
-    |   | get | hours| 
-    |   | get | minutes| 
+    | - | get | years| 
+    | - | get | months| 
+    | - | get | weekdays| 
+    | - | get | days| 
+    | - | get | hours| 
+    | - | get | minutes| 
 
-    |   | get | label| 
+    | - | get | label| 
 
-    |   | get | subLabel| 
+    | - | get | subLabel| 
 
-    |   | | show| button, options
+    | - | | show| button, options
 
-    |   | | close| 
+    | - | | close| 
 
-    |   | | toggle| 
+    | - | | toggle| 
 
 ## Events
 
 name|desc
 ---|---
-`onDatetimePickerShow`|
-`onDatetimePickerClose`|
-`onDatetimePickerChange`|
-`onDatetimePickerScrimClick`|
-`onDatetimePickerLabelPrimaryClick`|
-`onDatetimePickerLabelSecondaryClick`|
-`onDatetimePickerActionNavigateBeforeClick`|
-`onDatetimePickerActionNavigateNextClick`|
-`onDatetimePickerYearClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerMonthClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerDayClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerHourClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerMinuteClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerButtonCancelClick`|
-`onDatetimePickerChange`|
-`onDatetimePickerButtonOkClick`|
-`onDatetimePickerChange`|
+`onDatetimePickerShow`|-
+`onDatetimePickerClose`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerScrimClick`|-
+`onDatetimePickerLabelPrimaryClick`|-
+`onDatetimePickerLabelSecondaryClick`|-
+`onDatetimePickerActionNavigateBeforeClick`|-
+`onDatetimePickerActionNavigateNextClick`|-
+`onDatetimePickerYearClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerMonthClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerDayClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerHourClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerMinuteClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerButtonCancelClick`|-
+`onDatetimePickerChange`|-
+`onDatetimePickerButtonOkClick`|-
+`onDatetimePickerChange`|-

@@ -5,32 +5,32 @@ The `MDRadioButtonComponent` interface provides special properties (beyond the r
 
 name|type|desc
 ---|---|---
-autocapitalize|`String`|
-disabled|`Boolean`|
-form|`String`|
-name|`String`|
-required|`Boolean`|
-type|`String`|
-value|`String`|
-checked|`Boolean`|
-defaultValue|`String`|
-defaultChecked|`Boolean`|
-indeterminate|`Boolean`|
-defaultIndeterminate|`Boolean`|
+autocapitalize|`String`|-
+disabled|`Boolean`|-
+form|`String`|-
+name|`String`|-
+required|`Boolean`|-
+type|`String`|-
+value|`String`|-
+checked|`Boolean`|-
+defaultValue|`String`|-
+defaultChecked|`Boolean`|-
+indeterminate|`Boolean`|-
+defaultIndeterminate|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | radioButtonNative| 
+    | - | get | radioButtonNative| 
 
-    |   | get | radioButtonTrack| 
+    | - | get | radioButtonTrack| 
 
 ## Events
 
 name|desc
 ---|---
-`onRadioButtonNativeInput`|
-`onRadioButtonNativeInvalid`|
-`onRadioButtonNativeReset`|
+`onRadioButtonNativeInput`|-
+`onRadioButtonNativeInvalid`|-
+`onRadioButtonNativeReset`|-

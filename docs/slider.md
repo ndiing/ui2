@@ -5,30 +5,30 @@ The `MDSliderComponent` interface provides special properties (beyond the regula
 
 name|type|desc
 ---|---|---
-autocapitalize|`Boolean`|
-autocomplete|`Boolean`|
-disabled|`Boolean`|
-form|`String`|
-list|`String`|
-name|`String`|
-type|`String`|
-max|`Number`|
-min|`Number`|
-step|`Number`|
-defaultValue|`Array`|
-convertLabel|`Function`|
+autocapitalize|`Boolean`|-
+autocomplete|`Boolean`|-
+disabled|`Boolean`|-
+form|`String`|-
+list|`String`|-
+name|`String`|-
+type|`String`|-
+max|`Number`|-
+min|`Number`|-
+step|`Number`|-
+defaultValue|`Array`|-
+convertLabel|`Function`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | sliderNative1| 
-    |   | get | sliderNative2| 
+    | - | get | sliderNative1| 
+    | - | get | sliderNative2| 
 
-    |   | | calculatePercentage| min, max, value
+    | - | | calculatePercentage| min, max, value
 
-    |   | | calculateDecimal| min, max, value
+    | - | | calculateDecimal| min, max, value
 
 ## Events
 

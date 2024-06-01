@@ -5,29 +5,29 @@ The `MDNavigationDrawerComponent` interface provides special properties (beyond 
 
 name|type|desc
 ---|---|---
-leadingActions|`Array`|
-label|`String`|
-subLabel|`String`|
-trailingActions|`Array`|
-buttons|`Array`|
+leadingActions|`Array`|-
+label|`String`|-
+subLabel|`String`|-
+trailingActions|`Array`|-
+buttons|`Array`|-
 ui|`String`|possible values modal
-open|`Boolean`|
+open|`Boolean`|-
 
 ## Instance methods
 
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | | show| 
+    | - | | show| 
 
-    |   | | close| 
+    | - | | close| 
 
-    |   | | toggle| 
+    | - | | toggle| 
 
 ## Events
 
 name|desc
 ---|---
-`onNavigationDrawerActionClick`|
-`onNavigationDrawerButtonClick`|
-`onNavigationDrawerScrimClick`|
+`onNavigationDrawerActionClick`|-
+`onNavigationDrawerButtonClick`|-
+`onNavigationDrawerScrimClick`|-

@@ -5,31 +5,31 @@ The `MDDateFieldComponent` interface provides special properties (beyond the reg
 
 name|type|desc
 ---|---|---
-autocapitalize|`Boolean`|
-autocomplete|`String`|
-disabled|`Boolean`|
-form|`String`|
-list|`String`|
-name|`String`|
-readonly|`Boolean`|
-required|`Boolean`|
-type|`String`|
-value|`String`|
-max|`String`|
-min|`String`|
-step|`String`|
-defaultValue|`String`|
-label|`String`|
-leadingIcon|`String`|
-leadingMeta|`String`|
-trailingMeta|`String`|
-trailingActions|`Array`|
-trailingIcon|`String`|
-text|`String`|
-focused|`Boolean`|
-populated|`Boolean`|
-invalid|`Boolean`|
-validationMessage|`String`|
+autocapitalize|`Boolean`|-
+autocomplete|`String`|-
+disabled|`Boolean`|-
+form|`String`|-
+list|`String`|-
+name|`String`|-
+readonly|`Boolean`|-
+required|`Boolean`|-
+type|`String`|-
+value|`String`|-
+max|`String`|-
+min|`String`|-
+step|`String`|-
+defaultValue|`String`|-
+label|`String`|-
+leadingIcon|`String`|-
+leadingMeta|`String`|-
+trailingMeta|`String`|-
+trailingActions|`Array`|-
+trailingIcon|`String`|-
+text|`String`|-
+focused|`Boolean`|-
+populated|`Boolean`|-
+invalid|`Boolean`|-
+validationMessage|`String`|-
 ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
@@ -37,17 +37,17 @@ ui|`String`|possible values filled,outlined,rounded
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | colorFieldNative| 
+    | - | get | colorFieldNative| 
 
 ## Events
 
 name|desc
 ---|---
-`onDateFieldNativeActionClick`|
-`onDateFieldNativeActionCalendarClockClick`|
-`onDateFieldNativeFocus`|
-`onDateFieldNativeBlur`|
-`onDateFieldNativeInput`|
-`onDateFieldNativeInvalid`|
-`onDateFieldNativeReset`|
-`onDateFieldNativeClick`|
+`onDateFieldNativeActionClick`|-
+`onDateFieldNativeActionCalendarClockClick`|-
+`onDateFieldNativeFocus`|-
+`onDateFieldNativeBlur`|-
+`onDateFieldNativeInput`|-
+`onDateFieldNativeInvalid`|-
+`onDateFieldNativeReset`|-
+`onDateFieldNativeClick`|-

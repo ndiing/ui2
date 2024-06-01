@@ -5,31 +5,31 @@ The `MDFileFieldComponent` interface provides special properties (beyond the reg
 
 name|type|desc
 ---|---|---
-autocapitalize|`Boolean`|
-autocomplete|`String`|
-disabled|`Boolean`|
-form|`String`|
-list|`String`|
-name|`String`|
-readonly|`Boolean`|
-required|`Boolean`|
-type|`String`|
-value|`String`|
-accept|`String`|
-capture|`String`|
-multiple|`Boolean`|
-defaultValue|`String`|
-label|`String`|
-leadingIcon|`String`|
-leadingMeta|`String`|
-trailingMeta|`String`|
-trailingActions|`Array`|
-trailingIcon|`String`|
-text|`String`|
-focused|`Boolean`|
-populated|`Boolean`|
-invalid|`Boolean`|
-validationMessage|`String`|
+autocapitalize|`Boolean`|-
+autocomplete|`String`|-
+disabled|`Boolean`|-
+form|`String`|-
+list|`String`|-
+name|`String`|-
+readonly|`Boolean`|-
+required|`Boolean`|-
+type|`String`|-
+value|`String`|-
+accept|`String`|-
+capture|`String`|-
+multiple|`Boolean`|-
+defaultValue|`String`|-
+label|`String`|-
+leadingIcon|`String`|-
+leadingMeta|`String`|-
+trailingMeta|`String`|-
+trailingActions|`Array`|-
+trailingIcon|`String`|-
+text|`String`|-
+focused|`Boolean`|-
+populated|`Boolean`|-
+invalid|`Boolean`|-
+validationMessage|`String`|-
 ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
@@ -37,16 +37,16 @@ ui|`String`|possible values filled,outlined,rounded
 block| asynchronous | accessor| name| parameters
 ---| --- | ---| ---| ---
 
-    |   | get | fileFieldNative| 
+    | - | get | fileFieldNative| 
 
 ## Events
 
 name|desc
 ---|---
-`onFileFieldNativeActionUploadClick`|
-`onFileFieldNativeActionClick`|
-`onFileFieldNativeFocus`|
-`onFileFieldNativeBlur`|
-`onFileFieldNativeInput`|
-`onFileFieldNativeInvalid`|
-`onFileFieldNativeReset`|
+`onFileFieldNativeActionUploadClick`|-
+`onFileFieldNativeActionClick`|-
+`onFileFieldNativeFocus`|-
+`onFileFieldNativeBlur`|-
+`onFileFieldNativeInput`|-
+`onFileFieldNativeInvalid`|-
+`onFileFieldNativeReset`|-
