@@ -2,27 +2,21 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
+import { choose } from "lit/directives/choose.js";
 
 class MDNestedListItemComponent extends MDElement {
     static get properties() {
         return {
-            avatar: { type: String },
-            thumbnail: { type: String },
-            video: { type: String },
-            leadingCheckbox: { type: Object },
-            leadingRadioButton: { type: Object },
-            leadingSwitch: { type: Object },
-            leadingIcon: { type: String },
             label: { type: String },
-            subLabel: { type: String },
-            trailingIcon: { type: String },
-            trailingCheckbox: { type: Object },
-            trailingRadioButton: { type: Object },
-            trailingSwitch: { type: Object },
-            text: { type: String },
-            badge: { type: Object },
             selected: { type: Boolean, reflect: true },
             routerLink: { type: String, reflect: true },
+            indent: { type: Number },
+            isNode: { type: Boolean },
+            ui: { type: String },
+            expanded: { type: Boolean, reflect: true },
+            activated: { type: Boolean, reflect: true },
+            isParent: { type: Boolean,  },
+            hasLevel: { type: Boolean,  },
         };
     }
 
@@ -32,34 +26,50 @@ class MDNestedListItemComponent extends MDElement {
 
     /* prettier-ignore */
 
-    render() {
+    renderTree() {
         return html`
-            ${this.avatar?html`<md-image class="md-nested-list__avatar" .src="${this.avatar}" .ui="${"rounded"}"></md-image>`:nothing}
-            ${this.thumbnail?html`<md-image class="md-nested-list__thumbnail" .src="${this.thumbnail}"></md-image>`:nothing}
-            ${this.video?html`<md-image class="md-nested-list__video" .src="${this.video}" .ratio="${4/3}"></md-image>`:nothing}
-
-            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleNestedListItemCheckboxNativeInput}" .checked="${this.selected}" class="md-nested-list__checkbox"></md-checkbox>`:nothing}
-            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleNestedListItemRadioButtonNativeInput}" .checked="${this.selected}" class="md-nested-list__radio-button"></md-radio-button>`:nothing}
-            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleNestedListItemSwitchNativeInput}" .checked="${this.selected}" class="md-nested-list__switch"></md-switch>`:nothing}
-
-            ${this.leadingIcon?html`<md-icon class="md-nested-list__icon">${this.leadingIcon}</md-icon>`:nothing}
-
-            ${this.label||this.subLabel||this.badge?html`
-                <div class="md-nested-list__label">
-                    ${this.label?html`<div class="md-nested-list__label-primary">${this.label}</div>`:nothing}
-                    ${this.subLabel?html`<div class="md-nested-list__label-secondary">${this.subLabel}</div>`:nothing}
-                    ${this.badge?html`<md-badge class="md-nested-list__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
-                </div>
-            `:nothing}
-
-            ${this.trailingIcon?html`<md-icon class="md-nested-list__icon">${this.trailingIcon}</md-icon>`:nothing}
-
-            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleNestedListItemCheckboxNativeInput}" .checked="${this.selected}" class="md-nested-list__checkbox"></md-checkbox>`:nothing}
-            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleNestedListItemRadioButtonNativeInput}" .checked="${this.selected}" class="md-nested-list__radio-button"></md-radio-button>`:nothing}
-            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleNestedListItemSwitchNativeInput}" .checked="${this.selected}" class="md-nested-list__switch"></md-switch>`:nothing}
-
-            ${this.text?html`<div class="md-nested-list__text">${this.text}</div>`:nothing}
+            ${Array.from({length:this.indent},() => html`
+                <md-icon class="md-nested-list__indent"></md-icon>
+            `)}
+            ${this.hasLevel?this.isNode?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${this.expanded?'keyboard_arrow_down':'keyboard_arrow_right'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon"></md-icon>`:nothing}
+            <md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>
+            <div class="md-nested-list__label">
+                <div class="md-nested-list__label-primary">${this.label}</div>
+            </div>
         `;
+    }
+
+    /* prettier-ignore */
+
+    renderLevel() {
+        return html`
+            ${this.isParent?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${'arrow_back'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>`}
+            <div class="md-nested-list__label">
+                <div class="md-nested-list__label-primary">${this.label}</div>
+            </div>
+            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${'arrow_forward'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon"></md-icon>`}
+        `;
+    }
+
+    /* prettier-ignore */
+
+    renderAccordion() {
+        return html`
+            <md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>
+            <div class="md-nested-list__label">
+                <div class="md-nested-list__label-primary">${this.label}</div>
+            </div>
+            ${this.isNode?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${this.expanded?'keyboard_arrow_up':'keyboard_arrow_down'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon"></md-icon>`}
+        `;
+    }
+
+    /* prettier-ignore */
+
+    render() {
+        return choose(this.ui,[
+            ['level', () => this.renderLevel()],
+            ['accordion', () => this.renderAccordion()],
+        ], () => this.renderTree())
     }
 
     get labelSecondary() {
@@ -69,24 +79,16 @@ class MDNestedListItemComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
 
-        this.classNestedList.add("md-nested-list__item");
+        this.classList.add("md-nested-list__item");
         await this.updateComplete;
 
-        if (this.labelSecondary) {
-            if (this.labelSecondary.scrollHeight > this.labelSecondary.clientHeight) {
-                this.classNestedList.add("md-nested-list__item--three-line");
-            } else {
-                this.classNestedList.add("md-nested-list__item--two-line");
-            }
-        }
-        await this.updateComplete;
         this.ripple = new MDRippleModule(this, {});
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
 
-        this.classNestedList.remove("md-nested-list__item");
+        this.classList.remove("md-nested-list__item");
         await this.updateComplete;
         this.ripple.destroy();
     }
@@ -101,16 +103,8 @@ class MDNestedListItemComponent extends MDElement {
         }
     }
 
-    handleNestedListItemCheckboxNativeInput(event) {
-        this.emit("onNestedListItemCheckboxNativeInput", event);
-    }
-
-    handleNestedListItemRadioButtonNativeInput(event) {
-        this.emit("onNestedListItemRadioButtonNativeInput", event);
-    }
-
-    handleNestedListItemSwitchNativeInput(event) {
-        this.emit("onNestedListItemSwitchNativeInput", event);
+    handleNestedListItemActionClick(event){
+        this.emit('onNestedListItemActionClick',event)
     }
 }
 
@@ -135,14 +129,14 @@ class MDNestedListRowComponent extends MDElement {
         super.connectedCallback();
         await this.updateComplete;
 
-        this.classNestedList.add("md-nested-list__row");
+        this.classList.add("md-nested-list__row");
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
 
-        this.classNestedList.remove("md-nested-list__row");
+        this.classList.remove("md-nested-list__row");
     }
 
     updated(changedProperties) {}
@@ -153,16 +147,19 @@ customElements.define("md-nested-list-row", MDNestedListRowComponent);
 class MDNestedListComponent extends MDElement {
     static get properties() {
         return {
-            nested-list: { type: Array },
+            list: { type: Array },
             rangeSelection: { type: Boolean },
             multiSelection: { type: Boolean },
             singleSelection: { type: Boolean },
             allSelection: { type: Boolean },
+            ui: { type: String },
         };
     }
 
     constructor() {
         super();
+
+        this.singleSelection=true
     }
 
     /* prettier-ignore */
@@ -172,28 +169,24 @@ class MDNestedListComponent extends MDElement {
             <md-nested-list-row>
                 <md-nested-list-item
                     .data="${item}"
-                    .avatar="${ifDefined(item.avatar)}"
-                    .thumbnail="${ifDefined(item.thumbnail)}"
-                    .video="${ifDefined(item.video)}"
-                    .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
-                    .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
-                    .leadingSwitch="${ifDefined(item.leadingSwitch)}"
-                    .leadingIcon="${ifDefined(item.leadingIcon)}"
                     .label="${ifDefined(item.label)}"
-                    .subLabel="${ifDefined(item.subLabel)}"
-                    .trailingIcon="${ifDefined(item.trailingIcon)}"
-                    .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
-                    .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
-                    .trailingSwitch="${ifDefined(item.trailingSwitch)}"
-                    .badge="${ifDefined(item.badge)}"
-                    .text="${ifDefined(item.text)}"
                     .selected="${ifDefined(item.selected)}"
                     .routerLink="${ifDefined(item.routerLink)}"
+                    .indent="${ifDefined(item.indent)}"
+                    .isNode="${ifDefined(item.isNode)}"
+                    .ui="${ifDefined(this.ui)}"
+                    .expanded="${ifDefined(item.expanded)}"
+                    .activated="${ifDefined(item.activated)}"
+                    .isParent="${ifDefined(item.isParent)}"
+                    .hasLevel="${ifDefined(item.hasLevel)}"
                     @click="${this.handleNestedListItemClick}"
-                    @onNestedListItemCheckboxNativeInput="${this.handleNestedListItemCheckboxNativeInput}"
-                    @onNestedListItemRadioButtonNativeInput="${this.handleNestedListItemRadioButtonNativeInput}"
-                    @onNestedListItemSwitchNativeInput="${this.handleNestedListItemSwitchNativeInput}"
+                    @onNestedListItemActionClick="${this.handleNestedListItemActionClick}"
                 ></md-nested-list-item>
+                ${item.children?.length&&item.expanded?html`
+                    <div class="md-nested-list">
+                        ${item.children.map(item=>this.renderItem(item))}
+                    </div>
+                `:nothing}
             </md-nested-list-row>
         `;
     }
@@ -201,30 +194,104 @@ class MDNestedListComponent extends MDElement {
     /* prettier-ignore */
 
     render() {
-        return this.nested-list?.map(item=>this.renderItem(item));
+        let list = this.ui=='level'?this.lastList(this.list)||this.list:this.list
+        return list?.map(item=>this.renderItem(item));
     }
 
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
 
-        this.classNestedList.add("md-nested-list");
+        this.classList.add("md-nested-list");
         this.handleNestedListKeydown = this.handleNestedListKeydown.bind(this);
-        this.addEventNestedListener("keydown", this.handleNestedListKeydown);
+        this.addEventListener("keydown", this.handleNestedListKeydown);
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
 
-        this.classNestedList.remove("md-nested-list");
-        this.removeEventNestedListener("keydown", this.handleNestedListKeydown);
+        this.classList.remove("md-nested-list");
+        this.removeEventListener("keydown", this.handleNestedListKeydown);
     }
 
-    updated(changedProperties) {}
+    async updated(changedProperties) {
+        if(changedProperties.has('ui')){
+            [
+                'tree',
+                'level',
+                'accordion',
+            ]
+            .forEach(ui => {
+                this.classList.remove('md-nested-list--'+ui)
+            })
+            if(this.ui){
+                this.ui.split(' ')
+                .forEach(ui => {
+                    this.classList.add('md-nested-list--'+ui)
+                })
+            }
+        }
+        if(changedProperties.has('list')){
+            await this.updateComplete
+            this.createList(this.list)
+            this.requestUpdate()
+        }
+    }
+
+    createList(list,indent=0){
+        let expanded=false
+        let activated=false
+        list.forEach((item,index,array)=>{
+            item.indent=indent
+            item.hasLevel=array.find(item=>item.children?.length)||this.indent>0
+            if(item.expanded||item.selected){
+                expanded=true
+                item.expanded=true
+            }
+            item.activated=false
+            if(item.selected){
+                activated=true
+            }
+            if(item.children?.length){
+                if(this.ui=='level'){
+                    const {label} = item
+                    item.children.unshift({label,isParent:true,parent:item})
+                }
+
+                item.isNode=true
+                const child=this.createList(item.children,indent+1)
+                if(child.expanded){
+                    expanded=true
+                    item.expanded=true
+                }
+                if(child.activated){
+                    activated=true
+                    item.activated=true
+                }
+            }
+        })
+        return {expanded,activated}
+    }
+
+    lastList(list,){
+        let last
+        list.forEach(item=>{
+            if(item.expanded){
+                last=item.children
+            }
+            if(item.children?.length){
+                const child=this.lastList(item.children)
+                if(child){
+                    last=child
+                }
+            }
+        })
+        return last
+    }
 
     handleNestedListItemClick(event) {
-        if (event.target.closest(".md-nested-list__checkbox,.md-nested-list__radio-button,.md-nested-list__switch")) {
+        if (event.target.closest(".md-nested-list__action")) {
             return;
         }
         const data = event.currentTarget.data;
@@ -233,13 +300,13 @@ class MDNestedListComponent extends MDElement {
             if (this.lastIndex == undefined) {
                 this.lastIndex = 0;
             }
-            this.currentIndex = this.nested-list.indexOf(data);
+            this.currentIndex = this.list.indexOf(data);
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
                 [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
-            this.nested-list.forEach((item, index) => {
+            this.list.forEach((item, index) => {
                 item.selected = index >= this.lastIndex && index <= this.currentIndex;
             });
 
@@ -249,19 +316,39 @@ class MDNestedListComponent extends MDElement {
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
         } else if (this.singleSelection) {
-            this.nested-list.forEach((item) => {
-                item.selected = item == data;
-            });
-            this.lastIndex = this.nested-list.indexOf(data);
+            if(!data.isNode&&!data.isParent){
+                this.selectList(this.list,data);
+            }else{
+                this.expandList(this.list,data.isParent?data.parent:data)
+            }
+            this.lastIndex = this.list.indexOf(data);
         }
         this.requestUpdate();
         this.emit("onNestedListItemClick", event);
     }
 
+    selectList(list,data) {
+        let activated=false
+        list.forEach((item) => {
+            item.selected = item == data;
+            item.activated=false
+            if(item.selected){
+                activated=true
+            }
+            if(item.children?.length){
+                if(this.selectList(item.children,data)){
+                    activated=true     
+                    item.activated=true     
+                }
+            }
+        });
+        return activated
+    }
+
     handleNestedListKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
-            this.nested-list.forEach((item) => {
+            this.list.forEach((item) => {
                 item.selected = true;
             });
             this.requestUpdate();
@@ -269,26 +356,16 @@ class MDNestedListComponent extends MDElement {
         this.emit("onNestedListKeydown", event);
     }
 
-    handleNestedListItemCheckboxNativeInput(event) {
-        const data = event.currentTarget.data;
-        data.selected = !data.selected;
-        this.requestUpdate();
+    expandList(list,data){
+        data.expanded=
+        !data.expanded
     }
 
-    handleNestedListItemRadioButtonNativeInput(event) {
-        const data = event.currentTarget.data;
-        this.nested-list.forEach((item) => {
-            item.selected = item == data;
-        });
-        this.requestUpdate();
+    handleNestedListItemActionClick(event){
+        const data=event.currentTarget.data
+        this.expandList(this.list,data.isParent?data.parent:data)
+        this.requestUpdate()
     }
-
-    handleNestedListItemSwitchNativeInput(event) {
-        const data = event.currentTarget.data;
-        data.selected = !data.selected;
-        this.requestUpdate();
-    }
-
 }
 
 customElements.define("md-nested-list", MDNestedListComponent);

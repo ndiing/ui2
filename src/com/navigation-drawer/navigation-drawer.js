@@ -51,14 +51,14 @@ class MDNavigationDrawerComponent extends MDElement {
             `:nothing}
             <div class="md-navigation-drawer__body">
                 <div class="md-navigation-drawer__inner">
-                    <md-list 
-                        class="md-navigation-drawer__list"
+                    <md-nested-list 
+                        class="md-navigation-drawer__nested-list"
                         .list="${ifDefined(this.list)}"
                         .rangeSelection="${ifDefined(this.rangeSelection)}"
                         .multiSelection="${ifDefined(this.multiSelection)}"
                         .singleSelection="${ifDefined(this.singleSelection??true)}"
                         .allSelection="${ifDefined(this.allSelection)}"
-                    ></md-list>
+                    ></md-nested-list>
                 </div>
                 ${this.buttons?.length?html`
                     <div class="md-navigation-drawer__footer">

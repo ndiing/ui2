@@ -23,7 +23,7 @@ const routes = [
             { path: "button", load: () => import("./button/button.js").then((m) => m.default) },
             { path: "segmented-button", load: () => import("./segmented-button/segmented-button.js").then((m) => m.default) },
             { path: "list", load: () => import("./list/list.js").then((m) => m.default) },
-            // { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
+            { path: "nested-list", load: () => import("./nested-list/nested-list.js").then((m) => m.default) },
             { path: "navigation", load: () => import("./navigation/navigation.js").then((m) => m.default) },
             { path: "card", load: () => import("./card/card.js").then((m) => m.default) },
             { path: "dialog", load: () => import("./dialog/dialog.js").then((m) => m.default) },

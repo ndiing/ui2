@@ -79,10 +79,10 @@ class MDRippleModule {
         const { left: _left, top: _top, width, height } = this.host.getBoundingClientRect();
 
         if (!this.options.centered) {
-            const { offsetX, offsetY } = event;
+            const { clientX, clientY } = event;
             const size = this.options.size;
-            const left = offsetX / width;
-            const top = offsetY / height;
+            const left = (clientX-_left) / width;
+            const top = (clientY-_top) / height;
             const x = (0.5 - left) * (100 / size);
             const y = (0.5 - top) * ((100 / size) * (height / width));
 
