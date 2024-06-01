@@ -12,34 +12,21 @@ value|`String`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|-|hexToRgba|hex
-
-    |-|-|rgbaToHsla|r, g, b, a = 1
-
-    |-|-|rgbaToHex|r, g, b, a = 1
-
-    |-|-|hslaToRgba|h, s, l, a = 1
-
-    |-|get |label|-
-
-    |-|get |subLabel|-
-
-    |-|-|drawSolidGradient|-
-
-    |-|-|drawHueGradient|-
-
-    |-|-|drawOpacityGradient|-
-
-    |-|-|resizeCanvas|-
-
-    |-|-|show|button, options
-
-    |-|-|close|-
-
-    |-|-|toggle|-
+-|-|-|hexToRgba|hex
+-|-|-|rgbaToHsla|r, g, b, a = 1
+-|-|-|rgbaToHex|r, g, b, a = 1
+-|-|-|hslaToRgba|h, s, l, a = 1
+-|-|get |label|-
+-|-|get |subLabel|-
+-|-|-|drawSolidGradient|-
+-|-|-|drawHueGradient|-
+-|-|-|drawOpacityGradient|-
+-|-|-|resizeCanvas|-
+-|-|-|show|button, options
+-|-|-|close|-
+-|-|-|toggle|-
 
 ## Events
 

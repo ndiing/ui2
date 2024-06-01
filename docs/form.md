@@ -17,14 +17,11 @@ target|`String`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |formNative|-
-
-    |-|-|reset|-
-
-    |-|-|submit|button
+-|-|get |formNative|-
+-|-|-|reset|-
+-|-|-|submit|button
 
 ## Events
 

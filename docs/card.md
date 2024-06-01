@@ -15,7 +15,7 @@ ui|`String`|possible values elevated,filled,outlined
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
 
 ## Events

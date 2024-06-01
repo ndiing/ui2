@@ -15,14 +15,11 @@ open|`Boolean`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|-|show|button, options = {}
-
-    |-|-|close|-
-
-    |-|-|toggle|-
+-|-|-|show|button, options = {}
+-|-|-|close|-
+-|-|-|toggle|-
 
 ## Events
 

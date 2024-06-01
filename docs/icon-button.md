@@ -12,7 +12,7 @@ selected|`Boolean`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
 
 ## Events

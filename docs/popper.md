@@ -8,16 +8,12 @@ name|type|desc
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|-|init|-
-
-    |-|-|get|placement
-
-    |-|-|set|-
-
-    |-|-|destroy|-
+-|-|-|init|-
+-|-|-|get|placement
+-|-|-|set|-
+-|-|-|destroy|-
 
 ## Events
 

@@ -25,10 +25,9 @@ routerLink|`String`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |labelSecondary|-
+-|-|get |labelSecondary|-
 
 ## Events
 
@@ -48,7 +47,7 @@ name|type|desc
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
 
 ## Events
@@ -70,7 +69,7 @@ allSelection|`Boolean`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
 
 ## Events

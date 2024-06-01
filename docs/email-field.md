@@ -37,10 +37,9 @@ ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |emailFieldNative|-
+-|-|get |emailFieldNative|-
 
 ## Events
 

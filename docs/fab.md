@@ -11,7 +11,7 @@ ui|`String`|possible values small,large,extended,surface,secondary,tertiary,unel
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
 
 ## Events

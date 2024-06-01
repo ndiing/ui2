@@ -8,24 +8,16 @@ name|type|desc
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|-|sort|docs, options
-
-    |-|-|search|docs, options
-
-    |-|-|deepSearch|obj, query
-
-    |-|-|filter|docs, options
-
-    |-|-|getValue|obj, path
-
-    |-|-|slice|docs, options
-
-    |-|-|paginate|docs, options
-
-    |-|-|getAll|options = {}
+-|-|-|sort|docs, options
+-|-|-|search|docs, options
+-|-|-|deepSearch|obj, query
+-|-|-|filter|docs, options
+-|-|-|getValue|obj, path
+-|-|-|slice|docs, options
+-|-|-|paginate|docs, options
+-|-|-|getAll|options = {}
 
 ## Events
 

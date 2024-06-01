@@ -21,14 +21,11 @@ icons|`Array`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |switchNative|-
-
-    |-|get |switchTrack|-
-
-    |-|get |switchThumb|-
+-|-|get |switchNative|-
+-|-|get |switchTrack|-
+-|-|get |switchThumb|-
 
 ## Events
 

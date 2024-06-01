@@ -15,16 +15,12 @@ open|`Boolean`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |snackbarInner|-
-
-    |-|-|show|-
-
-    |-|-|close|-
-
-    |-|-|toggle|-
+-|-|get |snackbarInner|-
+-|-|-|show|-
+-|-|-|close|-
+-|-|-|toggle|-
 
 ## Events
 

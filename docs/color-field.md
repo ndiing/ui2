@@ -28,10 +28,9 @@ ui|`String`|possible values filled,outlined,rounded
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |colorFieldNative|-
+-|-|get |colorFieldNative|-
 
 ## Events
 

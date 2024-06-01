@@ -11,10 +11,9 @@ ui|`String`|possible values linear,circular
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|-|calculatePercentage|min, max, value
+-|-|-|calculatePercentage|min, max, value
 
 ## Events
 

@@ -20,12 +20,10 @@ defaultIndeterminate|`Boolean`|-
 
 ## Instance methods
 
-block|asynchronous|accessor|name|parameters
+static|asynchronous|accessor|name|parameters
 ---|---|---|---|---
-
-    |-|get |radioButtonNative|-
-
-    |-|get |radioButtonTrack|-
+-|-|get |radioButtonNative|-
+-|-|get |radioButtonTrack|-
 
 ## Events
 

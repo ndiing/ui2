@@ -75,25 +75,12 @@ function parse(content) {
     code += `\r\n`;
     code += `## Instance methods\r\n`;
     code += `\r\n`;
-    code += `block|asynchronous|accessor|name|parameters\r\n`;
+    code += `static|asynchronous|accessor|name|parameters\r\n`;
     code += `---|---|---|---|---\r\n`;
-    for (const { block, asynchronous, accessor, name, parameters } of methods) {
-        if (
-            [
-                //
-                "properties",
-                "constructor",
-                "renderItem",
-                "render",
-                "connectedCallback",
-                "disconnectedCallback",
-                "updated",
-                "firstUpdated",
-            ].includes(name) ||
-            /^(render|handle|update)/.test(name)
-        )
-            continue;
-            code += `${block||'-'}|${asynchronous||'-'}|${accessor||'-'}|${name||'-'}|${parameters||'-'}\r\n`;
+    for (const { static, asynchronous, accessor, name, parameters } of methods) {
+        if (!(["properties", "constructor", "renderItem", "render", "connectedCallback", "disconnectedCallback", "updated", "firstUpdated"].includes(name) || /^(render|handle|update)/.test(name))) {
+            code += `${static || "-"}|${asynchronous || "-"}|${accessor || "-"}|${name || "-"}|${parameters || "-"}\r\n`;
+        }
     }
     code += `\r\n`;
     code += `## Events\r\n`;
