@@ -35,46 +35,6 @@ class MDGestureModule {
         this.host.dispatchEvent(event);
     }
 
-    init() {
-        this.host.classList.add("md-gesture");
-
-        this.handlePointerdown = this.handlePointerdown.bind(this);
-        this.handlePointermove = this.handlePointermove.bind(this);
-        this.handlePointerup = this.handlePointerup.bind(this);
-
-        let text = "";
-        text += `<div class="md-resize">`;
-        if (this.options.resize.includes("nw")) {
-            text += `    <div class="md-resize__item md-resize__item--nw"></div>`;
-        }
-        if (this.options.resize.includes("n")) {
-            text += `    <div class="md-resize__item md-resize__item--n"></div>`;
-        }
-        if (this.options.resize.includes("ne")) {
-            text += `    <div class="md-resize__item md-resize__item--ne"></div>`;
-        }
-        if (this.options.resize.includes("w")) {
-            text += `    <div class="md-resize__item md-resize__item--w"></div>`;
-        }
-        // text += `    <div class="md-resize__item md-resize__item--c"></div>`;
-        if (this.options.resize.includes("e")) {
-            text += `    <div class="md-resize__item md-resize__item--e"></div>`;
-        }
-        if (this.options.resize.includes("sw")) {
-            text += `    <div class="md-resize__item md-resize__item--sw"></div>`;
-        }
-        if (this.options.resize.includes("s")) {
-            text += `    <div class="md-resize__item md-resize__item--s"></div>`;
-        }
-        if (this.options.resize.includes("se")) {
-            text += `    <div class="md-resize__item md-resize__item--se"></div>`;
-        }
-        text += `</div>`;
-        this.host.insertAdjacentHTML("afterbegin", text);
-
-        this.host.addEventListener("pointerdown", this.handlePointerdown);
-    }
-
     handlePointerdown(event) {
         this.resize = false;
         const resize = event.target.closest(".md-resize__item")?.classList.value.match(/--(\w+)$/)[1];
@@ -138,8 +98,8 @@ class MDGestureModule {
                 this.currentY = currentY;
             }
 
-            this.host.style.setProperty("left", this.currentX + "px");
-            this.host.style.setProperty("top", this.currentY + "px");
+            // this.host.style.setProperty("left", this.currentX + "px");
+            // this.host.style.setProperty("top", this.currentY + "px");
 
             this.emit("onDrag", this);
         }
@@ -149,28 +109,28 @@ class MDGestureModule {
                 this.currentY = currentY;
                 this.currentHeight = this.startHeight - this.currentY + this.endY;
 
-                this.host.style.setProperty("top", this.currentY + "px");
-                this.host.style.setProperty("height", this.currentHeight + "px");
+                // this.host.style.setProperty("top", this.currentY + "px");
+                // this.host.style.setProperty("height", this.currentHeight + "px");
             }
 
             if (this.options.resize.some((resize) => ["e", "ne", "se"].includes(resize)) && /e/.test(this.resize)) {
                 this.currentWidth = this.startWidth + currentX - this.endX;
 
-                this.host.style.setProperty("width", this.currentWidth + "px");
+                // this.host.style.setProperty("width", this.currentWidth + "px");
             }
 
             if (this.options.resize.some((resize) => ["s", "se", "sw"].includes(resize)) && /s/.test(this.resize)) {
                 this.currentHeight = this.startHeight + currentY - this.endY;
 
-                this.host.style.setProperty("height", this.currentHeight + "px");
+                // this.host.style.setProperty("height", this.currentHeight + "px");
             }
 
             if (this.options.resize.some((resize) => ["w", "sw", "nw"].includes(resize)) && /w/.test(this.resize)) {
                 this.currentX = currentX;
                 this.currentWidth = this.startWidth - this.currentX + this.endX;
 
-                this.host.style.setProperty("left", this.currentX + "px");
-                this.host.style.setProperty("width", this.currentWidth + "px");
+                // this.host.style.setProperty("left", this.currentX + "px");
+                // this.host.style.setProperty("width", this.currentWidth + "px");
             }
 
             this.emit("onResize", this);
@@ -188,6 +148,12 @@ class MDGestureModule {
                     : currentY < -30
                       ? "Top"
                       : false);
+
+        // update style?
+        this.host.style.setProperty("top", this.currentY + "px");
+        this.host.style.setProperty("height", this.currentHeight + "px");
+        this.host.style.setProperty("left", this.currentX + "px");
+        this.host.style.setProperty("width", this.currentWidth + "px");
     }
 
     handlePointerup(event) {
@@ -223,9 +189,40 @@ class MDGestureModule {
         window.removeEventListener("pointermove", this.handlePointermove);
         window.removeEventListener("pointerup", this.handlePointerup);
     }
+    init() {
+        this.host.classList.add("md-gesture");
+
+        this.handlePointerdown = this.handlePointerdown.bind(this);
+        this.handlePointermove = this.handlePointermove.bind(this);
+        this.handlePointerup = this.handlePointerup.bind(this);
+
+        this.resizeContainer = document.createElement("div");
+        this.resizeContainer.classList.add("md-resize");
+
+        this.options.resize.forEach((position) => {
+            const resizeItem = document.createElement("div");
+            resizeItem.classList.add("md-resize__item", `md-resize__item--${position}`);
+            this.resizeContainer.appendChild(resizeItem);
+        });
+
+        this.host.appendChild(this.resizeContainer);
+
+        this.host.addEventListener("pointerdown", this.handlePointerdown);
+    }
 
     destroy() {
-        this.host.classList.remove("md-gesture");
+        // Remove event listeners
+        this.host.removeEventListener("pointerdown", this.handlePointerdown);
+
+        // Remove dynamically created elements
+        if (this.resizeContainer && this.resizeContainer.parentNode) {
+            this.resizeContainer.parentNode.removeChild(this.resizeContainer);
+        }
+
+        // Clear references
+        this.handlePointerdown = null;
+        this.handlePointermove = null;
+        this.handlePointerup = null;
     }
 }
 export { MDGestureModule };
