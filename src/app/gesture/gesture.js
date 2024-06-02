@@ -28,6 +28,11 @@ class AppGestureElement extends MDElement {
                         id="gesture4"
                         style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
                 </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <pre
+                        id="gesture5"
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                </div>
             </div>
         `;
     }
@@ -76,10 +81,14 @@ class AppGestureElement extends MDElement {
 
             new MDGestureModule(gesture, options);
         };
-        usageExample(this.querySelector("#gesture"));
+
+        usageExample(this.querySelector("#gesture"), {
+            applyStyle: true,
+        });
         usageExample(this.querySelector("#gesture2"), {
             resizeAfterPress: true,
             dragAfterPress: true,
+            applyStyle: true,
         });
         usageExample(this.querySelector("#gesture3"), {
             resize: [
@@ -98,6 +107,7 @@ class AppGestureElement extends MDElement {
                 "x",
                 // "y",
             ],
+            applyStyle: true,
         });
         usageExample(this.querySelector("#gesture4"), {
             resize: [
@@ -116,6 +126,10 @@ class AppGestureElement extends MDElement {
                 // "x",
                 "y",
             ],
+            applyStyle: true,
+        });
+        usageExample(this.querySelector("#gesture5"), {
+            // applyStyle: true,
         });
     }
 }
