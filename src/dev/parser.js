@@ -34,7 +34,7 @@ function open(pathname) {
 }
 open(path.join(process.cwd(), "src", "com"));
 // console.log(code);
-fs.writeFileSync(path.join(__dirname,'code',),code)
+fs.writeFileSync(path.join(__dirname, "code"), code);
 
 function parse(content) {
     let code = "";

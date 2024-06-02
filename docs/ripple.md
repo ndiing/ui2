@@ -1,19 +1,20 @@
 # MDRippleModule
+
 The `MDRippleModule` interface provides special properties (beyond the regular `undefined` interface it also has available to it by inheritance) for manipulating `<undefined>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
+| name | type | desc |
+| ---- | ---- | ---- |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|-|init|-
--|-|-|destroy|-
+| static | asynchronous | accessor | name    | parameters |
+| ------ | ------------ | -------- | ------- | ---------- |
+| -      | -            | -        | init    | -          |
+| -      | -            | -        | destroy | -          |
 
 ## Events
 
-name|desc
----|---
+| name | desc |
+| ---- | ---- |

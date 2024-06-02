@@ -4,10 +4,10 @@ The `MDBadgeComponent` class provides functionality for managing `<md-badge>` el
 
 ## Instance properties
 
-| Name  | Type    | Description                                          |
-|-------|---------|------------------------------------------------------|
-| label | `Number`| Represents the current value of the badge.          |
-| max   | `Number`| Represents the maximum value allowed for the badge. |
+| Name  | Type     | Description                                         |
+| ----- | -------- | --------------------------------------------------- |
+| label | `Number` | Represents the current value of the badge.          |
+| max   | `Number` | Represents the maximum value allowed for the badge. |
 
 ## Instance methods
 

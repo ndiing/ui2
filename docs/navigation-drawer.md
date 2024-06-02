@@ -1,30 +1,31 @@
 # MDNavigationDrawerComponent
+
 The `MDNavigationDrawerComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-navigation-drawer>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-leadingActions|`Array`|-
-label|`String`|-
-subLabel|`String`|-
-trailingActions|`Array`|-
-buttons|`Array`|-
-ui|`String`|possible values modal
-open|`Boolean`|-
+| name            | type      | desc                  |
+| --------------- | --------- | --------------------- |
+| leadingActions  | `Array`   | -                     |
+| label           | `String`  | -                     |
+| subLabel        | `String`  | -                     |
+| trailingActions | `Array`   | -                     |
+| buttons         | `Array`   | -                     |
+| ui              | `String`  | possible values modal |
+| open            | `Boolean` | -                     |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|-|show|-
--|-|-|close|-
--|-|-|toggle|-
+| static | asynchronous | accessor | name   | parameters |
+| ------ | ------------ | -------- | ------ | ---------- |
+| -      | -            | -        | show   | -          |
+| -      | -            | -        | close  | -          |
+| -      | -            | -        | toggle | -          |
 
 ## Events
 
-name|desc
----|---
-`onNavigationDrawerActionClick`|-
-`onNavigationDrawerButtonClick`|-
-`onNavigationDrawerScrimClick`|-
+| name                            | desc |
+| ------------------------------- | ---- |
+| `onNavigationDrawerActionClick` | -    |
+| `onNavigationDrawerButtonClick` | -    |
+| `onNavigationDrawerScrimClick`  | -    |

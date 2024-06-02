@@ -1,76 +1,81 @@
 # MDNestedListItemComponent
+
 The `MDNestedListItemComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-nested-list-item>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-label|`String`|-
-selected|`Boolean`|-
-routerLink|`String`|-
-indent|`Number`|-
-isNode|`Boolean`|-
-ui|`String`|possible values 
-expanded|`Boolean`|-
-activated|`Boolean`|-
-isParent|`Boolean`|-
-hasLevel|`Boolean`|-
+| name       | type      | desc            |
+| ---------- | --------- | --------------- |
+| label      | `String`  | -               |
+| selected   | `Boolean` | -               |
+| routerLink | `String`  | -               |
+| indent     | `Number`  | -               |
+| isNode     | `Boolean` | -               |
+| ui         | `String`  | possible values |
+| expanded   | `Boolean` | -               |
+| activated  | `Boolean` | -               |
+| isParent   | `Boolean` | -               |
+| hasLevel   | `Boolean` | -               |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|get |labelSecondary|-
+| static | asynchronous | accessor | name           | parameters |
+| ------ | ------------ | -------- | -------------- | ---------- |
+| -      | -            | get      | labelSecondary | -          |
 
 ## Events
 
-name|desc
----|---
-`onNestedListItemSelected`|-
-`onNestedListItemActionClick`|-
+| name                          | desc |
+| ----------------------------- | ---- |
+| `onNestedListItemSelected`    | -    |
+| `onNestedListItemActionClick` | -    |
+
 # MDNestedListRowComponent
+
 The `MDNestedListRowComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-nested-list-row>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
+| name | type | desc |
+| ---- | ---- | ---- |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
+| static | asynchronous | accessor | name | parameters |
+| ------ | ------------ | -------- | ---- | ---------- |
 
 ## Events
 
-name|desc
----|---
+| name | desc |
+| ---- | ---- |
+
 # MDNestedListComponent
+
 The `MDNestedListComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-nested-list>` elements.
 
 ## Instance properties
 
-name|type|desc
----|---|---
-list|`Array`|-
-rangeSelection|`Boolean`|-
-multiSelection|`Boolean`|-
-singleSelection|`Boolean`|-
-allSelection|`Boolean`|-
-ui|`String`|possible values tree,level,accordion
+| name            | type      | desc                                 |
+| --------------- | --------- | ------------------------------------ |
+| list            | `Array`   | -                                    |
+| rangeSelection  | `Boolean` | -                                    |
+| multiSelection  | `Boolean` | -                                    |
+| singleSelection | `Boolean` | -                                    |
+| allSelection    | `Boolean` | -                                    |
+| ui              | `String`  | possible values tree,level,accordion |
 
 ## Instance methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|-|createList|list, indent = 0
--|-|-|lastList|list
--|-|-|selectList|list, data
--|-|-|expandList|list, data
+| static | asynchronous | accessor | name       | parameters       |
+| ------ | ------------ | -------- | ---------- | ---------------- |
+| -      | -            | -        | createList | list, indent = 0 |
+| -      | -            | -        | lastList   | list             |
+| -      | -            | -        | selectList | list, data       |
+| -      | -            | -        | expandList | list, data       |
 
 ## Events
 
-name|desc
----|---
-`onNestedListItemClick`|-
-`onNestedListKeydown`|-
+| name                    | desc |
+| ----------------------- | ---- |
+| `onNestedListItemClick` | -    |
+| `onNestedListKeydown`   | -    |
