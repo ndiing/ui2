@@ -2,55 +2,51 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
-import { styleMap } from "lit/directives/style-map.js";
 import { isDefined } from "../mixin/mixin";
+import { styleMap } from "lit/directives/style-map.js";
 import { MDGestureModule } from "../gesture/gesture";
 
 class MDDataTableColumnCellComponent extends HTMLTableCellElement {
     constructor() {
         super();
-        // this.callback = this.callback.bind(this);
-        // this.resizeObserver = new ResizeObserver(this.callback);
     }
 
-    // callback(entries){
-    //     for(const entry of entries){
-    //         const {width} = (entry.contentRect)
-    //         this.data.width=width
-    //     }
-    // }
-
     connectedCallback() {
-        // this.resizeObserver.observe(this);
         this.gesture = new MDGestureModule(this, {
-            resize: [
-                //
-                // "nw",
-                // "n",
-                // "ne",
-                // "w",
-                "e",
-                // "sw",
-                // "s",
-                // "se",
-            ],
-            drag: [
-                //
-                "x",
-                // "y",
-            ],
-            // applyStyle: true,
-            // resizeAfterPress: true,
-            // dragAfterPress: true,
+            resize: ["e"],
+            drag: ["x"],
         });
     }
 
     disconnectedCallback() {
-        // this.resizeObserver.destroy();
         this.gesture.destroy();
     }
 }
 customElements.define("md-data-table-column-cell", MDDataTableColumnCellComponent, { extends: "th" });
+
+class MDDataTableNativeComponent extends HTMLTableElement {
+    constructor() {
+        super();
+        this.callback = this.callback.bind(this);
+        this.resizeObserver = new ResizeObserver(this.callback);
+    }
+
+    callback(entries) {
+        for (const entry of entries) {
+            const { height } = entry.contentRect;
+            this.style.setProperty("--md-data-table-height", height + "px");
+        }
+    }
+
+    connectedCallback() {
+        this.resizeObserver.observe(this);
+    }
+
+    disconnectedCallback() {
+        this.resizeObserver.disconnect();
+    }
+}
+customElements.define("md-data-table-native", MDDataTableNativeComponent, { extends: "table" });
 
 class MDDataTableItemComponent extends MDElement {
     static get properties() {
@@ -63,9 +59,7 @@ class MDDataTableItemComponent extends MDElement {
             leadingSwitch: { type: Object },
             leadingIcon: { type: String },
             label: { type: String },
-            leadingAction: { type: String },
             subLabel: { type: String },
-            trailingAction: { type: String },
             trailingIcon: { type: String },
             trailingCheckbox: { type: Object },
             trailingRadioButton: { type: Object },
@@ -73,7 +67,9 @@ class MDDataTableItemComponent extends MDElement {
             text: { type: String },
             badge: { type: Object },
             selected: { type: Boolean, reflect: true },
-            indeterminate: { type: String },
+            indeterminate: { type: Boolean },
+            leadingAction: { type: String },
+            trailingAction: { type: String },
         };
     }
 
@@ -93,9 +89,9 @@ class MDDataTableItemComponent extends MDElement {
             ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
             ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
-            ${isDefined(this.leadingIcon)?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
-            
-            ${this.leadingAction?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action" .icon="${this.leadingAction}"></md-icon-button>`:nothing}
+            ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
+            ${isDefined(this.leadingAction)?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action">${this.leadingAction}</md-icon-button>`:nothing}
+
             ${isDefined(this.label)||this.subLabel||this.badge?html`
                 <div class="md-data-table__label">
                     ${isDefined(this.label)?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
@@ -103,8 +99,8 @@ class MDDataTableItemComponent extends MDElement {
                     ${this.badge?html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
                 </div>
             `:nothing}
-            ${isDefined(this.trailingAction)?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action" .icon="${this.trailingAction}"></md-icon-button>`:nothing}
 
+            ${isDefined(this.trailingAction)?html`<md-icon-button @click="${this.handleDataTableItemActionClick}" class="md-data-table__action">${this.trailingAction}</md-icon-button>`:nothing}
             ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
 
             ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
@@ -151,10 +147,6 @@ class MDDataTableItemComponent extends MDElement {
         }
     }
 
-    handleDataTableItemActionClick(event) {
-        this.emit("onDataTableItemActionClick", event);
-    }
-
     handleDataTableItemCheckboxNativeInput(event) {
         this.emit("onDataTableItemCheckboxNativeInput", event);
     }
@@ -165,6 +157,10 @@ class MDDataTableItemComponent extends MDElement {
 
     handleDataTableItemSwitchNativeInput(event) {
         this.emit("onDataTableItemSwitchNativeInput", event);
+    }
+
+    handleDataTableItemActionClick(event) {
+        this.emit("onDataTableItemActionClick", event);
     }
 }
 
@@ -213,6 +209,7 @@ class MDDataTableComponent extends MDElement {
             multiSelection: { type: Boolean },
             singleSelection: { type: Boolean },
             allSelection: { type: Boolean },
+            checkbox: { type: Boolean },
         };
     }
 
@@ -239,10 +236,8 @@ class MDDataTableComponent extends MDElement {
                     .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
                     .leadingSwitch="${ifDefined(item.leadingSwitch)}"
                     .leadingIcon="${ifDefined(item.leadingIcon)}"
-                    .leadingAction="${ifDefined(item.leadingAction)}"
                     .label="${ifDefined(item.label)}"
                     .subLabel="${ifDefined(item.subLabel)}"
-                    .trailingAction="${ifDefined(item.trailingAction)}"
                     .trailingIcon="${ifDefined(item.trailingIcon)}"
                     .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
                     .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
@@ -251,6 +246,8 @@ class MDDataTableComponent extends MDElement {
                     .text="${ifDefined(item.text)}"
                     .selected="${ifDefined(item.selected)}"
                     .indeterminate="${ifDefined(item.indeterminate)}"
+                    .leadingAction="${ifDefined(item.leadingAction)}"
+                    .trailingAction="${ifDefined(item.trailingAction)}"
                 ></md-data-table-item>
             </md-data-table-row>
         `;
@@ -260,55 +257,64 @@ class MDDataTableComponent extends MDElement {
 
     render() {
         return html`
-            <table>
+            <table is="md-data-table-native">
                 <caption></caption>
                 <thead>
                     <tr>
-                        <!-- <th
-                            @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCheckboxNativeInput}"
-                        >${this.renderItem({
-                            leadingCheckbox:{},
-                            selected:this.selected,
-                            indeterminate:this.indeterminate,
-                        })}</th> -->
-                        ${this.columns?.map(column => html`
+                        ${this.checkbox?html`
+                            <th
+                                class="md-data-table__column-cell-checkbox"
+                                @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxNativeInput}"
+                            >${this.renderItem({
+                                leadingCheckbox:{},
+                                selected:this.selected,
+                                indeterminate:this.indeterminate,
+                            })}</th>
+                        `:nothing}
+                        ${this.columns?.map(column=>html`
                             <th
                                 is="md-data-table-column-cell"
-                                .data="${column}"
                                 style="${styleMap({
-                                    width: column.width+'px'
+                                    ...(column.width&&{'min-width': column.width+'px'})
                                 })}"
-                                @pointerenter="${this.handleDataTableColumnCellPointerenter}"
-                                @onDataTableItemActionClick="${this.handleDataTableColumnCellActionClick}"
-                                @pointerleave="${this.handleDataTableColumnCellPointerleave}"
+                                .data="${column}"
+                                @pointerenter="${this.handleDataTableColumnCellSortablePointerenter}"
+                                @pointerleave="${this.handleDataTableColumnCellSortablePointerleave}"
+                                @onDataTableItemActionClick="${this.handleDataTableColumnCellSortableClick}"
+                                @onResizeStart="${this.handleDataTableColumnCellResizeStart}"
                                 @onResize="${this.handleDataTableColumnCellResize}"
-                                @onDoubleTap="${this.handleDataTableColumnCellDoubleTap}"
+                                @onResizeEnd="${this.handleDataTableColumnCellResizeEnd}"
+                                @onResizeDoubleTap="${this.handleDataTableColumnCellResizeDoubleTap}"
                                 @onDragStart="${this.handleDataTableColumnCellDragStart}"
                                 @onDrag="${this.handleDataTableColumnCellDrag}"
                                 @onDragEnd="${this.handleDataTableColumnCellDragEnd}"
                             >${this.renderItem({
                                 label:column.label,
-                                // trailingAction:column.trailingAction??'',
+                                ...(column.sortable&&{trailingAction:column.trailingAction??''}),
                             })}</th>
                         `)}
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.rows?.map(row => html`
+                    ${this.rows?.map(row=>html`
                         <tr
                             .data="${row}"
                             .tabIndex="${0}"
                             ?selected="${row.selected}"
                             @click="${this.handleDataTableRowClick}"
-                            @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCheckboxNativeInput}"
+                            @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxNativeInput}"
                         >
-                            <!-- <td>${this.renderItem({
-                                leadingCheckbox:{},
-                                selected:row.selected,
-                            })}</td> -->
-                            ${this.columns?.map(column => html`
+                            ${this.checkbox?html`
+                                <td
+                                    class="md-data-table__row-cell-checkbox"
+                                >${this.renderItem({
+                                    leadingCheckbox:{},
+                                    selected:row.selected
+                                })}</td>
+                            `:nothing}
+                            ${this.columns?.map(column=>html`
                                 <td>${this.renderItem({
-                                    label:row[column.name]
+                                    label:(column.format||((value,row,column)=>value))(row[column.name],row,column),
                                 })}</td>
                             `)}
                         </tr>
@@ -335,93 +341,8 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
-    updated(changedProperties) {}
-
-    handleDataTableColumnCellPointerenter(event) {
-        const data = event.currentTarget.data;
-
-        if (!data.order) {
-            data.trailingAction = "arrow_upward";
-            this.requestUpdate();
-        }
-
-        this.emit("onDataTableColumnCellPointerenter", event);
-    }
-
-    handleDataTableColumnCellActionClick(event) {
-        const data = event.currentTarget.data;
-
-        if (!data.order) {
-            data.order = "asc";
-            data.trailingAction = "arrow_upward";
-        } else if (data.order == "asc") {
-            data.order = "desc";
-            data.trailingAction = "arrow_downward";
-        } else {
-            data.order = undefined;
-            data.trailingAction = "";
-        }
-        this.requestUpdate();
-
-        this.emit("onDataTableColumnCellPointerleave", event);
-    }
-
-    handleDataTableColumnCellPointerleave(event) {
-        const data = event.currentTarget.data;
-
-        if (!data.order) {
-            data.trailingAction = "";
-            this.requestUpdate();
-        }
-
-        this.emit("onDataTableColumnCellPointerleave", event);
-    }
-
-    handleDataTableColumnCellResize(event) {
-        const data = event.currentTarget.data;
-        data.width = event.currentTarget.gesture.currentWidth;
-        this.requestUpdate();
-    }
-
-    handleDataTableColumnCellDoubleTap(event) {
-        const th = event.currentTarget;
-        const tr = th.parentElement;
-        const data = th.data;
-        const index = Array.from(tr.children).indexOf(th);
-        const tds = Array.from(this.querySelectorAll(`td:nth-child(${index + 1}) .md-data-table__item`));
-        th.style.setProperty("max-width", "0px");
-        const widths = tds.map((td) => {
-            const label = td.querySelector(".md-data-table__label-primary");
-            const style = window.getComputedStyle(td);
-            const paddingLeft = parseFloat(style.getPropertyValue("padding-left"));
-            const paddingRight = parseFloat(style.getPropertyValue("padding-right"));
-            return paddingLeft + label.scrollWidth + paddingRight;
-        });
-        const width = Math.max(...widths);
-        th.style.removeProperty("max-width");
-        data.width = width;
-        this.requestUpdate();
-    }
-
-    handleDataTableColumnCellDragStart(event) {
-        const data = event.currentTarget.data;
-        // console.log(data)
-    }
-    handleDataTableColumnCellDrag(event) {
-        const data = event.currentTarget.data;
-        // console.log(data)
-    }
-    handleDataTableColumnCellDragEnd(event) {
-        const data = event.currentTarget.data;
-        const x = event.detail.clientX;
-        const y = event.detail.clientY;
-        const th = document.elementFromPoint(x, y)?.closest("th");
-        if (th) {
-            const from = this.columns.indexOf(data);
-            const to = this.columns.indexOf(th.data);
-            [this.columns[from], this.columns[to]] = [this.columns[to], this.columns[from]];
-            this.requestUpdate();
-        }
+    updated(changedProperties) {
+        // console.log(this.columns)
     }
 
     handleDataTableRowClick(event) {
@@ -471,22 +392,145 @@ class MDDataTableComponent extends MDElement {
     }
 
     get selected() {
-        return this.rows?.length == this.rows?.filter((row) => row.selected)?.length;
+        return this.rows?.filter((row) => row.selected).length == this.rows?.length;
     }
     get indeterminate() {
-        let selected = this.rows?.filter((row) => row.selected).length;
-        return selected && selected < this.rows?.length;
+        const selected = this.rows?.filter((row) => row.selected).length;
+        return selected > 0 && selected < this.rows?.length;
     }
 
-    handleDataTableColumnCheckboxNativeInput(event) {
-        const checkbox = event.detail.currentTarget;
+    handleDataTableColumnCellCheckboxNativeInput(event) {
+        const checked = event.detail.currentTarget.checked;
         this.rows.forEach((row) => {
-            row.selected = checkbox.checked;
+            row.selected = checked;
         });
         this.requestUpdate();
     }
 
-    handleDataTableRowCheckboxNativeInput(event) {
+    handleDataTableColumnCellSortablePointerenter(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable && !data.order) {
+            data.trailingAction = "arrow_upward";
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellSortablePointerenter", event);
+    }
+    handleDataTableColumnCellSortablePointerleave(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable && !data.order) {
+            data.trailingAction = "";
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellSortablePointerleave", event);
+    }
+    handleDataTableColumnCellSortableClick(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.order = "asc";
+                data.trailingAction = "arrow_upward";
+            } else if (data.order == "asc") {
+                data.order = "desc";
+                data.trailingAction = "arrow_downward";
+            } else {
+                data.order = undefined;
+                data.trailingAction = "";
+            }
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellSortableClick", event);
+    }
+
+    handleDataTableColumnCellResizeStart(event) {
+        const data = event.currentTarget.data;
+
+        this.emit("onDataTableColumnCellResizeStart", event);
+    }
+    handleDataTableColumnCellResize(event) {
+        const data = event.currentTarget.data;
+
+        data.width = event.currentTarget.gesture.currentWidth;
+        this.requestUpdate();
+
+        this.emit("onDataTableColumnCellResize", event);
+    }
+    handleDataTableColumnCellResizeEnd(event) {
+        const data = event.currentTarget.data;
+
+        this.emit("onDataTableColumnCellResizeEnd", event);
+    }
+    handleDataTableColumnCellResizeDoubleTap(event) {
+        const data = event.currentTarget.data;
+
+        const th = event.currentTarget;
+        const thIndex = Array.from(th.parentElement.children).indexOf(th);
+        th.style.setProperty("max-width", "0px");
+        const maxWidth = Math.max(
+            ...Array.from(this.querySelectorAll(`td:nth-child(${thIndex + 1}) .md-data-table__item`), (item) => {
+                const label = item.querySelector(".md-data-table__label-primary");
+                const style = window.getComputedStyle(item);
+                const paddingLeft = parseFloat(style.getPropertyValue("padding-left"));
+                const paddingRight = parseFloat(style.getPropertyValue("padding-right"));
+                return paddingLeft + label.scrollWidth + paddingRight;
+            }),
+        );
+        th.style.removeProperty("max-width");
+        data.width = maxWidth;
+
+        this.requestUpdate();
+
+        this.emit("onDataTableColumnCellResizeDoubleTap", event);
+    }
+    handleDataTableColumnCellDragStart(event) {
+        const data = event.currentTarget.data;
+
+        const th = event.currentTarget;
+        const rect = th.getBoundingClientRect();
+        this.guide = th.cloneNode(true);
+        this.guide.style.setProperty("width", rect.width + "px");
+        this.guide.style.setProperty("height", rect.height + "px");
+        this.guide.style.setProperty("opacity", "84%");
+        this.guide.style.setProperty("position", "absolute");
+        this.guide.style.setProperty("left", rect.left + "px");
+        this.guide.style.setProperty("top", rect.top + "px");
+        this.guide.style.setProperty("z-index", 6);
+        this.guide.style.setProperty("pointer-events", "none");
+        this.guide.classList.add("md-ripple--draged");
+        document.body.append(this.guide);
+
+        this.emit("onDataTableColumnCellDragStart", event);
+    }
+    handleDataTableColumnCellDrag(event) {
+        const data = event.currentTarget.data;
+
+        this.guide.style.setProperty("transform", `translate3d(${event.currentTarget.gesture.currentX}px,0%,0px)`);
+
+        this.emit("onDataTableColumnCellDrag", event);
+    }
+    handleDataTableColumnCellDragEnd(event) {
+        this.guide.remove();
+
+        const data = event.currentTarget.data;
+
+        const { clientX: x, clientY: y } = event.detail;
+        const th = document.elementFromPoint(x, y)?.closest("th");
+        if (th) {
+            const from = this.columns.indexOf(data);
+            const to = this.columns.indexOf(th.data);
+            [this.columns[from], this.columns[to]] = [this.columns[to], this.columns[from]];
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellDragEnd", event);
+    }
+
+    handleDataTableRowCellCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();

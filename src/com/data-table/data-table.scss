@@ -1,6 +1,7 @@
 .md-data-table {
     display: flex;
     flex-direction: column;
+    // padding: 8px 0;
 }
 
 .md-data-table__row {
@@ -13,8 +14,6 @@
     align-items: center;
     padding: 8px 16px;
     gap: 0 16px;
-    background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
 }
 
 .md-data-table__avatar {
@@ -35,6 +34,7 @@
 }
 
 .md-data-table__label {
+    // flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,6 +61,10 @@
 // .md-data-table__icon{}
 
 .md-data-table__action {
+    // width: 18px;
+    // height: 18px;
+    // font-size: 18px;
+    // margin-left: -12px;
     width: 24px;
     height: 24px;
 }
@@ -78,6 +82,8 @@
 
 .md-data-table__item {
     min-height: 56px;
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
 }
 
 .md-data-table__item--two-line {
@@ -106,6 +112,7 @@
 
     table {
         display: block;
+        overflow: auto;
         width: 100%;
         height: 100%;
         border-spacing: 0;
@@ -115,10 +122,30 @@
     // tr{}
     th {
         text-align: left;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
         position: sticky;
         top: 0;
-        z-index: 2;
+        z-index: 4;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+
+        .md-resize__item {
+            position: relative;
+            &::before {
+                content: "";
+                width: 16px;
+                height: var(--md-data-table-height);
+                border-right: 1px solid var(--md-sys-color-outline-variant);
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 6;
+            }
+        }
+
+        &:not(:hover) {
+            .md-resize__item {
+                opacity: 0;
+            }
+        }
 
         .md-data-table__label-primary {
             @include md-typography-label-large;
@@ -126,11 +153,6 @@
     }
     tbody {
         tr {
-            &:hover {
-                .md-data-table__item {
-                    @include md-ripple--hover;
-                }
-            }
             &[selected] {
                 .md-data-table__item {
                     @include md-ripple--selected;
@@ -162,6 +184,18 @@
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
+            --md-ripple-size: calc(141.42% * sqrt(2));
         }
+    }
+
+    .md-data-table__column-cell-checkbox {
+        position: sticky;
+        left: 0;
+        z-index: 5;
+    }
+    .md-data-table__row-cell-checkbox {
+        position: sticky;
+        left: 0;
+        z-index: 3;
     }
 }

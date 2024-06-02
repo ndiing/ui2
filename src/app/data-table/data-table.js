@@ -1,121 +1,82 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
+import { MDDataModule } from "../../com/data/data";
 
-const data = [
-    { userId: 1, id: 1, title: "quidem molestiae enim" },
-    { userId: 1, id: 2, title: "sunt qui excepturi placeat culpa" },
-    { userId: 1, id: 3, title: "omnis laborum odio" },
-    { userId: 1, id: 4, title: "non esse culpa molestiae omnis sed optio" },
-    { userId: 1, id: 5, title: "eaque aut omnis a" },
-    { userId: 1, id: 6, title: "natus impedit quibusdam illo est" },
-    { userId: 1, id: 7, title: "quibusdam autem aliquid et et quia" },
-    { userId: 1, id: 8, title: "qui fuga est a eum" },
-    { userId: 1, id: 9, title: "saepe unde necessitatibus rem" },
-    { userId: 1, id: 10, title: "distinctio laborum qui" },
-    { userId: 2, id: 11, title: "quam nostrum impedit mollitia quod et dolor" },
-    { userId: 2, id: 12, title: "consequatur autem doloribus natus consectetur" },
-    { userId: 2, id: 13, title: "ab rerum non rerum consequatur ut ea unde" },
-    { userId: 2, id: 14, title: "ducimus molestias eos animi atque nihil" },
-    { userId: 2, id: 15, title: "ut pariatur rerum ipsum natus repellendus praesentium" },
-    { userId: 2, id: 16, title: "voluptatem aut maxime inventore autem magnam atque repellat" },
-    { userId: 2, id: 17, title: "aut minima voluptatem ut velit" },
-    { userId: 2, id: 18, title: "nesciunt quia et doloremque" },
-    { userId: 2, id: 19, title: "velit pariatur quaerat similique libero omnis quia" },
-    { userId: 2, id: 20, title: "voluptas rerum iure ut enim" },
-    { userId: 3, id: 21, title: "repudiandae voluptatem optio est consequatur rem in temporibus et" },
-    { userId: 3, id: 22, title: "et rem non provident vel ut" },
-    { userId: 3, id: 23, title: "incidunt quisquam hic adipisci sequi" },
-    { userId: 3, id: 24, title: "dolores ut et facere placeat" },
-    { userId: 3, id: 25, title: "vero maxime id possimus sunt neque et consequatur" },
-    { userId: 3, id: 26, title: "quibusdam saepe ipsa vel harum" },
-    { userId: 3, id: 27, title: "id non nostrum expedita" },
-    { userId: 3, id: 28, title: "omnis neque exercitationem sed dolor atque maxime aut cum" },
-    { userId: 3, id: 29, title: "inventore ut quasi magnam itaque est fugit" },
-    { userId: 3, id: 30, title: "tempora assumenda et similique odit distinctio error" },
-    { userId: 4, id: 31, title: "adipisci laborum fuga laboriosam" },
-    { userId: 4, id: 32, title: "reiciendis dolores a ut qui debitis non quo labore" },
-    { userId: 4, id: 33, title: "iste eos nostrum" },
-    { userId: 4, id: 34, title: "cumque voluptatibus rerum architecto blanditiis" },
-    { userId: 4, id: 35, title: "et impedit nisi quae magni necessitatibus sed aut pariatur" },
-    { userId: 4, id: 36, title: "nihil cupiditate voluptate neque" },
-    { userId: 4, id: 37, title: "est placeat dicta ut nisi rerum iste" },
-    { userId: 4, id: 38, title: "unde a sequi id" },
-    { userId: 4, id: 39, title: "ratione porro illum labore eum aperiam sed" },
-    { userId: 4, id: 40, title: "voluptas neque et sint aut quo odit" },
-    { userId: 5, id: 41, title: "ea voluptates maiores eos accusantium officiis tempore mollitia consequatur" },
-    { userId: 5, id: 42, title: "tenetur explicabo ea" },
-    { userId: 5, id: 43, title: "aperiam doloremque nihil" },
-    { userId: 5, id: 44, title: "sapiente cum numquam officia consequatur vel natus quos suscipit" },
-    { userId: 5, id: 45, title: "tenetur quos ea unde est enim corrupti qui" },
-    { userId: 5, id: 46, title: "molestiae voluptate non" },
-    { userId: 5, id: 47, title: "temporibus molestiae aut" },
-    { userId: 5, id: 48, title: "modi consequatur culpa aut quam soluta alias perspiciatis laudantium" },
-    { userId: 5, id: 49, title: "ut aut vero repudiandae voluptas ullam voluptas at consequatur" },
-    { userId: 5, id: 50, title: "sed qui sed quas sit ducimus dolor" },
-    { userId: 6, id: 51, title: "odit laboriosam sint quia cupiditate animi quis" },
-    { userId: 6, id: 52, title: "necessitatibus quas et sunt at voluptatem" },
-    { userId: 6, id: 53, title: "est vel sequi voluptatem nemo quam molestiae modi enim" },
-    { userId: 6, id: 54, title: "aut non illo amet perferendis" },
-    { userId: 6, id: 55, title: "qui culpa itaque omnis in nesciunt architecto error" },
-    { userId: 6, id: 56, title: "omnis qui maiores tempora officiis omnis rerum sed repellat" },
-    { userId: 6, id: 57, title: "libero excepturi voluptatem est architecto quae voluptatum officia tempora" },
-    { userId: 6, id: 58, title: "nulla illo consequatur aspernatur veritatis aut error delectus et" },
-    { userId: 6, id: 59, title: "eligendi similique provident nihil" },
-    { userId: 6, id: 60, title: "omnis mollitia sunt aliquid eum consequatur fugit minus laudantium" },
-    { userId: 7, id: 61, title: "delectus iusto et" },
-    { userId: 7, id: 62, title: "eos ea non recusandae iste ut quasi" },
-    { userId: 7, id: 63, title: "velit est quam" },
-    { userId: 7, id: 64, title: "autem voluptatem amet iure quae" },
-    { userId: 7, id: 65, title: "voluptates delectus iure iste qui" },
-    { userId: 7, id: 66, title: "velit sed quia dolor dolores delectus" },
-    { userId: 7, id: 67, title: "ad voluptas nostrum et nihil" },
-    { userId: 7, id: 68, title: "qui quasi nihil aut voluptatum sit dolore minima" },
-    { userId: 7, id: 69, title: "qui aut est" },
-    { userId: 7, id: 70, title: "et deleniti unde" },
-    { userId: 8, id: 71, title: "et vel corporis" },
-    { userId: 8, id: 72, title: "unde exercitationem ut" },
-    { userId: 8, id: 73, title: "quos omnis officia" },
-    { userId: 8, id: 74, title: "quia est eius vitae dolor" },
-    { userId: 8, id: 75, title: "aut quia expedita non" },
-    { userId: 8, id: 76, title: "dolorem magnam facere itaque ut reprehenderit tenetur corrupti" },
-    { userId: 8, id: 77, title: "cupiditate sapiente maiores iusto ducimus cum excepturi veritatis quia" },
-    { userId: 8, id: 78, title: "est minima eius possimus ea ratione velit et" },
-    { userId: 8, id: 79, title: "ipsa quae voluptas natus ut suscipit soluta quia quidem" },
-    { userId: 8, id: 80, title: "id nihil reprehenderit" },
-    { userId: 9, id: 81, title: "quibusdam sapiente et" },
-    { userId: 9, id: 82, title: "recusandae consequatur vel amet unde" },
-    { userId: 9, id: 83, title: "aperiam odio fugiat" },
-    { userId: 9, id: 84, title: "est et at eos expedita" },
-    { userId: 9, id: 85, title: "qui voluptatem consequatur aut ab quis temporibus praesentium" },
-    { userId: 9, id: 86, title: "eligendi mollitia alias aspernatur vel ut iusto" },
-    { userId: 9, id: 87, title: "aut aut architecto" },
-    { userId: 9, id: 88, title: "quas perspiciatis optio" },
-    { userId: 9, id: 89, title: "sit optio id voluptatem est eum et" },
-    { userId: 9, id: 90, title: "est vel dignissimos" },
-    { userId: 10, id: 91, title: "repellendus praesentium debitis officiis" },
-    { userId: 10, id: 92, title: "incidunt et et eligendi assumenda soluta quia recusandae" },
-    { userId: 10, id: 93, title: "nisi qui dolores perspiciatis" },
-    { userId: 10, id: 94, title: "quisquam a dolores et earum vitae" },
-    { userId: 10, id: 95, title: "consectetur vel rerum qui aperiam modi eos aspernatur ipsa" },
-    { userId: 10, id: 96, title: "unde et ut molestiae est molestias voluptatem sint" },
-    { userId: 10, id: 97, title: "est quod aut" },
-    { userId: 10, id: 98, title: "omnis quia possimus nesciunt deleniti assumenda sed autem" },
-    { userId: 10, id: 99, title: "consectetur ut id impedit dolores sit ad ex aut" },
-    { userId: 10, id: 100, title: "enim repellat iste" },
-];
+const formatIDR = new Intl.NumberFormat("id", {
+    currency: "IDR",
+    style: "currency",
+}).format;
 
 class AppDataTableElement extends MDElement {
     constructor() {
         super();
-
-        this.columns = [
-            { name: "userId", label: "userId", width: 56 * 2 },
-            { name: "id", label: "id", width: 56 * 2 },
-            { name: "title", label: "title", width: 56 * 10 },
+        this.columns1 = [
+            { name: "id", label: "ID", width: 56 },
+            { name: "first_name", label: "First Name", width: 56 * 3 },
+            { name: "last_name", label: "Last Name", width: 56 * 3 },
+            { name: "email", label: "Email", width: 56 * 5 },
+            { name: "age", label: "Age", width: 56 },
         ];
-        this.rows = data.slice(0, 25);
-    }
 
+        this.rows1 = [
+            { id: 1, first_name: "John", last_name: "Doe", email: "john.doe@example.com", age: 28 },
+            { id: 2, first_name: "Jane", last_name: "Smith", email: "jane.smith@example.com", age: 34 },
+            { id: 3, first_name: "Alice", last_name: "Johnson", email: "alice.johnson@example.com", age: 23 },
+            { id: 4, first_name: "Bob", last_name: "Brown", email: "bob.brown@example.com", age: 45 },
+            { id: 5, first_name: "Charlie", last_name: "Davis", email: "charlie.davis@example.com", age: 30 },
+            { id: 6, first_name: "Emily", last_name: "Clark", email: "emily.clark@example.com", age: 29 },
+            { id: 7, first_name: "Frank", last_name: "Martinez", email: "frank.martinez@example.com", age: 40 },
+            { id: 8, first_name: "Grace", last_name: "Lee", email: "grace.lee@example.com", age: 32 },
+            { id: 9, first_name: "Henry", last_name: "Taylor", email: "henry.taylor@example.com", age: 27 },
+            { id: 10, first_name: "Ivy", last_name: "Anderson", email: "ivy.anderson@example.com", age: 35 },
+        ];
+
+        this.columns2 = [
+            { name: "id", label: "ID" },
+            { name: "date", label: "Date" },
+            { name: "description", label: "Description" },
+            { name: "amount", label: "Amount" },
+            { name: "category", label: "Category" },
+            { name: "balance", label: "Balance" },
+        ];
+
+        this.rows2 = [
+            { id: 1, date: "2024-01-01", description: "Salary", amount: 5000.0, category: "Income", balance: 5000.0 },
+            { id: 2, date: "2024-01-03", description: "Rent", amount: -1500.0, category: "Expense", balance: 3500.0 },
+            { id: 3, date: "2024-01-05", description: "Groceries", amount: -200.0, category: "Expense", balance: 3300.0 },
+            { id: 4, date: "2024-01-10", description: "Electricity Bill", amount: -100.0, category: "Expense", balance: 3200.0 },
+            { id: 5, date: "2024-01-15", description: "Freelance Project", amount: 750.0, category: "Income", balance: 3950.0 },
+            { id: 6, date: "2024-01-20", description: "Dining Out", amount: -50.0, category: "Expense", balance: 3900.0 },
+            { id: 7, date: "2024-01-22", description: "Gym Membership", amount: -45.0, category: "Expense", balance: 3855.0 },
+            { id: 8, date: "2024-01-25", description: "Internet Bill", amount: -60.0, category: "Expense", balance: 3795.0 },
+            { id: 9, date: "2024-01-28", description: "Office Supplies", amount: -80.0, category: "Expense", balance: 3715.0 },
+            { id: 10, date: "2024-01-31", description: "Investment Return", amount: 200.0, category: "Income", balance: 3915.0 },
+        ];
+
+        this.columns3 = [
+            { name: "id", label: "ID", sortable: true },
+            { name: "tanggal", label: "Tanggal", sortable: true },
+            { name: "deskripsi", label: "Deskripsi", sortable: true },
+            { name: "jumlah", label: "Jumlah", sortable: true, format: formatIDR },
+            { name: "kategori", label: "Kategori", sortable: true },
+            { name: "saldo", label: "Saldo", sortable: true, format: formatIDR },
+        ];
+
+        this.data3 = new MDDataModule([
+            { id: 1, tanggal: "2024-01-01", deskripsi: "Gaji", jumlah: 5000000.0, kategori: "Pemasukan", saldo: 5000000.0 },
+            { id: 2, tanggal: "2024-01-03", deskripsi: "Sewa Rumah", jumlah: -1500000.0, kategori: "Pengeluaran", saldo: 3500000.0 },
+            { id: 3, tanggal: "2024-01-05", deskripsi: "Belanja Bulanan", jumlah: -200000.0, kategori: "Pengeluaran", saldo: 3300000.0 },
+            { id: 4, tanggal: "2024-01-10", deskripsi: "Tagihan Listrik", jumlah: -100000.0, kategori: "Pengeluaran", saldo: 3200000.0 },
+            { id: 5, tanggal: "2024-01-15", deskripsi: "Proyek Freelance", jumlah: 750000.0, kategori: "Pemasukan", saldo: 3950000.0 },
+            { id: 6, tanggal: "2024-01-20", deskripsi: "Makan di Luar", jumlah: -50000.0, kategori: "Pengeluaran", saldo: 3900000.0 },
+            { id: 7, tanggal: "2024-01-22", deskripsi: "Keanggotaan Gym", jumlah: -45000.0, kategori: "Pengeluaran", saldo: 3855000.0 },
+            { id: 8, tanggal: "2024-01-25", deskripsi: "Tagihan Internet", jumlah: -60000.0, kategori: "Pengeluaran", saldo: 3795000.0 },
+            { id: 9, tanggal: "2024-01-28", deskripsi: "Alat Tulis Kantor", jumlah: -80000.0, kategori: "Pengeluaran", saldo: 3715000.0 },
+            { id: 10, tanggal: "2024-01-31", deskripsi: "Keuntungan Investasi", jumlah: 200000.0, kategori: "Pemasukan", saldo: 3915000.0 },
+        ]);
+
+        this.rows3 = this.data3.getAll().rows;
+    }
     render() {
         return html`
             <div
@@ -124,12 +85,36 @@ class AppDataTableElement extends MDElement {
             >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-data-table
-                        .columns="${this.columns}"
-                        .rows="${this.rows}"
+                        style="height:calc(52px * 5);"
+                        .columns="${this.columns1}"
+                        .rows="${this.rows1}"
+                    ></md-data-table>
+                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-data-table
+                        style="height:calc(52px * 5);"
+                        .columns="${this.columns2}"
+                        .rows="${this.rows2}"
+                        checkbox
+                    ></md-data-table>
+                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-data-table
+                        id="table3"
+                        style="height:calc(52px * 5);"
+                        .columns="${this.columns3}"
+                        .rows="${this.rows3}"
+                        checkbox
+                        @onDataTableColumnCellSortableClick="${this.handleDataTableColumnCellSortableClick}"
                     ></md-data-table>
                 </div>
             </div>
         `;
+    }
+
+    handleDataTableColumnCellSortableClick(event) {
+        this.rows3 = this.data3.getAll({ sorters: this.columns3.filter((column) => column.order) }).rows;
+        this.requestUpdate();
     }
 }
 

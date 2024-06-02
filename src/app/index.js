@@ -66,4 +66,7 @@ const routes = [
     },
     { path: "*", load: () => import("./main/main.js").then((m) => m.default) },
 ];
-MDRouterModule.init(routes, { historyApiFallback: false });
+
+MDRouterModule.init(routes, {
+    historyApiFallback: false,
+});

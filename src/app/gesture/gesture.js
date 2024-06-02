@@ -89,7 +89,7 @@ class AppGestureElement extends MDElement {
         };
 
         usageExample(this.querySelector("#gesture"), {
-            applyStyle: true,
+            // applyStyle: true,
         });
         usageExample(this.querySelector("#gesture2"), {
             resizeAfterPress: true,

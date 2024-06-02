@@ -83,42 +83,6 @@ class MDGestureModule {
         }
     }
 
-    handlePointerup(event) {
-        // this.guide.remove();
-
-        window.clearTimeout(this.presTimeout);
-
-        if (!this.press && !this.swipe) {
-            this.emit("onTap", event);
-
-            if (Date.now() - this.lastTap < 300) {
-                this.emit("onDoubleTap", event);
-            }
-
-            this.lastTap = Date.now();
-        }
-
-        if (this.swipe) {
-            this.emit("onSwipe" + this.swipe, event);
-        }
-
-        if (this.drag) {
-            this.emit("onDragEnd", event);
-        }
-
-        if (this.resize) {
-            this.emit("onResizeEnd", event);
-        }
-
-        this.endX = this.currentX;
-        this.endY = this.currentY;
-
-        document.documentElement.classList.remove("md-gesture--dragged");
-
-        window.removeEventListener("pointermove", this.handlePointermove);
-        window.removeEventListener("pointerup", this.handlePointerup);
-    }
-
     handlePointermove(event) {
         const currentX = event.clientX - this.startX;
         const currentY = event.clientY - this.startY;
@@ -177,6 +141,47 @@ class MDGestureModule {
             this.host.style.setProperty("width", this.currentWidth + "px");
             this.host.style.setProperty("height", this.currentHeight + "px");
         }
+    }
+
+    handlePointerup(event) {
+        // this.guide.remove();
+
+        window.clearTimeout(this.presTimeout);
+
+        if (!this.press && !this.swipe) {
+            this.emit("onTap", event);
+
+            if (Date.now() - this.lastTap < 300) {
+                this.emit("onDoubleTap", event);
+                if (this.resize) {
+                    this.emit("onResizeDoubleTap", event);
+                }
+            }
+
+            this.lastTap = Date.now();
+        }
+
+        if (this.swipe) {
+            this.emit("onSwipe" + this.swipe, event);
+        }
+
+        if (this.drag) {
+            this.emit("onDragEnd", event);
+        }
+
+        if (this.resize) {
+            this.emit("onResizeEnd", event);
+        }
+
+        if (this.options.applyStyle) {
+            this.endX = this.currentX;
+            this.endY = this.currentY;
+        }
+
+        document.documentElement.classList.remove("md-gesture--dragged");
+
+        window.removeEventListener("pointermove", this.handlePointermove);
+        window.removeEventListener("pointerup", this.handlePointerup);
     }
 
     init() {
