@@ -19,7 +19,7 @@
     top: 0;
     pointer-events: none;
 }
-.md-resize__item:not(.md-resize__item--c) {
+.md-resize__item {
     pointer-events: all;
 }
 .md-resize__item--n {
