@@ -7,20 +7,24 @@ class AppTextFieldElement extends MDElement {
             <md-form
                 @onFormNativeSubmit="${(event) => {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}">
+                }}"
+            >
                 <div
                     class="md-layout-column"
-                    style="margin:24px;">
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -28,13 +32,15 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -42,14 +48,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -57,7 +65,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -65,7 +74,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -75,7 +85,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -83,7 +94,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -93,7 +105,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -102,21 +115,24 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled"
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled"
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -125,14 +141,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled"
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -141,7 +159,8 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -149,7 +168,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -158,7 +178,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -167,7 +188,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -178,7 +200,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -187,7 +210,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -198,7 +222,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -208,21 +233,24 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined"
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined"
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -231,14 +259,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined"
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -247,7 +277,8 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -255,7 +286,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -264,7 +296,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -273,7 +306,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -284,7 +318,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -293,7 +328,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -304,7 +340,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -314,21 +351,24 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="rounded"
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="rounded"
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -337,14 +377,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="rounded"
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -353,7 +395,8 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -361,7 +404,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -370,7 +414,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -379,7 +424,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -390,7 +436,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -399,7 +446,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -410,7 +458,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -420,21 +469,24 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled rounded"
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled rounded"
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -443,14 +495,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="filled rounded"
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -459,7 +513,8 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -467,7 +522,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -476,7 +532,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -485,7 +542,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -496,7 +554,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -505,7 +564,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -516,7 +576,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -526,21 +587,24 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined rounded"
                             name="text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined rounded"
                             name="text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -549,14 +613,16 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             ui="outlined rounded"
                             name="text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -565,7 +631,8 @@ class AppTextFieldElement extends MDElement {
                             value="Input text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -573,7 +640,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -582,7 +650,8 @@ class AppTextFieldElement extends MDElement {
                             name="text"
                             label="Label text"
                             text="Supporting text"
-                            placeholder="Placeholder text"></md-text-field>
+                            placeholder="Placeholder text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -591,7 +660,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            leadingIcon="image"></md-text-field>
+                            leadingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -602,7 +672,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="Placeholder text"
                             leadingIcon="image"
-                            trailingIcon="image"></md-text-field>
+                            trailingIcon="image"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -611,7 +682,8 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="1.000.000"
-                            leadingMeta="Rp"></md-text-field>
+                            leadingMeta="Rp"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -622,7 +694,8 @@ class AppTextFieldElement extends MDElement {
                             text="Supporting text"
                             placeholder="1.000.000"
                             leadingMeta="Rp"
-                            trailingMeta=",00"></md-text-field>
+                            trailingMeta=",00"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
@@ -632,16 +705,19 @@ class AppTextFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" }]}"></md-text-field>
+                            .trailingActions="${[{ icon: "image" }]}"
+                        ></md-text-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button
                             type="reset"
-                            label="Reset"></md-button>
+                            label="Reset"
+                        ></md-button>
                         <md-button
                             type="submit"
-                            label="Submit"></md-button>
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

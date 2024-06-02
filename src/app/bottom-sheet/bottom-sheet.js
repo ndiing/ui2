@@ -27,16 +27,19 @@ class AppBottomSheetElement extends MDElement {
                 <div class="md-layout-border__item md-layout-border__item--center">
                     <div
                         class="md-layout-column"
-                        style="margin:24px;">
+                        style="margin:24px;"
+                    >
                         <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                             <md-button
                                 @click="${() => bottomSheet1.toggle()}"
-                                label="bottom-sheet"></md-button>
+                                label="bottom-sheet"
+                            ></md-button>
                         </div>
                         <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                             <md-button
                                 @click="${() => bottomSheet2.toggle()}"
-                                label="bottom-sheet modal"></md-button>
+                                label="bottom-sheet modal"
+                            ></md-button>
                         </div>
                     </div>
                 </div>

@@ -7,29 +7,35 @@ class AppFileFieldElement extends MDElement {
             <md-form
                 @onFormNativeSubmit="${(event) => {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}">
+                }}"
+            >
                 <div
                     class="md-layout-column"
-                    style="margin:24px;">
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-file-field
                             label="File Field"
-                            name="file"></md-file-field>
+                            name="file"
+                        ></md-file-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-file-field
                             label="File Field (required)"
                             name="file"
-                            required></md-file-field>
+                            required
+                        ></md-file-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button
                             type="reset"
-                            label="Reset"></md-button>
+                            label="Reset"
+                        ></md-button>
                         <md-button
                             type="submit"
-                            label="Submit"></md-button>
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

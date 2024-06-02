@@ -6,7 +6,8 @@ class AppDialogElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-dialog
                         label="Label"
@@ -17,7 +18,8 @@ class AppDialogElement extends MDElement {
                     >
                     <md-button
                         @click="${() => dialog1.toggle()}"
-                        label="dialog"></md-button>
+                        label="dialog"
+                    ></md-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-dialog
@@ -33,7 +35,8 @@ class AppDialogElement extends MDElement {
                     >
                     <md-button
                         @click="${() => dialog2.toggle()}"
-                        label="dialog full-screen"></md-button>
+                        label="dialog full-screen"
+                    ></md-button>
                 </div>
             </div>
         `;

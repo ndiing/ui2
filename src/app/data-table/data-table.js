@@ -120,11 +120,13 @@ class AppDataTableElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-data-table
                         .columns="${this.columns}"
-                        .rows="${this.rows}"></md-data-table>
+                        .rows="${this.rows}"
+                    ></md-data-table>
                 </div>
             </div>
         `;

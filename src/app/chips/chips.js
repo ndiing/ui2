@@ -68,7 +68,8 @@ class AppChipsElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-chips .list="${this.list1}"></md-chips>
                 </div>
@@ -78,14 +79,16 @@ class AppChipsElement extends MDElement {
                         .rangeSelection="${true}"
                         .multiSelection="${true}"
                         .singleSelection="${true}"
-                        .allSelection="${true}"></md-chips>
+                        .allSelection="${true}"
+                    ></md-chips>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-chips
                         .list="${this.list3}"
                         @onChipActionClick="${(event) => {
                             event.detail.remove();
-                        }}"></md-chips>
+                        }}"
+                    ></md-chips>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-chips .list="${this.list4}"></md-chips>
@@ -97,7 +100,8 @@ class AppChipsElement extends MDElement {
                         .list="${this.list3}"
                         @onChipActionClick="${(event) => {
                             event.detail.remove();
-                        }}"></md-chips>
+                        }}"
+                    ></md-chips>
                 </div>
             </div>
         `;

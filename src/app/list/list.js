@@ -256,7 +256,8 @@ class AppListElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list1}"></md-list>
                 </div>

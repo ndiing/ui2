@@ -6,7 +6,8 @@ class AppSwitchElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-form>
                         <div class="md-layout-column">
@@ -23,7 +24,8 @@ class AppSwitchElement extends MDElement {
                             <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                                 <md-switch
                                     .icons="${["close", "check"]}"
-                                    checked></md-switch>
+                                    checked
+                                ></md-switch>
                             </div>
 
                             <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">

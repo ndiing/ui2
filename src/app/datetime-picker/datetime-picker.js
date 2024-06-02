@@ -6,7 +6,8 @@ class AppDatetimePickerElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-datetime-picker
                         id="dateTimePicker1"
@@ -14,11 +15,13 @@ class AppDatetimePickerElement extends MDElement {
                             button1.label = [[dateTimePicker1.selected.getFullYear(), dateTimePicker1.selected.getMonth() + 1, dateTimePicker1.selected.getDate()].join("-"), [dateTimePicker1.selected.getHours(), dateTimePicker1.selected.getMinutes()].join(":")].join("T");
                         }}"
                         @onDatetimePickerButtonOkClick="${(event) => dateTimePicker1.close()}"
-                        @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker1.close()}"></md-datetime-picker>
+                        @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker1.close()}"
+                    ></md-datetime-picker>
                     <md-button
                         id="button1"
                         @click="${(event) => dateTimePicker1.show(event.currentTarget)}"
-                        label="datetime-picker"></md-button>
+                        label="datetime-picker"
+                    ></md-button>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -29,11 +32,13 @@ class AppDatetimePickerElement extends MDElement {
                         }}"
                         @onDatetimePickerButtonOkClick="${(event) => dateTimePicker2.close()}"
                         @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker2.close()}"
-                        value="1990-10-17T20:30"></md-datetime-picker>
+                        value="1990-10-17T20:30"
+                    ></md-datetime-picker>
                     <md-button
                         id="button1"
                         @click="${(event) => dateTimePicker2.show(event.currentTarget)}"
-                        label="datetime-picker"></md-button>
+                        label="datetime-picker"
+                    ></md-button>
                 </div>
             </div>
         `;

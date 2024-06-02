@@ -7,7 +7,8 @@ class AppRippleElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-icon-button
                         id="ripple1"
@@ -22,7 +23,8 @@ class AppRippleElement extends MDElement {
                             width:calc(56px * 4);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "></div>
+                        "
+                    ></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <div
@@ -31,7 +33,8 @@ class AppRippleElement extends MDElement {
                             width:calc(56px * 2);
                             height:calc(56px * 4);
                             background:var(--md-sys-color-secondary-container);
-                        "></div>
+                        "
+                    ></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <div
@@ -40,7 +43,8 @@ class AppRippleElement extends MDElement {
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "></div>
+                        "
+                    ></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <div
@@ -49,7 +53,8 @@ class AppRippleElement extends MDElement {
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "></div>
+                        "
+                    ></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <div
@@ -58,7 +63,8 @@ class AppRippleElement extends MDElement {
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "></div>
+                        "
+                    ></div>
                 </div>
             </div>
         `;

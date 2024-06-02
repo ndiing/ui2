@@ -7,31 +7,37 @@ class AppGestureElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <pre
                         id="gesture"
-                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"
+                    ><output></output></pre>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <pre
                         id="gesture2"
-                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"
+                    ><output></output></pre>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <pre
                         id="gesture3"
-                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"
+                    ><output></output></pre>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <pre
                         id="gesture4"
-                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"
+                    ><output></output></pre>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <pre
                         id="gesture5"
-                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"><output></output></pre>
+                        style="overflow:auto;width: calc(56px * 5);height: calc(56px * 5);background: var(--md-sys-color-surface-container);"
+                    ><output></output></pre>
                 </div>
             </div>
         `;

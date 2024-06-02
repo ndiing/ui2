@@ -57,14 +57,14 @@ class MDGestureModule {
 
         this.presTimeout = window.setTimeout(() => {
             this.press = true;
-            this.emit("onPress", this);
-            if (this.options.dragAfterPress) {
+            this.emit("onPress", event);
+            if (this.options.dragAfterPress && !resize) {
                 this.drag = true;
-                this.emit("onDragStart", this);
+                this.emit("onDragStart", event);
             }
             if (resize && this.options.resizeAfterPress) {
                 this.resize = resize;
-                this.emit("onResizeStart", this);
+                this.emit("onResizeStart", event);
             }
         }, 300);
 
@@ -72,14 +72,14 @@ class MDGestureModule {
 
         this.drag = false;
 
-        if (!this.options.dragAfterPress) {
+        if (!this.options.dragAfterPress && !resize) {
             this.drag = true;
-            this.emit("onDragStart", this);
+            this.emit("onDragStart", event);
         }
 
         if (resize && !this.options.resizeAfterPress) {
             this.resize = resize;
-            this.emit("onResizeStart", this);
+            this.emit("onResizeStart", event);
         }
     }
 
@@ -89,25 +89,25 @@ class MDGestureModule {
         window.clearTimeout(this.presTimeout);
 
         if (!this.press && !this.swipe) {
-            this.emit("onTap", this);
+            this.emit("onTap", event);
 
             if (Date.now() - this.lastTap < 300) {
-                this.emit("onDoubleTap", this);
+                this.emit("onDoubleTap", event);
             }
 
             this.lastTap = Date.now();
         }
 
         if (this.swipe) {
-            this.emit("onSwipe" + this.swipe, this);
+            this.emit("onSwipe" + this.swipe, event);
         }
 
         if (this.drag) {
-            this.emit("onDragEnd", this);
+            this.emit("onDragEnd", event);
         }
 
         if (this.resize) {
-            this.emit("onResizeEnd", this);
+            this.emit("onResizeEnd", event);
         }
 
         this.endX = this.currentX;
@@ -125,7 +125,7 @@ class MDGestureModule {
 
         window.clearTimeout(this.presTimeout);
 
-        if (this.drag && !this.resize) {
+        if (this.drag) {
             if (this.options.drag.includes("x")) {
                 this.currentX = currentX;
             }
@@ -133,7 +133,7 @@ class MDGestureModule {
                 this.currentY = currentY;
             }
 
-            this.emit("onDrag", this);
+            this.emit("onDrag", event);
         }
 
         if (this.resize) {
@@ -155,7 +155,7 @@ class MDGestureModule {
                 this.currentWidth = this.startWidth - this.currentX + this.endX;
             }
 
-            this.emit("onResize", this);
+            this.emit("onResize", event);
         }
 
         this.swipe =

@@ -12,10 +12,12 @@ class AppSliderElement extends MDElement {
             <md-form
                 @onFormNativeSubmit="${(event) => {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}">
+                }}"
+            >
                 <div
                     class="md-layout-column"
-                    style="margin:24px;">
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <br />
                         <br />
@@ -25,7 +27,8 @@ class AppSliderElement extends MDElement {
                             name="slider1"
                             min="-50"
                             max="50"
-                            value="-23"></md-slider>
+                            value="-23"
+                        ></md-slider>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <br />
@@ -41,7 +44,8 @@ class AppSliderElement extends MDElement {
                         <br />
                         <md-slider
                             name="slider3"
-                            step="10"></md-slider>
+                            step="10"
+                        ></md-slider>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <br />
@@ -50,7 +54,8 @@ class AppSliderElement extends MDElement {
                         <br />
                         <md-slider
                             name="slider4"
-                            value="[25,75]"></md-slider>
+                            value="[25,75]"
+                        ></md-slider>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <br />
@@ -62,15 +67,18 @@ class AppSliderElement extends MDElement {
                             min="1000000"
                             max="10000000"
                             value="[2000000,4000000]"
-                            .convertLabel="${format}"></md-slider>
+                            .convertLabel="${format}"
+                        ></md-slider>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button
                             type="reset"
-                            label="Reset"></md-button>
+                            label="Reset"
+                        ></md-button>
                         <md-button
                             type="submit"
-                            label="Submit"></md-button>
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

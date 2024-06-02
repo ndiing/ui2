@@ -7,35 +7,42 @@ class AppMonthFieldElement extends MDElement {
             <md-form
                 @onFormNativeSubmit="${(event) => {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}">
+                }}"
+            >
                 <div
                     class="md-layout-column"
-                    style="margin:24px;">
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-month-field
                             label="Month Field"
-                            name="color0"></md-month-field>
+                            name="color0"
+                        ></md-month-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-month-field
                             label="Month Field (value)"
                             name="color1"
-                            value="1990-10"></md-month-field>
+                            value="1990-10"
+                        ></md-month-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-month-field
                             label="Month Field (required)"
                             name="color2"
-                            required></md-month-field>
+                            required
+                        ></md-month-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button
                             type="reset"
-                            label="Reset"></md-button>
+                            label="Reset"
+                        ></md-button>
                         <md-button
                             type="submit"
-                            label="Submit"></md-button>
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

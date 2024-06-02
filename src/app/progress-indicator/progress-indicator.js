@@ -6,7 +6,8 @@ class AppProgressIndicatorElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-progress-indicator></md-progress-indicator>
                 </div>
@@ -23,12 +24,14 @@ class AppProgressIndicatorElement extends MDElement {
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-progress-indicator
                         ui="circular"
-                        value="50"></md-progress-indicator>
+                        value="50"
+                    ></md-progress-indicator>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-progress-indicator
                         ui="circular"
-                        value="100"></md-progress-indicator>
+                        value="100"
+                    ></md-progress-indicator>
                 </div>
             </div>
         `;

@@ -36,12 +36,12 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
             ],
             drag: [
                 //
-                // "x",
+                "x",
                 // "y",
             ],
-            applyStyle: true,
-            resizeAfterPress: false,
-            dragAfterPress: false,
+            // applyStyle: true,
+            // resizeAfterPress: true,
+            // dragAfterPress: true,
         });
     }
 
@@ -283,6 +283,9 @@ class MDDataTableComponent extends MDElement {
                                 @pointerleave="${this.handleDataTableColumnCellPointerleave}"
                                 @onResize="${this.handleDataTableColumnCellResize}"
                                 @onDoubleTap="${this.handleDataTableColumnCellDoubleTap}"
+                                @onDragStart="${this.handleDataTableColumnCellDragStart}"
+                                @onDrag="${this.handleDataTableColumnCellDrag}"
+                                @onDragEnd="${this.handleDataTableColumnCellDragEnd}"
                             >${this.renderItem({
                                 label:column.label,
                                 // trailingAction:column.trailingAction??'',
@@ -376,7 +379,8 @@ class MDDataTableComponent extends MDElement {
 
     handleDataTableColumnCellResize(event) {
         const data = event.currentTarget.data;
-        data.width = event.detail.currentWidth;
+        data.width = event.currentTarget.gesture.currentWidth;
+        this.requestUpdate();
     }
 
     handleDataTableColumnCellDoubleTap(event) {
@@ -397,6 +401,27 @@ class MDDataTableComponent extends MDElement {
         th.style.removeProperty("max-width");
         data.width = width;
         this.requestUpdate();
+    }
+
+    handleDataTableColumnCellDragStart(event) {
+        const data = event.currentTarget.data;
+        // console.log(data)
+    }
+    handleDataTableColumnCellDrag(event) {
+        const data = event.currentTarget.data;
+        // console.log(data)
+    }
+    handleDataTableColumnCellDragEnd(event) {
+        const data = event.currentTarget.data;
+        const x = event.detail.clientX;
+        const y = event.detail.clientY;
+        const th = document.elementFromPoint(x, y)?.closest("th");
+        if (th) {
+            const from = this.columns.indexOf(data);
+            const to = this.columns.indexOf(th.data);
+            [this.columns[from], this.columns[to]] = [this.columns[to], this.columns[from]];
+            this.requestUpdate();
+        }
     }
 
     handleDataTableRowClick(event) {

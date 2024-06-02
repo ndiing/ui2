@@ -24,27 +24,32 @@ class AppNavigationRailElement extends MDElement {
             <div class="md-layout-border md-layout-fit">
                 <md-navigation-rail
                     .list="${this.list1}"
-                    id="navigationDrawer1"></md-navigation-rail>
+                    id="navigationDrawer1"
+                ></md-navigation-rail>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
                     <div class="md-layout-border md-layout-fit">
                         <md-navigation-rail
                             .list="${this.list2}"
-                            id="navigationDrawer2"></md-navigation-rail>
+                            id="navigationDrawer2"
+                        ></md-navigation-rail>
 
                         <div class="md-layout-border__item md-layout-border__item--center">
                             <div
                                 class="md-layout-column"
-                                style="margin:24px;">
+                                style="margin:24px;"
+                            >
                                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                                     <md-button
                                         @click="${() => navigationDrawer1.toggle()}"
-                                        label="navigation-rail"></md-button>
+                                        label="navigation-rail"
+                                    ></md-button>
                                 </div>
                                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                                     <md-button
                                         @click="${() => navigationDrawer2.toggle()}"
-                                        label="navigation-rail"></md-button>
+                                        label="navigation-rail"
+                                    ></md-button>
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,8 @@ class AppBadgeElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-badge label=""></md-badge>
                 </div>
@@ -19,7 +20,8 @@ class AppBadgeElement extends MDElement {
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-badge
                         label="1000"
-                        max="99"></md-badge>
+                        max="99"
+                    ></md-badge>
                 </div>
             </div>
         `;

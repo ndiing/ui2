@@ -6,7 +6,8 @@ class AppSnackbarElement extends MDElement {
         return html`
             <div
                 class="md-layout-column"
-                style="margin:24px;">
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-snackbar
                         .buttons="${[{ label: "Action" }]}"
@@ -16,7 +17,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar1.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-snackbar
@@ -27,7 +29,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar2.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -38,7 +41,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar3.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-snackbar
@@ -49,7 +53,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar4.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -60,7 +65,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar5.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-snackbar
@@ -71,7 +77,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar6.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -83,7 +90,8 @@ class AppSnackbarElement extends MDElement {
                     >
                     <md-button
                         @click="${() => snackbar7.show()}"
-                        label="snackbar"></md-button>
+                        label="snackbar"
+                    ></md-button>
                 </div>
             </div>
         `;
