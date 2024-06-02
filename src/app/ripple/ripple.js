@@ -3,65 +3,65 @@ import { MDElement } from "../../com/element/element";
 import { MDRippleModule } from "../../com/ripple/ripple";
 
 class AppRippleElement extends MDElement {
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-icon-button id="ripple1" ui="tonal">image</md-icon-button>
+                    <md-icon-button
+                        id="ripple1"
+                        ui="tonal"
+                        >image</md-icon-button
+                    >
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div 
+                    <div
                         id="ripple2"
                         style="
                             width:calc(56px * 4);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "
-                    ></div>
+                        "></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div 
+                    <div
                         id="ripple3"
                         style="
                             width:calc(56px * 2);
                             height:calc(56px * 4);
                             background:var(--md-sys-color-secondary-container);
-                        "
-                    ></div>
+                        "></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div 
+                    <div
                         id="ripple4"
                         style="
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "
-                    ></div>
+                        "></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div 
+                    <div
                         id="ripple5"
                         style="
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "
-                    ></div>
+                        "></div>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div 
+                    <div
                         id="ripple6"
                         style="
                             width:calc(56px * 2);
                             height:calc(56px * 2);
                             background:var(--md-sys-color-secondary-container);
-                        "
-                    ></div>
+                        "></div>
                 </div>
             </div>
-        `
+        `;
     }
 
     firstUpdated() {

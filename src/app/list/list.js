@@ -252,18 +252,17 @@ class AppListElement extends MDElement {
         ];
     }
 
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
-            
+            <div
+                class="md-layout-column"
+                style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list1}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list2}"></md-list>
                 </div>
-                
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list3}"></md-list>
@@ -313,9 +312,8 @@ class AppListElement extends MDElement {
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list16}"></md-list>
                 </div>
-
             </div>
-        `
+        `;
     }
 }
 

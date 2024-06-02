@@ -148,78 +148,112 @@ class AppFormElement extends MDElement {
             "slider": "50",
         };
     }
-    /* prettier-ignore */
+
     render() {
         return html`
             <md-form
                 @onFormNativeSubmit="${(event) => {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}"
-            >
-                <div class="md-layout-column" style="margin:24px;">
-                    
+                }}">
+                <div
+                    class="md-layout-column"
+                    style="margin:24px;">
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-text-field label="Text Field" name="text-field"></md-text-field>
+                        <md-text-field
+                            label="Text Field"
+                            name="text-field"></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-number-field label="Number Field" name="number-field"></md-number-field>
+                        <md-number-field
+                            label="Number Field"
+                            name="number-field"></md-number-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-tel-field label="Tel Field" name="tel-field"></md-tel-field>
+                        <md-tel-field
+                            label="Tel Field"
+                            name="tel-field"></md-tel-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-email-field label="Email Field" name="email-field"></md-email-field>
+                        <md-email-field
+                            label="Email Field"
+                            name="email-field"></md-email-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-url-field label="Url Field" name="url-field"></md-url-field>
+                        <md-url-field
+                            label="Url Field"
+                            name="url-field"></md-url-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-password-field label="Password Field" name="password-field"></md-password-field>
+                        <md-password-field
+                            label="Password Field"
+                            name="password-field"></md-password-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-search-field label="Search Field" name="search-field"></md-search-field>
+                        <md-search-field
+                            label="Search Field"
+                            name="search-field"></md-search-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-color-field label="Color Field" name="color-field"></md-color-field>
+                        <md-color-field
+                            label="Color Field"
+                            name="color-field"></md-color-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-file-field label="File Field" name="file-field"></md-file-field>
+                        <md-file-field
+                            label="File Field"
+                            name="file-field"></md-file-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field label="Datetime Field" name="datetime-field"></md-datetime-field>
+                        <md-datetime-field
+                            label="Datetime Field"
+                            name="datetime-field"></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-date-field label="Date Field" name="date-field"></md-date-field>
+                        <md-date-field
+                            label="Date Field"
+                            name="date-field"></md-date-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-month-field label="Month Field" name="month-field"></md-month-field>
+                        <md-month-field
+                            label="Month Field"
+                            name="month-field"></md-month-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-week-field label="Week Field" name="week-field"></md-week-field>
+                        <md-week-field
+                            label="Week Field"
+                            name="week-field"></md-week-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-time-field label="Time Field" name="time-field"></md-time-field>
+                        <md-time-field
+                            label="Time Field"
+                            name="time-field"></md-time-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-checkbox name="checkbox"></md-checkbox>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-checkbox name="checkbox" checked></md-checkbox>
+                        <md-checkbox
+                            name="checkbox"
+                            checked></md-checkbox>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-radio-button name="radio-button"></md-radio-button>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-radio-button name="radio-button" checked></md-radio-button>
+                        <md-radio-button
+                            name="radio-button"
+                            checked></md-radio-button>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-switch name="switch"></md-switch>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-switch name="switch" checked></md-switch>
+                        <md-switch
+                            name="switch"
+                            checked></md-switch>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -227,8 +261,14 @@ class AppFormElement extends MDElement {
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-button ui="outlined" type="reset" label="Reset"></md-button>
-                        <md-button ui="filled" type="submit" label="Submit"></md-button>
+                        <md-button
+                            ui="outlined"
+                            type="reset"
+                            label="Reset"></md-button>
+                        <md-button
+                            ui="filled"
+                            type="submit"
+                            label="Submit"></md-button>
                     </div>
                 </div>
             </md-form>

@@ -52,10 +52,11 @@ class AppTabsElement extends MDElement {
         this.list8 = [{ label: "Label 1", selected: true }, { label: "Label 2", badge: { label: 0 } }, { label: "Label 3", badge: { label: 1 } }, { label: "Label 4", badge: { label: 1000 } }, { label: "Label 5" }, { label: "Label 6" }, { label: "Label 7" }, { label: "Label 8" }, { label: "Label 9" }, { label: "Label 10" }, { label: "Label 11" }, { label: "Label 12" }];
     }
 
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-tabs .list="${this.list1}"></md-tabs>
                 </div>
@@ -63,26 +64,38 @@ class AppTabsElement extends MDElement {
                     <md-tabs .list="${this.list2}"></md-tabs>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="secondary" .list="${this.list3}"></md-tabs>
+                    <md-tabs
+                        ui="secondary"
+                        .list="${this.list3}"></md-tabs>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="secondary" .list="${this.list4}"></md-tabs>
+                    <md-tabs
+                        ui="secondary"
+                        .list="${this.list4}"></md-tabs>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="scrollable" .list="${this.list5}"></md-tabs>
+                    <md-tabs
+                        ui="scrollable"
+                        .list="${this.list5}"></md-tabs>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="scrollable" .list="${this.list6}"></md-tabs>
+                    <md-tabs
+                        ui="scrollable"
+                        .list="${this.list6}"></md-tabs>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="scrollable secondary" .list="${this.list7}"></md-tabs>
+                    <md-tabs
+                        ui="scrollable secondary"
+                        .list="${this.list7}"></md-tabs>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tabs ui="scrollable secondary" .list="${this.list8}"></md-tabs>
+                    <md-tabs
+                        ui="scrollable secondary"
+                        .list="${this.list8}"></md-tabs>
                 </div>
             </div>
-        `
+        `;
     }
 }
 

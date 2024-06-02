@@ -64,14 +64,13 @@ class AppChipsElement extends MDElement {
         ];
     }
 
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-chips
-                        .list="${this.list1}"
-                    ></md-chips>
+                    <md-chips .list="${this.list1}"></md-chips>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-chips
@@ -79,21 +78,17 @@ class AppChipsElement extends MDElement {
                         .rangeSelection="${true}"
                         .multiSelection="${true}"
                         .singleSelection="${true}"
-                        .allSelection="${true}"
-                    ></md-chips>
+                        .allSelection="${true}"></md-chips>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-chips
                         .list="${this.list3}"
                         @onChipActionClick="${(event) => {
-                            event.detail.remove()
-                        }}"
-                    ></md-chips>
+                            event.detail.remove();
+                        }}"></md-chips>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-chips
-                        .list="${this.list4}"
-                    ></md-chips>
+                    <md-chips .list="${this.list4}"></md-chips>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -101,12 +96,11 @@ class AppChipsElement extends MDElement {
                         ui="scrollable"
                         .list="${this.list3}"
                         @onChipActionClick="${(event) => {
-                            event.detail.remove()
-                        }}"
-                    ></md-chips>
+                            event.detail.remove();
+                        }}"></md-chips>
                 </div>
             </div>
-        `
+        `;
     }
 }
 

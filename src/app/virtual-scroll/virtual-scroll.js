@@ -7,26 +7,27 @@ class AppVirtualScrollElement extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-
-                    <div id="viewport" style="width: calc(56px * 5);height: calc(56px * 5);" @onVirtualScrollChange="${this.handleVirtualScrollChange}">
+                    <div
+                        id="viewport"
+                        style="width: calc(56px * 5);height: calc(56px * 5);"
+                        @onVirtualScrollChange="${this.handleVirtualScrollChange}">
                         <div id="scrollbar"></div>
-                        <md-list 
+                        <md-list
                             id="container"
                             .list="${this.list}"
                             .singleSelection="${true}"
                             @onListItemClick="${this.handleListItemClick}"
-                            @onListItemSelected="${this.handleListItemSelected}"
-                        ></md-list>
+                            @onListItemSelected="${this.handleListItemSelected}"></md-list>
                     </div>
-
                 </div>
             </div>
-        `
+        `;
     }
 
     get viewport() {

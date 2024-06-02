@@ -2,13 +2,11 @@ import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 
 class AppLayoutElement extends MDElement {
-    /* prettier-ignore */
-    render(){
+    render() {
         return html`
             <div class="md-layout-absolute md-layout-fit">
                 <div class="md-layout-absolute__item"></div>
             </div>
-
 
             <div class="md-layout-accordion md-layout-fit">
                 <div class="md-layout-accordion__item">item 1</div>
@@ -16,7 +14,6 @@ class AppLayoutElement extends MDElement {
                 <div class="md-layout-accordion__item">item 3</div>
                 <div class="md-layout-accordion__item">item 4</div>
             </div>
-
 
             <div class="md-layout-border md-layout-fit">
                 <div class="md-layout-border__item md-layout-border__item--north">north</div>
@@ -26,14 +23,12 @@ class AppLayoutElement extends MDElement {
                 <div class="md-layout-border__item md-layout-border__item--south">south</div>
             </div>
 
-
             <div class="md-layout-card md-layout-fit">
                 <div class="md-layout-card__item">item 1</div>
                 <div class="md-layout-card__item">item 2</div>
                 <div class="md-layout-card__item">item 3</div>
                 <div class="md-layout-card__item">item 4</div>
             </div>
-
 
             <div class="md-layout-column md-layout-fit">
                 <div class="md-layout-column__item md-layout-column__item--expanded1"></div>
@@ -71,10 +66,8 @@ class AppLayoutElement extends MDElement {
                 <div class="md-layout-column__item md-layout-column__item--compact4"></div>
             </div>
 
-
-            <div class="md-layout-fit">
-            </div>
-        `
+            <div class="md-layout-fit"></div>
+        `;
     }
 }
 

@@ -1,6 +1,5 @@
 import { MDRouterModule } from "../com/router/router";
 
-/* prettier-ignore */
 const routes = [
     {
         path: "",
