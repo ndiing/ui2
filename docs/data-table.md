@@ -1,89 +1,88 @@
 # MDDataTableItemComponent
-The `MDDataTableItemComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-data-table-item>` elements.
+The `MDDataTableItemComponent` class provides functionality for manipulating `<md-data-table-item>` elements.
 
-## Instance properties
+## Properties
 
-name|type|desc
----|---|---
-avatar|`String`|-
-thumbnail|`String`|-
-video|`String`|-
-leadingCheckbox|`Object`|-
-leadingRadioButton|`Object`|-
-leadingSwitch|`Object`|-
-leadingIcon|`String`|-
-label|`String`|-
-leadingAction|`String`|-
-subLabel|`String`|-
-trailingAction|`String`|-
-trailingIcon|`String`|-
-trailingCheckbox|`Object`|-
-trailingRadioButton|`Object`|-
-trailingSwitch|`Object`|-
-text|`String`|-
-badge|`Object`|-
-selected|`Boolean`|-
-indeterminate|`String`|-
+| Name              | Type       | Description                                                |
+|-------------------|------------|------------------------------------------------------------|
+| avatar            | `String`   | Specifies the avatar image source.                         |
+| thumbnail         | `String`   | Specifies the thumbnail image source.                      |
+| video             | `String`   | Specifies the video source.                                |
+| leadingCheckbox   | `Object`   | Object representing the leading checkbox.                  |
+| leadingRadioButton| `Object`   | Object representing the leading radio button.              |
+| leadingSwitch     | `Object`   | Object representing the leading switch.                    |
+| leadingIcon       | `String`   | Specifies the leading icon.                                |
+| label             | `String`   | Specifies the label.                                       |
+| leadingAction     | `String`   | Specifies the leading action.                              |
+| subLabel          | `String`   | Specifies the sub-label.                                   |
+| trailingAction    | `String`   | Specifies the trailing action.                             |
+| trailingIcon      | `String`   | Specifies the trailing icon.                               |
+| trailingCheckbox  | `Object`   | Object representing the trailing checkbox.                 |
+| trailingRadioButton| `Object`  | Object representing the trailing radio button.             |
+| trailingSwitch    | `Object`   | Object representing the trailing switch.                   |
+| text              | `String`   | Specifies the text.                                        |
+| badge             | `Object`   | Object representing the badge.                             |
+| selected          | `Boolean`  | Indicates whether the item is selected.                    |
+| indeterminate     | `String`   | Specifies the indeterminate state.                         |
 
-## Instance methods
+## Methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|get |labelSecondary|-
+- `labelSecondary()`: Returns the secondary label element.
 
-## Events
+## Lifecycle Methods
 
-name|desc
----|---
-`onDataTableItemSelected`|-
-`onDataTableItemActionClick`|-
-`onDataTableItemCheckboxNativeInput`|-
-`onDataTableItemRadioButtonNativeInput`|-
-`onDataTableItemSwitchNativeInput`|-
+- `connectedCallback()`: Called when the element is added to the DOM.
+- `disconnectedCallback()`: Called when the element is removed from the DOM.
+- `firstUpdated(changedProperties)`: Called after the first update.
+- `updated(changedProperties)`: Called after each update.
+
+## Event Handlers
+
+- `handleDataTableItemActionClick(event)`: Handles the click event for data table item actions.
+
 # MDDataTableRowComponent
-The `MDDataTableRowComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-data-table-row>` elements.
+The `MDDataTableRowComponent` class provides functionality for manipulating `<md-data-table-row>` elements.
 
-## Instance properties
+## Properties
 
-name|type|desc
----|---|---
+None.
 
-## Instance methods
+## Methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
+None.
 
-## Events
+## Lifecycle Methods
 
-name|desc
----|---
+- `connectedCallback()`: Called when the element is added to the DOM.
+- `disconnectedCallback()`: Called when the element is removed from the DOM.
+
 # MDDataTableComponent
-The `MDDataTableComponent` interface provides special properties (beyond the regular `MDElement` interface it also has available to it by inheritance) for manipulating `<md-data-table>` elements.
+The `MDDataTableComponent` class provides functionality for manipulating `<md-data-table>` elements.
 
-## Instance properties
+## Properties
 
-name|type|desc
----|---|---
-columns|`Array`|-
-rows|`Array`|-
-rangeSelection|`Boolean`|-
-multiSelection|`Boolean`|-
-singleSelection|`Boolean`|-
-allSelection|`Boolean`|-
+| Name             | Type     | Description                                |
+|------------------|----------|--------------------------------------------|
+| columns          | `Array`  | Array of column data.                      |
+| rows             | `Array`  | Array of row data.                         |
+| rangeSelection   | `Boolean`| Indicates if range selection is enabled.   |
+| multiSelection   | `Boolean`| Indicates if multi-selection is enabled.   |
+| singleSelection  | `Boolean`| Indicates if single-selection is enabled.  |
+| allSelection     | `Boolean`| Indicates if all selection is enabled.     |
 
-## Instance methods
+## Methods
 
-static|asynchronous|accessor|name|parameters
----|---|---|---|---
--|-|get |selected|-
--|-|get |indeterminate|-
+- `renderItem(item)`: Renders a table row item.
+- `handleDataTableColumnCheckboxNativeInput(event)`: Handles checkbox input event for columns.
+- `handleDataTableRowCheckboxNativeInput(event)`: Handles checkbox input event for rows.
 
-## Events
+## Lifecycle Methods
 
-name|desc
----|---
-`onDataTableColumnCellPointerenter`|-
-`onDataTableColumnCellPointerleave`|-
-`onDataTableColumnCellPointerleave`|-
-`onDataTableItemClick`|-
-`onDataTableKeydown`|-
+- `connectedCallback()`: Called when the element is added to the DOM.
+- `disconnectedCallback()`: Called when the element is removed from the DOM.
+
+## Event Handlers
+
+- `handleDataTableRowClick(event)`: Handles click event for table rows.
+- `handleDataTableKeydown(event)`: Handles keydown event for the data table.
+
