@@ -15,6 +15,7 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
         this.gesture = new MDGestureModule(this, {
             resize: ["e"],
             drag: ["x"],
+            dragAfterPress: true,
         });
     }
 
