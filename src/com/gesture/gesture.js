@@ -21,12 +21,15 @@ class MDGestureModule {
             ],
             resizeAfterPress: false,
             dragAfterPress: false,
+            applyStyle: false,
             ...options,
         };
         this.init();
     }
 
     emit(type, detail) {
+        // // debug
+        // console.log(type)
         const event = new CustomEvent(type, {
             bubbles: true,
             cancelable: true,
@@ -149,17 +152,18 @@ class MDGestureModule {
                       ? "Top"
                       : false);
 
-        // update style?
-        this.host.style.setProperty("top", this.currentY + "px");
-        this.host.style.setProperty("height", this.currentHeight + "px");
-        this.host.style.setProperty("left", this.currentX + "px");
-        this.host.style.setProperty("width", this.currentWidth + "px");
+        if (this.options.applyStyle) {
+            this.host.style.setProperty("top", this.currentY + "px");
+            this.host.style.setProperty("height", this.currentHeight + "px");
+            this.host.style.setProperty("left", this.currentX + "px");
+            this.host.style.setProperty("width", this.currentWidth + "px");
+        }
     }
 
     handlePointerup(event) {
         window.clearTimeout(this.presTimeout);
 
-        if (!this.press && !this.swipe && !this.drag) {
+        if (!this.press && !this.swipe  ) {
             this.emit("onTap", this);
 
             if (Date.now() - this.lastTap < 300) {
@@ -183,6 +187,24 @@ class MDGestureModule {
 
         this.endX = this.currentX;
         this.endY = this.currentY;
+
+        // console.log({
+        //     resize:this.resize,
+        //     startWidth:this.startWidth,
+        //     startHeight:this.startHeight,
+        //     endX:this.endX,
+        //     endY:this.endY,
+        //     startX:this.startX,
+        //     startY:this.startY,
+        //     press:this.press,
+        //     drag:this.drag,
+        //     swipe:this.swipe,
+        //     currentX:this.currentX,
+        //     currentY:this.currentY,
+        //     currentHeight:this.currentHeight,
+        //     currentWidth:this.currentWidth,
+        //     options:this.options,
+        // })
 
         document.documentElement.classList.remove("md-gesture--dragged");
 
