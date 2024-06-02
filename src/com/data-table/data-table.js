@@ -285,7 +285,7 @@ class MDDataTableComponent extends MDElement {
                                 @onDoubleTap="${this.handleDataTableColumnCellDoubleTap}"
                             >${this.renderItem({
                                 label:column.label,
-                                trailingAction:column.trailingAction??'',
+                                // trailingAction:column.trailingAction??'',
                             })}</th>
                         `)}
                     </tr>
