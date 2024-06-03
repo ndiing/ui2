@@ -141,10 +141,12 @@ class MDTextFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onTextFieldNativeFocus", event);
     }
+
     handleTextFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTextFieldNativeBlur", event);
     }
+
     handleTextFieldNativeInput(event) {
         this.value = this.textFieldNative.value;
         this.populated = !!this.value;
@@ -152,12 +154,14 @@ class MDTextFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onTextFieldNativeInput", event);
     }
+
     handleTextFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.textFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTextFieldNativeInvalid", event);
     }
+
     handleTextFieldNativeReset(event) {
         this.textFieldNative.value = this.defaultValue;
         this.value = this.textFieldNative.value;

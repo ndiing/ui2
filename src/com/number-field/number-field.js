@@ -153,10 +153,12 @@ class MDNumberFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onNumberFieldNativeFocus", event);
     }
+
     handleNumberFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onNumberFieldNativeBlur", event);
     }
+
     handleNumberFieldNativeInput(event) {
         this.value = this.numberFieldNative.value;
         this.populated = !!this.value;
@@ -164,12 +166,14 @@ class MDNumberFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onNumberFieldNativeInput", event);
     }
+
     handleNumberFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.numberFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onNumberFieldNativeInvalid", event);
     }
+
     handleNumberFieldNativeReset(event) {
         this.numberFieldNative.value = this.defaultValue;
         this.value = this.numberFieldNative.value;

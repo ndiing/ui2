@@ -175,11 +175,13 @@ class MDTimeFieldComponent extends MDElement {
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
+
     handleTimeFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.timeFieldPicker.close();
     }
+
     handleTimeFieldPickerButtonOkClick(event) {
         this.timeFieldPicker.close();
     }
@@ -188,10 +190,12 @@ class MDTimeFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onTimeFieldNativeFocus", event);
     }
+
     handleTimeFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTimeFieldNativeBlur", event);
     }
+
     handleTimeFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -199,12 +203,14 @@ class MDTimeFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onTimeFieldNativeInput", event);
     }
+
     handleTimeFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTimeFieldNativeInvalid", event);
     }
+
     handleTimeFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -214,6 +220,7 @@ class MDTimeFieldComponent extends MDElement {
 
         this.emit("onTimeFieldNativeReset", event);
     }
+
     handleTimeFieldNativeClick(event) {
         event.preventDefault();
 

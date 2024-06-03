@@ -136,10 +136,12 @@ class MDFileFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onFileFieldNativeFocus", event);
     }
+
     handleFileFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onFileFieldNativeBlur", event);
     }
+
     handleFileFieldNativeInput(event) {
         this.value = this.fileFieldNative.value;
         this.populated = !!this.value;
@@ -147,12 +149,14 @@ class MDFileFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onFileFieldNativeInput", event);
     }
+
     handleFileFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.fileFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onFileFieldNativeInvalid", event);
     }
+
     handleFileFieldNativeReset(event) {
         this.fileFieldNative.value = this.defaultValue;
         this.value = this.fileFieldNative.value;

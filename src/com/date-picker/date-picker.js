@@ -16,6 +16,7 @@ class MDDatePickerComponent extends MDElement {
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
+
     get last() {}
 
     get years() {
@@ -30,6 +31,7 @@ class MDDatePickerComponent extends MDElement {
             };
         });
     }
+
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -44,6 +46,7 @@ class MDDatePickerComponent extends MDElement {
             };
         });
     }
+
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -53,6 +56,7 @@ class MDDatePickerComponent extends MDElement {
             };
         });
     }
+
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -74,6 +78,7 @@ class MDDatePickerComponent extends MDElement {
             };
         });
     }
+
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -92,6 +97,7 @@ class MDDatePickerComponent extends MDElement {
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -493,6 +499,7 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerYearClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -504,6 +511,7 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerMonthClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -516,6 +524,7 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerDayClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -529,6 +538,7 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerHourClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -543,10 +553,12 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerMinuteClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerButtonCancelClick(event) {
         this.emit("onDatePickerButtonCancelClick", event);
         this.emit("onDatePickerChange", event);
     }
+
     handleDatePickerButtonOkClick(event) {
         this.emit("onDatePickerButtonOkClick", event);
         this.emit("onDatePickerChange", event);

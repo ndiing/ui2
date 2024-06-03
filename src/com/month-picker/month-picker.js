@@ -16,6 +16,7 @@ class MDMonthPickerComponent extends MDElement {
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
+
     get last() {}
 
     get years() {
@@ -30,6 +31,7 @@ class MDMonthPickerComponent extends MDElement {
             };
         });
     }
+
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -44,6 +46,7 @@ class MDMonthPickerComponent extends MDElement {
             };
         });
     }
+
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -53,6 +56,7 @@ class MDMonthPickerComponent extends MDElement {
             };
         });
     }
+
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -74,6 +78,7 @@ class MDMonthPickerComponent extends MDElement {
             };
         });
     }
+
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -92,6 +97,7 @@ class MDMonthPickerComponent extends MDElement {
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -495,6 +501,7 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerYearClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -506,6 +513,7 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerMonthClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -518,6 +526,7 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerDayClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -531,6 +540,7 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerHourClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -545,10 +555,12 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerMinuteClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerButtonCancelClick(event) {
         this.emit("onMonthPickerButtonCancelClick", event);
         this.emit("onMonthPickerChange", event);
     }
+
     handleMonthPickerButtonOkClick(event) {
         this.emit("onMonthPickerButtonOkClick", event);
         this.emit("onMonthPickerChange", event);

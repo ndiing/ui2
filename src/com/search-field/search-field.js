@@ -140,10 +140,12 @@ class MDSearchFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onSearchFieldNativeFocus", event);
     }
+
     handleSearchFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onSearchFieldNativeBlur", event);
     }
+
     handleSearchFieldNativeInput(event) {
         this.value = this.searchFieldNative.value;
         this.populated = !!this.value;
@@ -151,12 +153,14 @@ class MDSearchFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onSearchFieldNativeInput", event);
     }
+
     handleSearchFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.searchFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onSearchFieldNativeInvalid", event);
     }
+
     handleSearchFieldNativeReset(event) {
         this.searchFieldNative.value = this.defaultValue;
         this.value = this.searchFieldNative.value;

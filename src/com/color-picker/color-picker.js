@@ -472,6 +472,7 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerSolidPointermove", event);
         this.emit("onColorPickerChange", event);
     }
+
     handleColorPickerSolidPointerup(event) {
         window.removeEventListener("pointermove", this.handleColorPickerSolidPointermove);
         window.removeEventListener("pointerup", this.handleColorPickerSolidPointerup);
@@ -482,6 +483,7 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerSolidPointerup", event);
         this.emit("onColorPickerChange", event);
     }
+
     handleColorPickerHueInput(event) {
         this.hue = parseFloat(this.hueCanvas.value);
 
@@ -497,6 +499,7 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerHueInput", event);
         this.emit("onColorPickerChange", event);
     }
+
     handleColorPickerOpacityInput(event) {
         this.alpha = parseFloat(this.opacityCanvas.value);
 
@@ -510,6 +513,7 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerButtonCancelClick", event);
         // this.emit("onColorPickerChange", event);
     }
+
     handleColorPickerButtonOkClick(event) {
         this.emit("onColorPickerButtonOkClick", event);
         // this.emit("onColorPickerChange", event);

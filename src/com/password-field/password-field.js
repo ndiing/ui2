@@ -143,10 +143,12 @@ class MDPasswordFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onPasswordFieldNativeFocus", event);
     }
+
     handlePasswordFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onPasswordFieldNativeBlur", event);
     }
+
     handlePasswordFieldNativeInput(event) {
         this.value = this.numberFieldNative.value;
         this.populated = !!this.value;
@@ -154,12 +156,14 @@ class MDPasswordFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onPasswordFieldNativeInput", event);
     }
+
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.numberFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onPasswordFieldNativeInvalid", event);
     }
+
     handlePasswordFieldNativeReset(event) {
         this.numberFieldNative.value = this.defaultValue;
         this.value = this.numberFieldNative.value;

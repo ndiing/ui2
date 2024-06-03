@@ -179,11 +179,13 @@ class MDMonthFieldComponent extends MDElement {
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
+
     handleMonthFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.monthFieldPicker.close();
     }
+
     handleMonthFieldPickerButtonOkClick(event) {
         this.monthFieldPicker.close();
     }
@@ -192,10 +194,12 @@ class MDMonthFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onMonthFieldNativeFocus", event);
     }
+
     handleMonthFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onMonthFieldNativeBlur", event);
     }
+
     handleMonthFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -203,12 +207,14 @@ class MDMonthFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onMonthFieldNativeInput", event);
     }
+
     handleMonthFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onMonthFieldNativeInvalid", event);
     }
+
     handleMonthFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -218,6 +224,7 @@ class MDMonthFieldComponent extends MDElement {
 
         this.emit("onMonthFieldNativeReset", event);
     }
+
     handleMonthFieldNativeClick(event) {
         event.preventDefault();
 

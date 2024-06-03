@@ -172,11 +172,13 @@ class MDColorFieldComponent extends MDElement {
         this.colorFieldNative.value = this.colorFieldPicker.selected.slice(0, 7);
         this.value = this.colorFieldNative.value;
     }
+
     handleColorFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.colorFieldPicker.close();
     }
+
     handleColorFieldPickerButtonOkClick(event) {
         this.colorFieldPicker.close();
     }
@@ -185,10 +187,12 @@ class MDColorFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onColorFieldNativeFocus", event);
     }
+
     handleColorFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onColorFieldNativeBlur", event);
     }
+
     handleColorFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -196,12 +200,14 @@ class MDColorFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onColorFieldNativeInput", event);
     }
+
     handleColorFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onColorFieldNativeInvalid", event);
     }
+
     handleColorFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -211,6 +217,7 @@ class MDColorFieldComponent extends MDElement {
 
         this.emit("onColorFieldNativeReset", event);
     }
+
     handleColorFieldNativeClick(event) {
         event.preventDefault();
 

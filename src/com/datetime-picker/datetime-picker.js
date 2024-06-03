@@ -16,6 +16,7 @@ class MDDatetimePickerComponent extends MDElement {
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
+
     get last() {}
 
     get years() {
@@ -30,6 +31,7 @@ class MDDatetimePickerComponent extends MDElement {
             };
         });
     }
+
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -44,6 +46,7 @@ class MDDatetimePickerComponent extends MDElement {
             };
         });
     }
+
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -53,6 +56,7 @@ class MDDatetimePickerComponent extends MDElement {
             };
         });
     }
+
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -74,6 +78,7 @@ class MDDatetimePickerComponent extends MDElement {
             };
         });
     }
+
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -92,6 +97,7 @@ class MDDatetimePickerComponent extends MDElement {
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -502,6 +508,7 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerYearClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -513,6 +520,7 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerMonthClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -525,6 +533,7 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerDayClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -538,6 +547,7 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerHourClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -552,10 +562,12 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerMinuteClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerButtonCancelClick(event) {
         this.emit("onDatetimePickerButtonCancelClick", event);
         this.emit("onDatetimePickerChange", event);
     }
+
     handleDatetimePickerButtonOkClick(event) {
         this.emit("onDatetimePickerButtonOkClick", event);
         this.emit("onDatetimePickerChange", event);

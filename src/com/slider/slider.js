@@ -86,6 +86,7 @@ class MDSliderComponent extends MDElement {
     get sliderNative1() {
         return this.querySelector(".md-slider__native1");
     }
+
     get sliderNative2() {
         return this.querySelector(".md-slider__native2");
     }
@@ -109,12 +110,14 @@ class MDSliderComponent extends MDElement {
                 this.classList.add("md-slider--discrete");
             }
         }
+
         if (changedProperties.has("min")) {
             this.classList.remove("md-slider--centered");
             if (this.min < 0) {
                 this.classList.add("md-slider--centered");
             }
         }
+
         if (changedProperties.has("value")) {
             this.classList.remove("md-slider--range-selection");
             if (this.value?.length > 1) {

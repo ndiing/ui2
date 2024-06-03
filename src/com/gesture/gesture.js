@@ -93,6 +93,7 @@ class MDGestureModule {
             if (this.options.drag.includes("x")) {
                 this.currentX = currentX;
             }
+
             if (this.options.drag.includes("y")) {
                 this.currentY = currentY;
             }

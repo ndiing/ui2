@@ -67,6 +67,7 @@ class MDTabsComponent extends MDElement {
         window.requestAnimationFrame(() => {
             let left = item.offsetLeft;
             let width = item.clientWidth;
+
             if (!this.ui?.includes("secondary")) {
                 const label = item.querySelector(".md-list__label");
                 left = item.offsetLeft + label.offsetLeft;
@@ -74,6 +75,7 @@ class MDTabsComponent extends MDElement {
             }
             this.style.setProperty("--md-tabs-width", width + "px");
             this.style.setProperty("--md-tabs-left", left + "px");
+
             if (this.ui?.includes("scrollable")) {
                 item.scrollIntoView({
                     block: "center",

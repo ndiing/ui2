@@ -179,11 +179,13 @@ class MDWeekFieldComponent extends MDElement {
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
+
     handleWeekFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.weekFieldPicker.close();
     }
+
     handleWeekFieldPickerButtonOkClick(event) {
         this.weekFieldPicker.close();
     }
@@ -192,10 +194,12 @@ class MDWeekFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onWeekFieldNativeFocus", event);
     }
+
     handleWeekFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onWeekFieldNativeBlur", event);
     }
+
     handleWeekFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -203,12 +207,14 @@ class MDWeekFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onWeekFieldNativeInput", event);
     }
+
     handleWeekFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onWeekFieldNativeInvalid", event);
     }
+
     handleWeekFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -218,6 +224,7 @@ class MDWeekFieldComponent extends MDElement {
 
         this.emit("onWeekFieldNativeReset", event);
     }
+
     handleWeekFieldNativeClick(event) {
         event.preventDefault();
 

@@ -16,6 +16,7 @@ class MDTimePickerComponent extends MDElement {
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
+
     get last() {}
 
     get years() {
@@ -30,6 +31,7 @@ class MDTimePickerComponent extends MDElement {
             };
         });
     }
+
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -44,6 +46,7 @@ class MDTimePickerComponent extends MDElement {
             };
         });
     }
+
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -53,6 +56,7 @@ class MDTimePickerComponent extends MDElement {
             };
         });
     }
+
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -74,6 +78,7 @@ class MDTimePickerComponent extends MDElement {
             };
         });
     }
+
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -92,6 +97,7 @@ class MDTimePickerComponent extends MDElement {
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -482,6 +488,7 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerYearClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -493,6 +500,7 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerMonthClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -505,6 +513,7 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerDayClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -518,6 +527,7 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerHourClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -532,10 +542,12 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerMinuteClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerButtonCancelClick(event) {
         this.emit("onTimePickerButtonCancelClick", event);
         this.emit("onTimePickerChange", event);
     }
+
     handleTimePickerButtonOkClick(event) {
         this.emit("onTimePickerButtonOkClick", event);
         this.emit("onTimePickerChange", event);

@@ -175,11 +175,13 @@ class MDDatetimeFieldComponent extends MDElement {
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
+
     handleDatetimeFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.datetimeFieldPicker.close();
     }
+
     handleDatetimeFieldPickerButtonOkClick(event) {
         this.datetimeFieldPicker.close();
     }
@@ -188,10 +190,12 @@ class MDDatetimeFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onDatetimeFieldNativeFocus", event);
     }
+
     handleDatetimeFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onDatetimeFieldNativeBlur", event);
     }
+
     handleDatetimeFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -199,12 +203,14 @@ class MDDatetimeFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onDatetimeFieldNativeInput", event);
     }
+
     handleDatetimeFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onDatetimeFieldNativeInvalid", event);
     }
+
     handleDatetimeFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -214,6 +220,7 @@ class MDDatetimeFieldComponent extends MDElement {
 
         this.emit("onDatetimeFieldNativeReset", event);
     }
+
     handleDatetimeFieldNativeClick(event) {
         event.preventDefault();
 

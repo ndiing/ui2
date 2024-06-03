@@ -395,6 +395,7 @@ class MDDataTableComponent extends MDElement {
     get selected() {
         return this.rows?.filter((row) => row.selected).length == this.rows?.length;
     }
+
     get indeterminate() {
         const selected = this.rows?.filter((row) => row.selected).length;
         return selected > 0 && selected < this.rows?.length;
@@ -418,6 +419,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellSortablePointerenter", event);
     }
+
     handleDataTableColumnCellSortablePointerleave(event) {
         const data = event.currentTarget.data;
 
@@ -428,6 +430,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellSortablePointerleave", event);
     }
+
     handleDataTableColumnCellSortableClick(event) {
         const data = event.currentTarget.data;
 
@@ -453,6 +456,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellResizeStart", event);
     }
+
     handleDataTableColumnCellResize(event) {
         const data = event.currentTarget.data;
 
@@ -461,11 +465,13 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellResize", event);
     }
+
     handleDataTableColumnCellResizeEnd(event) {
         const data = event.currentTarget.data;
 
         this.emit("onDataTableColumnCellResizeEnd", event);
     }
+
     handleDataTableColumnCellResizeDoubleTap(event) {
         const data = event.currentTarget.data;
 
@@ -488,6 +494,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellResizeDoubleTap", event);
     }
+
     handleDataTableColumnCellDragStart(event) {
         if (event.detail.target.closest(".md-data-table__action,.md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
             return;
@@ -514,6 +521,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellDragStart", event);
     }
+
     handleDataTableColumnCellDrag(event) {
         const data = event.currentTarget.data;
 
@@ -521,6 +529,7 @@ class MDDataTableComponent extends MDElement {
 
         this.emit("onDataTableColumnCellDrag", event);
     }
+
     handleDataTableColumnCellDragEnd(event) {
         this.guide.remove();
 

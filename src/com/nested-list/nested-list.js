@@ -226,6 +226,7 @@ class MDNestedListComponent extends MDElement {
                 });
             }
         }
+
         if (changedProperties.has("list")) {
             await this.updateComplete;
             this.createList(this.list);

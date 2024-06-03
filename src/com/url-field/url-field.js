@@ -141,10 +141,12 @@ class MDUrlFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onUrlFieldNativeFocus", event);
     }
+
     handleUrlFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onUrlFieldNativeBlur", event);
     }
+
     handleUrlFieldNativeInput(event) {
         this.value = this.urlFieldNative.value;
         this.populated = !!this.value;
@@ -152,12 +154,14 @@ class MDUrlFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onUrlFieldNativeInput", event);
     }
+
     handleUrlFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.urlFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onUrlFieldNativeInvalid", event);
     }
+
     handleUrlFieldNativeReset(event) {
         this.urlFieldNative.value = this.defaultValue;
         this.value = this.urlFieldNative.value;

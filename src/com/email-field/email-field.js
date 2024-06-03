@@ -141,10 +141,12 @@ class MDEmailFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onEmailFieldNativeFocus", event);
     }
+
     handleEmailFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onEmailFieldNativeBlur", event);
     }
+
     handleEmailFieldNativeInput(event) {
         this.value = this.emailFieldNative.value;
         this.populated = !!this.value;
@@ -152,12 +154,14 @@ class MDEmailFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onEmailFieldNativeInput", event);
     }
+
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.emailFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onEmailFieldNativeInvalid", event);
     }
+
     handleEmailFieldNativeReset(event) {
         this.emailFieldNative.value = this.defaultValue;
         this.value = this.emailFieldNative.value;

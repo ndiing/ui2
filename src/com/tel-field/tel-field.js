@@ -141,10 +141,12 @@ class MDTelFieldComponent extends MDElement {
         this.focused = true;
         this.emit("onTelFieldNativeFocus", event);
     }
+
     handleTelFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTelFieldNativeBlur", event);
     }
+
     handleTelFieldNativeInput(event) {
         this.value = this.telFieldNative.value;
         this.populated = !!this.value;
@@ -152,12 +154,14 @@ class MDTelFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
         this.emit("onTelFieldNativeInput", event);
     }
+
     handleTelFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.telFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTelFieldNativeInvalid", event);
     }
+
     handleTelFieldNativeReset(event) {
         this.telFieldNative.value = this.defaultValue;
         this.value = this.telFieldNative.value;

@@ -16,6 +16,7 @@ class MDWeekPickerComponent extends MDElement {
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
+
     get last() {}
 
     get years() {
@@ -30,6 +31,7 @@ class MDWeekPickerComponent extends MDElement {
             };
         });
     }
+
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -44,6 +46,7 @@ class MDWeekPickerComponent extends MDElement {
             };
         });
     }
+
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k + 1);
@@ -53,6 +56,7 @@ class MDWeekPickerComponent extends MDElement {
             };
         });
     }
+
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -82,6 +86,7 @@ class MDWeekPickerComponent extends MDElement {
             };
         });
     }
+
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -100,6 +105,7 @@ class MDWeekPickerComponent extends MDElement {
             };
         });
     }
+
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -510,6 +516,7 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerYearClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -521,6 +528,7 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerMonthClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -533,6 +541,7 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerDayClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -546,6 +555,7 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerHourClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -560,10 +570,12 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerMinuteClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerButtonCancelClick(event) {
         this.emit("onWeekPickerButtonCancelClick", event);
         this.emit("onWeekPickerChange", event);
     }
+
     handleWeekPickerButtonOkClick(event) {
         this.emit("onWeekPickerButtonOkClick", event);
         this.emit("onWeekPickerChange", event);
