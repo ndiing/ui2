@@ -11,106 +11,106 @@ class AppMainElement extends MDElement {
         super();
 
         const data = new MDDataModule([
-            // {
-            //     label: "Foundations",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
-            { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
+            {
+                label: "Foundations",
+                children: [
+                    { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
+                    { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
 
-            { leafIcon: "deployed_code", label: "Layout", routerLink: "/layout" },
+                    { leafIcon: "deployed_code", label: "Layout", routerLink: "/layout" },
 
-            { leafIcon: "deployed_code", label: "Icon", routerLink: "/icon" },
-            { leafIcon: "deployed_code", label: "Typography", routerLink: "/typography" },
+                    { leafIcon: "deployed_code", label: "Icon", routerLink: "/icon" },
+                    { leafIcon: "deployed_code", label: "Typography", routerLink: "/typography" },
 
-            { leafIcon: "deployed_code", label: "Image", routerLink: "/image" },
-            { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
-            { leafIcon: "deployed_code", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
-            //     ],
-            // },
-            // {
-            //     label: "Actions",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
-            { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
-            { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
-            { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
-            //     ],
-            // },
-            // {
-            //     label: "Communication",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
-            { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
-            { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
-            { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
-            //     ],
-            // },
-            // {
-            //     label: "Containment",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
-            { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
-            { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
-            { leafIcon: "deployed_code", label: "List", routerLink: "/list" },
-            { leafIcon: "deployed_code", label: "Side Sheet", routerLink: "/side-sheet" },
+                    { leafIcon: "deployed_code", label: "Image", routerLink: "/image" },
+                    { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
+                    { leafIcon: "deployed_code", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
+                ],
+            },
+            {
+                label: "Actions",
+                children: [
+                    { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
+                    { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
+                    { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
+                    { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
+                ],
+            },
+            {
+                label: "Communication",
+                children: [
+                    { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
+                    { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
+                    { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
+                    { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
+                ],
+            },
+            {
+                label: "Containment",
+                children: [
+                    { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
+                    { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
+                    { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
+                    { leafIcon: "deployed_code", label: "List", routerLink: "/list" },
+                    { leafIcon: "deployed_code", label: "Side Sheet", routerLink: "/side-sheet" },
 
-            { leafIcon: "deployed_code", label: "Nested List", routerLink: "/nested-list" },
-            { leafIcon: "deployed_code", label: "Navigation", routerLink: "/navigation" },
-            { leafIcon: "deployed_code", label: "Data Table", routerLink: "/data-table" },
-            //     ],
-            // },
-            // {
-            //     label: "Navigation",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
-            { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
-            { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
-            { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
-            { leafIcon: "deployed_code", label: "Tabs", routerLink: "/tabs" },
-            { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
-            //     ],
-            // },
-            // {
-            //     label: "Selection",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
-            { leafIcon: "deployed_code", label: "Chips", routerLink: "/chips" },
-            { leafIcon: "deployed_code", label: "Datetime Picker", routerLink: "/datetime-picker" },
-            { leafIcon: "deployed_code", label: "Menu", routerLink: "/menu" },
-            { leafIcon: "deployed_code", label: "Radio Button", routerLink: "/radio-button" },
-            { leafIcon: "deployed_code", label: "Slider", routerLink: "/slider" },
-            { leafIcon: "deployed_code", label: "Switch", routerLink: "/switch" },
-            { leafIcon: "deployed_code", label: "Time Picker", routerLink: "/time-picker" },
-            { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },
-            { leafIcon: "deployed_code", label: "Month Picker", routerLink: "/month-picker" },
-            { leafIcon: "deployed_code", label: "Week Picker", routerLink: "/week-picker" },
-            { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
-            //     ],
-            // },
-            // {
-            //     label: "Text inputs",
-            //     children: [
-            { leafIcon: "deployed_code", label: "Form", routerLink: "/form" },
-            { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
+                    { leafIcon: "deployed_code", label: "Nested List", routerLink: "/nested-list" },
+                    { leafIcon: "deployed_code", label: "Navigation", routerLink: "/navigation" },
+                    { leafIcon: "deployed_code", label: "Data Table", routerLink: "/data-table" },
+                ],
+            },
+            {
+                label: "Navigation",
+                children: [
+                    { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
+                    { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
+                    { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
+                    { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
+                    { leafIcon: "deployed_code", label: "Tabs", routerLink: "/tabs" },
+                    { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
+                ],
+            },
+            {
+                label: "Selection",
+                children: [
+                    { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
+                    { leafIcon: "deployed_code", label: "Chips", routerLink: "/chips" },
+                    { leafIcon: "deployed_code", label: "Datetime Picker", routerLink: "/datetime-picker" },
+                    { leafIcon: "deployed_code", label: "Menu", routerLink: "/menu" },
+                    { leafIcon: "deployed_code", label: "Radio Button", routerLink: "/radio-button" },
+                    { leafIcon: "deployed_code", label: "Slider", routerLink: "/slider" },
+                    { leafIcon: "deployed_code", label: "Switch", routerLink: "/switch" },
+                    { leafIcon: "deployed_code", label: "Time Picker", routerLink: "/time-picker" },
+                    { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },
+                    { leafIcon: "deployed_code", label: "Month Picker", routerLink: "/month-picker" },
+                    { leafIcon: "deployed_code", label: "Week Picker", routerLink: "/week-picker" },
+                    { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
+                ],
+            },
+            {
+                label: "Text inputs",
+                children: [
+                    { leafIcon: "deployed_code", label: "Form", routerLink: "/form" },
+                    { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
 
-            { leafIcon: "deployed_code", label: "Number Field", routerLink: "/number-field" },
-            { leafIcon: "deployed_code", label: "Tel Field", routerLink: "/tel-field" },
-            { leafIcon: "deployed_code", label: "Email Field", routerLink: "/email-field" },
-            { leafIcon: "deployed_code", label: "Url Field", routerLink: "/url-field" },
-            { leafIcon: "deployed_code", label: "Password Field", routerLink: "/password-field" },
-            { leafIcon: "deployed_code", label: "Search Field", routerLink: "/search-field" },
+                    { leafIcon: "deployed_code", label: "Number Field", routerLink: "/number-field" },
+                    { leafIcon: "deployed_code", label: "Tel Field", routerLink: "/tel-field" },
+                    { leafIcon: "deployed_code", label: "Email Field", routerLink: "/email-field" },
+                    { leafIcon: "deployed_code", label: "Url Field", routerLink: "/url-field" },
+                    { leafIcon: "deployed_code", label: "Password Field", routerLink: "/password-field" },
+                    { leafIcon: "deployed_code", label: "Search Field", routerLink: "/search-field" },
 
-            { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
-            { leafIcon: "deployed_code", label: "File Field", routerLink: "/file-field" },
+                    { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
+                    { leafIcon: "deployed_code", label: "File Field", routerLink: "/file-field" },
 
-            { leafIcon: "deployed_code", label: "Datetime Field", routerLink: "/datetime-field" },
-            { leafIcon: "deployed_code", label: "Date Field", routerLink: "/date-field" },
-            { leafIcon: "deployed_code", label: "Month Field", routerLink: "/month-field" },
-            { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
-            { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
-            { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
-            //     ],
-            // },
+                    { leafIcon: "deployed_code", label: "Datetime Field", routerLink: "/datetime-field" },
+                    { leafIcon: "deployed_code", label: "Date Field", routerLink: "/date-field" },
+                    { leafIcon: "deployed_code", label: "Month Field", routerLink: "/month-field" },
+                    { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
+                    { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
+                    { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
+                ],
+            },
         ]);
 
         this.list = data.getAll({ sorters: [{ name: "label", order: "asc" }] }).rows;
