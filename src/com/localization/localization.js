@@ -3,7 +3,6 @@ import { sourceLocale, targetLocales } from "../../generated/locale-codes.js";
 
 /**
  *
- * @class MDLocalizationModule
  */
 class MDLocalizationModule {
     /**

@@ -8,7 +8,6 @@ import { MDGestureModule } from "../gesture/gesture";
 
 /**
  *
- * @class MDDataTableColumnCellComponent
  * @extends HTMLTableCellElement
  */
 class MDDataTableColumnCellComponent extends HTMLTableCellElement {
@@ -40,7 +39,6 @@ customElements.define("md-data-table-column-cell", MDDataTableColumnCellComponen
 
 /**
  *
- * @class MDDataTableNativeComponent
  * @extends HTMLTableElement
  */
 class MDDataTableNativeComponent extends HTMLTableElement {
@@ -81,7 +79,6 @@ customElements.define("md-data-table-native", MDDataTableNativeComponent, { exte
 
 /**
  *
- * @class MDDataTableItemComponent
  * @extends MDElement
  */
 class MDDataTableItemComponent extends MDElement {
@@ -260,7 +257,6 @@ customElements.define("md-data-table-item", MDDataTableItemComponent);
 
 /**
  *
- * @class MDDataTableRowComponent
  * @extends MDElement
  */
 class MDDataTableRowComponent extends MDElement {
@@ -313,7 +309,6 @@ customElements.define("md-data-table-row", MDDataTableRowComponent);
 
 /**
  *
- * @class MDDataTableComponent
  * @extends MDElement
  */
 class MDDataTableComponent extends MDElement {

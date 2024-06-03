@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDSegmentedButtonComponent
  * @extends MDElement
  */
 class MDSegmentedButtonComponent extends MDElement {

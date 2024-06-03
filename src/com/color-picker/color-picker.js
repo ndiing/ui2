@@ -5,7 +5,6 @@ import { MDPopperModule } from "../popper/popper";
 
 /**
  *
- * @class MDColorPickerComponent
  * @extends MDElement
  */
 class MDColorPickerComponent extends MDElement {

@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDBottomAppBarComponent
  * @extends MDElement
  */
 class MDBottomAppBarComponent extends MDElement {

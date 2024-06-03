@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDPasswordFieldComponent
  * @extends MDElement
  */
 class MDPasswordFieldComponent extends MDElement {

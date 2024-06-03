@@ -1,6 +1,5 @@
 /**
  *
- * @class MDRouterModule
  */
 class MDRouterModule {
     /**

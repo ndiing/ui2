@@ -5,7 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @class MDChipComponent
  * @extends MDElement
  */
 class MDChipComponent extends MDElement {
@@ -95,7 +94,6 @@ customElements.define("md-chip", MDChipComponent);
 
 /**
  *
- * @class MDChipsComponent
  * @extends MDElement
  */
 class MDChipsComponent extends MDElement {

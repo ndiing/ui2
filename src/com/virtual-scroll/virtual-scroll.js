@@ -1,6 +1,5 @@
 /**
  *
- * @class MDVirtualScrollModule
  */
 class MDVirtualScrollModule {
     /**

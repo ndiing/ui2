@@ -1,6 +1,5 @@
 /**
  *
- * @class MDDataModule
  */
 class MDDataModule {
     /**

@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 /**
  *
- * @class MDIconButtonComponent
  * @extends MDElement
  */
 class MDIconButtonComponent extends MDElement {

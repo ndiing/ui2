@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDProgressIndicatorComponent
  * @extends MDElement
  */
 class MDProgressIndicatorComponent extends MDElement {

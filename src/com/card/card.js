@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDCardComponent
  * @extends MDElement
  */
 class MDCardComponent extends MDElement {

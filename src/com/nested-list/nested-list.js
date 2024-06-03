@@ -6,7 +6,6 @@ import { choose } from "lit/directives/choose.js";
 
 /**
  *
- * @class MDNestedListItemComponent
  * @extends MDElement
  */
 class MDNestedListItemComponent extends MDElement {
@@ -161,7 +160,6 @@ customElements.define("md-nested-list-item", MDNestedListItemComponent);
 
 /**
  *
- * @class MDNestedListRowComponent
  * @extends MDElement
  */
 class MDNestedListRowComponent extends MDElement {
@@ -214,7 +212,6 @@ customElements.define("md-nested-list-row", MDNestedListRowComponent);
 
 /**
  *
- * @class MDNestedListComponent
  * @extends MDElement
  */
 class MDNestedListComponent extends MDElement {

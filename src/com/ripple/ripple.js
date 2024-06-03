@@ -1,6 +1,5 @@
 /**
  *
- * @class MDRippleModule
  */
 class MDRippleModule {
     /**

@@ -3,7 +3,6 @@ import { msg, updateWhenLocaleChanges } from "@lit/localize";
 
 /**
  *
- * @class MDElement
  * @extends LitElement
  */
 class MDElement extends LitElement {

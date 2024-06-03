@@ -5,7 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @class MDListItemComponent
  * @extends MDElement
  */
 class MDListItemComponent extends MDElement {
@@ -173,7 +172,6 @@ customElements.define("md-list-item", MDListItemComponent);
 
 /**
  *
- * @class MDListRowComponent
  * @extends MDElement
  */
 class MDListRowComponent extends MDElement {
@@ -226,7 +224,6 @@ customElements.define("md-list-row", MDListRowComponent);
 
 /**
  *
- * @class MDListComponent
  * @extends MDElement
  */
 class MDListComponent extends MDElement {

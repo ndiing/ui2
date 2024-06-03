@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDDialogComponent
  * @extends MDElement
  */
 class MDDialogComponent extends MDElement {

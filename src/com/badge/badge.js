@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDBadgeComponent
  * @extends MDElement
  */
 class MDBadgeComponent extends MDElement {

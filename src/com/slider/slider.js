@@ -5,7 +5,6 @@ import { classMap } from "lit/directives/class-map.js";
 
 /**
  *
- * @class MDSliderComponent
  * @extends MDElement
  */
 class MDSliderComponent extends MDElement {

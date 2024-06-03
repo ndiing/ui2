@@ -6,7 +6,6 @@ import { classMap } from "lit/directives/class-map.js";
 
 /**
  *
- * @class MDTabsComponent
  * @extends MDElement
  */
 class MDTabsComponent extends MDElement {

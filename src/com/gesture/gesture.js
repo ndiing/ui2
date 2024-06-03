@@ -1,6 +1,5 @@
 /**
  *
- * @class MDGestureModule
  */
 class MDGestureModule {
     /**
