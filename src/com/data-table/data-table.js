@@ -489,6 +489,9 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellResizeDoubleTap", event);
     }
     handleDataTableColumnCellDragStart(event) {
+        if (event.detail.target.closest(".md-data-table__action,.md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
+            return;
+        }
         const data = event.currentTarget.data;
 
         const th = event.currentTarget;
@@ -502,6 +505,7 @@ class MDDataTableComponent extends MDElement {
         this.guide.style.setProperty("top", rect.top + "px");
         this.guide.style.setProperty("z-index", 6);
         this.guide.style.setProperty("pointer-events", "none");
+        this.guide.style.setProperty("--md-ripple-size", "150%");
         this.guide.classList.add("md-ripple");
         this.guide.classList.add("md-ripple--button");
         this.guide.classList.add("md-ripple--containment");

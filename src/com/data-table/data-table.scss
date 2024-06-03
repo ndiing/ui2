@@ -184,7 +184,8 @@
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
-            --md-ripple-size: calc(141.42% * sqrt(2));
+            // --md-ripple-size: calc(141.42% * sqrt(2));
+            --md-ripple-size: 150%;
         }
     }
 
@@ -198,8 +199,4 @@
         left: 0;
         z-index: 3;
     }
-}
-
-th.md-ripple--dragged {
-    box-shadow: var(--md-sys-elevaton-level0);
 }
