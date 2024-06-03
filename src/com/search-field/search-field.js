@@ -88,7 +88,7 @@ class MDSearchFieldComponent extends MDElement {
                 <input
                     class="md-search-field__native"
                     .type="${"search"}"
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .name="${ifDefined(this.name)}"

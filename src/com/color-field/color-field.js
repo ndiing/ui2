@@ -76,7 +76,7 @@ class MDColorFieldComponent extends MDElement {
                 class="md-color-field__native md-color-field__native--hidden"
                 type="color"
                 .autocapitalize="${ifDefined(this.autocapitalize)}"
-                .autocomplete="${ifDefined(this.autocomplete)}"
+                .autocomplete="${ifDefined(this.autocomplete??"off")}"
                 .disabled="${ifDefined(this.disabled)}"
                 .form="${ifDefined(this.form)}"
                 .list="${ifDefined(this.list)}"

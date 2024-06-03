@@ -65,7 +65,7 @@ class MDSliderComponent extends MDElement {
                         class="md-slider__native md-slider__native${index+1}"
                         type="range"     
                         .autocapitalize="${ifDefined(this.autocapitalize)}"
-                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
                         .disabled="${ifDefined(this.disabled)}"
                         .form="${ifDefined(this.form)}"
                         .list="${ifDefined(this.list)}"

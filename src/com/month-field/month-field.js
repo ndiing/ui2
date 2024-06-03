@@ -92,7 +92,7 @@ class MDMonthFieldComponent extends MDElement {
                     class="md-month-field__native"
                     type="month"
                     .autocapitalize="${ifDefined(this.autocapitalize)}"    
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .list="${ifDefined(this.list)}"

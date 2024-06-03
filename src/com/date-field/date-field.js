@@ -92,7 +92,7 @@ class MDDateFieldComponent extends MDElement {
                     class="md-date-field__native"
                     type="date"
                     .autocapitalize="${ifDefined(this.autocapitalize)}"    
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .list="${ifDefined(this.list)}"

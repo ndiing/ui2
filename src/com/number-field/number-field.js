@@ -93,7 +93,7 @@ class MDNumberFieldComponent extends MDElement {
                     class="md-number-field__native"
                     type="number"
                     .autocapitalize="${ifDefined(this.autocapitalize)}"
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .list="${ifDefined(this.list)}"

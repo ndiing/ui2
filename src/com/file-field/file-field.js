@@ -91,7 +91,7 @@ class MDFileFieldComponent extends MDElement {
                     class="md-file-field__native"
                     type="file"
                     .autocapitalize="${ifDefined(this.autocapitalize)}"
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .list="${ifDefined(this.list)}"

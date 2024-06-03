@@ -91,7 +91,7 @@ class MDPasswordFieldComponent extends MDElement {
                 <input
                     class="md-password-field__native"
                     .type="${this.type}"
-                    .autocomplete="${ifDefined(this.autocomplete)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
                     .disabled="${ifDefined(this.disabled)}"
                     .form="${ifDefined(this.form)}"
                     .name="${ifDefined(this.name)}"
