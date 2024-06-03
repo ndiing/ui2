@@ -10,7 +10,7 @@ class AppMainElement extends MDElement {
     constructor() {
         super();
 
-        const data = new MDDataModule([
+        this.list=[
             {
                 label: "Foundations",
                 children: [
@@ -111,13 +111,17 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
                 ],
             },
-        ]);
+        ]
 
-        this.list = data.getAll({ sorters: [{ name: "label", order: "asc" }] }).rows;
-
-        this.list.forEach((item) => {
-            item.selected = item.routerLink == MDRouterModule.path;
-        });
+        select(this.list)
+        function select(list){
+            list.forEach(item=>{
+                item.selected=item.routerLink == MDRouterModule.path
+                if(item.children){
+                    select(item.children)
+                }
+            })
+        }
     }
 
     render() {
@@ -134,7 +138,7 @@ class AppMainElement extends MDElement {
                     id="drawer"
                     .list="${this.list}"
                     .open="${true}"
-                    .ui="${"tree"}"
+                    .ui="${"level"}"
                     @onNestedListItemClick="${this.handleListItemClick}"
                     @onNestedListItemSelected="${this.handleListItemSelected}"
                 ></md-navigation-drawer>
@@ -172,10 +176,10 @@ class AppMainElement extends MDElement {
     handleLayoutChange(event) {
         if (event.detail.name == "expanded") {
             this.bar.close();
-            this.drawer.ui = "tree";
+            this.drawer.ui = "level";
             this.drawer.show();
         } else {
-            this.drawer.ui = "tree modal";
+            this.drawer.ui = "level modal";
             this.drawer.close();
             this.bar.show();
         }
