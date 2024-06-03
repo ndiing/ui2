@@ -200,3 +200,7 @@
         z-index: 3;
     }
 }
+
+th.md-ripple--dragged{
+    box-shadow: var(--md-sys-elevation-level0);
+}
