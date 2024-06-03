@@ -62,7 +62,6 @@ const routes = [
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "time-field", load: () => import("./time-field/time-field.js").then((m) => m.default) },
             { path: "textarea-field", load: () => import("./textarea-field/textarea-field.js").then((m) => m.default) },
-            { path: "temp-field", load: () => import("./temp-field/temp-field.js").then((m) => m.default) },
             { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
         ],
     },
