@@ -10,8 +10,7 @@ function open(pathname) {
             if (dir.name.endsWith(".js")) {
                 let content = read(pathname2,'');
                 content=parse(content);
-                console.log(content)
-                // write(pathname2,content)
+                write(pathname2,content)
             }
         }
     }
