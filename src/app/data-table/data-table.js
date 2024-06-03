@@ -54,12 +54,12 @@ class AppDataTableElement extends MDElement {
         ];
 
         this.columns3 = [
-            { name: "id", label: "ID", sortable: true,width:56*1 },
-            { name: "tanggal", label: "Tanggal", sortable: true,width:56*5 },
-            { name: "deskripsi", label: "Deskripsi", sortable: true,width:56*5 },
-            { name: "jumlah", label: "Jumlah", sortable: true, format: formatIDR,width:56*3 },
-            { name: "kategori", label: "Kategori", sortable: true,width:56*5 },
-            { name: "saldo", label: "Saldo", sortable: true, format: formatIDR,width:56*3 },
+            { name: "id", label: "ID", sortable: true, width: 56 * 1 },
+            { name: "tanggal", label: "Tanggal", sortable: true, width: 56 * 5 },
+            { name: "deskripsi", label: "Deskripsi", sortable: true, width: 56 * 5 },
+            { name: "jumlah", label: "Jumlah", sortable: true, format: formatIDR, width: 56 * 3 },
+            { name: "kategori", label: "Kategori", sortable: true, width: 56 * 5 },
+            { name: "saldo", label: "Saldo", sortable: true, format: formatIDR, width: 56 * 3 },
         ];
 
         this.data3 = new MDDataModule([
@@ -83,9 +83,7 @@ class AppDataTableElement extends MDElement {
                 class="md-layout-column"
                 style="margin:24px;"
             >
-            
-                <div class="md-layout-column__item md-layout-column__item--expanded10 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded10 md-layout-column__item--medium4 md-layout-column__item--compact4"></div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-search-field
                         placeholder="search"
@@ -120,7 +118,6 @@ class AppDataTableElement extends MDElement {
                         checkbox
                     ></md-data-table>
                 </div>
-
             </div>
         `;
     }

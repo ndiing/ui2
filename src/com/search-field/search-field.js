@@ -196,10 +196,12 @@ class MDSearchFieldComponent extends MDElement {
         this.searchFieldNative.value = "";
         this.value = this.searchFieldNative.value;
         this.populated = !!this.value;
-        this.searchFieldNative.dispatchEvent(new CustomEvent('search',{
-            bubbles:true,
-            cancelable:true
-        }))
+        this.searchFieldNative.dispatchEvent(
+            new CustomEvent("search", {
+                bubbles: true,
+                cancelable: true,
+            }),
+        );
         this.emit("onSearchFieldNativeActionCancelClick", event);
     }
 

@@ -113,7 +113,7 @@ class AppMainElement extends MDElement {
             },
         ];
 
-        // this.list=this.list.map(item=>item.children).flat()
+        this.list = this.list.map((item) => item.children).flat();
 
         select(this.list);
         function select(list) {

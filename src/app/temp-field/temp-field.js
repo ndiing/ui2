@@ -57,7 +57,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -116,7 +116,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -169,7 +169,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -234,7 +234,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -287,7 +287,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -352,7 +352,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -405,7 +405,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -470,7 +470,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -523,7 +523,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -588,7 +588,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -641,7 +641,7 @@ class AppTempFieldElement extends MDElement {
                             name="text"
                             required
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
@@ -706,7 +706,7 @@ class AppTempFieldElement extends MDElement {
                             label="Label text"
                             text="Supporting text"
                             placeholder="Placeholder text"
-                            .trailingActions="${[{ icon: "image" },{ icon: "image" }]}"
+                            .trailingActions="${[{ icon: "image" }, { icon: "image" }]}"
                         ></md-temp-field>
                     </div>
 
