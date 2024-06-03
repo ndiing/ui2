@@ -104,6 +104,7 @@ class MDSearchFieldComponent extends MDElement {
                     @focus="${this.handleSearchFieldNativeFocus}"
                     @blur="${this.handleSearchFieldNativeBlur}"
                     @input="${this.handleSearchFieldNativeInput}"
+                    @search="${this.handleSearchFieldNativeSearch}"
                     @invalid="${this.handleSearchFieldNativeInvalid}"
                     @reset="${this.handleSearchFieldNativeReset}"
                 />
@@ -224,6 +225,14 @@ class MDSearchFieldComponent extends MDElement {
         this.validationMessage = this.searchFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onSearchFieldNativeInput", event);
+    }
+
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeSearch
+     */
+    handleSearchFieldNativeSearch(event) {
+        this.emit("onSearchFieldNativeSearch", event);
     }
 
     /**

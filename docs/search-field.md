@@ -17,6 +17,7 @@
         * [.handleSearchFieldNativeFocus()](#MDSearchFieldComponent+handleSearchFieldNativeFocus)
         * [.handleSearchFieldNativeBlur()](#MDSearchFieldComponent+handleSearchFieldNativeBlur)
         * [.handleSearchFieldNativeInput()](#MDSearchFieldComponent+handleSearchFieldNativeInput)
+        * [.handleSearchFieldNativeSearch()](#MDSearchFieldComponent+handleSearchFieldNativeSearch)
         * [.handleSearchFieldNativeInvalid()](#MDSearchFieldComponent+handleSearchFieldNativeInvalid)
         * [.handleSearchFieldNativeReset()](#MDSearchFieldComponent+handleSearchFieldNativeReset)
     * _static_
@@ -71,6 +72,11 @@
 ### mdSearchFieldComponent.handleSearchFieldNativeInput()
 **Kind**: instance method of [<code>MDSearchFieldComponent</code>](#MDSearchFieldComponent)  
 **Emits**: <code>MDSearchFieldComponent#event:onSearchFieldNativeInput</code>  
+<a name="MDSearchFieldComponent+handleSearchFieldNativeSearch"></a>
+
+### mdSearchFieldComponent.handleSearchFieldNativeSearch()
+**Kind**: instance method of [<code>MDSearchFieldComponent</code>](#MDSearchFieldComponent)  
+**Emits**: <code>MDSearchFieldComponent#event:onSearchFieldNativeSearch</code>  
 <a name="MDSearchFieldComponent+handleSearchFieldNativeInvalid"></a>
 
 ### mdSearchFieldComponent.handleSearchFieldNativeInvalid()
