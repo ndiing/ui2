@@ -2,7 +2,18 @@ import { html } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDProgressIndicatorComponent
+ * @extends MDElement
+ */
 class MDProgressIndicatorComponent extends MDElement {
+    /**
+     *
+     * @property {Number} [max] -
+     * @property {Number} [value] -
+     * @property {String} [ui] - linear,circular
+     */
     static get properties() {
         return {
             max: { type: Number },
@@ -11,12 +22,18 @@ class MDProgressIndicatorComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.max = 100;
         this.value = 0;
     }
 
+    /**
+     *
+     */
     renderLinear() {
         /* prettier-ignore */
         return html`
@@ -27,6 +44,9 @@ class MDProgressIndicatorComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderCircular() {
         /* prettier-ignore */
         return html`
@@ -37,22 +57,34 @@ class MDProgressIndicatorComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     render() {
         return this.ui?.includes("circular") ? this.renderCircular() : this.renderLinear();
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-progress-indicator");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-progress-indicator");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["linear", "circular"].forEach((ui) => {
@@ -69,6 +101,9 @@ class MDProgressIndicatorComponent extends MDElement {
         this.style.setProperty("--md-progress-indicator-percentage", this.percentageValue);
     }
 
+    /**
+     *
+     */
     calculatePercentage(min, max, value) {
         if (min >= max) {
             throw new Error("Min should be less than Max");

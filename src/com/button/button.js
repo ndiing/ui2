@@ -3,7 +3,20 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ *
+ * @class MDButtonComponent
+ * @extends MDElement
+ */
 class MDButtonComponent extends MDElement {
+    /**
+     *
+     * @property {String} [icon] -
+     * @property {String} [label] -
+     * @property {String} [ui] - elevated,filled,tonal,outlined
+     * @property {String} [type] -
+     * @property {Boolean} [selected] -
+     */
     static get properties() {
         return {
             icon: { type: String },
@@ -14,11 +27,17 @@ class MDButtonComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.type = "button";
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -28,10 +47,16 @@ class MDButtonComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     get buttonNative() {
         return this.querySelector(".md-button__native");
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-button");
@@ -41,6 +66,9 @@ class MDButtonComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-button");
@@ -48,6 +76,9 @@ class MDButtonComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["elevated", "filled", "tonal", "outlined"].forEach((ui) => {

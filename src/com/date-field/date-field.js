@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDDateFieldComponent
+ * @extends MDElement
+ */
 class MDDateFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [max] -
+     * @property {String} [min] -
+     * @property {String} [step] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -37,10 +71,16 @@ class MDDateFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -87,12 +127,18 @@ class MDDateFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-date-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-date-field");
@@ -104,12 +150,18 @@ class MDDateFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -123,20 +175,34 @@ class MDDateFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get colorFieldNative() {
         return this.querySelector(".md-date-field__native");
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionClick
+     */
     handleDateFieldNativeActionClick(event) {
         this.emit("onDateFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick
+     */
     handleDateFieldNativeActionCalendarClockClick(event) {
         this.handleColorPicker();
 
         this.emit("onDateFieldNativeActionCalendarClockClick", event);
     }
 
+    /**
+     *
+     */
     handleColorPicker() {
         this.dateFieldPicker = document.createElement("md-date-picker");
         this.parentElement.insertBefore(this.dateFieldPicker, this.nextElementSibling);
@@ -164,6 +230,9 @@ class MDDateFieldComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleDateFieldPickerChange(event) {
         this.colorFieldNative.value = [this.dateFieldPicker.selected.getFullYear(), ("" + (this.dateFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.dateFieldPicker.selected.getDate()).padStart(2, "0")].join("-");
         this.value = this.colorFieldNative.value;
@@ -172,26 +241,44 @@ class MDDateFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
+    /**
+     *
+     */
     handleDateFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.dateFieldPicker.close();
     }
 
+    /**
+     *
+     */
     handleDateFieldPickerButtonOkClick(event) {
         this.dateFieldPicker.close();
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeFocus
+     */
     handleDateFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onDateFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeBlur
+     */
     handleDateFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onDateFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInput
+     */
     handleDateFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -200,6 +287,10 @@ class MDDateFieldComponent extends MDElement {
         this.emit("onDateFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInvalid
+     */
     handleDateFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -207,6 +298,10 @@ class MDDateFieldComponent extends MDElement {
         this.emit("onDateFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeReset
+     */
     handleDateFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -217,6 +312,10 @@ class MDDateFieldComponent extends MDElement {
         this.emit("onDateFieldNativeReset", event);
     }
 
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeClick
+     */
     handleDateFieldNativeClick(event) {
         event.preventDefault();
 

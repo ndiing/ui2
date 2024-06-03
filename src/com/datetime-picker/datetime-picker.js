@@ -3,7 +3,19 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDPopperModule } from "../popper/popper";
 
+/**
+ *
+ * @class MDDatetimePickerComponent
+ * @extends MDElement
+ */
 class MDDatetimePickerComponent extends MDElement {
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] -
+     * @property {Number} [index] -
+     * @property {String} [value] -
+     */
     static get properties() {
         return {
             ui: { type: String },
@@ -13,10 +25,16 @@ class MDDatetimePickerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
 
+    /**
+     *
+     */
     get last() {}
 
     get years() {
@@ -32,6 +50,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -47,6 +68,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -57,6 +81,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -79,6 +106,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -98,6 +128,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -119,6 +152,9 @@ class MDDatetimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get label() {
         if (this.index == 0) {
             return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
@@ -131,10 +167,16 @@ class MDDatetimePickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get subLabel() {
         return this.timeFormat(this.selected);
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
 
@@ -177,6 +219,9 @@ class MDDatetimePickerComponent extends MDElement {
         this.index = 2;
     }
 
+    /**
+     *
+     */
     renderYears() {
         /* prettier-ignore */
         return html`
@@ -197,6 +242,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMonths() {
         /* prettier-ignore */
         return html`
@@ -217,6 +265,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderDays() {
         /* prettier-ignore */
         return html`
@@ -251,6 +302,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderHours() {
         /* prettier-ignore */
         return html`
@@ -268,6 +322,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMinutes() {
         /* prettier-ignore */
         return html`
@@ -285,6 +342,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderCard() {
         /* prettier-ignore */
         return html`
@@ -298,6 +358,9 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -332,6 +395,9 @@ class MDDatetimePickerComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-datetime-picker");
@@ -343,6 +409,9 @@ class MDDatetimePickerComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-datetime-picker");
@@ -351,12 +420,21 @@ class MDDatetimePickerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     async firstUpdated() {
         await this.updateComplete;
 
         this.updateFromValue();
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerShow
+     * @fires MDDatetimePickerComponent#onDatetimePickerClose
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["full-screen"].forEach((ui) => {
@@ -393,6 +471,9 @@ class MDDatetimePickerComponent extends MDElement {
         this.style.setProperty("--md-datetime-picker-index", this.index);
     }
 
+    /**
+     *
+     */
     updateFromValue() {
         const date = new Date(this.value);
 
@@ -405,6 +486,9 @@ class MDDatetimePickerComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -415,11 +499,17 @@ class MDDatetimePickerComponent extends MDElement {
         this.popper.set();
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -428,12 +518,20 @@ class MDDatetimePickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerScrimClick
+     */
     handleDatetimePickerScrimClick(event) {
         this.close();
 
         this.emit("onDatetimePickerScrimClick", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerLabelPrimaryClick
+     */
     handleDatetimePickerLabelPrimaryClick(event) {
         if (this.index == 0) {
             this.index = 2;
@@ -446,6 +544,10 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerLabelPrimaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerLabelSecondaryClick
+     */
     handleDatetimePickerLabelSecondaryClick(event) {
         if (this.index == 2) {
             this.index = 3;
@@ -458,6 +560,10 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerLabelSecondaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerActionNavigateBeforeClick
+     */
     handleDatetimePickerActionNavigateBeforeClick(event) {
         if (this.index == 0) {
             this.selected.setFullYear(this.selected.getFullYear() - 10);
@@ -476,6 +582,10 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerActionNavigateBeforeClick", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerActionNavigateNextClick
+     */
     handleDatetimePickerActionNavigateNextClick(event) {
         if (this.index == 0) {
             this.selected.setFullYear(this.selected.getFullYear() + 10);
@@ -494,6 +604,11 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerActionNavigateNextClick", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerYearClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerYearClick(event) {
         const data = event.currentTarget.data;
 
@@ -505,6 +620,11 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerMonthClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -517,6 +637,11 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerDayClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -530,6 +655,11 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerHourClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -544,6 +674,11 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerMinuteClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -559,11 +694,21 @@ class MDDatetimePickerComponent extends MDElement {
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonCancelClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerButtonCancelClick(event) {
         this.emit("onDatetimePickerButtonCancelClick", event);
         this.emit("onDatetimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonOkClick
+     * @fires MDDatetimePickerComponent#onDatetimePickerChange
+     */
     handleDatetimePickerButtonOkClick(event) {
         this.emit("onDatetimePickerButtonOkClick", event);
         this.emit("onDatetimePickerChange", event);

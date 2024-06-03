@@ -2,7 +2,19 @@ import { html } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDImageComponent
+ * @extends MDElement
+ */
 class MDImageComponent extends MDElement {
+    /**
+     *
+     * @property {String} [src] -
+     * @property {String} [alt] -
+     * @property {String} [ratio] -
+     * @property {String} [ui] - rounded
+     */
     static get properties() {
         return {
             src: { type: String },
@@ -12,10 +24,16 @@ class MDImageComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -27,18 +45,27 @@ class MDImageComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-image");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-image");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ratio")) {
             this.style.removeProperty("aspect-ratio");

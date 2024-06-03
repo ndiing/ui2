@@ -3,7 +3,19 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDPopperModule } from "../popper/popper";
 
+/**
+ *
+ * @class MDTimePickerComponent
+ * @extends MDElement
+ */
 class MDTimePickerComponent extends MDElement {
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] -
+     * @property {Number} [index] -
+     * @property {String} [value] -
+     */
     static get properties() {
         return {
             ui: { type: String },
@@ -13,10 +25,16 @@ class MDTimePickerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
 
+    /**
+     *
+     */
     get last() {}
 
     get years() {
@@ -32,6 +50,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -47,6 +68,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -57,6 +81,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -79,6 +106,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -98,6 +128,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -119,6 +152,9 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get label() {
         if (this.index == 0) {
             return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
@@ -131,10 +167,16 @@ class MDTimePickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get subLabel() {
         return this.timeFormat(this.selected);
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
 
@@ -176,6 +218,9 @@ class MDTimePickerComponent extends MDElement {
         this.index = 0;
     }
 
+    /**
+     *
+     */
     renderYears() {
         /* prettier-ignore */
         return html`
@@ -196,6 +241,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMonths() {
         /* prettier-ignore */
         return html`
@@ -216,6 +264,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderDays() {
         /* prettier-ignore */
         return html`
@@ -250,6 +301,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderHours() {
         /* prettier-ignore */
         return html`
@@ -267,6 +321,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMinutes() {
         /* prettier-ignore */
         return html`
@@ -284,6 +341,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderCard() {
         /* prettier-ignore */
         return html`
@@ -294,6 +354,9 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -325,6 +388,9 @@ class MDTimePickerComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-picker");
@@ -336,6 +402,9 @@ class MDTimePickerComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-time-picker");
@@ -344,12 +413,21 @@ class MDTimePickerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     async firstUpdated() {
         await this.updateComplete;
 
         this.updateFromValue();
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerShow
+     * @fires MDTimePickerComponent#onTimePickerClose
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["full-screen"].forEach((ui) => {
@@ -386,6 +464,9 @@ class MDTimePickerComponent extends MDElement {
         this.style.setProperty("--md-time-picker-index", this.index);
     }
 
+    /**
+     *
+     */
     updateFromValue() {
         const date = new Date();
 
@@ -400,6 +481,9 @@ class MDTimePickerComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -410,11 +494,17 @@ class MDTimePickerComponent extends MDElement {
         this.popper.set();
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -423,12 +513,20 @@ class MDTimePickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerScrimClick
+     */
     handleTimePickerScrimClick(event) {
         this.close();
 
         this.emit("onTimePickerScrimClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerLabelPrimaryClick
+     */
     handleTimePickerLabelPrimaryClick(event) {
         if (this.index == 0) {
             this.index = 2;
@@ -441,6 +539,10 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerLabelPrimaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick
+     */
     handleTimePickerLabelSecondaryClick(event) {
         if (this.index == 0) {
             this.index = 1;
@@ -451,6 +553,10 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerLabelSecondaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateBeforeClick
+     */
     handleTimePickerActionNavigateBeforeClick(event) {
         if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() - 1);
@@ -463,6 +569,10 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerActionNavigateBeforeClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateNextClick
+     */
     handleTimePickerActionNavigateNextClick(event) {
         if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
@@ -475,6 +585,11 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerActionNavigateNextClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerYearClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerYearClick(event) {
         const data = event.currentTarget.data;
 
@@ -486,6 +601,11 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerMonthClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -498,6 +618,11 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerDayClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -511,6 +636,11 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerHourClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -525,6 +655,11 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerMinuteClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -540,11 +675,21 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonCancelClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerButtonCancelClick(event) {
         this.emit("onTimePickerButtonCancelClick", event);
         this.emit("onTimePickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonOkClick
+     * @fires MDTimePickerComponent#onTimePickerChange
+     */
     handleTimePickerButtonOkClick(event) {
         this.emit("onTimePickerButtonOkClick", event);
         this.emit("onTimePickerChange", event);

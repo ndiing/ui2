@@ -3,7 +3,27 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { classMap } from "lit/directives/class-map.js";
 
+/**
+ *
+ * @class MDSliderComponent
+ * @extends MDElement
+ */
 class MDSliderComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {Boolean} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {String} [type] -
+     * @property {Number} [max] -
+     * @property {Number} [min] -
+     * @property {Number} [step] -
+     * @property {Array} [defaultValue] -
+     * @property {Function} [convertLabel] -
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -25,11 +45,17 @@ class MDSliderComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.convertLabel = (value) => value;
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -70,26 +96,41 @@ class MDSliderComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-slider");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-slider");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     get sliderNative1() {
         return this.querySelector(".md-slider__native1");
     }
 
+    /**
+     *
+     */
     get sliderNative2() {
         return this.querySelector(".md-slider__native2");
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.min = this.min ?? 0;
@@ -102,6 +143,9 @@ class MDSliderComponent extends MDElement {
         if (this.sliderNative2) this.sliderNative2.value = this.value[1];
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("step")) {
             this.classList.remove("md-slider--discrete");
@@ -133,6 +177,9 @@ class MDSliderComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleSliderNativeInput(event) {
         if (this.sliderNative2) {
             this.sliderNative1.value = Math.min(this.sliderNative1.value, this.value[1]);
@@ -145,6 +192,9 @@ class MDSliderComponent extends MDElement {
         this.emit("onSliderNativeInput");
     }
 
+    /**
+     *
+     */
     handleSliderNativeReset(event) {
         this.sliderNative1.value = this.defaultValue[0];
         if (this.sliderNative2) this.sliderNative2.value = this.defaultValue[1];
@@ -152,6 +202,9 @@ class MDSliderComponent extends MDElement {
         this.emit("onSliderNativeReset");
     }
 
+    /**
+     *
+     */
     calculatePercentage(min, max, value) {
         if (min >= max) {
             throw new Error("Min should be less than Max");
@@ -162,6 +215,9 @@ class MDSliderComponent extends MDElement {
         return ((value - min) / (max - min)) * 100;
     }
 
+    /**
+     *
+     */
     calculateDecimal(min, max, value) {
         if (min >= max) {
             throw new Error("Min should be less than Max");

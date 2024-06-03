@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDPopperModule
+ */
 class MDPopperModule {
+    /**
+     *
+     */
     constructor(host, options) {
         this.host = host;
         this.options = {
@@ -12,10 +19,16 @@ class MDPopperModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-popper");
     }
 
+    /**
+     *
+     */
     get(placement) {
         const containerRect = this.host.getBoundingClientRect();
         const buttonRect = this.options.button.getBoundingClientRect();
@@ -152,6 +165,9 @@ class MDPopperModule {
         };
     }
 
+    /**
+     *
+     */
     set() {
         for (const placement of this.options.placements) {
             const { exceed, left, top } = this.get(placement);
@@ -165,6 +181,9 @@ class MDPopperModule {
         }
     }
 
+    /**
+     *
+     */
     destroy() {
         this.host.classList.remove("md-popper");
     }

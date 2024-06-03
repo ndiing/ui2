@@ -2,7 +2,44 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDTelFieldComponent
+ * @extends MDElement
+ */
 class MDTelFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [dirname] -
+     * @property {Number} [maxlength] -
+     * @property {Number} [minlength] -
+     * @property {String} [pattern] -
+     * @property {String} [placeholder] -
+     * @property {Number} [size] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -40,10 +77,16 @@ class MDTelFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -92,12 +135,18 @@ class MDTelFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tel-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tel-field");
@@ -109,12 +158,18 @@ class MDTelFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -128,24 +183,43 @@ class MDTelFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get telFieldNative() {
         return this.querySelector(".md-tel-field__native");
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeActionClick
+     */
     handleTelFieldNativeActionClick(event) {
         this.emit("onTelFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeFocus
+     */
     handleTelFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onTelFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeBlur
+     */
     handleTelFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTelFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeInput
+     */
     handleTelFieldNativeInput(event) {
         this.value = this.telFieldNative.value;
         this.populated = !!this.value;
@@ -154,6 +228,10 @@ class MDTelFieldComponent extends MDElement {
         this.emit("onTelFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeInvalid
+     */
     handleTelFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.telFieldNative.validationMessage;
@@ -161,6 +239,10 @@ class MDTelFieldComponent extends MDElement {
         this.emit("onTelFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDTelFieldComponent#onTelFieldNativeReset
+     */
     handleTelFieldNativeReset(event) {
         this.telFieldNative.value = this.defaultValue;
         this.value = this.telFieldNative.value;

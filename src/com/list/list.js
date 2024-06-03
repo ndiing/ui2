@@ -3,7 +3,32 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ *
+ * @class MDListItemComponent
+ * @extends MDElement
+ */
 class MDListItemComponent extends MDElement {
+    /**
+     *
+     * @property {String} [avatar] -
+     * @property {String} [thumbnail] -
+     * @property {String} [video] -
+     * @property {Object} [leadingCheckbox] -
+     * @property {Object} [leadingRadioButton] -
+     * @property {Object} [leadingSwitch] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {String} [trailingIcon] -
+     * @property {Object} [trailingCheckbox] -
+     * @property {Object} [trailingRadioButton] -
+     * @property {Object} [trailingSwitch] -
+     * @property {String} [text] -
+     * @property {Object} [badge] -
+     * @property {Boolean} [selected] -
+     * @property {String} [routerLink] -
+     */
     static get properties() {
         return {
             avatar: { type: String },
@@ -26,10 +51,16 @@ class MDListItemComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -61,10 +92,16 @@ class MDListItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     get labelSecondary() {
         return this.querySelector(".md-list__label-secondary");
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -82,6 +119,9 @@ class MDListItemComponent extends MDElement {
         this.ripple = new MDRippleModule(this, {});
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -90,6 +130,10 @@ class MDListItemComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     * @fires MDListItemComponent#onListItemSelected
+     */
     firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
@@ -100,14 +144,26 @@ class MDListItemComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDListItemComponent#onListItemCheckboxNativeInput
+     */
     handleListItemCheckboxNativeInput(event) {
         this.emit("onListItemCheckboxNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDListItemComponent#onListItemRadioButtonNativeInput
+     */
     handleListItemRadioButtonNativeInput(event) {
         this.emit("onListItemRadioButtonNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDListItemComponent#onListItemSwitchNativeInput
+     */
     handleListItemSwitchNativeInput(event) {
         this.emit("onListItemSwitchNativeInput", event);
     }
@@ -115,20 +171,37 @@ class MDListItemComponent extends MDElement {
 
 customElements.define("md-list-item", MDListItemComponent);
 
+/**
+ *
+ * @class MDListRowComponent
+ * @extends MDElement
+ */
 class MDListRowComponent extends MDElement {
+    /**
+     *
+     */
     static get properties() {
         return {};
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html``;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -136,6 +209,9 @@ class MDListRowComponent extends MDElement {
         this.classList.add("md-list__row");
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -148,7 +224,20 @@ class MDListRowComponent extends MDElement {
 
 customElements.define("md-list-row", MDListRowComponent);
 
+/**
+ *
+ * @class MDListComponent
+ * @extends MDElement
+ */
 class MDListComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [list] -
+     * @property {Boolean} [rangeSelection] -
+     * @property {Boolean} [multiSelection] -
+     * @property {Boolean} [singleSelection] -
+     * @property {Boolean} [allSelection] -
+     */
     static get properties() {
         return {
             list: { type: Array },
@@ -159,10 +248,16 @@ class MDListComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     renderItem(item) {
         /* prettier-ignore */
         return html`
@@ -195,10 +290,16 @@ class MDListComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     render() {
         return this.list?.map((item) => this.renderItem(item));
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -208,6 +309,9 @@ class MDListComponent extends MDElement {
         this.addEventListener("keydown", this.handleListKeydown);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -216,6 +320,10 @@ class MDListComponent extends MDElement {
         this.removeEventListener("keydown", this.handleListKeydown);
     }
 
+    /**
+     *
+     * @fires MDListComponent#onListItemClick
+     */
     updated(changedProperties) {}
 
     handleListItemClick(event) {
@@ -253,6 +361,10 @@ class MDListComponent extends MDElement {
         this.emit("onListItemClick", event);
     }
 
+    /**
+     *
+     * @fires MDListComponent#onListKeydown
+     */
     handleListKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -264,12 +376,18 @@ class MDListComponent extends MDElement {
         this.emit("onListKeydown", event);
     }
 
+    /**
+     *
+     */
     handleListItemCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
     handleListItemRadioButtonNativeInput(event) {
         const data = event.currentTarget.data;
         this.list.forEach((item) => {
@@ -278,6 +396,9 @@ class MDListComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
     handleListItemSwitchNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;

@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDWeekFieldComponent
+ * @extends MDElement
+ */
 class MDWeekFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [max] -
+     * @property {String} [min] -
+     * @property {String} [step] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -37,10 +71,16 @@ class MDWeekFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -87,12 +127,18 @@ class MDWeekFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-week-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-week-field");
@@ -104,12 +150,18 @@ class MDWeekFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -123,20 +175,34 @@ class MDWeekFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get colorFieldNative() {
         return this.querySelector(".md-week-field__native");
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeActionClick
+     */
     handleWeekFieldNativeActionClick(event) {
         this.emit("onWeekFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick
+     */
     handleWeekFieldNativeActionCalendarClockClick(event) {
         this.handleColorPicker();
 
         this.emit("onWeekFieldNativeActionCalendarClockClick", event);
     }
 
+    /**
+     *
+     */
     handleColorPicker() {
         this.weekFieldPicker = document.createElement("md-week-picker");
         this.parentElement.insertBefore(this.weekFieldPicker, this.nextElementSibling);
@@ -164,6 +230,9 @@ class MDWeekFieldComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleWeekFieldPickerChange(event) {
         this.colorFieldNative.value = [this.weekFieldPicker.selected.getFullYear(), ("" + this.weekFieldPicker.selected.getWeek()).padStart(2, "0")].join("-W");
         this.value = this.colorFieldNative.value;
@@ -172,26 +241,44 @@ class MDWeekFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
+    /**
+     *
+     */
     handleWeekFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.weekFieldPicker.close();
     }
 
+    /**
+     *
+     */
     handleWeekFieldPickerButtonOkClick(event) {
         this.weekFieldPicker.close();
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeFocus
+     */
     handleWeekFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onWeekFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeBlur
+     */
     handleWeekFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onWeekFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeInput
+     */
     handleWeekFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -200,6 +287,10 @@ class MDWeekFieldComponent extends MDElement {
         this.emit("onWeekFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeInvalid
+     */
     handleWeekFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -207,6 +298,10 @@ class MDWeekFieldComponent extends MDElement {
         this.emit("onWeekFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeReset
+     */
     handleWeekFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -217,6 +312,10 @@ class MDWeekFieldComponent extends MDElement {
         this.emit("onWeekFieldNativeReset", event);
     }
 
+    /**
+     *
+     * @fires MDWeekFieldComponent#onWeekFieldNativeClick
+     */
     handleWeekFieldNativeClick(event) {
         event.preventDefault();
 

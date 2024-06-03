@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDLayoutModule
+ */
 class MDLayoutModule {
+    /**
+     *
+     */
     constructor() {
         this.list = [
             {
@@ -19,10 +26,16 @@ class MDLayoutModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.callback();
     }
 
+    /**
+     *
+     */
     callback() {
         if (this.item) {
             this.item.query.removeEventListener("change", this.callback);

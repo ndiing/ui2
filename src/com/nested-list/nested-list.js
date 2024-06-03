@@ -4,7 +4,25 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 import { choose } from "lit/directives/choose.js";
 
+/**
+ *
+ * @class MDNestedListItemComponent
+ * @extends MDElement
+ */
 class MDNestedListItemComponent extends MDElement {
+    /**
+     *
+     * @property {String} [label] -
+     * @property {Boolean} [selected] -
+     * @property {String} [routerLink] -
+     * @property {Number} [indent] -
+     * @property {Boolean} [isNode] -
+     * @property {String} [ui] -
+     * @property {Boolean} [expanded] -
+     * @property {Boolean} [activated] -
+     * @property {Boolean} [isParent] -
+     * @property {Boolean} [hasLevel] -
+     */
     static get properties() {
         return {
             label: { type: String },
@@ -20,10 +38,16 @@ class MDNestedListItemComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     renderTree() {
         /* prettier-ignore */
         return html`
@@ -38,6 +62,9 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     renderLevel() {
         /* prettier-ignore */
         return html`
@@ -49,6 +76,9 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     renderAccordion() {
         /* prettier-ignore */
         return html`
@@ -60,6 +90,9 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     render() {
         return choose(
             this.ui,
@@ -71,10 +104,16 @@ class MDNestedListItemComponent extends MDElement {
         );
     }
 
+    /**
+     *
+     */
     get labelSecondary() {
         return this.querySelector(".md-nested-list__label-secondary");
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -84,6 +123,9 @@ class MDNestedListItemComponent extends MDElement {
         this.ripple = new MDRippleModule(this, {});
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -92,6 +134,10 @@ class MDNestedListItemComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemSelected
+     */
     firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
@@ -102,6 +148,10 @@ class MDNestedListItemComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemActionClick
+     */
     handleNestedListItemActionClick(event) {
         this.emit("onNestedListItemActionClick", event);
     }
@@ -109,20 +159,37 @@ class MDNestedListItemComponent extends MDElement {
 
 customElements.define("md-nested-list-item", MDNestedListItemComponent);
 
+/**
+ *
+ * @class MDNestedListRowComponent
+ * @extends MDElement
+ */
 class MDNestedListRowComponent extends MDElement {
+    /**
+     *
+     */
     static get properties() {
         return {};
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html``;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -130,6 +197,9 @@ class MDNestedListRowComponent extends MDElement {
         this.classList.add("md-nested-list__row");
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -142,7 +212,21 @@ class MDNestedListRowComponent extends MDElement {
 
 customElements.define("md-nested-list-row", MDNestedListRowComponent);
 
+/**
+ *
+ * @class MDNestedListComponent
+ * @extends MDElement
+ */
 class MDNestedListComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [list] -
+     * @property {Boolean} [rangeSelection] -
+     * @property {Boolean} [multiSelection] -
+     * @property {Boolean} [singleSelection] -
+     * @property {Boolean} [allSelection] -
+     * @property {String} [ui] - tree,level,accordion
+     */
     static get properties() {
         return {
             list: { type: Array },
@@ -154,12 +238,18 @@ class MDNestedListComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
 
         this.singleSelection = true;
     }
 
+    /**
+     *
+     */
     renderItem(item) {
         /* prettier-ignore */
         return html`
@@ -188,11 +278,17 @@ class MDNestedListComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     render() {
         let list = this.ui == "level" ? this.lastList(this.list) || this.list : this.list;
         return list?.map((item) => this.renderItem(item));
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -202,6 +298,9 @@ class MDNestedListComponent extends MDElement {
         this.addEventListener("keydown", this.handleNestedListKeydown);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -210,6 +309,9 @@ class MDNestedListComponent extends MDElement {
         this.removeEventListener("keydown", this.handleNestedListKeydown);
     }
 
+    /**
+     *
+     */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["tree", "level", "accordion"].forEach((ui) => {
@@ -229,6 +331,9 @@ class MDNestedListComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     createList(list, indent = 0) {
         let expanded = false;
         let activated = false;
@@ -268,6 +373,9 @@ class MDNestedListComponent extends MDElement {
         return { expanded, activated };
     }
 
+    /**
+     *
+     */
     lastList(list) {
         let last;
         list?.forEach((item) => {
@@ -284,6 +392,10 @@ class MDNestedListComponent extends MDElement {
         return last;
     }
 
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListItemClick
+     */
     handleNestedListItemClick(event) {
         if (event.target.closest(".md-nested-list__action")) {
             return;
@@ -321,6 +433,9 @@ class MDNestedListComponent extends MDElement {
         this.emit("onNestedListItemClick", event);
     }
 
+    /**
+     *
+     */
     selectList(list, data) {
         let activated = false;
         list.forEach((item) => {
@@ -339,6 +454,10 @@ class MDNestedListComponent extends MDElement {
         return activated;
     }
 
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListKeydown
+     */
     handleNestedListKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -350,10 +469,16 @@ class MDNestedListComponent extends MDElement {
         this.emit("onNestedListKeydown", event);
     }
 
+    /**
+     *
+     */
     expandList(list, data) {
         data.expanded = !data.expanded;
     }
 
+    /**
+     *
+     */
     handleNestedListItemActionClick(event) {
         const data = event.currentTarget.data;
         this.expandList(this.list, data.isParent ? data.parent : data);

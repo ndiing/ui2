@@ -2,7 +2,23 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDBottomAppBarComponent
+ * @extends MDElement
+ */
 class MDBottomAppBarComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] -
+     * @property {Boolean} [open] -
+     * @property {Object} [fab] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -16,11 +32,17 @@ class MDBottomAppBarComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -64,28 +86,43 @@ class MDBottomAppBarComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-bottom-app-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-app-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -94,10 +131,18 @@ class MDBottomAppBarComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDBottomAppBarComponent#onBottomAppBarActionClick
+     */
     handleBottomAppBarActionClick(event) {
         this.emit("onBottomAppBarActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDBottomAppBarComponent#onBottomAppBarButtonClick
+     */
     handleBottomAppBarButtonClick(event) {
         this.emit("onBottomAppBarButtonClick", event);
     }

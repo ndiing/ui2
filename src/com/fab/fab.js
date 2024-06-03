@@ -3,7 +3,18 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ *
+ * @class MDFabComponent
+ * @extends MDElement
+ */
 class MDFabComponent extends MDElement {
+    /**
+     *
+     * @property {String} [icon] -
+     * @property {String} [label] -
+     * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
+     */
     static get properties() {
         return {
             icon: { type: String },
@@ -12,10 +23,16 @@ class MDFabComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -24,6 +41,9 @@ class MDFabComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-fab");
@@ -31,6 +51,9 @@ class MDFabComponent extends MDElement {
         this.ripple = new MDRippleModule(this, {});
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-fab");
@@ -38,6 +61,9 @@ class MDFabComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["small", "large", "extended", "surface", "secondary", "tertiary", "unelevated"].forEach((ui) => {

@@ -2,7 +2,44 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDEmailFieldComponent
+ * @extends MDElement
+ */
 class MDEmailFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [dirname] -
+     * @property {Number} [maxlength] -
+     * @property {Number} [minlength] -
+     * @property {String} [pattern] -
+     * @property {String} [placeholder] -
+     * @property {Number} [size] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -40,10 +77,16 @@ class MDEmailFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -92,12 +135,18 @@ class MDEmailFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-email-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-email-field");
@@ -109,12 +158,18 @@ class MDEmailFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -128,24 +183,43 @@ class MDEmailFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get emailFieldNative() {
         return this.querySelector(".md-email-field__native");
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeActionClick
+     */
     handleEmailFieldNativeActionClick(event) {
         this.emit("onEmailFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeFocus
+     */
     handleEmailFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onEmailFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeBlur
+     */
     handleEmailFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onEmailFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInput
+     */
     handleEmailFieldNativeInput(event) {
         this.value = this.emailFieldNative.value;
         this.populated = !!this.value;
@@ -154,6 +228,10 @@ class MDEmailFieldComponent extends MDElement {
         this.emit("onEmailFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInvalid
+     */
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.emailFieldNative.validationMessage;
@@ -161,6 +239,10 @@ class MDEmailFieldComponent extends MDElement {
         this.emit("onEmailFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeReset
+     */
     handleEmailFieldNativeReset(event) {
         this.emailFieldNative.value = this.defaultValue;
         this.value = this.emailFieldNative.value;

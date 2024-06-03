@@ -2,7 +2,35 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDColorFieldComponent
+ * @extends MDElement
+ */
 class MDColorFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {String} [value] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -31,11 +59,17 @@ class MDColorFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.value = "#000000";
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -88,12 +122,18 @@ class MDColorFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-color-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-field");
@@ -105,12 +145,18 @@ class MDColorFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -124,20 +170,34 @@ class MDColorFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get colorFieldNative() {
         return this.querySelector(".md-color-field__native");
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeActionClick
+     */
     handleColorFieldNativeActionClick(event) {
         this.emit("onColorFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeActionPaletteClick
+     */
     handleColorFieldNativeActionPaletteClick(event) {
         this.handleColorPicker();
 
         this.emit("onColorFieldNativeActionPaletteClick", event);
     }
 
+    /**
+     *
+     */
     handleColorPicker() {
         this.colorFieldPicker = document.createElement("md-color-picker");
         this.parentElement.insertBefore(this.colorFieldPicker, this.nextElementSibling);
@@ -165,31 +225,52 @@ class MDColorFieldComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleColorFieldPickerChange(event) {
         this.colorFieldNative.value = this.colorFieldPicker.selected.slice(0, 7);
         this.value = this.colorFieldNative.value;
     }
 
+    /**
+     *
+     */
     handleColorFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.colorFieldPicker.close();
     }
 
+    /**
+     *
+     */
     handleColorFieldPickerButtonOkClick(event) {
         this.colorFieldPicker.close();
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeFocus
+     */
     handleColorFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onColorFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeBlur
+     */
     handleColorFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onColorFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeInput
+     */
     handleColorFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -198,6 +279,10 @@ class MDColorFieldComponent extends MDElement {
         this.emit("onColorFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeInvalid
+     */
     handleColorFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -205,6 +290,10 @@ class MDColorFieldComponent extends MDElement {
         this.emit("onColorFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeReset
+     */
     handleColorFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -215,6 +304,10 @@ class MDColorFieldComponent extends MDElement {
         this.emit("onColorFieldNativeReset", event);
     }
 
+    /**
+     *
+     * @fires MDColorFieldComponent#onColorFieldNativeClick
+     */
     handleColorFieldNativeClick(event) {
         event.preventDefault();
 

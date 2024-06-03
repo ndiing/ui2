@@ -2,7 +2,22 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDTopAppBarComponent
+ * @extends MDElement
+ */
 class MDTopAppBarComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] - center-aligned,small,medium,large
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -15,11 +30,17 @@ class MDTopAppBarComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -62,18 +83,27 @@ class MDTopAppBarComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-top-app-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-top-app-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["center-aligned", "small", "medium", "large"].forEach((ui) => {
@@ -88,14 +118,23 @@ class MDTopAppBarComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -104,10 +143,18 @@ class MDTopAppBarComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarActionClick
+     */
     handleTopAppBarActionClick(event) {
         this.emit("onTopAppBarActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarButtonClick
+     */
     handleTopAppBarButtonClick(event) {
         this.emit("onTopAppBarButtonClick", event);
     }

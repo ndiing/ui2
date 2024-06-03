@@ -8,14 +8,14 @@ function open(pathname) {
             open(pathname2);
         } else {
             if (dir.name.endsWith(".js")) {
-                let content = read(pathname2,'');
-                content=parse(content);
-                write(pathname2,content)
+                let content = read(pathname2, "");
+                content = parse(content);
+                write(pathname2, content);
             }
         }
     }
 }
-open('./src/com')
+open("./src/com");
 function read(file, content) {
     try {
         content = fs.readFileSync(file, { encoding: "utf8" });
@@ -25,7 +25,7 @@ function read(file, content) {
 function write(file, content) {
     try {
     } catch (error) {}
-    fs.writeFileSync(file,content)
+    fs.writeFileSync(file, content);
 }
 const content = read("./src/com/nested-list/nested-list.js");
 // parse(content);
@@ -134,5 +134,5 @@ function parse(content) {
         return content;
     });
     // fs.writeFileSync("./src/dev/example.cjs", content);
-    return content
+    return content;
 }

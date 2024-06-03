@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDGestureModule
+ */
 class MDGestureModule {
+    /**
+     *
+     */
     constructor(host, options = {}) {
         this.host = host;
         this.options = {
@@ -12,6 +19,9 @@ class MDGestureModule {
         this.init();
     }
 
+    /**
+     *
+     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -21,6 +31,14 @@ class MDGestureModule {
         this.host.dispatchEvent(event);
     }
 
+    /**
+     *
+     * @fires MDGestureModule#onPress
+     * @fires MDGestureModule#onDragStart
+     * @fires MDGestureModule#onResizeStart
+     * @fires MDGestureModule#onDragStart
+     * @fires MDGestureModule#onResizeStart
+     */
     handlePointerdown(event) {
         this.resize = false;
         const resize = event.target.closest(".md-resize__item")?.classList.value.match(/--(\w+)$/)[1];
@@ -69,6 +87,11 @@ class MDGestureModule {
         }
     }
 
+    /**
+     *
+     * @fires MDGestureModule#onDrag
+     * @fires MDGestureModule#onResize
+     */
     handlePointermove(event) {
         const currentX = event.clientX - this.startX;
         const currentY = event.clientY - this.startY;
@@ -119,6 +142,14 @@ class MDGestureModule {
         }
     }
 
+    /**
+     *
+     * @fires MDGestureModule#onTap
+     * @fires MDGestureModule#onDoubleTap
+     * @fires MDGestureModule#onResizeDoubleTap
+     * @fires MDGestureModule#onDragEnd
+     * @fires MDGestureModule#onResizeEnd
+     */
     handlePointerup(event) {
         window.clearTimeout(this.presTimeout);
 
@@ -158,6 +189,9 @@ class MDGestureModule {
         window.removeEventListener("pointerup", this.handlePointerup);
     }
 
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-gesture");
 
@@ -179,6 +213,9 @@ class MDGestureModule {
         this.host.addEventListener("pointerdown", this.handlePointerdown);
     }
 
+    /**
+     *
+     */
     destroy() {
         this.host.removeEventListener("pointerdown", this.handlePointerdown);
 

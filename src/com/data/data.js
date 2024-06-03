@@ -1,8 +1,18 @@
+/**
+ *
+ * @class MDDataModule
+ */
 class MDDataModule {
+    /**
+     *
+     */
     constructor(docs) {
         this.docs = docs;
     }
 
+    /**
+     *
+     */
     sort(docs, options) {
         if (!options || !options.sorters || !Array.isArray(options.sorters)) {
             return docs;
@@ -19,6 +29,9 @@ class MDDataModule {
         });
     }
 
+    /**
+     *
+     */
     search(docs, options) {
         if (!options || !options.q) {
             return docs;
@@ -27,6 +40,9 @@ class MDDataModule {
         return docs.filter((doc) => this.deepSearch(doc, query));
     }
 
+    /**
+     *
+     */
     deepSearch(obj, query) {
         return Object.values(obj).some((value) => {
             if (typeof value === "object" && value !== null) {
@@ -36,6 +52,9 @@ class MDDataModule {
         });
     }
 
+    /**
+     *
+     */
     filter(docs, options) {
         if (!options || !options.filters || !Array.isArray(options.filters)) {
             return docs;
@@ -68,11 +87,17 @@ class MDDataModule {
         );
     }
 
+    /**
+     *
+     */
     getValue(obj, path) {
         const keys = path.split(".");
         return keys.reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : undefined), obj);
     }
 
+    /**
+     *
+     */
     slice(docs, options) {
         if (options._start === undefined || options._end === undefined) {
             return docs;
@@ -80,6 +105,9 @@ class MDDataModule {
         return docs.slice(options._start, options._end);
     }
 
+    /**
+     *
+     */
     paginate(docs, options) {
         if (options._page === undefined || options._limit === undefined) {
             return docs;
@@ -89,6 +117,9 @@ class MDDataModule {
         return docs.slice(startIndex, endIndex);
     }
 
+    /**
+     *
+     */
     getAll(options = {}) {
         let rows = this.docs.slice();
 

@@ -3,7 +3,22 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDListComponent } from "../list/list";
 
+/**
+ *
+ * @class MDNavigationRailComponent
+ * @extends MDElement
+ */
 class MDNavigationRailComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] -
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -17,10 +32,16 @@ class MDNavigationRailComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -70,28 +91,43 @@ class MDNavigationRailComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-rail");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-rail");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -100,10 +136,18 @@ class MDNavigationRailComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailActionClick
+     */
     handleNavigationRailActionClick(event) {
         this.emit("onNavigationRailActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailButtonClick
+     */
     handleNavigationRailButtonClick(event) {
         this.emit("onNavigationRailButtonClick", event);
     }

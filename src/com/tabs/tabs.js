@@ -4,7 +4,16 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDListComponent } from "../list/list";
 import { classMap } from "lit/directives/class-map.js";
 
+/**
+ *
+ * @class MDTabsComponent
+ * @extends MDElement
+ */
 class MDTabsComponent extends MDElement {
+    /**
+     *
+     * @property {String} [ui] - scrollable,primary,secondary
+     */
     static get properties() {
         return {
             ...MDListComponent.properties,
@@ -12,10 +21,16 @@ class MDTabsComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -35,18 +50,27 @@ class MDTabsComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tabs");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tabs");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["scrollable", "primary", "secondary"].forEach((ui) => {
@@ -60,6 +84,9 @@ class MDTabsComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     handleListItemSelected(event) {
         const item = event.detail;
 

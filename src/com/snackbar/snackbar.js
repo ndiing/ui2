@@ -8,7 +8,22 @@ import { choose } from "lit/directives/choose.js";
 
 import { queue } from "../mixin/mixin";
 
+/**
+ *
+ * @class MDSnackbarComponent
+ * @extends MDElement
+ */
 class MDSnackbarComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] -
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -29,11 +44,17 @@ class MDSnackbarComponent extends MDElement {
 
     static task = queue();
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -96,10 +117,16 @@ ${this.buttons.map(button=>choose(button.is,[
         `;
     }
 
+    /**
+     *
+     */
     get snackbarInner() {
         return this.querySelector(".md-snackbar__inner");
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-snackbar");
@@ -110,12 +137,20 @@ ${this.buttons.map(button=>choose(button.is,[
         }
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-snackbar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     * @fires MDSnackbarComponent#onSnackbarShow
+     * @fires MDSnackbarComponent#onSnackbarClose
+     */
     updated(changedProperties) {
         if (changedProperties.has("open")) {
             if (this.open) {
@@ -126,6 +161,9 @@ ${this.buttons.map(button=>choose(button.is,[
         }
     }
 
+    /**
+     *
+     */
     show() {
         MDSnackbarComponent.task(
             () =>
@@ -145,10 +183,16 @@ ${this.buttons.map(button=>choose(button.is,[
         );
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -157,10 +201,18 @@ ${this.buttons.map(button=>choose(button.is,[
         }
     }
 
+    /**
+     *
+     * @fires MDSnackbarComponent#onSnackbarActionClick
+     */
     handleSnackbarActionClick(event) {
         this.emit("onSnackbarActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDSnackbarComponent#onSnackbarButtonClick
+     */
     handleSnackbarButtonClick(event) {
         this.emit("onSnackbarButtonClick", event);
     }

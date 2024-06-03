@@ -2,7 +2,20 @@ import { html } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDSegmentedButtonComponent
+ * @extends MDElement
+ */
 class MDSegmentedButtonComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [buttons] -
+     * @property {Boolean} [rangeSelection] -
+     * @property {Boolean} [multiSelection] -
+     * @property {Boolean} [singleSelection] -
+     * @property {Boolean} [allSelection] -
+     */
     static get properties() {
         return {
             buttons: { type: Array },
@@ -13,10 +26,16 @@ class MDSegmentedButtonComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     renderButton(button) {
         /* prettier-ignore */
         return html`
@@ -33,10 +52,16 @@ class MDSegmentedButtonComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     render() {
         return this.buttons?.map((button) => this.renderButton(button));
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-segmented-button");
@@ -45,6 +70,9 @@ class MDSegmentedButtonComponent extends MDElement {
         this.addEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-segmented-button");
@@ -52,6 +80,10 @@ class MDSegmentedButtonComponent extends MDElement {
         this.removeEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
 
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonButtonClick
+     */
     updated(changedProperties) {}
 
     handleSegmentedButtonButtonClick(event) {
@@ -89,6 +121,10 @@ class MDSegmentedButtonComponent extends MDElement {
         this.emit("onSegmentedButtonButtonClick", event);
     }
 
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonKeydown
+     */
     handleSegmentedButtonKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();

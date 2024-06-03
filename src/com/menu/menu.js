@@ -4,7 +4,22 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDListComponent } from "../list/list";
 import { MDPopperModule } from "../popper/popper";
 
+/**
+ *
+ * @class MDMenuComponent
+ * @extends MDElement
+ */
 class MDMenuComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] -
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -18,10 +33,16 @@ class MDMenuComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -71,6 +92,9 @@ class MDMenuComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-menu");
@@ -82,6 +106,9 @@ class MDMenuComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
@@ -90,6 +117,9 @@ class MDMenuComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("open")) {
             if (this.open) {
@@ -100,6 +130,9 @@ class MDMenuComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     show(button, options = {}) {
         this.open = true;
         window.requestAnimationFrame(() => {
@@ -113,11 +146,17 @@ class MDMenuComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -126,14 +165,26 @@ class MDMenuComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDMenuComponent#onMenuActionClick
+     */
     handleMenuActionClick(event) {
         this.emit("onMenuActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDMenuComponent#onMenuButtonClick
+     */
     handleMenuButtonClick(event) {
         this.emit("onMenuButtonClick", event);
     }
 
+    /**
+     *
+     * @fires MDMenuComponent#onMenuScrimClick
+     */
     handleMenuScrimClick(event) {
         this.close();
 

@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDMonthFieldComponent
+ * @extends MDElement
+ */
 class MDMonthFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [max] -
+     * @property {String} [min] -
+     * @property {String} [step] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -37,10 +71,16 @@ class MDMonthFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -87,12 +127,18 @@ class MDMonthFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-month-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-month-field");
@@ -104,12 +150,18 @@ class MDMonthFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -123,20 +175,34 @@ class MDMonthFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get colorFieldNative() {
         return this.querySelector(".md-month-field__native");
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeActionClick
+     */
     handleMonthFieldNativeActionClick(event) {
         this.emit("onMonthFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick
+     */
     handleMonthFieldNativeActionCalendarClockClick(event) {
         this.handleColorPicker();
 
         this.emit("onMonthFieldNativeActionCalendarClockClick", event);
     }
 
+    /**
+     *
+     */
     handleColorPicker() {
         this.monthFieldPicker = document.createElement("md-month-picker");
         this.parentElement.insertBefore(this.monthFieldPicker, this.nextElementSibling);
@@ -164,6 +230,9 @@ class MDMonthFieldComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleMonthFieldPickerChange(event) {
         this.colorFieldNative.value = [this.monthFieldPicker.selected.getFullYear(), ("" + (this.monthFieldPicker.selected.getMonth() + 1)).padStart(2, "0")].join("-");
         this.value = this.colorFieldNative.value;
@@ -172,26 +241,44 @@ class MDMonthFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
+    /**
+     *
+     */
     handleMonthFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.monthFieldPicker.close();
     }
 
+    /**
+     *
+     */
     handleMonthFieldPickerButtonOkClick(event) {
         this.monthFieldPicker.close();
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeFocus
+     */
     handleMonthFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onMonthFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeBlur
+     */
     handleMonthFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onMonthFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeInput
+     */
     handleMonthFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -200,6 +287,10 @@ class MDMonthFieldComponent extends MDElement {
         this.emit("onMonthFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeInvalid
+     */
     handleMonthFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -207,6 +298,10 @@ class MDMonthFieldComponent extends MDElement {
         this.emit("onMonthFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeReset
+     */
     handleMonthFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -217,6 +312,10 @@ class MDMonthFieldComponent extends MDElement {
         this.emit("onMonthFieldNativeReset", event);
     }
 
+    /**
+     *
+     * @fires MDMonthFieldComponent#onMonthFieldNativeClick
+     */
     handleMonthFieldNativeClick(event) {
         event.preventDefault();
 

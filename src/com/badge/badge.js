@@ -2,7 +2,17 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDBadgeComponent
+ * @extends MDElement
+ */
 class MDBadgeComponent extends MDElement {
+    /**
+     *
+     * @property {Number} [label] -
+     * @property {Number} [max] -
+     */
     static get properties() {
         return {
             label: { type: Number },
@@ -10,15 +20,24 @@ class MDBadgeComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.max = 999;
     }
 
+    /**
+     *
+     */
     render() {
         return this.label ? (this.label > this.max ? this.max + "+" : this.label) : nothing;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -26,6 +45,9 @@ class MDBadgeComponent extends MDElement {
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 

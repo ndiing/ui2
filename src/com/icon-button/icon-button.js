@@ -2,7 +2,19 @@ import { html } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
+/**
+ *
+ * @class MDIconButtonComponent
+ * @extends MDElement
+ */
 class MDIconButtonComponent extends MDElement {
+    /**
+     *
+     * @property {String} [icon] -
+     * @property {String} [ui] - filled,tonal,outlined
+     * @property {Boolean} [toggle] -
+     * @property {Boolean} [selected] -
+     */
     static get properties() {
         return {
             icon: { type: String },
@@ -12,15 +24,24 @@ class MDIconButtonComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.icon = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         return this.icon;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-icon-button");
@@ -34,6 +55,9 @@ class MDIconButtonComponent extends MDElement {
         this.addEventListener("click", this.handleIconButtonClick);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon-button");
@@ -42,6 +66,9 @@ class MDIconButtonComponent extends MDElement {
         this.removeEventListener("click", this.handleIconButtonClick);
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "tonal", "outlined"].forEach((ui) => {
@@ -56,6 +83,10 @@ class MDIconButtonComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDIconButtonComponent#onIconButtonClick
+     */
     handleIconButtonClick(event) {
         if (this.toggle) {
             this.selected = !this.selected;

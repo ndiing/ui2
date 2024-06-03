@@ -3,7 +3,22 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDPopperModule } from "../popper/popper";
 
+/**
+ *
+ * @class MDTooltipComponent
+ * @extends MDElement
+ */
 class MDTooltipComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] - plain
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -16,11 +31,17 @@ class MDTooltipComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -63,6 +84,9 @@ class MDTooltipComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tooltip");
@@ -74,6 +98,9 @@ class MDTooltipComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tooltip");
@@ -82,6 +109,9 @@ class MDTooltipComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["plain"].forEach((ui) => {
@@ -106,6 +136,9 @@ class MDTooltipComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -117,11 +150,17 @@ class MDTooltipComponent extends MDElement {
         this.popper.set();
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -130,14 +169,26 @@ class MDTooltipComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipActionClick
+     */
     handleTooltipActionClick(event) {
         this.emit("onTooltipActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipButtonClick
+     */
     handleTooltipButtonClick(event) {
         this.emit("onTooltipButtonClick", event);
     }
 
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipScrimClick
+     */
     handleTooltipScrimClick(event) {
         this.close();
 

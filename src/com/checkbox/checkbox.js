@@ -3,7 +3,27 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ *
+ * @class MDCheckboxComponent
+ * @extends MDElement
+ */
 class MDCheckboxComponent extends MDElement {
+    /**
+     *
+     * @property {String} [autocapitalize] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [name] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {Boolean} [checked] -
+     * @property {String} [defaultValue] -
+     * @property {Boolean} [defaultChecked] -
+     * @property {Boolean} [indeterminate] -
+     * @property {Boolean} [defaultIndeterminate] -
+     */
     static get properties() {
         return {
             autocapitalize: { type: String },
@@ -21,10 +41,16 @@ class MDCheckboxComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -55,6 +81,9 @@ class MDCheckboxComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -68,6 +97,9 @@ class MDCheckboxComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -76,6 +108,9 @@ class MDCheckboxComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value;
@@ -83,26 +118,44 @@ class MDCheckboxComponent extends MDElement {
         this.defaultIndeterminate = this.indeterminate;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     get checkboxNative() {
         return this.querySelector(".md-checkbox__native");
     }
 
+    /**
+     *
+     */
     get checkboxTrack() {
         return this.querySelector(".md-checkbox__track");
     }
 
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInput
+     */
     handleCheckboxNativeInput(event) {
         this.checked = this.checkboxNative.checked;
         this.indeterminate = this.checkboxNative.indeterminate;
         this.emit("onCheckboxNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInvalid
+     */
     handleCheckboxNativeInvalid(event) {
         this.emit("onCheckboxNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeReset
+     */
     handleCheckboxNativeReset(event) {
         this.checkboxNative.value = this.defaultValue;
         this.checkboxNative.checked = this.defaultChecked;

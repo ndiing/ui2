@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDVirtualScrollModule
+ */
 class MDVirtualScrollModule {
+    /**
+     *
+     */
     constructor(host, options) {
         this.host = host;
         this.options = {
@@ -12,6 +19,9 @@ class MDVirtualScrollModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-virtual-scroll");
         this.scrollbar = this.options.scrollbar;
@@ -24,6 +34,11 @@ class MDVirtualScrollModule {
         this.handleScroll();
     }
 
+    /**
+     *
+     * @fires MDVirtualScrollModule#onVirtualScroll
+     * @fires MDVirtualScrollModule#onVirtualScrollChange
+     */
     handleScroll(event) {
         const total = this.options.total;
         const itemHeight = this.options.itemHeight;
@@ -54,6 +69,9 @@ class MDVirtualScrollModule {
         this.hasChange = [this.start, this.end].join();
     }
 
+    /**
+     *
+     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -63,6 +81,9 @@ class MDVirtualScrollModule {
         this.host.dispatchEvent(event);
     }
 
+    /**
+     *
+     */
     destroy() {
         this.host.classList.remove("md-virtual-scroll");
         this.scrollbar = this.options.scrollbar;

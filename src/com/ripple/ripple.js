@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDRippleModule
+ */
 class MDRippleModule {
+    /**
+     *
+     */
     constructor(host, options) {
         this.host = host;
         this.options = {
@@ -13,6 +20,9 @@ class MDRippleModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-ripple");
 
@@ -61,14 +71,23 @@ class MDRippleModule {
         this.options.button.addEventListener("animationend", this.handleRippleButtonAnimationend);
     }
 
+    /**
+     *
+     */
     handleRippleButtonPointerenter(event) {
         this.host.classList.add("md-ripple--hover");
     }
 
+    /**
+     *
+     */
     handleRippleButtonPointerleave(event) {
         this.host.classList.remove("md-ripple--hover");
     }
 
+    /**
+     *
+     */
     handleRippleButtonPointerdown(event) {
         window.addEventListener("pointerup", this.handleRippleButtonPointerup);
         this.host.classList.add("md-ripple--pressed");
@@ -96,11 +115,17 @@ class MDRippleModule {
         this.host.style.setProperty("--md-ripple-animation-fadeout", "md-ripple-fadeout");
     }
 
+    /**
+     *
+     */
     handleRippleButtonPointerup(event) {
         this.host.classList.remove("md-ripple--pressed");
         window.removeEventListener("pointerup", this.handleRippleButtonPointerup);
     }
 
+    /**
+     *
+     */
     handleRippleButtonAnimationend(event) {
         if (event.animationName == "md-ripple-fadeout") {
             this.host.style.removeProperty("--md-ripple-animation");
@@ -108,14 +133,23 @@ class MDRippleModule {
         }
     }
 
+    /**
+     *
+     */
     handleRippleButtonFocus(event) {
         this.host.classList.add("md-ripple--focused");
     }
 
+    /**
+     *
+     */
     handleRippleButtonBlur(event) {
         this.host.classList.remove("md-ripple--focused");
     }
 
+    /**
+     *
+     */
     destroy() {
         this.host.classList.remove("md-ripple");
 

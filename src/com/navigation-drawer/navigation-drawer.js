@@ -3,7 +3,22 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDListComponent } from "../list/list";
 
+/**
+ *
+ * @class MDNavigationDrawerComponent
+ * @extends MDElement
+ */
 class MDNavigationDrawerComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -17,10 +32,16 @@ class MDNavigationDrawerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -70,6 +91,9 @@ class MDNavigationDrawerComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-drawer");
@@ -81,6 +105,9 @@ class MDNavigationDrawerComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
@@ -89,6 +116,9 @@ class MDNavigationDrawerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["modal"].forEach((ui) => {
@@ -113,14 +143,23 @@ class MDNavigationDrawerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -129,14 +168,26 @@ class MDNavigationDrawerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDNavigationDrawerComponent#onNavigationDrawerActionClick
+     */
     handleNavigationDrawerActionClick(event) {
         this.emit("onNavigationDrawerActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDNavigationDrawerComponent#onNavigationDrawerButtonClick
+     */
     handleNavigationDrawerButtonClick(event) {
         this.emit("onNavigationDrawerButtonClick", event);
     }
 
+    /**
+     *
+     * @fires MDNavigationDrawerComponent#onNavigationDrawerScrimClick
+     */
     handleNavigationDrawerScrimClick(event) {
         this.close();
 

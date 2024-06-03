@@ -3,7 +3,22 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDListComponent } from "../list/list";
 
+/**
+ *
+ * @class MDNavigationBarComponent
+ * @extends MDElement
+ */
 class MDNavigationBarComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] -
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -17,10 +32,16 @@ class MDNavigationBarComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -70,28 +91,43 @@ class MDNavigationBarComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -100,10 +136,18 @@ class MDNavigationBarComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDNavigationBarComponent#onNavigationBarActionClick
+     */
     handleNavigationBarActionClick(event) {
         this.emit("onNavigationBarActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDNavigationBarComponent#onNavigationBarButtonClick
+     */
     handleNavigationBarButtonClick(event) {
         this.emit("onNavigationBarButtonClick", event);
     }

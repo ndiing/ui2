@@ -3,7 +3,19 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDPopperModule } from "../popper/popper";
 
+/**
+ *
+ * @class MDMonthPickerComponent
+ * @extends MDElement
+ */
 class MDMonthPickerComponent extends MDElement {
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] -
+     * @property {Number} [index] -
+     * @property {String} [value] -
+     */
     static get properties() {
         return {
             ui: { type: String },
@@ -13,10 +25,16 @@ class MDMonthPickerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
 
+    /**
+     *
+     */
     get last() {}
 
     get years() {
@@ -32,6 +50,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -47,6 +68,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k);
@@ -57,6 +81,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get days() {
         return Array.from({ length: 6 }, (v, k) => {
             return {
@@ -79,6 +106,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get hours() {
         return Array.from({ length: 24 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
@@ -98,6 +128,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get minutes() {
         return Array.from({ length: 60 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
@@ -119,6 +152,9 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     get label() {
         if (this.index == 0) {
             return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
@@ -131,10 +167,16 @@ class MDMonthPickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get subLabel() {
         return this.timeFormat(this.selected);
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
 
@@ -176,6 +218,9 @@ class MDMonthPickerComponent extends MDElement {
         this.index = 1;
     }
 
+    /**
+     *
+     */
     renderYears() {
         /* prettier-ignore */
         return html`
@@ -196,6 +241,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMonths() {
         /* prettier-ignore */
         return html`
@@ -216,6 +264,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderDays() {
         /* prettier-ignore */
         return html`
@@ -250,6 +301,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderHours() {
         /* prettier-ignore */
         return html`
@@ -267,6 +321,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderMinutes() {
         /* prettier-ignore */
         return html`
@@ -284,6 +341,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     renderCard() {
         /* prettier-ignore */
         return html`
@@ -294,6 +354,9 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -328,6 +391,9 @@ class MDMonthPickerComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-month-picker");
@@ -339,6 +405,9 @@ class MDMonthPickerComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-month-picker");
@@ -347,12 +416,21 @@ class MDMonthPickerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     async firstUpdated() {
         await this.updateComplete;
 
         this.updateFromValue();
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerShow
+     * @fires MDMonthPickerComponent#onMonthPickerClose
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["full-screen"].forEach((ui) => {
@@ -389,6 +467,9 @@ class MDMonthPickerComponent extends MDElement {
         this.style.setProperty("--md-month-picker-index", this.index);
     }
 
+    /**
+     *
+     */
     updateFromValue() {
         const date = new Date(this.value);
 
@@ -401,6 +482,9 @@ class MDMonthPickerComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -411,11 +495,17 @@ class MDMonthPickerComponent extends MDElement {
         this.popper.set();
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -424,12 +514,20 @@ class MDMonthPickerComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerScrimClick
+     */
     handleMonthPickerScrimClick(event) {
         this.close();
 
         this.emit("onMonthPickerScrimClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerLabelPrimaryClick
+     */
     handleMonthPickerLabelPrimaryClick(event) {
         if (this.index == 0) {
             this.index = 1;
@@ -440,6 +538,10 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerLabelPrimaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerLabelSecondaryClick
+     */
     handleMonthPickerLabelSecondaryClick(event) {
         if (this.index == 2) {
             this.index = 3;
@@ -452,6 +554,10 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerLabelSecondaryClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerActionNavigateBeforeClick
+     */
     handleMonthPickerActionNavigateBeforeClick(event) {
         if (this.index == 0) {
             this.selected.setFullYear(this.selected.getFullYear() - 10);
@@ -470,6 +576,10 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerActionNavigateBeforeClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerActionNavigateNextClick
+     */
     handleMonthPickerActionNavigateNextClick(event) {
         if (this.index == 0) {
             this.selected.setFullYear(this.selected.getFullYear() + 10);
@@ -488,6 +598,11 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerActionNavigateNextClick", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerYearClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerYearClick(event) {
         const data = event.currentTarget.data;
 
@@ -499,6 +614,11 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerMonthClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerMonthClick(event) {
         const data = event.currentTarget.data;
 
@@ -511,6 +631,11 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerDayClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerDayClick(event) {
         const data = event.currentTarget.data;
 
@@ -524,6 +649,11 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerHourClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerHourClick(event) {
         const data = event.currentTarget.data;
 
@@ -538,6 +668,11 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerMinuteClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerMinuteClick(event) {
         const data = event.currentTarget.data;
 
@@ -553,11 +688,21 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerButtonCancelClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerButtonCancelClick(event) {
         this.emit("onMonthPickerButtonCancelClick", event);
         this.emit("onMonthPickerChange", event);
     }
 
+    /**
+     *
+     * @fires MDMonthPickerComponent#onMonthPickerButtonOkClick
+     * @fires MDMonthPickerComponent#onMonthPickerChange
+     */
     handleMonthPickerButtonOkClick(event) {
         this.emit("onMonthPickerButtonOkClick", event);
         this.emit("onMonthPickerChange", event);

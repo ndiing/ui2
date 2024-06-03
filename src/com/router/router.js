@@ -1,4 +1,11 @@
+/**
+ *
+ * @class MDRouterModule
+ */
 class MDRouterModule {
+    /**
+     *
+     */
     static setRoutes(routes = [], parent) {
         return routes.reduce((acc, route) => {
             route.parent = parent;
@@ -12,18 +19,30 @@ class MDRouterModule {
         }, []);
     }
 
+    /**
+     *
+     */
     static get location() {
         return this.options.historyApiFallback ? window.location : new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
     }
 
+    /**
+     *
+     */
     static get path() {
         return this.location.pathname;
     }
 
+    /**
+     *
+     */
     static get query() {
         return Object.fromEntries(new URLSearchParams(this.location.search).entries());
     }
 
+    /**
+     *
+     */
     static getRoute(path) {
         return this.routes.find((route) => {
             const pattern = "^" + route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)") + "(?:/?$)";
@@ -36,12 +55,18 @@ class MDRouterModule {
         });
     }
 
+    /**
+     *
+     */
     static getRoutes(route) {
         if (!route) return [];
         const parentRoutes = route.parent ? this.getRoutes(route.parent) : [];
         return [...parentRoutes, route];
     }
 
+    /**
+     *
+     */
     static getOutlet(container, name) {
         return new Promise((resolve) => {
             let outlet;
@@ -69,6 +94,9 @@ class MDRouterModule {
         });
     }
 
+    /**
+     *
+     */
     static emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -78,6 +106,9 @@ class MDRouterModule {
         window.dispatchEvent(event);
     }
 
+    /**
+     *
+     */
     static beforeLoad(beforeLoad) {
         return new Promise((resolve, reject) => {
             const callback = (event) => {
@@ -89,6 +120,9 @@ class MDRouterModule {
         });
     }
 
+    /**
+     *
+     */
     static async render() {
         this.params = {};
         const route = this.getRoute(this.path);
@@ -138,6 +172,9 @@ class MDRouterModule {
         }
     }
 
+    /**
+     *
+     */
     static navigate(url) {
         if (this.options.historyApiFallback) {
             window.history.pushState(null, "", url);
@@ -146,6 +183,9 @@ class MDRouterModule {
         }
     }
 
+    /**
+     *
+     */
     static change(event) {
         const routerLink = event.target.closest("[routerLink]");
 
@@ -155,6 +195,9 @@ class MDRouterModule {
         }
     }
 
+    /**
+     *
+     */
     static init(routes = [], options = {}) {
         this.options = {
             historyApiFallback: true,

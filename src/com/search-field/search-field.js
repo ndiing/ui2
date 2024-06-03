@@ -2,7 +2,40 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDSearchFieldComponent
+ * @extends MDElement
+ */
 class MDSearchFieldComponent extends MDElement {
+    /**
+     *
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [value] -
+     * @property {Number} [maxlength] -
+     * @property {Number} [minlength] -
+     * @property {String} [pattern] -
+     * @property {String} [placeholder] -
+     * @property {Number} [size] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocomplete: { type: String },
@@ -36,10 +69,16 @@ class MDSearchFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -83,12 +122,18 @@ class MDSearchFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-search-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-search-field");
@@ -100,12 +145,18 @@ class MDSearchFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -119,14 +170,25 @@ class MDSearchFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get searchFieldNative() {
         return this.querySelector(".md-search-field__native");
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionClick
+     */
     handleSearchFieldNativeActionClick(event) {
         this.emit("onSearchFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionCancelClick
+     */
     handleSearchFieldNativeActionCancelClick(event) {
         this.searchFieldNative.value = "";
         this.value = this.searchFieldNative.value;
@@ -135,16 +197,28 @@ class MDSearchFieldComponent extends MDElement {
         this.emit("onSearchFieldNativeActionCancelClick", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeFocus
+     */
     handleSearchFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onSearchFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeBlur
+     */
     handleSearchFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onSearchFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInput
+     */
     handleSearchFieldNativeInput(event) {
         this.value = this.searchFieldNative.value;
         this.populated = !!this.value;
@@ -153,6 +227,10 @@ class MDSearchFieldComponent extends MDElement {
         this.emit("onSearchFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInvalid
+     */
     handleSearchFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.searchFieldNative.validationMessage;
@@ -160,6 +238,10 @@ class MDSearchFieldComponent extends MDElement {
         this.emit("onSearchFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeReset
+     */
     handleSearchFieldNativeReset(event) {
         this.searchFieldNative.value = this.defaultValue;
         this.value = this.searchFieldNative.value;

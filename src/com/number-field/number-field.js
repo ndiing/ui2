@@ -2,7 +2,42 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDNumberFieldComponent
+ * @extends MDElement
+ */
 class MDNumberFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {Number} [value] -
+     * @property {Number} [max] -
+     * @property {Number} [min] -
+     * @property {String} [placeholder] -
+     * @property {Number} [step] -
+     * @property {Number} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -38,10 +73,16 @@ class MDNumberFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -88,12 +129,18 @@ class MDNumberFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-number-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-number-field");
@@ -105,12 +152,18 @@ class MDNumberFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -124,14 +177,25 @@ class MDNumberFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get numberFieldNative() {
         return this.querySelector(".md-number-field__native");
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeActionClick
+     */
     handleNumberFieldNativeActionClick(event) {
         this.emit("onNumberFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepDownClick
+     */
     handleNumberFieldNativeActionStepDownClick(event) {
         this.numberFieldNative.stepDown();
 
@@ -140,6 +204,10 @@ class MDNumberFieldComponent extends MDElement {
         this.emit("onNumberFieldNativeActionStepDownClick", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepUpClick
+     */
     handleNumberFieldNativeActionStepUpClick(event) {
         this.numberFieldNative.stepUp();
 
@@ -148,16 +216,28 @@ class MDNumberFieldComponent extends MDElement {
         this.emit("onNumberFieldNativeActionStepUpClick", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeFocus
+     */
     handleNumberFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onNumberFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeBlur
+     */
     handleNumberFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onNumberFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeInput
+     */
     handleNumberFieldNativeInput(event) {
         this.value = this.numberFieldNative.value;
         this.populated = !!this.value;
@@ -166,6 +246,10 @@ class MDNumberFieldComponent extends MDElement {
         this.emit("onNumberFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeInvalid
+     */
     handleNumberFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.numberFieldNative.validationMessage;
@@ -173,6 +257,10 @@ class MDNumberFieldComponent extends MDElement {
         this.emit("onNumberFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDNumberFieldComponent#onNumberFieldNativeReset
+     */
     handleNumberFieldNativeReset(event) {
         this.numberFieldNative.value = this.defaultValue;
         this.value = this.numberFieldNative.value;

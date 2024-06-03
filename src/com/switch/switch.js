@@ -3,7 +3,28 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ *
+ * @class MDSwitchComponent
+ * @extends MDElement
+ */
 class MDSwitchComponent extends MDElement {
+    /**
+     *
+     * @property {String} [autocapitalize] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [name] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {Boolean} [checked] -
+     * @property {String} [defaultValue] -
+     * @property {Boolean} [defaultChecked] -
+     * @property {Boolean} [indeterminate] -
+     * @property {Boolean} [defaultIndeterminate] -
+     * @property {Array} [icons] -
+     */
     static get properties() {
         return {
             autocapitalize: { type: String },
@@ -22,10 +43,16 @@ class MDSwitchComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -54,6 +81,9 @@ class MDSwitchComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -67,6 +97,9 @@ class MDSwitchComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -75,6 +108,9 @@ class MDSwitchComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value;
@@ -82,30 +118,51 @@ class MDSwitchComponent extends MDElement {
         this.defaultIndeterminate = this.indeterminate;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     get switchNative() {
         return this.querySelector(".md-switch__native");
     }
 
+    /**
+     *
+     */
     get switchTrack() {
         return this.querySelector(".md-switch__track");
     }
 
+    /**
+     *
+     */
     get switchThumb() {
         return this.querySelector(".md-switch__thumb");
     }
 
+    /**
+     *
+     * @fires MDSwitchComponent#onSwitchNativeInput
+     */
     handleSwitchNativeInput(event) {
         this.checked = this.switchNative.checked;
         this.indeterminate = this.switchNative.indeterminate;
         this.emit("onSwitchNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDSwitchComponent#onSwitchNativeInvalid
+     */
     handleSwitchNativeInvalid(event) {
         this.emit("onSwitchNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDSwitchComponent#onSwitchNativeReset
+     */
     handleSwitchNativeReset(event) {
         this.switchNative.value = this.defaultValue;
         this.switchNative.checked = this.defaultChecked;

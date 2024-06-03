@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDPasswordFieldComponent
+ * @extends MDElement
+ */
 class MDPasswordFieldComponent extends MDElement {
+    /**
+     *
+     * @property {String} [type] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [value] -
+     * @property {Number} [maxlength] -
+     * @property {Number} [minlength] -
+     * @property {String} [pattern] -
+     * @property {String} [placeholder] -
+     * @property {Number} [size] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             type: { type: String },
@@ -37,11 +71,17 @@ class MDPasswordFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.type = "password";
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -85,12 +125,18 @@ class MDPasswordFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-password-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-password-field");
@@ -102,12 +148,18 @@ class MDPasswordFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -121,14 +173,25 @@ class MDPasswordFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get numberFieldNative() {
         return this.querySelector(".md-password-field__native");
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick
+     */
     handlePasswordFieldNativeActionClick(event) {
         this.emit("onPasswordFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick
+     */
     handlePasswordFieldNativeActionVisibilityClick(event) {
         if (this.type == "password") {
             this.type = "text";
@@ -138,16 +201,28 @@ class MDPasswordFieldComponent extends MDElement {
         this.emit("onPasswordFieldNativeActionVisibilityClick", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus
+     */
     handlePasswordFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onPasswordFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur
+     */
     handlePasswordFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onPasswordFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput
+     */
     handlePasswordFieldNativeInput(event) {
         this.value = this.numberFieldNative.value;
         this.populated = !!this.value;
@@ -156,6 +231,10 @@ class MDPasswordFieldComponent extends MDElement {
         this.emit("onPasswordFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid
+     */
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.numberFieldNative.validationMessage;
@@ -163,6 +242,10 @@ class MDPasswordFieldComponent extends MDElement {
         this.emit("onPasswordFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset
+     */
     handlePasswordFieldNativeReset(event) {
         this.numberFieldNative.value = this.defaultValue;
         this.value = this.numberFieldNative.value;

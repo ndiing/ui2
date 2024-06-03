@@ -6,11 +6,22 @@ import { isDefined } from "../mixin/mixin";
 import { styleMap } from "lit/directives/style-map.js";
 import { MDGestureModule } from "../gesture/gesture";
 
+/**
+ *
+ * @class MDDataTableColumnCellComponent
+ * @extends HTMLTableCellElement
+ */
 class MDDataTableColumnCellComponent extends HTMLTableCellElement {
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     connectedCallback() {
         this.gesture = new MDGestureModule(this, {
             resize: ["e"],
@@ -18,19 +29,33 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
         });
     }
 
+    /**
+     *
+     */
     disconnectedCallback() {
         this.gesture.destroy();
     }
 }
 customElements.define("md-data-table-column-cell", MDDataTableColumnCellComponent, { extends: "th" });
 
+/**
+ *
+ * @class MDDataTableNativeComponent
+ * @extends HTMLTableElement
+ */
 class MDDataTableNativeComponent extends HTMLTableElement {
+    /**
+     *
+     */
     constructor() {
         super();
         this.callback = this.callback.bind(this);
         this.resizeObserver = new ResizeObserver(this.callback);
     }
 
+    /**
+     *
+     */
     callback(entries) {
         for (const entry of entries) {
             const { height } = entry.contentRect;
@@ -38,17 +63,50 @@ class MDDataTableNativeComponent extends HTMLTableElement {
         }
     }
 
+    /**
+     *
+     */
     connectedCallback() {
         this.resizeObserver.observe(this);
     }
 
+    /**
+     *
+     */
     disconnectedCallback() {
         this.resizeObserver.disconnect();
     }
 }
 customElements.define("md-data-table-native", MDDataTableNativeComponent, { extends: "table" });
 
+/**
+ *
+ * @class MDDataTableItemComponent
+ * @extends MDElement
+ */
 class MDDataTableItemComponent extends MDElement {
+    /**
+     *
+     * @property {String} [avatar] -
+     * @property {String} [thumbnail] -
+     * @property {String} [video] -
+     * @property {Object} [leadingCheckbox] -
+     * @property {Object} [leadingRadioButton] -
+     * @property {Object} [leadingSwitch] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {String} [trailingIcon] -
+     * @property {Object} [trailingCheckbox] -
+     * @property {Object} [trailingRadioButton] -
+     * @property {Object} [trailingSwitch] -
+     * @property {String} [text] -
+     * @property {Object} [badge] -
+     * @property {Boolean} [selected] -
+     * @property {Boolean} [indeterminate] -
+     * @property {String} [leadingAction] -
+     * @property {String} [trailingAction] -
+     */
     static get properties() {
         return {
             avatar: { type: String },
@@ -73,10 +131,16 @@ class MDDataTableItemComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -110,10 +174,16 @@ class MDDataTableItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     get labelSecondary() {
         return this.querySelector(".md-data-table__label-secondary");
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -129,6 +199,9 @@ class MDDataTableItemComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -136,6 +209,10 @@ class MDDataTableItemComponent extends MDElement {
         await this.updateComplete;
     }
 
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemSelected
+     */
     firstUpdated(changedProperties) {}
 
     updated(changedProperties) {
@@ -146,18 +223,34 @@ class MDDataTableItemComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemCheckboxNativeInput
+     */
     handleDataTableItemCheckboxNativeInput(event) {
         this.emit("onDataTableItemCheckboxNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemRadioButtonNativeInput
+     */
     handleDataTableItemRadioButtonNativeInput(event) {
         this.emit("onDataTableItemRadioButtonNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemSwitchNativeInput
+     */
     handleDataTableItemSwitchNativeInput(event) {
         this.emit("onDataTableItemSwitchNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemActionClick
+     */
     handleDataTableItemActionClick(event) {
         this.emit("onDataTableItemActionClick", event);
     }
@@ -165,20 +258,37 @@ class MDDataTableItemComponent extends MDElement {
 
 customElements.define("md-data-table-item", MDDataTableItemComponent);
 
+/**
+ *
+ * @class MDDataTableRowComponent
+ * @extends MDElement
+ */
 class MDDataTableRowComponent extends MDElement {
+    /**
+     *
+     */
     static get properties() {
         return {};
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html``;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -186,6 +296,9 @@ class MDDataTableRowComponent extends MDElement {
         this.classList.add("md-data-table__row");
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -198,7 +311,22 @@ class MDDataTableRowComponent extends MDElement {
 
 customElements.define("md-data-table-row", MDDataTableRowComponent);
 
+/**
+ *
+ * @class MDDataTableComponent
+ * @extends MDElement
+ */
 class MDDataTableComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [columns] -
+     * @property {Array} [rows] -
+     * @property {Boolean} [rangeSelection] -
+     * @property {Boolean} [multiSelection] -
+     * @property {Boolean} [singleSelection] -
+     * @property {Boolean} [allSelection] -
+     * @property {Boolean} [checkbox] -
+     */
     static get properties() {
         return {
             columns: { type: Array },
@@ -211,6 +339,9 @@ class MDDataTableComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
 
@@ -220,6 +351,9 @@ class MDDataTableComponent extends MDElement {
         this.allSelection = true;
     }
 
+    /**
+     *
+     */
     renderItem(item) {
         /* prettier-ignore */
         return html`
@@ -250,6 +384,9 @@ class MDDataTableComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -320,6 +457,9 @@ class MDDataTableComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -329,6 +469,9 @@ class MDDataTableComponent extends MDElement {
         this.addEventListener("keydown", this.handleDataTableKeydown);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -337,6 +480,10 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableItemClick
+     */
     updated(changedProperties) {}
 
     handleDataTableRowClick(event) {
@@ -374,6 +521,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableItemClick", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableKeydown
+     */
     handleDataTableKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -385,15 +536,24 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableKeydown", event);
     }
 
+    /**
+     *
+     */
     get selected() {
         return this.rows?.filter((row) => row.selected).length == this.rows?.length;
     }
 
+    /**
+     *
+     */
     get indeterminate() {
         const selected = this.rows?.filter((row) => row.selected).length;
         return selected > 0 && selected < this.rows?.length;
     }
 
+    /**
+     *
+     */
     handleDataTableColumnCellCheckboxNativeInput(event) {
         const checked = event.detail.currentTarget.checked;
         this.rows.forEach((row) => {
@@ -402,6 +562,10 @@ class MDDataTableComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellSortablePointerenter
+     */
     handleDataTableColumnCellSortablePointerenter(event) {
         const data = event.currentTarget.data;
 
@@ -413,6 +577,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortablePointerenter", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellSortablePointerleave
+     */
     handleDataTableColumnCellSortablePointerleave(event) {
         const data = event.currentTarget.data;
 
@@ -424,6 +592,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortablePointerleave", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellSortableClick
+     */
     handleDataTableColumnCellSortableClick(event) {
         const data = event.currentTarget.data;
 
@@ -444,12 +616,20 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortableClick", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellResizeStart
+     */
     handleDataTableColumnCellResizeStart(event) {
         const data = event.currentTarget.data;
 
         this.emit("onDataTableColumnCellResizeStart", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellResize
+     */
     handleDataTableColumnCellResize(event) {
         const data = event.currentTarget.data;
 
@@ -459,12 +639,20 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellResize", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellResizeEnd
+     */
     handleDataTableColumnCellResizeEnd(event) {
         const data = event.currentTarget.data;
 
         this.emit("onDataTableColumnCellResizeEnd", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellResizeDoubleTap
+     */
     handleDataTableColumnCellResizeDoubleTap(event) {
         const data = event.currentTarget.data;
 
@@ -488,6 +676,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellResizeDoubleTap", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellDragStart
+     */
     handleDataTableColumnCellDragStart(event) {
         if (event.detail.target.closest(".md-data-table__action,.md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
             return;
@@ -514,6 +706,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellDragStart", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellDrag
+     */
     handleDataTableColumnCellDrag(event) {
         const data = event.currentTarget.data;
 
@@ -522,6 +718,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellDrag", event);
     }
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableColumnCellDragEnd
+     */
     handleDataTableColumnCellDragEnd(event) {
         this.guide.remove();
 
@@ -539,6 +739,9 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellDragEnd", event);
     }
 
+    /**
+     *
+     */
     handleDataTableRowCellCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;

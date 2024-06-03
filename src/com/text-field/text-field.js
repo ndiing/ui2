@@ -2,7 +2,44 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDTextFieldComponent
+ * @extends MDElement
+ */
 class MDTextFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [dirname] -
+     * @property {Number} [maxlength] -
+     * @property {Number} [minlength] -
+     * @property {String} [pattern] -
+     * @property {String} [placeholder] -
+     * @property {Number} [size] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -40,10 +77,16 @@ class MDTextFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -92,12 +135,18 @@ class MDTextFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-text-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-text-field");
@@ -109,12 +158,18 @@ class MDTextFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -128,24 +183,43 @@ class MDTextFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get textFieldNative() {
         return this.querySelector(".md-text-field__native");
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeActionClick
+     */
     handleTextFieldNativeActionClick(event) {
         this.emit("onTextFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeFocus
+     */
     handleTextFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onTextFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeBlur
+     */
     handleTextFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTextFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInput
+     */
     handleTextFieldNativeInput(event) {
         this.value = this.textFieldNative.value;
         this.populated = !!this.value;
@@ -154,6 +228,10 @@ class MDTextFieldComponent extends MDElement {
         this.emit("onTextFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInvalid
+     */
     handleTextFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.textFieldNative.validationMessage;
@@ -161,6 +239,10 @@ class MDTextFieldComponent extends MDElement {
         this.emit("onTextFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeReset
+     */
     handleTextFieldNativeReset(event) {
         this.textFieldNative.value = this.defaultValue;
         this.value = this.textFieldNative.value;

@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDTimeFieldComponent
+ * @extends MDElement
+ */
 class MDTimeFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [max] -
+     * @property {String} [min] -
+     * @property {String} [step] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -37,10 +71,16 @@ class MDTimeFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -87,12 +127,18 @@ class MDTimeFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-time-field");
@@ -104,12 +150,18 @@ class MDTimeFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -123,20 +175,34 @@ class MDTimeFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get colorFieldNative() {
         return this.querySelector(".md-time-field__native");
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeActionClick
+     */
     handleTimeFieldNativeActionClick(event) {
         this.emit("onTimeFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick
+     */
     handleTimeFieldNativeActionCalendarClockClick(event) {
         this.handleColorPicker();
 
         this.emit("onTimeFieldNativeActionCalendarClockClick", event);
     }
 
+    /**
+     *
+     */
     handleColorPicker() {
         this.timeFieldPicker = document.createElement("md-time-picker");
         this.parentElement.insertBefore(this.timeFieldPicker, this.nextElementSibling);
@@ -164,6 +230,9 @@ class MDTimeFieldComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
     handleTimeFieldPickerChange(event) {
         this.colorFieldNative.value = [("" + this.timeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.timeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":");
         this.value = this.colorFieldNative.value;
@@ -172,26 +241,44 @@ class MDTimeFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
+    /**
+     *
+     */
     handleTimeFieldPickerButtonCancelClick(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
         this.timeFieldPicker.close();
     }
 
+    /**
+     *
+     */
     handleTimeFieldPickerButtonOkClick(event) {
         this.timeFieldPicker.close();
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeFocus
+     */
     handleTimeFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onTimeFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeBlur
+     */
     handleTimeFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTimeFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeInput
+     */
     handleTimeFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -200,6 +287,10 @@ class MDTimeFieldComponent extends MDElement {
         this.emit("onTimeFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeInvalid
+     */
     handleTimeFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -207,6 +298,10 @@ class MDTimeFieldComponent extends MDElement {
         this.emit("onTimeFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeReset
+     */
     handleTimeFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
         this.value = this.colorFieldNative.value;
@@ -217,6 +312,10 @@ class MDTimeFieldComponent extends MDElement {
         this.emit("onTimeFieldNativeReset", event);
     }
 
+    /**
+     *
+     * @fires MDTimeFieldComponent#onTimeFieldNativeClick
+     */
     handleTimeFieldNativeClick(event) {
         event.preventDefault();
 

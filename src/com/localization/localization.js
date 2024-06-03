@@ -1,7 +1,14 @@
 import { configureLocalization } from "@lit/localize";
 import { sourceLocale, targetLocales } from "../../generated/locale-codes.js";
 
+/**
+ *
+ * @class MDLocalizationModule
+ */
 class MDLocalizationModule {
+    /**
+     *
+     */
     constructor() {
         const { getLocale, setLocale } = configureLocalization({
             sourceLocale,
@@ -14,6 +21,9 @@ class MDLocalizationModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.callback();
         new MutationObserver(this.callback).observe(document.documentElement, {
@@ -22,6 +32,9 @@ class MDLocalizationModule {
         });
     }
 
+    /**
+     *
+     */
     callback() {
         const lang = document.documentElement.lang;
         this.setLocale(targetLocales.find((tl) => tl === lang) ?? sourceLocale);

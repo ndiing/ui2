@@ -1,6 +1,13 @@
 import { Hct, applyTheme, argbFromHex, themeFromSourceColor, hexFromArgb } from "@material/material-color-utilities";
 
+/**
+ *
+ * @class MDColorModule
+ */
 class MDColorModule {
+    /**
+     *
+     */
     constructor() {
         this.list = [
             {
@@ -17,6 +24,9 @@ class MDColorModule {
         this.init();
     }
 
+    /**
+     *
+     */
     init() {
         this.callback();
         new MutationObserver(this.callback).observe(document.querySelector('[name="theme-color"]'), {
@@ -25,6 +35,9 @@ class MDColorModule {
         });
     }
 
+    /**
+     *
+     */
     callback() {
         if (this.item) {
             this.item.query.removeEventListener("change", this.callback);

@@ -2,7 +2,41 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDFileFieldComponent
+ * @extends MDElement
+ */
 class MDFileFieldComponent extends MDElement {
+    /**
+     *
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [type] -
+     * @property {String} [value] -
+     * @property {String} [accept] -
+     * @property {String} [capture] -
+     * @property {Boolean} [multiple] -
+     * @property {String} [defaultValue] -
+     * @property {String} [label] -
+     * @property {String} [leadingIcon] -
+     * @property {String} [leadingMeta] -
+     * @property {String} [trailingMeta] -
+     * @property {Array} [trailingActions] -
+     * @property {String} [trailingIcon] -
+     * @property {String} [text] -
+     * @property {Boolean} [focused] -
+     * @property {Boolean} [populated] -
+     * @property {Boolean} [invalid] -
+     * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
     static get properties() {
         return {
             autocapitalize: { type: Boolean },
@@ -37,10 +71,16 @@ class MDFileFieldComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -82,12 +122,18 @@ class MDFileFieldComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-file-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-file-field");
@@ -99,12 +145,18 @@ class MDFileFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
@@ -118,29 +170,52 @@ class MDFileFieldComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     get fileFieldNative() {
         return this.querySelector(".md-file-field__native");
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeActionUploadClick
+     */
     handleFileFieldNativeActionUploadClick(event) {
         this.fileFieldNative.showPicker();
         this.emit("onFileFieldNativeActionUploadClick", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeActionClick
+     */
     handleFileFieldNativeActionClick(event) {
         this.emit("onFileFieldNativeActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeFocus
+     */
     handleFileFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onFileFieldNativeFocus", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeBlur
+     */
     handleFileFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onFileFieldNativeBlur", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeInput
+     */
     handleFileFieldNativeInput(event) {
         this.value = this.fileFieldNative.value;
         this.populated = !!this.value;
@@ -149,6 +224,10 @@ class MDFileFieldComponent extends MDElement {
         this.emit("onFileFieldNativeInput", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeInvalid
+     */
     handleFileFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.fileFieldNative.validationMessage;
@@ -156,6 +235,10 @@ class MDFileFieldComponent extends MDElement {
         this.emit("onFileFieldNativeInvalid", event);
     }
 
+    /**
+     *
+     * @fires MDFileFieldComponent#onFileFieldNativeReset
+     */
     handleFileFieldNativeReset(event) {
         this.fileFieldNative.value = this.defaultValue;
         this.value = this.fileFieldNative.value;

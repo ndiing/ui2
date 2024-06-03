@@ -2,7 +2,22 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ *
+ * @class MDSideSheetComponent
+ * @extends MDElement
+ */
 class MDSideSheetComponent extends MDElement {
+    /**
+     *
+     * @property {Array} [leadingActions] -
+     * @property {String} [label] -
+     * @property {String} [subLabel] -
+     * @property {Array} [trailingActions] -
+     * @property {Array} [buttons] -
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] -
+     */
     static get properties() {
         return {
             leadingActions: { type: Array },
@@ -15,11 +30,17 @@ class MDSideSheetComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -62,6 +83,9 @@ class MDSideSheetComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-side-sheet");
@@ -73,6 +97,9 @@ class MDSideSheetComponent extends MDElement {
         this.parentElement.insertBefore(this.scrim, this.nextElementSibling);
     }
 
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-side-sheet");
@@ -81,6 +108,9 @@ class MDSideSheetComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["modal"].forEach((ui) => {
@@ -105,14 +135,23 @@ class MDSideSheetComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
 
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
     toggle() {
         if (this.open) {
             this.close();
@@ -121,14 +160,26 @@ class MDSideSheetComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetActionClick
+     */
     handleSideSheetActionClick(event) {
         this.emit("onSideSheetActionClick", event);
     }
 
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetButtonClick
+     */
     handleSideSheetButtonClick(event) {
         this.emit("onSideSheetButtonClick", event);
     }
 
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetScrimClick
+     */
     handleSideSheetScrimClick(event) {
         this.close();
 
