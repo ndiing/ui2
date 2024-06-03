@@ -184,8 +184,7 @@
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
-            // --md-ripple-size: calc(141.42% * sqrt(2));
-            --md-ripple-size: 150%;
+            --md-ripple-size: 200%;
         }
     }
 
@@ -201,6 +200,3 @@
     }
 }
 
-th.md-ripple--dragged {
-    box-shadow: var(--md-sys-elevation-level0);
-}

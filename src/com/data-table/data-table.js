@@ -25,6 +25,7 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
         this.gesture = new MDGestureModule(this, {
             resize: ["e"],
             drag: ["x"],
+            dragAfterPress: true,
         });
     }
 
@@ -475,7 +476,6 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
-    
     updated(changedProperties) {}
 
     /**
@@ -692,7 +692,7 @@ class MDDataTableComponent extends MDElement {
         this.guide.style.setProperty("top", rect.top + "px");
         this.guide.style.setProperty("z-index", 6);
         this.guide.style.setProperty("pointer-events", "none");
-        this.guide.style.setProperty("--md-ripple-size", "150%");
+        this.guide.style.setProperty("--md-ripple-size", "200%");
         this.guide.classList.add("md-ripple");
         this.guide.classList.add("md-ripple--button");
         this.guide.classList.add("md-ripple--containment");
