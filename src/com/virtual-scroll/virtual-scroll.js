@@ -14,10 +14,8 @@ class MDVirtualScrollModule {
 
     init() {
         this.host.classList.add("md-virtual-scroll");
-        // set height
         this.scrollbar = this.options.scrollbar;
         this.scrollbar.classList.add("md-virtual-scroll__scrollbar");
-        // set translateY
         this.container = this.options.container;
         this.container.classList.add("md-virtual-scroll__container");
 
@@ -67,11 +65,9 @@ class MDVirtualScrollModule {
 
     destroy() {
         this.host.classList.remove("md-virtual-scroll");
-        // remove height
         this.scrollbar = this.options.scrollbar;
         this.scrollbar.style.removeProperty("height");
         this.scrollbar.classList.remove("md-virtual-scroll__scrollbar");
-        // remove translateY
         this.container = this.options.container;
         this.container.style.removeProperty("transform");
         this.container.classList.remove("md-virtual-scroll__container");

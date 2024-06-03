@@ -72,14 +72,8 @@ class MDWeekPickerComponent extends MDElement {
                         month,
                         day,
                         week,
-                        activated:
-                            year == this.date.getFullYear() && //
-                            // month == this.date.getMonth() &&
-                            week == this.date.getWeek(),
-                        selected:
-                            year == this.selected.getFullYear() && //
-                            // month == this.selected.getMonth() &&
-                            week == this.selected.getWeek(),
+                        activated: year == this.date.getFullYear() && week == this.date.getWeek(),
+                        selected: year == this.selected.getFullYear() && week == this.selected.getWeek(),
                         label: this.dayFormat(date),
                     };
                 }),
@@ -135,7 +129,6 @@ class MDWeekPickerComponent extends MDElement {
             return this.yearFormat(this.selected);
         }
         if (this.index == 2) {
-            // return this.dateFormat(this.selected);
             return "Week " + [this.selected.getWeek(), this.selected.getFullYear()].join(", ");
         }
     }
@@ -378,8 +371,6 @@ class MDWeekPickerComponent extends MDElement {
 
         if (changedProperties.has("open")) {
             if (this.open) {
-                // if (!this.ui?.includes("full-screen")) {
-                // }
                 this.scrim.setAttribute("open", "");
                 this.emit("onWeekPickerShow", this);
             } else {

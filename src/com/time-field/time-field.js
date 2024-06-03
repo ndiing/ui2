@@ -133,8 +133,6 @@ class MDTimeFieldComponent extends MDElement {
     }
 
     handleTimeFieldNativeActionCalendarClockClick(event) {
-        // this.colorFieldNative.showPicker()
-
         this.handleColorPicker();
 
         this.emit("onTimeFieldNativeActionCalendarClockClick", event);
@@ -168,7 +166,6 @@ class MDTimeFieldComponent extends MDElement {
     }
 
     handleTimeFieldPickerChange(event) {
-        // console.log(this.timeFieldPicker.selected)
         this.colorFieldNative.value = [("" + this.timeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.timeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
@@ -223,8 +220,6 @@ class MDTimeFieldComponent extends MDElement {
 
     handleTimeFieldNativeClick(event) {
         event.preventDefault();
-
-        // this.handleColorPicker();
 
         this.emit("onTimeFieldNativeClick", event);
     }

@@ -92,28 +92,23 @@ class MDDataModule {
     getAll(options = {}) {
         let rows = this.docs.slice();
 
-        // Apply sorting
         if (options.sorters) {
             rows = this.sort(rows, options);
         }
 
-        // Apply searching
         if (options.q) {
             rows = this.search(rows, options);
         }
 
-        // Apply filtering
         if (options.filters) {
             rows = this.filter(rows, options);
         }
 
         const total = rows.length;
 
-        // Apply slicing
         if (options._start !== undefined && options._end !== undefined) {
             rows = this.slice(rows, options);
         } else if (options._page !== undefined && options._limit !== undefined) {
-            // Apply pagination
             rows = this.paginate(rows, options);
         }
 

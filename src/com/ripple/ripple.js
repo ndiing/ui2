@@ -4,7 +4,7 @@ class MDRippleModule {
         this.options = {
             button: this.host,
             containment: true,
-            // size:Math.sqrt(Math.pow(40,2)+Math.pow(40,2))/40*100,// in %
+            size: undefined,
             centered: false,
             fadeout: false,
             inverse: false,

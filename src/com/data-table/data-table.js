@@ -15,7 +15,6 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
         this.gesture = new MDGestureModule(this, {
             resize: ["e"],
             drag: ["x"],
-            // dragAfterPress: true,
         });
     }
 
@@ -342,9 +341,7 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
-    updated(changedProperties) {
-        // console.log(this.columns)
-    }
+    updated(changedProperties) {}
 
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
@@ -506,7 +503,6 @@ class MDDataTableComponent extends MDElement {
         this.guide = th.cloneNode(true);
         this.guide.style.setProperty("width", rect.width + "px");
         this.guide.style.setProperty("height", rect.height + "px");
-        // this.guide.style.setProperty("opacity", "84%");
         this.guide.style.setProperty("position", "absolute");
         this.guide.style.setProperty("left", rect.left + "px");
         this.guide.style.setProperty("top", rect.top + "px");

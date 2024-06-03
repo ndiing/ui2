@@ -2,22 +2,8 @@ class MDGestureModule {
     constructor(host, options = {}) {
         this.host = host;
         this.options = {
-            resize: [
-                //
-                "nw",
-                "n",
-                "ne",
-                "w",
-                "e",
-                "sw",
-                "s",
-                "se",
-            ],
-            drag: [
-                //
-                "x",
-                "y",
-            ],
+            resize: ["nw", "n", "ne", "w", "e", "sw", "s", "se"],
+            drag: ["x", "y"],
             resizeAfterPress: false,
             dragAfterPress: false,
             applyStyle: false,
@@ -123,18 +109,7 @@ class MDGestureModule {
             this.emit("onResize", event);
         }
 
-        this.swipe =
-            !this.drag &&
-            !this.resize &&
-            (currentX > 30 //
-                ? "Right"
-                : currentX < -30
-                  ? "Left"
-                  : currentY > 30
-                    ? "Bottom"
-                    : currentY < -30
-                      ? "Top"
-                      : false);
+        this.swipe = !this.drag && !this.resize && (currentX > 30 ? "Right" : currentX < -30 ? "Left" : currentY > 30 ? "Bottom" : currentY < -30 ? "Top" : false);
 
         if (this.options.applyStyle) {
             this.host.style.setProperty("left", this.currentX + "px");
@@ -145,8 +120,6 @@ class MDGestureModule {
     }
 
     handlePointerup(event) {
-        // this.guide.remove();
-
         window.clearTimeout(this.presTimeout);
 
         if (!this.press && !this.swipe) {

@@ -133,8 +133,6 @@ class MDDateFieldComponent extends MDElement {
     }
 
     handleDateFieldNativeActionCalendarClockClick(event) {
-        // this.colorFieldNative.showPicker()
-
         this.handleColorPicker();
 
         this.emit("onDateFieldNativeActionCalendarClockClick", event);
@@ -168,13 +166,7 @@ class MDDateFieldComponent extends MDElement {
     }
 
     handleDateFieldPickerChange(event) {
-        // console.log(this.dateFieldPicker.selected)
-        this.colorFieldNative.value = [
-            //
-            this.dateFieldPicker.selected.getFullYear(),
-            ("" + (this.dateFieldPicker.selected.getMonth() + 1)).padStart(2, "0"),
-            ("" + this.dateFieldPicker.selected.getDate()).padStart(2, "0"),
-        ].join("-");
+        this.colorFieldNative.value = [this.dateFieldPicker.selected.getFullYear(), ("" + (this.dateFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.dateFieldPicker.selected.getDate()).padStart(2, "0")].join("-");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -228,8 +220,6 @@ class MDDateFieldComponent extends MDElement {
 
     handleDateFieldNativeClick(event) {
         event.preventDefault();
-
-        // this.handleColorPicker();
 
         this.emit("onDateFieldNativeClick", event);
     }

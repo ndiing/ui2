@@ -134,8 +134,6 @@ class MDColorFieldComponent extends MDElement {
     }
 
     handleColorFieldNativeActionPaletteClick(event) {
-        // this.colorFieldNative.showPicker()
-
         this.handleColorPicker();
 
         this.emit("onColorFieldNativeActionPaletteClick", event);
@@ -220,8 +218,6 @@ class MDColorFieldComponent extends MDElement {
 
     handleColorFieldNativeClick(event) {
         event.preventDefault();
-
-        // this.handleColorPicker();
 
         this.emit("onColorFieldNativeClick", event);
     }

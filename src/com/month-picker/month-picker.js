@@ -369,8 +369,6 @@ class MDMonthPickerComponent extends MDElement {
 
         if (changedProperties.has("open")) {
             if (this.open) {
-                // if (!this.ui?.includes("full-screen")) {
-                // }
                 this.scrim.setAttribute("open", "");
                 this.emit("onMonthPickerShow", this);
             } else {

@@ -253,8 +253,6 @@ class MDColorPickerComponent extends MDElement {
 
         if (changedProperties.has("open")) {
             if (this.open) {
-                // if (!this.ui?.includes("full-screen")) {
-                // }
                 this.scrim.setAttribute("open", "");
                 this.emit("onColorPickerShow", this);
             } else {
@@ -273,7 +271,6 @@ class MDColorPickerComponent extends MDElement {
             }
         }
 
-        // this.style.setProperty("--md-color-picker-index", this.index);
         this.selected = this.rgbaToHex(this.red, this.green, this.blue, this.alpha);
         this.style.setProperty("--md-color-picker-rgb", `rgb(${this.red},${this.green},${this.blue})`);
         this.style.setProperty("--md-color-picker-hsl", `hsl(${this.hue}deg 100% 50%)`);
@@ -346,19 +343,11 @@ class MDColorPickerComponent extends MDElement {
         this.solidCtx = this.solidCanvas.getContext("2d", {
             willReadFrequently: true,
         });
-        // this.hueCtx = this.hueCanvas.getContext('2d',{ willReadFrequently: true });
-        // this.opacityCtx = this.opacityCanvas.getContext('2d',{ willReadFrequently: true });
 
         this.solidCanvas.width = this.solidCanvas.clientWidth;
         this.solidCanvas.height = this.solidCanvas.clientHeight;
-        // this.hueCanvas.width = this.hueCanvas.clientWidth;
-        // this.hueCanvas.height = this.hueCanvas.clientHeight;
-        // this.opacityCanvas.width = this.opacityCanvas.clientWidth;
-        // this.opacityCanvas.height = this.opacityCanvas.clientHeight;
 
         this.drawSolidGradient();
-        // this.drawHueGradient();
-        // this.drawOpacityGradient();
 
         this.solidThumb = document.querySelector(".md-color-picker__thumb");
 
@@ -452,11 +441,9 @@ class MDColorPickerComponent extends MDElement {
         const [r, g, b, a] = pixel;
         const { h, s, l } = this.rgbaToHsla(r, g, b, a);
 
-        // a/255
         this.red = r;
         this.green = g;
         this.blue = b;
-        // this.hue = h;
         this.saturation = s;
         this.lightness = l;
 
@@ -511,12 +498,10 @@ class MDColorPickerComponent extends MDElement {
 
     handleColorPickerButtonCancelClick(event) {
         this.emit("onColorPickerButtonCancelClick", event);
-        // this.emit("onColorPickerChange", event);
     }
 
     handleColorPickerButtonOkClick(event) {
         this.emit("onColorPickerButtonOkClick", event);
-        // this.emit("onColorPickerChange", event);
     }
 }
 

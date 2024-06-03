@@ -133,8 +133,6 @@ class MDWeekFieldComponent extends MDElement {
     }
 
     handleWeekFieldNativeActionCalendarClockClick(event) {
-        // this.colorFieldNative.showPicker()
-
         this.handleColorPicker();
 
         this.emit("onWeekFieldNativeActionCalendarClockClick", event);
@@ -168,12 +166,7 @@ class MDWeekFieldComponent extends MDElement {
     }
 
     handleWeekFieldPickerChange(event) {
-        // console.log(this.weekFieldPicker.selected)
-        this.colorFieldNative.value = [
-            //
-            this.weekFieldPicker.selected.getFullYear(),
-            ("" + this.weekFieldPicker.selected.getWeek()).padStart(2, "0"),
-        ].join("-W");
+        this.colorFieldNative.value = [this.weekFieldPicker.selected.getFullYear(), ("" + this.weekFieldPicker.selected.getWeek()).padStart(2, "0")].join("-W");
         this.value = this.colorFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -227,8 +220,6 @@ class MDWeekFieldComponent extends MDElement {
 
     handleWeekFieldNativeClick(event) {
         event.preventDefault();
-
-        // this.handleColorPicker();
 
         this.emit("onWeekFieldNativeClick", event);
     }

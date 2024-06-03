@@ -373,8 +373,6 @@ class MDDatetimePickerComponent extends MDElement {
 
         if (changedProperties.has("open")) {
             if (this.open) {
-                // if (!this.ui?.includes("full-screen")) {
-                // }
                 this.scrim.setAttribute("open", "");
                 this.emit("onDatetimePickerShow", this);
             } else {
@@ -397,7 +395,6 @@ class MDDatetimePickerComponent extends MDElement {
     }
 
     updateFromValue() {
-        // console.log(this.value)
         const date = new Date(this.value);
 
         this.selected.setFullYear(date.getFullYear());
