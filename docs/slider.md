@@ -1,87 +1,50 @@
-<a name="MDSliderComponent"></a>
+# MDSliderComponent
+desc 
 
-## MDSliderComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDSliderComponent](#MDSliderComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.sliderNative1](#MDSliderComponent+sliderNative1)
-        * [.sliderNative2](#MDSliderComponent+sliderNative2)
-        * [.render()](#MDSliderComponent+render)
-        * [.connectedCallback()](#MDSliderComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDSliderComponent+disconnectedCallback)
-        * [.firstUpdated()](#MDSliderComponent+firstUpdated)
-        * [.updated()](#MDSliderComponent+updated)
-        * [.handleSliderNativeInput()](#MDSliderComponent+handleSliderNativeInput)
-        * [.handleSliderNativeReset()](#MDSliderComponent+handleSliderNativeReset)
-        * [.calculatePercentage()](#MDSliderComponent+calculatePercentage)
-        * [.calculateDecimal()](#MDSliderComponent+calculateDecimal)
-    * _static_
-        * [.properties](#MDSliderComponent.properties)
+name|type|description
+---|---|---
+autocapitalize|Boolean|-
+autocomplete|Boolean|-
+disabled|Boolean|-
+form|String|-
+list|String|-
+name|String|-
+type|String|-
+max|Number|-
+min|Number|-
+step|Number|-
+defaultValue|Array|-
+convertLabel|function|-
 
-<a name="MDSliderComponent+sliderNative1"></a>
+## Accessor
+desc 
 
-### mdSliderComponent.sliderNative1
-**Kind**: instance property of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+sliderNative2"></a>
+name|type|description
+---|---|---
+sliderNative1|-|-
+sliderNative2|-|-
 
-### mdSliderComponent.sliderNative2
-**Kind**: instance property of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+render"></a>
+## Methods
+desc 
 
-### mdSliderComponent.render()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+connectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+firstUpdated|-|-
+updated|-|-
+handleSliderNativeInput|-|-
+handleSliderNativeReset|-|-
+calculatePercentage|-|-
+calculateDecimal|-|-
 
-### mdSliderComponent.connectedCallback()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+disconnectedCallback"></a>
+## Events
+desc 
 
-### mdSliderComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+firstUpdated"></a>
-
-### mdSliderComponent.firstUpdated()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+updated"></a>
-
-### mdSliderComponent.updated()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+handleSliderNativeInput"></a>
-
-### mdSliderComponent.handleSliderNativeInput()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+handleSliderNativeReset"></a>
-
-### mdSliderComponent.handleSliderNativeReset()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+calculatePercentage"></a>
-
-### mdSliderComponent.calculatePercentage()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent+calculateDecimal"></a>
-
-### mdSliderComponent.calculateDecimal()
-**Kind**: instance method of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-<a name="MDSliderComponent.properties"></a>
-
-### MDSliderComponent.properties
-**Kind**: static property of [<code>MDSliderComponent</code>](#MDSliderComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [autocapitalize] | <code>Boolean</code> | - |
-| [autocomplete] | <code>Boolean</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [list] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [type] | <code>String</code> | - |
-| [max] | <code>Number</code> | - |
-| [min] | <code>Number</code> | - |
-| [step] | <code>Number</code> | - |
-| [defaultValue] | <code>Array</code> | - |
-| [convertLabel] | <code>function</code> | - |
+name|params|description
+---|---|---
 

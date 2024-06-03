@@ -1,74 +1,45 @@
-<a name="MDTopAppBarComponent"></a>
+# MDTopAppBarComponent
+desc 
 
-## MDTopAppBarComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDTopAppBarComponent](#MDTopAppBarComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDTopAppBarComponent+render)
-        * [.connectedCallback()](#MDTopAppBarComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDTopAppBarComponent+disconnectedCallback)
-        * [.updated()](#MDTopAppBarComponent+updated)
-        * [.show()](#MDTopAppBarComponent+show)
-        * [.close()](#MDTopAppBarComponent+close)
-        * [.toggle()](#MDTopAppBarComponent+toggle)
-        * [.handleTopAppBarActionClick()](#MDTopAppBarComponent+handleTopAppBarActionClick)
-        * [.handleTopAppBarButtonClick()](#MDTopAppBarComponent+handleTopAppBarButtonClick)
-    * _static_
-        * [.properties](#MDTopAppBarComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|center-aligned,small,medium,large
+open|Boolean|-
 
-<a name="MDTopAppBarComponent+render"></a>
+## Accessor
+desc 
 
-### mdTopAppBarComponent.render()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdTopAppBarComponent.connectedCallback()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdTopAppBarComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+show|-|-
+close|-|-
+toggle|-|-
+handleTopAppBarActionClick|-|-
+handleTopAppBarButtonClick|-|-
 
-### mdTopAppBarComponent.updated()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+show"></a>
+## Events
+desc 
 
-### mdTopAppBarComponent.show()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+close"></a>
-
-### mdTopAppBarComponent.close()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+toggle"></a>
-
-### mdTopAppBarComponent.toggle()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-<a name="MDTopAppBarComponent+handleTopAppBarActionClick"></a>
-
-### mdTopAppBarComponent.handleTopAppBarActionClick()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-**Emits**: <code>MDTopAppBarComponent#event:onTopAppBarActionClick</code>  
-<a name="MDTopAppBarComponent+handleTopAppBarButtonClick"></a>
-
-### mdTopAppBarComponent.handleTopAppBarButtonClick()
-**Kind**: instance method of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-**Emits**: <code>MDTopAppBarComponent#event:onTopAppBarButtonClick</code>  
-<a name="MDTopAppBarComponent.properties"></a>
-
-### MDTopAppBarComponent.properties
-**Kind**: static property of [<code>MDTopAppBarComponent</code>](#MDTopAppBarComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | center-aligned,small,medium,large |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDTopAppBarComponent#event:onTopAppBarActionClick|-|-
+MDTopAppBarComponent#event:onTopAppBarButtonClick|-|-
 

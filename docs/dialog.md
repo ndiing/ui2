@@ -1,80 +1,47 @@
-<a name="MDDialogComponent"></a>
+# MDDialogComponent
+desc 
 
-## MDDialogComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDDialogComponent](#MDDialogComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDDialogComponent+render)
-        * [.connectedCallback()](#MDDialogComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDDialogComponent+disconnectedCallback)
-        * [.updated()](#MDDialogComponent+updated)
-        * [.show()](#MDDialogComponent+show)
-        * [.close()](#MDDialogComponent+close)
-        * [.toggle()](#MDDialogComponent+toggle)
-        * [.handleDialogActionClick()](#MDDialogComponent+handleDialogActionClick)
-        * [.handleDialogButtonClick()](#MDDialogComponent+handleDialogButtonClick)
-        * [.handleDialogScrimClick()](#MDDialogComponent+handleDialogScrimClick)
-    * _static_
-        * [.properties](#MDDialogComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|full-screen
+open|Boolean|-
 
-<a name="MDDialogComponent+render"></a>
+## Accessor
+desc 
 
-### mdDialogComponent.render()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdDialogComponent.connectedCallback()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdDialogComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+show|-|-
+close|-|-
+toggle|-|-
+handleDialogActionClick|-|-
+handleDialogButtonClick|-|-
+handleDialogScrimClick|-|-
 
-### mdDialogComponent.updated()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+show"></a>
+## Events
+desc 
 
-### mdDialogComponent.show()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+close"></a>
-
-### mdDialogComponent.close()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+toggle"></a>
-
-### mdDialogComponent.toggle()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-<a name="MDDialogComponent+handleDialogActionClick"></a>
-
-### mdDialogComponent.handleDialogActionClick()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-**Emits**: <code>MDDialogComponent#event:onDialogActionClick</code>  
-<a name="MDDialogComponent+handleDialogButtonClick"></a>
-
-### mdDialogComponent.handleDialogButtonClick()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-**Emits**: <code>MDDialogComponent#event:onDialogButtonClick</code>  
-<a name="MDDialogComponent+handleDialogScrimClick"></a>
-
-### mdDialogComponent.handleDialogScrimClick()
-**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-**Emits**: <code>MDDialogComponent#event:onDialogScrimClick</code>  
-<a name="MDDialogComponent.properties"></a>
-
-### MDDialogComponent.properties
-**Kind**: static property of [<code>MDDialogComponent</code>](#MDDialogComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | full-screen |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDDialogComponent#event:onDialogActionClick|-|-
+MDDialogComponent#event:onDialogButtonClick|-|-
+MDDialogComponent#event:onDialogScrimClick|-|-
 

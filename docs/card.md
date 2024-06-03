@@ -1,47 +1,38 @@
-<a name="MDCardComponent"></a>
+# MDCardComponent
+desc 
 
-## MDCardComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDCardComponent](#MDCardComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDCardComponent+render)
-        * [.connectedCallback()](#MDCardComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDCardComponent+disconnectedCallback)
-        * [.updated()](#MDCardComponent+updated)
-    * _static_
-        * [.properties](#MDCardComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+image|String|-
+buttons|Array|-
+ui|String|elevated,filled,outlined
 
-<a name="MDCardComponent+render"></a>
+## Accessor
+desc 
 
-### mdCardComponent.render()
-**Kind**: instance method of [<code>MDCardComponent</code>](#MDCardComponent)  
-<a name="MDCardComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdCardComponent.connectedCallback()
-**Kind**: instance method of [<code>MDCardComponent</code>](#MDCardComponent)  
-<a name="MDCardComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdCardComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDCardComponent</code>](#MDCardComponent)  
-<a name="MDCardComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
 
-### mdCardComponent.updated()
-**Kind**: instance method of [<code>MDCardComponent</code>](#MDCardComponent)  
-<a name="MDCardComponent.properties"></a>
+## Events
+desc 
 
-### MDCardComponent.properties
-**Kind**: static property of [<code>MDCardComponent</code>](#MDCardComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [image] | <code>String</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | elevated,filled,outlined |
+name|params|description
+---|---|---
 

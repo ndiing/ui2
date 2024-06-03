@@ -1,108 +1,67 @@
-<a name="MDTextareaFieldComponent"></a>
+# MDTextareaFieldComponent
+desc 
 
-## MDTextareaFieldComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDTextareaFieldComponent](#MDTextareaFieldComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.textFieldNative](#MDTextareaFieldComponent+textFieldNative)
-        * [.render()](#MDTextareaFieldComponent+render)
-        * [.connectedCallback()](#MDTextareaFieldComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDTextareaFieldComponent+disconnectedCallback)
-        * [.firstUpdated()](#MDTextareaFieldComponent+firstUpdated)
-        * [.updated()](#MDTextareaFieldComponent+updated)
-        * [.handleTextareaFieldNativeActionClick()](#MDTextareaFieldComponent+handleTextareaFieldNativeActionClick)
-        * [.handleTextareaFieldNativeFocus()](#MDTextareaFieldComponent+handleTextareaFieldNativeFocus)
-        * [.handleTextareaFieldNativeBlur()](#MDTextareaFieldComponent+handleTextareaFieldNativeBlur)
-        * [.handleTextareaFieldNativeInput()](#MDTextareaFieldComponent+handleTextareaFieldNativeInput)
-        * [.handleTextareaFieldNativeInvalid()](#MDTextareaFieldComponent+handleTextareaFieldNativeInvalid)
-        * [.handleTextareaFieldNativeReset()](#MDTextareaFieldComponent+handleTextareaFieldNativeReset)
-    * _static_
-        * [.properties](#MDTextareaFieldComponent.properties)
+name|type|description
+---|---|---
+autocapitalize|Boolean|-
+autocomplete|String|-
+disabled|Boolean|-
+form|String|-
+list|String|-
+name|String|-
+readonly|Boolean|-
+required|Boolean|-
+value|String|-
+defaultValue|String|-
+label|String|-
+leadingIcon|String|-
+leadingMeta|String|-
+trailingMeta|String|-
+trailingActions|Array|-
+trailingIcon|String|-
+text|String|-
+focused|Boolean|-
+populated|Boolean|-
+invalid|Boolean|-
+validationMessage|String|-
+ui|String|filled,outlined,rounded
 
-<a name="MDTextareaFieldComponent+textFieldNative"></a>
+## Accessor
+desc 
 
-### mdTextareaFieldComponent.textFieldNative
-**Kind**: instance property of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+render"></a>
+name|type|description
+---|---|---
+textFieldNative|-|-
 
-### mdTextareaFieldComponent.render()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdTextareaFieldComponent.connectedCallback()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+firstUpdated|-|-
+updated|-|-
+handleTextareaFieldNativeActionClick|-|-
+handleTextareaFieldNativeFocus|-|-
+handleTextareaFieldNativeBlur|-|-
+handleTextareaFieldNativeInput|-|-
+handleTextareaFieldNativeInvalid|-|-
+handleTextareaFieldNativeReset|-|-
 
-### mdTextareaFieldComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+firstUpdated"></a>
+## Events
+desc 
 
-### mdTextareaFieldComponent.firstUpdated()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+updated"></a>
-
-### mdTextareaFieldComponent.updated()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeActionClick"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeActionClick()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeActionClick</code>  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeFocus"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeFocus()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeFocus</code>  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeBlur"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeBlur()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeBlur</code>  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeInput"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeInput()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeInput</code>  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeInvalid"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeInvalid()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeInvalid</code>  
-<a name="MDTextareaFieldComponent+handleTextareaFieldNativeReset"></a>
-
-### mdTextareaFieldComponent.handleTextareaFieldNativeReset()
-**Kind**: instance method of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Emits**: <code>MDTextareaFieldComponent#event:onTextareaFieldNativeReset</code>  
-<a name="MDTextareaFieldComponent.properties"></a>
-
-### MDTextareaFieldComponent.properties
-**Kind**: static property of [<code>MDTextareaFieldComponent</code>](#MDTextareaFieldComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [autocapitalize] | <code>Boolean</code> | - |
-| [autocomplete] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [list] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [readonly] | <code>Boolean</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [value] | <code>String</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [leadingIcon] | <code>String</code> | - |
-| [leadingMeta] | <code>String</code> | - |
-| [trailingMeta] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [trailingIcon] | <code>String</code> | - |
-| [text] | <code>String</code> | - |
-| [focused] | <code>Boolean</code> | - |
-| [populated] | <code>Boolean</code> | - |
-| [invalid] | <code>Boolean</code> | - |
-| [validationMessage] | <code>String</code> | - |
-| [ui] | <code>String</code> | filled,outlined,rounded |
+name|params|description
+---|---|---
+MDTextareaFieldComponent#event:onTextareaFieldNativeActionClick|-|-
+MDTextareaFieldComponent#event:onTextareaFieldNativeFocus|-|-
+MDTextareaFieldComponent#event:onTextareaFieldNativeBlur|-|-
+MDTextareaFieldComponent#event:onTextareaFieldNativeInput|-|-
+MDTextareaFieldComponent#event:onTextareaFieldNativeInvalid|-|-
+MDTextareaFieldComponent#event:onTextareaFieldNativeReset|-|-
 

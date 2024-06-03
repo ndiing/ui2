@@ -1,57 +1,40 @@
-<a name="MDSegmentedButtonComponent"></a>
+# MDSegmentedButtonComponent
+desc 
 
-## MDSegmentedButtonComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDSegmentedButtonComponent](#MDSegmentedButtonComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.renderButton()](#MDSegmentedButtonComponent+renderButton)
-        * [.render()](#MDSegmentedButtonComponent+render)
-        * [.connectedCallback()](#MDSegmentedButtonComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDSegmentedButtonComponent+disconnectedCallback)
-        * [.updated()](#MDSegmentedButtonComponent+updated)
-        * [.handleSegmentedButtonKeydown()](#MDSegmentedButtonComponent+handleSegmentedButtonKeydown)
-    * _static_
-        * [.properties](#MDSegmentedButtonComponent.properties)
+name|type|description
+---|---|---
+buttons|Array|-
+rangeSelection|Boolean|-
+multiSelection|Boolean|-
+singleSelection|Boolean|-
+allSelection|Boolean|-
 
-<a name="MDSegmentedButtonComponent+renderButton"></a>
+## Accessor
+desc 
 
-### mdSegmentedButtonComponent.renderButton()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-<a name="MDSegmentedButtonComponent+render"></a>
+name|type|description
+---|---|---
 
-### mdSegmentedButtonComponent.render()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-<a name="MDSegmentedButtonComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdSegmentedButtonComponent.connectedCallback()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-<a name="MDSegmentedButtonComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+renderButton|-|-
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+handleSegmentedButtonKeydown|-|-
 
-### mdSegmentedButtonComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-<a name="MDSegmentedButtonComponent+updated"></a>
+## Events
+desc 
 
-### mdSegmentedButtonComponent.updated()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-**Emits**: <code>MDSegmentedButtonComponent#event:onSegmentedButtonButtonClick</code>  
-<a name="MDSegmentedButtonComponent+handleSegmentedButtonKeydown"></a>
-
-### mdSegmentedButtonComponent.handleSegmentedButtonKeydown()
-**Kind**: instance method of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-**Emits**: <code>MDSegmentedButtonComponent#event:onSegmentedButtonKeydown</code>  
-<a name="MDSegmentedButtonComponent.properties"></a>
-
-### MDSegmentedButtonComponent.properties
-**Kind**: static property of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [buttons] | <code>Array</code> | - |
-| [rangeSelection] | <code>Boolean</code> | - |
-| [multiSelection] | <code>Boolean</code> | - |
-| [singleSelection] | <code>Boolean</code> | - |
-| [allSelection] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDSegmentedButtonComponent#event:onSegmentedButtonButtonClick|-|-
+MDSegmentedButtonComponent#event:onSegmentedButtonKeydown|-|-
 

@@ -1,46 +1,33 @@
-<a name="MDTabsComponent"></a>
+# MDTabsComponent
+desc 
 
-## MDTabsComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDTabsComponent](#MDTabsComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDTabsComponent+render)
-        * [.connectedCallback()](#MDTabsComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDTabsComponent+disconnectedCallback)
-        * [.updated()](#MDTabsComponent+updated)
-        * [.handleListItemSelected()](#MDTabsComponent+handleListItemSelected)
-    * _static_
-        * [.properties](#MDTabsComponent.properties)
+name|type|description
+---|---|---
+ui|String|scrollable,primary,secondary
 
-<a name="MDTabsComponent+render"></a>
+## Accessor
+desc 
 
-### mdTabsComponent.render()
-**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-<a name="MDTabsComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdTabsComponent.connectedCallback()
-**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-<a name="MDTabsComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdTabsComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-<a name="MDTabsComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+handleListItemSelected|-|-
 
-### mdTabsComponent.updated()
-**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-<a name="MDTabsComponent+handleListItemSelected"></a>
+## Events
+desc 
 
-### mdTabsComponent.handleListItemSelected()
-**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-<a name="MDTabsComponent.properties"></a>
-
-### MDTabsComponent.properties
-**Kind**: static property of [<code>MDTabsComponent</code>](#MDTabsComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [ui] | <code>String</code> | scrollable,primary,secondary |
+name|params|description
+---|---|---
 

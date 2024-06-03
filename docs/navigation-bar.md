@@ -1,69 +1,44 @@
-<a name="MDNavigationBarComponent"></a>
+# MDNavigationBarComponent
+desc 
 
-## MDNavigationBarComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDNavigationBarComponent](#MDNavigationBarComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDNavigationBarComponent+render)
-        * [.connectedCallback()](#MDNavigationBarComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDNavigationBarComponent+disconnectedCallback)
-        * [.updated()](#MDNavigationBarComponent+updated)
-        * [.close()](#MDNavigationBarComponent+close)
-        * [.toggle()](#MDNavigationBarComponent+toggle)
-        * [.handleNavigationBarActionClick()](#MDNavigationBarComponent+handleNavigationBarActionClick)
-        * [.handleNavigationBarButtonClick()](#MDNavigationBarComponent+handleNavigationBarButtonClick)
-    * _static_
-        * [.properties](#MDNavigationBarComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|-
+open|Boolean|-
 
-<a name="MDNavigationBarComponent+render"></a>
+## Accessor
+desc 
 
-### mdNavigationBarComponent.render()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdNavigationBarComponent.connectedCallback()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdNavigationBarComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+close|-|-
+toggle|-|-
+handleNavigationBarActionClick|-|-
+handleNavigationBarButtonClick|-|-
 
-### mdNavigationBarComponent.updated()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+close"></a>
+## Events
+desc 
 
-### mdNavigationBarComponent.close()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+toggle"></a>
-
-### mdNavigationBarComponent.toggle()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-<a name="MDNavigationBarComponent+handleNavigationBarActionClick"></a>
-
-### mdNavigationBarComponent.handleNavigationBarActionClick()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-**Emits**: <code>MDNavigationBarComponent#event:onNavigationBarActionClick</code>  
-<a name="MDNavigationBarComponent+handleNavigationBarButtonClick"></a>
-
-### mdNavigationBarComponent.handleNavigationBarButtonClick()
-**Kind**: instance method of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-**Emits**: <code>MDNavigationBarComponent#event:onNavigationBarButtonClick</code>  
-<a name="MDNavigationBarComponent.properties"></a>
-
-### MDNavigationBarComponent.properties
-**Kind**: static property of [<code>MDNavigationBarComponent</code>](#MDNavigationBarComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | - |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDNavigationBarComponent#event:onNavigationBarActionClick|-|-
+MDNavigationBarComponent#event:onNavigationBarButtonClick|-|-
 

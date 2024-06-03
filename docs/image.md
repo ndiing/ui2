@@ -1,44 +1,35 @@
-<a name="MDImageComponent"></a>
+# MDImageComponent
+desc 
 
-## MDImageComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDImageComponent](#MDImageComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDImageComponent+render)
-        * [.connectedCallback()](#MDImageComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDImageComponent+disconnectedCallback)
-        * [.updated()](#MDImageComponent+updated)
-    * _static_
-        * [.properties](#MDImageComponent.properties)
+name|type|description
+---|---|---
+src|String|-
+alt|String|-
+ratio|String|-
+ui|String|rounded
 
-<a name="MDImageComponent+render"></a>
+## Accessor
+desc 
 
-### mdImageComponent.render()
-**Kind**: instance method of [<code>MDImageComponent</code>](#MDImageComponent)  
-<a name="MDImageComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdImageComponent.connectedCallback()
-**Kind**: instance method of [<code>MDImageComponent</code>](#MDImageComponent)  
-<a name="MDImageComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdImageComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDImageComponent</code>](#MDImageComponent)  
-<a name="MDImageComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
 
-### mdImageComponent.updated()
-**Kind**: instance method of [<code>MDImageComponent</code>](#MDImageComponent)  
-<a name="MDImageComponent.properties"></a>
+## Events
+desc 
 
-### MDImageComponent.properties
-**Kind**: static property of [<code>MDImageComponent</code>](#MDImageComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [src] | <code>String</code> | - |
-| [alt] | <code>String</code> | - |
-| [ratio] | <code>String</code> | - |
-| [ui] | <code>String</code> | rounded |
+name|params|description
+---|---|---
 

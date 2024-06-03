@@ -1,80 +1,47 @@
-<a name="MDBottomSheetComponent"></a>
+# MDBottomSheetComponent
+desc 
 
-## MDBottomSheetComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDBottomSheetComponent](#MDBottomSheetComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDBottomSheetComponent+render)
-        * [.connectedCallback()](#MDBottomSheetComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDBottomSheetComponent+disconnectedCallback)
-        * [.updated()](#MDBottomSheetComponent+updated)
-        * [.show()](#MDBottomSheetComponent+show)
-        * [.close()](#MDBottomSheetComponent+close)
-        * [.toggle()](#MDBottomSheetComponent+toggle)
-        * [.handleBottomSheetActionClick()](#MDBottomSheetComponent+handleBottomSheetActionClick)
-        * [.handleBottomSheetButtonClick()](#MDBottomSheetComponent+handleBottomSheetButtonClick)
-        * [.handleBottomSheetScrimClick()](#MDBottomSheetComponent+handleBottomSheetScrimClick)
-    * _static_
-        * [.properties](#MDBottomSheetComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|modal
+open|Boolean|-
 
-<a name="MDBottomSheetComponent+render"></a>
+## Accessor
+desc 
 
-### mdBottomSheetComponent.render()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdBottomSheetComponent.connectedCallback()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdBottomSheetComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+show|-|-
+close|-|-
+toggle|-|-
+handleBottomSheetActionClick|-|-
+handleBottomSheetButtonClick|-|-
+handleBottomSheetScrimClick|-|-
 
-### mdBottomSheetComponent.updated()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+show"></a>
+## Events
+desc 
 
-### mdBottomSheetComponent.show()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+close"></a>
-
-### mdBottomSheetComponent.close()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+toggle"></a>
-
-### mdBottomSheetComponent.toggle()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-<a name="MDBottomSheetComponent+handleBottomSheetActionClick"></a>
-
-### mdBottomSheetComponent.handleBottomSheetActionClick()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-**Emits**: <code>MDBottomSheetComponent#event:onBottomSheetActionClick</code>  
-<a name="MDBottomSheetComponent+handleBottomSheetButtonClick"></a>
-
-### mdBottomSheetComponent.handleBottomSheetButtonClick()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-**Emits**: <code>MDBottomSheetComponent#event:onBottomSheetButtonClick</code>  
-<a name="MDBottomSheetComponent+handleBottomSheetScrimClick"></a>
-
-### mdBottomSheetComponent.handleBottomSheetScrimClick()
-**Kind**: instance method of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-**Emits**: <code>MDBottomSheetComponent#event:onBottomSheetScrimClick</code>  
-<a name="MDBottomSheetComponent.properties"></a>
-
-### MDBottomSheetComponent.properties
-**Kind**: static property of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | modal |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDBottomSheetComponent#event:onBottomSheetActionClick|-|-
+MDBottomSheetComponent#event:onBottomSheetButtonClick|-|-
+MDBottomSheetComponent#event:onBottomSheetScrimClick|-|-
 

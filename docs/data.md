@@ -1,47 +1,135 @@
-<a name="MDDataModule"></a>
-
-## MDDataModule
-**Kind**: global class  
-
-* [MDDataModule](#MDDataModule)
-    * [.sort()](#MDDataModule+sort)
-    * [.search()](#MDDataModule+search)
-    * [.deepSearch()](#MDDataModule+deepSearch)
-    * [.filter()](#MDDataModule+filter)
-    * [.getValue()](#MDDataModule+getValue)
-    * [.slice()](#MDDataModule+slice)
-    * [.paginate()](#MDDataModule+paginate)
-    * [.getAll()](#MDDataModule+getAll)
-
-<a name="MDDataModule+sort"></a>
-
-### mdDataModule.sort()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+search"></a>
-
-### mdDataModule.search()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+deepSearch"></a>
-
-### mdDataModule.deepSearch()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+filter"></a>
-
-### mdDataModule.filter()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+getValue"></a>
-
-### mdDataModule.getValue()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+slice"></a>
-
-### mdDataModule.slice()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+paginate"></a>
-
-### mdDataModule.paginate()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
-<a name="MDDataModule+getAll"></a>
-
-### mdDataModule.getAll()
-**Kind**: instance method of [<code>MDDataModule</code>](#MDDataModule)  
+[
+  {
+    "id": "MDDataModule",
+    "longname": "MDDataModule",
+    "name": "MDDataModule",
+    "kind": "class",
+    "scope": "global",
+    "meta": {
+      "lineno": 4,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 0
+  },
+  {
+    "id": "MDDataModule#sort",
+    "longname": "MDDataModule#sort",
+    "name": "sort",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 15,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 1
+  },
+  {
+    "id": "MDDataModule#search",
+    "longname": "MDDataModule#search",
+    "name": "search",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 34,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 2
+  },
+  {
+    "id": "MDDataModule#deepSearch",
+    "longname": "MDDataModule#deepSearch",
+    "name": "deepSearch",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 45,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 3
+  },
+  {
+    "id": "MDDataModule#filter",
+    "longname": "MDDataModule#filter",
+    "name": "filter",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 57,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 4
+  },
+  {
+    "id": "MDDataModule#getValue",
+    "longname": "MDDataModule#getValue",
+    "name": "getValue",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 92,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 5
+  },
+  {
+    "id": "MDDataModule#slice",
+    "longname": "MDDataModule#slice",
+    "name": "slice",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 100,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 6
+  },
+  {
+    "id": "MDDataModule#paginate",
+    "longname": "MDDataModule#paginate",
+    "name": "paginate",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 110,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 7
+  },
+  {
+    "id": "MDDataModule#getAll",
+    "longname": "MDDataModule#getAll",
+    "name": "getAll",
+    "kind": "function",
+    "scope": "instance",
+    "memberof": "MDDataModule",
+    "params": [],
+    "meta": {
+      "lineno": 122,
+      "filename": "data.js",
+      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\data"
+    },
+    "order": 8
+  }
+]

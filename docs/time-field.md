@@ -1,144 +1,79 @@
-<a name="MDTimeFieldComponent"></a>
+# MDTimeFieldComponent
+desc 
 
-## MDTimeFieldComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDTimeFieldComponent](#MDTimeFieldComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.colorFieldNative](#MDTimeFieldComponent+colorFieldNative)
-        * [.render()](#MDTimeFieldComponent+render)
-        * [.connectedCallback()](#MDTimeFieldComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDTimeFieldComponent+disconnectedCallback)
-        * [.firstUpdated()](#MDTimeFieldComponent+firstUpdated)
-        * [.updated()](#MDTimeFieldComponent+updated)
-        * [.handleTimeFieldNativeActionClick()](#MDTimeFieldComponent+handleTimeFieldNativeActionClick)
-        * [.handleTimeFieldNativeActionCalendarClockClick()](#MDTimeFieldComponent+handleTimeFieldNativeActionCalendarClockClick)
-        * [.handleColorPicker()](#MDTimeFieldComponent+handleColorPicker)
-        * [.handleTimeFieldPickerChange()](#MDTimeFieldComponent+handleTimeFieldPickerChange)
-        * [.handleTimeFieldPickerButtonCancelClick()](#MDTimeFieldComponent+handleTimeFieldPickerButtonCancelClick)
-        * [.handleTimeFieldPickerButtonOkClick()](#MDTimeFieldComponent+handleTimeFieldPickerButtonOkClick)
-        * [.handleTimeFieldNativeFocus()](#MDTimeFieldComponent+handleTimeFieldNativeFocus)
-        * [.handleTimeFieldNativeBlur()](#MDTimeFieldComponent+handleTimeFieldNativeBlur)
-        * [.handleTimeFieldNativeInput()](#MDTimeFieldComponent+handleTimeFieldNativeInput)
-        * [.handleTimeFieldNativeInvalid()](#MDTimeFieldComponent+handleTimeFieldNativeInvalid)
-        * [.handleTimeFieldNativeReset()](#MDTimeFieldComponent+handleTimeFieldNativeReset)
-        * [.handleTimeFieldNativeClick()](#MDTimeFieldComponent+handleTimeFieldNativeClick)
-    * _static_
-        * [.properties](#MDTimeFieldComponent.properties)
+name|type|description
+---|---|---
+autocapitalize|Boolean|-
+autocomplete|String|-
+disabled|Boolean|-
+form|String|-
+list|String|-
+name|String|-
+readonly|Boolean|-
+required|Boolean|-
+type|String|-
+value|String|-
+max|String|-
+min|String|-
+step|String|-
+defaultValue|String|-
+label|String|-
+leadingIcon|String|-
+leadingMeta|String|-
+trailingMeta|String|-
+trailingActions|Array|-
+trailingIcon|String|-
+text|String|-
+focused|Boolean|-
+populated|Boolean|-
+invalid|Boolean|-
+validationMessage|String|-
+ui|String|filled,outlined,rounded
 
-<a name="MDTimeFieldComponent+colorFieldNative"></a>
+## Accessor
+desc 
 
-### mdTimeFieldComponent.colorFieldNative
-**Kind**: instance property of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+render"></a>
+name|type|description
+---|---|---
+colorFieldNative|-|-
 
-### mdTimeFieldComponent.render()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdTimeFieldComponent.connectedCallback()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+firstUpdated|-|-
+updated|-|-
+handleTimeFieldNativeActionClick|-|-
+handleTimeFieldNativeActionCalendarClockClick|-|-
+handleColorPicker|-|-
+handleTimeFieldPickerChange|-|-
+handleTimeFieldPickerButtonCancelClick|-|-
+handleTimeFieldPickerButtonOkClick|-|-
+handleTimeFieldNativeFocus|-|-
+handleTimeFieldNativeBlur|-|-
+handleTimeFieldNativeInput|-|-
+handleTimeFieldNativeInvalid|-|-
+handleTimeFieldNativeReset|-|-
+handleTimeFieldNativeClick|-|-
 
-### mdTimeFieldComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+firstUpdated"></a>
+## Events
+desc 
 
-### mdTimeFieldComponent.firstUpdated()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+updated"></a>
-
-### mdTimeFieldComponent.updated()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeActionClick"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeActionClick()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeActionClick</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeActionCalendarClockClick"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeActionCalendarClockClick()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeActionCalendarClockClick</code>  
-<a name="MDTimeFieldComponent+handleColorPicker"></a>
-
-### mdTimeFieldComponent.handleColorPicker()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+handleTimeFieldPickerChange"></a>
-
-### mdTimeFieldComponent.handleTimeFieldPickerChange()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+handleTimeFieldPickerButtonCancelClick"></a>
-
-### mdTimeFieldComponent.handleTimeFieldPickerButtonCancelClick()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+handleTimeFieldPickerButtonOkClick"></a>
-
-### mdTimeFieldComponent.handleTimeFieldPickerButtonOkClick()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeFocus"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeFocus()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeFocus</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeBlur"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeBlur()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeBlur</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeInput"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeInput()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeInput</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeInvalid"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeInvalid()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeInvalid</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeReset"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeReset()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeReset</code>  
-<a name="MDTimeFieldComponent+handleTimeFieldNativeClick"></a>
-
-### mdTimeFieldComponent.handleTimeFieldNativeClick()
-**Kind**: instance method of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Emits**: <code>MDTimeFieldComponent#event:onTimeFieldNativeClick</code>  
-<a name="MDTimeFieldComponent.properties"></a>
-
-### MDTimeFieldComponent.properties
-**Kind**: static property of [<code>MDTimeFieldComponent</code>](#MDTimeFieldComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [autocapitalize] | <code>Boolean</code> | - |
-| [autocomplete] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [list] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [readonly] | <code>Boolean</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [max] | <code>String</code> | - |
-| [min] | <code>String</code> | - |
-| [step] | <code>String</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [leadingIcon] | <code>String</code> | - |
-| [leadingMeta] | <code>String</code> | - |
-| [trailingMeta] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [trailingIcon] | <code>String</code> | - |
-| [text] | <code>String</code> | - |
-| [focused] | <code>Boolean</code> | - |
-| [populated] | <code>Boolean</code> | - |
-| [invalid] | <code>Boolean</code> | - |
-| [validationMessage] | <code>String</code> | - |
-| [ui] | <code>String</code> | filled,outlined,rounded |
+name|params|description
+---|---|---
+MDTimeFieldComponent#event:onTimeFieldNativeActionClick|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeActionCalendarClockClick|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeFocus|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeBlur|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeInput|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeInvalid|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeReset|-|-
+MDTimeFieldComponent#event:onTimeFieldNativeClick|-|-
 

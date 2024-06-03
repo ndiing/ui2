@@ -1,80 +1,47 @@
-<a name="MDTooltipComponent"></a>
+# MDTooltipComponent
+desc 
 
-## MDTooltipComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDTooltipComponent](#MDTooltipComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.render()](#MDTooltipComponent+render)
-        * [.connectedCallback()](#MDTooltipComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDTooltipComponent+disconnectedCallback)
-        * [.updated()](#MDTooltipComponent+updated)
-        * [.show()](#MDTooltipComponent+show)
-        * [.close()](#MDTooltipComponent+close)
-        * [.toggle()](#MDTooltipComponent+toggle)
-        * [.handleTooltipActionClick()](#MDTooltipComponent+handleTooltipActionClick)
-        * [.handleTooltipButtonClick()](#MDTooltipComponent+handleTooltipButtonClick)
-        * [.handleTooltipScrimClick()](#MDTooltipComponent+handleTooltipScrimClick)
-    * _static_
-        * [.properties](#MDTooltipComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|plain
+open|Boolean|-
 
-<a name="MDTooltipComponent+render"></a>
+## Accessor
+desc 
 
-### mdTooltipComponent.render()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+connectedCallback"></a>
+name|type|description
+---|---|---
 
-### mdTooltipComponent.connectedCallback()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+disconnectedCallback"></a>
+## Methods
+desc 
 
-### mdTooltipComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+updated"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+show|-|-
+close|-|-
+toggle|-|-
+handleTooltipActionClick|-|-
+handleTooltipButtonClick|-|-
+handleTooltipScrimClick|-|-
 
-### mdTooltipComponent.updated()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+show"></a>
+## Events
+desc 
 
-### mdTooltipComponent.show()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+close"></a>
-
-### mdTooltipComponent.close()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+toggle"></a>
-
-### mdTooltipComponent.toggle()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-<a name="MDTooltipComponent+handleTooltipActionClick"></a>
-
-### mdTooltipComponent.handleTooltipActionClick()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-**Emits**: <code>MDTooltipComponent#event:onTooltipActionClick</code>  
-<a name="MDTooltipComponent+handleTooltipButtonClick"></a>
-
-### mdTooltipComponent.handleTooltipButtonClick()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-**Emits**: <code>MDTooltipComponent#event:onTooltipButtonClick</code>  
-<a name="MDTooltipComponent+handleTooltipScrimClick"></a>
-
-### mdTooltipComponent.handleTooltipScrimClick()
-**Kind**: instance method of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-**Emits**: <code>MDTooltipComponent#event:onTooltipScrimClick</code>  
-<a name="MDTooltipComponent.properties"></a>
-
-### MDTooltipComponent.properties
-**Kind**: static property of [<code>MDTooltipComponent</code>](#MDTooltipComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | plain |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDTooltipComponent#event:onTooltipActionClick|-|-
+MDTooltipComponent#event:onTooltipButtonClick|-|-
+MDTooltipComponent#event:onTooltipScrimClick|-|-
 

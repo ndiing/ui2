@@ -1,80 +1,51 @@
-<a name="MDCheckboxComponent"></a>
+# MDCheckboxComponent
+desc 
 
-## MDCheckboxComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDCheckboxComponent](#MDCheckboxComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.checkboxTrack](#MDCheckboxComponent+checkboxTrack)
-        * [.render()](#MDCheckboxComponent+render)
-        * [.connectedCallback()](#MDCheckboxComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDCheckboxComponent+disconnectedCallback)
-        * [.firstUpdated()](#MDCheckboxComponent+firstUpdated)
-        * [.updated()](#MDCheckboxComponent+updated)
-        * [.handleCheckboxNativeInput()](#MDCheckboxComponent+handleCheckboxNativeInput)
-        * [.handleCheckboxNativeInvalid()](#MDCheckboxComponent+handleCheckboxNativeInvalid)
-        * [.handleCheckboxNativeReset()](#MDCheckboxComponent+handleCheckboxNativeReset)
-    * _static_
-        * [.properties](#MDCheckboxComponent.properties)
+name|type|description
+---|---|---
+autocapitalize|String|-
+disabled|Boolean|-
+form|String|-
+name|String|-
+required|Boolean|-
+type|String|-
+value|String|-
+checked|Boolean|-
+defaultValue|String|-
+defaultChecked|Boolean|-
+indeterminate|Boolean|-
+defaultIndeterminate|Boolean|-
 
-<a name="MDCheckboxComponent+checkboxTrack"></a>
+## Accessor
+desc 
 
-### mdCheckboxComponent.checkboxTrack
-**Kind**: instance property of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+render"></a>
+name|type|description
+---|---|---
+checkboxTrack|-|-
 
-### mdCheckboxComponent.render()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdCheckboxComponent.connectedCallback()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+firstUpdated|-|-
+updated|-|-
+handleCheckboxNativeInput|-|-
+handleCheckboxNativeInvalid|-|-
+handleCheckboxNativeReset|-|-
 
-### mdCheckboxComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+firstUpdated"></a>
+## Events
+desc 
 
-### mdCheckboxComponent.firstUpdated()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+updated"></a>
-
-### mdCheckboxComponent.updated()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-<a name="MDCheckboxComponent+handleCheckboxNativeInput"></a>
-
-### mdCheckboxComponent.handleCheckboxNativeInput()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-**Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeInput</code>  
-<a name="MDCheckboxComponent+handleCheckboxNativeInvalid"></a>
-
-### mdCheckboxComponent.handleCheckboxNativeInvalid()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-**Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeInvalid</code>  
-<a name="MDCheckboxComponent+handleCheckboxNativeReset"></a>
-
-### mdCheckboxComponent.handleCheckboxNativeReset()
-**Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-**Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeReset</code>  
-<a name="MDCheckboxComponent.properties"></a>
-
-### MDCheckboxComponent.properties
-**Kind**: static property of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [autocapitalize] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [checked] | <code>Boolean</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [defaultChecked] | <code>Boolean</code> | - |
-| [indeterminate] | <code>Boolean</code> | - |
-| [defaultIndeterminate] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDCheckboxComponent#event:onCheckboxNativeInput|-|-
+MDCheckboxComponent#event:onCheckboxNativeInvalid|-|-
+MDCheckboxComponent#event:onCheckboxNativeReset|-|-
 

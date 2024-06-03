@@ -1,80 +1,48 @@
-<a name="MDSnackbarComponent"></a>
+# MDSnackbarComponent
+desc 
 
-## MDSnackbarComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDSnackbarComponent](#MDSnackbarComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.snackbarInner](#MDSnackbarComponent+snackbarInner)
-        * [.render()](#MDSnackbarComponent+render)
-        * [.connectedCallback()](#MDSnackbarComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDSnackbarComponent+disconnectedCallback)
-        * [.updated()](#MDSnackbarComponent+updated)
-        * [.show()](#MDSnackbarComponent+show)
-        * [.close()](#MDSnackbarComponent+close)
-        * [.toggle()](#MDSnackbarComponent+toggle)
-        * [.handleSnackbarActionClick()](#MDSnackbarComponent+handleSnackbarActionClick)
-        * [.handleSnackbarButtonClick()](#MDSnackbarComponent+handleSnackbarButtonClick)
-    * _static_
-        * [.properties](#MDSnackbarComponent.properties)
+name|type|description
+---|---|---
+leadingActions|Array|-
+label|String|-
+subLabel|String|-
+trailingActions|Array|-
+buttons|Array|-
+ui|String|-
+open|Boolean|-
 
-<a name="MDSnackbarComponent+snackbarInner"></a>
+## Accessor
+desc 
 
-### mdSnackbarComponent.snackbarInner
-**Kind**: instance property of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+render"></a>
+name|type|description
+---|---|---
+snackbarInner|-|-
 
-### mdSnackbarComponent.render()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdSnackbarComponent.connectedCallback()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+updated|-|-
+show|-|-
+close|-|-
+toggle|-|-
+handleSnackbarActionClick|-|-
+handleSnackbarButtonClick|-|-
 
-### mdSnackbarComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+updated"></a>
+## Events
+desc 
 
-### mdSnackbarComponent.updated()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-**Emits**: <code>MDSnackbarComponent#event:onSnackbarShow</code>, <code>MDSnackbarComponent#event:onSnackbarClose</code>  
-<a name="MDSnackbarComponent+show"></a>
-
-### mdSnackbarComponent.show()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+close"></a>
-
-### mdSnackbarComponent.close()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+toggle"></a>
-
-### mdSnackbarComponent.toggle()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-<a name="MDSnackbarComponent+handleSnackbarActionClick"></a>
-
-### mdSnackbarComponent.handleSnackbarActionClick()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-**Emits**: <code>MDSnackbarComponent#event:onSnackbarActionClick</code>  
-<a name="MDSnackbarComponent+handleSnackbarButtonClick"></a>
-
-### mdSnackbarComponent.handleSnackbarButtonClick()
-**Kind**: instance method of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-**Emits**: <code>MDSnackbarComponent#event:onSnackbarButtonClick</code>  
-<a name="MDSnackbarComponent.properties"></a>
-
-### MDSnackbarComponent.properties
-**Kind**: static property of [<code>MDSnackbarComponent</code>](#MDSnackbarComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | - |
-| [open] | <code>Boolean</code> | - |
+name|params|description
+---|---|---
+MDSnackbarComponent#event:onSnackbarShow|-|-
+MDSnackbarComponent#event:onSnackbarClose|-|-
+MDSnackbarComponent#event:onSnackbarActionClick|-|-
+MDSnackbarComponent#event:onSnackbarButtonClick|-|-
 

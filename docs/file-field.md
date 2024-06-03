@@ -1,118 +1,73 @@
-<a name="MDFileFieldComponent"></a>
+# MDFileFieldComponent
+desc 
 
-## MDFileFieldComponent ⇐ <code>MDElement</code>
-**Kind**: global class  
-**Extends**: <code>MDElement</code>  
+## Properties
+desc 
 
-* [MDFileFieldComponent](#MDFileFieldComponent) ⇐ <code>MDElement</code>
-    * _instance_
-        * [.fileFieldNative](#MDFileFieldComponent+fileFieldNative)
-        * [.render()](#MDFileFieldComponent+render)
-        * [.connectedCallback()](#MDFileFieldComponent+connectedCallback)
-        * [.disconnectedCallback()](#MDFileFieldComponent+disconnectedCallback)
-        * [.firstUpdated()](#MDFileFieldComponent+firstUpdated)
-        * [.updated()](#MDFileFieldComponent+updated)
-        * [.handleFileFieldNativeActionUploadClick()](#MDFileFieldComponent+handleFileFieldNativeActionUploadClick)
-        * [.handleFileFieldNativeActionClick()](#MDFileFieldComponent+handleFileFieldNativeActionClick)
-        * [.handleFileFieldNativeFocus()](#MDFileFieldComponent+handleFileFieldNativeFocus)
-        * [.handleFileFieldNativeBlur()](#MDFileFieldComponent+handleFileFieldNativeBlur)
-        * [.handleFileFieldNativeInput()](#MDFileFieldComponent+handleFileFieldNativeInput)
-        * [.handleFileFieldNativeInvalid()](#MDFileFieldComponent+handleFileFieldNativeInvalid)
-        * [.handleFileFieldNativeReset()](#MDFileFieldComponent+handleFileFieldNativeReset)
-    * _static_
-        * [.properties](#MDFileFieldComponent.properties)
+name|type|description
+---|---|---
+autocapitalize|Boolean|-
+autocomplete|String|-
+disabled|Boolean|-
+form|String|-
+list|String|-
+name|String|-
+readonly|Boolean|-
+required|Boolean|-
+type|String|-
+value|String|-
+accept|String|-
+capture|String|-
+multiple|Boolean|-
+defaultValue|String|-
+label|String|-
+leadingIcon|String|-
+leadingMeta|String|-
+trailingMeta|String|-
+trailingActions|Array|-
+trailingIcon|String|-
+text|String|-
+focused|Boolean|-
+populated|Boolean|-
+invalid|Boolean|-
+validationMessage|String|-
+ui|String|filled,outlined,rounded
 
-<a name="MDFileFieldComponent+fileFieldNative"></a>
+## Accessor
+desc 
 
-### mdFileFieldComponent.fileFieldNative
-**Kind**: instance property of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+render"></a>
+name|type|description
+---|---|---
+fileFieldNative|-|-
 
-### mdFileFieldComponent.render()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+connectedCallback"></a>
+## Methods
+desc 
 
-### mdFileFieldComponent.connectedCallback()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+disconnectedCallback"></a>
+name|params|description
+---|---|---
+render|-|-
+connectedCallback|-|-
+disconnectedCallback|-|-
+firstUpdated|-|-
+updated|-|-
+handleFileFieldNativeActionUploadClick|-|-
+handleFileFieldNativeActionClick|-|-
+handleFileFieldNativeFocus|-|-
+handleFileFieldNativeBlur|-|-
+handleFileFieldNativeInput|-|-
+handleFileFieldNativeInvalid|-|-
+handleFileFieldNativeReset|-|-
 
-### mdFileFieldComponent.disconnectedCallback()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+firstUpdated"></a>
+## Events
+desc 
 
-### mdFileFieldComponent.firstUpdated()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+updated"></a>
-
-### mdFileFieldComponent.updated()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-<a name="MDFileFieldComponent+handleFileFieldNativeActionUploadClick"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeActionUploadClick()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeActionUploadClick</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeActionClick"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeActionClick()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeActionClick</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeFocus"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeFocus()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeFocus</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeBlur"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeBlur()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeBlur</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeInput"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeInput()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeInput</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeInvalid"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeInvalid()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeInvalid</code>  
-<a name="MDFileFieldComponent+handleFileFieldNativeReset"></a>
-
-### mdFileFieldComponent.handleFileFieldNativeReset()
-**Kind**: instance method of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Emits**: <code>MDFileFieldComponent#event:onFileFieldNativeReset</code>  
-<a name="MDFileFieldComponent.properties"></a>
-
-### MDFileFieldComponent.properties
-**Kind**: static property of [<code>MDFileFieldComponent</code>](#MDFileFieldComponent)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| [autocapitalize] | <code>Boolean</code> | - |
-| [autocomplete] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [list] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [readonly] | <code>Boolean</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [accept] | <code>String</code> | - |
-| [capture] | <code>String</code> | - |
-| [multiple] | <code>Boolean</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [leadingIcon] | <code>String</code> | - |
-| [leadingMeta] | <code>String</code> | - |
-| [trailingMeta] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [trailingIcon] | <code>String</code> | - |
-| [text] | <code>String</code> | - |
-| [focused] | <code>Boolean</code> | - |
-| [populated] | <code>Boolean</code> | - |
-| [invalid] | <code>Boolean</code> | - |
-| [validationMessage] | <code>String</code> | - |
-| [ui] | <code>String</code> | filled,outlined,rounded |
+name|params|description
+---|---|---
+MDFileFieldComponent#event:onFileFieldNativeActionUploadClick|-|-
+MDFileFieldComponent#event:onFileFieldNativeActionClick|-|-
+MDFileFieldComponent#event:onFileFieldNativeFocus|-|-
+MDFileFieldComponent#event:onFileFieldNativeBlur|-|-
+MDFileFieldComponent#event:onFileFieldNativeInput|-|-
+MDFileFieldComponent#event:onFileFieldNativeInvalid|-|-
+MDFileFieldComponent#event:onFileFieldNativeReset|-|-
 
