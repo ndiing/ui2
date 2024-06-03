@@ -8,13 +8,15 @@ function open(pathname) {
             open(pathname2);
         } else {
             if (dir.name.endsWith(".js")) {
-                const content = read(pathname2);
-                parse(content);
+                let content = read(pathname2,'');
+                content=parse(content);
+                console.log(content)
+                // write(pathname2,content)
             }
         }
     }
 }
-// open('./src/com')
+open('./src/com')
 function read(file, content) {
     try {
         content = fs.readFileSync(file, { encoding: "utf8" });
@@ -133,4 +135,5 @@ function parse(content) {
         return content;
     });
     // fs.writeFileSync("./src/dev/example.cjs", content);
+    return content
 }
