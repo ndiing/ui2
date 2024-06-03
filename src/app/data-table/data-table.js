@@ -54,12 +54,12 @@ class AppDataTableElement extends MDElement {
         ];
 
         this.columns3 = [
-            { name: "id", label: "ID", sortable: true },
-            { name: "tanggal", label: "Tanggal", sortable: true },
-            { name: "deskripsi", label: "Deskripsi", sortable: true },
-            { name: "jumlah", label: "Jumlah", sortable: true, format: formatIDR },
-            { name: "kategori", label: "Kategori", sortable: true },
-            { name: "saldo", label: "Saldo", sortable: true, format: formatIDR },
+            { name: "id", label: "ID", sortable: true,width:56*1 },
+            { name: "tanggal", label: "Tanggal", sortable: true,width:56*5 },
+            { name: "deskripsi", label: "Deskripsi", sortable: true,width:56*5 },
+            { name: "jumlah", label: "Jumlah", sortable: true, format: formatIDR,width:56*3 },
+            { name: "kategori", label: "Kategori", sortable: true,width:56*5 },
+            { name: "saldo", label: "Saldo", sortable: true, format: formatIDR,width:56*3 },
         ];
 
         this.data3 = new MDDataModule([
@@ -83,6 +83,27 @@ class AppDataTableElement extends MDElement {
                 class="md-layout-column"
                 style="margin:24px;"
             >
+            
+                <div class="md-layout-column__item md-layout-column__item--expanded10 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-search-field
+                        placeholder="search"
+                        ui="rounded"
+                        @onSearchFieldNativeSearch="${this.handleSearchFieldNativeSearch}"
+                    ></md-search-field>
+                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-data-table
+                        id="table3"
+                        style="height:calc(52px * 5);"
+                        .columns="${this.columns3}"
+                        .rows="${this.rows3}"
+                        checkbox
+                        @onDataTableColumnCellSortableClick="${this.handleDataTableColumnCellSortableClick}"
+                    ></md-data-table>
+                </div>
+
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-data-table
                         style="height:calc(52px * 5);"
@@ -100,22 +121,17 @@ class AppDataTableElement extends MDElement {
                     ></md-data-table>
                 </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-data-table
-                        id="table3"
-                        style="height:calc(52px * 5);"
-                        .columns="${this.columns3}"
-                        .rows="${this.rows3}"
-                        checkbox
-                        @onDataTableColumnCellSortableClick="${this.handleDataTableColumnCellSortableClick}"
-                    ></md-data-table>
-                </div>
             </div>
         `;
     }
 
     handleDataTableColumnCellSortableClick(event) {
         this.rows3 = this.data3.getAll({ sorters: this.columns3.filter((column) => column.order) }).rows;
+        this.requestUpdate();
+    }
+
+    handleSearchFieldNativeSearch(event) {
+        this.rows3 = this.data3.getAll({ q: event.detail.currentTarget.value }).rows;
         this.requestUpdate();
     }
 }
