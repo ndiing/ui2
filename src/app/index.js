@@ -72,6 +72,3 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
-
-// node src/dev/cli create component text-field temp-field
-// node src/dev/cli create app text-field temp-field

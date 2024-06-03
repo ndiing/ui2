@@ -63,4 +63,3 @@ import "./time-field/time-field.js";
 import "./textarea-field/textarea-field.js";
 
 import "./data-table/data-table.js";
-import "./temp-field/temp-field.js";
