@@ -83,46 +83,48 @@ class MDTimeFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            
-            ${this.label?html`<div class="md-time-field__label">${this.label}</div>`:nothing}
-            <div class="md-time-field__container">
-                ${this.leadingIcon?html`<md-icon class="md-time-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                ${this.leadingMeta?html`<div class="md-time-field__meta">${this.leadingMeta}</div>`:nothing}
-                <input
-                    class="md-time-field__native"
-                    type="time"
-                    .autocapitalize="${ifDefined(this.autocapitalize)}"    
-                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                    .disabled="${ifDefined(this.disabled)}"
-                    .form="${ifDefined(this.form)}"
-                    .list="${ifDefined(this.list)}"
-                    .name="${ifDefined(this.name)}"
-                    .readonly="${ifDefined(this.readonly)}"
-                    .required="${ifDefined(this.required)}"
-                    .type="${ifDefined(this.type)}"
-                    .value="${ifDefined(this.value)}"
-                    .max="${ifDefined(this.max)}"
-                    .min="${ifDefined(this.min)}"
-                    .step="${ifDefined(this.step)}"
-                    .defaultValue="${ifDefined(this.defaultValue)}"
-                    @focus="${this.handleTimeFieldNativeFocus}"
-                    @blur="${this.handleTimeFieldNativeBlur}"
-                    @input="${this.handleTimeFieldNativeInput}"
-                    @invalid="${this.handleTimeFieldNativeInvalid}"
-                    @reset="${this.handleTimeFieldNativeReset}"
-                    @click="${this.handleTimeFieldNativeClick}"
-                />
-                ${this.trailingMeta?html`<div class="md-time-field__meta">${this.trailingMeta}</div>`:nothing}
-                ${this.trailingIcon?html`<md-icon class="md-time-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                ${this.invalid?html`<md-icon class="md-time-field__icon">error</md-icon>`:nothing}
-                <div class="md-time-field__actions">
-                    ${this.trailingActions?.map(action => html`
-                        <md-icon-button @click="${this.handleTimeFieldNativeActionClick}" class="md-time-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                    `)}
-                    <md-icon-button @click="${this.handleTimeFieldNativeActionCalendarClockClick}" class="md-time-field__action" .icon="${"schedule"}"></md-icon-button>
+            <label class="md-time-field__a11y">
+
+                ${this.label?html`<div class="md-time-field__label">${this.label}</div>`:nothing}
+                <div class="md-time-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-time-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-time-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <input
+                        class="md-time-field__native"
+                        type="time"
+                        .autocapitalize="${ifDefined(this.autocapitalize)}"    
+                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .form="${ifDefined(this.form)}"
+                        .list="${ifDefined(this.list)}"
+                        .name="${ifDefined(this.name)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .required="${ifDefined(this.required)}"
+                        .type="${ifDefined(this.type)}"
+                        .value="${ifDefined(this.value)}"
+                        .max="${ifDefined(this.max)}"
+                        .min="${ifDefined(this.min)}"
+                        .step="${ifDefined(this.step)}"
+                        .defaultValue="${ifDefined(this.defaultValue)}"
+                        @focus="${this.handleTimeFieldNativeFocus}"
+                        @blur="${this.handleTimeFieldNativeBlur}"
+                        @input="${this.handleTimeFieldNativeInput}"
+                        @invalid="${this.handleTimeFieldNativeInvalid}"
+                        @reset="${this.handleTimeFieldNativeReset}"
+                        @click="${this.handleTimeFieldNativeClick}"
+                    />
+                    ${this.trailingMeta?html`<div class="md-time-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-time-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-time-field__icon">error</md-icon>`:nothing}
+                    <div class="md-time-field__actions">
+                        ${this.trailingActions?.map(action => html`
+                            <md-icon-button @click="${this.handleTimeFieldNativeActionClick}" class="md-time-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                        `)}
+                        <md-icon-button @click="${this.handleTimeFieldNativeActionCalendarClockClick}" class="md-time-field__action" .icon="${"schedule"}"></md-icon-button>
+                    </div>
                 </div>
-            </div>
-            ${this.validationMessage||this.text?html`<div class="md-time-field__text">${this.validationMessage||this.text}</div>`:nothing}
+                ${this.validationMessage||this.text?html`<div class="md-time-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            </label>
         `;
     }
 

@@ -72,34 +72,19 @@ class MDColorFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <input
-                class="md-color-field__native md-color-field__native--hidden"
-                type="color"
-                .autocapitalize="${ifDefined(this.autocapitalize)}"
-                .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                .disabled="${ifDefined(this.disabled)}"
-                .form="${ifDefined(this.form)}"
-                .list="${ifDefined(this.list)}"
-                .name="${ifDefined(this.name)}"
-                .value="${ifDefined(this.value)}"
-                .defaultValue="${ifDefined(this.defaultValue)}"
-                @focus="${this.handleColorFieldNativeFocus}"
-                @blur="${this.handleColorFieldNativeBlur}"
-                @input="${this.handleColorFieldNativeInput}"
-                @invalid="${this.handleColorFieldNativeInvalid}"
-                @reset="${this.handleColorFieldNativeReset}"
-                @click="${this.handleColorFieldNativeClick}"
-            />
-            ${this.label?html`<div class="md-color-field__label">${this.label}</div>`:nothing}
-            <div class="md-color-field__container">
-                ${this.leadingIcon?html`<md-icon class="md-color-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                ${this.leadingMeta?html`<div class="md-color-field__meta">${this.leadingMeta}</div>`:nothing}
+            <label class="md-color-field__a11y">
+
                 <input
-                    class="md-color-field__native"
-                    type="text"
+                    class="md-color-field__native md-color-field__native--hidden"
+                    type="color"
+                    .autocapitalize="${ifDefined(this.autocapitalize)}"
+                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                    .disabled="${ifDefined(this.disabled)}"
+                    .form="${ifDefined(this.form)}"
+                    .list="${ifDefined(this.list)}"
+                    .name="${ifDefined(this.name)}"
                     .value="${ifDefined(this.value)}"
                     .defaultValue="${ifDefined(this.defaultValue)}"
-                    .readOnly="${ifDefined(this.readOnly??true)}"
                     @focus="${this.handleColorFieldNativeFocus}"
                     @blur="${this.handleColorFieldNativeBlur}"
                     @input="${this.handleColorFieldNativeInput}"
@@ -107,17 +92,35 @@ class MDColorFieldComponent extends MDElement {
                     @reset="${this.handleColorFieldNativeReset}"
                     @click="${this.handleColorFieldNativeClick}"
                 />
-                ${this.trailingMeta?html`<div class="md-color-field__meta">${this.trailingMeta}</div>`:nothing}
-                ${this.trailingIcon?html`<md-icon class="md-color-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                ${this.invalid?html`<md-icon class="md-color-field__icon">error</md-icon>`:nothing}
-                <div class="md-color-field__actions">
-                    ${this.trailingActions?.map(action => html`
-                        <md-icon-button @click="${this.handleColorFieldNativeActionClick}" class="md-color-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                    `)}
-                    <md-icon-button @click="${this.handleColorFieldNativeActionPaletteClick}" class="md-color-field__action" .icon="${"palette"}"></md-icon-button>
+                ${this.label?html`<div class="md-color-field__label">${this.label}</div>`:nothing}
+                <div class="md-color-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-color-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-color-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <input
+                        class="md-color-field__native"
+                        type="text"
+                        .value="${ifDefined(this.value)}"
+                        .defaultValue="${ifDefined(this.defaultValue)}"
+                        .readOnly="${ifDefined(this.readOnly??true)}"
+                        @focus="${this.handleColorFieldNativeFocus}"
+                        @blur="${this.handleColorFieldNativeBlur}"
+                        @input="${this.handleColorFieldNativeInput}"
+                        @invalid="${this.handleColorFieldNativeInvalid}"
+                        @reset="${this.handleColorFieldNativeReset}"
+                        @click="${this.handleColorFieldNativeClick}"
+                    />
+                    ${this.trailingMeta?html`<div class="md-color-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-color-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-color-field__icon">error</md-icon>`:nothing}
+                    <div class="md-color-field__actions">
+                        ${this.trailingActions?.map(action => html`
+                            <md-icon-button @click="${this.handleColorFieldNativeActionClick}" class="md-color-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                        `)}
+                        <md-icon-button @click="${this.handleColorFieldNativeActionPaletteClick}" class="md-color-field__action" .icon="${"palette"}"></md-icon-button>
+                    </div>
                 </div>
-            </div>
-            ${this.validationMessage||this.text?html`<div class="md-color-field__text">${this.validationMessage||this.text}</div>`:nothing}
+                ${this.validationMessage||this.text?html`<div class="md-color-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            </label>
         `;
     }
 

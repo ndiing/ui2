@@ -76,40 +76,44 @@ class MDTextareaFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            ${this.label?html`<div class="md-textarea-field__label">${this.label}</div>`:nothing}
-            <div class="md-textarea-field__container">
-                ${this.leadingIcon?html`<md-icon class="md-textarea-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                ${this.leadingMeta?html`<div class="md-textarea-field__meta">${this.leadingMeta}</div>`:nothing}
-                <textarea
-                    class="md-textarea-field__native"
-                    .autocapitalize="${ifDefined(this.autocapitalize)}"
-                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                    .disabled="${ifDefined(this.disabled)}"
-                    .form="${ifDefined(this.form)}"
-                    .list="${ifDefined(this.list)}"
-                    .name="${ifDefined(this.name)}"
-                    .readonly="${ifDefined(this.readonly)}"
-                    .required="${ifDefined(this.required)}"
-                    .value="${ifDefined(this.value)}"
-                    .defaultValue="${ifDefined(this.defaultValue)}"
-                    @focus="${this.handleTextareaFieldNativeFocus}"
-                    @blur="${this.handleTextareaFieldNativeBlur}"
-                    @input="${this.handleTextareaFieldNativeInput}"
-                    @invalid="${this.handleTextareaFieldNativeInvalid}"
-                    @reset="${this.handleTextareaFieldNativeReset}"
-                ></textarea>
-                ${this.trailingMeta?html`<div class="md-textarea-field__meta">${this.trailingMeta}</div>`:nothing}
-                ${this.trailingIcon?html`<md-icon class="md-textarea-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                ${this.invalid?html`<md-icon class="md-textarea-field__icon">error</md-icon>`:nothing}
-                ${this.trailingActions?.length?html`
-                    <div class="md-textarea-field__actions">
-                        ${this.trailingActions.map(action => html`
-                            <md-icon-button @click="${this.handleTextareaFieldNativeActionClick}" class="md-textarea-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                        `)}
-                    </div>
-                `:nothing}
-            </div>
-            ${this.validationMessage||this.text?html`<div class="md-textarea-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            <label class="md-textarea-field__a11y">
+
+                ${this.label?html`<div class="md-textarea-field__label">${this.label}</div>`:nothing}
+                <div class="md-textarea-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-textarea-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-textarea-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <textarea
+                        class="md-textarea-field__native"
+                        .autocapitalize="${ifDefined(this.autocapitalize)}"
+                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .form="${ifDefined(this.form)}"
+                        .list="${ifDefined(this.list)}"
+                        .name="${ifDefined(this.name)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .required="${ifDefined(this.required)}"
+                        .value="${ifDefined(this.value)}"
+                        .defaultValue="${ifDefined(this.defaultValue)}"
+                        .rows="${ifDefined(this.rows??1)}"
+                        @focus="${this.handleTextareaFieldNativeFocus}"
+                        @blur="${this.handleTextareaFieldNativeBlur}"
+                        @input="${this.handleTextareaFieldNativeInput}"
+                        @invalid="${this.handleTextareaFieldNativeInvalid}"
+                        @reset="${this.handleTextareaFieldNativeReset}"
+                    ></textarea>
+                    ${this.trailingMeta?html`<div class="md-textarea-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-textarea-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-textarea-field__icon">error</md-icon>`:nothing}
+                    ${this.trailingActions?.length?html`
+                        <div class="md-textarea-field__actions">
+                            ${this.trailingActions.map(action => html`
+                                <md-icon-button @click="${this.handleTextareaFieldNativeActionClick}" class="md-textarea-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
+                </div>
+                ${this.validationMessage||this.text?html`<div class="md-textarea-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            </label>
         `;
     }
 

@@ -81,44 +81,47 @@ class MDSearchFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            ${this.label?html`<div class="md-search-field__label">${this.label}</div>`:nothing}
-            <div class="md-search-field__container">
-                ${this.leadingIcon?html`<md-icon class="md-search-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                ${this.leadingMeta?html`<div class="md-search-field__meta">${this.leadingMeta}</div>`:nothing}
-                <input
-                    class="md-search-field__native"
-                    .type="${"search"}"
-                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                    .disabled="${ifDefined(this.disabled)}"
-                    .form="${ifDefined(this.form)}"
-                    .name="${ifDefined(this.name)}"
-                    .readonly="${ifDefined(this.readonly)}"
-                    .required="${ifDefined(this.required)}"
-                    .value="${ifDefined(this.value)}"
-                    .maxlength="${ifDefined(this.maxlength)}"
-                    .minlength="${ifDefined(this.minlength)}"
-                    .pattern="${ifDefined(this.pattern)}"
-                    .placeholder="${ifDefined(this.placeholder)}"
-                    .size="${ifDefined(this.size)}"
-                    .defaultValue="${ifDefined(this.defaultValue)}"
-                    @focus="${this.handleSearchFieldNativeFocus}"
-                    @blur="${this.handleSearchFieldNativeBlur}"
-                    @input="${this.handleSearchFieldNativeInput}"
-                    @search="${this.handleSearchFieldNativeSearch}"
-                    @invalid="${this.handleSearchFieldNativeInvalid}"
-                    @reset="${this.handleSearchFieldNativeReset}"
-                />
-                ${this.trailingMeta?html`<div class="md-search-field__meta">${this.trailingMeta}</div>`:nothing}
-                ${this.trailingIcon?html`<md-icon class="md-search-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                ${this.invalid?html`<md-icon class="md-search-field__icon">error</md-icon>`:nothing}
-                <div class="md-search-field__actions">
-                    ${this.trailingActions?.map(action => html`
-                        <md-icon-button @click="${this.handleSearchFieldNativeActionClick}" class="md-search-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                    `)}
-                    ${this.populated?html`<md-icon-button @click="${this.handleSearchFieldNativeActionCancelClick}" class="md-search-field__action" .icon="${"cancel"}"></md-icon-button>`:nothing}
+            <label class="md-search-field__a11y">
+
+                ${this.label?html`<div class="md-search-field__label">${this.label}</div>`:nothing}
+                <div class="md-search-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-search-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-search-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <input
+                        class="md-search-field__native"
+                        .type="${"search"}"
+                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .form="${ifDefined(this.form)}"
+                        .name="${ifDefined(this.name)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .required="${ifDefined(this.required)}"
+                        .value="${ifDefined(this.value)}"
+                        .maxlength="${ifDefined(this.maxlength)}"
+                        .minlength="${ifDefined(this.minlength)}"
+                        .pattern="${ifDefined(this.pattern)}"
+                        .placeholder="${ifDefined(this.placeholder)}"
+                        .size="${ifDefined(this.size)}"
+                        .defaultValue="${ifDefined(this.defaultValue)}"
+                        @focus="${this.handleSearchFieldNativeFocus}"
+                        @blur="${this.handleSearchFieldNativeBlur}"
+                        @input="${this.handleSearchFieldNativeInput}"
+                        @search="${this.handleSearchFieldNativeSearch}"
+                        @invalid="${this.handleSearchFieldNativeInvalid}"
+                        @reset="${this.handleSearchFieldNativeReset}"
+                    />
+                    ${this.trailingMeta?html`<div class="md-search-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-search-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-search-field__icon">error</md-icon>`:nothing}
+                    <div class="md-search-field__actions">
+                        ${this.trailingActions?.map(action => html`
+                            <md-icon-button @click="${this.handleSearchFieldNativeActionClick}" class="md-search-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                        `)}
+                        ${this.populated?html`<md-icon-button @click="${this.handleSearchFieldNativeActionCancelClick}" class="md-search-field__action" .icon="${"cancel"}"></md-icon-button>`:nothing}
+                    </div>
                 </div>
-            </div>
-            ${this.validationMessage||this.text?html`<div class="md-search-field__text">${this.validationMessage||this.text}</div>`:nothing}
+                ${this.validationMessage||this.text?html`<div class="md-search-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            </label>
         `;
     }
 

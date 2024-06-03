@@ -166,11 +166,11 @@ const cli = {
     },
     component: {
         create: (target, source) => {
-            const exists = fs.existsSync(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.js`);
-            if (exists) {
-                console.log(`component ${target} exists`);
-                return;
-            }
+            // const exists = fs.existsSync(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.js`);
+            // if (exists) {
+            //     console.log(`component ${target} exists`);
+            //     return;
+            // }
 
             let content = read(`${component_path}/${toKebabCase(source)}/${toKebabCase(source)}.js`);
             content = content
@@ -196,13 +196,13 @@ const cli = {
             content4.push(`@import "./${toKebabCase(target)}/${toKebabCase(target)}.scss";`);
             content4 = content4.join("\r\n");
 
-            write(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.js`, content);
+            // write(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.js`, content);
 
-            write(`${component_path}/index.js`, content2);
+            // write(`${component_path}/index.js`, content2);
 
             write(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.scss`, content3);
 
-            write(`${component_path}/index.scss`, content4);
+            // write(`${component_path}/index.scss`, content4);
         },
         remove: (target) => {
             const exists = fs.existsSync(`${component_path}/${toKebabCase(target)}/${toKebabCase(target)}.js`);

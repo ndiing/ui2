@@ -58,40 +58,43 @@ class MDSliderComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <input type="hidden" .name="${ifDefined(this.name)}" .value="${ifDefined(this.value)}">
-            ${this.value?.map((value,index)=>html`
-                <!-- <div class="md-slider__track"> -->
-                    <input
-                        class="md-slider__native md-slider__native${index+1}"
-                        type="range"     
-                        .autocapitalize="${ifDefined(this.autocapitalize)}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
-                        .list="${ifDefined(this.list)}"
-                        .type="${ifDefined(this.type)}"
-                        .value="${ifDefined(value)}"
-                        .max="${ifDefined(this.max)}"
-                        .min="${ifDefined(this.min)}"
-                        .step="${ifDefined(this.step)}"
-                        .defaultValue="${ifDefined(this.defaultValue?.[index])}"
-                        @input="${this.handleSliderNativeInput}"
-                        @reset="${this.handleSliderNativeReset}"
-                    />
-                    <div class="md-slider__label md-slider__label${index+1}">${this.convertLabel(value)}</div>
-                <!-- </div> -->
-            `)}
-            <div class="md-slider__indicator">
-                ${Array.from({length:this.ticks+1},(v,k) => html`
-                    <div 
-                        class="${classMap({
-                            "md-slider__stop":true,
-                            "md-slider__stop--active":((this.max/this.ticks)*k)>this.value?.[0],
-                        })}" 
-                        value="${(this.max/this.ticks)*k}"
-                    ></div>
+            <label class="md-slider__a11y">
+
+                <input type="hidden" .name="${ifDefined(this.name)}" .value="${ifDefined(this.value)}">
+                ${this.value?.map((value,index)=>html`
+                    <!-- <div class="md-slider__track"> -->
+                        <input
+                            class="md-slider__native md-slider__native${index+1}"
+                            type="range"     
+                            .autocapitalize="${ifDefined(this.autocapitalize)}"
+                            .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                            .disabled="${ifDefined(this.disabled)}"
+                            .form="${ifDefined(this.form)}"
+                            .list="${ifDefined(this.list)}"
+                            .type="${ifDefined(this.type)}"
+                            .value="${ifDefined(value)}"
+                            .max="${ifDefined(this.max)}"
+                            .min="${ifDefined(this.min)}"
+                            .step="${ifDefined(this.step)}"
+                            .defaultValue="${ifDefined(this.defaultValue?.[index])}"
+                            @input="${this.handleSliderNativeInput}"
+                            @reset="${this.handleSliderNativeReset}"
+                        />
+                        <div class="md-slider__label md-slider__label${index+1}">${this.convertLabel(value)}</div>
+                    <!-- </div> -->
                 `)}
-            </div>
+                <div class="md-slider__indicator">
+                    ${Array.from({length:this.ticks+1},(v,k) => html`
+                        <div 
+                            class="${classMap({
+                                "md-slider__stop":true,
+                                "md-slider__stop--active":((this.max/this.ticks)*k)>this.value?.[0],
+                            })}" 
+                            value="${(this.max/this.ticks)*k}"
+                        ></div>
+                    `)}
+                </div>
+            </label>
         `;
     }
 

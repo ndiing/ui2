@@ -1,4 +1,13 @@
 .md-slider {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    flex-direction: column;
+    width: 100%;
+}
+
+.md-slider__a11y{
     display: flex;
     flex-direction: column;
     position: relative;

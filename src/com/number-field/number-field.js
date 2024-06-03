@@ -85,46 +85,49 @@ class MDNumberFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            ${this.label?html`<div class="md-number-field__label">${this.label}</div>`:nothing}
-            <div class="md-number-field__container">
-                ${this.leadingIcon?html`<md-icon class="md-number-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                ${this.leadingMeta?html`<div class="md-number-field__meta">${this.leadingMeta}</div>`:nothing}
-                <input
-                    class="md-number-field__native"
-                    type="number"
-                    .autocapitalize="${ifDefined(this.autocapitalize)}"
-                    .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                    .disabled="${ifDefined(this.disabled)}"
-                    .form="${ifDefined(this.form)}"
-                    .list="${ifDefined(this.list)}"
-                    .name="${ifDefined(this.name)}"
-                    .readonly="${ifDefined(this.readonly)}"
-                    .required="${ifDefined(this.required)}"
-                    .type="${ifDefined(this.type)}"
-                    .value="${ifDefined(this.value)}"
-                    .max="${ifDefined(this.max)}"
-                    .min="${ifDefined(this.min)}"
-                    .placeholder="${ifDefined(this.placeholder)}"
-                    .step="${ifDefined(this.step)}"
-                    .defaultValue="${ifDefined(this.defaultValue)}"
-                    @focus="${this.handleNumberFieldNativeFocus}"
-                    @blur="${this.handleNumberFieldNativeBlur}"
-                    @input="${this.handleNumberFieldNativeInput}"
-                    @invalid="${this.handleNumberFieldNativeInvalid}"
-                    @reset="${this.handleNumberFieldNativeReset}"
-                />
-                ${this.trailingMeta?html`<div class="md-number-field__meta">${this.trailingMeta}</div>`:nothing}
-                ${this.trailingIcon?html`<md-icon class="md-number-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                ${this.invalid?html`<md-icon class="md-number-field__icon">error</md-icon>`:nothing}
-                <div class="md-number-field__actions">
-                    ${this.trailingActions?.map(action => html`
-                        <md-icon-button @click="${this.handleNumberFieldNativeActionClick}" class="md-number-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                    `)}
-                    <md-icon-button @click="${this.handleNumberFieldNativeActionStepDownClick}" class="md-number-field__action" .icon="${"remove"}"></md-icon-button>
-                    <md-icon-button @click="${this.handleNumberFieldNativeActionStepUpClick}" class="md-number-field__action" .icon="${"add"}"></md-icon-button>
+            <label class="md-number-field__a11y">
+
+                ${this.label?html`<div class="md-number-field__label">${this.label}</div>`:nothing}
+                <div class="md-number-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-number-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-number-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <input
+                        class="md-number-field__native"
+                        type="number"
+                        .autocapitalize="${ifDefined(this.autocapitalize)}"
+                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .form="${ifDefined(this.form)}"
+                        .list="${ifDefined(this.list)}"
+                        .name="${ifDefined(this.name)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .required="${ifDefined(this.required)}"
+                        .type="${ifDefined(this.type)}"
+                        .value="${ifDefined(this.value)}"
+                        .max="${ifDefined(this.max)}"
+                        .min="${ifDefined(this.min)}"
+                        .placeholder="${ifDefined(this.placeholder)}"
+                        .step="${ifDefined(this.step)}"
+                        .defaultValue="${ifDefined(this.defaultValue)}"
+                        @focus="${this.handleNumberFieldNativeFocus}"
+                        @blur="${this.handleNumberFieldNativeBlur}"
+                        @input="${this.handleNumberFieldNativeInput}"
+                        @invalid="${this.handleNumberFieldNativeInvalid}"
+                        @reset="${this.handleNumberFieldNativeReset}"
+                    />
+                    ${this.trailingMeta?html`<div class="md-number-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-number-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-number-field__icon">error</md-icon>`:nothing}
+                    <div class="md-number-field__actions">
+                        ${this.trailingActions?.map(action => html`
+                            <md-icon-button @click="${this.handleNumberFieldNativeActionClick}" class="md-number-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                        `)}
+                        <md-icon-button @click="${this.handleNumberFieldNativeActionStepDownClick}" class="md-number-field__action" .icon="${"remove"}"></md-icon-button>
+                        <md-icon-button @click="${this.handleNumberFieldNativeActionStepUpClick}" class="md-number-field__action" .icon="${"add"}"></md-icon-button>
+                    </div>
                 </div>
-            </div>
-            ${this.validationMessage||this.text?html`<div class="md-number-field__text">${this.validationMessage||this.text}</div>`:nothing}
+                ${this.validationMessage||this.text?html`<div class="md-number-field__text">${this.validationMessage||this.text}</div>`:nothing}
+            </label>
         `;
     }
 

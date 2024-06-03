@@ -53,28 +53,31 @@ class MDCheckboxComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <input
-                type="checkbox"  
-                .autocapitalize="${ifDefined(this.autocapitalize)}"
-                .disabled="${ifDefined(this.disabled)}"      
-                .form="${ifDefined(this.form)}"
-                .name="${ifDefined(this.name)}"
-                .required="${ifDefined(this.required)}"      
-                .type="${ifDefined(this.type)}"
-                .value="${ifDefined(this.value)}"
-                .checked="${ifDefined(this.checked)}"       
-                .defaultValue="${ifDefined(this.defaultValue)}"  
-                .defaultChecked="${ifDefined(this.defaultChecked)}"
-                .indeterminate="${ifDefined(this.indeterminate)}" 
-                .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
-                class="md-checkbox__native"
-                @input="${this.handleCheckboxNativeInput}"
-                @invalid="${this.handleCheckboxNativeInvalid}"
-                @reset="${this.handleCheckboxNativeReset}"
-            />
-            <div class="md-checkbox__track">
-                <div class="md-checkbox__thumb"></div>
-            </div>
+            <label class="md-checkbox__a11y">
+                <div class="md-checkbox__a11y-text">checkbox</div>
+                <input
+                    type="checkbox"  
+                    .autocapitalize="${ifDefined(this.autocapitalize)}"
+                    .disabled="${ifDefined(this.disabled)}"      
+                    .form="${ifDefined(this.form)}"
+                    .name="${ifDefined(this.name)}"
+                    .required="${ifDefined(this.required)}"      
+                    .type="${ifDefined(this.type)}"
+                    .value="${ifDefined(this.value)}"
+                    .checked="${ifDefined(this.checked)}"       
+                    .defaultValue="${ifDefined(this.defaultValue)}"  
+                    .defaultChecked="${ifDefined(this.defaultChecked)}"
+                    .indeterminate="${ifDefined(this.indeterminate)}" 
+                    .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
+                    class="md-checkbox__native"
+                    @input="${this.handleCheckboxNativeInput}"
+                    @invalid="${this.handleCheckboxNativeInvalid}"
+                    @reset="${this.handleCheckboxNativeReset}"
+                />
+                <div class="md-checkbox__track">
+                    <div class="md-checkbox__thumb"></div>
+                </div>
+            </label>
         `;
     }
 

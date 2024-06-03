@@ -53,28 +53,32 @@ class MDRadioButtonComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <input
-                type="radio"  
-                .autocapitalize="${ifDefined(this.autocapitalize)}"
-                .disabled="${ifDefined(this.disabled)}"      
-                .form="${ifDefined(this.form)}"
-                .name="${ifDefined(this.name)}"
-                .required="${ifDefined(this.required)}"      
-                .type="${ifDefined(this.type)}"
-                .value="${ifDefined(this.value)}"
-                .checked="${ifDefined(this.checked)}"       
-                .defaultValue="${ifDefined(this.defaultValue)}"  
-                .defaultChecked="${ifDefined(this.defaultChecked)}"
-                .indeterminate="${ifDefined(this.indeterminate)}" 
-                .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
-                class="md-radio-button__native"
-                @input="${this.handleRadioButtonNativeInput}"
-                @invalid="${this.handleRadioButtonNativeInvalid}"
-                @reset="${this.handleRadioButtonNativeReset}"
-            />
-            <div class="md-radio-button__track">
-                <div class="md-radio-button__thumb"></div>
-            </div>
+            <label class="md-radio-button__a11y">
+                <div class="md-radio-button__a11y-text">radio-button</div>
+                <input
+                    type="radio"  
+                    .autocapitalize="${ifDefined(this.autocapitalize)}"
+                    .disabled="${ifDefined(this.disabled)}"      
+                    .form="${ifDefined(this.form)}"
+                    .name="${ifDefined(this.name)}"
+                    .required="${ifDefined(this.required)}"      
+                    .type="${ifDefined(this.type)}"
+                    .value="${ifDefined(this.value)}"
+                    .checked="${ifDefined(this.checked)}"       
+                    .defaultValue="${ifDefined(this.defaultValue)}"  
+                    .defaultChecked="${ifDefined(this.defaultChecked)}"
+                    .indeterminate="${ifDefined(this.indeterminate)}" 
+                    .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
+                    class="md-radio-button__native"
+                    @input="${this.handleRadioButtonNativeInput}"
+                    @invalid="${this.handleRadioButtonNativeInvalid}"
+                    @reset="${this.handleRadioButtonNativeReset}"
+                />
+                <div class="md-radio-button__track">
+                    <div class="md-radio-button__thumb"></div>
+                </div>
+            </label>
+            
         `;
     }
 

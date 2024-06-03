@@ -8,6 +8,27 @@
     position: relative;
 }
 
+.md-checkbox__a11y {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.md-checkbox__a11y-text{
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+
 .md-checkbox__native {
     appearance: none;
     width: 100%;

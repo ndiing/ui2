@@ -6,17 +6,20 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
-class MDPasswordFieldComponent extends MDElement {
+class MDTempFieldComponent extends MDElement {
     /**
      *
-     * @property {String} [type] -
+     * @property {Boolean} [autocapitalize] -
      * @property {String} [autocomplete] -
      * @property {Boolean} [disabled] -
      * @property {String} [form] -
+     * @property {String} [list] -
      * @property {String} [name] -
      * @property {Boolean} [readonly] -
      * @property {Boolean} [required] -
+     * @property {String} [type] -
      * @property {String} [value] -
+     * @property {String} [dirname] -
      * @property {Number} [maxlength] -
      * @property {Number} [minlength] -
      * @property {String} [pattern] -
@@ -38,14 +41,17 @@ class MDPasswordFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            type: { type: String },
+            autocapitalize: { type: Boolean },
             autocomplete: { type: String },
             disabled: { type: Boolean },
             form: { type: String },
+            list: { type: String },
             name: { type: String },
             readonly: { type: Boolean },
             required: { type: Boolean },
+            type: { type: String },
             value: { type: String },
+            dirname: { type: String },
             maxlength: { type: Number },
             minlength: { type: Number },
             pattern: { type: String },
@@ -75,7 +81,6 @@ class MDPasswordFieldComponent extends MDElement {
      */
     constructor() {
         super();
-        this.type = "password";
     }
 
     /**
@@ -84,45 +89,50 @@ class MDPasswordFieldComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <label  class="md-password-field__a11y">
-
-                ${this.label?html`<div class="md-password-field__label">${this.label}</div>`:nothing}
-                <div class="md-password-field__container">
-                    ${this.leadingIcon?html`<md-icon class="md-password-field__icon">${this.leadingIcon}</md-icon>`:nothing}
-                    ${this.leadingMeta?html`<div class="md-password-field__meta">${this.leadingMeta}</div>`:nothing}
-                    <input
-                        class="md-password-field__native"
-                        .type="${this.type}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
+            <label class="md-temp-field__a11y">
+                ${this.label?html`<div class="md-temp-field__label">${this.label}</div>`:nothing}
+                <div class="md-temp-field__container">
+                    ${this.leadingIcon?html`<md-icon class="md-temp-field__icon">${this.leadingIcon}</md-icon>`:nothing}
+                    ${this.leadingMeta?html`<div class="md-temp-field__meta">${this.leadingMeta}</div>`:nothing}
+                    <textarea
+                        class="md-temp-field__native"
+                        type="text"
+                        .autocapitalize="${ifDefined(this.autocapitalize)}"
+                        .autocomplete="${ifDefined(this.autocomplete??'off')}"
                         .disabled="${ifDefined(this.disabled)}"
                         .form="${ifDefined(this.form)}"
+                        .list="${ifDefined(this.list)}"
                         .name="${ifDefined(this.name)}"
                         .readonly="${ifDefined(this.readonly)}"
                         .required="${ifDefined(this.required)}"
+                        .type="${ifDefined(this.type)}"
                         .value="${ifDefined(this.value)}"
+                        .dirname="${ifDefined(this.dirname)}"
                         .maxlength="${ifDefined(this.maxlength)}"
                         .minlength="${ifDefined(this.minlength)}"
                         .pattern="${ifDefined(this.pattern)}"
                         .placeholder="${ifDefined(this.placeholder)}"
                         .size="${ifDefined(this.size)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
-                        @focus="${this.handlePasswordFieldNativeFocus}"
-                        @blur="${this.handlePasswordFieldNativeBlur}"
-                        @input="${this.handlePasswordFieldNativeInput}"
-                        @invalid="${this.handlePasswordFieldNativeInvalid}"
-                        @reset="${this.handlePasswordFieldNativeReset}"
-                    />
-                    ${this.trailingMeta?html`<div class="md-password-field__meta">${this.trailingMeta}</div>`:nothing}
-                    ${this.trailingIcon?html`<md-icon class="md-password-field__icon">${this.trailingIcon}</md-icon>`:nothing}
-                    ${this.invalid?html`<md-icon class="md-password-field__icon">error</md-icon>`:nothing}
-                    <div class="md-password-field__actions">
-                        ${this.trailingActions?.map(action => html`
-                            <md-icon-button @click="${this.handlePasswordFieldNativeActionClick}" class="md-password-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
-                        `)}
-                        <md-icon-button @click="${this.handlePasswordFieldNativeActionVisibilityClick}" class="md-password-field__action" .icon="${this.type=='password'?'visibility_off':'visibility'}"></md-icon-button>
-                    </div>
+                        .rows="${ifDefined(this.rows??1)}"
+                        @focus="${this.handleTempFieldNativeFocus}"
+                        @blur="${this.handleTempFieldNativeBlur}"
+                        @input="${this.handleTempFieldNativeInput}"
+                        @invalid="${this.handleTempFieldNativeInvalid}"
+                        @reset="${this.handleTempFieldNativeReset}"
+                    ></textarea>
+                    ${this.trailingMeta?html`<div class="md-temp-field__meta">${this.trailingMeta}</div>`:nothing}
+                    ${this.trailingIcon?html`<md-icon class="md-temp-field__icon">${this.trailingIcon}</md-icon>`:nothing}
+                    ${this.invalid?html`<md-icon class="md-temp-field__icon">error</md-icon>`:nothing}
+                    ${this.trailingActions?.length?html`
+                        <div class="md-temp-field__actions">
+                            ${this.trailingActions.map(action => html`
+                                <md-icon-button @click="${this.handleTempFieldNativeActionClick}" class="md-temp-field__action" .icon="${ifDefined(action?.icon??action)}"></md-icon-button>
+                            `)}
+                        </div>
+                    `:nothing}
                 </div>
-                ${this.validationMessage||this.text?html`<div class="md-password-field__text">${this.validationMessage||this.text}</div>`:nothing}
+                ${this.validationMessage||this.text?html`<div class="md-temp-field__text">${this.validationMessage||this.text}</div>`:nothing}
             </label>
         `;
     }
@@ -132,7 +142,7 @@ class MDPasswordFieldComponent extends MDElement {
      */
     async connectedCallback() {
         super.connectedCallback();
-        this.classList.add("md-password-field");
+        this.classList.add("md-temp-field");
         await this.updateComplete;
     }
 
@@ -141,12 +151,12 @@ class MDPasswordFieldComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        this.classList.remove("md-password-field");
+        this.classList.remove("md-temp-field");
         await this.updateComplete;
 
-        const offsetLeft = this.querySelector(".md-password-field__meta,.md-password-field__native")?.offsetLeft;
+        const offsetLeft = this.querySelector(".md-temp-field__meta,.md-temp-field__native")?.offsetLeft;
         if (offsetLeft) {
-            this.style.setProperty("--md-password-field-offset-left", offsetLeft + "px");
+            this.style.setProperty("--md-temp-field-offset-left", offsetLeft + "px");
         }
     }
 
@@ -165,11 +175,11 @@ class MDPasswordFieldComponent extends MDElement {
     updated(changedProperties) {
         if (changedProperties.has("ui")) {
             ["filled", "outlined", "rounded"].forEach((ui) => {
-                this.classList.remove("md-password-field--" + ui);
+                this.classList.remove("md-temp-field--" + ui);
             });
             if (this.ui) {
                 this.ui.split(" ").forEach((ui) => {
-                    this.classList.add("md-password-field--" + ui);
+                    this.classList.add("md-temp-field--" + ui);
                 });
             }
         }
@@ -178,87 +188,74 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    get numberFieldNative() {
-        return this.querySelector(".md-password-field__native");
+    get textFieldNative() {
+        return this.querySelector(".md-temp-field__native");
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick
+     * @fires MDTempFieldComponent#onTempFieldNativeActionClick
      */
-    handlePasswordFieldNativeActionClick(event) {
-        this.emit("onPasswordFieldNativeActionClick", event);
+    handleTempFieldNativeActionClick(event) {
+        this.emit("onTempFieldNativeActionClick", event);
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick
+     * @fires MDTempFieldComponent#onTempFieldNativeFocus
      */
-    handlePasswordFieldNativeActionVisibilityClick(event) {
-        if (this.type == "password") {
-            this.type = "text";
-        } else {
-            this.type = "password";
-        }
-        this.emit("onPasswordFieldNativeActionVisibilityClick", event);
-    }
-
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus
-     */
-    handlePasswordFieldNativeFocus(event) {
+    handleTempFieldNativeFocus(event) {
         this.focused = true;
-        this.emit("onPasswordFieldNativeFocus", event);
+        this.emit("onTempFieldNativeFocus", event);
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur
+     * @fires MDTempFieldComponent#onTempFieldNativeBlur
      */
-    handlePasswordFieldNativeBlur(event) {
+    handleTempFieldNativeBlur(event) {
         this.focused = false;
-        this.emit("onPasswordFieldNativeBlur", event);
+        this.emit("onTempFieldNativeBlur", event);
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput
+     * @fires MDTempFieldComponent#onTempFieldNativeInput
      */
-    handlePasswordFieldNativeInput(event) {
-        this.value = this.numberFieldNative.value;
+    handleTempFieldNativeInput(event) {
+        this.value = this.textFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.numberFieldNative.validationMessage;
+        this.validationMessage = this.textFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
-        this.emit("onPasswordFieldNativeInput", event);
+        this.emit("onTempFieldNativeInput", event);
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid
+     * @fires MDTempFieldComponent#onTempFieldNativeInvalid
      */
-    handlePasswordFieldNativeInvalid(event) {
+    handleTempFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.numberFieldNative.validationMessage;
+        this.validationMessage = this.textFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
-        this.emit("onPasswordFieldNativeInvalid", event);
+        this.emit("onTempFieldNativeInvalid", event);
     }
 
     /**
      *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset
+     * @fires MDTempFieldComponent#onTempFieldNativeReset
      */
-    handlePasswordFieldNativeReset(event) {
-        this.numberFieldNative.value = this.defaultValue;
-        this.value = this.numberFieldNative.value;
+    handleTempFieldNativeReset(event) {
+        this.textFieldNative.value = this.defaultValue;
+        this.value = this.textFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;
 
-        this.emit("onPasswordFieldNativeReset", event);
+        this.emit("onTempFieldNativeReset", event);
     }
 }
 
-customElements.define("md-password-field", MDPasswordFieldComponent);
+customElements.define("md-temp-field", MDTempFieldComponent);
 
-export { MDPasswordFieldComponent };
+export { MDTempFieldComponent };

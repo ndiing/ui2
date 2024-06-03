@@ -1,80 +1,81 @@
 .md-date-field {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
     flex-direction: column;
     position: relative;
+    width: 100%;
+}
+
+.md-date-field__a11y {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
 .md-date-field__label {
     display: flex;
     align-items: center;
-    // padding: 0 16px;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-bottom: 4px;
-    @include md-typography-body-small;
+    padding: 0 4px;
+    margin: 4px 12px;
     color: var(--md-sys-color-on-surface-variant);
+    @include md-typography-body-small;
 }
 
 .md-date-field__container {
     display: flex;
-    align-items: center;
-    padding: 0 16px;
-    gap: 0 16px;
     border-radius: 4px;
     background: var(--md-sys-color-surface-container-highest);
-}
-
-.md-date-field__icon {
-    margin-left: -4px;
-    color: var(--md-sys-color-on-surface-variant);
-    // +.md-date-field__actions{
-    //     margin-left: -4px;
-    // }
-}
-
-.md-date-field__meta {
-    margin-right: -16px;
-    padding-top: calc((56px - 24px) / 2);
-    padding-bottom: calc((56px - 24px) / 2);
-    @include md-typography-body-large;
     color: var(--md-sys-color-on-surface);
 }
 
 .md-date-field__native {
+    flex: 1;
+    // field-sizing: content;
     appearance: none;
+    resize: none;
+    overflow: hidden;
     width: 100%;
-    height: 56px;
+    padding: 0 16px;
+    margin: 16px 0;
     background: transparent;
     color: inherit;
-    padding: 16px;
-    margin-left: -16px;
-    margin-right: -16px;
     @include md-typography-body-large;
-    color: var(--md-sys-color-on-surface);
 
     + .md-date-field__meta {
         margin-left: -16px;
-        margin-right: 0;
-    }
-
-    ~ .md-date-field__icon {
-        margin-left: 0;
-        margin-right: -4px;
     }
 }
 
-.md-date-field__native--hidden {
-    display: none;
+.md-date-field__icon {
+    margin: 16px 12px;
+    color: var(--md-sys-color-on-surface-variant);
+
+    + .md-date-field__native {
+        margin-left: -12px;
+    }
+
+    + .md-date-field__actions {
+        margin-left: 4px;
+    }
+}
+
+.md-date-field__meta {
+    padding: 0 16px;
+    margin: 16px 0;
+    @include md-typography-body-large;
+
+    + .md-date-field__native {
+        margin-left: -32px;
+    }
 }
 
 .md-date-field__actions {
     display: inline-flex;
     align-items: center;
-    gap: 0 12px;
-    margin-right: -4px;
+    margin: 16px 12px;
+    gap: 0 16px;
 }
 
 .md-date-field__action {
@@ -85,14 +86,14 @@
     display: flex;
     align-items: center;
     padding: 0 16px;
-    margin-top: 4px;
-    @include md-typography-body-small;
+    margin: 4px 0;
     color: var(--md-sys-color-on-surface-variant);
+    @include md-typography-body-small;
 }
 
 .md-date-field {
-    // &[populated] {
-    // }
+    &[populated] {
+    }
 
     &[focused] {
         .md-date-field__label {
@@ -117,12 +118,11 @@
 
 .md-date-field--filled {
     .md-date-field__label {
-        padding-top: calc((56px - 24px) / 2);
-        padding-bottom: calc((56px - 24px) / 2);
+        margin-top: 16px;
+        margin-bottom: 16px;
         @include md-typography-body-large;
         position: absolute;
-        left: calc(var(--md-date-field-offset-left, 0px) - 16px);
-        top: 0;
+        left: var(--md-date-field-offset-left);
         pointer-events: none;
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
@@ -137,6 +137,10 @@
                 &::placeholder {
                     visibility: hidden;
                 }
+
+                &::-webkit-datetime-edit {
+                    visibility: hidden;
+                }
             }
         }
     }
@@ -146,25 +150,29 @@
         box-shadow: inset 0 -1px 0 0 var(--md-sys-color-on-surface-variant);
     }
 
-    &[focused],
-    &[populated] {
+    &[populated],
+    &[focused] {
         .md-date-field__label {
-            padding-top: calc(((56px - 24px) / 2) - 8px);
-            padding-bottom: calc(((56px - 24px) / 2) + 8px);
+            margin-top: calc(((56px - 16px) / 2) - 12px);
+            margin-bottom: calc(((56px - 16px) / 2) + 12px);
             @include md-typography-body-small;
 
             + .md-date-field__container {
                 .md-date-field__meta {
-                    padding-top: calc(((56px - 24px) / 2) + 4px);
-                    padding-bottom: calc(((56px - 24px) / 2) - 4px);
+                    margin-top: calc(((56px - 24px) / 2) + 8px);
+                    margin-bottom: calc(((56px - 24px) / 2) - 8px);
                     visibility: visible;
                 }
 
                 .md-date-field__native {
-                    padding-top: calc(((56px - 24px) / 2) + 4px);
-                    padding-bottom: calc(((56px - 24px) / 2) - 4px);
+                    margin-top: calc(((56px - 24px) / 2) + 8px);
+                    margin-bottom: calc(((56px - 24px) / 2) - 8px);
 
                     &::placeholder {
+                        visibility: visible;
+                    }
+
+                    &::-webkit-datetime-edit {
                         visibility: visible;
                     }
                 }
@@ -187,12 +195,11 @@
 
 .md-date-field--outlined {
     .md-date-field__label {
-        padding-top: calc((56px - 24px) / 2);
-        padding-bottom: calc((56px - 24px) / 2);
+        margin-top: 16px;
+        margin-bottom: 16px;
         @include md-typography-body-large;
         position: absolute;
-        left: calc(var(--md-date-field-offset-left, 0px) - 16px);
-        top: 0;
+        left: var(--md-date-field-offset-left);
         pointer-events: none;
         transition-property: all;
         transition-duration: var(--md-sys-motion-duration-short4);
@@ -202,8 +209,8 @@
             content: "";
             width: 0%;
             height: 100%;
-            transform: translate3d(-50%, -50%, 0);
             background: var(--md-sys-color-background);
+            transform: translate3d(-50%, -50%, 0px);
             position: absolute;
             left: 50%;
             top: 50%;
@@ -222,6 +229,10 @@
                 &::placeholder {
                     visibility: hidden;
                 }
+
+                &::-webkit-datetime-edit {
+                    visibility: hidden;
+                }
             }
         }
     }
@@ -232,11 +243,11 @@
         box-shadow: inset 0 0 0 1px var(--md-sys-color-on-surface-variant);
     }
 
-    &[focused],
-    &[populated] {
+    &[populated],
+    &[focused] {
         .md-date-field__label {
-            padding-top: 0;
-            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
             transform: translate3d(0%, -50%, 0px);
             @include md-typography-body-small;
             left: 0;
@@ -252,6 +263,10 @@
 
                 .md-date-field__native {
                     &::placeholder {
+                        visibility: visible;
+                    }
+
+                    &::-webkit-datetime-edit {
                         visibility: visible;
                     }
                 }
@@ -278,44 +293,26 @@
     }
 
     .md-date-field__icon {
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: 16px;
+        margin-right: 16px;
+
+        + .md-date-field__native {
+            margin-left: -16px;
+        }
+
         + .md-date-field__actions {
-            margin-left: -4px;
+            margin-left: 0;
         }
     }
 
     .md-date-field__actions {
-        margin-right: 0;
+        margin-left: 16px;
+        margin-right: 16px;
     }
 
     &.md-date-field--filled {
         .md-date-field__container {
             box-shadow: none;
         }
-
-        &[focused] {
-            .md-date-field__container {
-                box-shadow: none;
-            }
-        }
-
-        &[invalid] {
-            .md-date-field__container {
-                box-shadow: none;
-            }
-        }
     }
-}
-
-.md-date-field__native::-webkit-datetime-edit-day-field,
-.md-date-field__native::-webkit-datetime-edit-month-field,
-.md-date-field__native::-webkit-datetime-edit-year-field,
-.md-date-field__native::-webkit-datetime-edit-hour-field,
-.md-date-field__native::-webkit-datetime-edit-minute-field,
-.md-date-field__native::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
-}
-.md-date-field__native::-webkit-calendar-picker-indicator {
-    display: none;
 }

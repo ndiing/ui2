@@ -55,28 +55,32 @@ class MDSwitchComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <input
-                type="checkbox"  
-                .autocapitalize="${ifDefined(this.autocapitalize)}"
-                .disabled="${ifDefined(this.disabled)}"      
-                .form="${ifDefined(this.form)}"
-                .name="${ifDefined(this.name)}"
-                .required="${ifDefined(this.required)}"      
-                .type="${ifDefined(this.type)}"
-                .value="${ifDefined(this.value)}"
-                .checked="${ifDefined(this.checked)}"       
-                .defaultValue="${ifDefined(this.defaultValue)}"  
-                .defaultChecked="${ifDefined(this.defaultChecked)}"
-                .indeterminate="${ifDefined(this.indeterminate)}" 
-                .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
-                class="md-switch__native"
-                @input="${this.handleSwitchNativeInput}"
-                @invalid="${this.handleSwitchNativeInvalid}"
-                @reset="${this.handleSwitchNativeReset}"
-            />
-            <div class="md-switch__track">
-                <div class="md-switch__thumb">${this.icons?.length?html`<md-icon class="md-switch__icon">${this.icons[~~this.checked]}</md-icon>`:nothing}</div>
-            </div>
+            <label class="md-switch__a11y">
+                <div class="md-switch__a11y-text">switch</div>
+                <input
+                    type="checkbox"  
+                    .autocapitalize="${ifDefined(this.autocapitalize)}"
+                    .disabled="${ifDefined(this.disabled)}"      
+                    .form="${ifDefined(this.form)}"
+                    .name="${ifDefined(this.name)}"
+                    .required="${ifDefined(this.required)}"      
+                    .type="${ifDefined(this.type)}"
+                    .value="${ifDefined(this.value)}"
+                    .checked="${ifDefined(this.checked)}"       
+                    .defaultValue="${ifDefined(this.defaultValue)}"  
+                    .defaultChecked="${ifDefined(this.defaultChecked)}"
+                    .indeterminate="${ifDefined(this.indeterminate)}" 
+                    .defaultIndeterminate="${ifDefined(this.defaultIndeterminate)}" 
+                    class="md-switch__native"
+                    @input="${this.handleSwitchNativeInput}"
+                    @invalid="${this.handleSwitchNativeInvalid}"
+                    @reset="${this.handleSwitchNativeReset}"
+                />
+                <div class="md-switch__track">
+                    <div class="md-switch__thumb">${this.icons?.length?html`<md-icon class="md-switch__icon">${this.icons[~~this.checked]}</md-icon>`:nothing}</div>
+                </div>
+            </label>
+            
         `;
     }
 
