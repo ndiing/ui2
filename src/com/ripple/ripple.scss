@@ -96,7 +96,7 @@
     }
 }
 
-@mixin md-ripple--draged {
+@mixin md-ripple--dragged {
     box-shadow: var(--md-sys-elevation-level4);
     &::after {
         opacity: 16%;
@@ -184,8 +184,8 @@
     @include md-ripple--fadeout;
 }
 
-.md-ripple--draged {
-    @include md-ripple--draged;
+.md-ripple--dragged {
+    @include md-ripple--dragged;
 }
 
 .md-ripple[disabled] {

@@ -9,67 +9,78 @@ class AppMainElement extends MDElement {
     constructor() {
         super();
         this.list = [
-            { path: "layout" }, //
-            { path: "typography" }, //
-            { path: "image" }, //
-            { path: "icon" }, //
-            { path: "ripple" }, //
-            { path: "popper" }, //
-            { path: "virtual-scroll" }, //
-            { path: "gesture" }, //
-            { path: "icon-button" }, //
-            { path: "form" }, //
-            { path: "checkbox" }, //
-            { path: "radio-button" }, //
-            { path: "switch" }, //
-            { path: "badge" }, //
-            { path: "fab" }, //
-            { path: "button" }, //
-            { path: "segmented-button" }, //
-            { path: "list" }, //
-            { path: "nested-list" }, //
-            { path: "navigation" }, //
-            { path: "card" }, //
-            { path: "dialog" }, //
-            { path: "side-sheet" }, //
-            { path: "bottom-sheet" }, //
-            { path: "navigation-drawer" }, //
-            { path: "navigation-rail" }, //
-            { path: "navigation-bar" }, //
-            { path: "bottom-app-bar" }, //
-            { path: "top-app-bar" }, //
-            { path: "snackbar" }, //
-            { path: "menu" }, //
-            { path: "tooltip" }, //
-            { path: "tabs" }, //
-            { path: "datetime-picker" }, //
-            { path: "date-picker" }, //
-            { path: "time-picker" }, //
-            { path: "month-picker" }, //
-            { path: "week-picker" }, //
-            { path: "color-picker" }, //
-            { path: "chips" }, //
-            { path: "slider" }, //
-            { path: "progress-indicator" }, //
-            { path: "text-field" }, //
-            { path: "number-field" }, //
-            { path: "tel-field" }, //
-            { path: "email-field" }, //
-            { path: "url-field" }, //
-            { path: "password-field" }, //
-            { path: "search-field" }, //
-            { path: "color-field" }, //
-            { path: "file-field" }, //
-            { path: "datetime-field" }, //
-            { path: "date-field" }, //
-            { path: "month-field" }, //
-            { path: "week-field" }, //
-            { path: "time-field" }, //
-            { path: "data-table" }, //
+            { leadingIcon: "package_2", label: "Layout", routerLink: "/layout" },
+            { leadingIcon: "package_2", label: "Typography", routerLink: "/typography" },
+            { leadingIcon: "package_2", label: "Image", routerLink: "/image" },
+            { leadingIcon: "package_2", label: "Icon", routerLink: "/icon" },
+            { leadingIcon: "package_2", label: "Ripple", routerLink: "/ripple" },
+            { leadingIcon: "package_2", label: "Popper", routerLink: "/popper" },
+            { leadingIcon: "package_2", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
+            { leadingIcon: "package_2", label: "Gesture", routerLink: "/gesture" },
+
+            { leadingIcon: "package_2", label: "Form", routerLink: "/form" },
+
+            { leadingIcon: "package_2", label: "Checkbox", routerLink: "/checkbox" },
+            { leadingIcon: "package_2", label: "Radio Button", routerLink: "/radio-button" },
+            { leadingIcon: "package_2", label: "Switch", routerLink: "/switch" },
+
+            { leadingIcon: "package_2", label: "Badge", routerLink: "/badge" },
+
+            { leadingIcon: "package_2", label: "Button", routerLink: "/button" },
+            { leadingIcon: "package_2", label: "Fab", routerLink: "/fab" },
+            { leadingIcon: "package_2", label: "Icon Button", routerLink: "/icon-button" },
+            { leadingIcon: "package_2", label: "Segmented Button", routerLink: "/segmented-button" },
+
+            { leadingIcon: "package_2", label: "List", routerLink: "/list" },
+            { leadingIcon: "package_2", label: "Nested List", routerLink: "/nested-list" },
+            { leadingIcon: "package_2", label: "Navigation", routerLink: "/navigation" },
+
+            { leadingIcon: "package_2", label: "Card", routerLink: "/card" },
+            { leadingIcon: "package_2", label: "Dialog", routerLink: "/dialog" },
+            { leadingIcon: "package_2", label: "Side Sheet", routerLink: "/side-sheet" },
+            { leadingIcon: "package_2", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
+            { leadingIcon: "package_2", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
+            { leadingIcon: "package_2", label: "Navigation Rail", routerLink: "/navigation-rail" },
+            { leadingIcon: "package_2", label: "Navigation Bar", routerLink: "/navigation-bar" },
+            { leadingIcon: "package_2", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
+            { leadingIcon: "package_2", label: "Top App Bar", routerLink: "/top-app-bar" },
+            { leadingIcon: "package_2", label: "Snackbar", routerLink: "/snackbar" },
+            { leadingIcon: "package_2", label: "Menu", routerLink: "/menu" },
+            { leadingIcon: "package_2", label: "Tooltip", routerLink: "/tooltip" },
+
+            { leadingIcon: "package_2", label: "Tabs", routerLink: "/tabs" },
+
+            { leadingIcon: "package_2", label: "Datetime Picker", routerLink: "/datetime-picker" },
+            { leadingIcon: "package_2", label: "Date Picker", routerLink: "/date-picker" },
+            { leadingIcon: "package_2", label: "Time Picker", routerLink: "/time-picker" },
+            { leadingIcon: "package_2", label: "Month Picker", routerLink: "/month-picker" },
+            { leadingIcon: "package_2", label: "Week Picker", routerLink: "/week-picker" },
+            { leadingIcon: "package_2", label: "Color Picker", routerLink: "/color-picker" },
+
+            { leadingIcon: "package_2", label: "Chips", routerLink: "/chips" },
+
+            { leadingIcon: "package_2", label: "Slider", routerLink: "/slider" },
+
+            { leadingIcon: "package_2", label: "Progress Indicator", routerLink: "/progress-indicator" },
+
+            { leadingIcon: "package_2", label: "Text Field", routerLink: "/text-field" },
+            { leadingIcon: "package_2", label: "Number Field", routerLink: "/number-field" },
+            { leadingIcon: "package_2", label: "Tel Field", routerLink: "/tel-field" },
+            { leadingIcon: "package_2", label: "Email Field", routerLink: "/email-field" },
+            { leadingIcon: "package_2", label: "Url Field", routerLink: "/url-field" },
+            { leadingIcon: "package_2", label: "Password Field", routerLink: "/password-field" },
+            { leadingIcon: "package_2", label: "Search Field", routerLink: "/search-field" },
+            { leadingIcon: "package_2", label: "Color Field", routerLink: "/color-field" },
+            { leadingIcon: "package_2", label: "File Field", routerLink: "/file-field" },
+            { leadingIcon: "package_2", label: "Datetime Field", routerLink: "/datetime-field" },
+            { leadingIcon: "package_2", label: "Date Field", routerLink: "/date-field" },
+            { leadingIcon: "package_2", label: "Month Field", routerLink: "/month-field" },
+            { leadingIcon: "package_2", label: "Week Field", routerLink: "/week-field" },
+            { leadingIcon: "package_2", label: "Time Field", routerLink: "/time-field" },
+
+            { leadingIcon: "package_2", label: "Data Table", routerLink: "/data-table" },
         ].map((doc) => ({
-            leadingIcon: "package_2",
-            label: toTitleCase(doc.path),
-            routerLink: "/" + doc.path,
+            ...doc,
             selected: MDRouterModule.path == "/" + doc.path,
         }));
     }

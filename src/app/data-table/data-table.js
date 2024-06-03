@@ -90,6 +90,7 @@ class AppDataTableElement extends MDElement {
                         .rows="${this.rows1}"
                     ></md-data-table>
                 </div>
+
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-data-table
                         style="height:calc(52px * 5);"
@@ -98,6 +99,7 @@ class AppDataTableElement extends MDElement {
                         checkbox
                     ></md-data-table>
                 </div>
+
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-data-table
                         id="table3"

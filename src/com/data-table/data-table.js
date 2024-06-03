@@ -15,7 +15,7 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement {
         this.gesture = new MDGestureModule(this, {
             resize: ["e"],
             drag: ["x"],
-            dragAfterPress: true,
+            // dragAfterPress: true,
         });
     }
 
@@ -496,13 +496,16 @@ class MDDataTableComponent extends MDElement {
         this.guide = th.cloneNode(true);
         this.guide.style.setProperty("width", rect.width + "px");
         this.guide.style.setProperty("height", rect.height + "px");
-        this.guide.style.setProperty("opacity", "84%");
+        // this.guide.style.setProperty("opacity", "84%");
         this.guide.style.setProperty("position", "absolute");
         this.guide.style.setProperty("left", rect.left + "px");
         this.guide.style.setProperty("top", rect.top + "px");
         this.guide.style.setProperty("z-index", 6);
         this.guide.style.setProperty("pointer-events", "none");
-        this.guide.classList.add("md-ripple--draged");
+        this.guide.classList.add("md-ripple");
+        this.guide.classList.add("md-ripple--button");
+        this.guide.classList.add("md-ripple--containment");
+        this.guide.classList.add("md-ripple--dragged");
         document.body.append(this.guide);
 
         this.emit("onDataTableColumnCellDragStart", event);
