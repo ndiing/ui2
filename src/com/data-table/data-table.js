@@ -718,7 +718,7 @@ class MDDataTableComponent extends MDElement {
      * @fires MDDataTableComponent#onDataTableColumnCellDragEnd
      */
     handleDataTableColumnCellDragEnd(event) {
-        this.guide.remove();
+        this.guide?.remove();
 
         const data = event.currentTarget.data;
 
