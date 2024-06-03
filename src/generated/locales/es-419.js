@@ -1,9 +1,14 @@
-// Do not modify this file by hand!
-// Re-generate this file by running lit-localize
 
-/* eslint-disable no-irregular-whitespace */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+    // Do not modify this file by hand!
+    // Re-generate this file by running lit-localize
 
-export const templates = {
-    s49e763aed00877a8: `Principal`,
-};
+    
+    
+
+    /* eslint-disable no-irregular-whitespace */
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+
+    export const templates = {
+      
+    };
+  
