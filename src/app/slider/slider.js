@@ -70,7 +70,7 @@ class AppSliderElement extends MDElement {
                             .convertLabel="${format}"
                         ></md-slider>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-button
                             type="reset"
                             label="Reset"

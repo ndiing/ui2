@@ -9,16 +9,16 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDTextareaFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
+     * @property {Boolean} [autocapitalize] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [disabled] -
+     * @property {String} [form] -
+     * @property {String} [list] -
+     * @property {String} [name] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [required] -
+     * @property {String} [value] -
+     * @property {String} [defaultValue] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
      * @property {String} [leadingMeta] -
@@ -34,16 +34,16 @@ class MDTextareaFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocapitalize:{type:Boolean},
-            autocomplete:{type:String},
-            disabled:{type:Boolean},
-            form:{type:String},
-            list:{type:String},
-            name:{type:String},
-            readonly:{type:Boolean},
-            required:{type:Boolean},
-            value:{type:String},
-            defaultValue:{type:String},
+            autocapitalize: { type: Boolean },
+            autocomplete: { type: String },
+            disabled: { type: Boolean },
+            form: { type: String },
+            list: { type: String },
+            name: { type: String },
+            readonly: { type: Boolean },
+            required: { type: Boolean },
+            value: { type: String },
+            defaultValue: { type: String },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -67,7 +67,7 @@ class MDTextareaFieldComponent extends MDElement {
      */
     constructor() {
         super();
-        this.value=Array.from(this.childNodes)
+        this.value = Array.from(this.childNodes);
     }
 
     /**

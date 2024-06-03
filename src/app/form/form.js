@@ -4,7 +4,6 @@ import { MDElement } from "../../com/element/element";
 class AppFormElement extends MDElement {
     constructor() {
         super();
-
     }
 
     render() {
@@ -122,7 +121,6 @@ class AppFormElement extends MDElement {
                             value="Text"
                         ></md-textarea-field>
                     </div>
-                    
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-checkbox name="checkbox"></md-checkbox>

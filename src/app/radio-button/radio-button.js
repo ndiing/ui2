@@ -21,8 +21,14 @@ class AppRadioButtonElement extends MDElement {
                                 ></md-radio-button>
                             </div>
                             <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                                <button type="reset">reset</button>
-                                <button type="submit">submit</button>
+                                <md-button
+                                    type="reset"
+                                    label="Reset"
+                                ></md-button>
+                                <md-button
+                                    type="submit"
+                                    label="Submit"
+                                ></md-button>
                             </div>
                         </div>
                     </md-form>
