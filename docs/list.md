@@ -1,129 +1,194 @@
-# MDListItemComponent
-desc 
+## Classes
 
-## Properties
-desc 
+<dl>
+<dt><a href="#MDListItemComponent">MDListItemComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+<dt><a href="#MDListRowComponent">MDListRowComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+<dt><a href="#MDListComponent">MDListComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+</dl>
 
-name|type|description
----|---|---
-avatar|String|-
-thumbnail|String|-
-video|String|-
-leadingCheckbox|Object|-
-leadingRadioButton|Object|-
-leadingSwitch|Object|-
-leadingIcon|String|-
-label|String|-
-subLabel|String|-
-trailingIcon|String|-
-trailingCheckbox|Object|-
-trailingRadioButton|Object|-
-trailingSwitch|Object|-
-text|String|-
-badge|Object|-
-selected|Boolean|-
-routerLink|String|-
+<a name="MDListItemComponent"></a>
 
-## Accessor
-desc 
+## MDListItemComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-labelSecondary|-|-
+* [MDListItemComponent](#MDListItemComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.labelSecondary](#MDListItemComponent+labelSecondary)
+        * [.render()](#MDListItemComponent+render)
+        * [.connectedCallback()](#MDListItemComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDListItemComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDListItemComponent+firstUpdated)
+        * [.handleListItemCheckboxNativeInput()](#MDListItemComponent+handleListItemCheckboxNativeInput)
+        * [.handleListItemRadioButtonNativeInput()](#MDListItemComponent+handleListItemRadioButtonNativeInput)
+        * [.handleListItemSwitchNativeInput()](#MDListItemComponent+handleListItemSwitchNativeInput)
+    * _static_
+        * [.properties](#MDListItemComponent.properties)
 
-## Methods
-desc 
+<a name="MDListItemComponent+labelSecondary"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-handleListItemCheckboxNativeInput|-|-
-handleListItemRadioButtonNativeInput|-|-
-handleListItemSwitchNativeInput|-|-
+### mdListItemComponent.labelSecondary
+**Kind**: instance property of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+<a name="MDListItemComponent+render"></a>
 
-## Events
-desc 
+### mdListItemComponent.render()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+<a name="MDListItemComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-MDListItemComponent#event:onListItemSelected|-|-
-MDListItemComponent#event:onListItemCheckboxNativeInput|-|-
-MDListItemComponent#event:onListItemRadioButtonNativeInput|-|-
-MDListItemComponent#event:onListItemSwitchNativeInput|-|-
+### mdListItemComponent.connectedCallback()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+<a name="MDListItemComponent+disconnectedCallback"></a>
 
-# MDListRowComponent
-desc 
+### mdListItemComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+<a name="MDListItemComponent+firstUpdated"></a>
 
-## Properties
-desc 
+### mdListItemComponent.firstUpdated()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+**Emits**: <code>MDListItemComponent#event:onListItemSelected</code>  
+<a name="MDListItemComponent+handleListItemCheckboxNativeInput"></a>
 
-name|type|description
----|---|---
+### mdListItemComponent.handleListItemCheckboxNativeInput()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+**Emits**: <code>MDListItemComponent#event:onListItemCheckboxNativeInput</code>  
+<a name="MDListItemComponent+handleListItemRadioButtonNativeInput"></a>
 
-## Accessor
-desc 
+### mdListItemComponent.handleListItemRadioButtonNativeInput()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+**Emits**: <code>MDListItemComponent#event:onListItemRadioButtonNativeInput</code>  
+<a name="MDListItemComponent+handleListItemSwitchNativeInput"></a>
 
-name|type|description
----|---|---
+### mdListItemComponent.handleListItemSwitchNativeInput()
+**Kind**: instance method of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+**Emits**: <code>MDListItemComponent#event:onListItemSwitchNativeInput</code>  
+<a name="MDListItemComponent.properties"></a>
 
-## Methods
-desc 
+### MDListItemComponent.properties
+**Kind**: static property of [<code>MDListItemComponent</code>](#MDListItemComponent)  
+**Properties**
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
+| Name | Type | Description |
+| --- | --- | --- |
+| [avatar] | <code>String</code> | - |
+| [thumbnail] | <code>String</code> | - |
+| [video] | <code>String</code> | - |
+| [leadingCheckbox] | <code>Object</code> | - |
+| [leadingRadioButton] | <code>Object</code> | - |
+| [leadingSwitch] | <code>Object</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [subLabel] | <code>String</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [trailingCheckbox] | <code>Object</code> | - |
+| [trailingRadioButton] | <code>Object</code> | - |
+| [trailingSwitch] | <code>Object</code> | - |
+| [text] | <code>String</code> | - |
+| [badge] | <code>Object</code> | - |
+| [selected] | <code>Boolean</code> | - |
+| [routerLink] | <code>String</code> | - |
 
-## Events
-desc 
+<a name="MDListRowComponent"></a>
 
-name|params|description
----|---|---
+## MDListRowComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-# MDListComponent
-desc 
+* [MDListRowComponent](#MDListRowComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDListRowComponent+render)
+        * [.connectedCallback()](#MDListRowComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDListRowComponent+disconnectedCallback)
+    * _static_
+        * [.properties](#MDListRowComponent.properties)
 
-## Properties
-desc 
+<a name="MDListRowComponent+render"></a>
 
-name|type|description
----|---|---
-list|Array|-
-rangeSelection|Boolean|-
-multiSelection|Boolean|-
-singleSelection|Boolean|-
-allSelection|Boolean|-
+### mdListRowComponent.render()
+**Kind**: instance method of [<code>MDListRowComponent</code>](#MDListRowComponent)  
+<a name="MDListRowComponent+connectedCallback"></a>
 
-## Accessor
-desc 
+### mdListRowComponent.connectedCallback()
+**Kind**: instance method of [<code>MDListRowComponent</code>](#MDListRowComponent)  
+<a name="MDListRowComponent+disconnectedCallback"></a>
 
-name|type|description
----|---|---
+### mdListRowComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDListRowComponent</code>](#MDListRowComponent)  
+<a name="MDListRowComponent.properties"></a>
 
-## Methods
-desc 
+### MDListRowComponent.properties
+**Kind**: static property of [<code>MDListRowComponent</code>](#MDListRowComponent)  
+<a name="MDListComponent"></a>
 
-name|params|description
----|---|---
-renderItem|-|-
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-handleListKeydown|-|-
-handleListItemCheckboxNativeInput|-|-
-handleListItemRadioButtonNativeInput|-|-
-handleListItemSwitchNativeInput|-|-
+## MDListComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-## Events
-desc 
+* [MDListComponent](#MDListComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.renderItem()](#MDListComponent+renderItem)
+        * [.render()](#MDListComponent+render)
+        * [.connectedCallback()](#MDListComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDListComponent+disconnectedCallback)
+        * [.updated()](#MDListComponent+updated)
+        * [.handleListKeydown()](#MDListComponent+handleListKeydown)
+        * [.handleListItemCheckboxNativeInput()](#MDListComponent+handleListItemCheckboxNativeInput)
+        * [.handleListItemRadioButtonNativeInput()](#MDListComponent+handleListItemRadioButtonNativeInput)
+        * [.handleListItemSwitchNativeInput()](#MDListComponent+handleListItemSwitchNativeInput)
+    * _static_
+        * [.properties](#MDListComponent.properties)
 
-name|params|description
----|---|---
-MDListComponent#event:onListItemClick|-|-
-MDListComponent#event:onListKeydown|-|-
+<a name="MDListComponent+renderItem"></a>
+
+### mdListComponent.renderItem()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+render"></a>
+
+### mdListComponent.render()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+connectedCallback"></a>
+
+### mdListComponent.connectedCallback()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+disconnectedCallback"></a>
+
+### mdListComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+updated"></a>
+
+### mdListComponent.updated()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+**Emits**: <code>MDListComponent#event:onListItemClick</code>  
+<a name="MDListComponent+handleListKeydown"></a>
+
+### mdListComponent.handleListKeydown()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+**Emits**: <code>MDListComponent#event:onListKeydown</code>  
+<a name="MDListComponent+handleListItemCheckboxNativeInput"></a>
+
+### mdListComponent.handleListItemCheckboxNativeInput()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+handleListItemRadioButtonNativeInput"></a>
+
+### mdListComponent.handleListItemRadioButtonNativeInput()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent+handleListItemSwitchNativeInput"></a>
+
+### mdListComponent.handleListItemSwitchNativeInput()
+**Kind**: instance method of [<code>MDListComponent</code>](#MDListComponent)  
+<a name="MDListComponent.properties"></a>
+
+### MDListComponent.properties
+**Kind**: static property of [<code>MDListComponent</code>](#MDListComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [list] | <code>Array</code> | - |
+| [rangeSelection] | <code>Boolean</code> | - |
+| [multiSelection] | <code>Boolean</code> | - |
+| [singleSelection] | <code>Boolean</code> | - |
+| [allSelection] | <code>Boolean</code> | - |
 

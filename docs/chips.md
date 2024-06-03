@@ -1,83 +1,130 @@
-# MDChipComponent
-desc 
+## Classes
 
-## Properties
-desc 
+<dl>
+<dt><a href="#MDChipComponent">MDChipComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+<dt><a href="#MDChipsComponent">MDChipsComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+</dl>
 
-name|type|description
----|---|---
-avatar|String|-
-icon|String|-
-label|String|-
-action|String|-
-routerLink|String|-
-selected|Boolean|-
+<a name="MDChipComponent"></a>
 
-## Accessor
-desc 
+## MDChipComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
+* [MDChipComponent](#MDChipComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDChipComponent+render)
+        * [.connectedCallback()](#MDChipComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDChipComponent+disconnectedCallback)
+        * [.updated()](#MDChipComponent+updated)
+        * [.handleChipActionClick()](#MDChipComponent+handleChipActionClick)
+    * _static_
+        * [.properties](#MDChipComponent.properties)
 
-## Methods
-desc 
+<a name="MDChipComponent+render"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-handleChipActionClick|-|-
+### mdChipComponent.render()
+**Kind**: instance method of [<code>MDChipComponent</code>](#MDChipComponent)  
+<a name="MDChipComponent+connectedCallback"></a>
 
-## Events
-desc 
+### mdChipComponent.connectedCallback()
+**Kind**: instance method of [<code>MDChipComponent</code>](#MDChipComponent)  
+<a name="MDChipComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-MDChipComponent#event:onChipSelected|-|-
-MDChipComponent#event:onChipActionClick|-|-
+### mdChipComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDChipComponent</code>](#MDChipComponent)  
+<a name="MDChipComponent+updated"></a>
 
-# MDChipsComponent
-desc 
+### mdChipComponent.updated()
+**Kind**: instance method of [<code>MDChipComponent</code>](#MDChipComponent)  
+**Emits**: <code>MDChipComponent#event:onChipSelected</code>  
+<a name="MDChipComponent+handleChipActionClick"></a>
 
-## Properties
-desc 
+### mdChipComponent.handleChipActionClick()
+**Kind**: instance method of [<code>MDChipComponent</code>](#MDChipComponent)  
+**Emits**: <code>MDChipComponent#event:onChipActionClick</code>  
+<a name="MDChipComponent.properties"></a>
 
-name|type|description
----|---|---
-ui|String|scrollable
-list|Array|-
-rangeSelection|Boolean|-
-multiSelection|Boolean|-
-singleSelection|Boolean|-
-allSelection|Boolean|-
+### MDChipComponent.properties
+**Kind**: static property of [<code>MDChipComponent</code>](#MDChipComponent)  
+**Properties**
 
-## Accessor
-desc 
+| Name | Type | Description |
+| --- | --- | --- |
+| [avatar] | <code>String</code> | - |
+| [icon] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [action] | <code>String</code> | - |
+| [routerLink] | <code>String</code> | - |
+| [selected] | <code>Boolean</code> | - |
 
-name|type|description
----|---|---
+<a name="MDChipsComponent"></a>
 
-## Methods
-desc 
+## MDChipsComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|params|description
----|---|---
-renderItem|-|-
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-handleChipClick|-|-
-handleChipsKeydown|-|-
-handleChipSelected|-|-
+* [MDChipsComponent](#MDChipsComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.renderItem()](#MDChipsComponent+renderItem)
+        * [.render()](#MDChipsComponent+render)
+        * [.connectedCallback()](#MDChipsComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDChipsComponent+disconnectedCallback)
+        * [.updated()](#MDChipsComponent+updated)
+        * [.handleChipClick()](#MDChipsComponent+handleChipClick)
+        * [.handleChipsKeydown()](#MDChipsComponent+handleChipsKeydown)
+        * [.handleChipSelected()](#MDChipsComponent+handleChipSelected)
+    * _static_
+        * [.properties](#MDChipsComponent.properties)
 
-## Events
-desc 
+<a name="MDChipsComponent+renderItem"></a>
 
-name|params|description
----|---|---
-MDChipsComponent#event:onChipClick|-|-
-MDChipsComponent#event:onChipsKeydown|-|-
+### mdChipsComponent.renderItem()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent+render"></a>
+
+### mdChipsComponent.render()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent+connectedCallback"></a>
+
+### mdChipsComponent.connectedCallback()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent+disconnectedCallback"></a>
+
+### mdChipsComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent+updated"></a>
+
+### mdChipsComponent.updated()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent+handleChipClick"></a>
+
+### mdChipsComponent.handleChipClick()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+**Emits**: <code>MDChipsComponent#event:onChipClick</code>  
+<a name="MDChipsComponent+handleChipsKeydown"></a>
+
+### mdChipsComponent.handleChipsKeydown()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+**Emits**: <code>MDChipsComponent#event:onChipsKeydown</code>  
+<a name="MDChipsComponent+handleChipSelected"></a>
+
+### mdChipsComponent.handleChipSelected()
+**Kind**: instance method of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+<a name="MDChipsComponent.properties"></a>
+
+### MDChipsComponent.properties
+**Kind**: static property of [<code>MDChipsComponent</code>](#MDChipsComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [ui] | <code>String</code> | scrollable |
+| [list] | <code>Array</code> | - |
+| [rangeSelection] | <code>Boolean</code> | - |
+| [multiSelection] | <code>Boolean</code> | - |
+| [singleSelection] | <code>Boolean</code> | - |
+| [allSelection] | <code>Boolean</code> | - |
 

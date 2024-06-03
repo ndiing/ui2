@@ -1,75 +1,27 @@
-[
-  {
-    "id": "MDPopperModule",
-    "longname": "MDPopperModule",
-    "name": "MDPopperModule",
-    "kind": "class",
-    "scope": "global",
-    "meta": {
-      "lineno": 4,
-      "filename": "popper.js",
-      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\popper"
-    },
-    "order": 0
-  },
-  {
-    "id": "MDPopperModule#init",
-    "longname": "MDPopperModule#init",
-    "name": "init",
-    "kind": "function",
-    "scope": "instance",
-    "memberof": "MDPopperModule",
-    "params": [],
-    "meta": {
-      "lineno": 24,
-      "filename": "popper.js",
-      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\popper"
-    },
-    "order": 1
-  },
-  {
-    "id": "MDPopperModule#get",
-    "longname": "MDPopperModule#get",
-    "name": "get",
-    "kind": "function",
-    "scope": "instance",
-    "memberof": "MDPopperModule",
-    "params": [],
-    "meta": {
-      "lineno": 31,
-      "filename": "popper.js",
-      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\popper"
-    },
-    "order": 2
-  },
-  {
-    "id": "MDPopperModule#set",
-    "longname": "MDPopperModule#set",
-    "name": "set",
-    "kind": "function",
-    "scope": "instance",
-    "memberof": "MDPopperModule",
-    "params": [],
-    "meta": {
-      "lineno": 170,
-      "filename": "popper.js",
-      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\popper"
-    },
-    "order": 3
-  },
-  {
-    "id": "MDPopperModule#destroy",
-    "longname": "MDPopperModule#destroy",
-    "name": "destroy",
-    "kind": "function",
-    "scope": "instance",
-    "memberof": "MDPopperModule",
-    "params": [],
-    "meta": {
-      "lineno": 186,
-      "filename": "popper.js",
-      "path": "C:\\Users\\Ndiing\\Documents\\material\\src\\com\\popper"
-    },
-    "order": 4
-  }
-]
+<a name="MDPopperModule"></a>
+
+## MDPopperModule
+**Kind**: global class  
+
+* [MDPopperModule](#MDPopperModule)
+    * [.init()](#MDPopperModule+init)
+    * [.get()](#MDPopperModule+get)
+    * [.set()](#MDPopperModule+set)
+    * [.destroy()](#MDPopperModule+destroy)
+
+<a name="MDPopperModule+init"></a>
+
+### mdPopperModule.init()
+**Kind**: instance method of [<code>MDPopperModule</code>](#MDPopperModule)  
+<a name="MDPopperModule+get"></a>
+
+### mdPopperModule.get()
+**Kind**: instance method of [<code>MDPopperModule</code>](#MDPopperModule)  
+<a name="MDPopperModule+set"></a>
+
+### mdPopperModule.set()
+**Kind**: instance method of [<code>MDPopperModule</code>](#MDPopperModule)  
+<a name="MDPopperModule+destroy"></a>
+
+### mdPopperModule.destroy()
+**Kind**: instance method of [<code>MDPopperModule</code>](#MDPopperModule)  

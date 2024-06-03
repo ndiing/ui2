@@ -1,47 +1,80 @@
-# MDDialogComponent
-desc 
+<a name="MDDialogComponent"></a>
 
-## Properties
-desc 
+## MDDialogComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-leadingActions|Array|-
-label|String|-
-subLabel|String|-
-trailingActions|Array|-
-buttons|Array|-
-ui|String|full-screen
-open|Boolean|-
+* [MDDialogComponent](#MDDialogComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDDialogComponent+render)
+        * [.connectedCallback()](#MDDialogComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDDialogComponent+disconnectedCallback)
+        * [.updated()](#MDDialogComponent+updated)
+        * [.show()](#MDDialogComponent+show)
+        * [.close()](#MDDialogComponent+close)
+        * [.toggle()](#MDDialogComponent+toggle)
+        * [.handleDialogActionClick()](#MDDialogComponent+handleDialogActionClick)
+        * [.handleDialogButtonClick()](#MDDialogComponent+handleDialogButtonClick)
+        * [.handleDialogScrimClick()](#MDDialogComponent+handleDialogScrimClick)
+    * _static_
+        * [.properties](#MDDialogComponent.properties)
 
-## Accessor
-desc 
+<a name="MDDialogComponent+render"></a>
 
-name|type|description
----|---|---
+### mdDialogComponent.render()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdDialogComponent.connectedCallback()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-show|-|-
-close|-|-
-toggle|-|-
-handleDialogActionClick|-|-
-handleDialogButtonClick|-|-
-handleDialogScrimClick|-|-
+### mdDialogComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+updated"></a>
 
-## Events
-desc 
+### mdDialogComponent.updated()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+show"></a>
 
-name|params|description
----|---|---
-MDDialogComponent#event:onDialogActionClick|-|-
-MDDialogComponent#event:onDialogButtonClick|-|-
-MDDialogComponent#event:onDialogScrimClick|-|-
+### mdDialogComponent.show()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+close"></a>
+
+### mdDialogComponent.close()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+toggle"></a>
+
+### mdDialogComponent.toggle()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+<a name="MDDialogComponent+handleDialogActionClick"></a>
+
+### mdDialogComponent.handleDialogActionClick()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+**Emits**: <code>MDDialogComponent#event:onDialogActionClick</code>  
+<a name="MDDialogComponent+handleDialogButtonClick"></a>
+
+### mdDialogComponent.handleDialogButtonClick()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+**Emits**: <code>MDDialogComponent#event:onDialogButtonClick</code>  
+<a name="MDDialogComponent+handleDialogScrimClick"></a>
+
+### mdDialogComponent.handleDialogScrimClick()
+**Kind**: instance method of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+**Emits**: <code>MDDialogComponent#event:onDialogScrimClick</code>  
+<a name="MDDialogComponent.properties"></a>
+
+### MDDialogComponent.properties
+**Kind**: static property of [<code>MDDialogComponent</code>](#MDDialogComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [leadingActions] | <code>Array</code> | - |
+| [label] | <code>String</code> | - |
+| [subLabel] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [buttons] | <code>Array</code> | - |
+| [ui] | <code>String</code> | full-screen |
+| [open] | <code>Boolean</code> | - |
 

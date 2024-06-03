@@ -1,32 +1,37 @@
-# MDBadgeComponent
-desc 
+<a name="MDBadgeComponent"></a>
 
-## Properties
-desc 
+## MDBadgeComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-label|Number|-
-max|Number|-
+* [MDBadgeComponent](#MDBadgeComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDBadgeComponent+render)
+        * [.connectedCallback()](#MDBadgeComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDBadgeComponent+disconnectedCallback)
+    * _static_
+        * [.properties](#MDBadgeComponent.properties)
 
-## Accessor
-desc 
+<a name="MDBadgeComponent+render"></a>
 
-name|type|description
----|---|---
+### mdBadgeComponent.render()
+**Kind**: instance method of [<code>MDBadgeComponent</code>](#MDBadgeComponent)  
+<a name="MDBadgeComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdBadgeComponent.connectedCallback()
+**Kind**: instance method of [<code>MDBadgeComponent</code>](#MDBadgeComponent)  
+<a name="MDBadgeComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
+### mdBadgeComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDBadgeComponent</code>](#MDBadgeComponent)  
+<a name="MDBadgeComponent.properties"></a>
 
-## Events
-desc 
+### MDBadgeComponent.properties
+**Kind**: static property of [<code>MDBadgeComponent</code>](#MDBadgeComponent)  
+**Properties**
 
-name|params|description
----|---|---
+| Name | Type | Description |
+| --- | --- | --- |
+| [label] | <code>Number</code> | - |
+| [max] | <code>Number</code> | - |
 

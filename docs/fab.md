@@ -1,34 +1,43 @@
-# MDFabComponent
-desc 
+<a name="MDFabComponent"></a>
 
-## Properties
-desc 
+## MDFabComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-icon|String|-
-label|String|-
-ui|String|small,large,extended,surface,secondary,tertiary,unelevated
+* [MDFabComponent](#MDFabComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDFabComponent+render)
+        * [.connectedCallback()](#MDFabComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDFabComponent+disconnectedCallback)
+        * [.updated()](#MDFabComponent+updated)
+    * _static_
+        * [.properties](#MDFabComponent.properties)
 
-## Accessor
-desc 
+<a name="MDFabComponent+render"></a>
 
-name|type|description
----|---|---
+### mdFabComponent.render()
+**Kind**: instance method of [<code>MDFabComponent</code>](#MDFabComponent)  
+<a name="MDFabComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdFabComponent.connectedCallback()
+**Kind**: instance method of [<code>MDFabComponent</code>](#MDFabComponent)  
+<a name="MDFabComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
+### mdFabComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDFabComponent</code>](#MDFabComponent)  
+<a name="MDFabComponent+updated"></a>
 
-## Events
-desc 
+### mdFabComponent.updated()
+**Kind**: instance method of [<code>MDFabComponent</code>](#MDFabComponent)  
+<a name="MDFabComponent.properties"></a>
 
-name|params|description
----|---|---
+### MDFabComponent.properties
+**Kind**: static property of [<code>MDFabComponent</code>](#MDFabComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [icon] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [ui] | <code>String</code> | small,large,extended,surface,secondary,tertiary,unelevated |
 

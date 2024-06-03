@@ -1,74 +1,115 @@
-# MDEmailFieldComponent
-desc 
+<a name="MDEmailFieldComponent"></a>
 
-## Properties
-desc 
+## MDEmailFieldComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-autocapitalize|Boolean|-
-autocomplete|String|-
-disabled|Boolean|-
-form|String|-
-list|String|-
-name|String|-
-readonly|Boolean|-
-required|Boolean|-
-type|String|-
-value|String|-
-dirname|String|-
-maxlength|Number|-
-minlength|Number|-
-pattern|String|-
-placeholder|String|-
-size|Number|-
-defaultValue|String|-
-label|String|-
-leadingIcon|String|-
-leadingMeta|String|-
-trailingMeta|String|-
-trailingActions|Array|-
-trailingIcon|String|-
-text|String|-
-focused|Boolean|-
-populated|Boolean|-
-invalid|Boolean|-
-validationMessage|String|-
-ui|String|filled,outlined,rounded
+* [MDEmailFieldComponent](#MDEmailFieldComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.emailFieldNative](#MDEmailFieldComponent+emailFieldNative)
+        * [.render()](#MDEmailFieldComponent+render)
+        * [.connectedCallback()](#MDEmailFieldComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDEmailFieldComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDEmailFieldComponent+firstUpdated)
+        * [.updated()](#MDEmailFieldComponent+updated)
+        * [.handleEmailFieldNativeActionClick()](#MDEmailFieldComponent+handleEmailFieldNativeActionClick)
+        * [.handleEmailFieldNativeFocus()](#MDEmailFieldComponent+handleEmailFieldNativeFocus)
+        * [.handleEmailFieldNativeBlur()](#MDEmailFieldComponent+handleEmailFieldNativeBlur)
+        * [.handleEmailFieldNativeInput()](#MDEmailFieldComponent+handleEmailFieldNativeInput)
+        * [.handleEmailFieldNativeInvalid()](#MDEmailFieldComponent+handleEmailFieldNativeInvalid)
+        * [.handleEmailFieldNativeReset()](#MDEmailFieldComponent+handleEmailFieldNativeReset)
+    * _static_
+        * [.properties](#MDEmailFieldComponent.properties)
 
-## Accessor
-desc 
+<a name="MDEmailFieldComponent+emailFieldNative"></a>
 
-name|type|description
----|---|---
-emailFieldNative|-|-
+### mdEmailFieldComponent.emailFieldNative
+**Kind**: instance property of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+render"></a>
 
-## Methods
-desc 
+### mdEmailFieldComponent.render()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handleEmailFieldNativeActionClick|-|-
-handleEmailFieldNativeFocus|-|-
-handleEmailFieldNativeBlur|-|-
-handleEmailFieldNativeInput|-|-
-handleEmailFieldNativeInvalid|-|-
-handleEmailFieldNativeReset|-|-
+### mdEmailFieldComponent.connectedCallback()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdEmailFieldComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDEmailFieldComponent#event:onEmailFieldNativeActionClick|-|-
-MDEmailFieldComponent#event:onEmailFieldNativeFocus|-|-
-MDEmailFieldComponent#event:onEmailFieldNativeBlur|-|-
-MDEmailFieldComponent#event:onEmailFieldNativeInput|-|-
-MDEmailFieldComponent#event:onEmailFieldNativeInvalid|-|-
-MDEmailFieldComponent#event:onEmailFieldNativeReset|-|-
+### mdEmailFieldComponent.firstUpdated()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+updated"></a>
+
+### mdEmailFieldComponent.updated()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeActionClick"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeActionClick()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeActionClick</code>  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeFocus"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeFocus()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeFocus</code>  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeBlur"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeBlur()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeBlur</code>  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeInput"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeInput()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeInput</code>  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeInvalid"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeInvalid()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeInvalid</code>  
+<a name="MDEmailFieldComponent+handleEmailFieldNativeReset"></a>
+
+### mdEmailFieldComponent.handleEmailFieldNativeReset()
+**Kind**: instance method of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Emits**: <code>MDEmailFieldComponent#event:onEmailFieldNativeReset</code>  
+<a name="MDEmailFieldComponent.properties"></a>
+
+### MDEmailFieldComponent.properties
+**Kind**: static property of [<code>MDEmailFieldComponent</code>](#MDEmailFieldComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>Boolean</code> | - |
+| [autocomplete] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [list] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [readonly] | <code>Boolean</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [type] | <code>String</code> | - |
+| [value] | <code>String</code> | - |
+| [dirname] | <code>String</code> | - |
+| [maxlength] | <code>Number</code> | - |
+| [minlength] | <code>Number</code> | - |
+| [pattern] | <code>String</code> | - |
+| [placeholder] | <code>String</code> | - |
+| [size] | <code>Number</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [leadingMeta] | <code>String</code> | - |
+| [trailingMeta] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [text] | <code>String</code> | - |
+| [focused] | <code>Boolean</code> | - |
+| [populated] | <code>Boolean</code> | - |
+| [invalid] | <code>Boolean</code> | - |
+| [validationMessage] | <code>String</code> | - |
+| [ui] | <code>String</code> | filled,outlined,rounded |
 

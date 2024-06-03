@@ -1,79 +1,144 @@
-# MDDatetimeFieldComponent
-desc 
+<a name="MDDatetimeFieldComponent"></a>
 
-## Properties
-desc 
+## MDDatetimeFieldComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-autocapitalize|Boolean|-
-autocomplete|String|-
-disabled|Boolean|-
-form|String|-
-list|String|-
-name|String|-
-readonly|Boolean|-
-required|Boolean|-
-type|String|-
-value|String|-
-max|String|-
-min|String|-
-step|String|-
-defaultValue|String|-
-label|String|-
-leadingIcon|String|-
-leadingMeta|String|-
-trailingMeta|String|-
-trailingActions|Array|-
-trailingIcon|String|-
-text|String|-
-focused|Boolean|-
-populated|Boolean|-
-invalid|Boolean|-
-validationMessage|String|-
-ui|String|filled,outlined,rounded
+* [MDDatetimeFieldComponent](#MDDatetimeFieldComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.colorFieldNative](#MDDatetimeFieldComponent+colorFieldNative)
+        * [.render()](#MDDatetimeFieldComponent+render)
+        * [.connectedCallback()](#MDDatetimeFieldComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDDatetimeFieldComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDDatetimeFieldComponent+firstUpdated)
+        * [.updated()](#MDDatetimeFieldComponent+updated)
+        * [.handleDatetimeFieldNativeActionClick()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeActionClick)
+        * [.handleDatetimeFieldNativeActionCalendarClockClick()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeActionCalendarClockClick)
+        * [.handleColorPicker()](#MDDatetimeFieldComponent+handleColorPicker)
+        * [.handleDatetimeFieldPickerChange()](#MDDatetimeFieldComponent+handleDatetimeFieldPickerChange)
+        * [.handleDatetimeFieldPickerButtonCancelClick()](#MDDatetimeFieldComponent+handleDatetimeFieldPickerButtonCancelClick)
+        * [.handleDatetimeFieldPickerButtonOkClick()](#MDDatetimeFieldComponent+handleDatetimeFieldPickerButtonOkClick)
+        * [.handleDatetimeFieldNativeFocus()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeFocus)
+        * [.handleDatetimeFieldNativeBlur()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeBlur)
+        * [.handleDatetimeFieldNativeInput()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeInput)
+        * [.handleDatetimeFieldNativeInvalid()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeInvalid)
+        * [.handleDatetimeFieldNativeReset()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeReset)
+        * [.handleDatetimeFieldNativeClick()](#MDDatetimeFieldComponent+handleDatetimeFieldNativeClick)
+    * _static_
+        * [.properties](#MDDatetimeFieldComponent.properties)
 
-## Accessor
-desc 
+<a name="MDDatetimeFieldComponent+colorFieldNative"></a>
 
-name|type|description
----|---|---
-colorFieldNative|-|-
+### mdDatetimeFieldComponent.colorFieldNative
+**Kind**: instance property of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+render"></a>
 
-## Methods
-desc 
+### mdDatetimeFieldComponent.render()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handleDatetimeFieldNativeActionClick|-|-
-handleDatetimeFieldNativeActionCalendarClockClick|-|-
-handleColorPicker|-|-
-handleDatetimeFieldPickerChange|-|-
-handleDatetimeFieldPickerButtonCancelClick|-|-
-handleDatetimeFieldPickerButtonOkClick|-|-
-handleDatetimeFieldNativeFocus|-|-
-handleDatetimeFieldNativeBlur|-|-
-handleDatetimeFieldNativeInput|-|-
-handleDatetimeFieldNativeInvalid|-|-
-handleDatetimeFieldNativeReset|-|-
-handleDatetimeFieldNativeClick|-|-
+### mdDatetimeFieldComponent.connectedCallback()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdDatetimeFieldComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeActionClick|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeActionCalendarClockClick|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeFocus|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeBlur|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeInput|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeInvalid|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeReset|-|-
-MDDatetimeFieldComponent#event:onDatetimeFieldNativeClick|-|-
+### mdDatetimeFieldComponent.firstUpdated()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+updated"></a>
+
+### mdDatetimeFieldComponent.updated()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeActionClick"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeActionClick()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeActionClick</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeActionCalendarClockClick"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeActionCalendarClockClick()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeActionCalendarClockClick</code>  
+<a name="MDDatetimeFieldComponent+handleColorPicker"></a>
+
+### mdDatetimeFieldComponent.handleColorPicker()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldPickerChange"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldPickerChange()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldPickerButtonCancelClick"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldPickerButtonCancelClick()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldPickerButtonOkClick"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldPickerButtonOkClick()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeFocus"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeFocus()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeFocus</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeBlur"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeBlur()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeBlur</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeInput"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeInput()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeInput</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeInvalid"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeInvalid()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeInvalid</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeReset"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeReset()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeReset</code>  
+<a name="MDDatetimeFieldComponent+handleDatetimeFieldNativeClick"></a>
+
+### mdDatetimeFieldComponent.handleDatetimeFieldNativeClick()
+**Kind**: instance method of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Emits**: <code>MDDatetimeFieldComponent#event:onDatetimeFieldNativeClick</code>  
+<a name="MDDatetimeFieldComponent.properties"></a>
+
+### MDDatetimeFieldComponent.properties
+**Kind**: static property of [<code>MDDatetimeFieldComponent</code>](#MDDatetimeFieldComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>Boolean</code> | - |
+| [autocomplete] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [list] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [readonly] | <code>Boolean</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [type] | <code>String</code> | - |
+| [value] | <code>String</code> | - |
+| [max] | <code>String</code> | - |
+| [min] | <code>String</code> | - |
+| [step] | <code>String</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [leadingMeta] | <code>String</code> | - |
+| [trailingMeta] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [text] | <code>String</code> | - |
+| [focused] | <code>Boolean</code> | - |
+| [populated] | <code>Boolean</code> | - |
+| [invalid] | <code>Boolean</code> | - |
+| [validationMessage] | <code>String</code> | - |
+| [ui] | <code>String</code> | filled,outlined,rounded |
 

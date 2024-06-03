@@ -1,37 +1,50 @@
-# MDButtonComponent
-desc 
+<a name="MDButtonComponent"></a>
 
-## Properties
-desc 
+## MDButtonComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-icon|String|-
-label|String|-
-ui|String|elevated,filled,tonal,outlined
-type|String|-
-selected|Boolean|-
+* [MDButtonComponent](#MDButtonComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.buttonNative](#MDButtonComponent+buttonNative)
+        * [.render()](#MDButtonComponent+render)
+        * [.connectedCallback()](#MDButtonComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDButtonComponent+disconnectedCallback)
+        * [.updated()](#MDButtonComponent+updated)
+    * _static_
+        * [.properties](#MDButtonComponent.properties)
 
-## Accessor
-desc 
+<a name="MDButtonComponent+buttonNative"></a>
 
-name|type|description
----|---|---
-buttonNative|-|-
+### mdButtonComponent.buttonNative
+**Kind**: instance property of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+<a name="MDButtonComponent+render"></a>
 
-## Methods
-desc 
+### mdButtonComponent.render()
+**Kind**: instance method of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+<a name="MDButtonComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
+### mdButtonComponent.connectedCallback()
+**Kind**: instance method of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+<a name="MDButtonComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdButtonComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+<a name="MDButtonComponent+updated"></a>
 
-name|params|description
----|---|---
+### mdButtonComponent.updated()
+**Kind**: instance method of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+<a name="MDButtonComponent.properties"></a>
+
+### MDButtonComponent.properties
+**Kind**: static property of [<code>MDButtonComponent</code>](#MDButtonComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [icon] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [ui] | <code>String</code> | elevated,filled,tonal,outlined |
+| [type] | <code>String</code> | - |
+| [selected] | <code>Boolean</code> | - |
 

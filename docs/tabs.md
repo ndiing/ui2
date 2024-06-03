@@ -1,33 +1,46 @@
-# MDTabsComponent
-desc 
+<a name="MDTabsComponent"></a>
 
-## Properties
-desc 
+## MDTabsComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-ui|String|scrollable,primary,secondary
+* [MDTabsComponent](#MDTabsComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDTabsComponent+render)
+        * [.connectedCallback()](#MDTabsComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDTabsComponent+disconnectedCallback)
+        * [.updated()](#MDTabsComponent+updated)
+        * [.handleListItemSelected()](#MDTabsComponent+handleListItemSelected)
+    * _static_
+        * [.properties](#MDTabsComponent.properties)
 
-## Accessor
-desc 
+<a name="MDTabsComponent+render"></a>
 
-name|type|description
----|---|---
+### mdTabsComponent.render()
+**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+<a name="MDTabsComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdTabsComponent.connectedCallback()
+**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+<a name="MDTabsComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-handleListItemSelected|-|-
+### mdTabsComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+<a name="MDTabsComponent+updated"></a>
 
-## Events
-desc 
+### mdTabsComponent.updated()
+**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+<a name="MDTabsComponent+handleListItemSelected"></a>
 
-name|params|description
----|---|---
+### mdTabsComponent.handleListItemSelected()
+**Kind**: instance method of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+<a name="MDTabsComponent.properties"></a>
+
+### MDTabsComponent.properties
+**Kind**: static property of [<code>MDTabsComponent</code>](#MDTabsComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [ui] | <code>String</code> | scrollable,primary,secondary |
 

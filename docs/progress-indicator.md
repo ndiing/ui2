@@ -1,37 +1,58 @@
-# MDProgressIndicatorComponent
-desc 
+<a name="MDProgressIndicatorComponent"></a>
 
-## Properties
-desc 
+## MDProgressIndicatorComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-max|Number|-
-value|Number|-
-ui|String|linear,circular
+* [MDProgressIndicatorComponent](#MDProgressIndicatorComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.renderLinear()](#MDProgressIndicatorComponent+renderLinear)
+        * [.renderCircular()](#MDProgressIndicatorComponent+renderCircular)
+        * [.render()](#MDProgressIndicatorComponent+render)
+        * [.connectedCallback()](#MDProgressIndicatorComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDProgressIndicatorComponent+disconnectedCallback)
+        * [.updated()](#MDProgressIndicatorComponent+updated)
+        * [.calculatePercentage()](#MDProgressIndicatorComponent+calculatePercentage)
+    * _static_
+        * [.properties](#MDProgressIndicatorComponent.properties)
 
-## Accessor
-desc 
+<a name="MDProgressIndicatorComponent+renderLinear"></a>
 
-name|type|description
----|---|---
+### mdProgressIndicatorComponent.renderLinear()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+renderCircular"></a>
 
-## Methods
-desc 
+### mdProgressIndicatorComponent.renderCircular()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+render"></a>
 
-name|params|description
----|---|---
-renderLinear|-|-
-renderCircular|-|-
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-calculatePercentage|-|-
+### mdProgressIndicatorComponent.render()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+connectedCallback"></a>
 
-## Events
-desc 
+### mdProgressIndicatorComponent.connectedCallback()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
+### mdProgressIndicatorComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+updated"></a>
+
+### mdProgressIndicatorComponent.updated()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent+calculatePercentage"></a>
+
+### mdProgressIndicatorComponent.calculatePercentage()
+**Kind**: instance method of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+<a name="MDProgressIndicatorComponent.properties"></a>
+
+### MDProgressIndicatorComponent.properties
+**Kind**: static property of [<code>MDProgressIndicatorComponent</code>](#MDProgressIndicatorComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [max] | <code>Number</code> | - |
+| [value] | <code>Number</code> | - |
+| [ui] | <code>String</code> | linear,circular |
 

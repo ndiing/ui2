@@ -1,51 +1,80 @@
-# MDRadioButtonComponent
-desc 
+<a name="MDRadioButtonComponent"></a>
 
-## Properties
-desc 
+## MDRadioButtonComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-autocapitalize|String|-
-disabled|Boolean|-
-form|String|-
-name|String|-
-required|Boolean|-
-type|String|-
-value|String|-
-checked|Boolean|-
-defaultValue|String|-
-defaultChecked|Boolean|-
-indeterminate|Boolean|-
-defaultIndeterminate|Boolean|-
+* [MDRadioButtonComponent](#MDRadioButtonComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.radioButtonTrack](#MDRadioButtonComponent+radioButtonTrack)
+        * [.render()](#MDRadioButtonComponent+render)
+        * [.connectedCallback()](#MDRadioButtonComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDRadioButtonComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDRadioButtonComponent+firstUpdated)
+        * [.updated()](#MDRadioButtonComponent+updated)
+        * [.handleRadioButtonNativeInput()](#MDRadioButtonComponent+handleRadioButtonNativeInput)
+        * [.handleRadioButtonNativeInvalid()](#MDRadioButtonComponent+handleRadioButtonNativeInvalid)
+        * [.handleRadioButtonNativeReset()](#MDRadioButtonComponent+handleRadioButtonNativeReset)
+    * _static_
+        * [.properties](#MDRadioButtonComponent.properties)
 
-## Accessor
-desc 
+<a name="MDRadioButtonComponent+radioButtonTrack"></a>
 
-name|type|description
----|---|---
-radioButtonTrack|-|-
+### mdRadioButtonComponent.radioButtonTrack
+**Kind**: instance property of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+render"></a>
 
-## Methods
-desc 
+### mdRadioButtonComponent.render()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handleRadioButtonNativeInput|-|-
-handleRadioButtonNativeInvalid|-|-
-handleRadioButtonNativeReset|-|-
+### mdRadioButtonComponent.connectedCallback()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdRadioButtonComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDRadioButtonComponent#event:onRadioButtonNativeInput|-|-
-MDRadioButtonComponent#event:onRadioButtonNativeInvalid|-|-
-MDRadioButtonComponent#event:onRadioButtonNativeReset|-|-
+### mdRadioButtonComponent.firstUpdated()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+updated"></a>
+
+### mdRadioButtonComponent.updated()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+<a name="MDRadioButtonComponent+handleRadioButtonNativeInput"></a>
+
+### mdRadioButtonComponent.handleRadioButtonNativeInput()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+**Emits**: <code>MDRadioButtonComponent#event:onRadioButtonNativeInput</code>  
+<a name="MDRadioButtonComponent+handleRadioButtonNativeInvalid"></a>
+
+### mdRadioButtonComponent.handleRadioButtonNativeInvalid()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+**Emits**: <code>MDRadioButtonComponent#event:onRadioButtonNativeInvalid</code>  
+<a name="MDRadioButtonComponent+handleRadioButtonNativeReset"></a>
+
+### mdRadioButtonComponent.handleRadioButtonNativeReset()
+**Kind**: instance method of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+**Emits**: <code>MDRadioButtonComponent#event:onRadioButtonNativeReset</code>  
+<a name="MDRadioButtonComponent.properties"></a>
+
+### MDRadioButtonComponent.properties
+**Kind**: static property of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [type] | <code>String</code> | - |
+| [value] | <code>String</code> | - |
+| [checked] | <code>Boolean</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [defaultChecked] | <code>Boolean</code> | - |
+| [indeterminate] | <code>Boolean</code> | - |
+| [defaultIndeterminate] | <code>Boolean</code> | - |
 

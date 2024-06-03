@@ -1,47 +1,80 @@
-# MDNavigationDrawerComponent
-desc 
+<a name="MDNavigationDrawerComponent"></a>
 
-## Properties
-desc 
+## MDNavigationDrawerComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-leadingActions|Array|-
-label|String|-
-subLabel|String|-
-trailingActions|Array|-
-buttons|Array|-
-ui|String|modal
-open|Boolean|-
+* [MDNavigationDrawerComponent](#MDNavigationDrawerComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDNavigationDrawerComponent+render)
+        * [.connectedCallback()](#MDNavigationDrawerComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDNavigationDrawerComponent+disconnectedCallback)
+        * [.updated()](#MDNavigationDrawerComponent+updated)
+        * [.show()](#MDNavigationDrawerComponent+show)
+        * [.close()](#MDNavigationDrawerComponent+close)
+        * [.toggle()](#MDNavigationDrawerComponent+toggle)
+        * [.handleNavigationDrawerActionClick()](#MDNavigationDrawerComponent+handleNavigationDrawerActionClick)
+        * [.handleNavigationDrawerButtonClick()](#MDNavigationDrawerComponent+handleNavigationDrawerButtonClick)
+        * [.handleNavigationDrawerScrimClick()](#MDNavigationDrawerComponent+handleNavigationDrawerScrimClick)
+    * _static_
+        * [.properties](#MDNavigationDrawerComponent.properties)
 
-## Accessor
-desc 
+<a name="MDNavigationDrawerComponent+render"></a>
 
-name|type|description
----|---|---
+### mdNavigationDrawerComponent.render()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdNavigationDrawerComponent.connectedCallback()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-show|-|-
-close|-|-
-toggle|-|-
-handleNavigationDrawerActionClick|-|-
-handleNavigationDrawerButtonClick|-|-
-handleNavigationDrawerScrimClick|-|-
+### mdNavigationDrawerComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+updated"></a>
 
-## Events
-desc 
+### mdNavigationDrawerComponent.updated()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+show"></a>
 
-name|params|description
----|---|---
-MDNavigationDrawerComponent#event:onNavigationDrawerActionClick|-|-
-MDNavigationDrawerComponent#event:onNavigationDrawerButtonClick|-|-
-MDNavigationDrawerComponent#event:onNavigationDrawerScrimClick|-|-
+### mdNavigationDrawerComponent.show()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+close"></a>
+
+### mdNavigationDrawerComponent.close()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+toggle"></a>
+
+### mdNavigationDrawerComponent.toggle()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+<a name="MDNavigationDrawerComponent+handleNavigationDrawerActionClick"></a>
+
+### mdNavigationDrawerComponent.handleNavigationDrawerActionClick()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+**Emits**: <code>MDNavigationDrawerComponent#event:onNavigationDrawerActionClick</code>  
+<a name="MDNavigationDrawerComponent+handleNavigationDrawerButtonClick"></a>
+
+### mdNavigationDrawerComponent.handleNavigationDrawerButtonClick()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+**Emits**: <code>MDNavigationDrawerComponent#event:onNavigationDrawerButtonClick</code>  
+<a name="MDNavigationDrawerComponent+handleNavigationDrawerScrimClick"></a>
+
+### mdNavigationDrawerComponent.handleNavigationDrawerScrimClick()
+**Kind**: instance method of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+**Emits**: <code>MDNavigationDrawerComponent#event:onNavigationDrawerScrimClick</code>  
+<a name="MDNavigationDrawerComponent.properties"></a>
+
+### MDNavigationDrawerComponent.properties
+**Kind**: static property of [<code>MDNavigationDrawerComponent</code>](#MDNavigationDrawerComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [leadingActions] | <code>Array</code> | - |
+| [label] | <code>String</code> | - |
+| [subLabel] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [buttons] | <code>Array</code> | - |
+| [ui] | <code>String</code> | modal |
+| [open] | <code>Boolean</code> | - |
 

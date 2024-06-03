@@ -1,74 +1,115 @@
-# MDTextFieldComponent
-desc 
+<a name="MDTextFieldComponent"></a>
 
-## Properties
-desc 
+## MDTextFieldComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-autocapitalize|Boolean|-
-autocomplete|String|-
-disabled|Boolean|-
-form|String|-
-list|String|-
-name|String|-
-readonly|Boolean|-
-required|Boolean|-
-type|String|-
-value|String|-
-dirname|String|-
-maxlength|Number|-
-minlength|Number|-
-pattern|String|-
-placeholder|String|-
-size|Number|-
-defaultValue|String|-
-label|String|-
-leadingIcon|String|-
-leadingMeta|String|-
-trailingMeta|String|-
-trailingActions|Array|-
-trailingIcon|String|-
-text|String|-
-focused|Boolean|-
-populated|Boolean|-
-invalid|Boolean|-
-validationMessage|String|-
-ui|String|filled,outlined,rounded
+* [MDTextFieldComponent](#MDTextFieldComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.textFieldNative](#MDTextFieldComponent+textFieldNative)
+        * [.render()](#MDTextFieldComponent+render)
+        * [.connectedCallback()](#MDTextFieldComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDTextFieldComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDTextFieldComponent+firstUpdated)
+        * [.updated()](#MDTextFieldComponent+updated)
+        * [.handleTextFieldNativeActionClick()](#MDTextFieldComponent+handleTextFieldNativeActionClick)
+        * [.handleTextFieldNativeFocus()](#MDTextFieldComponent+handleTextFieldNativeFocus)
+        * [.handleTextFieldNativeBlur()](#MDTextFieldComponent+handleTextFieldNativeBlur)
+        * [.handleTextFieldNativeInput()](#MDTextFieldComponent+handleTextFieldNativeInput)
+        * [.handleTextFieldNativeInvalid()](#MDTextFieldComponent+handleTextFieldNativeInvalid)
+        * [.handleTextFieldNativeReset()](#MDTextFieldComponent+handleTextFieldNativeReset)
+    * _static_
+        * [.properties](#MDTextFieldComponent.properties)
 
-## Accessor
-desc 
+<a name="MDTextFieldComponent+textFieldNative"></a>
 
-name|type|description
----|---|---
-textFieldNative|-|-
+### mdTextFieldComponent.textFieldNative
+**Kind**: instance property of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+render"></a>
 
-## Methods
-desc 
+### mdTextFieldComponent.render()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handleTextFieldNativeActionClick|-|-
-handleTextFieldNativeFocus|-|-
-handleTextFieldNativeBlur|-|-
-handleTextFieldNativeInput|-|-
-handleTextFieldNativeInvalid|-|-
-handleTextFieldNativeReset|-|-
+### mdTextFieldComponent.connectedCallback()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdTextFieldComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDTextFieldComponent#event:onTextFieldNativeActionClick|-|-
-MDTextFieldComponent#event:onTextFieldNativeFocus|-|-
-MDTextFieldComponent#event:onTextFieldNativeBlur|-|-
-MDTextFieldComponent#event:onTextFieldNativeInput|-|-
-MDTextFieldComponent#event:onTextFieldNativeInvalid|-|-
-MDTextFieldComponent#event:onTextFieldNativeReset|-|-
+### mdTextFieldComponent.firstUpdated()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+updated"></a>
+
+### mdTextFieldComponent.updated()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+<a name="MDTextFieldComponent+handleTextFieldNativeActionClick"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeActionClick()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeActionClick</code>  
+<a name="MDTextFieldComponent+handleTextFieldNativeFocus"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeFocus()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeFocus</code>  
+<a name="MDTextFieldComponent+handleTextFieldNativeBlur"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeBlur()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeBlur</code>  
+<a name="MDTextFieldComponent+handleTextFieldNativeInput"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeInput()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeInput</code>  
+<a name="MDTextFieldComponent+handleTextFieldNativeInvalid"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeInvalid()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeInvalid</code>  
+<a name="MDTextFieldComponent+handleTextFieldNativeReset"></a>
+
+### mdTextFieldComponent.handleTextFieldNativeReset()
+**Kind**: instance method of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Emits**: <code>MDTextFieldComponent#event:onTextFieldNativeReset</code>  
+<a name="MDTextFieldComponent.properties"></a>
+
+### MDTextFieldComponent.properties
+**Kind**: static property of [<code>MDTextFieldComponent</code>](#MDTextFieldComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>Boolean</code> | - |
+| [autocomplete] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [list] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [readonly] | <code>Boolean</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [type] | <code>String</code> | - |
+| [value] | <code>String</code> | - |
+| [dirname] | <code>String</code> | - |
+| [maxlength] | <code>Number</code> | - |
+| [minlength] | <code>Number</code> | - |
+| [pattern] | <code>String</code> | - |
+| [placeholder] | <code>String</code> | - |
+| [size] | <code>Number</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [leadingMeta] | <code>String</code> | - |
+| [trailingMeta] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [text] | <code>String</code> | - |
+| [focused] | <code>Boolean</code> | - |
+| [populated] | <code>Boolean</code> | - |
+| [invalid] | <code>Boolean</code> | - |
+| [validationMessage] | <code>String</code> | - |
+| [ui] | <code>String</code> | filled,outlined,rounded |
 

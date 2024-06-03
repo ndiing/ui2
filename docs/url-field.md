@@ -1,74 +1,115 @@
-# MDUrlFieldComponent
-desc 
+<a name="MDUrlFieldComponent"></a>
 
-## Properties
-desc 
+## MDUrlFieldComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-autocapitalize|Boolean|-
-autocomplete|String|-
-disabled|Boolean|-
-form|String|-
-list|String|-
-name|String|-
-readonly|Boolean|-
-required|Boolean|-
-type|String|-
-value|String|-
-dirname|String|-
-maxlength|Number|-
-minlength|Number|-
-pattern|String|-
-placeholder|String|-
-size|Number|-
-defaultValue|String|-
-label|String|-
-leadingIcon|String|-
-leadingMeta|String|-
-trailingMeta|String|-
-trailingActions|Array|-
-trailingIcon|String|-
-text|String|-
-focused|Boolean|-
-populated|Boolean|-
-invalid|Boolean|-
-validationMessage|String|-
-ui|String|filled,outlined,rounded
+* [MDUrlFieldComponent](#MDUrlFieldComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.urlFieldNative](#MDUrlFieldComponent+urlFieldNative)
+        * [.render()](#MDUrlFieldComponent+render)
+        * [.connectedCallback()](#MDUrlFieldComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDUrlFieldComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDUrlFieldComponent+firstUpdated)
+        * [.updated()](#MDUrlFieldComponent+updated)
+        * [.handleUrlFieldNativeActionClick()](#MDUrlFieldComponent+handleUrlFieldNativeActionClick)
+        * [.handleUrlFieldNativeFocus()](#MDUrlFieldComponent+handleUrlFieldNativeFocus)
+        * [.handleUrlFieldNativeBlur()](#MDUrlFieldComponent+handleUrlFieldNativeBlur)
+        * [.handleUrlFieldNativeInput()](#MDUrlFieldComponent+handleUrlFieldNativeInput)
+        * [.handleUrlFieldNativeInvalid()](#MDUrlFieldComponent+handleUrlFieldNativeInvalid)
+        * [.handleUrlFieldNativeReset()](#MDUrlFieldComponent+handleUrlFieldNativeReset)
+    * _static_
+        * [.properties](#MDUrlFieldComponent.properties)
 
-## Accessor
-desc 
+<a name="MDUrlFieldComponent+urlFieldNative"></a>
 
-name|type|description
----|---|---
-urlFieldNative|-|-
+### mdUrlFieldComponent.urlFieldNative
+**Kind**: instance property of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+render"></a>
 
-## Methods
-desc 
+### mdUrlFieldComponent.render()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handleUrlFieldNativeActionClick|-|-
-handleUrlFieldNativeFocus|-|-
-handleUrlFieldNativeBlur|-|-
-handleUrlFieldNativeInput|-|-
-handleUrlFieldNativeInvalid|-|-
-handleUrlFieldNativeReset|-|-
+### mdUrlFieldComponent.connectedCallback()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdUrlFieldComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDUrlFieldComponent#event:onUrlFieldNativeActionClick|-|-
-MDUrlFieldComponent#event:onUrlFieldNativeFocus|-|-
-MDUrlFieldComponent#event:onUrlFieldNativeBlur|-|-
-MDUrlFieldComponent#event:onUrlFieldNativeInput|-|-
-MDUrlFieldComponent#event:onUrlFieldNativeInvalid|-|-
-MDUrlFieldComponent#event:onUrlFieldNativeReset|-|-
+### mdUrlFieldComponent.firstUpdated()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+updated"></a>
+
+### mdUrlFieldComponent.updated()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeActionClick"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeActionClick()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeActionClick</code>  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeFocus"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeFocus()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeFocus</code>  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeBlur"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeBlur()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeBlur</code>  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeInput"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeInput()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeInput</code>  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeInvalid"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeInvalid()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeInvalid</code>  
+<a name="MDUrlFieldComponent+handleUrlFieldNativeReset"></a>
+
+### mdUrlFieldComponent.handleUrlFieldNativeReset()
+**Kind**: instance method of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Emits**: <code>MDUrlFieldComponent#event:onUrlFieldNativeReset</code>  
+<a name="MDUrlFieldComponent.properties"></a>
+
+### MDUrlFieldComponent.properties
+**Kind**: static property of [<code>MDUrlFieldComponent</code>](#MDUrlFieldComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>Boolean</code> | - |
+| [autocomplete] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [list] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [readonly] | <code>Boolean</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [type] | <code>String</code> | - |
+| [value] | <code>String</code> | - |
+| [dirname] | <code>String</code> | - |
+| [maxlength] | <code>Number</code> | - |
+| [minlength] | <code>Number</code> | - |
+| [pattern] | <code>String</code> | - |
+| [placeholder] | <code>String</code> | - |
+| [size] | <code>Number</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [leadingMeta] | <code>String</code> | - |
+| [trailingMeta] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [text] | <code>String</code> | - |
+| [focused] | <code>Boolean</code> | - |
+| [populated] | <code>Boolean</code> | - |
+| [invalid] | <code>Boolean</code> | - |
+| [validationMessage] | <code>String</code> | - |
+| [ui] | <code>String</code> | filled,outlined,rounded |
 

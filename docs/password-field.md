@@ -1,73 +1,118 @@
-# MDPasswordFieldComponent
-desc 
+<a name="MDPasswordFieldComponent"></a>
 
-## Properties
-desc 
+## MDPasswordFieldComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-type|String|-
-autocomplete|String|-
-disabled|Boolean|-
-form|String|-
-name|String|-
-readonly|Boolean|-
-required|Boolean|-
-value|String|-
-maxlength|Number|-
-minlength|Number|-
-pattern|String|-
-placeholder|String|-
-size|Number|-
-defaultValue|String|-
-label|String|-
-leadingIcon|String|-
-leadingMeta|String|-
-trailingMeta|String|-
-trailingActions|Array|-
-trailingIcon|String|-
-text|String|-
-focused|Boolean|-
-populated|Boolean|-
-invalid|Boolean|-
-validationMessage|String|-
-ui|String|filled,outlined,rounded
+* [MDPasswordFieldComponent](#MDPasswordFieldComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.numberFieldNative](#MDPasswordFieldComponent+numberFieldNative)
+        * [.render()](#MDPasswordFieldComponent+render)
+        * [.connectedCallback()](#MDPasswordFieldComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDPasswordFieldComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDPasswordFieldComponent+firstUpdated)
+        * [.updated()](#MDPasswordFieldComponent+updated)
+        * [.handlePasswordFieldNativeActionClick()](#MDPasswordFieldComponent+handlePasswordFieldNativeActionClick)
+        * [.handlePasswordFieldNativeActionVisibilityClick()](#MDPasswordFieldComponent+handlePasswordFieldNativeActionVisibilityClick)
+        * [.handlePasswordFieldNativeFocus()](#MDPasswordFieldComponent+handlePasswordFieldNativeFocus)
+        * [.handlePasswordFieldNativeBlur()](#MDPasswordFieldComponent+handlePasswordFieldNativeBlur)
+        * [.handlePasswordFieldNativeInput()](#MDPasswordFieldComponent+handlePasswordFieldNativeInput)
+        * [.handlePasswordFieldNativeInvalid()](#MDPasswordFieldComponent+handlePasswordFieldNativeInvalid)
+        * [.handlePasswordFieldNativeReset()](#MDPasswordFieldComponent+handlePasswordFieldNativeReset)
+    * _static_
+        * [.properties](#MDPasswordFieldComponent.properties)
 
-## Accessor
-desc 
+<a name="MDPasswordFieldComponent+numberFieldNative"></a>
 
-name|type|description
----|---|---
-numberFieldNative|-|-
+### mdPasswordFieldComponent.numberFieldNative
+**Kind**: instance property of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+render"></a>
 
-## Methods
-desc 
+### mdPasswordFieldComponent.render()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+connectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-updated|-|-
-handlePasswordFieldNativeActionClick|-|-
-handlePasswordFieldNativeActionVisibilityClick|-|-
-handlePasswordFieldNativeFocus|-|-
-handlePasswordFieldNativeBlur|-|-
-handlePasswordFieldNativeInput|-|-
-handlePasswordFieldNativeInvalid|-|-
-handlePasswordFieldNativeReset|-|-
+### mdPasswordFieldComponent.connectedCallback()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+disconnectedCallback"></a>
 
-## Events
-desc 
+### mdPasswordFieldComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+firstUpdated"></a>
 
-name|params|description
----|---|---
-MDPasswordFieldComponent#event:onPasswordFieldNativeActionClick|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeActionVisibilityClick|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeFocus|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeBlur|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeInput|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeInvalid|-|-
-MDPasswordFieldComponent#event:onPasswordFieldNativeReset|-|-
+### mdPasswordFieldComponent.firstUpdated()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+updated"></a>
+
+### mdPasswordFieldComponent.updated()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeActionClick"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeActionClick()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeActionClick</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeActionVisibilityClick"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeActionVisibilityClick()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeActionVisibilityClick</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeFocus"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeFocus()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeFocus</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeBlur"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeBlur()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeBlur</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeInput"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeInput()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeInput</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeInvalid"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeInvalid()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeInvalid</code>  
+<a name="MDPasswordFieldComponent+handlePasswordFieldNativeReset"></a>
+
+### mdPasswordFieldComponent.handlePasswordFieldNativeReset()
+**Kind**: instance method of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Emits**: <code>MDPasswordFieldComponent#event:onPasswordFieldNativeReset</code>  
+<a name="MDPasswordFieldComponent.properties"></a>
+
+### MDPasswordFieldComponent.properties
+**Kind**: static property of [<code>MDPasswordFieldComponent</code>](#MDPasswordFieldComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [type] | <code>String</code> | - |
+| [autocomplete] | <code>String</code> | - |
+| [disabled] | <code>Boolean</code> | - |
+| [form] | <code>String</code> | - |
+| [name] | <code>String</code> | - |
+| [readonly] | <code>Boolean</code> | - |
+| [required] | <code>Boolean</code> | - |
+| [value] | <code>String</code> | - |
+| [maxlength] | <code>Number</code> | - |
+| [minlength] | <code>Number</code> | - |
+| [pattern] | <code>String</code> | - |
+| [placeholder] | <code>String</code> | - |
+| [size] | <code>Number</code> | - |
+| [defaultValue] | <code>String</code> | - |
+| [label] | <code>String</code> | - |
+| [leadingIcon] | <code>String</code> | - |
+| [leadingMeta] | <code>String</code> | - |
+| [trailingMeta] | <code>String</code> | - |
+| [trailingActions] | <code>Array</code> | - |
+| [trailingIcon] | <code>String</code> | - |
+| [text] | <code>String</code> | - |
+| [focused] | <code>Boolean</code> | - |
+| [populated] | <code>Boolean</code> | - |
+| [invalid] | <code>Boolean</code> | - |
+| [validationMessage] | <code>String</code> | - |
+| [ui] | <code>String</code> | filled,outlined,rounded |
 

@@ -1,37 +1,72 @@
-# MDRouterModule
-desc 
+<a name="MDRouterModule"></a>
 
-## Properties
-desc 
+## MDRouterModule
+**Kind**: global class  
 
-name|type|description
----|---|---
+* [MDRouterModule](#MDRouterModule)
+    * [.location](#MDRouterModule.location)
+    * [.path](#MDRouterModule.path)
+    * [.query](#MDRouterModule.query)
+    * [.setRoutes()](#MDRouterModule.setRoutes)
+    * [.getRoute()](#MDRouterModule.getRoute)
+    * [.getRoutes()](#MDRouterModule.getRoutes)
+    * [.getOutlet()](#MDRouterModule.getOutlet)
+    * [.emit()](#MDRouterModule.emit)
+    * [.beforeLoad()](#MDRouterModule.beforeLoad)
+    * [.render()](#MDRouterModule.render)
+    * [.navigate()](#MDRouterModule.navigate)
+    * [.change()](#MDRouterModule.change)
+    * [.init()](#MDRouterModule.init)
 
-## Accessor
-desc 
+<a name="MDRouterModule.location"></a>
 
-name|type|description
----|---|---
+### MDRouterModule.location
+**Kind**: static property of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.path"></a>
 
-## Methods
-desc 
+### MDRouterModule.path
+**Kind**: static property of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.query"></a>
 
-name|params|description
----|---|---
-setRoutes|-|-
-getRoute|-|-
-getRoutes|-|-
-getOutlet|-|-
-emit|-|-
-beforeLoad|-|-
-render|-|-
-navigate|-|-
-change|-|-
-init|-|-
+### MDRouterModule.query
+**Kind**: static property of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.setRoutes"></a>
 
-## Events
-desc 
+### MDRouterModule.setRoutes()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.getRoute"></a>
 
-name|params|description
----|---|---
+### MDRouterModule.getRoute()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.getRoutes"></a>
 
+### MDRouterModule.getRoutes()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.getOutlet"></a>
+
+### MDRouterModule.getOutlet()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.emit"></a>
+
+### MDRouterModule.emit()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.beforeLoad"></a>
+
+### MDRouterModule.beforeLoad()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.render"></a>
+
+### MDRouterModule.render()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.navigate"></a>
+
+### MDRouterModule.navigate()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.change"></a>
+
+### MDRouterModule.change()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  
+<a name="MDRouterModule.init"></a>
+
+### MDRouterModule.init()
+**Kind**: static method of [<code>MDRouterModule</code>](#MDRouterModule)  

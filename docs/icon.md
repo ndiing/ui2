@@ -1,30 +1,30 @@
-# MDIconComponent
-desc 
+<a name="MDIconComponent"></a>
 
-## Properties
-desc 
+## MDIconComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
+* [MDIconComponent](#MDIconComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDIconComponent+render)
+        * [.connectedCallback()](#MDIconComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDIconComponent+disconnectedCallback)
+    * _static_
+        * [.properties](#MDIconComponent.properties)
 
-## Accessor
-desc 
+<a name="MDIconComponent+render"></a>
 
-name|type|description
----|---|---
+### mdIconComponent.render()
+**Kind**: instance method of [<code>MDIconComponent</code>](#MDIconComponent)  
+<a name="MDIconComponent+connectedCallback"></a>
 
-## Methods
-desc 
+### mdIconComponent.connectedCallback()
+**Kind**: instance method of [<code>MDIconComponent</code>](#MDIconComponent)  
+<a name="MDIconComponent+disconnectedCallback"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
+### mdIconComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDIconComponent</code>](#MDIconComponent)  
+<a name="MDIconComponent.properties"></a>
 
-## Events
-desc 
-
-name|params|description
----|---|---
-
+### MDIconComponent.properties
+**Kind**: static property of [<code>MDIconComponent</code>](#MDIconComponent)  

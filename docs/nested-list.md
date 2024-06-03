@@ -1,125 +1,206 @@
-# MDNestedListItemComponent
-desc 
+## Classes
 
-## Properties
-desc 
+<dl>
+<dt><a href="#MDNestedListItemComponent">MDNestedListItemComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+<dt><a href="#MDNestedListRowComponent">MDNestedListRowComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+<dt><a href="#MDNestedListComponent">MDNestedListComponent</a> ⇐ <code>MDElement</code></dt>
+<dd></dd>
+</dl>
 
-name|type|description
----|---|---
-label|String|-
-selected|Boolean|-
-routerLink|String|-
-indent|Number|-
-isNode|Boolean|-
-ui|String|-
-expanded|Boolean|-
-activated|Boolean|-
-isParent|Boolean|-
-hasLevel|Boolean|-
+<a name="MDNestedListItemComponent"></a>
 
-## Accessor
-desc 
+## MDNestedListItemComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|type|description
----|---|---
-labelSecondary|-|-
+* [MDNestedListItemComponent](#MDNestedListItemComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.labelSecondary](#MDNestedListItemComponent+labelSecondary)
+        * [.renderTree()](#MDNestedListItemComponent+renderTree)
+        * [.renderLevel()](#MDNestedListItemComponent+renderLevel)
+        * [.renderAccordion()](#MDNestedListItemComponent+renderAccordion)
+        * [.render()](#MDNestedListItemComponent+render)
+        * [.connectedCallback()](#MDNestedListItemComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDNestedListItemComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDNestedListItemComponent+firstUpdated)
+        * [.handleNestedListItemActionClick()](#MDNestedListItemComponent+handleNestedListItemActionClick)
+    * _static_
+        * [.properties](#MDNestedListItemComponent.properties)
 
-## Methods
-desc 
+<a name="MDNestedListItemComponent+labelSecondary"></a>
 
-name|params|description
----|---|---
-renderTree|-|-
-renderLevel|-|-
-renderAccordion|-|-
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-firstUpdated|-|-
-handleNestedListItemActionClick|-|-
+### mdNestedListItemComponent.labelSecondary
+**Kind**: instance property of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+renderTree"></a>
 
-## Events
-desc 
+### mdNestedListItemComponent.renderTree()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+renderLevel"></a>
 
-name|params|description
----|---|---
-MDNestedListItemComponent#event:onNestedListItemSelected|-|-
-MDNestedListItemComponent#event:onNestedListItemActionClick|-|-
+### mdNestedListItemComponent.renderLevel()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+renderAccordion"></a>
 
-# MDNestedListRowComponent
-desc 
+### mdNestedListItemComponent.renderAccordion()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+render"></a>
 
-## Properties
-desc 
+### mdNestedListItemComponent.render()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+connectedCallback"></a>
 
-name|type|description
----|---|---
+### mdNestedListItemComponent.connectedCallback()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+disconnectedCallback"></a>
 
-## Accessor
-desc 
+### mdNestedListItemComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+<a name="MDNestedListItemComponent+firstUpdated"></a>
 
-name|type|description
----|---|---
+### mdNestedListItemComponent.firstUpdated()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+**Emits**: <code>MDNestedListItemComponent#event:onNestedListItemSelected</code>  
+<a name="MDNestedListItemComponent+handleNestedListItemActionClick"></a>
 
-## Methods
-desc 
+### mdNestedListItemComponent.handleNestedListItemActionClick()
+**Kind**: instance method of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+**Emits**: <code>MDNestedListItemComponent#event:onNestedListItemActionClick</code>  
+<a name="MDNestedListItemComponent.properties"></a>
 
-name|params|description
----|---|---
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
+### MDNestedListItemComponent.properties
+**Kind**: static property of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
+**Properties**
 
-## Events
-desc 
+| Name | Type | Description |
+| --- | --- | --- |
+| [label] | <code>String</code> | - |
+| [selected] | <code>Boolean</code> | - |
+| [routerLink] | <code>String</code> | - |
+| [indent] | <code>Number</code> | - |
+| [isNode] | <code>Boolean</code> | - |
+| [ui] | <code>String</code> | - |
+| [expanded] | <code>Boolean</code> | - |
+| [activated] | <code>Boolean</code> | - |
+| [isParent] | <code>Boolean</code> | - |
+| [hasLevel] | <code>Boolean</code> | - |
 
-name|params|description
----|---|---
+<a name="MDNestedListRowComponent"></a>
 
-# MDNestedListComponent
-desc 
+## MDNestedListRowComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-## Properties
-desc 
+* [MDNestedListRowComponent](#MDNestedListRowComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.render()](#MDNestedListRowComponent+render)
+        * [.connectedCallback()](#MDNestedListRowComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDNestedListRowComponent+disconnectedCallback)
+    * _static_
+        * [.properties](#MDNestedListRowComponent.properties)
 
-name|type|description
----|---|---
-list|Array|-
-rangeSelection|Boolean|-
-multiSelection|Boolean|-
-singleSelection|Boolean|-
-allSelection|Boolean|-
-ui|String|tree,level,accordion
+<a name="MDNestedListRowComponent+render"></a>
 
-## Accessor
-desc 
+### mdNestedListRowComponent.render()
+**Kind**: instance method of [<code>MDNestedListRowComponent</code>](#MDNestedListRowComponent)  
+<a name="MDNestedListRowComponent+connectedCallback"></a>
 
-name|type|description
----|---|---
+### mdNestedListRowComponent.connectedCallback()
+**Kind**: instance method of [<code>MDNestedListRowComponent</code>](#MDNestedListRowComponent)  
+<a name="MDNestedListRowComponent+disconnectedCallback"></a>
 
-## Methods
-desc 
+### mdNestedListRowComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDNestedListRowComponent</code>](#MDNestedListRowComponent)  
+<a name="MDNestedListRowComponent.properties"></a>
 
-name|params|description
----|---|---
-renderItem|-|-
-render|-|-
-connectedCallback|-|-
-disconnectedCallback|-|-
-updated|-|-
-createList|-|-
-lastList|-|-
-handleNestedListItemClick|-|-
-selectList|-|-
-handleNestedListKeydown|-|-
-expandList|-|-
-handleNestedListItemActionClick|-|-
+### MDNestedListRowComponent.properties
+**Kind**: static property of [<code>MDNestedListRowComponent</code>](#MDNestedListRowComponent)  
+<a name="MDNestedListComponent"></a>
 
-## Events
-desc 
+## MDNestedListComponent ⇐ <code>MDElement</code>
+**Kind**: global class  
+**Extends**: <code>MDElement</code>  
 
-name|params|description
----|---|---
-MDNestedListComponent#event:onNestedListItemClick|-|-
-MDNestedListComponent#event:onNestedListKeydown|-|-
+* [MDNestedListComponent](#MDNestedListComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.renderItem()](#MDNestedListComponent+renderItem)
+        * [.render()](#MDNestedListComponent+render)
+        * [.connectedCallback()](#MDNestedListComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDNestedListComponent+disconnectedCallback)
+        * [.updated()](#MDNestedListComponent+updated)
+        * [.createList()](#MDNestedListComponent+createList)
+        * [.lastList()](#MDNestedListComponent+lastList)
+        * [.handleNestedListItemClick()](#MDNestedListComponent+handleNestedListItemClick)
+        * [.selectList()](#MDNestedListComponent+selectList)
+        * [.handleNestedListKeydown()](#MDNestedListComponent+handleNestedListKeydown)
+        * [.expandList()](#MDNestedListComponent+expandList)
+        * [.handleNestedListItemActionClick()](#MDNestedListComponent+handleNestedListItemActionClick)
+    * _static_
+        * [.properties](#MDNestedListComponent.properties)
+
+<a name="MDNestedListComponent+renderItem"></a>
+
+### mdNestedListComponent.renderItem()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+render"></a>
+
+### mdNestedListComponent.render()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+connectedCallback"></a>
+
+### mdNestedListComponent.connectedCallback()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+disconnectedCallback"></a>
+
+### mdNestedListComponent.disconnectedCallback()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+updated"></a>
+
+### mdNestedListComponent.updated()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+createList"></a>
+
+### mdNestedListComponent.createList()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+lastList"></a>
+
+### mdNestedListComponent.lastList()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+handleNestedListItemClick"></a>
+
+### mdNestedListComponent.handleNestedListItemClick()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+**Emits**: <code>MDNestedListComponent#event:onNestedListItemClick</code>  
+<a name="MDNestedListComponent+selectList"></a>
+
+### mdNestedListComponent.selectList()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+handleNestedListKeydown"></a>
+
+### mdNestedListComponent.handleNestedListKeydown()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+**Emits**: <code>MDNestedListComponent#event:onNestedListKeydown</code>  
+<a name="MDNestedListComponent+expandList"></a>
+
+### mdNestedListComponent.expandList()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent+handleNestedListItemActionClick"></a>
+
+### mdNestedListComponent.handleNestedListItemActionClick()
+**Kind**: instance method of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+<a name="MDNestedListComponent.properties"></a>
+
+### MDNestedListComponent.properties
+**Kind**: static property of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [list] | <code>Array</code> | - |
+| [rangeSelection] | <code>Boolean</code> | - |
+| [multiSelection] | <code>Boolean</code> | - |
+| [singleSelection] | <code>Boolean</code> | - |
+| [allSelection] | <code>Boolean</code> | - |
+| [ui] | <code>String</code> | tree,level,accordion |
 
