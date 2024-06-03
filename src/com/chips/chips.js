@@ -19,9 +19,8 @@ class MDChipComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.avatar&&!this.selected?html`<md-image class="md-chip__avatar" .src="${ifDefined(this.avatar)}" .ui="${"rounded"}"></md-image>`:nothing}
             ${this.icon&&!this.selected?html`<md-icon class="md-chip__icon">${this.icon}</md-icon>`:nothing}
@@ -76,9 +75,8 @@ class MDChipsComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     renderItem(item) {
+        /* prettier-ignore */
         return html`
             <md-chip
                 .data="${item}"
@@ -94,10 +92,8 @@ class MDChipsComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
-        return this.list?.map(item=>this.renderItem(item));
+        return this.list?.map((item) => this.renderItem(item));
     }
 
     async connectedCallback() {

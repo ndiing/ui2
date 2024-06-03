@@ -137,8 +137,8 @@ class MDColorPickerComponent extends MDElement {
         this.index = 0;
     }
 
-    /* prettier-ignore */
-    renderCard(){
+    renderCard() {
+        /* prettier-ignore */
         return html`
             <div class="md-color-picker__card">
                 <div class="md-color-picker__card-item">
@@ -177,9 +177,8 @@ class MDColorPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
                 <div class="md-color-picker__header">
                     ${this.leadingActions?.length?html`

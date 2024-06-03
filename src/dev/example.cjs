@@ -3,6 +3,9 @@ import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
 
+/**
+ * @class
+ */
 class MDButtonComponent extends MDElement {
     static get properties() {
         return {

@@ -30,9 +30,8 @@ class MDListItemComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.avatar?html`<md-image class="md-list__avatar" .src="${this.avatar}" .ui="${"rounded"}"></md-image>`:nothing}
             ${this.thumbnail?html`<md-image class="md-list__thumbnail" .src="${this.thumbnail}"></md-image>`:nothing}
@@ -125,9 +124,8 @@ class MDListRowComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html``;
     }
 
@@ -165,9 +163,8 @@ class MDListComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     renderItem(item) {
+        /* prettier-ignore */
         return html`
             <md-list-row>
                 <md-list-item
@@ -198,10 +195,8 @@ class MDListComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
-        return this.list?.map(item=>this.renderItem(item));
+        return this.list?.map((item) => this.renderItem(item));
     }
 
     async connectedCallback() {

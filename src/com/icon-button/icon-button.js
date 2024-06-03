@@ -17,8 +17,6 @@ class MDIconButtonComponent extends MDElement {
         this.icon = Array.from(this.childNodes);
     }
 
-    /* prettier-ignore */
-
     render() {
         return this.icon;
     }

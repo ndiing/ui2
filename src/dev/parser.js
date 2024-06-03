@@ -21,17 +21,20 @@ function read(file, content) {
     } catch (error) {}
     return content;
 }
-const content = read("./src/com/data-table/data-table.js");
-content
-    .split("class ")
-    .slice(1)
-    .forEach((content) => {
-        parse("class " + content);
-    });
+const content = read("./src/com/button/button.js");
+// content.split("class ").forEach((content) => {
+//     if (content.includes("class") || content.includes("function")) {
+//         if (content.includes("class")) {
+//             content = "class " + content;
+//         }
+//         parse(content);
+//     }
+// });
+parse(content);
 function parse(content) {
-    const className = content.match(/^class (\w+)/)?.[1];
+    const className = content.match(/^class (\w+)/m)?.[1];
     const inheritName = content.match(/extends (\w+)/)?.[1];
-    const tagName = content.match(/customElements.define\("([^"]+)",/)?.[1];
+    const tagName = content.match(/^customElements.define\("([^"]+)",/m)?.[1];
 
     const methods = [];
     for (const [, static, async, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{/gm)) {
@@ -43,7 +46,7 @@ function parse(content) {
         events.push({ name, parameters });
     }
 
-    const content2 = content.match(/static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/)?.[1];
+    const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/)?.[1];
 
     const properties = [];
     if (content2) {
@@ -52,12 +55,39 @@ function parse(content) {
         }
     }
 
-    console.log({
-        className,
-        inheritName,
-        tagName,
-        properties,
-        methods,
-        events,
+    const functions = [];
+    for (const [, name, parameters] of content.matchAll(/^function (\w+)\(([^\)]+)?\) \{/gm)) {
+        functions.push({ name, parameters });
+    }
+
+    const content3 = content.match(/\[([^\]]+)\]\.forEach\(\(ui\)/m)?.[1];
+
+    const variants = [];
+    if (content3) {
+        for (const [, name] of content3.matchAll(/"([^"]+)"/gm)) {
+            variants.push({ name });
+        }
+    }
+
+    // console.log({
+    //     className,
+    //     inheritName,
+    //     tagName,
+    //     properties,
+    //     methods,
+    //     events,
+    //     functions,
+    //     variants,
+    // });
+
+    content = content.replace(/^class /gm, () => {
+        let data = "";
+        data += `/**\r\n`;
+        data += ` * @class\r\n`;
+        data += ` */\r\n`;
+        data += `class `;
+        return data;
     });
+
+    fs.writeFileSync("./src/dev/example.cjs", content);
 }

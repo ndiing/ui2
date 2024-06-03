@@ -44,9 +44,8 @@ class MDUrlFieldComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.label?html`<div class="md-url-field__label">${this.label}</div>`:nothing}
             <div class="md-url-field__container">

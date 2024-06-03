@@ -176,8 +176,8 @@ class MDTimePickerComponent extends MDElement {
         this.index = 0;
     }
 
-    /* prettier-ignore */
-    renderYears(){
+    renderYears() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__list">
                 ${this.years.map(item=>html`
@@ -196,8 +196,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMonths(){
+    renderMonths() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__list">
                 ${this.months.map(item=>html`
@@ -216,8 +216,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderDays(){
+    renderDays() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__table">
                 <div class="md-time-picker__table-header">
@@ -250,8 +250,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderHours(){
+    renderHours() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__absolute md-time-picker__absolute--hours">
                 ${this.hours.map(item=>html`
@@ -267,8 +267,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMinutes(){
+    renderMinutes() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__absolute md-time-picker__absolute--minutes">
                 ${this.minutes.map(item=>html`
@@ -284,8 +284,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderCard(){
+    renderCard() {
+        /* prettier-ignore */
         return html`
             <div class="md-time-picker__card">
                 <div class="md-time-picker__card-item">${this.renderHours()}</div>
@@ -294,9 +294,8 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
                 <div class="md-time-picker__header">
                     ${this.leadingActions?.length?html`

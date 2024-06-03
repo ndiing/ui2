@@ -22,9 +22,8 @@ class MDFormComponent extends MDElement {
         this.body = Array.from(this.childNodes);
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <form
                 .acceptCharset="${ifDefined(this.acceptCharset)}"

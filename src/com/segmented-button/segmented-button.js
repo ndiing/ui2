@@ -17,9 +17,8 @@ class MDSegmentedButtonComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     renderButton(button) {
+        /* prettier-ignore */
         return html`
             <md-button 
                 class="md-segmented-button__button"
@@ -34,10 +33,8 @@ class MDSegmentedButtonComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
-        return this.buttons?.map(button=>this.renderButton(button));
+        return this.buttons?.map((button) => this.renderButton(button));
     }
 
     async connectedCallback() {

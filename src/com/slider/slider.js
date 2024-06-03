@@ -30,9 +30,8 @@ class MDSliderComponent extends MDElement {
         this.convertLabel = (value) => value;
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <input type="hidden" .name="${ifDefined(this.name)}" .value="${ifDefined(this.value)}">
             ${this.value?.map((value,index)=>html`

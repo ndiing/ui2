@@ -24,9 +24,8 @@ class MDNestedListItemComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     renderTree() {
+        /* prettier-ignore */
         return html`
             ${Array.from({length:this.indent},() => html`
                 <md-icon class="md-nested-list__indent"></md-icon>
@@ -39,9 +38,8 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     renderLevel() {
+        /* prettier-ignore */
         return html`
             ${this.isParent?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${'arrow_back'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>`}
             <div class="md-nested-list__label">
@@ -51,9 +49,8 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     renderAccordion() {
+        /* prettier-ignore */
         return html`
             <md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>
             <div class="md-nested-list__label">
@@ -63,13 +60,15 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
-        return choose(this.ui,[
-            ['level', () => this.renderLevel()],
-            ['accordion', () => this.renderAccordion()],
-        ], () => this.renderTree())
+        return choose(
+            this.ui,
+            [
+                ["level", () => this.renderLevel()],
+                ["accordion", () => this.renderAccordion()],
+            ],
+            () => this.renderTree(),
+        );
     }
 
     get labelSecondary() {
@@ -119,9 +118,8 @@ class MDNestedListRowComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html``;
     }
 
@@ -162,9 +160,8 @@ class MDNestedListComponent extends MDElement {
         this.singleSelection = true;
     }
 
-    /* prettier-ignore */
-
     renderItem(item) {
+        /* prettier-ignore */
         return html`
             <md-nested-list-row>
                 <md-nested-list-item
@@ -191,11 +188,9 @@ class MDNestedListComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
-        let list = this.ui=='level'?this.lastList(this.list)||this.list:this.list
-        return list?.map(item=>this.renderItem(item));
+        let list = this.ui == "level" ? this.lastList(this.list) || this.list : this.list;
+        return list?.map((item) => this.renderItem(item));
     }
 
     async connectedCallback() {

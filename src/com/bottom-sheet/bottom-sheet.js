@@ -20,9 +20,8 @@ class MDBottomSheetComponent extends MDElement {
         this.body = Array.from(this.childNodes);
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
                 <div class="md-bottom-sheet__header">

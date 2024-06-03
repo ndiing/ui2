@@ -11,9 +11,8 @@ class MDIconComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html``;
     }
 

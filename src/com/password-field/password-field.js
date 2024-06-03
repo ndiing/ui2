@@ -42,9 +42,8 @@ class MDPasswordFieldComponent extends MDElement {
         this.type = "password";
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.label?html`<div class="md-password-field__label">${this.label}</div>`:nothing}
             <div class="md-password-field__container">

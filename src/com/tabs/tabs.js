@@ -16,9 +16,8 @@ class MDTabsComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <md-list 
                 class="${classMap({

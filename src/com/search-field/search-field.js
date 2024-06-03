@@ -40,9 +40,8 @@ class MDSearchFieldComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.label?html`<div class="md-search-field__label">${this.label}</div>`:nothing}
             <div class="md-search-field__container">

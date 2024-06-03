@@ -17,9 +17,8 @@ class MDProgressIndicatorComponent extends MDElement {
         this.value = 0;
     }
 
-    /* prettier-ignore */
-
     renderLinear() {
+        /* prettier-ignore */
         return html`
             <div class="md-progress-indicator__linear-bar">
                 <div class="md-progress-indicator__linear-track"></div>
@@ -28,9 +27,8 @@ class MDProgressIndicatorComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     renderCircular() {
+        /* prettier-ignore */
         return html`
             <svg viewBox="0 0 100 100" class="md-progress-indicator__circular-bar">
                 <circle cx="50%" cy="50%" r="45" class="md-progress-indicator__circular-track" />
@@ -39,12 +37,8 @@ class MDProgressIndicatorComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
-        return this.ui?.includes('circular')?
-        this.renderCircular():
-        this.renderLinear()
+        return this.ui?.includes("circular") ? this.renderCircular() : this.renderLinear();
     }
 
     async connectedCallback() {

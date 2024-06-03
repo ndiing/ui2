@@ -176,8 +176,8 @@ class MDMonthPickerComponent extends MDElement {
         this.index = 1;
     }
 
-    /* prettier-ignore */
-    renderYears(){
+    renderYears() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__list">
                 ${this.years.map(item=>html`
@@ -196,8 +196,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMonths(){
+    renderMonths() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__list">
                 ${this.months.map(item=>html`
@@ -216,8 +216,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderDays(){
+    renderDays() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__table">
                 <div class="md-month-picker__table-header">
@@ -250,8 +250,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderHours(){
+    renderHours() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__absolute md-month-picker__absolute--hours">
                 ${this.hours.map(item=>html`
@@ -267,8 +267,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMinutes(){
+    renderMinutes() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__absolute md-month-picker__absolute--minutes">
                 ${this.minutes.map(item=>html`
@@ -284,8 +284,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderCard(){
+    renderCard() {
+        /* prettier-ignore */
         return html`
             <div class="md-month-picker__card">
                 <div class="md-month-picker__card-item">${this.renderYears()}</div>
@@ -294,9 +294,8 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
                 <div class="md-month-picker__header">
                     ${this.leadingActions?.length?html`

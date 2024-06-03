@@ -22,9 +22,8 @@ class MDMenuComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.leadingActions?.length||this.label||this.subLabel||this.trailingActions?.length?html`
                 <div class="md-menu__header">

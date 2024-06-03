@@ -16,9 +16,8 @@ class MDFabComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.icon?html`<md-icon class="md-fab__icon">${this.icon}</md-icon>`:nothing}
             ${this.label?html`<div class="md-fab__label">${this.label}</div>`:nothing}

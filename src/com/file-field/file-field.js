@@ -41,9 +41,8 @@ class MDFileFieldComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.label?html`<div class="md-file-field__label">${this.label}</div>`:nothing}
             <div class="md-file-field__container">

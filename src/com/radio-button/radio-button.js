@@ -25,9 +25,8 @@ class MDRadioButtonComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <input
                 type="radio"  

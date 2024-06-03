@@ -26,9 +26,8 @@ class MDSwitchComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <input
                 type="checkbox"  

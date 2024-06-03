@@ -16,9 +16,8 @@ class MDImageComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <img 
                 .src="${ifDefined(this.src)}" 

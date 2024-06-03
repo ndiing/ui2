@@ -77,9 +77,8 @@ class MDDataTableItemComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.avatar?html`<md-image class="md-data-table__avatar" .src="${this.avatar}" .ui="${"rounded"}"></md-image>`:nothing}
             ${this.thumbnail?html`<md-image class="md-data-table__thumbnail" .src="${this.thumbnail}"></md-image>`:nothing}
@@ -175,9 +174,8 @@ class MDDataTableRowComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html``;
     }
 
@@ -222,9 +220,8 @@ class MDDataTableComponent extends MDElement {
         this.allSelection = true;
     }
 
-    /* prettier-ignore */
-
     renderItem(item) {
+        /* prettier-ignore */
         return html`
             <md-data-table-row>
                 <md-data-table-item
@@ -253,9 +250,8 @@ class MDDataTableComponent extends MDElement {
         `;
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <table is="md-data-table-native">
                 <caption></caption>

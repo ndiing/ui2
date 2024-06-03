@@ -36,9 +36,8 @@ class MDColorFieldComponent extends MDElement {
         this.value = "#000000";
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <input
                 class="md-color-field__native md-color-field__native--hidden"

@@ -25,9 +25,8 @@ class MDCheckboxComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             <label for="_" class="md-checkbox__a11y"></label>
             <input

@@ -42,9 +42,8 @@ class MDNumberFieldComponent extends MDElement {
         super();
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
             ${this.label?html`<div class="md-number-field__label">${this.label}</div>`:nothing}
             <div class="md-number-field__container">

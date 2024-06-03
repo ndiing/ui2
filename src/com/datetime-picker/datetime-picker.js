@@ -177,8 +177,8 @@ class MDDatetimePickerComponent extends MDElement {
         this.index = 2;
     }
 
-    /* prettier-ignore */
-    renderYears(){
+    renderYears() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__list">
                 ${this.years.map(item=>html`
@@ -197,8 +197,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMonths(){
+    renderMonths() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__list">
                 ${this.months.map(item=>html`
@@ -217,8 +217,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderDays(){
+    renderDays() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__table">
                 <div class="md-datetime-picker__table-header">
@@ -251,8 +251,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderHours(){
+    renderHours() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__absolute md-datetime-picker__absolute--hours">
                 ${this.hours.map(item=>html`
@@ -268,8 +268,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMinutes(){
+    renderMinutes() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__absolute md-datetime-picker__absolute--minutes">
                 ${this.minutes.map(item=>html`
@@ -285,8 +285,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderCard(){
+    renderCard() {
+        /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__card">
                 <div class="md-datetime-picker__card-item">${this.renderYears()}</div>
@@ -298,9 +298,8 @@ class MDDatetimePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
                 <div class="md-datetime-picker__header">
                     ${this.leadingActions?.length?html`

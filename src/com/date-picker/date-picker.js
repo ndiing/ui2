@@ -176,8 +176,8 @@ class MDDatePickerComponent extends MDElement {
         this.index = 2;
     }
 
-    /* prettier-ignore */
-    renderYears(){
+    renderYears() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__list">
                 ${this.years.map(item=>html`
@@ -196,8 +196,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMonths(){
+    renderMonths() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__list">
                 ${this.months.map(item=>html`
@@ -216,8 +216,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderDays(){
+    renderDays() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__table">
                 <div class="md-date-picker__table-header">
@@ -250,8 +250,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderHours(){
+    renderHours() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__absolute md-date-picker__absolute--hours">
                 ${this.hours.map(item=>html`
@@ -267,8 +267,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderMinutes(){
+    renderMinutes() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__absolute md-date-picker__absolute--minutes">
                 ${this.minutes.map(item=>html`
@@ -284,8 +284,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-    renderCard(){
+    renderCard() {
+        /* prettier-ignore */
         return html`
             <div class="md-date-picker__card">
                 <div class="md-date-picker__card-item">${this.renderYears()}</div>
@@ -295,9 +295,8 @@ class MDDatePickerComponent extends MDElement {
         `
     }
 
-    /* prettier-ignore */
-
     render() {
+        /* prettier-ignore */
         return html`
                 <div class="md-date-picker__header">
                     ${this.leadingActions?.length?html`
