@@ -9,23 +9,16 @@ import { ifDefined } from "lit/directives/if-defined.js";
 class MDTextareaFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [list] -
-     * @property {String} [name] -
-     * @property {Boolean} [readonly] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {String} [dirname] -
-     * @property {Number} [maxlength] -
-     * @property {Number} [minlength] -
-     * @property {String} [pattern] -
-     * @property {String} [placeholder] -
-     * @property {Number} [size] -
-     * @property {String} [defaultValue] -
+     * @property {Boolean} [autocapitalize] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
      * @property {String} [leadingMeta] -

@@ -153,6 +153,7 @@ jsdoc2md ./src/com/date-field/date-field.js > ./docs/date-field.md
 jsdoc2md ./src/com/month-field/month-field.js > ./docs/month-field.md
 jsdoc2md ./src/com/week-field/week-field.js > ./docs/week-field.md
 jsdoc2md ./src/com/time-field/time-field.js > ./docs/time-field.md
+jsdoc2md ./src/com/textarea-field/textarea-field.js > ./docs/textarea-field.md
 jsdoc2md ./src/com/data-table/data-table.js > ./docs/data-table.md
 
  -->
