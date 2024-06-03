@@ -1,11 +1,7 @@
 import { html, nothing } from "lit";
-
 import { MDElement } from "../element/element";
-
 import { ifDefined } from "lit/directives/if-defined.js";
-
 import { choose } from "lit/directives/choose.js";
-
 import { queue } from "../mixin/mixin";
 
 /**

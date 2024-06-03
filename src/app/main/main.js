@@ -10,7 +10,7 @@ class AppMainElement extends MDElement {
     constructor() {
         super();
 
-        this.list=[
+        this.list = [
             {
                 label: "Foundations",
                 children: [
@@ -111,16 +111,16 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
                 ],
             },
-        ]
+        ];
 
-        select(this.list)
-        function select(list){
-            list.forEach(item=>{
-                item.selected=item.routerLink == MDRouterModule.path
-                if(item.children){
-                    select(item.children)
+        select(this.list);
+        function select(list) {
+            list.forEach((item) => {
+                item.selected = item.routerLink == MDRouterModule.path;
+                if (item.children) {
+                    select(item.children);
                 }
-            })
+            });
         }
     }
 
