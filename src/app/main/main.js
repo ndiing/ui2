@@ -4,14 +4,16 @@ import { msg } from "@lit/localize";
 import { toTitleCase } from "../../com/mixin/mixin";
 import { layout } from "../../com/layout/layout";
 import { MDRouterModule } from "../../com/router/router";
+import { MDDataModule } from "../../com/data/data";
 
 class AppMainElement extends MDElement {
     constructor() {
         super();
-        this.list = [
-            {
-                label: "Foundations",
-                children: [
+
+        const data=new MDDataModule([
+            // {
+            //     label: "Foundations",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
                     { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
 
@@ -23,29 +25,29 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Image", routerLink: "/image" },
                     { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
                     { leafIcon: "deployed_code", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
-                ],
-            },
-            {
-                label: "Actions",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Actions",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
                     { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
                     { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
                     { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
-                ],
-            },
-            {
-                label: "Communication",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Communication",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
                     { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
                     { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
                     { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
-                ],
-            },
-            {
-                label: "Containment",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Containment",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
                     { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
                     { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
@@ -55,22 +57,22 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Nested List", routerLink: "/nested-list" },
                     { leafIcon: "deployed_code", label: "Navigation", routerLink: "/navigation" },
                     { leafIcon: "deployed_code", label: "Data Table", routerLink: "/data-table" },
-                ],
-            },
-            {
-                label: "Navigation",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Navigation",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
                     { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
                     { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
                     { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
                     { leafIcon: "deployed_code", label: "Tabs", routerLink: "/tabs" },
                     { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
-                ],
-            },
-            {
-                label: "Selection",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Selection",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
                     { leafIcon: "deployed_code", label: "Chips", routerLink: "/chips" },
                     { leafIcon: "deployed_code", label: "Datetime Picker", routerLink: "/datetime-picker" },
@@ -83,11 +85,11 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Month Picker", routerLink: "/month-picker" },
                     { leafIcon: "deployed_code", label: "Week Picker", routerLink: "/week-picker" },
                     { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
-                ],
-            },
-            {
-                label: "Text inputs",
-                children: [
+            //     ],
+            // },
+            // {
+            //     label: "Text inputs",
+            //     children: [
                     { leafIcon: "deployed_code", label: "Form", routerLink: "/form" },
                     { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
 
@@ -106,12 +108,15 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Month Field", routerLink: "/month-field" },
                     { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
                     { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
-                ],
-            },
-        ].map((doc) => ({
-            ...doc,
-            selected: MDRouterModule.path == "/" + doc.path,
-        }));
+            //     ],
+            // },
+        ])
+        
+        this.list = data.getAll({sorters:[{name:'label',order:'asc'}]}).rows
+        
+        this.list.forEach((item) => {
+            item.selected=item.routerLink==MDRouterModule.path
+        });
     }
 
     render() {
@@ -128,7 +133,7 @@ class AppMainElement extends MDElement {
                     id="drawer"
                     .list="${this.list}"
                     .open="${true}"
-                    .ui="${"level"}"
+                    .ui="${"tree"}"
                     @onNestedListItemClick="${this.handleListItemClick}"
                     @onNestedListItemSelected="${this.handleListItemSelected}"
                 ></md-navigation-drawer>

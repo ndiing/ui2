@@ -187,7 +187,7 @@
         * [.render()](#MDDataTableComponent+render)
         * [.connectedCallback()](#MDDataTableComponent+connectedCallback)
         * [.disconnectedCallback()](#MDDataTableComponent+disconnectedCallback)
-        * [.updated()](#MDDataTableComponent+updated)
+        * [.handleDataTableRowClick()](#MDDataTableComponent+handleDataTableRowClick)
         * [.handleDataTableKeydown()](#MDDataTableComponent+handleDataTableKeydown)
         * [.handleDataTableColumnCellCheckboxNativeInput()](#MDDataTableComponent+handleDataTableColumnCellCheckboxNativeInput)
         * [.handleDataTableColumnCellSortablePointerenter()](#MDDataTableComponent+handleDataTableColumnCellSortablePointerenter)
@@ -228,11 +228,11 @@
 
 ### mdDataTableComponent.disconnectedCallback()
 **Kind**: instance method of [<code>MDDataTableComponent</code>](#MDDataTableComponent)  
-<a name="MDDataTableComponent+updated"></a>
+<a name="MDDataTableComponent+handleDataTableRowClick"></a>
 
-### mdDataTableComponent.updated()
+### mdDataTableComponent.handleDataTableRowClick()
 **Kind**: instance method of [<code>MDDataTableComponent</code>](#MDDataTableComponent)  
-**Emits**: <code>MDDataTableComponent#event:onDataTableItemClick</code>  
+**Emits**: <code>MDDataTableComponent#event:onDataTableRowClick</code>  
 <a name="MDDataTableComponent+handleDataTableKeydown"></a>
 
 ### mdDataTableComponent.handleDataTableKeydown()

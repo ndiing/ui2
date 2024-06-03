@@ -475,12 +475,13 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
-    /**
-     *
-     * @fires MDDataTableComponent#onDataTableItemClick
-     */
+    
     updated(changedProperties) {}
 
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableRowClick
+     */
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
             return;
@@ -513,7 +514,7 @@ class MDDataTableComponent extends MDElement {
             this.lastIndex = this.rows.indexOf(data);
         }
         this.requestUpdate();
-        this.emit("onDataTableItemClick", event);
+        this.emit("onDataTableRowClick", event);
     }
 
     /**
