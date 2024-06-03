@@ -21,73 +21,116 @@ function read(file, content) {
     } catch (error) {}
     return content;
 }
-const content = read("./src/com/button/button.js");
-// content.split("class ").forEach((content) => {
-//     if (content.includes("class") || content.includes("function")) {
-//         if (content.includes("class")) {
-//             content = "class " + content;
-//         }
-//         parse(content);
-//     }
-// });
-parse(content);
+function write(file, content) {
+    try {
+    } catch (error) {}
+    fs.writeFileSync(file,content)
+}
+const content = read("./src/com/nested-list/nested-list.js");
+// parse(content);
 function parse(content) {
-    const className = content.match(/^class (\w+)/m)?.[1];
-    const inheritName = content.match(/extends (\w+)/)?.[1];
-    const tagName = content.match(/^customElements.define\("([^"]+)",/m)?.[1];
+    content = content.replace(/^(class.*?\{)([\s\S]+?)(^\})/gm, ($, $1, $2, $3) => {
+        let content = $1 + $2 + $3;
+        const className = content.match(/^class (\w+)/m)?.[1];
+        const inheritName = content.match(/extends (\w+)/)?.[1];
+        const tagName = content.match(/^customElements.define\("([^"]+)",/m)?.[1];
 
-    const methods = [];
-    for (const [, static, async, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{/gm)) {
-        methods.push({ static, async, accessor, name, parameters });
-    }
-
-    const events = [];
-    for (const [, name, parameters] of content.matchAll(/this\.emit\("([^"]+)", ([^)]+)\)/gm)) {
-        events.push({ name, parameters });
-    }
-
-    const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/)?.[1];
-
-    const properties = [];
-    if (content2) {
-        for (const [, name, type] of content2.matchAll(/(\w+): { type: (\w+)/gm)) {
-            properties.push({ name, type });
+        const methods = [];
+        for (const [, static, async, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{/gm)) {
+            methods.push({ static, async, accessor, name, parameters });
         }
-    }
 
-    const functions = [];
-    for (const [, name, parameters] of content.matchAll(/^function (\w+)\(([^\)]+)?\) \{/gm)) {
-        functions.push({ name, parameters });
-    }
-
-    const content3 = content.match(/\[([^\]]+)\]\.forEach\(\(ui\)/m)?.[1];
-
-    const variants = [];
-    if (content3) {
-        for (const [, name] of content3.matchAll(/"([^"]+)"/gm)) {
-            variants.push({ name });
+        const events = [];
+        for (const [, name, parameters] of content.matchAll(/this\.emit\("([^"]+)", ([^)]+)\)/gm)) {
+            events.push({ name, parameters });
         }
-    }
 
-    // console.log({
-    //     className,
-    //     inheritName,
-    //     tagName,
-    //     properties,
-    //     methods,
-    //     events,
-    //     functions,
-    //     variants,
-    // });
+        const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/)?.[1];
 
-    content = content.replace(/^class /gm, () => {
-        let data = "";
-        data += `/**\r\n`;
-        data += ` * @class\r\n`;
-        data += ` */\r\n`;
-        data += `class `;
-        return data;
+        const properties = [];
+        if (content2) {
+            for (const [, name, type] of content2.matchAll(/(\w+): { type: (\w+)/gm)) {
+                properties.push({ name, type });
+            }
+        }
+
+        const functions = [];
+        for (const [, name, parameters] of content.matchAll(/^function (\w+)\(([^\)]+)?\) \{/gm)) {
+            functions.push({ name, parameters });
+        }
+
+        const content3 = content.match(/\[([^\]]+)\]\.forEach\(\(ui\)/m)?.[1];
+
+        const variants = [];
+        if (content3) {
+            for (const [, name] of content3.matchAll(/"([^"]+)"/gm)) {
+                variants.push({ name });
+            }
+        }
+
+        // console.log({
+        //     className,
+        //     inheritName,
+        //     tagName,
+        //     properties,
+        //     methods,
+        //     events,
+        //     functions,
+        //     variants,
+        // });
+
+        content = content.replace(/(class )/, ($, $1) => {
+            let data = "";
+            data += `/**\r\n`;
+            data += ` *\r\n`;
+            if (className) {
+                data += ` * @class ${className}\r\n`;
+            }
+            if (inheritName) {
+                data += ` * @extends ${inheritName}\r\n`;
+            }
+            data += ` */\r\n`;
+            data += $1;
+            return data;
+        });
+
+        content = content.replace(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{([\s\S]+?)^    \}/gm, ($, $static, $async, $accessor, $accessor2, $name, $parameters, content2) => {
+            const properties = [];
+            for (const [, name, type] of content2.matchAll(/(\w+): { type: (\w+)/gm)) {
+                properties.push({ name, type });
+            }
+
+            const events = [];
+            for (const [, name, parameters] of content2.matchAll(/this\.emit\("([^"]+)", ([^)]+)\)/gm)) {
+                events.push({ name, parameters });
+            }
+
+            let data = "";
+            data += `    /**\r\n`;
+            data += `     *\r\n`;
+            for (const { name, type } of properties) {
+                if (name == "ui") {
+                    data += `     * @property {${type}} [${name}] - @variant\r\n`;
+                } else {
+                    data += `     * @property {${type}} [${name}] - \r\n`;
+                }
+            }
+            for (const { name, type } of events) {
+                data += `     * @fires ${className}#${name} \r\n`;
+            }
+            data += `     */\r\n`;
+            data += `    ${$static ?? ""}${$async ?? ""}${$accessor ?? ""}${$name}(${$parameters ?? ""}) {`;
+            data += content2;
+            data += `    }`;
+            return data;
+        });
+
+        content = content.replace(
+            "@variant",
+            variants.map((doc) => doc.name),
+        );
+
+        return content;
     });
-
-    fs.writeFileSync("./src/dev/example.cjs", content);
+    // fs.writeFileSync("./src/dev/example.cjs", content);
 }
