@@ -61,6 +61,7 @@ const routes = [
             { path: "month-field", load: () => import("./month-field/month-field.js").then((m) => m.default) },
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "time-field", load: () => import("./time-field/time-field.js").then((m) => m.default) },
+            { path: "textarea-field", load: () => import("./textarea-field/textarea-field.js").then((m) => m.default) },
             { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
         ],
     },
@@ -70,3 +71,6 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
+
+// node src/dev/cli create component textarea-field text-field
+// node src/dev/cli create app textarea-field number-field

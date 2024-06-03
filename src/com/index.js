@@ -59,4 +59,5 @@ import "./date-field/date-field.js";
 import "./month-field/month-field.js";
 import "./week-field/week-field.js";
 import "./time-field/time-field.js";
+import "./textarea-field/textarea-field.js";
 import "./data-table/data-table.js";

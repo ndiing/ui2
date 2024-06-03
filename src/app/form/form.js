@@ -163,86 +163,92 @@ class AppFormElement extends MDElement {
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-text-field
                             label="Text Field"
-                            name="text-field"
+                            name="text"
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-number-field
                             label="Number Field"
-                            name="number-field"
+                            name="number"
                         ></md-number-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-tel-field
                             label="Tel Field"
-                            name="tel-field"
+                            name="tel"
                         ></md-tel-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-email-field
                             label="Email Field"
-                            name="email-field"
+                            name="email"
                         ></md-email-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-url-field
                             label="Url Field"
-                            name="url-field"
+                            name="url"
                         ></md-url-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-password-field
                             label="Password Field"
-                            name="password-field"
+                            name="password"
                         ></md-password-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-search-field
                             label="Search Field"
-                            name="search-field"
+                            name="search"
                         ></md-search-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-color-field
                             label="Color Field"
-                            name="color-field"
+                            name="color"
                         ></md-color-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-file-field
                             label="File Field"
-                            name="file-field"
+                            name="file"
                         ></md-file-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-datetime-field
                             label="Datetime Field"
-                            name="datetime-field"
+                            name="datetime"
                         ></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-date-field
                             label="Date Field"
-                            name="date-field"
+                            name="date"
                         ></md-date-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-month-field
                             label="Month Field"
-                            name="month-field"
+                            name="month"
                         ></md-month-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-week-field
                             label="Week Field"
-                            name="week-field"
+                            name="week"
                         ></md-week-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-time-field
                             label="Time Field"
-                            name="time-field"
+                            name="time"
                         ></md-time-field>
+                    </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-textarea-field
+                            label="Textarea Field"
+                            name="textarea"
+                        ></md-textarea-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">

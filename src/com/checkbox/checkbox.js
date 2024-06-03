@@ -53,9 +53,7 @@ class MDCheckboxComponent extends MDElement {
     render() {
         /* prettier-ignore */
         return html`
-            <label for="_" class="md-checkbox__a11y"></label>
             <input
-                id="_"
                 type="checkbox"  
                 .autocapitalize="${ifDefined(this.autocapitalize)}"
                 .disabled="${ifDefined(this.disabled)}"      
