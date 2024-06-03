@@ -77,6 +77,7 @@ class MDNavigationDrawerComponent extends MDElement {
                         .multiSelection="${ifDefined(this.multiSelection)}"
                         .singleSelection="${ifDefined(this.singleSelection??true)}"
                         .allSelection="${ifDefined(this.allSelection)}"
+                        .ui="${ifDefined(this.ui?.split(' ').filter(ui=>ui!=='modal').join(' '))}"
                     ></md-nested-list>
                 </div>
                 ${this.buttons?.length?html`

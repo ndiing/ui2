@@ -124,7 +124,7 @@
         text-align: left;
         position: sticky;
         top: 0;
-        z-index: 4;
+        // z-index: 4;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
         .md-resize__item {
@@ -137,7 +137,7 @@
                 position: absolute;
                 right: 0;
                 top: 0;
-                z-index: 6;
+                // z-index: 6;
             }
         }
 
@@ -192,12 +192,12 @@
     .md-data-table__column-cell-checkbox {
         position: sticky;
         left: 0;
-        z-index: 5;
+        // z-index: 5;
     }
     .md-data-table__row-cell-checkbox {
         position: sticky;
         left: 0;
-        z-index: 3;
+        // z-index: 3;
     }
 }
 

@@ -9,76 +9,105 @@ class AppMainElement extends MDElement {
     constructor() {
         super();
         this.list = [
-            { leadingIcon: "package_2", label: "Layout", routerLink: "/layout" },
-            { leadingIcon: "package_2", label: "Typography", routerLink: "/typography" },
-            { leadingIcon: "package_2", label: "Image", routerLink: "/image" },
-            { leadingIcon: "package_2", label: "Icon", routerLink: "/icon" },
-            { leadingIcon: "package_2", label: "Ripple", routerLink: "/ripple" },
-            { leadingIcon: "package_2", label: "Popper", routerLink: "/popper" },
-            { leadingIcon: "package_2", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
-            { leadingIcon: "package_2", label: "Gesture", routerLink: "/gesture" },
+            {
+                label: "Foundations",
+                children: [
+                    { leafIcon: "deployed_code", label: "Gesture", routerLink: "/gesture" },
+                    { leafIcon: "deployed_code", label: "Ripple", routerLink: "/ripple" },
 
-            { leadingIcon: "package_2", label: "Form", routerLink: "/form" },
+                    { leafIcon: "deployed_code", label: "Layout", routerLink: "/layout" },
 
-            { leadingIcon: "package_2", label: "Checkbox", routerLink: "/checkbox" },
-            { leadingIcon: "package_2", label: "Radio Button", routerLink: "/radio-button" },
-            { leadingIcon: "package_2", label: "Switch", routerLink: "/switch" },
+                    { leafIcon: "deployed_code", label: "Icon", routerLink: "/icon" },
+                    { leafIcon: "deployed_code", label: "Typography", routerLink: "/typography" },
 
-            { leadingIcon: "package_2", label: "Badge", routerLink: "/badge" },
+                    { leafIcon: "deployed_code", label: "Image", routerLink: "/image" },
+                    { leafIcon: "deployed_code", label: "Popper", routerLink: "/popper" },
+                    { leafIcon: "deployed_code", label: "Virtual Scroll", routerLink: "/virtual-scroll" },
+                ],
+            },
+            {
+                label: "Actions",
+                children: [
+                    { leafIcon: "deployed_code", label: "Button", routerLink: "/button" },
+                    { leafIcon: "deployed_code", label: "Fab", routerLink: "/fab" },
+                    { leafIcon: "deployed_code", label: "Icon Button", routerLink: "/icon-button" },
+                    { leafIcon: "deployed_code", label: "Segmented Button", routerLink: "/segmented-button" },
+                ],
+            },
+            {
+                label: "Communication",
+                children: [
+                    { leafIcon: "deployed_code", label: "Badge", routerLink: "/badge" },
+                    { leafIcon: "deployed_code", label: "Progress Indicator", routerLink: "/progress-indicator" },
+                    { leafIcon: "deployed_code", label: "Snackbar", routerLink: "/snackbar" },
+                    { leafIcon: "deployed_code", label: "Tooltip", routerLink: "/tooltip" },
+                ],
+            },
+            {
+                label: "Containment",
+                children: [
+                    { leafIcon: "deployed_code", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
+                    { leafIcon: "deployed_code", label: "Card", routerLink: "/card" },
+                    { leafIcon: "deployed_code", label: "Dialog", routerLink: "/dialog" },
+                    { leafIcon: "deployed_code", label: "List", routerLink: "/list" },
+                    { leafIcon: "deployed_code", label: "Side Sheet", routerLink: "/side-sheet" },
 
-            { leadingIcon: "package_2", label: "Button", routerLink: "/button" },
-            { leadingIcon: "package_2", label: "Fab", routerLink: "/fab" },
-            { leadingIcon: "package_2", label: "Icon Button", routerLink: "/icon-button" },
-            { leadingIcon: "package_2", label: "Segmented Button", routerLink: "/segmented-button" },
+                    { leafIcon: "deployed_code", label: "Nested List", routerLink: "/nested-list" },
+                    { leafIcon: "deployed_code", label: "Navigation", routerLink: "/navigation" },
+                    { leafIcon: "deployed_code", label: "Data Table", routerLink: "/data-table" },
+                ],
+            },
+            {
+                label: "Navigation",
+                children: [
+                    { leafIcon: "deployed_code", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
+                    { leafIcon: "deployed_code", label: "Navigation Bar", routerLink: "/navigation-bar" },
+                    { leafIcon: "deployed_code", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
+                    { leafIcon: "deployed_code", label: "Navigation Rail", routerLink: "/navigation-rail" },
+                    { leafIcon: "deployed_code", label: "Tabs", routerLink: "/tabs" },
+                    { leafIcon: "deployed_code", label: "Top App Bar", routerLink: "/top-app-bar" },
+                ],
+            },
+            {
+                label: "Selection",
+                children: [
+                    { leafIcon: "deployed_code", label: "Checkbox", routerLink: "/checkbox" },
+                    { leafIcon: "deployed_code", label: "Chips", routerLink: "/chips" },
+                    { leafIcon: "deployed_code", label: "Datetime Picker", routerLink: "/datetime-picker" },
+                    { leafIcon: "deployed_code", label: "Menu", routerLink: "/menu" },
+                    { leafIcon: "deployed_code", label: "Radio Button", routerLink: "/radio-button" },
+                    { leafIcon: "deployed_code", label: "Slider", routerLink: "/slider" },
+                    { leafIcon: "deployed_code", label: "Switch", routerLink: "/switch" },
+                    { leafIcon: "deployed_code", label: "Time Picker", routerLink: "/time-picker" },
+                    { leafIcon: "deployed_code", label: "Date Picker", routerLink: "/date-picker" },
+                    { leafIcon: "deployed_code", label: "Month Picker", routerLink: "/month-picker" },
+                    { leafIcon: "deployed_code", label: "Week Picker", routerLink: "/week-picker" },
+                    { leafIcon: "deployed_code", label: "Color Picker", routerLink: "/color-picker" },
+                ],
+            },
+            {
+                label: "Text inputs",
+                children: [
+                    { leafIcon: "deployed_code", label: "Form", routerLink: "/form" },
+                    { leafIcon: "deployed_code", label: "Text Field", routerLink: "/text-field" },
 
-            { leadingIcon: "package_2", label: "List", routerLink: "/list" },
-            { leadingIcon: "package_2", label: "Nested List", routerLink: "/nested-list" },
-            { leadingIcon: "package_2", label: "Navigation", routerLink: "/navigation" },
+                    { leafIcon: "deployed_code", label: "Number Field", routerLink: "/number-field" },
+                    { leafIcon: "deployed_code", label: "Tel Field", routerLink: "/tel-field" },
+                    { leafIcon: "deployed_code", label: "Email Field", routerLink: "/email-field" },
+                    { leafIcon: "deployed_code", label: "Url Field", routerLink: "/url-field" },
+                    { leafIcon: "deployed_code", label: "Password Field", routerLink: "/password-field" },
+                    { leafIcon: "deployed_code", label: "Search Field", routerLink: "/search-field" },
 
-            { leadingIcon: "package_2", label: "Card", routerLink: "/card" },
-            { leadingIcon: "package_2", label: "Dialog", routerLink: "/dialog" },
-            { leadingIcon: "package_2", label: "Side Sheet", routerLink: "/side-sheet" },
-            { leadingIcon: "package_2", label: "Bottom Sheet", routerLink: "/bottom-sheet" },
-            { leadingIcon: "package_2", label: "Navigation Drawer", routerLink: "/navigation-drawer" },
-            { leadingIcon: "package_2", label: "Navigation Rail", routerLink: "/navigation-rail" },
-            { leadingIcon: "package_2", label: "Navigation Bar", routerLink: "/navigation-bar" },
-            { leadingIcon: "package_2", label: "Bottom App Bar", routerLink: "/bottom-app-bar" },
-            { leadingIcon: "package_2", label: "Top App Bar", routerLink: "/top-app-bar" },
-            { leadingIcon: "package_2", label: "Snackbar", routerLink: "/snackbar" },
-            { leadingIcon: "package_2", label: "Menu", routerLink: "/menu" },
-            { leadingIcon: "package_2", label: "Tooltip", routerLink: "/tooltip" },
+                    { leafIcon: "deployed_code", label: "Color Field", routerLink: "/color-field" },
+                    { leafIcon: "deployed_code", label: "File Field", routerLink: "/file-field" },
 
-            { leadingIcon: "package_2", label: "Tabs", routerLink: "/tabs" },
-
-            { leadingIcon: "package_2", label: "Datetime Picker", routerLink: "/datetime-picker" },
-            { leadingIcon: "package_2", label: "Date Picker", routerLink: "/date-picker" },
-            { leadingIcon: "package_2", label: "Time Picker", routerLink: "/time-picker" },
-            { leadingIcon: "package_2", label: "Month Picker", routerLink: "/month-picker" },
-            { leadingIcon: "package_2", label: "Week Picker", routerLink: "/week-picker" },
-            { leadingIcon: "package_2", label: "Color Picker", routerLink: "/color-picker" },
-
-            { leadingIcon: "package_2", label: "Chips", routerLink: "/chips" },
-
-            { leadingIcon: "package_2", label: "Slider", routerLink: "/slider" },
-
-            { leadingIcon: "package_2", label: "Progress Indicator", routerLink: "/progress-indicator" },
-
-            { leadingIcon: "package_2", label: "Text Field", routerLink: "/text-field" },
-            { leadingIcon: "package_2", label: "Number Field", routerLink: "/number-field" },
-            { leadingIcon: "package_2", label: "Tel Field", routerLink: "/tel-field" },
-            { leadingIcon: "package_2", label: "Email Field", routerLink: "/email-field" },
-            { leadingIcon: "package_2", label: "Url Field", routerLink: "/url-field" },
-            { leadingIcon: "package_2", label: "Password Field", routerLink: "/password-field" },
-            { leadingIcon: "package_2", label: "Search Field", routerLink: "/search-field" },
-            { leadingIcon: "package_2", label: "Color Field", routerLink: "/color-field" },
-            { leadingIcon: "package_2", label: "File Field", routerLink: "/file-field" },
-            { leadingIcon: "package_2", label: "Datetime Field", routerLink: "/datetime-field" },
-            { leadingIcon: "package_2", label: "Date Field", routerLink: "/date-field" },
-            { leadingIcon: "package_2", label: "Month Field", routerLink: "/month-field" },
-            { leadingIcon: "package_2", label: "Week Field", routerLink: "/week-field" },
-            { leadingIcon: "package_2", label: "Time Field", routerLink: "/time-field" },
-
-            { leadingIcon: "package_2", label: "Data Table", routerLink: "/data-table" },
+                    { leafIcon: "deployed_code", label: "Datetime Field", routerLink: "/datetime-field" },
+                    { leafIcon: "deployed_code", label: "Date Field", routerLink: "/date-field" },
+                    { leafIcon: "deployed_code", label: "Month Field", routerLink: "/month-field" },
+                    { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
+                    { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
+                ],
+            },
         ].map((doc) => ({
             ...doc,
             selected: MDRouterModule.path == "/" + doc.path,
@@ -99,6 +128,7 @@ class AppMainElement extends MDElement {
                     id="drawer"
                     .list="${this.list}"
                     .open="${true}"
+                    .ui="${"level"}"
                     @onNestedListItemClick="${this.handleListItemClick}"
                     @onNestedListItemSelected="${this.handleListItemSelected}"
                 ></md-navigation-drawer>
@@ -136,10 +166,10 @@ class AppMainElement extends MDElement {
     handleLayoutChange(event) {
         if (event.detail.name == "expanded") {
             this.bar.close();
-            this.drawer.ui = "";
+            this.drawer.ui = "tree";
             this.drawer.show();
         } else {
-            this.drawer.ui = "modal";
+            this.drawer.ui = "tree modal";
             this.drawer.close();
             this.bar.show();
         }

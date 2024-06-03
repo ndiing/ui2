@@ -34,6 +34,8 @@ class MDNestedListItemComponent extends MDElement {
             activated: { type: Boolean, reflect: true },
             isParent: { type: Boolean },
             hasLevel: { type: Boolean },
+            nodeIcons: { type: Array },
+            leafIcon: { type: String },
         };
     }
 
@@ -42,6 +44,9 @@ class MDNestedListItemComponent extends MDElement {
      */
     constructor() {
         super();
+
+        this.nodeIcons = ["folder", "folder_open"];
+        this.leafIcon = "draft";
     }
 
     /**
@@ -54,7 +59,7 @@ class MDNestedListItemComponent extends MDElement {
                 <md-icon class="md-nested-list__indent"></md-icon>
             `)}
             ${this.hasLevel?this.isNode?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${this.expanded?'keyboard_arrow_down':'keyboard_arrow_right'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon"></md-icon>`:nothing}
-            <md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>
+            <md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons[~~this.selected]:this.leafIcon}</md-icon>
             <div class="md-nested-list__label">
                 <div class="md-nested-list__label-primary">${this.label}</div>
             </div>
@@ -67,7 +72,7 @@ class MDNestedListItemComponent extends MDElement {
     renderLevel() {
         /* prettier-ignore */
         return html`
-            ${this.isParent?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${'arrow_back'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>`}
+            ${this.isParent?html`<md-icon-button @click="${this.handleNestedListItemActionClick}" class="md-nested-list__action" .icon="${'arrow_back'}"></md-icon-button>`:html`<md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons[~~this.selected]:this.leafIcon}</md-icon>`}
             <div class="md-nested-list__label">
                 <div class="md-nested-list__label-primary">${this.label}</div>
             </div>
@@ -81,7 +86,7 @@ class MDNestedListItemComponent extends MDElement {
     renderAccordion() {
         /* prettier-ignore */
         return html`
-            <md-icon class="md-nested-list__icon">${this.isNode?this.expanded?'folder_open':'folder':'draft'}</md-icon>
+            <md-icon class="md-nested-list__icon">${this.isNode?this.nodeIcons[~~this.selected]:this.leafIcon}</md-icon>
             <div class="md-nested-list__label">
                 <div class="md-nested-list__label-primary">${this.label}</div>
             </div>
@@ -263,6 +268,8 @@ class MDNestedListComponent extends MDElement {
                     .activated="${ifDefined(item.activated)}"
                     .isParent="${ifDefined(item.isParent)}"
                     .hasLevel="${ifDefined(item.hasLevel)}"
+                    .nodeIcons="${ifDefined(item.nodeIcons)}"
+                    .leafIcon="${ifDefined(item.leafIcon)}"
                     @click="${this.handleNestedListItemClick}"
                     @onNestedListItemActionClick="${this.handleNestedListItemActionClick}"
                 ></md-nested-list-item>
