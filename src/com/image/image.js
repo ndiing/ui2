@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDImageComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDImageComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDImageComponent
  * @extends MDElement
  */
@@ -27,27 +13,6 @@ class MDImageComponent extends MDElement {
      * @property {String} [src] -
      * @property {String} [alt] -
      * @property {String} [ratio] -
-     * @property {String} [ui] - rounded
-     */
-    /**
-     *
-     * @property {String} [src] - 
-     * @property {String} [alt] - 
-     * @property {String} [ratio] - 
-     * @property {String} [ui] - rounded
-     */
-    /**
-     *
-     * @property {String} [src] - 
-     * @property {String} [alt] - 
-     * @property {String} [ratio] - 
-     * @property {String} [ui] - rounded
-     */
-    /**
-     *
-     * @property {String} [src] - 
-     * @property {String} [alt] - 
-     * @property {String} [ratio] - 
      * @property {String} [ui] - rounded
      */
     static get properties() {
@@ -62,28 +27,10 @@ class MDImageComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -101,15 +48,6 @@ class MDImageComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-image");
@@ -119,30 +57,12 @@ class MDImageComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-image");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

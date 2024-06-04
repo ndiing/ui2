@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDFormComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDFormComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDFormComponent
  * @extends MDElement
  */
@@ -33,42 +19,6 @@ class MDFormComponent extends MDElement {
      * @property {String} [method] -
      * @property {String} [name] -
      * @property {String} [target] -
-     */
-    /**
-     *
-     * @property {String} [acceptCharset] - 
-     * @property {String} [action] - 
-     * @property {String} [elements] - 
-     * @property {String} [encoding] - 
-     * @property {String} [enctype] - 
-     * @property {String} [length] - 
-     * @property {String} [method] - 
-     * @property {String} [name] - 
-     * @property {String} [target] - 
-     */
-    /**
-     *
-     * @property {String} [acceptCharset] - 
-     * @property {String} [action] - 
-     * @property {String} [elements] - 
-     * @property {String} [encoding] - 
-     * @property {String} [enctype] - 
-     * @property {String} [length] - 
-     * @property {String} [method] - 
-     * @property {String} [name] - 
-     * @property {String} [target] - 
-     */
-    /**
-     *
-     * @property {String} [acceptCharset] - 
-     * @property {String} [action] - 
-     * @property {String} [elements] - 
-     * @property {String} [encoding] - 
-     * @property {String} [enctype] - 
-     * @property {String} [length] - 
-     * @property {String} [method] - 
-     * @property {String} [name] - 
-     * @property {String} [target] - 
      */
     static get properties() {
         return {
@@ -87,29 +37,11 @@ class MDFormComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -137,15 +69,6 @@ class MDFormComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-form");
@@ -155,30 +78,12 @@ class MDFormComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-form");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -192,18 +97,6 @@ class MDFormComponent extends MDElement {
      *
      * @fires MDFormComponent#onFormNativeFormdata
      */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeFormdata 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeFormdata 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeFormdata 
-     */
     handleFormNativeFormdata(event) {
         this.emit("onFormNativeFormdata", event);
     }
@@ -211,18 +104,6 @@ class MDFormComponent extends MDElement {
     /**
      *
      * @fires MDFormComponent#onFormNativeReset
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeReset 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeReset 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeReset 
      */
     handleFormNativeReset(event) {
         for (const element of this.formNative.elements) {
@@ -239,18 +120,6 @@ class MDFormComponent extends MDElement {
      *
      * @fires MDFormComponent#onFormNativeSubmit
      */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeSubmit 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeSubmit 
-     */
-    /**
-     *
-     * @fires MDFormComponent#onFormNativeSubmit 
-     */
     handleFormNativeSubmit(event) {
         event.preventDefault();
         this.emit("onFormNativeSubmit", event);
@@ -259,28 +128,10 @@ class MDFormComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     reset() {
         this.formNative.reset();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

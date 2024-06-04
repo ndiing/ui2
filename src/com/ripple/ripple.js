@@ -1,28 +1,8 @@
 /**
  *
- */
-/**
- *
- * @class MDRippleModule
- */
-/**
- *
- * @class MDRippleModule
- */
-/**
- *
  * @class MDRippleModule
  */
 class MDRippleModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -40,15 +20,6 @@ class MDRippleModule {
         this.init();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -103,15 +74,6 @@ class MDRippleModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleRippleButtonPointerenter(event) {
         this.host.classList.add("md-ripple--hover");
     }
@@ -119,28 +81,10 @@ class MDRippleModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleRippleButtonPointerleave(event) {
         this.host.classList.remove("md-ripple--hover");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -174,29 +118,11 @@ class MDRippleModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleRippleButtonPointerup(event) {
         this.host.classList.remove("md-ripple--pressed");
         window.removeEventListener("pointerup", this.handleRippleButtonPointerup);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -210,15 +136,6 @@ class MDRippleModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleRippleButtonFocus(event) {
         this.host.classList.add("md-ripple--focused");
     }
@@ -226,28 +143,10 @@ class MDRippleModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleRippleButtonBlur(event) {
         this.host.classList.remove("md-ripple--focused");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

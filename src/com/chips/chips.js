@@ -5,20 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDChipComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDChipComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDChipComponent
  * @extends MDElement
  */
@@ -31,33 +17,6 @@ class MDChipComponent extends MDElement {
      * @property {String} [action] -
      * @property {String} [routerLink] -
      * @property {Boolean} [selected] -
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [icon] - 
-     * @property {String} [label] - 
-     * @property {String} [action] - 
-     * @property {String} [routerLink] - 
-     * @property {Boolean} [selected] - 
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [icon] - 
-     * @property {String} [label] - 
-     * @property {String} [action] - 
-     * @property {String} [routerLink] - 
-     * @property {Boolean} [selected] - 
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [icon] - 
-     * @property {String} [label] - 
-     * @property {String} [action] - 
-     * @property {String} [routerLink] - 
-     * @property {Boolean} [selected] - 
      */
     static get properties() {
         return {
@@ -73,28 +32,10 @@ class MDChipComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -112,15 +53,6 @@ class MDChipComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-chip");
@@ -128,15 +60,6 @@ class MDChipComponent extends MDElement {
         this.ripple = new MDRippleModule(this, {});
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -151,18 +74,6 @@ class MDChipComponent extends MDElement {
      *
      * @fires MDChipComponent#onChipSelected
      */
-    /**
-     *
-     * @fires MDChipComponent#onChipSelected 
-     */
-    /**
-     *
-     * @fires MDChipComponent#onChipSelected 
-     */
-    /**
-     *
-     * @fires MDChipComponent#onChipSelected 
-     */
     updated(changedProperties) {
         if (changedProperties.has("selected")) {
             if (this.selected) {
@@ -175,18 +86,6 @@ class MDChipComponent extends MDElement {
      *
      * @fires MDChipComponent#onChipActionClick
      */
-    /**
-     *
-     * @fires MDChipComponent#onChipActionClick 
-     */
-    /**
-     *
-     * @fires MDChipComponent#onChipActionClick 
-     */
-    /**
-     *
-     * @fires MDChipComponent#onChipActionClick 
-     */
     handleChipActionClick(event) {
         this.emit("onChipActionClick", this);
     }
@@ -194,20 +93,6 @@ class MDChipComponent extends MDElement {
 
 customElements.define("md-chip", MDChipComponent);
 
-/**
- *
- * @extends MDElement
- */
-/**
- *
- * @class MDChipsComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDChipsComponent
- * @extends MDElement
- */
 /**
  *
  * @class MDChipsComponent
@@ -223,33 +108,6 @@ class MDChipsComponent extends MDElement {
      * @property {Boolean} [singleSelection] -
      * @property {Boolean} [allSelection] -
      */
-    /**
-     *
-     * @property {String} [ui] - scrollable
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
-     */
-    /**
-     *
-     * @property {String} [ui] - scrollable
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
-     */
-    /**
-     *
-     * @property {String} [ui] - scrollable
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
-     */
     static get properties() {
         return {
             ui: { type: String },
@@ -264,28 +122,10 @@ class MDChipsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -309,28 +149,10 @@ class MDChipsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     render() {
         return this.list?.map((item) => this.renderItem(item));
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -345,15 +167,6 @@ class MDChipsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-chips");
@@ -361,15 +174,6 @@ class MDChipsComponent extends MDElement {
         this.removeEventListener("keydown", this.handleChipsKeydown);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -389,18 +193,6 @@ class MDChipsComponent extends MDElement {
     /**
      *
      * @fires MDChipsComponent#onChipClick
-     */
-    /**
-     *
-     * @fires MDChipsComponent#onChipClick 
-     */
-    /**
-     *
-     * @fires MDChipsComponent#onChipClick 
-     */
-    /**
-     *
-     * @fires MDChipsComponent#onChipClick 
      */
     handleChipClick(event) {
         if (event.target.closest(".md-chip__action")) {
@@ -442,18 +234,6 @@ class MDChipsComponent extends MDElement {
      *
      * @fires MDChipsComponent#onChipsKeydown
      */
-    /**
-     *
-     * @fires MDChipsComponent#onChipsKeydown 
-     */
-    /**
-     *
-     * @fires MDChipsComponent#onChipsKeydown 
-     */
-    /**
-     *
-     * @fires MDChipsComponent#onChipsKeydown 
-     */
     handleChipsKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -465,15 +245,6 @@ class MDChipsComponent extends MDElement {
         this.emit("onChipsKeydown", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

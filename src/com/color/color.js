@@ -2,29 +2,9 @@ import { Hct, applyTheme, argbFromHex, themeFromSourceColor, hexFromArgb } from 
 
 /**
  *
- */
-/**
- *
- * @class MDColorModule
- */
-/**
- *
- * @class MDColorModule
- */
-/**
- *
  * @class MDColorModule
  */
 class MDColorModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -47,15 +27,6 @@ class MDColorModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     init() {
         this.callback();
         new MutationObserver(this.callback).observe(document.querySelector('[name="theme-color"]'), {
@@ -64,15 +35,6 @@ class MDColorModule {
         });
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

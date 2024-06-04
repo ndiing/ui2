@@ -4,33 +4,10 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDIconComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDIconComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDIconComponent
  * @extends MDElement
  */
 class MDIconComponent extends MDElement {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -41,28 +18,10 @@ class MDIconComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -74,30 +33,12 @@ class MDIconComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-icon");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

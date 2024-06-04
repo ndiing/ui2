@@ -4,42 +4,25 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDTelFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDTelFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDTelFieldComponent
  * @extends MDElement
  */
 class MDTelFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [list] -
      * @property {String} [name] -
-     * @property {Boolean} [readonly] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {String} [dirname] -
+     * @property {String} [placeholder] -
      * @property {Number} [maxlength] -
      * @property {Number} [minlength] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [disabled] -
+     * @property {Boolean} [required] -
      * @property {String} [pattern] -
-     * @property {String} [placeholder] -
-     * @property {Number} [size] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [autofocus] -
+     * @property {String} [list] -
+     * @property {Boolean} [spellcheck] -
+     * @property {String} [value] -
      * @property {String} [defaultValue] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
@@ -52,93 +35,6 @@ class MDTelFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -178,28 +74,10 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -254,30 +132,12 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tel-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -295,30 +155,12 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -338,15 +180,6 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get telFieldNative() {
         return this.querySelector(".md-tel-field__native");
     }
@@ -355,18 +188,6 @@ class MDTelFieldComponent extends MDElement {
      *
      * @fires MDTelFieldComponent#onTelFieldNativeActionClick
      */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeActionClick 
-     */
     handleTelFieldNativeActionClick(event) {
         this.emit("onTelFieldNativeActionClick", event);
     }
@@ -374,18 +195,6 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      * @fires MDTelFieldComponent#onTelFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeFocus 
      */
     handleTelFieldNativeFocus(event) {
         this.focused = true;
@@ -396,18 +205,6 @@ class MDTelFieldComponent extends MDElement {
      *
      * @fires MDTelFieldComponent#onTelFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeBlur 
-     */
     handleTelFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTelFieldNativeBlur", event);
@@ -416,18 +213,6 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      * @fires MDTelFieldComponent#onTelFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInput 
      */
     handleTelFieldNativeInput(event) {
         this.value = this.telFieldNative.value;
@@ -441,18 +226,6 @@ class MDTelFieldComponent extends MDElement {
      *
      * @fires MDTelFieldComponent#onTelFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeInvalid 
-     */
     handleTelFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.telFieldNative.validationMessage;
@@ -463,18 +236,6 @@ class MDTelFieldComponent extends MDElement {
     /**
      *
      * @fires MDTelFieldComponent#onTelFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDTelFieldComponent#onTelFieldNativeReset 
      */
     handleTelFieldNativeReset(event) {
         this.telFieldNative.value = this.defaultValue;

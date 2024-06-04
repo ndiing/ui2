@@ -2,20 +2,7 @@ import { html } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
-/**
- *
- * @extends MDElement
- */
-/**
- *
- * @class MDIconButtonComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDIconButtonComponent
- * @extends MDElement
- */
+
 /**
  *
  * @class MDIconButtonComponent
@@ -29,27 +16,6 @@ class MDIconButtonComponent extends MDElement {
      * @property {Boolean} [toggle] -
      * @property {Boolean} [selected] -
      */
-    /**
-     *
-     * @property {String} [icon] - 
-     * @property {String} [ui] - filled,tonal,outlined
-     * @property {Boolean} [toggle] - 
-     * @property {Boolean} [selected] - 
-     */
-    /**
-     *
-     * @property {String} [icon] - 
-     * @property {String} [ui] - filled,tonal,outlined
-     * @property {Boolean} [toggle] - 
-     * @property {Boolean} [selected] - 
-     */
-    /**
-     *
-     * @property {String} [icon] - 
-     * @property {String} [ui] - filled,tonal,outlined
-     * @property {Boolean} [toggle] - 
-     * @property {Boolean} [selected] - 
-     */
     static get properties() {
         return {
             icon: { type: String },
@@ -62,15 +28,6 @@ class MDIconButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.icon = Array.from(this.childNodes);
@@ -79,28 +36,10 @@ class MDIconButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     render() {
         return this.icon;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -120,15 +59,6 @@ class MDIconButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon-button");
@@ -137,15 +67,6 @@ class MDIconButtonComponent extends MDElement {
         this.removeEventListener("click", this.handleIconButtonClick);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -166,18 +87,6 @@ class MDIconButtonComponent extends MDElement {
     /**
      *
      * @fires MDIconButtonComponent#onIconButtonClick
-     */
-    /**
-     *
-     * @fires MDIconButtonComponent#onIconButtonClick 
-     */
-    /**
-     *
-     * @fires MDIconButtonComponent#onIconButtonClick 
-     */
-    /**
-     *
-     * @fires MDIconButtonComponent#onIconButtonClick 
      */
     handleIconButtonClick(event) {
         if (this.toggle) {

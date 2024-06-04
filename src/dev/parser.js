@@ -10,7 +10,7 @@ function open(pathname) {
             if (dir.name.endsWith(".js")) {
                 let content = read(pathname2, "");
 
-                content = content.replace(/\/\*\*(?:.|\n)*?\*\//gm, "");
+                content = content.replace(/\/\*\*[\s\S]+?\*\//gm, "");
 
                 content = parse(content);
                 write(pathname2, content);

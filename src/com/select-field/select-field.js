@@ -4,40 +4,25 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDSelectFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDSelectFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDSelectFieldComponent
  * @extends MDElement
  */
 class MDSelectFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [list] -
      * @property {String} [name] -
-     * @property {Boolean} [readonly] -
+     * @property {Number} [size] -
+     * @property {Boolean} [multiple] -
+     * @property {Boolean} [disabled] -
      * @property {Boolean} [required] -
-     * @property {String} [type] -
+     * @property {Boolean} [autofocus] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [spellcheck] -
      * @property {String} [value] -
-     * @property {String} [max] -
-     * @property {String} [min] -
-     * @property {String} [step] -
      * @property {String} [defaultValue] -
+     * @property {Array} [options] -
+     * @property {Array} [selectedOptions] -
+     * @property {Number} [selectedIndex] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
      * @property {String} [leadingMeta] -
@@ -49,90 +34,6 @@ class MDSelectFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {Number} [size] - 
-     * @property {Boolean} [multiple] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {Array} [options] - 
-     * @property {Array} [selectedOptions] - 
-     * @property {Number} [selectedIndex] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {Number} [size] - 
-     * @property {Boolean} [multiple] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {Array} [options] - 
-     * @property {Array} [selectedOptions] - 
-     * @property {Number} [selectedIndex] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {Number} [size] - 
-     * @property {Boolean} [multiple] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {Array} [options] - 
-     * @property {Array} [selectedOptions] - 
-     * @property {Number} [selectedIndex] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -172,28 +73,10 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -244,30 +127,12 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-select-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -285,30 +150,12 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -328,15 +175,6 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get selectFieldNative() {
         return this.querySelector(".md-select-field__native");
     }
@@ -344,21 +182,10 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get selectedOptions() {
         return this.options.filter((option) => option.selected);
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -370,18 +197,6 @@ class MDSelectFieldComponent extends MDElement {
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeActionClick
      */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionClick 
-     */
     handleSelectFieldNativeActionClick(event) {
         this.emit("onSelectFieldNativeActionClick", event);
     }
@@ -390,33 +205,12 @@ class MDSelectFieldComponent extends MDElement {
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeActionKeyboardArrowDownClick
      */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionKeyboardArrowDownClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionKeyboardArrowDownClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeActionKeyboardArrowDownClick 
-     */
     handleSelectFieldNativeActionKeyboardArrowDownClick(event) {
         this.handleMenu();
 
         this.emit("onSelectFieldNativeActionKeyboardArrowDownClick", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -446,18 +240,6 @@ class MDSelectFieldComponent extends MDElement {
      *
      * @fires MDSelectFieldComponent#onListItemClick
      */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onListItemClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onListItemClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onListItemClick 
-     */
     handleListItemClick(event) {
         this.requestUpdate();
         this.emit("onListItemClick", event);
@@ -466,18 +248,6 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeFocus 
      */
     handleSelectFieldNativeFocus(event) {
         this.focused = true;
@@ -488,18 +258,6 @@ class MDSelectFieldComponent extends MDElement {
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeBlur 
-     */
     handleSelectFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onSelectFieldNativeBlur", event);
@@ -508,18 +266,6 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInput 
      */
     handleSelectFieldNativeInput(event) {
         this.value = this.selectFieldNative.value;
@@ -533,18 +279,6 @@ class MDSelectFieldComponent extends MDElement {
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeInvalid 
-     */
     handleSelectFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.selectFieldNative.validationMessage;
@@ -555,18 +289,6 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeReset 
      */
     handleSelectFieldNativeReset(event) {
         this.selectFieldNative.value = this.defaultValue;
@@ -581,18 +303,6 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      * @fires MDSelectFieldComponent#onSelectFieldNativeClick
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDSelectFieldComponent#onSelectFieldNativeClick 
      */
     handleSelectFieldNativeClick(event) {
         event.preventDefault();

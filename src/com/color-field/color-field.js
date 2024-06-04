@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDColorFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDColorFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDColorFieldComponent
  * @extends MDElement
  */
@@ -43,75 +29,6 @@ class MDColorFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -145,29 +62,11 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.value = "#000000";
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -229,30 +128,12 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-color-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -270,30 +151,12 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -313,15 +176,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get colorFieldNative() {
         return this.querySelector(".md-color-field__native");
     }
@@ -329,18 +183,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      * @fires MDColorFieldComponent#onColorFieldNativeActionClick
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionClick 
      */
     handleColorFieldNativeActionClick(event) {
         this.emit("onColorFieldNativeActionClick", event);
@@ -350,33 +192,12 @@ class MDColorFieldComponent extends MDElement {
      *
      * @fires MDColorFieldComponent#onColorFieldNativeActionPaletteClick
      */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionPaletteClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionPaletteClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeActionPaletteClick 
-     */
     handleColorFieldNativeActionPaletteClick(event) {
         this.handleColorPicker();
 
         this.emit("onColorFieldNativeActionPaletteClick", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -410,29 +231,11 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleColorFieldPickerChange(event) {
         this.colorFieldNative.value = this.colorPicker.selected.slice(0, 7);
         this.value = this.colorFieldNative.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -445,15 +248,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleColorFieldPickerButtonOkClick(event) {
         this.colorPicker.close();
     }
@@ -461,18 +255,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      * @fires MDColorFieldComponent#onColorFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeFocus 
      */
     handleColorFieldNativeFocus(event) {
         this.focused = true;
@@ -483,18 +265,6 @@ class MDColorFieldComponent extends MDElement {
      *
      * @fires MDColorFieldComponent#onColorFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeBlur 
-     */
     handleColorFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onColorFieldNativeBlur", event);
@@ -503,18 +273,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      * @fires MDColorFieldComponent#onColorFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInput 
      */
     handleColorFieldNativeInput(event) {
         this.value = this.colorFieldNative.value;
@@ -528,18 +286,6 @@ class MDColorFieldComponent extends MDElement {
      *
      * @fires MDColorFieldComponent#onColorFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeInvalid 
-     */
     handleColorFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.colorFieldNative.validationMessage;
@@ -550,18 +296,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      * @fires MDColorFieldComponent#onColorFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeReset 
      */
     handleColorFieldNativeReset(event) {
         this.colorFieldNative.value = this.defaultValue;
@@ -576,18 +310,6 @@ class MDColorFieldComponent extends MDElement {
     /**
      *
      * @fires MDColorFieldComponent#onColorFieldNativeClick
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDColorFieldComponent#onColorFieldNativeClick 
      */
     handleColorFieldNativeClick(event) {
         event.preventDefault();

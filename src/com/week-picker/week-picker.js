@@ -5,20 +5,6 @@ import { MDPopperModule } from "../popper/popper";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDWeekPickerComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDWeekPickerComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDWeekPickerComponent
  * @extends MDElement
  */
@@ -29,27 +15,6 @@ class MDWeekPickerComponent extends MDElement {
      * @property {Boolean} [open] -
      * @property {Number} [index] -
      * @property {String} [value] -
-     */
-    /**
-     *
-     * @property {String} [ui] - full-screen
-     * @property {Boolean} [open] - 
-     * @property {Number} [index] - 
-     * @property {String} [value] - 
-     */
-    /**
-     *
-     * @property {String} [ui] - full-screen
-     * @property {Boolean} [open] - 
-     * @property {Number} [index] - 
-     * @property {String} [value] - 
-     */
-    /**
-     *
-     * @property {String} [ui] - full-screen
-     * @property {Boolean} [open] - 
-     * @property {Number} [index] - 
-     * @property {String} [value] - 
      */
     static get properties() {
         return {
@@ -63,28 +28,10 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get first() {
         return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -106,15 +53,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get months() {
         return Array.from({ length: 12 }, (v, k) => {
             const date = new Date(this.selected.getFullYear(), k);
@@ -133,15 +71,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get weekdays() {
         return Array.from({ length: 7 }, (v, k) => {
             const date = new Date(0, 0, k + 1);
@@ -152,15 +81,6 @@ class MDWeekPickerComponent extends MDElement {
         });
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -191,15 +111,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get label() {
         if (this.index == 0) {
             return [this.years[0].year, this.years[this.years.length - 1].year].join("-");
@@ -212,15 +123,6 @@ class MDWeekPickerComponent extends MDElement {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -261,15 +163,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     renderYears() {
         /* prettier-ignore */
         return html`
@@ -293,15 +186,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     renderMonths() {
         /* prettier-ignore */
         return html`
@@ -322,15 +206,6 @@ class MDWeekPickerComponent extends MDElement {
         `
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -373,15 +248,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     renderCard() {
         /* prettier-ignore */
         return html`
@@ -393,15 +259,6 @@ class MDWeekPickerComponent extends MDElement {
         `
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -439,15 +296,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-week-picker");
@@ -462,15 +310,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-week-picker");
@@ -479,15 +318,6 @@ class MDWeekPickerComponent extends MDElement {
         this.scrim.remove();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -502,24 +332,6 @@ class MDWeekPickerComponent extends MDElement {
      * @fires MDWeekPickerComponent#onWeekPickerShow
      * @fires MDWeekPickerComponent#onWeekPickerClose
      * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerShow 
-     * @fires MDWeekPickerComponent#onWeekPickerClose 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerShow 
-     * @fires MDWeekPickerComponent#onWeekPickerClose 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerShow 
-     * @fires MDWeekPickerComponent#onWeekPickerClose 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
      */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
@@ -560,15 +372,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     updateFromValue() {
         const date = new Date();
 
@@ -588,15 +391,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -610,29 +404,11 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -648,18 +424,6 @@ class MDWeekPickerComponent extends MDElement {
      *
      * @fires MDWeekPickerComponent#onWeekPickerScrimClick
      */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerScrimClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerScrimClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerScrimClick 
-     */
     handleWeekPickerScrimClick(event) {
         this.close();
 
@@ -669,18 +433,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      * @fires MDWeekPickerComponent#onWeekPickerLabelPrimaryClick
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelPrimaryClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelPrimaryClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelPrimaryClick 
      */
     handleWeekPickerLabelPrimaryClick(event) {
         if (this.index == 0) {
@@ -698,18 +450,6 @@ class MDWeekPickerComponent extends MDElement {
      *
      * @fires MDWeekPickerComponent#onWeekPickerLabelSecondaryClick
      */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelSecondaryClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelSecondaryClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerLabelSecondaryClick 
-     */
     handleWeekPickerLabelSecondaryClick(event) {
         if (this.index == 2) {
             this.index = 3;
@@ -725,18 +465,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      * @fires MDWeekPickerComponent#onWeekPickerActionNavigateBeforeClick
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateBeforeClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateBeforeClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateBeforeClick 
      */
     handleWeekPickerActionNavigateBeforeClick(event) {
         if (this.index == 0) {
@@ -755,18 +483,6 @@ class MDWeekPickerComponent extends MDElement {
     /**
      *
      * @fires MDWeekPickerComponent#onWeekPickerActionNavigateNextClick
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateNextClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateNextClick 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerActionNavigateNextClick 
      */
     handleWeekPickerActionNavigateNextClick(event) {
         if (this.index == 0) {
@@ -787,21 +503,6 @@ class MDWeekPickerComponent extends MDElement {
      * @fires MDWeekPickerComponent#onWeekPickerYearClick
      * @fires MDWeekPickerComponent#onWeekPickerChange
      */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerYearClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerYearClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerYearClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
     handleWeekPickerYearClick(event) {
         const data = event.currentTarget.data;
 
@@ -817,21 +518,6 @@ class MDWeekPickerComponent extends MDElement {
      *
      * @fires MDWeekPickerComponent#onWeekPickerMonthClick
      * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerMonthClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerMonthClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerMonthClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
      */
     handleWeekPickerMonthClick(event) {
         const data = event.currentTarget.data;
@@ -849,21 +535,6 @@ class MDWeekPickerComponent extends MDElement {
      *
      * @fires MDWeekPickerComponent#onWeekPickerDayClick
      * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerDayClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerDayClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerDayClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
      */
     handleWeekPickerDayClick(event) {
         const data = event.currentTarget.data;
@@ -883,21 +554,6 @@ class MDWeekPickerComponent extends MDElement {
      * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick
      * @fires MDWeekPickerComponent#onWeekPickerChange
      */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
     handleWeekPickerButtonCancelClick(event) {
         this.emit("onWeekPickerButtonCancelClick", event);
         this.emit("onWeekPickerChange", event);
@@ -907,21 +563,6 @@ class MDWeekPickerComponent extends MDElement {
      *
      * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick
      * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
-     */
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick 
-     * @fires MDWeekPickerComponent#onWeekPickerChange 
      */
     handleWeekPickerButtonOkClick(event) {
         this.emit("onWeekPickerButtonOkClick", event);

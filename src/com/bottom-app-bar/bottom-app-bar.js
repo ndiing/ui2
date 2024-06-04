@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDBottomAppBarComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDBottomAppBarComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDBottomAppBarComponent
  * @extends MDElement
  */
@@ -32,39 +18,6 @@ class MDBottomAppBarComponent extends MDElement {
      * @property {String} [ui] -
      * @property {Boolean} [open] -
      * @property {Object} [fab] -
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     * @property {Object} [fab] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     * @property {Object} [fab] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     * @property {Object} [fab] - 
      */
     static get properties() {
         return {
@@ -82,29 +35,11 @@ class MDBottomAppBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -154,30 +89,12 @@ class MDBottomAppBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-bottom-app-bar");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -190,15 +107,6 @@ class MDBottomAppBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     updated(changedProperties) {}
 
     show() {
@@ -208,28 +116,10 @@ class MDBottomAppBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     close() {
         this.open = false;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -245,18 +135,6 @@ class MDBottomAppBarComponent extends MDElement {
      *
      * @fires MDBottomAppBarComponent#onBottomAppBarActionClick
      */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarActionClick 
-     */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarActionClick 
-     */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarActionClick 
-     */
     handleBottomAppBarActionClick(event) {
         this.emit("onBottomAppBarActionClick", event);
     }
@@ -264,18 +142,6 @@ class MDBottomAppBarComponent extends MDElement {
     /**
      *
      * @fires MDBottomAppBarComponent#onBottomAppBarButtonClick
-     */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarButtonClick 
-     */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarButtonClick 
-     */
-    /**
-     *
-     * @fires MDBottomAppBarComponent#onBottomAppBarButtonClick 
      */
     handleBottomAppBarButtonClick(event) {
         this.emit("onBottomAppBarButtonClick", event);

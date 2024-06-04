@@ -6,36 +6,10 @@ import { classMap } from "lit/directives/class-map.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDTabsComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDTabsComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDTabsComponent
  * @extends MDElement
  */
 class MDTabsComponent extends MDElement {
-    /**
-     *
-     * @property {String} [ui] - scrollable,primary,secondary
-     */
-    /**
-     *
-     * @property {String} [ui] - scrollable,primary,secondary
-     */
-    /**
-     *
-     * @property {String} [ui] - scrollable,primary,secondary
-     */
     /**
      *
      * @property {String} [ui] - scrollable,primary,secondary
@@ -50,28 +24,10 @@ class MDTabsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -97,15 +53,6 @@ class MDTabsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tabs");
@@ -115,30 +62,12 @@ class MDTabsComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tabs");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -155,15 +84,6 @@ class MDTabsComponent extends MDElement {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

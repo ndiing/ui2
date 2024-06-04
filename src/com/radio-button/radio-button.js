@@ -5,20 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDRadioButtonComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDRadioButtonComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDRadioButtonComponent
  * @extends MDElement
  */
@@ -37,51 +23,6 @@ class MDRadioButtonComponent extends MDElement {
      * @property {Boolean} [defaultChecked] -
      * @property {Boolean} [indeterminate] -
      * @property {Boolean} [defaultIndeterminate] -
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
      */
     static get properties() {
         return {
@@ -103,28 +44,10 @@ class MDRadioButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -163,15 +86,6 @@ class MDRadioButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -188,15 +102,6 @@ class MDRadioButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -205,15 +110,6 @@ class MDRadioButtonComponent extends MDElement {
         this.ripple.destroy();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -227,30 +123,12 @@ class MDRadioButtonComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     updated(changedProperties) {}
 
     get radioButtonNative() {
         return this.querySelector(".md-radio-button__native");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -262,18 +140,6 @@ class MDRadioButtonComponent extends MDElement {
      *
      * @fires MDRadioButtonComponent#onRadioButtonNativeInput
      */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInput 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInput 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInput 
-     */
     handleRadioButtonNativeInput(event) {
         this.checked = this.radioButtonNative.checked;
         this.indeterminate = this.radioButtonNative.indeterminate;
@@ -284,18 +150,6 @@ class MDRadioButtonComponent extends MDElement {
      *
      * @fires MDRadioButtonComponent#onRadioButtonNativeInvalid
      */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeInvalid 
-     */
     handleRadioButtonNativeInvalid(event) {
         this.emit("onRadioButtonNativeInvalid", event);
     }
@@ -303,18 +157,6 @@ class MDRadioButtonComponent extends MDElement {
     /**
      *
      * @fires MDRadioButtonComponent#onRadioButtonNativeReset
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeReset 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeReset 
-     */
-    /**
-     *
-     * @fires MDRadioButtonComponent#onRadioButtonNativeReset 
      */
     handleRadioButtonNativeReset(event) {
         this.radioButtonNative.value = this.defaultValue;

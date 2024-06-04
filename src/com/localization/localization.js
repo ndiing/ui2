@@ -3,29 +3,9 @@ import { sourceLocale, targetLocales } from "../../generated/locale-codes.js";
 
 /**
  *
- */
-/**
- *
- * @class MDLocalizationModule
- */
-/**
- *
- * @class MDLocalizationModule
- */
-/**
- *
  * @class MDLocalizationModule
  */
 class MDLocalizationModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -44,15 +24,6 @@ class MDLocalizationModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     init() {
         this.callback();
         new MutationObserver(this.callback).observe(document.documentElement, {
@@ -61,15 +32,6 @@ class MDLocalizationModule {
         });
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

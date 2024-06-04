@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDMonthFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDMonthFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDMonthFieldComponent
  * @extends MDElement
  */
@@ -49,93 +35,6 @@ class MDMonthFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -175,28 +74,10 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -251,30 +132,12 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-month-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -292,30 +155,12 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -335,15 +180,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get monthFieldNative() {
         return this.querySelector(".md-month-field__native");
     }
@@ -351,18 +187,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeActionClick
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionClick 
      */
     handleMonthFieldNativeActionClick(event) {
         this.emit("onMonthFieldNativeActionClick", event);
@@ -372,33 +196,12 @@ class MDMonthFieldComponent extends MDElement {
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick
      */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick 
-     */
     handleMonthFieldNativeActionCalendarClockClick(event) {
         this.handleMonthPicker();
 
         this.emit("onMonthFieldNativeActionCalendarClockClick", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -432,15 +235,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleMonthFieldPickerChange(event) {
         this.monthFieldNative.value = [this.monthPicker.selected.getFullYear(), ("" + (this.monthPicker.selected.getMonth() + 1)).padStart(2, "0")].join("-");
         this.value = this.monthFieldNative.value;
@@ -449,15 +243,6 @@ class MDMonthFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -470,15 +255,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleMonthFieldPickerButtonOkClick(event) {
         this.monthPicker.close();
     }
@@ -486,18 +262,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeFocus 
      */
     handleMonthFieldNativeFocus(event) {
         this.focused = true;
@@ -508,18 +272,6 @@ class MDMonthFieldComponent extends MDElement {
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeBlur 
-     */
     handleMonthFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onMonthFieldNativeBlur", event);
@@ -528,18 +280,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInput 
      */
     handleMonthFieldNativeInput(event) {
         this.value = this.monthFieldNative.value;
@@ -553,18 +293,6 @@ class MDMonthFieldComponent extends MDElement {
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeInvalid 
-     */
     handleMonthFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.monthFieldNative.validationMessage;
@@ -575,18 +303,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeReset 
      */
     handleMonthFieldNativeReset(event) {
         this.monthFieldNative.value = this.defaultValue;
@@ -601,18 +317,6 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      * @fires MDMonthFieldComponent#onMonthFieldNativeClick
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDMonthFieldComponent#onMonthFieldNativeClick 
      */
     handleMonthFieldNativeClick(event) {
         event.preventDefault();

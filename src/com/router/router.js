@@ -1,28 +1,8 @@
 /**
  *
- */
-/**
- *
- * @class MDRouterModule
- */
-/**
- *
- * @class MDRouterModule
- */
-/**
- *
  * @class MDRouterModule
  */
 class MDRouterModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -42,28 +22,10 @@ class MDRouterModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     static get location() {
         return this.options.historyApiFallback ? window.location : new URL(window.location.hash.replace(/^#/, ""), window.location.origin);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -74,28 +36,10 @@ class MDRouterModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     static get query() {
         return Object.fromEntries(new URLSearchParams(this.location.search).entries());
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -114,30 +58,12 @@ class MDRouterModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     static getRoutes(route) {
         if (!route) return [];
         const parentRoutes = route.parent ? this.getRoutes(route.parent) : [];
         return [...parentRoutes, route];
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -171,15 +97,6 @@ class MDRouterModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     static emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -189,15 +106,6 @@ class MDRouterModule {
         window.dispatchEvent(event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -212,15 +120,6 @@ class MDRouterModule {
         });
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -276,15 +175,6 @@ class MDRouterModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     static navigate(url) {
         if (this.options.historyApiFallback) {
             window.history.pushState(null, "", url);
@@ -293,15 +183,6 @@ class MDRouterModule {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -314,15 +195,6 @@ class MDRouterModule {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

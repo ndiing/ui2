@@ -2,21 +2,7 @@
  *
  * @class LocalStore
  */
-/**
- *
- * @class LocalStore
- */
-/**
- *
- * @class LocalStore
- */
 class LocalStore {
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -28,12 +14,6 @@ class LocalStore {
         };
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -54,22 +34,10 @@ class LocalStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async get(_id) {
         return this.docs.find((doc) => doc[this.options.primaryKey] == _id);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -87,12 +55,6 @@ class LocalStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async delete(_id) {
         const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == _id);
 
@@ -103,12 +65,6 @@ class LocalStore {
         return false;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -136,24 +92,12 @@ class LocalStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     search(docs, q) {
         if (!q) return docs;
         const query = q.toLowerCase();
         return docs.filter((doc) => Object.values(doc).some((value) => String(value).toLowerCase().includes(query)));
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -195,12 +139,6 @@ class LocalStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     paginate(docs, _page, _limit) {
         if (_page === undefined || _limit === undefined) return docs;
         const start = (_page - 1) * _limit;
@@ -211,23 +149,11 @@ class LocalStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     slice(docs, _start, _end) {
         if (_start === undefined || _end === undefined) return docs;
         return docs.slice(_start, _end);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -336,21 +262,7 @@ class LocalStore {
  *
  * @class RemoteStore
  */
-/**
- *
- * @class RemoteStore
- */
-/**
- *
- * @class RemoteStore
- */
 class RemoteStore {
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -366,12 +278,6 @@ class RemoteStore {
         "Content-Type": "application/json",
     };
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -392,12 +298,6 @@ class RemoteStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     createURL(pathname, params) {
         return new URL(
             pathname.replace(/\:(\w+)/g, ($, name) => params[name] ?? ""),
@@ -405,12 +305,6 @@ class RemoteStore {
         );
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -424,12 +318,6 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -447,12 +335,6 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -475,12 +357,6 @@ class RemoteStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async delete(_id) {
         const url = this.createURL(
             this.options.delete,
@@ -498,12 +374,6 @@ class RemoteStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async getAll(options = {}) {
         return fetch(this.url.href, {
             redirect: "manual",
@@ -516,12 +386,6 @@ class RemoteStore {
         });
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -555,12 +419,6 @@ class RemoteStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     search(q) {
         if (RemoteStore.notEmpty(q)) {
             this.url.searchParams.set("q", q);
@@ -569,12 +427,6 @@ class RemoteStore {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -599,12 +451,6 @@ class RemoteStore {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     paginate(_page, _limit) {
         if (RemoteStore.notEmpty(_page) && RemoteStore.notEmpty(_limit)) {
             this.url.searchParams.set("_page", _page);
@@ -615,12 +461,6 @@ class RemoteStore {
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -681,21 +521,7 @@ class RemoteStore {
  *
  * @class MDStoreModule
  */
-/**
- *
- * @class MDStoreModule
- */
-/**
- *
- * @class MDStoreModule
- */
 class MDStoreModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -717,45 +543,24 @@ class MDStoreModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     post(...args) {
         return this.options.remote ? this.remoteStore.post(...args) : this.localStore.post(...args);
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
     get(...args) {
         return this.options.remote ? this.remoteStore.get(...args) : this.localStore.get(...args);
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
     patch(...args) {
         return this.options.remote ? this.remoteStore.patch(...args) : this.localStore.patch(...args);
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -766,22 +571,11 @@ class MDStoreModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
     sort(...args) {
         this.remoteStore.sort(...args);
         return this;
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -789,12 +583,7 @@ class MDStoreModule {
         this.remoteStore.search(...args);
         return this;
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -802,12 +591,7 @@ class MDStoreModule {
         this.remoteStore.filter(...args);
         return this;
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -815,12 +599,7 @@ class MDStoreModule {
         this.remoteStore.paginate(...args);
         return this;
     }
-    /**
-     *
-     */
-    /**
-     *
-     */
+
     /**
      *
      */
@@ -829,12 +608,6 @@ class MDStoreModule {
         return this;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

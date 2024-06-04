@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDPasswordFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDPasswordFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDPasswordFieldComponent
  * @extends MDElement
  */
@@ -25,18 +11,18 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      * @property {String} [type] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
      * @property {String} [name] -
-     * @property {Boolean} [readonly] -
-     * @property {Boolean} [required] -
-     * @property {String} [value] -
+     * @property {String} [placeholder] -
      * @property {Number} [maxlength] -
      * @property {Number} [minlength] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [disabled] -
+     * @property {Boolean} [required] -
      * @property {String} [pattern] -
-     * @property {String} [placeholder] -
-     * @property {Number} [size] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [autofocus] -
+     * @property {Boolean} [spellcheck] -
+     * @property {String} [value] -
      * @property {String} [defaultValue] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
@@ -49,93 +35,6 @@ class MDPasswordFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [type] - 
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [type] - 
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [type] - 
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -175,29 +74,11 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.type = "password";
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -250,30 +131,12 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-password-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -291,30 +154,12 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -334,15 +179,6 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get passwordFieldNative() {
         return this.querySelector(".md-password-field__native");
     }
@@ -351,18 +187,6 @@ class MDPasswordFieldComponent extends MDElement {
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick
      */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionClick 
-     */
     handlePasswordFieldNativeActionClick(event) {
         this.emit("onPasswordFieldNativeActionClick", event);
     }
@@ -370,18 +194,6 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeActionVisibilityClick 
      */
     handlePasswordFieldNativeActionVisibilityClick(event) {
         if (this.type == "password") {
@@ -396,18 +208,6 @@ class MDPasswordFieldComponent extends MDElement {
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus
      */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeFocus 
-     */
     handlePasswordFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onPasswordFieldNativeFocus", event);
@@ -417,18 +217,6 @@ class MDPasswordFieldComponent extends MDElement {
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeBlur 
-     */
     handlePasswordFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onPasswordFieldNativeBlur", event);
@@ -437,18 +225,6 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput 
      */
     handlePasswordFieldNativeInput(event) {
         this.value = this.passwordFieldNative.value;
@@ -462,18 +238,6 @@ class MDPasswordFieldComponent extends MDElement {
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeInvalid 
-     */
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.passwordFieldNative.validationMessage;
@@ -484,18 +248,6 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset 
      */
     handlePasswordFieldNativeReset(event) {
         this.passwordFieldNative.value = this.defaultValue;

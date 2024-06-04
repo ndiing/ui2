@@ -4,42 +4,25 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDUrlFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDUrlFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDUrlFieldComponent
  * @extends MDElement
  */
 class MDUrlFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [list] -
      * @property {String} [name] -
-     * @property {Boolean} [readonly] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {String} [dirname] -
+     * @property {String} [placeholder] -
      * @property {Number} [maxlength] -
      * @property {Number} [minlength] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [disabled] -
+     * @property {Boolean} [required] -
      * @property {String} [pattern] -
-     * @property {String} [placeholder] -
-     * @property {Number} [size] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [autofocus] -
+     * @property {String} [list] -
+     * @property {Boolean} [spellcheck] -
+     * @property {String} [value] -
      * @property {String} [defaultValue] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
@@ -52,93 +35,6 @@ class MDUrlFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [maxlength] - 
-     * @property {Number} [minlength] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [pattern] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {String} [value] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -178,28 +74,10 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -254,30 +132,12 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-url-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -295,30 +155,12 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -338,15 +180,6 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get urlFieldNative() {
         return this.querySelector(".md-url-field__native");
     }
@@ -355,18 +188,6 @@ class MDUrlFieldComponent extends MDElement {
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeActionClick
      */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeActionClick 
-     */
     handleUrlFieldNativeActionClick(event) {
         this.emit("onUrlFieldNativeActionClick", event);
     }
@@ -374,18 +195,6 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeFocus 
      */
     handleUrlFieldNativeFocus(event) {
         this.focused = true;
@@ -396,18 +205,6 @@ class MDUrlFieldComponent extends MDElement {
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeBlur 
-     */
     handleUrlFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onUrlFieldNativeBlur", event);
@@ -416,18 +213,6 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInput 
      */
     handleUrlFieldNativeInput(event) {
         this.value = this.urlFieldNative.value;
@@ -441,18 +226,6 @@ class MDUrlFieldComponent extends MDElement {
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeInvalid 
-     */
     handleUrlFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.urlFieldNative.validationMessage;
@@ -463,18 +236,6 @@ class MDUrlFieldComponent extends MDElement {
     /**
      *
      * @fires MDUrlFieldComponent#onUrlFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDUrlFieldComponent#onUrlFieldNativeReset 
      */
     handleUrlFieldNativeReset(event) {
         this.urlFieldNative.value = this.defaultValue;

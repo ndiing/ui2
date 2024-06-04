@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDTimeFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDTimeFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDTimeFieldComponent
  * @extends MDElement
  */
@@ -49,93 +35,6 @@ class MDTimeFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -175,28 +74,10 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -251,30 +132,12 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -292,30 +155,12 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -335,15 +180,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get timeFieldNative() {
         return this.querySelector(".md-time-field__native");
     }
@@ -351,18 +187,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeActionClick
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionClick 
      */
     handleTimeFieldNativeActionClick(event) {
         this.emit("onTimeFieldNativeActionClick", event);
@@ -372,33 +196,12 @@ class MDTimeFieldComponent extends MDElement {
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick
      */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick 
-     */
     handleTimeFieldNativeActionCalendarClockClick(event) {
         this.handleTimePicker();
 
         this.emit("onTimeFieldNativeActionCalendarClockClick", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -432,15 +235,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleTimeFieldPickerChange(event) {
         this.timeFieldNative.value = [("" + this.timePicker.selected.getHours()).padStart(2, "0"), ("" + this.timePicker.selected.getMinutes()).padStart(2, "0")].join(":");
         this.value = this.timeFieldNative.value;
@@ -449,15 +243,6 @@ class MDTimeFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -470,15 +255,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleTimeFieldPickerButtonOkClick(event) {
         this.timePicker.close();
     }
@@ -486,18 +262,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeFocus 
      */
     handleTimeFieldNativeFocus(event) {
         this.focused = true;
@@ -508,18 +272,6 @@ class MDTimeFieldComponent extends MDElement {
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeBlur 
-     */
     handleTimeFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTimeFieldNativeBlur", event);
@@ -528,18 +280,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInput 
      */
     handleTimeFieldNativeInput(event) {
         this.value = this.timeFieldNative.value;
@@ -553,18 +293,6 @@ class MDTimeFieldComponent extends MDElement {
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeInvalid 
-     */
     handleTimeFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.timeFieldNative.validationMessage;
@@ -575,18 +303,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeReset 
      */
     handleTimeFieldNativeReset(event) {
         this.timeFieldNative.value = this.defaultValue;
@@ -601,18 +317,6 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      * @fires MDTimeFieldComponent#onTimeFieldNativeClick
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDTimeFieldComponent#onTimeFieldNativeClick 
      */
     handleTimeFieldNativeClick(event) {
         event.preventDefault();

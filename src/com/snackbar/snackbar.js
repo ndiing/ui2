@@ -6,20 +6,6 @@ import { queue } from "../mixin/mixin";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDSnackbarComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDSnackbarComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDSnackbarComponent
  * @extends MDElement
  */
@@ -33,36 +19,6 @@ class MDSnackbarComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] -
      * @property {Boolean} [open] -
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -87,29 +43,11 @@ class MDSnackbarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -178,28 +116,10 @@ ${this.buttons.map(button=>choose(button.is,[
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get snackbarInner() {
         return this.querySelector(".md-snackbar__inner");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -216,15 +136,6 @@ ${this.buttons.map(button=>choose(button.is,[
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-snackbar");
@@ -236,21 +147,6 @@ ${this.buttons.map(button=>choose(button.is,[
      * @fires MDSnackbarComponent#onSnackbarShow
      * @fires MDSnackbarComponent#onSnackbarClose
      */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarShow 
-     * @fires MDSnackbarComponent#onSnackbarClose 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarShow 
-     * @fires MDSnackbarComponent#onSnackbarClose 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarShow 
-     * @fires MDSnackbarComponent#onSnackbarClose 
-     */
     updated(changedProperties) {
         if (changedProperties.has("open")) {
             if (this.open) {
@@ -261,15 +157,6 @@ ${this.buttons.map(button=>choose(button.is,[
         }
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -295,28 +182,10 @@ ${this.buttons.map(button=>choose(button.is,[
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     close() {
         this.open = false;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -332,18 +201,6 @@ ${this.buttons.map(button=>choose(button.is,[
      *
      * @fires MDSnackbarComponent#onSnackbarActionClick
      */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarActionClick 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarActionClick 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarActionClick 
-     */
     handleSnackbarActionClick(event) {
         this.emit("onSnackbarActionClick", event);
     }
@@ -351,18 +208,6 @@ ${this.buttons.map(button=>choose(button.is,[
     /**
      *
      * @fires MDSnackbarComponent#onSnackbarButtonClick
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarButtonClick 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarButtonClick 
-     */
-    /**
-     *
-     * @fires MDSnackbarComponent#onSnackbarButtonClick 
      */
     handleSnackbarButtonClick(event) {
         this.emit("onSnackbarButtonClick", event);

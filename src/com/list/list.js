@@ -5,20 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDListItemComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDListItemComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDListItemComponent
  * @extends MDElement
  */
@@ -42,66 +28,6 @@ class MDListItemComponent extends MDElement {
      * @property {Object} [badge] -
      * @property {Boolean} [selected] -
      * @property {String} [routerLink] -
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [thumbnail] - 
-     * @property {String} [video] - 
-     * @property {Object} [leadingCheckbox] - 
-     * @property {Object} [leadingRadioButton] - 
-     * @property {Object} [leadingSwitch] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {String} [trailingIcon] - 
-     * @property {Object} [trailingCheckbox] - 
-     * @property {Object} [trailingRadioButton] - 
-     * @property {Object} [trailingSwitch] - 
-     * @property {String} [text] - 
-     * @property {Object} [badge] - 
-     * @property {Boolean} [selected] - 
-     * @property {String} [routerLink] - 
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [thumbnail] - 
-     * @property {String} [video] - 
-     * @property {Object} [leadingCheckbox] - 
-     * @property {Object} [leadingRadioButton] - 
-     * @property {Object} [leadingSwitch] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {String} [trailingIcon] - 
-     * @property {Object} [trailingCheckbox] - 
-     * @property {Object} [trailingRadioButton] - 
-     * @property {Object} [trailingSwitch] - 
-     * @property {String} [text] - 
-     * @property {Object} [badge] - 
-     * @property {Boolean} [selected] - 
-     * @property {String} [routerLink] - 
-     */
-    /**
-     *
-     * @property {String} [avatar] - 
-     * @property {String} [thumbnail] - 
-     * @property {String} [video] - 
-     * @property {Object} [leadingCheckbox] - 
-     * @property {Object} [leadingRadioButton] - 
-     * @property {Object} [leadingSwitch] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {String} [trailingIcon] - 
-     * @property {Object} [trailingCheckbox] - 
-     * @property {Object} [trailingRadioButton] - 
-     * @property {Object} [trailingSwitch] - 
-     * @property {String} [text] - 
-     * @property {Object} [badge] - 
-     * @property {Boolean} [selected] - 
-     * @property {String} [routerLink] - 
      */
     static get properties() {
         return {
@@ -128,28 +54,10 @@ class MDListItemComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -187,28 +95,10 @@ class MDListItemComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get labelSecondary() {
         return this.querySelector(".md-list__label-secondary");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -232,15 +122,6 @@ class MDListItemComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -252,18 +133,6 @@ class MDListItemComponent extends MDElement {
     /**
      *
      * @fires MDListItemComponent#onListItemSelected
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSelected 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSelected 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSelected 
      */
     firstUpdated(changedProperties) {}
 
@@ -279,18 +148,6 @@ class MDListItemComponent extends MDElement {
      *
      * @fires MDListItemComponent#onListItemCheckboxNativeInput
      */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemCheckboxNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemCheckboxNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemCheckboxNativeInput 
-     */
     handleListItemCheckboxNativeInput(event) {
         this.emit("onListItemCheckboxNativeInput", event);
     }
@@ -299,18 +156,6 @@ class MDListItemComponent extends MDElement {
      *
      * @fires MDListItemComponent#onListItemRadioButtonNativeInput
      */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemRadioButtonNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemRadioButtonNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemRadioButtonNativeInput 
-     */
     handleListItemRadioButtonNativeInput(event) {
         this.emit("onListItemRadioButtonNativeInput", event);
     }
@@ -318,18 +163,6 @@ class MDListItemComponent extends MDElement {
     /**
      *
      * @fires MDListItemComponent#onListItemSwitchNativeInput
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSwitchNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSwitchNativeInput 
-     */
-    /**
-     *
-     * @fires MDListItemComponent#onListItemSwitchNativeInput 
      */
     handleListItemSwitchNativeInput(event) {
         this.emit("onListItemSwitchNativeInput", event);
@@ -340,33 +173,10 @@ customElements.define("md-list-item", MDListItemComponent);
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDListRowComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDListRowComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDListRowComponent
  * @extends MDElement
  */
 class MDListRowComponent extends MDElement {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -377,28 +187,10 @@ class MDListRowComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -410,15 +202,6 @@ class MDListRowComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -426,15 +209,6 @@ class MDListRowComponent extends MDElement {
         this.classList.add("md-list__row");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -452,20 +226,6 @@ customElements.define("md-list-row", MDListRowComponent);
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDListComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDListComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDListComponent
  * @extends MDElement
  */
@@ -477,30 +237,6 @@ class MDListComponent extends MDElement {
      * @property {Boolean} [multiSelection] -
      * @property {Boolean} [singleSelection] -
      * @property {Boolean} [allSelection] -
-     */
-    /**
-     *
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
-     */
-    /**
-     *
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
-     */
-    /**
-     *
-     * @property {Array} [list] - 
-     * @property {Boolean} [rangeSelection] - 
-     * @property {Boolean} [multiSelection] - 
-     * @property {Boolean} [singleSelection] - 
-     * @property {Boolean} [allSelection] - 
      */
     static get properties() {
         return {
@@ -515,28 +251,10 @@ class MDListComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -575,28 +293,10 @@ class MDListComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     render() {
         return this.list?.map((item) => this.renderItem(item));
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -612,15 +312,6 @@ class MDListComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -632,18 +323,6 @@ class MDListComponent extends MDElement {
     /**
      *
      * @fires MDListComponent#onListItemClick
-     */
-    /**
-     *
-     * @fires MDListComponent#onListItemClick 
-     */
-    /**
-     *
-     * @fires MDListComponent#onListItemClick 
-     */
-    /**
-     *
-     * @fires MDListComponent#onListItemClick 
      */
     updated(changedProperties) {}
 
@@ -686,18 +365,6 @@ class MDListComponent extends MDElement {
      *
      * @fires MDListComponent#onListKeydown
      */
-    /**
-     *
-     * @fires MDListComponent#onListKeydown 
-     */
-    /**
-     *
-     * @fires MDListComponent#onListKeydown 
-     */
-    /**
-     *
-     * @fires MDListComponent#onListKeydown 
-     */
     handleListKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -712,30 +379,12 @@ class MDListComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleListItemCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -747,15 +396,6 @@ class MDListComponent extends MDElement {
         this.requestUpdate();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

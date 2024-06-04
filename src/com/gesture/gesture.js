@@ -1,28 +1,8 @@
 /**
  *
- */
-/**
- *
- * @class MDGestureModule
- */
-/**
- *
- * @class MDGestureModule
- */
-/**
- *
  * @class MDGestureModule
  */
 class MDGestureModule {
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -42,15 +22,6 @@ class MDGestureModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -67,30 +38,6 @@ class MDGestureModule {
      * @fires MDGestureModule#onResizeStart
      * @fires MDGestureModule#onDragStart
      * @fires MDGestureModule#onResizeStart
-     */
-    /**
-     *
-     * @fires MDGestureModule#onPress 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onPress 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onPress 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
-     * @fires MDGestureModule#onDragStart 
-     * @fires MDGestureModule#onResizeStart 
      */
     handlePointerdown(event) {
         this.resize = false;
@@ -144,21 +91,6 @@ class MDGestureModule {
      *
      * @fires MDGestureModule#onDrag
      * @fires MDGestureModule#onResize
-     */
-    /**
-     *
-     * @fires MDGestureModule#onDrag 
-     * @fires MDGestureModule#onResize 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onDrag 
-     * @fires MDGestureModule#onResize 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onDrag 
-     * @fires MDGestureModule#onResize 
      */
     handlePointermove(event) {
         const currentX = event.clientX - this.startX;
@@ -218,30 +150,6 @@ class MDGestureModule {
      * @fires MDGestureModule#onDragEnd
      * @fires MDGestureModule#onResizeEnd
      */
-    /**
-     *
-     * @fires MDGestureModule#onTap 
-     * @fires MDGestureModule#onDoubleTap 
-     * @fires MDGestureModule#onResizeDoubleTap 
-     * @fires MDGestureModule#onDragEnd 
-     * @fires MDGestureModule#onResizeEnd 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onTap 
-     * @fires MDGestureModule#onDoubleTap 
-     * @fires MDGestureModule#onResizeDoubleTap 
-     * @fires MDGestureModule#onDragEnd 
-     * @fires MDGestureModule#onResizeEnd 
-     */
-    /**
-     *
-     * @fires MDGestureModule#onTap 
-     * @fires MDGestureModule#onDoubleTap 
-     * @fires MDGestureModule#onResizeDoubleTap 
-     * @fires MDGestureModule#onDragEnd 
-     * @fires MDGestureModule#onResizeEnd 
-     */
     handlePointerup(event) {
         window.clearTimeout(this.presTimeout);
 
@@ -284,15 +192,6 @@ class MDGestureModule {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     init() {
         this.host.classList.add("md-gesture");
 
@@ -314,15 +213,6 @@ class MDGestureModule {
         this.host.addEventListener("pointerdown", this.handlePointerdown);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDCardComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDCardComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDCardComponent
  * @extends MDElement
  */
@@ -30,36 +16,6 @@ class MDCardComponent extends MDElement {
      * @property {Array} [trailingActions] -
      * @property {String} [image] -
      * @property {Array} [buttons] -
-     * @property {String} [ui] - elevated,filled,outlined
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [image] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - elevated,filled,outlined
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [image] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - elevated,filled,outlined
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [image] - 
-     * @property {Array} [buttons] - 
      * @property {String} [ui] - elevated,filled,outlined
      */
     static get properties() {
@@ -77,29 +33,11 @@ class MDCardComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -149,15 +87,6 @@ class MDCardComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-card");
@@ -167,30 +96,12 @@ class MDCardComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-card");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

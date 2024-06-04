@@ -5,20 +5,6 @@ import { MDListComponent } from "../list/list";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDNavigationDrawerComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDNavigationDrawerComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDNavigationDrawerComponent
  * @extends MDElement
  */
@@ -32,36 +18,6 @@ class MDNavigationDrawerComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - modal
      * @property {Boolean} [open] -
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - modal
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - modal
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - modal
-     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -79,28 +35,10 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -157,15 +95,6 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-drawer");
@@ -180,15 +109,6 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
@@ -197,15 +117,6 @@ class MDNavigationDrawerComponent extends MDElement {
         this.scrim.remove();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -236,15 +147,6 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     show() {
         this.open = true;
     }
@@ -252,28 +154,10 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     close() {
         this.open = false;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -289,18 +173,6 @@ class MDNavigationDrawerComponent extends MDElement {
      *
      * @fires MDNavigationDrawerComponent#onNavigationDrawerActionClick
      */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerActionClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerActionClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerActionClick 
-     */
     handleNavigationDrawerActionClick(event) {
         this.emit("onNavigationDrawerActionClick", event);
     }
@@ -309,18 +181,6 @@ class MDNavigationDrawerComponent extends MDElement {
      *
      * @fires MDNavigationDrawerComponent#onNavigationDrawerButtonClick
      */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerButtonClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerButtonClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerButtonClick 
-     */
     handleNavigationDrawerButtonClick(event) {
         this.emit("onNavigationDrawerButtonClick", event);
     }
@@ -328,18 +188,6 @@ class MDNavigationDrawerComponent extends MDElement {
     /**
      *
      * @fires MDNavigationDrawerComponent#onNavigationDrawerScrimClick
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerScrimClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerScrimClick 
-     */
-    /**
-     *
-     * @fires MDNavigationDrawerComponent#onNavigationDrawerScrimClick 
      */
     handleNavigationDrawerScrimClick(event) {
         this.close();

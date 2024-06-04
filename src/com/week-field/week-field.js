@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDWeekFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDWeekFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDWeekFieldComponent
  * @extends MDElement
  */
@@ -49,93 +35,6 @@ class MDWeekFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {Boolean} [autocapitalize] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [list] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {String} [max] - 
-     * @property {String} [min] - 
-     * @property {String} [step] - 
-     * @property {String} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -175,28 +74,10 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -251,30 +132,12 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-week-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -292,30 +155,12 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -335,15 +180,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get weekFieldNative() {
         return this.querySelector(".md-week-field__native");
     }
@@ -351,18 +187,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeActionClick
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionClick 
      */
     handleWeekFieldNativeActionClick(event) {
         this.emit("onWeekFieldNativeActionClick", event);
@@ -372,33 +196,12 @@ class MDWeekFieldComponent extends MDElement {
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick
      */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick 
-     */
     handleWeekFieldNativeActionCalendarClockClick(event) {
         this.handleWeekPicker();
 
         this.emit("onWeekFieldNativeActionCalendarClockClick", event);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -432,15 +235,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleWeekFieldPickerChange(event) {
         this.weekFieldNative.value = [this.weekPicker.selected.getFullYear(), ("" + this.weekPicker.selected.getWeek()).padStart(2, "0")].join("-W");
         this.value = this.weekFieldNative.value;
@@ -449,15 +243,6 @@ class MDWeekFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -470,15 +255,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     handleWeekFieldPickerButtonOkClick(event) {
         this.weekPicker.close();
     }
@@ -486,18 +262,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeFocus
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeFocus 
      */
     handleWeekFieldNativeFocus(event) {
         this.focused = true;
@@ -508,18 +272,6 @@ class MDWeekFieldComponent extends MDElement {
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeBlur 
-     */
     handleWeekFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onWeekFieldNativeBlur", event);
@@ -528,18 +280,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInput 
      */
     handleWeekFieldNativeInput(event) {
         this.value = this.weekFieldNative.value;
@@ -553,18 +293,6 @@ class MDWeekFieldComponent extends MDElement {
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeInvalid 
-     */
     handleWeekFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.weekFieldNative.validationMessage;
@@ -575,18 +303,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeReset 
      */
     handleWeekFieldNativeReset(event) {
         this.weekFieldNative.value = this.defaultValue;
@@ -601,18 +317,6 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      * @fires MDWeekFieldComponent#onWeekFieldNativeClick
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeClick 
-     */
-    /**
-     *
-     * @fires MDWeekFieldComponent#onWeekFieldNativeClick 
      */
     handleWeekFieldNativeClick(event) {
         event.preventDefault();

@@ -5,20 +5,6 @@ import { MDListComponent } from "../list/list";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDNavigationBarComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDNavigationBarComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDNavigationBarComponent
  * @extends MDElement
  */
@@ -32,36 +18,6 @@ class MDNavigationBarComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] -
      * @property {Boolean} [open] -
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
-     */
-    /**
-     *
-     * @property {Array} [leadingActions] - 
-     * @property {String} [label] - 
-     * @property {String} [subLabel] - 
-     * @property {Array} [trailingActions] - 
-     * @property {Array} [buttons] - 
-     * @property {String} [ui] - 
-     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -79,28 +35,10 @@ class MDNavigationBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -156,30 +94,12 @@ class MDNavigationBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-bar");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -192,15 +112,6 @@ class MDNavigationBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     updated(changedProperties) {}
 
     show() {
@@ -210,28 +121,10 @@ class MDNavigationBarComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     close() {
         this.open = false;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -247,18 +140,6 @@ class MDNavigationBarComponent extends MDElement {
      *
      * @fires MDNavigationBarComponent#onNavigationBarActionClick
      */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarActionClick 
-     */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarActionClick 
-     */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarActionClick 
-     */
     handleNavigationBarActionClick(event) {
         this.emit("onNavigationBarActionClick", event);
     }
@@ -266,18 +147,6 @@ class MDNavigationBarComponent extends MDElement {
     /**
      *
      * @fires MDNavigationBarComponent#onNavigationBarButtonClick
-     */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarButtonClick 
-     */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarButtonClick 
-     */
-    /**
-     *
-     * @fires MDNavigationBarComponent#onNavigationBarButtonClick 
      */
     handleNavigationBarButtonClick(event) {
         this.emit("onNavigationBarButtonClick", event);

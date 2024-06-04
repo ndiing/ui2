@@ -4,20 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDProgressIndicatorComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDProgressIndicatorComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDProgressIndicatorComponent
  * @extends MDElement
  */
@@ -26,24 +12,6 @@ class MDProgressIndicatorComponent extends MDElement {
      *
      * @property {Number} [max] -
      * @property {Number} [value] -
-     * @property {String} [ui] - linear,circular
-     */
-    /**
-     *
-     * @property {Number} [max] - 
-     * @property {Number} [value] - 
-     * @property {String} [ui] - linear,circular
-     */
-    /**
-     *
-     * @property {Number} [max] - 
-     * @property {Number} [value] - 
-     * @property {String} [ui] - linear,circular
-     */
-    /**
-     *
-     * @property {Number} [max] - 
-     * @property {Number} [value] - 
      * @property {String} [ui] - linear,circular
      */
     static get properties() {
@@ -57,30 +25,12 @@ class MDProgressIndicatorComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
         this.max = 100;
         this.value = 0;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -97,15 +47,6 @@ class MDProgressIndicatorComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     renderCircular() {
         /* prettier-ignore */
         return html`
@@ -119,28 +60,10 @@ class MDProgressIndicatorComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     render() {
         return this.ui?.includes("circular") ? this.renderCircular() : this.renderLinear();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -153,30 +76,12 @@ class MDProgressIndicatorComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-progress-indicator");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -196,15 +101,6 @@ class MDProgressIndicatorComponent extends MDElement {
         this.style.setProperty("--md-progress-indicator-percentage", this.percentageValue);
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */

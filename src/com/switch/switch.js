@@ -5,20 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDSwitchComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDSwitchComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDSwitchComponent
  * @extends MDElement
  */
@@ -38,54 +24,6 @@ class MDSwitchComponent extends MDElement {
      * @property {Boolean} [indeterminate] -
      * @property {Boolean} [defaultIndeterminate] -
      * @property {Array} [icons] -
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
-     * @property {Array} [icons] - 
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
-     * @property {Array} [icons] - 
-     */
-    /**
-     *
-     * @property {String} [autocapitalize] - 
-     * @property {Boolean} [disabled] - 
-     * @property {String} [form] - 
-     * @property {String} [name] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [type] - 
-     * @property {String} [value] - 
-     * @property {Boolean} [checked] - 
-     * @property {String} [defaultValue] - 
-     * @property {Boolean} [defaultChecked] - 
-     * @property {Boolean} [indeterminate] - 
-     * @property {Boolean} [defaultIndeterminate] - 
-     * @property {Array} [icons] - 
      */
     static get properties() {
         return {
@@ -108,28 +46,10 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -168,15 +88,6 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -193,15 +104,6 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -210,15 +112,6 @@ class MDSwitchComponent extends MDElement {
         this.ripple.destroy();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -232,15 +125,6 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     updated(changedProperties) {}
 
     get switchNative() {
@@ -250,28 +134,10 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get switchTrack() {
         return this.querySelector(".md-switch__track");
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -283,18 +149,6 @@ class MDSwitchComponent extends MDElement {
      *
      * @fires MDSwitchComponent#onSwitchNativeInput
      */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInput 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInput 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInput 
-     */
     handleSwitchNativeInput(event) {
         this.checked = this.switchNative.checked;
         this.indeterminate = this.switchNative.indeterminate;
@@ -305,18 +159,6 @@ class MDSwitchComponent extends MDElement {
      *
      * @fires MDSwitchComponent#onSwitchNativeInvalid
      */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeInvalid 
-     */
     handleSwitchNativeInvalid(event) {
         this.emit("onSwitchNativeInvalid", event);
     }
@@ -324,18 +166,6 @@ class MDSwitchComponent extends MDElement {
     /**
      *
      * @fires MDSwitchComponent#onSwitchNativeReset
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeReset 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeReset 
-     */
-    /**
-     *
-     * @fires MDSwitchComponent#onSwitchNativeReset 
      */
     handleSwitchNativeReset(event) {
         this.switchNative.value = this.defaultValue;

@@ -4,40 +4,25 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @extends MDElement
- */
-/**
- *
- * @class MDNumberFieldComponent
- * @extends MDElement
- */
-/**
- *
- * @class MDNumberFieldComponent
- * @extends MDElement
- */
-/**
- *
  * @class MDNumberFieldComponent
  * @extends MDElement
  */
 class MDNumberFieldComponent extends MDElement {
     /**
      *
-     * @property {Boolean} [autocapitalize] -
-     * @property {String} [autocomplete] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [list] -
      * @property {String} [name] -
-     * @property {Boolean} [readonly] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {Number} [value] -
-     * @property {Number} [max] -
-     * @property {Number} [min] -
      * @property {String} [placeholder] -
+     * @property {Number} [min] -
+     * @property {Number} [max] -
      * @property {Number} [step] -
+     * @property {Boolean} [readonly] -
+     * @property {Boolean} [disabled] -
+     * @property {Boolean} [required] -
+     * @property {String} [autocomplete] -
+     * @property {Boolean} [autofocus] -
+     * @property {String} [list] -
+     * @property {Boolean} [spellcheck] -
+     * @property {Number} [value] -
      * @property {Number} [defaultValue] -
      * @property {String} [label] -
      * @property {String} [leadingIcon] -
@@ -50,93 +35,6 @@ class MDNumberFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [min] - 
-     * @property {Number} [max] - 
-     * @property {Number} [step] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {Number} [value] - 
-     * @property {Number} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [min] - 
-     * @property {Number} [max] - 
-     * @property {Number} [step] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {Number} [value] - 
-     * @property {Number} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
-     * @property {String} [ui] - filled,outlined,rounded
-     */
-    /**
-     *
-     * @property {String} [name] - 
-     * @property {String} [placeholder] - 
-     * @property {Number} [min] - 
-     * @property {Number} [max] - 
-     * @property {Number} [step] - 
-     * @property {Boolean} [readonly] - 
-     * @property {Boolean} [disabled] - 
-     * @property {Boolean} [required] - 
-     * @property {String} [autocomplete] - 
-     * @property {Boolean} [autofocus] - 
-     * @property {String} [list] - 
-     * @property {Boolean} [spellcheck] - 
-     * @property {Number} [value] - 
-     * @property {Number} [defaultValue] - 
-     * @property {String} [label] - 
-     * @property {String} [leadingIcon] - 
-     * @property {String} [leadingMeta] - 
-     * @property {String} [trailingMeta] - 
-     * @property {Array} [trailingActions] - 
-     * @property {String} [trailingIcon] - 
-     * @property {String} [text] - 
-     * @property {Boolean} [focused] - 
-     * @property {Boolean} [populated] - 
-     * @property {Boolean} [invalid] - 
-     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -176,28 +74,10 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     constructor() {
         super();
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -252,30 +132,12 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-number-field");
         await this.updateComplete;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -293,30 +155,12 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     /**
      *
      */
@@ -336,15 +180,6 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      */
-    /**
-     *
-     */
-    /**
-     *
-     */
-    /**
-     *
-     */
     get numberFieldNative() {
         return this.querySelector(".md-number-field__native");
     }
@@ -353,18 +188,6 @@ class MDNumberFieldComponent extends MDElement {
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeActionClick
      */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionClick 
-     */
     handleNumberFieldNativeActionClick(event) {
         this.emit("onNumberFieldNativeActionClick", event);
     }
@@ -372,18 +195,6 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepDownClick
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepDownClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepDownClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepDownClick 
      */
     handleNumberFieldNativeActionStepDownClick(event) {
         this.numberFieldNative.stepDown();
@@ -397,18 +208,6 @@ class MDNumberFieldComponent extends MDElement {
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepUpClick
      */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepUpClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepUpClick 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeActionStepUpClick 
-     */
     handleNumberFieldNativeActionStepUpClick(event) {
         this.numberFieldNative.stepUp();
 
@@ -421,18 +220,6 @@ class MDNumberFieldComponent extends MDElement {
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeFocus
      */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeFocus 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeFocus 
-     */
     handleNumberFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onNumberFieldNativeFocus", event);
@@ -442,18 +229,6 @@ class MDNumberFieldComponent extends MDElement {
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeBlur
      */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeBlur 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeBlur 
-     */
     handleNumberFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onNumberFieldNativeBlur", event);
@@ -462,18 +237,6 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeInput
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInput 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInput 
      */
     handleNumberFieldNativeInput(event) {
         this.value = this.numberFieldNative.value;
@@ -487,18 +250,6 @@ class MDNumberFieldComponent extends MDElement {
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeInvalid
      */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInvalid 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeInvalid 
-     */
     handleNumberFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.numberFieldNative.validationMessage;
@@ -509,18 +260,6 @@ class MDNumberFieldComponent extends MDElement {
     /**
      *
      * @fires MDNumberFieldComponent#onNumberFieldNativeReset
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeReset 
-     */
-    /**
-     *
-     * @fires MDNumberFieldComponent#onNumberFieldNativeReset 
      */
     handleNumberFieldNativeReset(event) {
         this.numberFieldNative.value = this.defaultValue;
