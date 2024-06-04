@@ -9,6 +9,9 @@ function open(pathname) {
         } else {
             if (dir.name.endsWith(".js")) {
                 let content = read(pathname2, "");
+
+                content = content.replace(/\/\*\*(?:.|\n)*?\*\//gm, "");
+
                 content = parse(content);
                 write(pathname2, content);
             }
@@ -27,8 +30,12 @@ function write(file, content) {
     } catch (error) {}
     fs.writeFileSync(file, content);
 }
-const content = read("./src/com/nested-list/nested-list.js");
-// parse(content);
+// let content = read("./src/com/nested-list/nested-list.js");
+
+// content=content.replace(/\/\*\*(?:.|\n)*?\*\//gm,'')
+
+// content=parse(content);
+// write("./src/dev/example.cjs", content);
 function parse(content) {
     content = content.replace(/^(class.*?\{)([\s\S]+?)(^\})/gm, ($, $1, $2, $3) => {
         let content = $1 + $2 + $3;
@@ -69,16 +76,16 @@ function parse(content) {
             }
         }
 
-        // console.log({
-        //     className,
-        //     inheritName,
-        //     tagName,
-        //     properties,
-        //     methods,
-        //     events,
-        //     functions,
-        //     variants,
-        // });
+        console.log({
+            className,
+            inheritName,
+            tagName,
+            properties,
+            methods,
+            events,
+            functions,
+            variants,
+        });
 
         content = content.replace(/(class )/, ($, $1) => {
             let data = "";
@@ -133,6 +140,6 @@ function parse(content) {
 
         return content;
     });
-    // fs.writeFileSync("./src/dev/example.cjs", content);
+    //
     return content;
 }

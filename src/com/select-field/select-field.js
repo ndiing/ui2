@@ -50,8 +50,8 @@ class MDSelectFieldComponent extends MDElement {
             defaultValue: { type: String },
 
             options: { type: Array },
-            selectedOptions: { type: Array },
-            selectedIndex: { type: Number },
+            // selectedOptions: { type: Array },
+            // selectedIndex: { type: Number },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -100,7 +100,7 @@ class MDSelectFieldComponent extends MDElement {
                         .autofocus="${ifDefined(this.autofocus)}"
                         .autocomplete="${ifDefined(this.autocomplete)}"
                         .spellcheck="${ifDefined(this.spellcheck)}"
-                        .value="${ifDefined(this.value)}"
+                        .value="${this.options[this.selectedIndex].label}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handleSelectFieldNativeFocus}"
                         @blur="${this.handleSelectFieldNativeBlur}"
@@ -154,10 +154,6 @@ class MDSelectFieldComponent extends MDElement {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
-
-        // options
-        // selectedOptions
-        // selectedIndex
     }
 
     /**
@@ -181,6 +177,13 @@ class MDSelectFieldComponent extends MDElement {
      */
     get selectFieldNative() {
         return this.querySelector(".md-select-field__native");
+    }
+
+    get selectedOptions() {
+        return this.options.filter((option) => option.selected);
+    }
+    get selectedIndex() {
+        return this.options.findIndex((option) => option.selected);
     }
 
     /**
@@ -207,18 +210,32 @@ class MDSelectFieldComponent extends MDElement {
     handleMenu() {
         this.menu = document.createElement("md-menu");
         this.parentElement.insertBefore(this.menu, this.nextElementSibling);
-        if (this.value) this.menu.value = this.value;
+        this.menu.singleSelection = true;
+        this.menu.list = this.options;
 
         const callback = () => {
             this.menu.removeEventListener("onMenuClose", callback);
+            this.menu.removeEventListener("onListItemClick", this.handleListItemClick);
             this.menu.remove();
         };
 
+        this.handleListItemClick = this.handleListItemClick.bind(this);
+
         this.menu.addEventListener("onMenuClose", callback);
+        this.menu.addEventListener("onListItemClick", this.handleListItemClick);
 
         window.requestAnimationFrame(() => {
             this.menu.show(this);
         });
+    }
+
+    /**
+     *
+     * @fires MDSelectFieldComponent#onListItemClick
+     */
+    handleListItemClick(event) {
+        this.requestUpdate();
+        this.emit("onListItemClick", event);
     }
 
     /**

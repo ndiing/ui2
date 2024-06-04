@@ -17,6 +17,7 @@ class AppSelectFieldElement extends MDElement {
                         <md-select-field
                             label="Select Field"
                             name="color0"
+                            .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"
                         ></md-select-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -24,6 +25,7 @@ class AppSelectFieldElement extends MDElement {
                             label="Select Field (value)"
                             name="color1"
                             value="1990-10-17"
+                            .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"
                         ></md-select-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -31,6 +33,7 @@ class AppSelectFieldElement extends MDElement {
                             label="Select Field (required)"
                             name="color2"
                             required
+                            .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"
                         ></md-select-field>
                     </div>
 
