@@ -8,7 +8,7 @@ import "./ripple/ripple.js";
 import "./popper/popper.js";
 import "./virtual-scroll/virtual-scroll.js";
 import "./gesture/gesture.js";
-import "./data/data.js";
+import "./store/store.js";
 import "./element/element.js";
 import "./image/image.js";
 import "./icon/icon.js";

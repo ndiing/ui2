@@ -4,7 +4,7 @@ import { msg } from "@lit/localize";
 import { toTitleCase } from "../../com/mixin/mixin";
 import { layout } from "../../com/layout/layout";
 import { MDRouterModule } from "../../com/router/router";
-import { MDDataModule } from "../../com/data/data";
+// import { MDDataModule } from "../../com/data/data";
 
 class AppMainElement extends MDElement {
     constructor() {
