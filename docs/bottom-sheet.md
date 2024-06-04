@@ -70,11 +70,10 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | modal |
-| [open] | <code>Boolean</code> | - |
-
+| [leadingActions] | <code>Array</code> | Represents actions aligned to the start of the bottom sheet. |
+| [label] | <code>String</code> | Represents the label of the bottom sheet. |
+| [subLabel] | <code>String</code> | Represents the sub-label of the bottom sheet. |
+| [trailingActions] | <code>Array</code> | Represents actions aligned to the end of the bottom sheet. |
+| [buttons] | <code>Array</code> | Represents buttons within the bottom sheet. |
+| [ui] | <code>String</code> | Represents the UI style of the bottom sheet. In this case, it is set to 'modal'. |
+| [open] | <code>Boolean</code> | Indicates whether the bottom sheet is open. |

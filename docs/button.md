@@ -42,9 +42,9 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [icon] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [ui] | <code>String</code> | elevated,filled,tonal,outlined |
-| [type] | <code>String</code> | - |
-| [selected] | <code>Boolean</code> | - |
+| [icon] | <code>String</code> | Represents the icon associated with the button. |
+| [label] | <code>String</code> | Represents the label displayed on the button. |
+| [ui] | <code>String</code> | Represents the UI style of the button. Possible values are 'elevated', 'filled', 'tonal', and 'outlined'. |
+| [type] | <code>String</code> | Represents the type of the button. |
+| [selected] | <code>Boolean</code> | Indicates whether the button is selected or not. |
 

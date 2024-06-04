@@ -32,6 +32,5 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [label] | <code>Number</code> | - |
-| [max] | <code>Number</code> | - |
-
+| [label] | <code>Number</code> | Represents the label displayed on the badge. |
+| [max] | <code>Number</code> | Represents the maximum value that the badge can display. |

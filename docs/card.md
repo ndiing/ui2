@@ -37,11 +37,12 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [image] | <code>String</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | elevated,filled,outlined |
+| [leadingActions] | <code>Array</code> | Represents actions aligned to the start of the component. |
+| [label] | <code>String</code> | Represents the main label of the component. |
+| [subLabel] | <code>String</code> | Represents the sub-label or additional information of the component. |
+| [trailingActions] | <code>Array</code> | Represents actions aligned to the end of the component. |
+| [image] | <code>String</code> | Represents the image associated with the component. |
+| [buttons] | <code>Array</code> | Represents buttons within the component. |
+| [ui] | <code>String</code> | Represents the UI style of the component. Possible values are 'elevated', 'filled', and 'outlined'. |
+
 

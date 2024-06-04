@@ -65,16 +65,16 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [autocapitalize] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [checked] | <code>Boolean</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [defaultChecked] | <code>Boolean</code> | - |
-| [indeterminate] | <code>Boolean</code> | - |
-| [defaultIndeterminate] | <code>Boolean</code> | - |
+| [autocapitalize] | <code>String</code> | Specifies whether the text of the checkbox should be automatically capitalized. |
+| [disabled] | <code>Boolean</code> | Indicates whether the checkbox is disabled or not. |
+| [form] | <code>String</code> | Specifies the name of the form the checkbox belongs to. |
+| [name] | <code>String</code> | Specifies the name of the checkbox. |
+| [required] | <code>Boolean</code> | Indicates whether the checkbox is required to be checked before form submission. |
+| [type] | <code>String</code> | Specifies the type of the checkbox. |
+| [value] | <code>String</code> | Specifies the value of the checkbox. |
+| [checked] | <code>Boolean</code> | Indicates whether the checkbox is checked or not. |
+| [defaultValue] | <code>String</code> | Specifies the default value of the checkbox. |
+| [defaultChecked] | <code>Boolean</code> | Indicates whether the checkbox is initially checked by default. |
+| [indeterminate] | <code>Boolean</code> | Indicates whether the checkbox is in an indeterminate state. |
+| [defaultIndeterminate] | <code>Boolean</code> | Indicates whether the checkbox is initially in an indeterminate state by default. |
 

@@ -59,12 +59,11 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | - |
-| [open] | <code>Boolean</code> | - |
-| [fab] | <code>Object</code> | - |
-
+| [leadingActions] | <code>Array</code> | Represents actions aligned to the start of the bottom app bar. |
+| [label] | <code>String</code> | Represents the label of the bottom app bar. |
+| [subLabel] | <code>String</code> | Represents the sub-label of the bottom app bar. |
+| [trailingActions] | <code>Array</code> | Represents actions aligned to the end of the bottom app bar. |
+| [buttons] | <code>Array</code> | Represents buttons within the bottom app bar. |
+| [ui] | <code>String</code> | Represents the UI style of the bottom app bar. |
+| [open] | <code>Boolean</code> | Indicates whether the bottom app bar is open. |
+| [fab] | <code>Object</code> | Represents the floating action button associated with the bottom app bar. |
