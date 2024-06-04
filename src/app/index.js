@@ -62,6 +62,7 @@ const routes = [
             { path: "week-field", load: () => import("./week-field/week-field.js").then((m) => m.default) },
             { path: "time-field", load: () => import("./time-field/time-field.js").then((m) => m.default) },
             { path: "textarea-field", load: () => import("./textarea-field/textarea-field.js").then((m) => m.default) },
+            { path: "select-field", load: () => import("./select-field/select-field.js").then((m) => m.default) },
             { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
         ],
     },
@@ -71,3 +72,4 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
+

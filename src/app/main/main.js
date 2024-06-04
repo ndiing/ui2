@@ -109,6 +109,7 @@ class AppMainElement extends MDElement {
                     { leafIcon: "deployed_code", label: "Week Field", routerLink: "/week-field" },
                     { leafIcon: "deployed_code", label: "Time Field", routerLink: "/time-field" },
                     { leafIcon: "deployed_code", label: "Textarea Field", routerLink: "/textarea-field" },
+                    { leafIcon: "deployed_code", label: "Select Field", routerLink: "/select-field" },
                 ],
             },
         ];

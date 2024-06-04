@@ -45,7 +45,6 @@ import "./color-picker/color-picker.js";
 import "./chips/chips.js";
 import "./slider/slider.js";
 import "./progress-indicator/progress-indicator.js";
-
 import "./text-field/text-field.js";
 import "./number-field/number-field.js";
 import "./tel-field/tel-field.js";
@@ -61,5 +60,5 @@ import "./month-field/month-field.js";
 import "./week-field/week-field.js";
 import "./time-field/time-field.js";
 import "./textarea-field/textarea-field.js";
-
 import "./data-table/data-table.js";
+import "./select-field/select-field.js";
