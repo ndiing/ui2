@@ -9,19 +9,19 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDCheckboxComponent extends MDElement {
     /**
-     *
-     * @property {String} [autocapitalize] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [name] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {Boolean} [checked] -
-     * @property {String} [defaultValue] -
-     * @property {Boolean} [defaultChecked] -
-     * @property {Boolean} [indeterminate] -
-     * @property {Boolean} [defaultIndeterminate] -
+     * Properties of the MDCheckboxComponent.
+     * @property {String} [autocapitalize] - Specifies whether the browser should automatically capitalize the checkbox's value.
+     * @property {Boolean} [disabled] - Specifies whether the checkbox is disabled.
+     * @property {String} [form] - Specifies the form element that the checkbox belongs to.
+     * @property {String} [name] - Specifies the name of the checkbox.
+     * @property {Boolean} [required] - Specifies whether the checkbox is required.
+     * @property {String} [type] - Specifies the type of the checkbox.
+     * @property {String} [value] - Specifies the value of the checkbox.
+     * @property {Boolean} [checked] - Specifies whether the checkbox is checked by default.
+     * @property {String} [defaultValue] - Specifies the default value of the checkbox.
+     * @property {Boolean} [defaultChecked] - Specifies whether the checkbox is checked by default.
+     * @property {Boolean} [indeterminate] - Specifies whether the checkbox is in an indeterminate state.
+     * @property {Boolean} [defaultIndeterminate] - Specifies whether the checkbox is in an indeterminate state by default.
      */
     static get properties() {
         return {

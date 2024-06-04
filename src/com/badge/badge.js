@@ -8,9 +8,9 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDBadgeComponent extends MDElement {
     /**
-     *
-     * @property {Number} [label] -
-     * @property {Number} [max] -
+     * Properties of the MDBadgeComponent.
+     * @property {Number} [label] - The label or value displayed on the badge.
+     * @property {Number} [max] - The maximum value or limit for the badge.
      */
     static get properties() {
         return {

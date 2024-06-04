@@ -8,14 +8,14 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDCardComponent extends MDElement {
     /**
-     *
-     * @property {Array} [leadingActions] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {Array} [trailingActions] -
-     * @property {String} [image] -
-     * @property {Array} [buttons] -
-     * @property {String} [ui] - elevated,filled,outlined
+     * Properties of the MDCardComponent.
+     * @property {Array} [leadingActions] - Actions displayed on the leading side of the card.
+     * @property {String} [label] - The main label of the card.
+     * @property {String} [subLabel] - The sublabel of the card.
+     * @property {Array} [trailingActions] - Actions displayed on the trailing side of the card.
+     * @property {String} [image] - URL of the image displayed on the card.
+     * @property {Array} [buttons] - Buttons displayed on the card.
+     * @property {String} [ui] - Specifies the UI style of the card. Possible values are 'elevated', 'filled', 'outlined'.
      */
     static get properties() {
         return {

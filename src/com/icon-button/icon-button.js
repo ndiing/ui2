@@ -9,11 +9,11 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDIconButtonComponent extends MDElement {
     /**
-     *
-     * @property {String} [icon] -
-     * @property {String} [ui] - filled,tonal,outlined
-     * @property {Boolean} [toggle] -
-     * @property {Boolean} [selected] -
+     * Properties of the MDIconButtonComponent.
+     * @property {String} [icon] - The icon of the button.
+     * @property {String} [ui] - The UI style of the button. Possible values are 'filled', 'tonal', and 'outlined'.
+     * @property {Boolean} [toggle] - Indicates if the button is toggleable.
+     * @property {Boolean} [selected] - Indicates if the button is selected.
      */
     static get properties() {
         return {

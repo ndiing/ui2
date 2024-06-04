@@ -8,11 +8,11 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDImageComponent extends MDElement {
     /**
-     *
-     * @property {String} [src] -
-     * @property {String} [alt] -
-     * @property {String} [ratio] -
-     * @property {String} [ui] - rounded
+     * Properties of the MDImageComponent.
+     * @property {String} [src] - The source of the image.
+     * @property {String} [alt] - The alternate text of the image.
+     * @property {String} [ratio] - The ratio of the image.
+     * @property {String} [ui] - The UI style of the image. Possible values are 'rounded', 'square', 'circle', etc.
      */
     static get properties() {
         return {
@@ -22,6 +22,7 @@ class MDImageComponent extends MDElement {
             ui: { type: String },
         };
     }
+
 
     /**
      *

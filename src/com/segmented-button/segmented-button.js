@@ -8,12 +8,12 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDSegmentedButtonComponent extends MDElement {
     /**
-     *
-     * @property {Array} [buttons] -
-     * @property {Boolean} [rangeSelection] -
-     * @property {Boolean} [multiSelection] -
-     * @property {Boolean} [singleSelection] -
-     * @property {Boolean} [allSelection] -
+     * Properties of the MDSegmentedButtonComponent.
+     * @property {Array} [buttons] - An array of buttons in the segmented button component.
+     * @property {Boolean} [rangeSelection] - Indicates if range selection is enabled for the buttons.
+     * @property {Boolean} [multiSelection] - Indicates if multi-selection is enabled for the buttons.
+     * @property {Boolean} [singleSelection] - Indicates if single-selection is enabled for the buttons.
+     * @property {Boolean} [allSelection] - Indicates if selecting all buttons is enabled.
      */
     static get properties() {
         return {

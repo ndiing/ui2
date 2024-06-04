@@ -9,20 +9,20 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDSwitchComponent extends MDElement {
     /**
-     *
-     * @property {String} [autocapitalize] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [name] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {Boolean} [checked] -
-     * @property {String} [defaultValue] -
-     * @property {Boolean} [defaultChecked] -
-     * @property {Boolean} [indeterminate] -
-     * @property {Boolean} [defaultIndeterminate] -
-     * @property {Array} [icons] -
+     * Properties of the MDSwitchComponent.
+     * @property {String} [autocapitalize] - Specifies whether the browser should automatically capitalize the switch's value.
+     * @property {Boolean} [disabled] - Specifies whether the switch is disabled.
+     * @property {String} [form] - Specifies the form element that the switch belongs to.
+     * @property {String} [name] - Specifies the name of the switch.
+     * @property {Boolean} [required] - Specifies whether the switch is required.
+     * @property {String} [type] - Specifies the type of the switch.
+     * @property {String} [value] - Specifies the value of the switch.
+     * @property {Boolean} [checked] - Specifies whether the switch is checked by default.
+     * @property {String} [defaultValue] - Specifies the default value of the switch.
+     * @property {Boolean} [defaultChecked] - Specifies whether the switch is checked by default.
+     * @property {Boolean} [indeterminate] - Specifies whether the switch is in an indeterminate state.
+     * @property {Boolean} [defaultIndeterminate] - Specifies whether the switch is in an indeterminate state by default.
+     * @property {Array} [icons] - Specifies the icons for the switch.
      */
     static get properties() {
         return {

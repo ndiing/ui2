@@ -10,19 +10,19 @@ import { choose } from "lit/directives/choose.js";
  */
 class MDNestedListItemComponent extends MDElement {
     /**
-     *
-     * @property {String} [label] -
-     * @property {Boolean} [selected] -
-     * @property {String} [routerLink] -
-     * @property {Number} [indent] -
-     * @property {Boolean} [isNode] -
-     * @property {String} [ui] -
-     * @property {Boolean} [expanded] -
-     * @property {Boolean} [activated] -
-     * @property {Boolean} [isParent] -
-     * @property {Boolean} [hasLevel] -
-     * @property {Array} [nodeIcons] -
-     * @property {String} [leafIcon] -
+     * Properties of the MDNestedListItemComponent.
+     * @property {String} [label] - The label text of the nested list item.
+     * @property {Boolean} [selected] - Indicates if the item is selected.
+     * @property {String} [routerLink] - The URL for router link.
+     * @property {Number} [indent] - The indentation level of the item.
+     * @property {Boolean} [isNode] - Indicates if the item is a node.
+     * @property {String} [ui] - UI style of the item.
+     * @property {Boolean} [expanded] - Indicates if the item is expanded.
+     * @property {Boolean} [activated] - Indicates if the item is activated.
+     * @property {Boolean} [isParent] - Indicates if the item is a parent node.
+     * @property {Boolean} [hasLevel] - Indicates if the item has a level.
+     * @property {Array} [nodeIcons] - Icons for the node.
+     * @property {String} [leafIcon] - Icon for leaf nodes.
      */
     static get properties() {
         return {
@@ -223,13 +223,13 @@ customElements.define("md-nested-list-row", MDNestedListRowComponent);
  */
 class MDNestedListComponent extends MDElement {
     /**
-     *
-     * @property {Array} [list] -
-     * @property {Boolean} [rangeSelection] -
-     * @property {Boolean} [multiSelection] -
-     * @property {Boolean} [singleSelection] -
-     * @property {Boolean} [allSelection] -
-     * @property {String} [ui] - tree,level,accordion
+     * Properties of the MDNestedListComponent.
+     * @property {Array} [list] - The array of items to display in the nested list.
+     * @property {Boolean} [rangeSelection] - Indicates if range selection is enabled.
+     * @property {Boolean} [multiSelection] - Indicates if multiple selection is enabled.
+     * @property {Boolean} [singleSelection] - Indicates if single selection is enabled.
+     * @property {Boolean} [allSelection] - Indicates if selecting all items is enabled.
+     * @property {String} [ui] - Specifies the UI style of the nested list. Possible values are 'tree', 'level', 'accordion'.
      */
     static get properties() {
         return {

@@ -9,10 +9,10 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDFabComponent extends MDElement {
     /**
-     *
-     * @property {String} [icon] -
-     * @property {String} [label] -
-     * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
+     * Properties of the MDFabComponent.
+     * @property {String} [icon] - The icon to display on the FAB.
+     * @property {String} [label] - The label for accessibility purposes.
+     * @property {String} [ui] - Specifies the UI style of the FAB. Possible values are 'small', 'large', 'extended', 'surface', 'secondary', 'tertiary', 'unelevated'.
      */
     static get properties() {
         return {

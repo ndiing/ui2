@@ -8,14 +8,14 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDDialogComponent extends MDElement {
     /**
-     *
-     * @property {Array} [leadingActions] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {Array} [trailingActions] -
-     * @property {Array} [buttons] -
-     * @property {String} [ui] - full-screen
-     * @property {Boolean} [open] -
+     * Properties of the MDDialogComponent.
+     * @property {Array} [leadingActions] - Actions displayed on the leading side of the dialog.
+     * @property {String} [label] - The main label of the dialog.
+     * @property {String} [subLabel] - The sublabel of the dialog.
+     * @property {Array} [trailingActions] - Actions displayed on the trailing side of the dialog.
+     * @property {Array} [buttons] - Buttons displayed on the dialog.
+     * @property {String} [ui] - Specifies the UI style of the dialog. Possible value is 'full-screen'.
+     * @property {Boolean} [open] - Indicates whether the dialog is open.
      */
     static get properties() {
         return {

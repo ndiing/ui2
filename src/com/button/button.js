@@ -9,12 +9,12 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDButtonComponent extends MDElement {
     /**
-     *
-     * @property {String} [icon] -
-     * @property {String} [label] -
-     * @property {String} [ui] - elevated,filled,tonal,outlined
-     * @property {String} [type] -
-     * @property {Boolean} [selected] -
+     * Properties of the MDButtonComponent.
+     * @property {String} [icon] - The icon to display on the button.
+     * @property {String} [label] - The label text of the button.
+     * @property {String} [ui] - Specifies the UI style of the button. Possible values are 'elevated', 'filled', 'tonal', 'outlined'.
+     * @property {String} [type] - The type of the button (e.g., 'submit', 'reset', 'button').
+     * @property {Boolean} [selected] - Indicates if the button is selected.
      */
     static get properties() {
         return {

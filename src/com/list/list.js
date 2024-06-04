@@ -9,24 +9,24 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDListItemComponent extends MDElement {
     /**
-     *
-     * @property {String} [avatar] -
-     * @property {String} [thumbnail] -
-     * @property {String} [video] -
-     * @property {Object} [leadingCheckbox] -
-     * @property {Object} [leadingRadioButton] -
-     * @property {Object} [leadingSwitch] -
-     * @property {String} [leadingIcon] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {String} [trailingIcon] -
-     * @property {Object} [trailingCheckbox] -
-     * @property {Object} [trailingRadioButton] -
-     * @property {Object} [trailingSwitch] -
-     * @property {String} [text] -
-     * @property {Object} [badge] -
-     * @property {Boolean} [selected] -
-     * @property {String} [routerLink] -
+     * Properties of the MDListItemComponent.
+     * @property {String} [avatar] - URL of the avatar image.
+     * @property {String} [thumbnail] - URL of the thumbnail image.
+     * @property {String} [video] - URL of the video.
+     * @property {Object} [leadingCheckbox] - Leading checkbox object.
+     * @property {Object} [leadingRadioButton] - Leading radio button object.
+     * @property {Object} [leadingSwitch] - Leading switch object.
+     * @property {String} [leadingIcon] - Leading icon name.
+     * @property {String} [label] - Main label text.
+     * @property {String} [subLabel] - Sublabel text.
+     * @property {String} [trailingIcon] - Trailing icon name.
+     * @property {Object} [trailingCheckbox] - Trailing checkbox object.
+     * @property {Object} [trailingRadioButton] - Trailing radio button object.
+     * @property {Object} [trailingSwitch] - Trailing switch object.
+     * @property {String} [text] - Additional text content.
+     * @property {Object} [badge] - Badge object.
+     * @property {Boolean} [selected] - Indicates if the item is selected.
+     * @property {String} [routerLink] - URL for router link.
      */
     static get properties() {
         return {
@@ -228,12 +228,12 @@ customElements.define("md-list-row", MDListRowComponent);
  */
 class MDListComponent extends MDElement {
     /**
-     *
-     * @property {Array} [list] -
-     * @property {Boolean} [rangeSelection] -
-     * @property {Boolean} [multiSelection] -
-     * @property {Boolean} [singleSelection] -
-     * @property {Boolean} [allSelection] -
+     * Properties of the MDListComponent.
+     * @property {Array} [list] - The array of items to display in the list.
+     * @property {Boolean} [rangeSelection] - Indicates if range selection is enabled.
+     * @property {Boolean} [multiSelection] - Indicates if multiple selection is enabled.
+     * @property {Boolean} [singleSelection] - Indicates if single selection is enabled.
+     * @property {Boolean} [allSelection] - Indicates if selecting all items is enabled.
      */
     static get properties() {
         return {

@@ -9,19 +9,19 @@ import { MDRippleModule } from "../ripple/ripple";
  */
 class MDRadioButtonComponent extends MDElement {
     /**
-     *
-     * @property {String} [autocapitalize] -
-     * @property {Boolean} [disabled] -
-     * @property {String} [form] -
-     * @property {String} [name] -
-     * @property {Boolean} [required] -
-     * @property {String} [type] -
-     * @property {String} [value] -
-     * @property {Boolean} [checked] -
-     * @property {String} [defaultValue] -
-     * @property {Boolean} [defaultChecked] -
-     * @property {Boolean} [indeterminate] -
-     * @property {Boolean} [defaultIndeterminate] -
+     * Properties of the MDRadioButtonComponent.
+     * @property {String} [autocapitalize] - Specifies whether the browser should automatically capitalize the radio button's value.
+     * @property {Boolean} [disabled] - Specifies whether the radio button is disabled.
+     * @property {String} [form] - Specifies the form element that the radio button belongs to.
+     * @property {String} [name] - Specifies the name of the radio button.
+     * @property {Boolean} [required] - Specifies whether the radio button is required.
+     * @property {String} [type] - Specifies the type of the radio button.
+     * @property {String} [value] - Specifies the value of the radio button.
+     * @property {Boolean} [checked] - Specifies whether the radio button is checked by default.
+     * @property {String} [defaultValue] - Specifies the default value of the radio button.
+     * @property {Boolean} [defaultChecked] - Specifies whether the radio button is checked by default.
+     * @property {Boolean} [indeterminate] - Specifies whether the radio button is in an indeterminate state.
+     * @property {Boolean} [defaultIndeterminate] - Specifies whether the radio button is in an indeterminate state by default.
      */
     static get properties() {
         return {
