@@ -23,7 +23,6 @@ class MDImageComponent extends MDElement {
         };
     }
 
-
     /**
      *
      */

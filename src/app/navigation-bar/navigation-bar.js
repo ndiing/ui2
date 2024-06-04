@@ -22,34 +22,19 @@ class AppNavigationBarElement extends MDElement {
     render() {
         return html`
             <div class="md-layout-border md-layout-fit">
-                <md-navigation-bar
-                    .list="${this.list1}"
-                    id="navigationDrawer1"
-                ></md-navigation-bar>
+                <md-navigation-bar .list="${this.list1}" id="navigationDrawer1"></md-navigation-bar>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
                     <div class="md-layout-border md-layout-fit">
-                        <md-navigation-bar
-                            .list="${this.list2}"
-                            id="navigationDrawer2"
-                        ></md-navigation-bar>
+                        <md-navigation-bar .list="${this.list2}" id="navigationDrawer2"></md-navigation-bar>
 
                         <div class="md-layout-border__item md-layout-border__item--center">
-                            <div
-                                class="md-layout-column"
-                                style="margin:24px;"
-                            >
+                            <div class="md-layout-column" style="margin:24px;">
                                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                                    <md-button
-                                        @click="${() => navigationDrawer1.toggle()}"
-                                        label="navigation-bar"
-                                    ></md-button>
+                                    <md-button @click="${() => navigationDrawer1.toggle()}" label="navigation-bar"></md-button>
                                 </div>
                                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                                    <md-button
-                                        @click="${() => navigationDrawer2.toggle()}"
-                                        label="navigation-bar"
-                                    ></md-button>
+                                    <md-button @click="${() => navigationDrawer2.toggle()}" label="navigation-bar"></md-button>
                                 </div>
                             </div>
                         </div>

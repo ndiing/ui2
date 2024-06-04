@@ -4,10 +4,7 @@ import { MDElement } from "../../com/element/element";
 class AppDatetimePickerElement extends MDElement {
     render() {
         return html`
-            <div
-                class="md-layout-column"
-                style="margin:24px;"
-            >
+            <div class="md-layout-column" style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-datetime-picker
                         id="dateTimePicker1"
@@ -17,11 +14,7 @@ class AppDatetimePickerElement extends MDElement {
                         @onDatetimePickerButtonOkClick="${(event) => dateTimePicker1.close()}"
                         @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker1.close()}"
                     ></md-datetime-picker>
-                    <md-button
-                        id="button1"
-                        @click="${(event) => dateTimePicker1.show(event.currentTarget)}"
-                        label="datetime-picker"
-                    ></md-button>
+                    <md-button id="button1" @click="${(event) => dateTimePicker1.show(event.currentTarget)}" label="datetime-picker"></md-button>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
@@ -34,11 +27,7 @@ class AppDatetimePickerElement extends MDElement {
                         @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker2.close()}"
                         value="1990-10-17T20:30"
                     ></md-datetime-picker>
-                    <md-button
-                        id="button1"
-                        @click="${(event) => dateTimePicker2.show(event.currentTarget)}"
-                        label="datetime-picker"
-                    ></md-button>
+                    <md-button id="button1" @click="${(event) => dateTimePicker2.show(event.currentTarget)}" label="datetime-picker"></md-button>
                 </div>
             </div>
         `;

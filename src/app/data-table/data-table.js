@@ -41,13 +41,7 @@ class AppDataTableElement extends MDElement {
             });
     }
     render() {
-        return html`
-            <md-data-table
-                .columns="${this.columns3}"
-                .rows="${this.rows3}"
-                checkbox
-            ></md-data-table>
-        `;
+        return html` <md-data-table .columns="${this.columns3}" .rows="${this.rows3}" checkbox></md-data-table> `;
     }
 }
 

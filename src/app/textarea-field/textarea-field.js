@@ -9,40 +9,20 @@ class AppTextareaFieldElement extends MDElement {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
                 }}"
             >
-                <div
-                    class="md-layout-column"
-                    style="margin:24px;"
-                >
+                <div class="md-layout-column" style="margin:24px;">
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-textarea-field
-                            label="Textarea Field"
-                            name="number"
-                        ></md-textarea-field>
+                        <md-textarea-field label="Textarea Field" name="number"></md-textarea-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-textarea-field
-                            label="Textarea Field (value)"
-                            name="number"
-                            value="123456"
-                        ></md-textarea-field>
+                        <md-textarea-field label="Textarea Field (value)" name="number" value="123456"></md-textarea-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-textarea-field
-                            label="Textarea Field (required)"
-                            name="number"
-                            required
-                        ></md-textarea-field>
+                        <md-textarea-field label="Textarea Field (required)" name="number" required></md-textarea-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-button
-                            type="reset"
-                            label="Reset"
-                        ></md-button>
-                        <md-button
-                            type="submit"
-                            label="Submit"
-                        ></md-button>
+                        <md-button type="reset" label="Reset"></md-button>
+                        <md-button type="submit" label="Submit"></md-button>
                     </div>
                 </div>
             </md-form>

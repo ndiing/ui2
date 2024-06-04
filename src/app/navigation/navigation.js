@@ -86,98 +86,47 @@ class AppNavigationElement extends MDElement {
 
     render() {
         return html`
-            <div
-                class="md-layout-column"
-                style="margin:24px;"
-            >
+            <div class="md-layout-column" style="margin:24px;">
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-bar__list"
-                        .list="${this.list1}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-bar__list" .list="${this.list1}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-bar__list"
-                        .list="${this.list2}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-bar__list" .list="${this.list2}" .singleSelection="${true}"></md-list>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-drawer__list"
-                        .list="${this.list3}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-drawer__list" .list="${this.list3}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-drawer__list"
-                        .list="${this.list4}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-drawer__list" .list="${this.list4}" .singleSelection="${true}"></md-list>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-rail__list"
-                        .list="${this.list5}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-rail__list" .list="${this.list5}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-navigation-rail__list"
-                        .list="${this.list6}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-navigation-rail__list" .list="${this.list6}" .singleSelection="${true}"></md-list>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-tab__list md-tab__list--primary"
-                        .list="${this.list7}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-tab__list md-tab__list--primary" .list="${this.list7}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-tab__list md-tab__list--primary"
-                        .list="${this.list8}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-tab__list md-tab__list--primary" .list="${this.list8}" .singleSelection="${true}"></md-list>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-tab__list md-tab__list--secondary"
-                        .list="${this.list11}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-tab__list md-tab__list--secondary" .list="${this.list11}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-tab__list md-tab__list--secondary"
-                        .list="${this.list12}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-tab__list md-tab__list--secondary" .list="${this.list12}" .singleSelection="${true}"></md-list>
                 </div>
 
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-menu__list"
-                        .list="${this.list9}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-menu__list" .list="${this.list9}" .singleSelection="${true}"></md-list>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-list
-                        class="md-menu__list"
-                        .list="${this.list10}"
-                        .singleSelection="${true}"
-                    ></md-list>
+                    <md-list class="md-menu__list" .list="${this.list10}" .singleSelection="${true}"></md-list>
                 </div>
             </div>
         `;
