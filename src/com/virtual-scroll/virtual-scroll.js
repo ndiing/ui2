@@ -45,33 +45,33 @@ class MDVirtualScrollModule {
             const threshold = this.options.threshold;
             const scrollTop = this.host.scrollTop;
             const viewportHeight = this.host.clientHeight;
-    
+
             this.containerHeight = total * itemHeight;
-    
+
             this.start = Math.floor(scrollTop / itemHeight) - threshold;
             this.start = Math.max(0, this.start);
-    
+
             this.limit = Math.ceil(viewportHeight / itemHeight) + 2 * threshold;
             this.limit = Math.min(total - this.start, this.limit);
-    
+
             this.end = this.start + this.limit;
-    
+
             this.translateY = this.start * itemHeight;
 
             // console.log(
             //     (Math.round((scrollTop/(viewportHeight*threshold))/1)*1)
             // )
-    
+
             this.scrollbar.style.setProperty("height", this.containerHeight + "px");
             this.container.style.setProperty("transform", `translate3d(0%,${this.translateY}px,0px)`);
-    
+
             this.emit("onVirtualScroll", this);
-    
+
             if (this.hasChange !== [this.start, this.end].join()) {
                 this.emit("onVirtualScrollChange", this);
             }
             this.hasChange = [this.start, this.end].join();
-        })
+        });
     }
 
     /**

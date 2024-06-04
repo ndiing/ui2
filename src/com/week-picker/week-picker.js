@@ -107,7 +107,6 @@ class MDWeekPickerComponent extends MDElement {
         });
     }
 
-    
     /**
      *
      */
@@ -123,7 +122,6 @@ class MDWeekPickerComponent extends MDElement {
         }
     }
 
-    
     /**
      *
      */
@@ -142,8 +140,7 @@ class MDWeekPickerComponent extends MDElement {
         this.dayFormat = new Intl.DateTimeFormat(undefined, {
             day: "numeric",
         }).format;
-        
-        
+
         this.dateFormat = new Intl.DateTimeFormat(undefined, {
             year: "numeric",
             month: "long",
@@ -247,7 +244,6 @@ class MDWeekPickerComponent extends MDElement {
         `
     }
 
-    
     /**
      *
      */
@@ -477,7 +473,6 @@ class MDWeekPickerComponent extends MDElement {
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() - 1);
         }
-        
 
         this.requestUpdate();
 
@@ -496,7 +491,6 @@ class MDWeekPickerComponent extends MDElement {
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() + 1);
         }
-        
 
         this.requestUpdate();
 
@@ -553,8 +547,6 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerDayClick", event);
         this.emit("onWeekPickerChange", event);
     }
-
-    
 
     /**
      *

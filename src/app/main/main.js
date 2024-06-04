@@ -114,10 +114,9 @@ class AppMainElement extends MDElement {
             },
         ];
 
-        this.list = this.list.map((item) => item.children).flat();
-
         select(this.list);
         function select(list) {
+            list.sort((a, b) => a.label.localeCompare(b.label));
             list.forEach((item) => {
                 item.selected = item.routerLink == MDRouterModule.path;
                 if (item.children) {
@@ -125,6 +124,8 @@ class AppMainElement extends MDElement {
                 }
             });
         }
+
+        this.list = this.list.map((item) => item.children).flat();
     }
 
     render() {

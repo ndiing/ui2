@@ -105,7 +105,6 @@ class MDDatePickerComponent extends MDElement {
         });
     }
 
-    
     /**
      *
      */
@@ -121,7 +120,6 @@ class MDDatePickerComponent extends MDElement {
         }
     }
 
-    
     /**
      *
      */
@@ -436,7 +434,6 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerLabelPrimaryClick", event);
     }
 
-
     /**
      *
      * @fires MDDatePickerComponent#onDatePickerActionNavigateBeforeClick
@@ -449,7 +446,6 @@ class MDDatePickerComponent extends MDElement {
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() - 1);
         }
-        
 
         this.requestUpdate();
 
@@ -468,7 +464,6 @@ class MDDatePickerComponent extends MDElement {
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() + 1);
         }
-        
 
         this.requestUpdate();
 
@@ -526,7 +521,6 @@ class MDDatePickerComponent extends MDElement {
         this.emit("onDatePickerChange", event);
     }
 
-    
     /**
      *
      * @fires MDDatePickerComponent#onDatePickerButtonCancelClick

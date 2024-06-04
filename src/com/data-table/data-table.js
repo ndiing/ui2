@@ -61,7 +61,7 @@ class MDDataTableNativeComponent extends HTMLTableElement {
                 const { height } = entry.contentRect;
                 this.style.setProperty("--md-data-table-height", height + "px");
             }
-        })
+        });
     }
 
     /**

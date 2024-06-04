@@ -72,4 +72,3 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
-

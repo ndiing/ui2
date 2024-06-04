@@ -67,7 +67,6 @@ class MDMonthPickerComponent extends MDElement {
         });
     }
 
-    
     /**
      *
      */
@@ -83,7 +82,6 @@ class MDMonthPickerComponent extends MDElement {
         }
     }
 
-    
     /**
      *
      */
@@ -96,8 +94,7 @@ class MDMonthPickerComponent extends MDElement {
         this.monthFormat = new Intl.DateTimeFormat(undefined, {
             month: "long",
         }).format;
-        
-        
+
         this.dateFormat = new Intl.DateTimeFormat(undefined, {
             year: "numeric",
             month: "long",
@@ -162,7 +159,6 @@ class MDMonthPickerComponent extends MDElement {
         `
     }
 
-    
     /**
      *
      */
@@ -357,7 +353,6 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerLabelPrimaryClick", event);
     }
 
-    
     /**
      *
      * @fires MDMonthPickerComponent#onMonthPickerActionNavigateBeforeClick
@@ -367,9 +362,7 @@ class MDMonthPickerComponent extends MDElement {
             this.selected.setFullYear(this.selected.getFullYear() - 10);
         } else if (this.index == 1) {
             this.selected.setFullYear(this.selected.getFullYear() - 1);
-        } 
-        
-        
+        }
 
         this.requestUpdate();
 
@@ -385,9 +378,7 @@ class MDMonthPickerComponent extends MDElement {
             this.selected.setFullYear(this.selected.getFullYear() + 10);
         } else if (this.index == 1) {
             this.selected.setFullYear(this.selected.getFullYear() + 1);
-        } 
-        
-        
+        }
 
         this.requestUpdate();
 
@@ -427,7 +418,6 @@ class MDMonthPickerComponent extends MDElement {
         this.emit("onMonthPickerChange", event);
     }
 
-    
     /**
      *
      * @fires MDMonthPickerComponent#onMonthPickerButtonCancelClick

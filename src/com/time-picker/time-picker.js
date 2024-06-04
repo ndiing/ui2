@@ -24,7 +24,6 @@ class MDTimePickerComponent extends MDElement {
         };
     }
 
-    
     /**
      *
      */
@@ -71,8 +70,6 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
-    
-
     /**
      *
      */
@@ -86,7 +83,6 @@ class MDTimePickerComponent extends MDElement {
     constructor() {
         super();
 
-        
         this.hourFormat = new Intl.DateTimeFormat(undefined, {
             hour: "numeric",
             hour12: false,
@@ -113,7 +109,6 @@ class MDTimePickerComponent extends MDElement {
         this.index = 0;
     }
 
-    
     /**
      *
      */
@@ -336,7 +331,6 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerScrimClick", event);
     }
 
-    
     /**
      *
      * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick
@@ -383,7 +377,6 @@ class MDTimePickerComponent extends MDElement {
         this.emit("onTimePickerActionNavigateNextClick", event);
     }
 
-    
     /**
      *
      * @fires MDTimePickerComponent#onTimePickerHourClick

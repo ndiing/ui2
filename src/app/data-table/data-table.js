@@ -49,8 +49,6 @@ class AppDataTableElement extends MDElement {
             ></md-data-table>
         `;
     }
-
-
 }
 
 customElements.define("app-data-table", AppDataTableElement);

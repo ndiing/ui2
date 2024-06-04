@@ -34,56 +34,70 @@
 <a name="toPascalCase"></a>
 
 ## toPascalCase()
+
 **Kind**: global function  
 <a name="toCamelCase"></a>
 
 ## toCamelCase()
+
 **Kind**: global function  
 <a name="toSnakeCase"></a>
 
 ## toSnakeCase()
+
 **Kind**: global function  
 <a name="toKebabCase"></a>
 
 ## toKebabCase()
+
 **Kind**: global function  
 <a name="toFlatCase"></a>
 
 ## toFlatCase()
+
 **Kind**: global function  
 <a name="toUpperFlatCase"></a>
 
 ## toUpperFlatCase()
+
 **Kind**: global function  
 <a name="toPascalSnakeCase"></a>
 
 ## toPascalSnakeCase()
+
 **Kind**: global function  
 <a name="toCamelSnakeCase"></a>
 
 ## toCamelSnakeCase()
+
 **Kind**: global function  
 <a name="toScreamingSnakeCase"></a>
 
 ## toScreamingSnakeCase()
+
 **Kind**: global function  
 <a name="toTrainCase"></a>
 
 ## toTrainCase()
+
 **Kind**: global function  
 <a name="toCobolCase"></a>
 
 ## toCobolCase()
+
 **Kind**: global function  
 <a name="toTitleCase"></a>
 
 ## toTitleCase()
+
 **Kind**: global function  
 <a name="queue"></a>
 
 ## queue()
+
 **Kind**: global function  
 <a name="isDefined"></a>
 
 ## isDefined()
-**Kind**: global function  
+
+**Kind**: global function
