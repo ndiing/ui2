@@ -102,7 +102,7 @@ jsdoc2md ./src/com/ripple/ripple.js > ./docs/ripple.md
 jsdoc2md ./src/com/popper/popper.js > ./docs/popper.md
 jsdoc2md ./src/com/virtual-scroll/virtual-scroll.js > ./docs/virtual-scroll.md
 jsdoc2md ./src/com/gesture/gesture.js > ./docs/gesture.md
-jsdoc2md ./src/com/data/data.js > ./docs/data.md
+jsdoc2md ./src/com/store/store.js > ./docs/store.md
 jsdoc2md ./src/com/element/element.js > ./docs/element.md
 jsdoc2md ./src/com/image/image.js > ./docs/image.md
 jsdoc2md ./src/com/icon/icon.js > ./docs/icon.md
@@ -130,15 +130,18 @@ jsdoc2md ./src/com/snackbar/snackbar.js > ./docs/snackbar.md
 jsdoc2md ./src/com/menu/menu.js > ./docs/menu.md
 jsdoc2md ./src/com/tooltip/tooltip.js > ./docs/tooltip.md
 jsdoc2md ./src/com/tabs/tabs.js > ./docs/tabs.md
+
 jsdoc2md ./src/com/datetime-picker/datetime-picker.js > ./docs/datetime-picker.md
 jsdoc2md ./src/com/date-picker/date-picker.js > ./docs/date-picker.md
 jsdoc2md ./src/com/time-picker/time-picker.js > ./docs/time-picker.md
 jsdoc2md ./src/com/month-picker/month-picker.js > ./docs/month-picker.md
 jsdoc2md ./src/com/week-picker/week-picker.js > ./docs/week-picker.md
 jsdoc2md ./src/com/color-picker/color-picker.js > ./docs/color-picker.md
+
 jsdoc2md ./src/com/chips/chips.js > ./docs/chips.md
 jsdoc2md ./src/com/slider/slider.js > ./docs/slider.md
 jsdoc2md ./src/com/progress-indicator/progress-indicator.js > ./docs/progress-indicator.md
+
 jsdoc2md ./src/com/text-field/text-field.js > ./docs/text-field.md
 jsdoc2md ./src/com/number-field/number-field.js > ./docs/number-field.md
 jsdoc2md ./src/com/tel-field/tel-field.js > ./docs/tel-field.md
@@ -146,14 +149,19 @@ jsdoc2md ./src/com/email-field/email-field.js > ./docs/email-field.md
 jsdoc2md ./src/com/url-field/url-field.js > ./docs/url-field.md
 jsdoc2md ./src/com/password-field/password-field.js > ./docs/password-field.md
 jsdoc2md ./src/com/search-field/search-field.js > ./docs/search-field.md
-jsdoc2md ./src/com/color-field/color-field.js > ./docs/color-field.md
 jsdoc2md ./src/com/file-field/file-field.js > ./docs/file-field.md
+
+jsdoc2md ./src/com/color-field/color-field.js > ./docs/color-field.md
 jsdoc2md ./src/com/datetime-field/datetime-field.js > ./docs/datetime-field.md
 jsdoc2md ./src/com/date-field/date-field.js > ./docs/date-field.md
 jsdoc2md ./src/com/month-field/month-field.js > ./docs/month-field.md
 jsdoc2md ./src/com/week-field/week-field.js > ./docs/week-field.md
 jsdoc2md ./src/com/time-field/time-field.js > ./docs/time-field.md
+
 jsdoc2md ./src/com/textarea-field/textarea-field.js > ./docs/textarea-field.md
+jsdoc2md ./src/com/select-field/select-field.js > ./docs/select-field.md
+
 jsdoc2md ./src/com/data-table/data-table.js > ./docs/data-table.md
+
 
  -->
