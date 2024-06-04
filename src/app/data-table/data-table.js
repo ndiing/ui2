@@ -33,96 +33,24 @@ class AppDataTableElement extends MDElement {
         });
 
         this.data3
-            // .slice(0, 20)
+            .slice(0, 20)
             .getAll()
             .then((response) => {
-                // this.total = this.data3.remoteStore.total_rows;
                 this.rows3 = response;
                 this.requestUpdate();
             });
     }
     render() {
         return html`
-            <!-- <div
-                class="md-layout-column"
-                style="margin:24px;"
-            >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-search-field
-                        placeholder="search"
-                        ui="rounded"
-                        @onSearchFieldNativeSearch="${this.handleSearchFieldNativeSearch}"
-                    ></md-search-field>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4"> -->
             <md-data-table
-                style="height:100vh"
-                id="table3"
                 .columns="${this.columns3}"
                 .rows="${this.rows3}"
                 checkbox
-                @onDataTableColumnCellSortableClick="${this.handleDataTableColumnCellSortableClick}"
-                @onVirtualScrollChange="${this.handleVirtualScrollChange}"
             ></md-data-table>
-            <!-- </div>
-            </div> -->
         `;
     }
 
-    async firstUpdated() {
-        await this.updateComplete;
 
-        this.viewport = this.querySelector("md-data-table table");
-        this.scrollbar = this.querySelector("md-data-table caption");
-        this.container = this.querySelector("md-data-table tbody");
-
-        this.virtualScroll = new MDVirtualScrollModule(this.viewport, {
-            scrollbar: this.scrollbar,
-            container: this.container,
-            itemHeight: 52,
-            total: 100,
-        });
-
-        // console.log(this.virtualScroll)
-    }
-
-    handleVirtualScrollChange(event) {
-        const { start, end } = event.detail;
-
-        this.data3
-            .slice(start, end)
-            .getAll()
-            .then((response) => {
-                // this.total = this.data3.remoteStore.total_rows;
-                this.rows3 = response;
-                this.requestUpdate();
-            });
-    }
-
-    handleDataTableColumnCellSortableClick(event) {
-        this.data3.sort();
-        for (const column of this.columns3) {
-            if (column.order) {
-                this.data3.sort(column.name, column.order);
-            }
-        }
-        this.data3.getAll().then((response) => {
-            // this.total = this.data3.remoteStore.total_rows;
-            this.rows3 = response;
-            this.requestUpdate();
-        });
-    }
-
-    handleSearchFieldNativeSearch(event) {
-        this.data3
-            .search(event.detail.currentTarget.value)
-            .getAll()
-            .then((response) => {
-                // this.total = this.data3.remoteStore.total_rows;
-                this.rows3 = response;
-                this.requestUpdate();
-            });
-    }
 }
 
 customElements.define("app-data-table", AppDataTableElement);
