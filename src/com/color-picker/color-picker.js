@@ -7,6 +7,21 @@ import { MDPopperModule } from "../popper/popper";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDColorPickerComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDColorPickerComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDColorPickerComponent
+ * @extends MDElement
+ */
 class MDColorPickerComponent extends MDElement {
     /**
      *
@@ -14,6 +29,27 @@ class MDColorPickerComponent extends MDElement {
      * @property {Boolean} [open] -
      * @property {Number} [index] -
      * @property {String} [value] -
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
      */
     static get properties() {
         return {
@@ -24,6 +60,15 @@ class MDColorPickerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -40,6 +85,15 @@ class MDColorPickerComponent extends MDElement {
         return { r, g, b, a };
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -80,6 +134,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     rgbaToHex(r, g, b, a = 1) {
         r = Math.max(0, Math.min(255, r));
         g = Math.max(0, Math.min(255, g));
@@ -96,6 +159,15 @@ class MDColorPickerComponent extends MDElement {
         return "#" + hex;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -149,10 +221,28 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get label() {
         return this.selected;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -166,6 +256,15 @@ class MDColorPickerComponent extends MDElement {
         this.index = 0;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -212,6 +311,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -245,6 +353,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-color-picker");
@@ -262,6 +379,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-picker");
@@ -270,6 +396,15 @@ class MDColorPickerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -286,6 +421,24 @@ class MDColorPickerComponent extends MDElement {
      * @fires MDColorPickerComponent#onColorPickerShow
      * @fires MDColorPickerComponent#onColorPickerClose
      * @fires MDColorPickerComponent#onColorPickerChange
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerShow 
+     * @fires MDColorPickerComponent#onColorPickerClose 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerShow 
+     * @fires MDColorPickerComponent#onColorPickerClose 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerShow 
+     * @fires MDColorPickerComponent#onColorPickerClose 
+     * @fires MDColorPickerComponent#onColorPickerChange 
      */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
@@ -329,6 +482,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     updateFromValue() {
         this.selected = this.value;
 
@@ -346,6 +508,15 @@ class MDColorPickerComponent extends MDElement {
         this.requestUpdate();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -370,6 +541,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     drawHueGradient() {
         const { width, height } = this.hueCanvas;
         let gradientHue = this.hueCtx.createLinearGradient(0, 0, width, 0);
@@ -387,6 +567,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     drawOpacityGradient() {
         const { width, height } = this.opacityCanvas;
         let gradientOpacity = this.opacityCtx.createLinearGradient(0, 0, width, 0);
@@ -396,6 +585,15 @@ class MDColorPickerComponent extends MDElement {
         this.opacityCtx.fillRect(0, 0, width, height);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -444,6 +642,15 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -457,11 +664,29 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -477,6 +702,18 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerScrimClick
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerScrimClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerScrimClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerScrimClick 
+     */
     handleColorPickerScrimClick(event) {
         this.close();
 
@@ -487,6 +724,18 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerLabelPrimaryClick
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelPrimaryClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelPrimaryClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelPrimaryClick 
+     */
     handleColorPickerLabelPrimaryClick(event) {
         this.emit("onColorPickerLabelPrimaryClick", event);
     }
@@ -494,6 +743,18 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      * @fires MDColorPickerComponent#onColorPickerLabelSecondaryClick
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelSecondaryClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelSecondaryClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerLabelSecondaryClick 
      */
     handleColorPickerLabelSecondaryClick(event) {
         this.emit("onColorPickerLabelSecondaryClick", event);
@@ -503,6 +764,18 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerActionNavigateBeforeClick
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateBeforeClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateBeforeClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateBeforeClick 
+     */
     handleColorPickerActionNavigateBeforeClick(event) {
         this.emit("onColorPickerActionNavigateBeforeClick", event);
     }
@@ -510,6 +783,18 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      * @fires MDColorPickerComponent#onColorPickerActionNavigateNextClick
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateNextClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateNextClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerActionNavigateNextClick 
      */
     handleColorPickerActionNavigateNextClick(event) {
         this.emit("onColorPickerActionNavigateNextClick", event);
@@ -519,6 +804,21 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerSolidPointerdown
      * @fires MDColorPickerComponent#onColorPickerChange
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerdown 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerdown 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerdown 
+     * @fires MDColorPickerComponent#onColorPickerChange 
      */
     handleColorPickerSolidPointerdown(event) {
         window.addEventListener("pointermove", this.handleColorPickerSolidPointermove);
@@ -531,6 +831,15 @@ class MDColorPickerComponent extends MDElement {
         this.emit("onColorPickerChange", event);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -559,6 +868,21 @@ class MDColorPickerComponent extends MDElement {
      * @fires MDColorPickerComponent#onColorPickerSolidPointermove
      * @fires MDColorPickerComponent#onColorPickerChange
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointermove 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointermove 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointermove 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
     handleColorPickerSolidPointermove(event) {
         this.updateFromSolid(event);
 
@@ -570,6 +894,21 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerSolidPointerup
      * @fires MDColorPickerComponent#onColorPickerChange
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerup 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerup 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerSolidPointerup 
+     * @fires MDColorPickerComponent#onColorPickerChange 
      */
     handleColorPickerSolidPointerup(event) {
         window.removeEventListener("pointermove", this.handleColorPickerSolidPointermove);
@@ -586,6 +925,21 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerHueInput
      * @fires MDColorPickerComponent#onColorPickerChange
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerHueInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerHueInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerHueInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
      */
     handleColorPickerHueInput(event) {
         this.hue = parseFloat(this.hueCanvas.value);
@@ -608,6 +962,21 @@ class MDColorPickerComponent extends MDElement {
      * @fires MDColorPickerComponent#onColorPickerOpacityInput
      * @fires MDColorPickerComponent#onColorPickerChange
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerOpacityInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerOpacityInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerOpacityInput 
+     * @fires MDColorPickerComponent#onColorPickerChange 
+     */
     handleColorPickerOpacityInput(event) {
         this.alpha = parseFloat(this.opacityCanvas.value);
 
@@ -621,6 +990,18 @@ class MDColorPickerComponent extends MDElement {
      *
      * @fires MDColorPickerComponent#onColorPickerButtonCancelClick
      */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonCancelClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonCancelClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonCancelClick 
+     */
     handleColorPickerButtonCancelClick(event) {
         this.emit("onColorPickerButtonCancelClick", event);
     }
@@ -628,6 +1009,18 @@ class MDColorPickerComponent extends MDElement {
     /**
      *
      * @fires MDColorPickerComponent#onColorPickerButtonOkClick
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonOkClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonOkClick 
+     */
+    /**
+     *
+     * @fires MDColorPickerComponent#onColorPickerButtonOkClick 
      */
     handleColorPickerButtonOkClick(event) {
         this.emit("onColorPickerButtonOkClick", event);

@@ -8,6 +8,21 @@ import { choose } from "lit/directives/choose.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDNestedListItemComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListItemComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListItemComponent
+ * @extends MDElement
+ */
 class MDNestedListItemComponent extends MDElement {
     /**
      *
@@ -21,6 +36,51 @@ class MDNestedListItemComponent extends MDElement {
      * @property {Boolean} [activated] -
      * @property {Boolean} [isParent] -
      * @property {Boolean} [hasLevel] -
+     */
+    /**
+     *
+     * @property {String} [label] - 
+     * @property {Boolean} [selected] - 
+     * @property {String} [routerLink] - 
+     * @property {Number} [indent] - 
+     * @property {Boolean} [isNode] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [expanded] - 
+     * @property {Boolean} [activated] - 
+     * @property {Boolean} [isParent] - 
+     * @property {Boolean} [hasLevel] - 
+     * @property {Array} [nodeIcons] - 
+     * @property {String} [leafIcon] - 
+     */
+    /**
+     *
+     * @property {String} [label] - 
+     * @property {Boolean} [selected] - 
+     * @property {String} [routerLink] - 
+     * @property {Number} [indent] - 
+     * @property {Boolean} [isNode] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [expanded] - 
+     * @property {Boolean} [activated] - 
+     * @property {Boolean} [isParent] - 
+     * @property {Boolean} [hasLevel] - 
+     * @property {Array} [nodeIcons] - 
+     * @property {String} [leafIcon] - 
+     */
+    /**
+     *
+     * @property {String} [label] - 
+     * @property {Boolean} [selected] - 
+     * @property {String} [routerLink] - 
+     * @property {Number} [indent] - 
+     * @property {Boolean} [isNode] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [expanded] - 
+     * @property {Boolean} [activated] - 
+     * @property {Boolean} [isParent] - 
+     * @property {Boolean} [hasLevel] - 
+     * @property {Array} [nodeIcons] - 
+     * @property {String} [leafIcon] - 
      */
     static get properties() {
         return {
@@ -42,6 +102,15 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
 
@@ -49,6 +118,15 @@ class MDNestedListItemComponent extends MDElement {
         this.leafIcon = "draft";
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -69,6 +147,15 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     renderLevel() {
         /* prettier-ignore */
         return html`
@@ -80,6 +167,15 @@ class MDNestedListItemComponent extends MDElement {
         `;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -97,6 +193,15 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     render() {
         return choose(
             this.ui,
@@ -111,10 +216,28 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get labelSecondary() {
         return this.querySelector(".md-nested-list__label-secondary");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -130,6 +253,15 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -141,6 +273,18 @@ class MDNestedListItemComponent extends MDElement {
     /**
      *
      * @fires MDNestedListItemComponent#onNestedListItemSelected
+     */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemSelected 
+     */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemSelected 
+     */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemSelected 
      */
     firstUpdated(changedProperties) {}
 
@@ -156,6 +300,18 @@ class MDNestedListItemComponent extends MDElement {
      *
      * @fires MDNestedListItemComponent#onNestedListItemActionClick
      */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemActionClick 
+     */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemActionClick 
+     */
+    /**
+     *
+     * @fires MDNestedListItemComponent#onNestedListItemActionClick 
+     */
     handleNestedListItemActionClick(event) {
         this.emit("onNestedListItemActionClick", event);
     }
@@ -167,7 +323,31 @@ customElements.define("md-nested-list-item", MDNestedListItemComponent);
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDNestedListRowComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListRowComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListRowComponent
+ * @extends MDElement
+ */
 class MDNestedListRowComponent extends MDElement {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -178,10 +358,28 @@ class MDNestedListRowComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -193,6 +391,15 @@ class MDNestedListRowComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -200,6 +407,15 @@ class MDNestedListRowComponent extends MDElement {
         this.classList.add("md-nested-list__row");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -219,6 +435,21 @@ customElements.define("md-nested-list-row", MDNestedListRowComponent);
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDNestedListComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNestedListComponent
+ * @extends MDElement
+ */
 class MDNestedListComponent extends MDElement {
     /**
      *
@@ -227,6 +458,33 @@ class MDNestedListComponent extends MDElement {
      * @property {Boolean} [multiSelection] -
      * @property {Boolean} [singleSelection] -
      * @property {Boolean} [allSelection] -
+     * @property {String} [ui] - tree,level,accordion
+     */
+    /**
+     *
+     * @property {Array} [list] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
+     * @property {String} [ui] - tree,level,accordion
+     */
+    /**
+     *
+     * @property {Array} [list] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
+     * @property {String} [ui] - tree,level,accordion
+     */
+    /**
+     *
+     * @property {Array} [list] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
      * @property {String} [ui] - tree,level,accordion
      */
     static get properties() {
@@ -243,12 +501,30 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
 
         this.singleSelection = true;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -285,11 +561,29 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     render() {
         let list = this.ui == "level" ? this.lastList(this.list) || this.list : this.list;
         return list?.map((item) => this.renderItem(item));
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -305,6 +599,15 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -313,6 +616,15 @@ class MDNestedListComponent extends MDElement {
         this.removeEventListener("keydown", this.handleNestedListKeydown);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -335,6 +647,15 @@ class MDNestedListComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -380,6 +701,15 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     lastList(list) {
         let last;
         list?.forEach((item) => {
@@ -399,6 +729,18 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      * @fires MDNestedListComponent#onNestedListItemClick
+     */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListItemClick 
+     */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListItemClick 
+     */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListItemClick 
      */
     handleNestedListItemClick(event) {
         if (event.target.closest(".md-nested-list__action")) {
@@ -440,6 +782,15 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     selectList(list, data) {
         let activated = false;
         list.forEach((item) => {
@@ -462,6 +813,18 @@ class MDNestedListComponent extends MDElement {
      *
      * @fires MDNestedListComponent#onNestedListKeydown
      */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListKeydown 
+     */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListKeydown 
+     */
+    /**
+     *
+     * @fires MDNestedListComponent#onNestedListKeydown 
+     */
     handleNestedListKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -476,10 +839,28 @@ class MDNestedListComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     expandList(list, data) {
         data.expanded = !data.expanded;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

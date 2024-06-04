@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDBottomSheetComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDBottomSheetComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDBottomSheetComponent
+ * @extends MDElement
+ */
 class MDBottomSheetComponent extends MDElement {
     /**
      *
@@ -16,6 +31,36 @@ class MDBottomSheetComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - modal
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -32,11 +77,29 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -85,6 +148,15 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-bottom-sheet");
@@ -99,6 +171,15 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-sheet");
@@ -107,6 +188,15 @@ class MDBottomSheetComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -137,6 +227,15 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
@@ -144,10 +243,28 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -163,6 +280,18 @@ class MDBottomSheetComponent extends MDElement {
      *
      * @fires MDBottomSheetComponent#onBottomSheetActionClick
      */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetActionClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetActionClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetActionClick 
+     */
     handleBottomSheetActionClick(event) {
         this.emit("onBottomSheetActionClick", event);
     }
@@ -171,6 +300,18 @@ class MDBottomSheetComponent extends MDElement {
      *
      * @fires MDBottomSheetComponent#onBottomSheetButtonClick
      */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetButtonClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetButtonClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetButtonClick 
+     */
     handleBottomSheetButtonClick(event) {
         this.emit("onBottomSheetButtonClick", event);
     }
@@ -178,6 +319,18 @@ class MDBottomSheetComponent extends MDElement {
     /**
      *
      * @fires MDBottomSheetComponent#onBottomSheetScrimClick
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetScrimClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetScrimClick 
+     */
+    /**
+     *
+     * @fires MDBottomSheetComponent#onBottomSheetScrimClick 
      */
     handleBottomSheetScrimClick(event) {
         this.close();

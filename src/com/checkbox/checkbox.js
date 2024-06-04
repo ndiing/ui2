@@ -7,6 +7,21 @@ import { MDRippleModule } from "../ripple/ripple";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDCheckboxComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDCheckboxComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDCheckboxComponent
+ * @extends MDElement
+ */
 class MDCheckboxComponent extends MDElement {
     /**
      *
@@ -22,6 +37,51 @@ class MDCheckboxComponent extends MDElement {
      * @property {Boolean} [defaultChecked] -
      * @property {Boolean} [indeterminate] -
      * @property {Boolean} [defaultIndeterminate] -
+     */
+    /**
+     *
+     * @property {String} [autocapitalize] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {Boolean} [checked] - 
+     * @property {String} [defaultValue] - 
+     * @property {Boolean} [defaultChecked] - 
+     * @property {Boolean} [indeterminate] - 
+     * @property {Boolean} [defaultIndeterminate] - 
+     */
+    /**
+     *
+     * @property {String} [autocapitalize] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {Boolean} [checked] - 
+     * @property {String} [defaultValue] - 
+     * @property {Boolean} [defaultChecked] - 
+     * @property {Boolean} [indeterminate] - 
+     * @property {Boolean} [defaultIndeterminate] - 
+     */
+    /**
+     *
+     * @property {String} [autocapitalize] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {Boolean} [checked] - 
+     * @property {String} [defaultValue] - 
+     * @property {Boolean} [defaultChecked] - 
+     * @property {Boolean} [indeterminate] - 
+     * @property {Boolean} [defaultIndeterminate] - 
      */
     static get properties() {
         return {
@@ -43,10 +103,28 @@ class MDCheckboxComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -84,6 +162,15 @@ class MDCheckboxComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
 
@@ -100,6 +187,15 @@ class MDCheckboxComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -108,6 +204,15 @@ class MDCheckboxComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -121,12 +226,30 @@ class MDCheckboxComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     get checkboxNative() {
         return this.querySelector(".md-checkbox__native");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -138,6 +261,18 @@ class MDCheckboxComponent extends MDElement {
      *
      * @fires MDCheckboxComponent#onCheckboxNativeInput
      */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInput 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInput 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInput 
+     */
     handleCheckboxNativeInput(event) {
         this.checked = this.checkboxNative.checked;
         this.indeterminate = this.checkboxNative.indeterminate;
@@ -148,6 +283,18 @@ class MDCheckboxComponent extends MDElement {
      *
      * @fires MDCheckboxComponent#onCheckboxNativeInvalid
      */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeInvalid 
+     */
     handleCheckboxNativeInvalid(event) {
         this.emit("onCheckboxNativeInvalid", event);
     }
@@ -155,6 +302,18 @@ class MDCheckboxComponent extends MDElement {
     /**
      *
      * @fires MDCheckboxComponent#onCheckboxNativeReset
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeReset 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeReset 
+     */
+    /**
+     *
+     * @fires MDCheckboxComponent#onCheckboxNativeReset 
      */
     handleCheckboxNativeReset(event) {
         this.checkboxNative.value = this.defaultValue;

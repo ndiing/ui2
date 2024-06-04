@@ -7,6 +7,21 @@ import { MDListComponent } from "../list/list";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDNavigationRailComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNavigationRailComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDNavigationRailComponent
+ * @extends MDElement
+ */
 class MDNavigationRailComponent extends MDElement {
     /**
      *
@@ -17,6 +32,36 @@ class MDNavigationRailComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] -
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -34,10 +79,28 @@ class MDNavigationRailComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -93,12 +156,30 @@ class MDNavigationRailComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-rail");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -111,6 +192,15 @@ class MDNavigationRailComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     updated(changedProperties) {}
 
     show() {
@@ -120,10 +210,28 @@ class MDNavigationRailComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -139,6 +247,18 @@ class MDNavigationRailComponent extends MDElement {
      *
      * @fires MDNavigationRailComponent#onNavigationRailActionClick
      */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailActionClick 
+     */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailActionClick 
+     */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailActionClick 
+     */
     handleNavigationRailActionClick(event) {
         this.emit("onNavigationRailActionClick", event);
     }
@@ -146,6 +266,18 @@ class MDNavigationRailComponent extends MDElement {
     /**
      *
      * @fires MDNavigationRailComponent#onNavigationRailButtonClick
+     */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailButtonClick 
+     */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailButtonClick 
+     */
+    /**
+     *
+     * @fires MDNavigationRailComponent#onNavigationRailButtonClick 
      */
     handleNavigationRailButtonClick(event) {
         this.emit("onNavigationRailButtonClick", event);

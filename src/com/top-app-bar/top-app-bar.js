@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDTopAppBarComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTopAppBarComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTopAppBarComponent
+ * @extends MDElement
+ */
 class MDTopAppBarComponent extends MDElement {
     /**
      *
@@ -16,6 +31,36 @@ class MDTopAppBarComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - center-aligned,small,medium,large
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - center-aligned,small,medium,large
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - center-aligned,small,medium,large
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - center-aligned,small,medium,large
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -32,11 +77,29 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -85,6 +148,15 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-top-app-bar");
@@ -94,12 +166,30 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-top-app-bar");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -120,6 +210,15 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
@@ -127,10 +226,28 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -146,6 +263,18 @@ class MDTopAppBarComponent extends MDElement {
      *
      * @fires MDTopAppBarComponent#onTopAppBarActionClick
      */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarActionClick 
+     */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarActionClick 
+     */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarActionClick 
+     */
     handleTopAppBarActionClick(event) {
         this.emit("onTopAppBarActionClick", event);
     }
@@ -153,6 +282,18 @@ class MDTopAppBarComponent extends MDElement {
     /**
      *
      * @fires MDTopAppBarComponent#onTopAppBarButtonClick
+     */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarButtonClick 
+     */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarButtonClick 
+     */
+    /**
+     *
+     * @fires MDTopAppBarComponent#onTopAppBarButtonClick 
      */
     handleTopAppBarButtonClick(event) {
         this.emit("onTopAppBarButtonClick", event);

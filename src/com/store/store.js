@@ -1,4 +1,25 @@
+/**
+ *
+ * @class LocalStore
+ */
+/**
+ *
+ * @class LocalStore
+ */
+/**
+ *
+ * @class LocalStore
+ */
 class LocalStore {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor(docs = [], options = {}) {
         this.docs = docs;
         this.options = {
@@ -7,6 +28,15 @@ class LocalStore {
         };
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async post(newDoc) {
         if (!newDoc.hasOwnProperty(this.options.primaryKey)) {
             return false;
@@ -21,10 +51,28 @@ class LocalStore {
         return false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async get(_id) {
         return this.docs.find((doc) => doc[this.options.primaryKey] == _id);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async patch(_id, newDoc) {
         const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == _id);
 
@@ -36,6 +84,15 @@ class LocalStore {
         return false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async delete(_id) {
         const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == _id);
 
@@ -46,6 +103,15 @@ class LocalStore {
         return false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     sort(docs, sorters) {
         if (!sorters || !sorters.length) return docs;
         return docs.sort((a, b) => {
@@ -67,12 +133,30 @@ class LocalStore {
         });
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     search(docs, q) {
         if (!q) return docs;
         const query = q.toLowerCase();
         return docs.filter((doc) => Object.values(doc).some((value) => String(value).toLowerCase().includes(query)));
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     filter(docs, filters) {
         if (!filters || !filters.length) return docs;
         return docs.filter((doc) => {
@@ -108,6 +192,15 @@ class LocalStore {
         });
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     paginate(docs, _page, _limit) {
         if (_page === undefined || _limit === undefined) return docs;
         const start = (_page - 1) * _limit;
@@ -115,11 +208,29 @@ class LocalStore {
         return docs.slice(start, end);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     slice(docs, _start, _end) {
         if (_start === undefined || _end === undefined) return docs;
         return docs.slice(_start, _end);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async getAll(options = {}) {
         const { _sort, _order, q, _page, _limit, _start, _end, ...obj } = options;
         const sorters = [];
@@ -221,7 +332,28 @@ class LocalStore {
 //     .then(console.log)
 //     .catch(console.error);
 
+/**
+ *
+ * @class RemoteStore
+ */
+/**
+ *
+ * @class RemoteStore
+ */
+/**
+ *
+ * @class RemoteStore
+ */
 class RemoteStore {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     static notEmpty(value) {
         return value !== undefined && value !== null && value !== "";
     }
@@ -234,6 +366,15 @@ class RemoteStore {
         "Content-Type": "application/json",
     };
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor(base = "http://localhost", options = {}) {
         this.base = base;
         this.options = {
@@ -248,6 +389,15 @@ class RemoteStore {
         this.url = this.createURL(this.options.get, {}, this.base);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     createURL(pathname, params) {
         return new URL(
             pathname.replace(/\:(\w+)/g, ($, name) => params[name] ?? ""),
@@ -255,6 +405,15 @@ class RemoteStore {
         );
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async post(newDoc) {
         const url = this.createURL(this.options.post, {}, this.base);
         return fetch(url, {
@@ -265,6 +424,15 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async get(_id) {
         const url = this.createURL(
             this.options.get,
@@ -279,6 +447,15 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async patch(_id, newDoc) {
         const url = this.createURL(
             this.options.patch,
@@ -295,6 +472,15 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async delete(_id) {
         const url = this.createURL(
             this.options.delete,
@@ -309,6 +495,15 @@ class RemoteStore {
         }).then((response) => response.json());
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async getAll(options = {}) {
         return fetch(this.url.href, {
             redirect: "manual",
@@ -321,6 +516,15 @@ class RemoteStore {
         });
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     sort(_sort, _order) {
         const sorts = this.url.searchParams.get("_sort")?.split(",") ?? [];
         const orders = this.url.searchParams.get("_order")?.split(",") ?? [];
@@ -348,6 +552,15 @@ class RemoteStore {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     search(q) {
         if (RemoteStore.notEmpty(q)) {
             this.url.searchParams.set("q", q);
@@ -356,6 +569,15 @@ class RemoteStore {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     filter(name, value, operator = "") {
         if (RemoteStore.notEmpty(name)) {
             if (RemoteStore.notEmpty(value)) {
@@ -374,6 +596,15 @@ class RemoteStore {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     paginate(_page, _limit) {
         if (RemoteStore.notEmpty(_page) && RemoteStore.notEmpty(_limit)) {
             this.url.searchParams.set("_page", _page);
@@ -384,6 +615,15 @@ class RemoteStore {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     slice(_start, _end) {
         if (RemoteStore.notEmpty(_start) && RemoteStore.notEmpty(_end)) {
             this.url.searchParams.set("_start", _start);
@@ -437,7 +677,28 @@ class RemoteStore {
 
 // remoteStore.getAll().then(console.log).catch(console.error);
 
+/**
+ *
+ * @class MDStoreModule
+ */
+/**
+ *
+ * @class MDStoreModule
+ */
+/**
+ *
+ * @class MDStoreModule
+ */
 class MDStoreModule {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor(options = {}) {
         const { docs = [], base = "http://localhost" } = options;
         this.options = {
@@ -453,40 +714,130 @@ class MDStoreModule {
         this.remoteStore = new RemoteStore(base, this.options);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     post(...args) {
         return this.options.remote ? this.remoteStore.post(...args) : this.localStore.post(...args);
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get(...args) {
         return this.options.remote ? this.remoteStore.get(...args) : this.localStore.get(...args);
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     patch(...args) {
         return this.options.remote ? this.remoteStore.patch(...args) : this.localStore.patch(...args);
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     delete(...args) {
         return this.options.remote ? this.remoteStore.delete(...args) : this.localStore.delete(...args);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     sort(...args) {
         this.remoteStore.sort(...args);
         return this;
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     search(...args) {
         this.remoteStore.search(...args);
         return this;
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     filter(...args) {
         this.remoteStore.filter(...args);
         return this;
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     paginate(...args) {
         this.remoteStore.paginate(...args);
         return this;
     }
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     slice(...args) {
         this.remoteStore.slice(...args);
         return this;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     getAll() {
         // this.data3.localStore.total_rows
         // this.data3.remoteStore.total_rows

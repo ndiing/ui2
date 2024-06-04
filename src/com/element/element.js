@@ -5,7 +5,31 @@ import { msg, updateWhenLocaleChanges } from "@lit/localize";
  *
  * @extends LitElement
  */
+/**
+ *
+ * @class MDElement
+ * @extends LitElement
+ */
+/**
+ *
+ * @class MDElement
+ * @extends LitElement
+ */
+/**
+ *
+ * @class MDElement
+ * @extends LitElement
+ */
 class MDElement extends LitElement {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -17,10 +41,28 @@ class MDElement extends LitElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     createRenderRoot() {
         return this;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

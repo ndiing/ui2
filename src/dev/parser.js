@@ -76,16 +76,16 @@ function parse(content) {
             }
         }
 
-        console.log({
-            className,
-            inheritName,
-            tagName,
-            properties,
-            methods,
-            events,
-            functions,
-            variants,
-        });
+        // console.log({
+        //     className,
+        //     inheritName,
+        //     tagName,
+        //     properties,
+        //     methods,
+        //     events,
+        //     functions,
+        //     variants,
+        // });
 
         content = content.replace(/(class )/, ($, $1) => {
             let data = "";

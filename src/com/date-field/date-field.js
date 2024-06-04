@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDDateFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDDateFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDDateFieldComponent
+ * @extends MDElement
+ */
 class MDDateFieldComponent extends MDElement {
     /**
      *
@@ -34,6 +49,93 @@ class MDDateFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {String} [max] - 
+     * @property {String} [min] - 
+     * @property {String} [step] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {String} [max] - 
+     * @property {String} [min] - 
+     * @property {String} [step] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [type] - 
+     * @property {String} [value] - 
+     * @property {String} [max] - 
+     * @property {String} [min] - 
+     * @property {String} [step] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -73,10 +175,28 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -131,12 +251,30 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-date-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -154,12 +292,30 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -179,6 +335,15 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get dateFieldNative() {
         return this.querySelector(".md-date-field__native");
     }
@@ -186,6 +351,18 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      * @fires MDDateFieldComponent#onDateFieldNativeActionClick
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionClick 
      */
     handleDateFieldNativeActionClick(event) {
         this.emit("onDateFieldNativeActionClick", event);
@@ -195,12 +372,33 @@ class MDDateFieldComponent extends MDElement {
      *
      * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick
      */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick 
+     */
     handleDateFieldNativeActionCalendarClockClick(event) {
         this.handleDatePicker();
 
         this.emit("onDateFieldNativeActionCalendarClockClick", event);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -234,6 +432,15 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     handleDateFieldPickerChange(event) {
         this.dateFieldNative.value = [this.datePicker.selected.getFullYear(), ("" + (this.datePicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.datePicker.selected.getDate()).padStart(2, "0")].join("-");
         this.value = this.dateFieldNative.value;
@@ -242,6 +449,15 @@ class MDDateFieldComponent extends MDElement {
         this.invalid = !!this.validationMessage;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -254,6 +470,15 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     handleDateFieldPickerButtonOkClick(event) {
         this.datePicker.close();
     }
@@ -261,6 +486,18 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      * @fires MDDateFieldComponent#onDateFieldNativeFocus
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeFocus 
      */
     handleDateFieldNativeFocus(event) {
         this.focused = true;
@@ -271,6 +508,18 @@ class MDDateFieldComponent extends MDElement {
      *
      * @fires MDDateFieldComponent#onDateFieldNativeBlur
      */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeBlur 
+     */
     handleDateFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onDateFieldNativeBlur", event);
@@ -279,6 +528,18 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      * @fires MDDateFieldComponent#onDateFieldNativeInput
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInput 
      */
     handleDateFieldNativeInput(event) {
         this.value = this.dateFieldNative.value;
@@ -292,6 +553,18 @@ class MDDateFieldComponent extends MDElement {
      *
      * @fires MDDateFieldComponent#onDateFieldNativeInvalid
      */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeInvalid 
+     */
     handleDateFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.dateFieldNative.validationMessage;
@@ -302,6 +575,18 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      * @fires MDDateFieldComponent#onDateFieldNativeReset
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeReset 
      */
     handleDateFieldNativeReset(event) {
         this.dateFieldNative.value = this.defaultValue;
@@ -316,6 +601,18 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      * @fires MDDateFieldComponent#onDateFieldNativeClick
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeClick 
+     */
+    /**
+     *
+     * @fires MDDateFieldComponent#onDateFieldNativeClick 
      */
     handleDateFieldNativeClick(event) {
         event.preventDefault();

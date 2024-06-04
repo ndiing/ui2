@@ -1,7 +1,28 @@
 /**
  *
  */
+/**
+ *
+ * @class MDVirtualScrollModule
+ */
+/**
+ *
+ * @class MDVirtualScrollModule
+ */
+/**
+ *
+ * @class MDVirtualScrollModule
+ */
 class MDVirtualScrollModule {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -21,6 +42,15 @@ class MDVirtualScrollModule {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-virtual-scroll");
         this.scrollbar = this.options.scrollbar;
@@ -37,6 +67,21 @@ class MDVirtualScrollModule {
      *
      * @fires MDVirtualScrollModule#onVirtualScroll
      * @fires MDVirtualScrollModule#onVirtualScrollChange
+     */
+    /**
+     *
+     * @fires MDVirtualScrollModule#onVirtualScroll 
+     * @fires MDVirtualScrollModule#onVirtualScrollChange 
+     */
+    /**
+     *
+     * @fires MDVirtualScrollModule#onVirtualScroll 
+     * @fires MDVirtualScrollModule#onVirtualScrollChange 
+     */
+    /**
+     *
+     * @fires MDVirtualScrollModule#onVirtualScroll 
+     * @fires MDVirtualScrollModule#onVirtualScrollChange 
      */
     handleScroll(event) {
         window.requestAnimationFrame(() => {
@@ -77,6 +122,15 @@ class MDVirtualScrollModule {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -86,6 +140,15 @@ class MDVirtualScrollModule {
         this.host.dispatchEvent(event);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

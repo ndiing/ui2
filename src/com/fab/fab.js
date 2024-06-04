@@ -7,11 +7,44 @@ import { MDRippleModule } from "../ripple/ripple";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDFabComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDFabComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDFabComponent
+ * @extends MDElement
+ */
 class MDFabComponent extends MDElement {
     /**
      *
      * @property {String} [icon] -
      * @property {String} [label] -
+     * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
+     * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
+     * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
      * @property {String} [ui] - small,large,extended,surface,secondary,tertiary,unelevated
      */
     static get properties() {
@@ -25,10 +58,28 @@ class MDFabComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -43,6 +94,15 @@ class MDFabComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-fab");
@@ -53,6 +113,15 @@ class MDFabComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-fab");
@@ -60,6 +129,15 @@ class MDFabComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

@@ -8,6 +8,21 @@ import { MDPopperModule } from "../popper/popper";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDMenuComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDMenuComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDMenuComponent
+ * @extends MDElement
+ */
 class MDMenuComponent extends MDElement {
     /**
      *
@@ -18,6 +33,36 @@ class MDMenuComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] -
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - 
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -35,10 +80,28 @@ class MDMenuComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -94,6 +157,15 @@ class MDMenuComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-menu");
@@ -108,6 +180,15 @@ class MDMenuComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
@@ -118,6 +199,21 @@ class MDMenuComponent extends MDElement {
 
     /**
      *
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuShow 
+     * @fires MDMenuComponent#onMenuClose 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuShow 
+     * @fires MDMenuComponent#onMenuClose 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuShow 
+     * @fires MDMenuComponent#onMenuClose 
      */
     updated(changedProperties) {
         if (changedProperties.has("open")) {
@@ -131,6 +227,15 @@ class MDMenuComponent extends MDElement {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -150,11 +255,29 @@ class MDMenuComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -170,6 +293,18 @@ class MDMenuComponent extends MDElement {
      *
      * @fires MDMenuComponent#onMenuActionClick
      */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuActionClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuActionClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuActionClick 
+     */
     handleMenuActionClick(event) {
         this.emit("onMenuActionClick", event);
     }
@@ -178,6 +313,18 @@ class MDMenuComponent extends MDElement {
      *
      * @fires MDMenuComponent#onMenuButtonClick
      */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuButtonClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuButtonClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuButtonClick 
+     */
     handleMenuButtonClick(event) {
         this.emit("onMenuButtonClick", event);
     }
@@ -185,6 +332,18 @@ class MDMenuComponent extends MDElement {
     /**
      *
      * @fires MDMenuComponent#onMenuScrimClick
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuScrimClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuScrimClick 
+     */
+    /**
+     *
+     * @fires MDMenuComponent#onMenuScrimClick 
      */
     handleMenuScrimClick(event) {
         this.close();

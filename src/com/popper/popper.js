@@ -1,7 +1,28 @@
 /**
  *
  */
+/**
+ *
+ * @class MDPopperModule
+ */
+/**
+ *
+ * @class MDPopperModule
+ */
+/**
+ *
+ * @class MDPopperModule
+ */
 class MDPopperModule {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -21,10 +42,28 @@ class MDPopperModule {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     init() {
         this.host.classList.add("md-popper");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -167,6 +206,15 @@ class MDPopperModule {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     set() {
         for (const placement of this.options.placements) {
             const { exceed, left, top } = this.get(placement);
@@ -180,6 +228,15 @@ class MDPopperModule {
         }
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

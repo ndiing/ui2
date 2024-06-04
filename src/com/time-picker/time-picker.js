@@ -7,6 +7,21 @@ import { MDPopperModule } from "../popper/popper";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDTimePickerComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTimePickerComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTimePickerComponent
+ * @extends MDElement
+ */
 class MDTimePickerComponent extends MDElement {
     /**
      *
@@ -14,6 +29,27 @@ class MDTimePickerComponent extends MDElement {
      * @property {Boolean} [open] -
      * @property {Number} [index] -
      * @property {String} [value] -
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
+     */
+    /**
+     *
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     * @property {Number} [index] - 
+     * @property {String} [value] - 
      */
     static get properties() {
         return {
@@ -24,6 +60,15 @@ class MDTimePickerComponent extends MDElement {
         };
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -46,6 +91,15 @@ class MDTimePickerComponent extends MDElement {
         });
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -73,10 +127,28 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get subLabel() {
         return this.timeFormat(this.selected);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -112,6 +184,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     renderHours() {
         /* prettier-ignore */
         return html`
@@ -129,6 +210,15 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -152,6 +242,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     renderCard() {
         /* prettier-ignore */
         return html`
@@ -162,6 +261,15 @@ class MDTimePickerComponent extends MDElement {
         `
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -199,6 +307,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-picker");
@@ -213,6 +330,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-time-picker");
@@ -221,6 +347,15 @@ class MDTimePickerComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -235,6 +370,24 @@ class MDTimePickerComponent extends MDElement {
      * @fires MDTimePickerComponent#onTimePickerShow
      * @fires MDTimePickerComponent#onTimePickerClose
      * @fires MDTimePickerComponent#onTimePickerChange
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerShow 
+     * @fires MDTimePickerComponent#onTimePickerClose 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerShow 
+     * @fires MDTimePickerComponent#onTimePickerClose 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerShow 
+     * @fires MDTimePickerComponent#onTimePickerClose 
+     * @fires MDTimePickerComponent#onTimePickerChange 
      */
     async updated(changedProperties) {
         if (changedProperties.has("ui")) {
@@ -275,6 +428,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     updateFromValue() {
         const date = new Date();
 
@@ -292,6 +454,15 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -305,11 +476,29 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -325,6 +514,18 @@ class MDTimePickerComponent extends MDElement {
      *
      * @fires MDTimePickerComponent#onTimePickerScrimClick
      */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerScrimClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerScrimClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerScrimClick 
+     */
     handleTimePickerScrimClick(event) {
         this.close();
 
@@ -334,6 +535,18 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerLabelSecondaryClick 
      */
     handleTimePickerLabelSecondaryClick(event) {
         if (this.index == 0) {
@@ -348,6 +561,18 @@ class MDTimePickerComponent extends MDElement {
     /**
      *
      * @fires MDTimePickerComponent#onTimePickerActionNavigateBeforeClick
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateBeforeClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateBeforeClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateBeforeClick 
      */
     handleTimePickerActionNavigateBeforeClick(event) {
         if (this.index == 0) {
@@ -365,6 +590,18 @@ class MDTimePickerComponent extends MDElement {
      *
      * @fires MDTimePickerComponent#onTimePickerActionNavigateNextClick
      */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateNextClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateNextClick 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerActionNavigateNextClick 
+     */
     handleTimePickerActionNavigateNextClick(event) {
         if (this.index == 0) {
             this.selected.setHours(this.selected.getHours() + 1);
@@ -381,6 +618,21 @@ class MDTimePickerComponent extends MDElement {
      *
      * @fires MDTimePickerComponent#onTimePickerHourClick
      * @fires MDTimePickerComponent#onTimePickerChange
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerHourClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerHourClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerHourClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
      */
     handleTimePickerHourClick(event) {
         const data = event.currentTarget.data;
@@ -400,6 +652,21 @@ class MDTimePickerComponent extends MDElement {
      *
      * @fires MDTimePickerComponent#onTimePickerMinuteClick
      * @fires MDTimePickerComponent#onTimePickerChange
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerMinuteClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerMinuteClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerMinuteClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
      */
     handleTimePickerMinuteClick(event) {
         const data = event.currentTarget.data;
@@ -421,6 +688,21 @@ class MDTimePickerComponent extends MDElement {
      * @fires MDTimePickerComponent#onTimePickerButtonCancelClick
      * @fires MDTimePickerComponent#onTimePickerChange
      */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonCancelClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonCancelClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonCancelClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
     handleTimePickerButtonCancelClick(event) {
         this.emit("onTimePickerButtonCancelClick", event);
         this.emit("onTimePickerChange", event);
@@ -430,6 +712,21 @@ class MDTimePickerComponent extends MDElement {
      *
      * @fires MDTimePickerComponent#onTimePickerButtonOkClick
      * @fires MDTimePickerComponent#onTimePickerChange
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonOkClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonOkClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
+     */
+    /**
+     *
+     * @fires MDTimePickerComponent#onTimePickerButtonOkClick 
+     * @fires MDTimePickerComponent#onTimePickerChange 
      */
     handleTimePickerButtonOkClick(event) {
         this.emit("onTimePickerButtonOkClick", event);

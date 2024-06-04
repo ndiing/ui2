@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDSegmentedButtonComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSegmentedButtonComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSegmentedButtonComponent
+ * @extends MDElement
+ */
 class MDSegmentedButtonComponent extends MDElement {
     /**
      *
@@ -14,6 +29,30 @@ class MDSegmentedButtonComponent extends MDElement {
      * @property {Boolean} [multiSelection] -
      * @property {Boolean} [singleSelection] -
      * @property {Boolean} [allSelection] -
+     */
+    /**
+     *
+     * @property {Array} [buttons] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
+     */
+    /**
+     *
+     * @property {Array} [buttons] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
+     */
+    /**
+     *
+     * @property {Array} [buttons] - 
+     * @property {Boolean} [rangeSelection] - 
+     * @property {Boolean} [multiSelection] - 
+     * @property {Boolean} [singleSelection] - 
+     * @property {Boolean} [allSelection] - 
      */
     static get properties() {
         return {
@@ -28,10 +67,28 @@ class MDSegmentedButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -54,10 +111,28 @@ class MDSegmentedButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     render() {
         return this.buttons?.map((button) => this.renderButton(button));
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -72,6 +147,15 @@ class MDSegmentedButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-segmented-button");
@@ -82,6 +166,18 @@ class MDSegmentedButtonComponent extends MDElement {
     /**
      *
      * @fires MDSegmentedButtonComponent#onSegmentedButtonButtonClick
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonButtonClick 
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonButtonClick 
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonButtonClick 
      */
     updated(changedProperties) {}
 
@@ -123,6 +219,18 @@ class MDSegmentedButtonComponent extends MDElement {
     /**
      *
      * @fires MDSegmentedButtonComponent#onSegmentedButtonKeydown
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonKeydown 
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonKeydown 
+     */
+    /**
+     *
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonKeydown 
      */
     handleSegmentedButtonKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {

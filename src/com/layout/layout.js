@@ -1,7 +1,28 @@
 /**
  *
  */
+/**
+ *
+ * @class MDLayoutModule
+ */
+/**
+ *
+ * @class MDLayoutModule
+ */
+/**
+ *
+ * @class MDLayoutModule
+ */
 class MDLayoutModule {
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -28,10 +49,28 @@ class MDLayoutModule {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     init() {
         this.callback();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

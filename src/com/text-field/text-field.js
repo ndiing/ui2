@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDTextFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTextFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTextFieldComponent
+ * @extends MDElement
+ */
 class MDTextFieldComponent extends MDElement {
     /**
      *
@@ -37,6 +52,96 @@ class MDTextFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [size] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [size] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [size] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -77,10 +182,28 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -136,12 +259,30 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-text-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -159,12 +300,30 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -184,6 +343,15 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get textFieldNative() {
         return this.querySelector(".md-text-field__native");
     }
@@ -192,6 +360,18 @@ class MDTextFieldComponent extends MDElement {
      *
      * @fires MDTextFieldComponent#onTextFieldNativeActionClick
      */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeActionClick 
+     */
     handleTextFieldNativeActionClick(event) {
         this.emit("onTextFieldNativeActionClick", event);
     }
@@ -199,6 +379,18 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      * @fires MDTextFieldComponent#onTextFieldNativeFocus
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeFocus 
      */
     handleTextFieldNativeFocus(event) {
         this.focused = true;
@@ -209,6 +401,18 @@ class MDTextFieldComponent extends MDElement {
      *
      * @fires MDTextFieldComponent#onTextFieldNativeBlur
      */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeBlur 
+     */
     handleTextFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onTextFieldNativeBlur", event);
@@ -217,6 +421,18 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      * @fires MDTextFieldComponent#onTextFieldNativeInput
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInput 
      */
     handleTextFieldNativeInput(event) {
         this.value = this.textFieldNative.value;
@@ -230,6 +446,18 @@ class MDTextFieldComponent extends MDElement {
      *
      * @fires MDTextFieldComponent#onTextFieldNativeInvalid
      */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeInvalid 
+     */
     handleTextFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.textFieldNative.validationMessage;
@@ -240,6 +468,18 @@ class MDTextFieldComponent extends MDElement {
     /**
      *
      * @fires MDTextFieldComponent#onTextFieldNativeReset
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDTextFieldComponent#onTextFieldNativeReset 
      */
     handleTextFieldNativeReset(event) {
         this.textFieldNative.value = this.defaultValue;

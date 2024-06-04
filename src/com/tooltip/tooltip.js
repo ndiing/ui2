@@ -7,6 +7,21 @@ import { MDPopperModule } from "../popper/popper";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDTooltipComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTooltipComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDTooltipComponent
+ * @extends MDElement
+ */
 class MDTooltipComponent extends MDElement {
     /**
      *
@@ -17,6 +32,36 @@ class MDTooltipComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - plain
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - plain
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - plain
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - plain
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -33,11 +78,29 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -86,6 +149,15 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tooltip");
@@ -100,6 +172,15 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tooltip");
@@ -108,6 +189,15 @@ class MDTooltipComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -138,6 +228,15 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show(button, options) {
         this.open = true;
         this.popper = new MDPopperModule(this, {
@@ -152,11 +251,29 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
         this.popper.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -172,6 +289,18 @@ class MDTooltipComponent extends MDElement {
      *
      * @fires MDTooltipComponent#onTooltipActionClick
      */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipActionClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipActionClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipActionClick 
+     */
     handleTooltipActionClick(event) {
         this.emit("onTooltipActionClick", event);
     }
@@ -180,6 +309,18 @@ class MDTooltipComponent extends MDElement {
      *
      * @fires MDTooltipComponent#onTooltipButtonClick
      */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipButtonClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipButtonClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipButtonClick 
+     */
     handleTooltipButtonClick(event) {
         this.emit("onTooltipButtonClick", event);
     }
@@ -187,6 +328,18 @@ class MDTooltipComponent extends MDElement {
     /**
      *
      * @fires MDTooltipComponent#onTooltipScrimClick
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipScrimClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipScrimClick 
+     */
+    /**
+     *
+     * @fires MDTooltipComponent#onTooltipScrimClick 
      */
     handleTooltipScrimClick(event) {
         this.close();

@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDDialogComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDDialogComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDDialogComponent
+ * @extends MDElement
+ */
 class MDDialogComponent extends MDElement {
     /**
      *
@@ -16,6 +31,36 @@ class MDDialogComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - full-screen
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - full-screen
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -32,11 +77,29 @@ class MDDialogComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -85,6 +148,15 @@ class MDDialogComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-dialog");
@@ -99,6 +171,15 @@ class MDDialogComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-dialog");
@@ -107,6 +188,15 @@ class MDDialogComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -137,6 +227,15 @@ class MDDialogComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
@@ -144,10 +243,28 @@ class MDDialogComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -163,6 +280,18 @@ class MDDialogComponent extends MDElement {
      *
      * @fires MDDialogComponent#onDialogActionClick
      */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogActionClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogActionClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogActionClick 
+     */
     handleDialogActionClick(event) {
         this.emit("onDialogActionClick", event);
     }
@@ -171,6 +300,18 @@ class MDDialogComponent extends MDElement {
      *
      * @fires MDDialogComponent#onDialogButtonClick
      */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogButtonClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogButtonClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogButtonClick 
+     */
     handleDialogButtonClick(event) {
         this.emit("onDialogButtonClick", event);
     }
@@ -178,6 +319,18 @@ class MDDialogComponent extends MDElement {
     /**
      *
      * @fires MDDialogComponent#onDialogScrimClick
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogScrimClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogScrimClick 
+     */
+    /**
+     *
+     * @fires MDDialogComponent#onDialogScrimClick 
      */
     handleDialogScrimClick(event) {
         this.close();

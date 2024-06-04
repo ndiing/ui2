@@ -7,6 +7,21 @@ import { classMap } from "lit/directives/class-map.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDSliderComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSliderComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSliderComponent
+ * @extends MDElement
+ */
 class MDSliderComponent extends MDElement {
     /**
      *
@@ -22,6 +37,51 @@ class MDSliderComponent extends MDElement {
      * @property {Number} [step] -
      * @property {Array} [defaultValue] -
      * @property {Function} [convertLabel] -
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {Boolean} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {String} [type] - 
+     * @property {Number} [max] - 
+     * @property {Number} [min] - 
+     * @property {Number} [step] - 
+     * @property {Array} [defaultValue] - 
+     * @property {Function} [convertLabel] - 
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {Boolean} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {String} [type] - 
+     * @property {Number} [max] - 
+     * @property {Number} [min] - 
+     * @property {Number} [step] - 
+     * @property {Array} [defaultValue] - 
+     * @property {Function} [convertLabel] - 
+     */
+    /**
+     *
+     * @property {Boolean} [autocapitalize] - 
+     * @property {Boolean} [autocomplete] - 
+     * @property {Boolean} [disabled] - 
+     * @property {String} [form] - 
+     * @property {String} [list] - 
+     * @property {String} [name] - 
+     * @property {String} [type] - 
+     * @property {Number} [max] - 
+     * @property {Number} [min] - 
+     * @property {Number} [step] - 
+     * @property {Array} [defaultValue] - 
+     * @property {Function} [convertLabel] - 
      */
     static get properties() {
         return {
@@ -47,11 +107,29 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.convertLabel = (value) => value;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -101,12 +179,30 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-slider");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -119,6 +215,15 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get sliderNative1() {
         return this.querySelector(".md-slider__native1");
     }
@@ -126,10 +231,28 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get sliderNative2() {
         return this.querySelector(".md-slider__native2");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -145,6 +268,15 @@ class MDSliderComponent extends MDElement {
         if (this.sliderNative2) this.sliderNative2.value = this.value[1];
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -182,6 +314,15 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     handleSliderNativeInput(event) {
         if (this.sliderNative2) {
             this.sliderNative1.value = Math.min(this.sliderNative1.value, this.value[1]);
@@ -197,6 +338,15 @@ class MDSliderComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     handleSliderNativeReset(event) {
         this.sliderNative1.value = this.defaultValue[0];
         if (this.sliderNative2) this.sliderNative2.value = this.defaultValue[1];
@@ -204,6 +354,15 @@ class MDSliderComponent extends MDElement {
         this.emit("onSliderNativeReset");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -217,6 +376,15 @@ class MDSliderComponent extends MDElement {
         return ((value - min) / (max - min)) * 100;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

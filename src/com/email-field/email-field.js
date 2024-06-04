@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDEmailFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDEmailFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDEmailFieldComponent
+ * @extends MDElement
+ */
 class MDEmailFieldComponent extends MDElement {
     /**
      *
@@ -37,6 +52,96 @@ class MDEmailFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [multiple] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [multiple] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [multiple] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -77,10 +182,28 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -136,12 +259,30 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-email-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -159,12 +300,30 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -184,6 +343,15 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get emailFieldNative() {
         return this.querySelector(".md-email-field__native");
     }
@@ -192,6 +360,18 @@ class MDEmailFieldComponent extends MDElement {
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeActionClick
      */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeActionClick 
+     */
     handleEmailFieldNativeActionClick(event) {
         this.emit("onEmailFieldNativeActionClick", event);
     }
@@ -199,6 +379,18 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeFocus
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeFocus 
      */
     handleEmailFieldNativeFocus(event) {
         this.focused = true;
@@ -209,6 +401,18 @@ class MDEmailFieldComponent extends MDElement {
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeBlur
      */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeBlur 
+     */
     handleEmailFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onEmailFieldNativeBlur", event);
@@ -217,6 +421,18 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeInput
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInput 
      */
     handleEmailFieldNativeInput(event) {
         this.value = this.emailFieldNative.value;
@@ -230,6 +446,18 @@ class MDEmailFieldComponent extends MDElement {
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeInvalid
      */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeInvalid 
+     */
     handleEmailFieldNativeInvalid(event) {
         event.preventDefault();
         this.validationMessage = this.emailFieldNative.validationMessage;
@@ -240,6 +468,18 @@ class MDEmailFieldComponent extends MDElement {
     /**
      *
      * @fires MDEmailFieldComponent#onEmailFieldNativeReset
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDEmailFieldComponent#onEmailFieldNativeReset 
      */
     handleEmailFieldNativeReset(event) {
         this.emailFieldNative.value = this.defaultValue;

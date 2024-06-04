@@ -7,6 +7,21 @@ import { MDRippleModule } from "../ripple/ripple";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDButtonComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDButtonComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDButtonComponent
+ * @extends MDElement
+ */
 class MDButtonComponent extends MDElement {
     /**
      *
@@ -15,6 +30,30 @@ class MDButtonComponent extends MDElement {
      * @property {String} [ui] - elevated,filled,tonal,outlined
      * @property {String} [type] -
      * @property {Boolean} [selected] -
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
+     * @property {String} [ui] - elevated,filled,tonal,outlined
+     * @property {String} [type] - 
+     * @property {Boolean} [selected] - 
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
+     * @property {String} [ui] - elevated,filled,tonal,outlined
+     * @property {String} [type] - 
+     * @property {Boolean} [selected] - 
+     */
+    /**
+     *
+     * @property {String} [icon] - 
+     * @property {String} [label] - 
+     * @property {String} [ui] - elevated,filled,tonal,outlined
+     * @property {String} [type] - 
+     * @property {Boolean} [selected] - 
      */
     static get properties() {
         return {
@@ -29,11 +68,29 @@ class MDButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.type = "button";
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -49,10 +106,28 @@ class MDButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get buttonNative() {
         return this.querySelector(".md-button__native");
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -68,6 +143,15 @@ class MDButtonComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-button");
@@ -75,6 +159,15 @@ class MDButtonComponent extends MDElement {
         this.ripple.destroy();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */

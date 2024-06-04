@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDSideSheetComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSideSheetComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSideSheetComponent
+ * @extends MDElement
+ */
 class MDSideSheetComponent extends MDElement {
     /**
      *
@@ -16,6 +31,36 @@ class MDSideSheetComponent extends MDElement {
      * @property {Array} [buttons] -
      * @property {String} [ui] - modal
      * @property {Boolean} [open] -
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
+     */
+    /**
+     *
+     * @property {Array} [leadingActions] - 
+     * @property {String} [label] - 
+     * @property {String} [subLabel] - 
+     * @property {Array} [trailingActions] - 
+     * @property {Array} [buttons] - 
+     * @property {String} [ui] - modal
+     * @property {Boolean} [open] - 
      */
     static get properties() {
         return {
@@ -32,11 +77,29 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
         this.body = Array.from(this.childNodes);
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -85,6 +148,15 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-side-sheet");
@@ -99,6 +171,15 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-side-sheet");
@@ -107,6 +188,15 @@ class MDSideSheetComponent extends MDElement {
         this.scrim.remove();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -137,6 +227,15 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     show() {
         this.open = true;
     }
@@ -144,10 +243,28 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     close() {
         this.open = false;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -163,6 +280,18 @@ class MDSideSheetComponent extends MDElement {
      *
      * @fires MDSideSheetComponent#onSideSheetActionClick
      */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetActionClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetActionClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetActionClick 
+     */
     handleSideSheetActionClick(event) {
         this.emit("onSideSheetActionClick", event);
     }
@@ -171,6 +300,18 @@ class MDSideSheetComponent extends MDElement {
      *
      * @fires MDSideSheetComponent#onSideSheetButtonClick
      */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetButtonClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetButtonClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetButtonClick 
+     */
     handleSideSheetButtonClick(event) {
         this.emit("onSideSheetButtonClick", event);
     }
@@ -178,6 +319,18 @@ class MDSideSheetComponent extends MDElement {
     /**
      *
      * @fires MDSideSheetComponent#onSideSheetScrimClick
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetScrimClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetScrimClick 
+     */
+    /**
+     *
+     * @fires MDSideSheetComponent#onSideSheetScrimClick 
      */
     handleSideSheetScrimClick(event) {
         this.close();

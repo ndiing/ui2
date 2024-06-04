@@ -6,6 +6,21 @@ import { ifDefined } from "lit/directives/if-defined.js";
  *
  * @extends MDElement
  */
+/**
+ *
+ * @class MDSearchFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSearchFieldComponent
+ * @extends MDElement
+ */
+/**
+ *
+ * @class MDSearchFieldComponent
+ * @extends MDElement
+ */
 class MDSearchFieldComponent extends MDElement {
     /**
      *
@@ -33,6 +48,93 @@ class MDSearchFieldComponent extends MDElement {
      * @property {Boolean} [populated] -
      * @property {Boolean} [invalid] -
      * @property {String} [validationMessage] -
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
+     * @property {String} [ui] - filled,outlined,rounded
+     */
+    /**
+     *
+     * @property {String} [name] - 
+     * @property {String} [placeholder] - 
+     * @property {Number} [maxlength] - 
+     * @property {Number} [minlength] - 
+     * @property {Boolean} [readonly] - 
+     * @property {Boolean} [disabled] - 
+     * @property {Boolean} [required] - 
+     * @property {String} [pattern] - 
+     * @property {String} [autocomplete] - 
+     * @property {Boolean} [autofocus] - 
+     * @property {String} [list] - 
+     * @property {Boolean} [spellcheck] - 
+     * @property {String} [value] - 
+     * @property {String} [defaultValue] - 
+     * @property {String} [label] - 
+     * @property {String} [leadingIcon] - 
+     * @property {String} [leadingMeta] - 
+     * @property {String} [trailingMeta] - 
+     * @property {Array} [trailingActions] - 
+     * @property {String} [trailingIcon] - 
+     * @property {String} [text] - 
+     * @property {Boolean} [focused] - 
+     * @property {Boolean} [populated] - 
+     * @property {Boolean} [invalid] - 
+     * @property {String} [validationMessage] - 
      * @property {String} [ui] - filled,outlined,rounded
      */
     static get properties() {
@@ -72,10 +174,28 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     constructor() {
         super();
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -130,12 +250,30 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-search-field");
         await this.updateComplete;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -153,12 +291,30 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     async firstUpdated(changedProperties) {
         await this.updateComplete;
         this.defaultValue = this.value ?? "";
         this.populated = !!this.value;
     }
 
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     /**
      *
      */
@@ -178,6 +334,15 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    /**
+     *
+     */
     get searchFieldNative() {
         return this.querySelector(".md-search-field__native");
     }
@@ -186,6 +351,18 @@ class MDSearchFieldComponent extends MDElement {
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeActionClick
      */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionClick 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionClick 
+     */
     handleSearchFieldNativeActionClick(event) {
         this.emit("onSearchFieldNativeActionClick", event);
     }
@@ -193,6 +370,18 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeActionCancelClick
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionCancelClick 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionCancelClick 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeActionCancelClick 
      */
     handleSearchFieldNativeActionCancelClick(event) {
         this.searchFieldNative.value = "";
@@ -211,6 +400,18 @@ class MDSearchFieldComponent extends MDElement {
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeFocus
      */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeFocus 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeFocus 
+     */
     handleSearchFieldNativeFocus(event) {
         this.focused = true;
         this.emit("onSearchFieldNativeFocus", event);
@@ -220,6 +421,18 @@ class MDSearchFieldComponent extends MDElement {
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeBlur
      */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeBlur 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeBlur 
+     */
     handleSearchFieldNativeBlur(event) {
         this.focused = false;
         this.emit("onSearchFieldNativeBlur", event);
@@ -228,6 +441,18 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeInput
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInput 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInput 
      */
     handleSearchFieldNativeInput(event) {
         this.value = this.searchFieldNative.value;
@@ -241,6 +466,18 @@ class MDSearchFieldComponent extends MDElement {
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeSearch
      */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeSearch 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeSearch 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeSearch 
+     */
     handleSearchFieldNativeSearch(event) {
         this.emit("onSearchFieldNativeSearch", event);
     }
@@ -248,6 +485,18 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeInvalid
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInvalid 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeInvalid 
      */
     handleSearchFieldNativeInvalid(event) {
         event.preventDefault();
@@ -259,6 +508,18 @@ class MDSearchFieldComponent extends MDElement {
     /**
      *
      * @fires MDSearchFieldComponent#onSearchFieldNativeReset
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeReset 
+     */
+    /**
+     *
+     * @fires MDSearchFieldComponent#onSearchFieldNativeReset 
      */
     handleSearchFieldNativeReset(event) {
         this.searchFieldNative.value = this.defaultValue;
