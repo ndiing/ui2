@@ -8,25 +8,25 @@ Untuk menjalankan proyek ini secara lokal, pastikan Anda memiliki Node.js dan np
 
 1. Clone repositori ini ke komputer Anda:
 
-```bash
+```js
 git clone https://github.com/ndiing/material.git
 ```
 
 2. Masuk ke direktori proyek:
 
-```bash
+```js
 cd material
 ```
 
 3. Install semua dependensi menggunakan npm:
 
-```bash
+```js
 npm install
 ```
 
 4. Jalankan proyek:
 
-```bash
+```js
 npm start
 ```
 
@@ -74,7 +74,7 @@ Pastikan Anda memanggil `customElements.define` untuk mendefinisikan elemen kust
 
 Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda:
 
-```html
+```js
 <!doctype html>
 <html lang="en">
     <head>
@@ -123,72 +123,6 @@ Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda
 ## Dokumentasi
 
 Dokumentasi lengkap untuk proyek ini dapat ditemukan di direktori [docs](https://github.com/ndiing/material/tree/main/docs).
-<!-- 
-- [badge](./docs/badge.md)
-- [bottom-app-bar](./docs/bottom-app-bar.md)
-- [bottom-sheet](./docs/bottom-sheet.md)
-- [button](./docs/button.md)
-- [card](./docs/card.md)
-- [checkbox](./docs/checkbox.md)
-- [chips](./docs/chips.md)
-- [color-field](./docs/color-field.md)
-- [color-picker](./docs/color-picker.md)
-- [color](./docs/color.md)
-- [data-table](./docs/data-table.md)
-- [data](./docs/data.md)
-- [date-field](./docs/date-field.md)
-- [date-picker](./docs/date-picker.md)
-- [datetime-field](./docs/datetime-field.md)
-- [datetime-picker](./docs/datetime-picker.md)
-- [dialog](./docs/dialog.md)
-- [element](./docs/element.md)
-- [email-field](./docs/email-field.md)
-- [fab](./docs/fab.md)
-- [file-field](./docs/file-field.md)
-- [form](./docs/form.md)
-- [gesture](./docs/gesture.md)
-- [icon-button](./docs/icon-button.md)
-- [icon](./docs/icon.md)
-- [image](./docs/image.md)
-- [layout](./docs/layout.md)
-- [list](./docs/list.md)
-- [localization](./docs/localization.md)
-- [menu](./docs/menu.md)
-- [mixin](./docs/mixin.md)
-- [month-field](./docs/month-field.md)
-- [month-picker](./docs/month-picker.md)
-- [navigation-bar](./docs/navigation-bar.md)
-- [navigation-drawer](./docs/navigation-drawer.md)
-- [navigation-rail](./docs/navigation-rail.md)
-- [nested-list](./docs/nested-list.md)
-- [number-field](./docs/number-field.md)
-- [password-field](./docs/password-field.md)
-- [popper](./docs/popper.md)
-- [progress-indicator](./docs/progress-indicator.md)
-- [radio-button](./docs/radio-button.md)
-- [ripple](./docs/ripple.md)
-- [router](./docs/router.md)
-- [search-field](./docs/search-field.md)
-- [segmented-button](./docs/segmented-button.md)
-- [select-field](./docs/select-field.md)
-- [side-sheet](./docs/side-sheet.md)
-- [slider](./docs/slider.md)
-- [snackbar](./docs/snackbar.md)
-- [store](./docs/store.md)
-- [switch](./docs/switch.md)
-- [tabs](./docs/tabs.md)
-- [tel-field](./docs/tel-field.md)
-- [text-field](./docs/text-field.md)
-- [textarea-field](./docs/textarea-field.md)
-- [time-field](./docs/time-field.md)
-- [time-picker](./docs/time-picker.md)
-- [tooltip](./docs/tooltip.md)
-- [top-app-bar](./docs/top-app-bar.md)
-- [typography](./docs/typography.md)
-- [url-field](./docs/url-field.md)
-- [virtual-scroll](./docs/virtual-scroll.md)
-- [week-field](./docs/week-field.md)
-- [week-picker](./docs/week-picker.md) -->
 
 ## Demo
 
