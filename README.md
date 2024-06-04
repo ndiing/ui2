@@ -70,6 +70,56 @@ export default document.createElement("app-main");
 
 Pastikan Anda memanggil `customElements.define` untuk mendefinisikan elemen kustom Anda, dan `document.createElement("app-main")` untuk membuat elemen tersebut dalam halaman HTML Anda.
 
+## Contoh File `index.html`
+
+Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda:
+
+<pre>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <meta
+            name="theme-color"
+            content="#6750a4"
+        />
+        <meta
+            name="description"
+            content="Explore examples of Material Design frameworks to create sleek, modern interfaces."
+        />
+
+        <title>Material Design Framework Examples</title>
+
+        <base href="/" />
+
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+    </head>
+    <body>
+        <md-outlet></md-outlet>
+    </body>
+</html>
+</pre>
+
 ## Dokumentasi
 
 Dokumentasi lengkap untuk proyek ini dapat ditemukan di direktori [docs](https://github.com/ndiing/material/tree/main/docs).
