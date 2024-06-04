@@ -8,27 +8,27 @@ Untuk menjalankan proyek ini secara lokal, pastikan Anda memiliki Node.js dan np
 
 1. Clone repositori ini ke komputer Anda:
 
-<pre>
+```bash
 git clone https://github.com/ndiing/material.git
-</pre>
+```
 
 2. Masuk ke direktori proyek:
 
-<pre>
+```bash
 cd material
-</pre>
+```
 
 3. Install semua dependensi menggunakan npm:
 
-<pre>
+```bash
 npm install
-</pre>
+```
 
 4. Jalankan proyek:
 
-<pre>
+```bash
 npm start
-</pre>
+```
 
 Proyek akan dijalankan di `localhost:3000` secara default. Buka browser Anda dan akses URL tersebut untuk melihat proyek.
 
@@ -36,7 +36,7 @@ Proyek akan dijalankan di `localhost:3000` secara default. Buka browser Anda dan
 
 Untuk mengatur routing dalam proyek ini, Anda dapat menggunakan modul router yang telah disediakan. Berikut adalah contoh penggunaannya:
 
-<pre>
+```js
 import { MDRouterModule } from "../com/router/router";
 
 const routes = [
@@ -46,7 +46,7 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
-</pre>
+```
 
 Pastikan untuk menyesuaikan rute sesuai dengan struktur halaman proyek Anda.
 
@@ -54,7 +54,7 @@ Pastikan untuk menyesuaikan rute sesuai dengan struktur halaman proyek Anda.
 
 Untuk menampilkan halaman awal proyek, Anda dapat menggunakan komponen `AppMainElement`. Berikut adalah contoh penggunaannya:
 
-<pre>
+```js
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
 import { layout } from "../../com/layout/layout";
@@ -66,7 +66,7 @@ class AppMainElement extends MDElement {
 customElements.define("app-main", AppMainElement);
 
 export default document.createElement("app-main");
-</pre>
+```
 
 Pastikan Anda memanggil `customElements.define` untuk mendefinisikan elemen kustom Anda, dan `document.createElement("app-main")` untuk membuat elemen tersebut dalam halaman HTML Anda.
 
@@ -74,7 +74,7 @@ Pastikan Anda memanggil `customElements.define` untuk mendefinisikan elemen kust
 
 Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda:
 
-<pre>
+```html
 <!doctype html>
 <html lang="en">
     <head>
@@ -118,7 +118,7 @@ Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda
         <md-outlet></md-outlet>
     </body>
 </html>
-</pre>
+```
 
 ## Dokumentasi
 
