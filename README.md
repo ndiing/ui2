@@ -123,7 +123,7 @@ Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda
 ## Dokumentasi
 
 Dokumentasi lengkap untuk proyek ini dapat ditemukan di direktori [docs](https://github.com/ndiing/material/tree/main/docs).
-
+<!-- 
 - [badge](./docs/badge.md)
 - [bottom-app-bar](./docs/bottom-app-bar.md)
 - [bottom-sheet](./docs/bottom-sheet.md)
@@ -188,7 +188,7 @@ Dokumentasi lengkap untuk proyek ini dapat ditemukan di direktori [docs](https:/
 - [url-field](./docs/url-field.md)
 - [virtual-scroll](./docs/virtual-scroll.md)
 - [week-field](./docs/week-field.md)
-- [week-picker](./docs/week-picker.md)
+- [week-picker](./docs/week-picker.md) -->
 
 ## Demo
 
