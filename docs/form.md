@@ -60,18 +60,22 @@
 <a name="MDFormComponent.properties"></a>
 
 ### MDFormComponent.properties
+Properties of the MDFormComponent.
+
 **Kind**: static property of [<code>MDFormComponent</code>](#MDFormComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [acceptCharset] | <code>String</code> | - |
-| [action] | <code>String</code> | - |
-| [elements] | <code>String</code> | - |
-| [encoding] | <code>String</code> | - |
-| [enctype] | <code>String</code> | - |
-| [length] | <code>String</code> | - |
-| [method] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [target] | <code>String</code> | - |
+| [acceptCharset] | <code>String</code> | The character encodings that are to be used for form submission. |
+| [action] | <code>String</code> | The URL where the form data will be submitted. |
+| [elements] | <code>String</code> | The form elements. |
+| [encoding] | <code>String</code> | The encoding type for form submission. |
+| [enctype] | <code>String</code> | The content type used to submit the form to the server. |
+| [length] | <code>String</code> | The number of elements in the form. |
+| [method] | <code>String</code> | The HTTP method used to submit the form. |
+| [name] | <code>String</code> | The name of the form. |
+| [target] | <code>String</code> | The name of the target frame where the response will be displayed. |
+| [novalidate] | <code>Boolean</code> | Specifies whether the form should be validated before submission. |
+| [autocomplete] | <code>String</code> | Specifies whether the autocomplete feature is enabled or disabled on the form. |
 

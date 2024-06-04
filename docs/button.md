@@ -37,14 +37,16 @@
 <a name="MDButtonComponent.properties"></a>
 
 ### MDButtonComponent.properties
+Properties of the MDButtonComponent.
+
 **Kind**: static property of [<code>MDButtonComponent</code>](#MDButtonComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [icon] | <code>String</code> | Represents the icon associated with the button. |
-| [label] | <code>String</code> | Represents the label displayed on the button. |
-| [ui] | <code>String</code> | Represents the UI style of the button. Possible values are 'elevated', 'filled', 'tonal', and 'outlined'. |
-| [type] | <code>String</code> | Represents the type of the button. |
-| [selected] | <code>Boolean</code> | Indicates whether the button is selected or not. |
+| [icon] | <code>String</code> | The icon to display on the button. |
+| [label] | <code>String</code> | The label text of the button. |
+| [ui] | <code>String</code> | Specifies the UI style of the button. Possible values are 'elevated', 'filled', 'tonal', 'outlined'. |
+| [type] | <code>String</code> | The type of the button (e.g., 'submit', 'reset', 'button'). |
+| [selected] | <code>Boolean</code> | Indicates if the button is selected. |
 

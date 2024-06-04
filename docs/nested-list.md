@@ -70,23 +70,25 @@
 <a name="MDNestedListItemComponent.properties"></a>
 
 ### MDNestedListItemComponent.properties
+Properties of the MDNestedListItemComponent.
+
 **Kind**: static property of [<code>MDNestedListItemComponent</code>](#MDNestedListItemComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [label] | <code>String</code> | - |
-| [selected] | <code>Boolean</code> | - |
-| [routerLink] | <code>String</code> | - |
-| [indent] | <code>Number</code> | - |
-| [isNode] | <code>Boolean</code> | - |
-| [ui] | <code>String</code> | - |
-| [expanded] | <code>Boolean</code> | - |
-| [activated] | <code>Boolean</code> | - |
-| [isParent] | <code>Boolean</code> | - |
-| [hasLevel] | <code>Boolean</code> | - |
-| [nodeIcons] | <code>Array</code> | - |
-| [leafIcon] | <code>String</code> | - |
+| [label] | <code>String</code> | The label text of the nested list item. |
+| [selected] | <code>Boolean</code> | Indicates if the item is selected. |
+| [routerLink] | <code>String</code> | The URL for router link. |
+| [indent] | <code>Number</code> | The indentation level of the item. |
+| [isNode] | <code>Boolean</code> | Indicates if the item is a node. |
+| [ui] | <code>String</code> | UI style of the item. |
+| [expanded] | <code>Boolean</code> | Indicates if the item is expanded. |
+| [activated] | <code>Boolean</code> | Indicates if the item is activated. |
+| [isParent] | <code>Boolean</code> | Indicates if the item is a parent node. |
+| [hasLevel] | <code>Boolean</code> | Indicates if the item has a level. |
+| [nodeIcons] | <code>Array</code> | Icons for the node. |
+| [leafIcon] | <code>String</code> | Icon for leaf nodes. |
 
 <a name="MDNestedListRowComponent"></a>
 
@@ -194,15 +196,17 @@
 <a name="MDNestedListComponent.properties"></a>
 
 ### MDNestedListComponent.properties
+Properties of the MDNestedListComponent.
+
 **Kind**: static property of [<code>MDNestedListComponent</code>](#MDNestedListComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [list] | <code>Array</code> | - |
-| [rangeSelection] | <code>Boolean</code> | - |
-| [multiSelection] | <code>Boolean</code> | - |
-| [singleSelection] | <code>Boolean</code> | - |
-| [allSelection] | <code>Boolean</code> | - |
-| [ui] | <code>String</code> | tree,level,accordion |
+| [list] | <code>Array</code> | The array of items to display in the nested list. |
+| [rangeSelection] | <code>Boolean</code> | Indicates if range selection is enabled. |
+| [multiSelection] | <code>Boolean</code> | Indicates if multiple selection is enabled. |
+| [singleSelection] | <code>Boolean</code> | Indicates if single selection is enabled. |
+| [allSelection] | <code>Boolean</code> | Indicates if selecting all items is enabled. |
+| [ui] | <code>String</code> | Specifies the UI style of the nested list. Possible values are 'tree', 'level', 'accordion'. |
 

@@ -32,17 +32,18 @@
 <a name="MDCardComponent.properties"></a>
 
 ### MDCardComponent.properties
+Properties of the MDCardComponent.
+
 **Kind**: static property of [<code>MDCardComponent</code>](#MDCardComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [leadingActions] | <code>Array</code> | Represents actions aligned to the start of the component. |
-| [label] | <code>String</code> | Represents the main label of the component. |
-| [subLabel] | <code>String</code> | Represents the sub-label or additional information of the component. |
-| [trailingActions] | <code>Array</code> | Represents actions aligned to the end of the component. |
-| [image] | <code>String</code> | Represents the image associated with the component. |
-| [buttons] | <code>Array</code> | Represents buttons within the component. |
-| [ui] | <code>String</code> | Represents the UI style of the component. Possible values are 'elevated', 'filled', and 'outlined'. |
-
+| [leadingActions] | <code>Array</code> | Actions displayed on the leading side of the card. |
+| [label] | <code>String</code> | The main label of the card. |
+| [subLabel] | <code>String</code> | The sublabel of the card. |
+| [trailingActions] | <code>Array</code> | Actions displayed on the trailing side of the card. |
+| [image] | <code>String</code> | URL of the image displayed on the card. |
+| [buttons] | <code>Array</code> | Buttons displayed on the card. |
+| [ui] | <code>String</code> | Specifies the UI style of the card. Possible values are 'elevated', 'filled', 'outlined'. |
 

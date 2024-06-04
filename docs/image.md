@@ -32,13 +32,15 @@
 <a name="MDImageComponent.properties"></a>
 
 ### MDImageComponent.properties
+Properties of the MDImageComponent.
+
 **Kind**: static property of [<code>MDImageComponent</code>](#MDImageComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [src] | <code>String</code> | - |
-| [alt] | <code>String</code> | - |
-| [ratio] | <code>String</code> | - |
-| [ui] | <code>String</code> | rounded |
+| [src] | <code>String</code> | The source of the image. |
+| [alt] | <code>String</code> | The alternate text of the image. |
+| [ratio] | <code>String</code> | The ratio of the image. |
+| [ui] | <code>String</code> | The UI style of the image. Possible values are 'rounded', 'square', 'circle', etc. |
 

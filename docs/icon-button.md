@@ -38,13 +38,15 @@
 <a name="MDIconButtonComponent.properties"></a>
 
 ### MDIconButtonComponent.properties
+Properties of the MDIconButtonComponent.
+
 **Kind**: static property of [<code>MDIconButtonComponent</code>](#MDIconButtonComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [icon] | <code>String</code> | - |
-| [ui] | <code>String</code> | filled,tonal,outlined |
-| [toggle] | <code>Boolean</code> | - |
-| [selected] | <code>Boolean</code> | - |
+| [icon] | <code>String</code> | The icon of the button. |
+| [ui] | <code>String</code> | The UI style of the button. Possible values are 'filled', 'tonal', and 'outlined'. |
+| [toggle] | <code>Boolean</code> | Indicates if the button is toggleable. |
+| [selected] | <code>Boolean</code> | Indicates if the button is selected. |
 

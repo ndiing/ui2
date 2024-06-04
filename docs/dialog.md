@@ -65,16 +65,18 @@
 <a name="MDDialogComponent.properties"></a>
 
 ### MDDialogComponent.properties
+Properties of the MDDialogComponent.
+
 **Kind**: static property of [<code>MDDialogComponent</code>](#MDDialogComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | full-screen |
-| [open] | <code>Boolean</code> | - |
+| [leadingActions] | <code>Array</code> | Actions displayed on the leading side of the dialog. |
+| [label] | <code>String</code> | The main label of the dialog. |
+| [subLabel] | <code>String</code> | The sublabel of the dialog. |
+| [trailingActions] | <code>Array</code> | Actions displayed on the trailing side of the dialog. |
+| [buttons] | <code>Array</code> | Buttons displayed on the dialog. |
+| [ui] | <code>String</code> | Specifies the UI style of the dialog. Possible value is 'full-screen'. |
+| [open] | <code>Boolean</code> | Indicates whether the dialog is open. |
 

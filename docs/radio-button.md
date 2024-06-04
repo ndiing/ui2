@@ -60,21 +60,23 @@
 <a name="MDRadioButtonComponent.properties"></a>
 
 ### MDRadioButtonComponent.properties
+Properties of the MDRadioButtonComponent.
+
 **Kind**: static property of [<code>MDRadioButtonComponent</code>](#MDRadioButtonComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [autocapitalize] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [checked] | <code>Boolean</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [defaultChecked] | <code>Boolean</code> | - |
-| [indeterminate] | <code>Boolean</code> | - |
-| [defaultIndeterminate] | <code>Boolean</code> | - |
+| [autocapitalize] | <code>String</code> | Specifies whether the browser should automatically capitalize the radio button's value. |
+| [disabled] | <code>Boolean</code> | Specifies whether the radio button is disabled. |
+| [form] | <code>String</code> | Specifies the form element that the radio button belongs to. |
+| [name] | <code>String</code> | Specifies the name of the radio button. |
+| [required] | <code>Boolean</code> | Specifies whether the radio button is required. |
+| [type] | <code>String</code> | Specifies the type of the radio button. |
+| [value] | <code>String</code> | Specifies the value of the radio button. |
+| [checked] | <code>Boolean</code> | Specifies whether the radio button is checked by default. |
+| [defaultValue] | <code>String</code> | Specifies the default value of the radio button. |
+| [defaultChecked] | <code>Boolean</code> | Specifies whether the radio button is checked by default. |
+| [indeterminate] | <code>Boolean</code> | Specifies whether the radio button is in an indeterminate state. |
+| [defaultIndeterminate] | <code>Boolean</code> | Specifies whether the radio button is in an indeterminate state by default. |
 

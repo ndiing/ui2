@@ -60,21 +60,23 @@
 <a name="MDCheckboxComponent.properties"></a>
 
 ### MDCheckboxComponent.properties
+Properties of the MDCheckboxComponent.
+
 **Kind**: static property of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [autocapitalize] | <code>String</code> | Specifies whether the text of the checkbox should be automatically capitalized. |
-| [disabled] | <code>Boolean</code> | Indicates whether the checkbox is disabled or not. |
-| [form] | <code>String</code> | Specifies the name of the form the checkbox belongs to. |
+| [autocapitalize] | <code>String</code> | Specifies whether the browser should automatically capitalize the checkbox's value. |
+| [disabled] | <code>Boolean</code> | Specifies whether the checkbox is disabled. |
+| [form] | <code>String</code> | Specifies the form element that the checkbox belongs to. |
 | [name] | <code>String</code> | Specifies the name of the checkbox. |
-| [required] | <code>Boolean</code> | Indicates whether the checkbox is required to be checked before form submission. |
+| [required] | <code>Boolean</code> | Specifies whether the checkbox is required. |
 | [type] | <code>String</code> | Specifies the type of the checkbox. |
 | [value] | <code>String</code> | Specifies the value of the checkbox. |
-| [checked] | <code>Boolean</code> | Indicates whether the checkbox is checked or not. |
+| [checked] | <code>Boolean</code> | Specifies whether the checkbox is checked by default. |
 | [defaultValue] | <code>String</code> | Specifies the default value of the checkbox. |
-| [defaultChecked] | <code>Boolean</code> | Indicates whether the checkbox is initially checked by default. |
-| [indeterminate] | <code>Boolean</code> | Indicates whether the checkbox is in an indeterminate state. |
-| [defaultIndeterminate] | <code>Boolean</code> | Indicates whether the checkbox is initially in an indeterminate state by default. |
+| [defaultChecked] | <code>Boolean</code> | Specifies whether the checkbox is checked by default. |
+| [indeterminate] | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state. |
+| [defaultIndeterminate] | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state by default. |
 

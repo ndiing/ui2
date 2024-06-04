@@ -44,14 +44,16 @@
 <a name="MDSegmentedButtonComponent.properties"></a>
 
 ### MDSegmentedButtonComponent.properties
+Properties of the MDSegmentedButtonComponent.
+
 **Kind**: static property of [<code>MDSegmentedButtonComponent</code>](#MDSegmentedButtonComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [buttons] | <code>Array</code> | - |
-| [rangeSelection] | <code>Boolean</code> | - |
-| [multiSelection] | <code>Boolean</code> | - |
-| [singleSelection] | <code>Boolean</code> | - |
-| [allSelection] | <code>Boolean</code> | - |
+| [buttons] | <code>Array</code> | An array of buttons in the segmented button component. |
+| [rangeSelection] | <code>Boolean</code> | Indicates if range selection is enabled for the buttons. |
+| [multiSelection] | <code>Boolean</code> | Indicates if multi-selection is enabled for the buttons. |
+| [singleSelection] | <code>Boolean</code> | Indicates if single-selection is enabled for the buttons. |
+| [allSelection] | <code>Boolean</code> | Indicates if selecting all buttons is enabled. |
 

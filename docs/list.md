@@ -67,28 +67,30 @@
 <a name="MDListItemComponent.properties"></a>
 
 ### MDListItemComponent.properties
+Properties of the MDListItemComponent.
+
 **Kind**: static property of [<code>MDListItemComponent</code>](#MDListItemComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [avatar] | <code>String</code> | - |
-| [thumbnail] | <code>String</code> | - |
-| [video] | <code>String</code> | - |
-| [leadingCheckbox] | <code>Object</code> | - |
-| [leadingRadioButton] | <code>Object</code> | - |
-| [leadingSwitch] | <code>Object</code> | - |
-| [leadingIcon] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingIcon] | <code>String</code> | - |
-| [trailingCheckbox] | <code>Object</code> | - |
-| [trailingRadioButton] | <code>Object</code> | - |
-| [trailingSwitch] | <code>Object</code> | - |
-| [text] | <code>String</code> | - |
-| [badge] | <code>Object</code> | - |
-| [selected] | <code>Boolean</code> | - |
-| [routerLink] | <code>String</code> | - |
+| [avatar] | <code>String</code> | URL of the avatar image. |
+| [thumbnail] | <code>String</code> | URL of the thumbnail image. |
+| [video] | <code>String</code> | URL of the video. |
+| [leadingCheckbox] | <code>Object</code> | Leading checkbox object. |
+| [leadingRadioButton] | <code>Object</code> | Leading radio button object. |
+| [leadingSwitch] | <code>Object</code> | Leading switch object. |
+| [leadingIcon] | <code>String</code> | Leading icon name. |
+| [label] | <code>String</code> | Main label text. |
+| [subLabel] | <code>String</code> | Sublabel text. |
+| [trailingIcon] | <code>String</code> | Trailing icon name. |
+| [trailingCheckbox] | <code>Object</code> | Trailing checkbox object. |
+| [trailingRadioButton] | <code>Object</code> | Trailing radio button object. |
+| [trailingSwitch] | <code>Object</code> | Trailing switch object. |
+| [text] | <code>String</code> | Additional text content. |
+| [badge] | <code>Object</code> | Badge object. |
+| [selected] | <code>Boolean</code> | Indicates if the item is selected. |
+| [routerLink] | <code>String</code> | URL for router link. |
 
 <a name="MDListRowComponent"></a>
 
@@ -181,14 +183,16 @@
 <a name="MDListComponent.properties"></a>
 
 ### MDListComponent.properties
+Properties of the MDListComponent.
+
 **Kind**: static property of [<code>MDListComponent</code>](#MDListComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [list] | <code>Array</code> | - |
-| [rangeSelection] | <code>Boolean</code> | - |
-| [multiSelection] | <code>Boolean</code> | - |
-| [singleSelection] | <code>Boolean</code> | - |
-| [allSelection] | <code>Boolean</code> | - |
+| [list] | <code>Array</code> | The array of items to display in the list. |
+| [rangeSelection] | <code>Boolean</code> | Indicates if range selection is enabled. |
+| [multiSelection] | <code>Boolean</code> | Indicates if multiple selection is enabled. |
+| [singleSelection] | <code>Boolean</code> | Indicates if single selection is enabled. |
+| [allSelection] | <code>Boolean</code> | Indicates if selecting all items is enabled. |
 

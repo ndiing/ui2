@@ -32,12 +32,14 @@
 <a name="MDFabComponent.properties"></a>
 
 ### MDFabComponent.properties
+Properties of the MDFabComponent.
+
 **Kind**: static property of [<code>MDFabComponent</code>](#MDFabComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [icon] | <code>String</code> | - |
-| [label] | <code>String</code> | - |
-| [ui] | <code>String</code> | small,large,extended,surface,secondary,tertiary,unelevated |
+| [icon] | <code>String</code> | The icon to display on the FAB. |
+| [label] | <code>String</code> | The label for accessibility purposes. |
+| [ui] | <code>String</code> | Specifies the UI style of the FAB. Possible values are 'small', 'large', 'extended', 'surface', 'secondary', 'tertiary', 'unelevated'. |
 

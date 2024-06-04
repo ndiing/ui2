@@ -27,10 +27,13 @@
 <a name="MDBadgeComponent.properties"></a>
 
 ### MDBadgeComponent.properties
+Properties of the MDBadgeComponent.
+
 **Kind**: static property of [<code>MDBadgeComponent</code>](#MDBadgeComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [label] | <code>Number</code> | Represents the label displayed on the badge. |
-| [max] | <code>Number</code> | Represents the maximum value that the badge can display. |
+| [label] | <code>Number</code> | The label or value displayed on the badge. |
+| [max] | <code>Number</code> | The maximum value or limit for the badge. |
+

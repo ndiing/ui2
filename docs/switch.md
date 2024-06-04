@@ -65,22 +65,24 @@
 <a name="MDSwitchComponent.properties"></a>
 
 ### MDSwitchComponent.properties
+Properties of the MDSwitchComponent.
+
 **Kind**: static property of [<code>MDSwitchComponent</code>](#MDSwitchComponent)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [autocapitalize] | <code>String</code> | - |
-| [disabled] | <code>Boolean</code> | - |
-| [form] | <code>String</code> | - |
-| [name] | <code>String</code> | - |
-| [required] | <code>Boolean</code> | - |
-| [type] | <code>String</code> | - |
-| [value] | <code>String</code> | - |
-| [checked] | <code>Boolean</code> | - |
-| [defaultValue] | <code>String</code> | - |
-| [defaultChecked] | <code>Boolean</code> | - |
-| [indeterminate] | <code>Boolean</code> | - |
-| [defaultIndeterminate] | <code>Boolean</code> | - |
-| [icons] | <code>Array</code> | - |
+| [autocapitalize] | <code>String</code> | Specifies whether the browser should automatically capitalize the switch's value. |
+| [disabled] | <code>Boolean</code> | Specifies whether the switch is disabled. |
+| [form] | <code>String</code> | Specifies the form element that the switch belongs to. |
+| [name] | <code>String</code> | Specifies the name of the switch. |
+| [required] | <code>Boolean</code> | Specifies whether the switch is required. |
+| [type] | <code>String</code> | Specifies the type of the switch. |
+| [value] | <code>String</code> | Specifies the value of the switch. |
+| [checked] | <code>Boolean</code> | Specifies whether the switch is checked by default. |
+| [defaultValue] | <code>String</code> | Specifies the default value of the switch. |
+| [defaultChecked] | <code>Boolean</code> | Specifies whether the switch is checked by default. |
+| [indeterminate] | <code>Boolean</code> | Specifies whether the switch is in an indeterminate state. |
+| [defaultIndeterminate] | <code>Boolean</code> | Specifies whether the switch is in an indeterminate state by default. |
+| [icons] | <code>Array</code> | Specifies the icons for the switch. |
 
