@@ -39,20 +39,19 @@ class MDNumberFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocapitalize: { type: Boolean },
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
-            list: { type: String },
             name: { type: String },
-            readonly: { type: Boolean },
-            required: { type: Boolean },
-            type: { type: String },
-            value: { type: Number },
-            max: { type: Number },
-            min: { type: Number },
             placeholder: { type: String },
+            min: { type: Number },
+            max: { type: Number },
             step: { type: Number },
+            readonly: { type: Boolean },
+            disabled: { type: Boolean },
+            required: { type: Boolean },
+            autocomplete: { type: String },
+            autofocus: { type: Boolean },
+            list: { type: String },
+            spellcheck: { type: Boolean },
+            value: { type: Number },
             defaultValue: { type: Number },
 
             label: { type: String },
@@ -94,20 +93,19 @@ class MDNumberFieldComponent extends MDElement {
                     <input
                         class="md-number-field__native"
                         type="number"
-                        .autocapitalize="${ifDefined(this.autocapitalize)}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
-                        .list="${ifDefined(this.list)}"
                         .name="${ifDefined(this.name)}"
-                        .readonly="${ifDefined(this.readonly)}"
-                        .required="${ifDefined(this.required)}"
-                        .type="${ifDefined(this.type)}"
-                        .value="${ifDefined(this.value)}"
-                        .max="${ifDefined(this.max)}"
-                        .min="${ifDefined(this.min)}"
                         .placeholder="${ifDefined(this.placeholder)}"
+                        .min="${ifDefined(this.min)}"
+                        .max="${ifDefined(this.max)}"
                         .step="${ifDefined(this.step)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .required="${ifDefined(this.required)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .list="${ifDefined(this.list)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
+                        .value="${ifDefined(this.value)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handleNumberFieldNativeFocus}"
                         @blur="${this.handleNumberFieldNativeBlur}"

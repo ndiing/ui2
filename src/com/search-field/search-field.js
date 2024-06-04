@@ -37,18 +37,19 @@ class MDSearchFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
             name: { type: String },
-            readonly: { type: Boolean },
-            required: { type: Boolean },
-            value: { type: String },
+            placeholder: { type: String },
             maxlength: { type: Number },
             minlength: { type: Number },
+            readonly: { type: Boolean },
+            disabled: { type: Boolean },
+            required: { type: Boolean },
             pattern: { type: String },
-            placeholder: { type: String },
-            size: { type: Number },
+            autocomplete: { type: String },
+            autofocus: { type: Boolean },
+            list: { type: String },
+            spellcheck: { type: Boolean },
+            value: { type: String },
             defaultValue: { type: String },
 
             label: { type: String },
@@ -90,18 +91,19 @@ class MDSearchFieldComponent extends MDElement {
                     <input
                         class="md-search-field__native"
                         .type="${"search"}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
                         .name="${ifDefined(this.name)}"
-                        .readonly="${ifDefined(this.readonly)}"
-                        .required="${ifDefined(this.required)}"
-                        .value="${ifDefined(this.value)}"
+                        .placeholder="${ifDefined(this.placeholder)}"
                         .maxlength="${ifDefined(this.maxlength)}"
                         .minlength="${ifDefined(this.minlength)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .required="${ifDefined(this.required)}"
                         .pattern="${ifDefined(this.pattern)}"
-                        .placeholder="${ifDefined(this.placeholder)}"
-                        .size="${ifDefined(this.size)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .list="${ifDefined(this.list)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
+                        .value="${ifDefined(this.value)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handleSearchFieldNativeFocus}"
                         @blur="${this.handleSearchFieldNativeBlur}"

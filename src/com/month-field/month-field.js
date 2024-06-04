@@ -179,7 +179,7 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    get colorFieldNative() {
+    get monthFieldNative() {
         return this.querySelector(".md-month-field__native");
     }
 
@@ -196,7 +196,7 @@ class MDMonthFieldComponent extends MDElement {
      * @fires MDMonthFieldComponent#onMonthFieldNativeActionCalendarClockClick
      */
     handleMonthFieldNativeActionCalendarClockClick(event) {
-        this.handleColorPicker();
+        this.handleMonthPicker();
 
         this.emit("onMonthFieldNativeActionCalendarClockClick", event);
     }
@@ -204,30 +204,30 @@ class MDMonthFieldComponent extends MDElement {
     /**
      *
      */
-    handleColorPicker() {
-        this.monthFieldPicker = document.createElement("md-month-picker");
-        this.parentElement.insertBefore(this.monthFieldPicker, this.nextElementSibling);
-        if (this.value) this.monthFieldPicker.value = this.value;
+    handleMonthPicker() {
+        this.monthPicker = document.createElement("md-month-picker");
+        this.parentElement.insertBefore(this.monthPicker, this.nextElementSibling);
+        if (this.value) this.monthPicker.value = this.value;
 
         const callback = () => {
-            this.monthFieldPicker.removeEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
-            this.monthFieldPicker.removeEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
-            this.monthFieldPicker.removeEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
-            this.monthFieldPicker.removeEventListener("onMonthPickerClose", callback);
-            this.monthFieldPicker.remove();
+            this.monthPicker.removeEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
+            this.monthPicker.removeEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
+            this.monthPicker.removeEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
+            this.monthPicker.removeEventListener("onMonthPickerClose", callback);
+            this.monthPicker.remove();
         };
 
         this.handleMonthFieldPickerChange = this.handleMonthFieldPickerChange.bind(this);
         this.handleMonthFieldPickerButtonCancelClick = this.handleMonthFieldPickerButtonCancelClick.bind(this);
         this.handleMonthFieldPickerButtonOkClick = this.handleMonthFieldPickerButtonOkClick.bind(this);
 
-        this.monthFieldPicker.addEventListener("onMonthPickerClose", callback);
-        this.monthFieldPicker.addEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
-        this.monthFieldPicker.addEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
-        this.monthFieldPicker.addEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
+        this.monthPicker.addEventListener("onMonthPickerClose", callback);
+        this.monthPicker.addEventListener("onMonthPickerChange", this.handleMonthFieldPickerChange);
+        this.monthPicker.addEventListener("onMonthPickerButtonCancelClick", this.handleMonthFieldPickerButtonCancelClick);
+        this.monthPicker.addEventListener("onMonthPickerButtonOkClick", this.handleMonthFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
-            this.monthFieldPicker.show(this);
+            this.monthPicker.show(this);
         });
     }
 
@@ -235,10 +235,10 @@ class MDMonthFieldComponent extends MDElement {
      *
      */
     handleMonthFieldPickerChange(event) {
-        this.colorFieldNative.value = [this.monthFieldPicker.selected.getFullYear(), ("" + (this.monthFieldPicker.selected.getMonth() + 1)).padStart(2, "0")].join("-");
-        this.value = this.colorFieldNative.value;
+        this.monthFieldNative.value = [this.monthPicker.selected.getFullYear(), ("" + (this.monthPicker.selected.getMonth() + 1)).padStart(2, "0")].join("-");
+        this.value = this.monthFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.monthFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
 
@@ -246,16 +246,16 @@ class MDMonthFieldComponent extends MDElement {
      *
      */
     handleMonthFieldPickerButtonCancelClick(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
-        this.monthFieldPicker.close();
+        this.monthFieldNative.value = this.defaultValue;
+        this.value = this.monthFieldNative.value;
+        this.monthPicker.close();
     }
 
     /**
      *
      */
     handleMonthFieldPickerButtonOkClick(event) {
-        this.monthFieldPicker.close();
+        this.monthPicker.close();
     }
 
     /**
@@ -281,9 +281,9 @@ class MDMonthFieldComponent extends MDElement {
      * @fires MDMonthFieldComponent#onMonthFieldNativeInput
      */
     handleMonthFieldNativeInput(event) {
-        this.value = this.colorFieldNative.value;
+        this.value = this.monthFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.monthFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onMonthFieldNativeInput", event);
     }
@@ -294,7 +294,7 @@ class MDMonthFieldComponent extends MDElement {
      */
     handleMonthFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.monthFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onMonthFieldNativeInvalid", event);
     }
@@ -304,8 +304,8 @@ class MDMonthFieldComponent extends MDElement {
      * @fires MDMonthFieldComponent#onMonthFieldNativeReset
      */
     handleMonthFieldNativeReset(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
+        this.monthFieldNative.value = this.defaultValue;
+        this.value = this.monthFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

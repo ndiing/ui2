@@ -107,52 +107,7 @@ class MDWeekPickerComponent extends MDElement {
         });
     }
 
-    /**
-     *
-     */
-    get hours() {
-        return Array.from({ length: 24 }, (v, k) => {
-            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), k);
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const day = date.getDate();
-            const hour = date.getHours();
-            return {
-                year,
-                month,
-                day,
-                hour,
-                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours(),
-                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours(),
-                label: this.hourFormat(date),
-            };
-        });
-    }
-
-    /**
-     *
-     */
-    get minutes() {
-        return Array.from({ length: 60 }, (v, k) => {
-            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), k);
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            const day = date.getDate();
-            const hour = date.getHours();
-            const minute = date.getMinutes();
-            return {
-                year,
-                month,
-                day,
-                hour,
-                minute,
-                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours() && minute == this.date.getMinutes(),
-                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours() && minute == this.selected.getMinutes(),
-                label: k % 5 == 0 ? this.minuteFormat(date) : "",
-            };
-        });
-    }
-
+    
     /**
      *
      */
@@ -168,13 +123,7 @@ class MDWeekPickerComponent extends MDElement {
         }
     }
 
-    /**
-     *
-     */
-    get subLabel() {
-        return this.timeFormat(this.selected);
-    }
-
+    
     /**
      *
      */
@@ -193,14 +142,8 @@ class MDWeekPickerComponent extends MDElement {
         this.dayFormat = new Intl.DateTimeFormat(undefined, {
             day: "numeric",
         }).format;
-        this.hourFormat = new Intl.DateTimeFormat(undefined, {
-            hour: "numeric",
-            hour12: false,
-        }).format;
-        this.minuteFormat = new Intl.DateTimeFormat(undefined, {
-            minute: "numeric",
-            hour12: false,
-        }).format;
+        
+        
         this.dateFormat = new Intl.DateTimeFormat(undefined, {
             year: "numeric",
             month: "long",
@@ -304,46 +247,7 @@ class MDWeekPickerComponent extends MDElement {
         `
     }
 
-    /**
-     *
-     */
-    renderHours() {
-        /* prettier-ignore */
-        return html`
-            <div class="md-week-picker__absolute md-week-picker__absolute--hours">
-                ${this.hours.map(item=>html`
-                    <div 
-                        .data="${item}"
-                        class="md-week-picker__absolute-item"
-                        ?activated="${item.activated}"
-                        ?selected="${item.selected}"
-                        @click="${this.handleWeekPickerHourClick}"
-                    >${item.label}</div>
-                `)}
-            </div>
-        `
-    }
-
-    /**
-     *
-     */
-    renderMinutes() {
-        /* prettier-ignore */
-        return html`
-            <div class="md-week-picker__absolute md-week-picker__absolute--minutes">
-                ${this.minutes.map(item=>html`
-                    <div 
-                        .data="${item}"
-                        class="md-week-picker__absolute-item"
-                        ?activated="${item.activated}"
-                        ?selected="${item.selected}"
-                        @click="${this.handleWeekPickerMinuteClick}"
-                    >${item.label}</div>
-                `)}
-            </div>
-        `
-    }
-
+    
     /**
      *
      */
@@ -572,11 +476,8 @@ class MDWeekPickerComponent extends MDElement {
             this.selected.setFullYear(this.selected.getFullYear() - 1);
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() - 1);
-        } else if (this.index == 3) {
-            this.selected.setHours(this.selected.getHours() - 1);
-        } else if (this.index == 4) {
-            this.selected.setMinutes(this.selected.getMinutes() - 1);
         }
+        
 
         this.requestUpdate();
 
@@ -594,11 +495,8 @@ class MDWeekPickerComponent extends MDElement {
             this.selected.setFullYear(this.selected.getFullYear() + 1);
         } else if (this.index == 2) {
             this.selected.setMonth(this.selected.getMonth() + 1);
-        } else if (this.index == 3) {
-            this.selected.setHours(this.selected.getHours() + 1);
-        } else if (this.index == 4) {
-            this.selected.setMinutes(this.selected.getMinutes() + 1);
         }
+        
 
         this.requestUpdate();
 
@@ -656,44 +554,7 @@ class MDWeekPickerComponent extends MDElement {
         this.emit("onWeekPickerChange", event);
     }
 
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerHourClick
-     * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    handleWeekPickerHourClick(event) {
-        const data = event.currentTarget.data;
-
-        this.selected.setFullYear(data.year);
-        this.selected.setMonth(data.month);
-        this.selected.setDate(data.day);
-        this.selected.setHours(data.hour);
-
-        this.index = 4;
-
-        this.emit("onWeekPickerHourClick", event);
-        this.emit("onWeekPickerChange", event);
-    }
-
-    /**
-     *
-     * @fires MDWeekPickerComponent#onWeekPickerMinuteClick
-     * @fires MDWeekPickerComponent#onWeekPickerChange
-     */
-    handleWeekPickerMinuteClick(event) {
-        const data = event.currentTarget.data;
-
-        this.selected.setFullYear(data.year);
-        this.selected.setMonth(data.month);
-        this.selected.setDate(data.day);
-        this.selected.setHours(data.hour);
-        this.selected.setMinutes(data.minute);
-
-        this.index = 2;
-
-        this.emit("onWeekPickerMinuteClick", event);
-        this.emit("onWeekPickerChange", event);
-    }
+    
 
     /**
      *

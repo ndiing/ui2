@@ -179,7 +179,7 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    get colorFieldNative() {
+    get timeFieldNative() {
         return this.querySelector(".md-time-field__native");
     }
 
@@ -196,7 +196,7 @@ class MDTimeFieldComponent extends MDElement {
      * @fires MDTimeFieldComponent#onTimeFieldNativeActionCalendarClockClick
      */
     handleTimeFieldNativeActionCalendarClockClick(event) {
-        this.handleColorPicker();
+        this.handleTimePicker();
 
         this.emit("onTimeFieldNativeActionCalendarClockClick", event);
     }
@@ -204,30 +204,30 @@ class MDTimeFieldComponent extends MDElement {
     /**
      *
      */
-    handleColorPicker() {
-        this.timeFieldPicker = document.createElement("md-time-picker");
-        this.parentElement.insertBefore(this.timeFieldPicker, this.nextElementSibling);
-        if (this.value) this.timeFieldPicker.value = this.value;
+    handleTimePicker() {
+        this.timePicker = document.createElement("md-time-picker");
+        this.parentElement.insertBefore(this.timePicker, this.nextElementSibling);
+        if (this.value) this.timePicker.value = this.value;
 
         const callback = () => {
-            this.timeFieldPicker.removeEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
-            this.timeFieldPicker.removeEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
-            this.timeFieldPicker.removeEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
-            this.timeFieldPicker.removeEventListener("onTimePickerClose", callback);
-            this.timeFieldPicker.remove();
+            this.timePicker.removeEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
+            this.timePicker.removeEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
+            this.timePicker.removeEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
+            this.timePicker.removeEventListener("onTimePickerClose", callback);
+            this.timePicker.remove();
         };
 
         this.handleTimeFieldPickerChange = this.handleTimeFieldPickerChange.bind(this);
         this.handleTimeFieldPickerButtonCancelClick = this.handleTimeFieldPickerButtonCancelClick.bind(this);
         this.handleTimeFieldPickerButtonOkClick = this.handleTimeFieldPickerButtonOkClick.bind(this);
 
-        this.timeFieldPicker.addEventListener("onTimePickerClose", callback);
-        this.timeFieldPicker.addEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
-        this.timeFieldPicker.addEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
-        this.timeFieldPicker.addEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
+        this.timePicker.addEventListener("onTimePickerClose", callback);
+        this.timePicker.addEventListener("onTimePickerChange", this.handleTimeFieldPickerChange);
+        this.timePicker.addEventListener("onTimePickerButtonCancelClick", this.handleTimeFieldPickerButtonCancelClick);
+        this.timePicker.addEventListener("onTimePickerButtonOkClick", this.handleTimeFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
-            this.timeFieldPicker.show(this);
+            this.timePicker.show(this);
         });
     }
 
@@ -235,10 +235,10 @@ class MDTimeFieldComponent extends MDElement {
      *
      */
     handleTimeFieldPickerChange(event) {
-        this.colorFieldNative.value = [("" + this.timeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.timeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":");
-        this.value = this.colorFieldNative.value;
+        this.timeFieldNative.value = [("" + this.timePicker.selected.getHours()).padStart(2, "0"), ("" + this.timePicker.selected.getMinutes()).padStart(2, "0")].join(":");
+        this.value = this.timeFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.timeFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
 
@@ -246,16 +246,16 @@ class MDTimeFieldComponent extends MDElement {
      *
      */
     handleTimeFieldPickerButtonCancelClick(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
-        this.timeFieldPicker.close();
+        this.timeFieldNative.value = this.defaultValue;
+        this.value = this.timeFieldNative.value;
+        this.timePicker.close();
     }
 
     /**
      *
      */
     handleTimeFieldPickerButtonOkClick(event) {
-        this.timeFieldPicker.close();
+        this.timePicker.close();
     }
 
     /**
@@ -281,9 +281,9 @@ class MDTimeFieldComponent extends MDElement {
      * @fires MDTimeFieldComponent#onTimeFieldNativeInput
      */
     handleTimeFieldNativeInput(event) {
-        this.value = this.colorFieldNative.value;
+        this.value = this.timeFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.timeFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTimeFieldNativeInput", event);
     }
@@ -294,7 +294,7 @@ class MDTimeFieldComponent extends MDElement {
      */
     handleTimeFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.timeFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTimeFieldNativeInvalid", event);
     }
@@ -304,8 +304,8 @@ class MDTimeFieldComponent extends MDElement {
      * @fires MDTimeFieldComponent#onTimeFieldNativeReset
      */
     handleTimeFieldNativeReset(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
+        this.timeFieldNative.value = this.defaultValue;
+        this.value = this.timeFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

@@ -179,7 +179,7 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    get colorFieldNative() {
+    get weekFieldNative() {
         return this.querySelector(".md-week-field__native");
     }
 
@@ -196,7 +196,7 @@ class MDWeekFieldComponent extends MDElement {
      * @fires MDWeekFieldComponent#onWeekFieldNativeActionCalendarClockClick
      */
     handleWeekFieldNativeActionCalendarClockClick(event) {
-        this.handleColorPicker();
+        this.handleWeekPicker();
 
         this.emit("onWeekFieldNativeActionCalendarClockClick", event);
     }
@@ -204,30 +204,30 @@ class MDWeekFieldComponent extends MDElement {
     /**
      *
      */
-    handleColorPicker() {
-        this.weekFieldPicker = document.createElement("md-week-picker");
-        this.parentElement.insertBefore(this.weekFieldPicker, this.nextElementSibling);
-        if (this.value) this.weekFieldPicker.value = this.value;
+    handleWeekPicker() {
+        this.weekPicker = document.createElement("md-week-picker");
+        this.parentElement.insertBefore(this.weekPicker, this.nextElementSibling);
+        if (this.value) this.weekPicker.value = this.value;
 
         const callback = () => {
-            this.weekFieldPicker.removeEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
-            this.weekFieldPicker.removeEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
-            this.weekFieldPicker.removeEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
-            this.weekFieldPicker.removeEventListener("onWeekPickerClose", callback);
-            this.weekFieldPicker.remove();
+            this.weekPicker.removeEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
+            this.weekPicker.removeEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
+            this.weekPicker.removeEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
+            this.weekPicker.removeEventListener("onWeekPickerClose", callback);
+            this.weekPicker.remove();
         };
 
         this.handleWeekFieldPickerChange = this.handleWeekFieldPickerChange.bind(this);
         this.handleWeekFieldPickerButtonCancelClick = this.handleWeekFieldPickerButtonCancelClick.bind(this);
         this.handleWeekFieldPickerButtonOkClick = this.handleWeekFieldPickerButtonOkClick.bind(this);
 
-        this.weekFieldPicker.addEventListener("onWeekPickerClose", callback);
-        this.weekFieldPicker.addEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
-        this.weekFieldPicker.addEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
-        this.weekFieldPicker.addEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
+        this.weekPicker.addEventListener("onWeekPickerClose", callback);
+        this.weekPicker.addEventListener("onWeekPickerChange", this.handleWeekFieldPickerChange);
+        this.weekPicker.addEventListener("onWeekPickerButtonCancelClick", this.handleWeekFieldPickerButtonCancelClick);
+        this.weekPicker.addEventListener("onWeekPickerButtonOkClick", this.handleWeekFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
-            this.weekFieldPicker.show(this);
+            this.weekPicker.show(this);
         });
     }
 
@@ -235,10 +235,10 @@ class MDWeekFieldComponent extends MDElement {
      *
      */
     handleWeekFieldPickerChange(event) {
-        this.colorFieldNative.value = [this.weekFieldPicker.selected.getFullYear(), ("" + this.weekFieldPicker.selected.getWeek()).padStart(2, "0")].join("-W");
-        this.value = this.colorFieldNative.value;
+        this.weekFieldNative.value = [this.weekPicker.selected.getFullYear(), ("" + this.weekPicker.selected.getWeek()).padStart(2, "0")].join("-W");
+        this.value = this.weekFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.weekFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
 
@@ -246,16 +246,16 @@ class MDWeekFieldComponent extends MDElement {
      *
      */
     handleWeekFieldPickerButtonCancelClick(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
-        this.weekFieldPicker.close();
+        this.weekFieldNative.value = this.defaultValue;
+        this.value = this.weekFieldNative.value;
+        this.weekPicker.close();
     }
 
     /**
      *
      */
     handleWeekFieldPickerButtonOkClick(event) {
-        this.weekFieldPicker.close();
+        this.weekPicker.close();
     }
 
     /**
@@ -281,9 +281,9 @@ class MDWeekFieldComponent extends MDElement {
      * @fires MDWeekFieldComponent#onWeekFieldNativeInput
      */
     handleWeekFieldNativeInput(event) {
-        this.value = this.colorFieldNative.value;
+        this.value = this.weekFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.weekFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onWeekFieldNativeInput", event);
     }
@@ -294,7 +294,7 @@ class MDWeekFieldComponent extends MDElement {
      */
     handleWeekFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.weekFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onWeekFieldNativeInvalid", event);
     }
@@ -304,8 +304,8 @@ class MDWeekFieldComponent extends MDElement {
      * @fires MDWeekFieldComponent#onWeekFieldNativeReset
      */
     handleWeekFieldNativeReset(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
+        this.weekFieldNative.value = this.defaultValue;
+        this.value = this.weekFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

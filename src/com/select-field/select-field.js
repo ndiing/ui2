@@ -38,20 +38,20 @@ class MDSelectFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocapitalize: { type: Boolean },
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
-            list: { type: String },
             name: { type: String },
-            readonly: { type: Boolean },
+            size: { type: Number },
+            multiple: { type: Boolean },
+            disabled: { type: Boolean },
             required: { type: Boolean },
-            type: { type: String },
+            autofocus: { type: Boolean },
+            autocomplete: { type: String },
+            spellcheck: { type: Boolean },
             value: { type: String },
-            max: { type: String },
-            min: { type: String },
-            step: { type: String },
             defaultValue: { type: String },
+
+            options: { type: Array },
+            selectedOptions: { type: Array },
+            selectedIndex: { type: Number },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -92,19 +92,15 @@ class MDSelectFieldComponent extends MDElement {
                     <input
                         class="md-select-field__native"
                         type="text"
-                        .autocapitalize="${ifDefined(this.autocapitalize)}"    
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
-                        .list="${ifDefined(this.list)}"
                         .name="${ifDefined(this.name)}"
-                        .readonly="${ifDefined(this.readonly)}"
+                        .size="${ifDefined(this.size)}"
+                        .multiple="${ifDefined(this.multiple)}"
+                        .disabled="${ifDefined(this.disabled)}"
                         .required="${ifDefined(this.required)}"
-                        .type="${ifDefined(this.type)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
                         .value="${ifDefined(this.value)}"
-                        .max="${ifDefined(this.max)}"
-                        .min="${ifDefined(this.min)}"
-                        .step="${ifDefined(this.step)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handleSelectFieldNativeFocus}"
                         @blur="${this.handleSelectFieldNativeBlur}"
@@ -200,7 +196,7 @@ class MDSelectFieldComponent extends MDElement {
      * @fires MDSelectFieldComponent#onSelectFieldNativeActionKeyboardArrowDownClick
      */
     handleSelectFieldNativeActionKeyboardArrowDownClick(event) {
-        this.handleSelectPicker();
+        this.handleMenu();
 
         this.emit("onSelectFieldNativeActionKeyboardArrowDownClick", event);
     }
@@ -208,58 +204,21 @@ class MDSelectFieldComponent extends MDElement {
     /**
      *
      */
-    handleSelectPicker() {
-        this.selectFieldPicker = document.createElement("md-menu");
-        this.parentElement.insertBefore(this.selectFieldPicker, this.nextElementSibling);
-        if (this.value) this.selectFieldPicker.value = this.value;
+    handleMenu() {
+        this.menu = document.createElement("md-menu");
+        this.parentElement.insertBefore(this.menu, this.nextElementSibling);
+        if (this.value) this.menu.value = this.value;
 
         const callback = () => {
-            this.selectFieldPicker.removeEventListener("onDatePickerChange", this.handleSelectFieldPickerChange);
-            this.selectFieldPicker.removeEventListener("onDatePickerButtonCancelClick", this.handleSelectFieldPickerButtonCancelClick);
-            this.selectFieldPicker.removeEventListener("onDatePickerButtonOkClick", this.handleSelectFieldPickerButtonOkClick);
-            this.selectFieldPicker.removeEventListener("onDatePickerClose", callback);
-            this.selectFieldPicker.remove();
+            this.menu.removeEventListener("onMenuClose", callback);
+            this.menu.remove();
         };
 
-        this.handleSelectFieldPickerChange = this.handleSelectFieldPickerChange.bind(this);
-        this.handleSelectFieldPickerButtonCancelClick = this.handleSelectFieldPickerButtonCancelClick.bind(this);
-        this.handleSelectFieldPickerButtonOkClick = this.handleSelectFieldPickerButtonOkClick.bind(this);
-
-        this.selectFieldPicker.addEventListener("onDatePickerClose", callback);
-        this.selectFieldPicker.addEventListener("onDatePickerChange", this.handleSelectFieldPickerChange);
-        this.selectFieldPicker.addEventListener("onDatePickerButtonCancelClick", this.handleSelectFieldPickerButtonCancelClick);
-        this.selectFieldPicker.addEventListener("onDatePickerButtonOkClick", this.handleSelectFieldPickerButtonOkClick);
+        this.menu.addEventListener("onMenuClose", callback);
 
         window.requestAnimationFrame(() => {
-            this.selectFieldPicker.show(this);
+            this.menu.show(this);
         });
-    }
-
-    /**
-     *
-     */
-    handleSelectFieldPickerChange(event) {
-        this.selectFieldNative.value = [this.selectFieldPicker.selected.getFullYear(), ("" + (this.selectFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.selectFieldPicker.selected.getDate()).padStart(2, "0")].join("-");
-        this.value = this.selectFieldNative.value;
-        this.populated = !!this.value;
-        this.validationMessage = this.selectFieldNative.validationMessage;
-        this.invalid = !!this.validationMessage;
-    }
-
-    /**
-     *
-     */
-    handleSelectFieldPickerButtonCancelClick(event) {
-        this.selectFieldNative.value = this.defaultValue;
-        this.value = this.selectFieldNative.value;
-        this.selectFieldPicker.close();
-    }
-
-    /**
-     *
-     */
-    handleSelectFieldPickerButtonOkClick(event) {
-        this.selectFieldPicker.close();
     }
 
     /**

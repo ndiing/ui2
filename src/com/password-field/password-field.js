@@ -39,18 +39,18 @@ class MDPasswordFieldComponent extends MDElement {
     static get properties() {
         return {
             type: { type: String },
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
             name: { type: String },
-            readonly: { type: Boolean },
-            required: { type: Boolean },
-            value: { type: String },
+            placeholder: { type: String },
             maxlength: { type: Number },
             minlength: { type: Number },
+            readonly: { type: Boolean },
+            disabled: { type: Boolean },
+            required: { type: Boolean },
             pattern: { type: String },
-            placeholder: { type: String },
-            size: { type: Number },
+            autocomplete: { type: String },
+            autofocus: { type: Boolean },
+            spellcheck: { type: Boolean },
+            value: { type: String },
             defaultValue: { type: String },
 
             label: { type: String },
@@ -93,18 +93,18 @@ class MDPasswordFieldComponent extends MDElement {
                     <input
                         class="md-password-field__native"
                         .type="${this.type}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
                         .name="${ifDefined(this.name)}"
-                        .readonly="${ifDefined(this.readonly)}"
-                        .required="${ifDefined(this.required)}"
-                        .value="${ifDefined(this.value)}"
+                        .placeholder="${ifDefined(this.placeholder)}"
                         .maxlength="${ifDefined(this.maxlength)}"
                         .minlength="${ifDefined(this.minlength)}"
+                        .readonly="${ifDefined(this.readonly)}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .required="${ifDefined(this.required)}"
                         .pattern="${ifDefined(this.pattern)}"
-                        .placeholder="${ifDefined(this.placeholder)}"
-                        .size="${ifDefined(this.size)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
+                        .value="${ifDefined(this.value)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handlePasswordFieldNativeFocus}"
                         @blur="${this.handlePasswordFieldNativeBlur}"
@@ -178,7 +178,7 @@ class MDPasswordFieldComponent extends MDElement {
     /**
      *
      */
-    get numberFieldNative() {
+    get passwordFieldNative() {
         return this.querySelector(".md-password-field__native");
     }
 
@@ -226,9 +226,9 @@ class MDPasswordFieldComponent extends MDElement {
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeInput
      */
     handlePasswordFieldNativeInput(event) {
-        this.value = this.numberFieldNative.value;
+        this.value = this.passwordFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.numberFieldNative.validationMessage;
+        this.validationMessage = this.passwordFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onPasswordFieldNativeInput", event);
     }
@@ -239,7 +239,7 @@ class MDPasswordFieldComponent extends MDElement {
      */
     handlePasswordFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.numberFieldNative.validationMessage;
+        this.validationMessage = this.passwordFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onPasswordFieldNativeInvalid", event);
     }
@@ -249,8 +249,8 @@ class MDPasswordFieldComponent extends MDElement {
      * @fires MDPasswordFieldComponent#onPasswordFieldNativeReset
      */
     handlePasswordFieldNativeReset(event) {
-        this.numberFieldNative.value = this.defaultValue;
-        this.value = this.numberFieldNative.value;
+        this.passwordFieldNative.value = this.defaultValue;
+        this.value = this.passwordFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

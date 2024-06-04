@@ -38,20 +38,15 @@ class MDFileFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocapitalize: { type: Boolean },
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
-            list: { type: String },
             name: { type: String },
-            readonly: { type: Boolean },
-            required: { type: Boolean },
-            type: { type: String },
-            value: { type: String },
             accept: { type: String },
-            capture: { type: String },
             multiple: { type: Boolean },
-            defaultValue: { type: String },
+            capture: { type: String },
+            disabled: { type: Boolean },
+            required: { type: Boolean },
+            autofocus: { type: Boolean },
+            list: { type: String },
+            spellcheck: { type: Boolean },
 
             label: { type: String },
             leadingIcon: { type: String },
@@ -92,17 +87,15 @@ class MDFileFieldComponent extends MDElement {
                     <input
                         class="md-file-field__native"
                         type="file"
-                        .autocapitalize="${ifDefined(this.autocapitalize)}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
-                        .list="${ifDefined(this.list)}"
                         .name="${ifDefined(this.name)}"
-                        .readonly="${ifDefined(this.readonly)}"
-                        .required="${ifDefined(this.required)}"
                         .accept="${ifDefined(this.accept)}"
-                        .capture="${ifDefined(this.capture)}"
                         .multiple="${ifDefined(this.multiple)}"
+                        .capture="${ifDefined(this.capture)}"
+                        .disabled="${ifDefined(this.disabled)}"
+                        .required="${ifDefined(this.required)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .list="${ifDefined(this.list)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
                         @focus="${this.handleFileFieldNativeFocus}"
                         @blur="${this.handleFileFieldNativeBlur}"
                         @input="${this.handleFileFieldNativeInput}"

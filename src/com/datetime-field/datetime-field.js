@@ -179,7 +179,7 @@ class MDDatetimeFieldComponent extends MDElement {
     /**
      *
      */
-    get colorFieldNative() {
+    get datetimeFileNative() {
         return this.querySelector(".md-datetime-field__native");
     }
 
@@ -196,7 +196,7 @@ class MDDatetimeFieldComponent extends MDElement {
      * @fires MDDatetimeFieldComponent#onDatetimeFieldNativeActionCalendarClockClick
      */
     handleDatetimeFieldNativeActionCalendarClockClick(event) {
-        this.handleColorPicker();
+        this.handleDatetimePicker();
 
         this.emit("onDatetimeFieldNativeActionCalendarClockClick", event);
     }
@@ -204,30 +204,30 @@ class MDDatetimeFieldComponent extends MDElement {
     /**
      *
      */
-    handleColorPicker() {
-        this.datetimeFieldPicker = document.createElement("md-datetime-picker");
-        this.parentElement.insertBefore(this.datetimeFieldPicker, this.nextElementSibling);
-        if (this.value) this.datetimeFieldPicker.value = this.value;
+    handleDatetimePicker() {
+        this.datetimePicker = document.createElement("md-datetime-picker");
+        this.parentElement.insertBefore(this.datetimePicker, this.nextElementSibling);
+        if (this.value) this.datetimePicker.value = this.value;
 
         const callback = () => {
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
-            this.datetimeFieldPicker.removeEventListener("onDatetimePickerClose", callback);
-            this.datetimeFieldPicker.remove();
+            this.datetimePicker.removeEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
+            this.datetimePicker.removeEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
+            this.datetimePicker.removeEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
+            this.datetimePicker.removeEventListener("onDatetimePickerClose", callback);
+            this.datetimePicker.remove();
         };
 
         this.handleDatetimeFieldPickerChange = this.handleDatetimeFieldPickerChange.bind(this);
         this.handleDatetimeFieldPickerButtonCancelClick = this.handleDatetimeFieldPickerButtonCancelClick.bind(this);
         this.handleDatetimeFieldPickerButtonOkClick = this.handleDatetimeFieldPickerButtonOkClick.bind(this);
 
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerClose", callback);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
-        this.datetimeFieldPicker.addEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
+        this.datetimePicker.addEventListener("onDatetimePickerClose", callback);
+        this.datetimePicker.addEventListener("onDatetimePickerChange", this.handleDatetimeFieldPickerChange);
+        this.datetimePicker.addEventListener("onDatetimePickerButtonCancelClick", this.handleDatetimeFieldPickerButtonCancelClick);
+        this.datetimePicker.addEventListener("onDatetimePickerButtonOkClick", this.handleDatetimeFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
-            this.datetimeFieldPicker.show(this);
+            this.datetimePicker.show(this);
         });
     }
 
@@ -235,10 +235,10 @@ class MDDatetimeFieldComponent extends MDElement {
      *
      */
     handleDatetimeFieldPickerChange(event) {
-        this.colorFieldNative.value = [[this.datetimeFieldPicker.selected.getFullYear(), ("" + (this.datetimeFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.datetimeFieldPicker.selected.getDate()).padStart(2, "0")].join("-"), [("" + this.datetimeFieldPicker.selected.getHours()).padStart(2, "0"), ("" + this.datetimeFieldPicker.selected.getMinutes()).padStart(2, "0")].join(":")].join("T");
-        this.value = this.colorFieldNative.value;
+        this.datetimeFileNative.value = [[this.datetimePicker.selected.getFullYear(), ("" + (this.datetimePicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.datetimePicker.selected.getDate()).padStart(2, "0")].join("-"), [("" + this.datetimePicker.selected.getHours()).padStart(2, "0"), ("" + this.datetimePicker.selected.getMinutes()).padStart(2, "0")].join(":")].join("T");
+        this.value = this.datetimeFileNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.datetimeFileNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
 
@@ -246,16 +246,16 @@ class MDDatetimeFieldComponent extends MDElement {
      *
      */
     handleDatetimeFieldPickerButtonCancelClick(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
-        this.datetimeFieldPicker.close();
+        this.datetimeFileNative.value = this.defaultValue;
+        this.value = this.datetimeFileNative.value;
+        this.datetimePicker.close();
     }
 
     /**
      *
      */
     handleDatetimeFieldPickerButtonOkClick(event) {
-        this.datetimeFieldPicker.close();
+        this.datetimePicker.close();
     }
 
     /**
@@ -281,9 +281,9 @@ class MDDatetimeFieldComponent extends MDElement {
      * @fires MDDatetimeFieldComponent#onDatetimeFieldNativeInput
      */
     handleDatetimeFieldNativeInput(event) {
-        this.value = this.colorFieldNative.value;
+        this.value = this.datetimeFileNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.datetimeFileNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onDatetimeFieldNativeInput", event);
     }
@@ -294,7 +294,7 @@ class MDDatetimeFieldComponent extends MDElement {
      */
     handleDatetimeFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.datetimeFileNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onDatetimeFieldNativeInvalid", event);
     }
@@ -304,8 +304,8 @@ class MDDatetimeFieldComponent extends MDElement {
      * @fires MDDatetimeFieldComponent#onDatetimeFieldNativeReset
      */
     handleDatetimeFieldNativeReset(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
+        this.datetimeFileNative.value = this.defaultValue;
+        this.value = this.datetimeFileNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

@@ -34,14 +34,18 @@ class MDTextareaFieldComponent extends MDElement {
      */
     static get properties() {
         return {
-            autocapitalize: { type: Boolean },
-            autocomplete: { type: String },
-            disabled: { type: Boolean },
-            form: { type: String },
-            list: { type: String },
             name: { type: String },
+            placeholder: { type: String },
+            cols: { type: Number },
+            rows: { type: Number },
+            maxlength: { type: Number },
+            minlength: { type: Number },
             readonly: { type: Boolean },
+            disabled: { type: Boolean },
             required: { type: Boolean },
+            autocomplete: { type: String },
+            autofocus: { type: Boolean },
+            spellcheck: { type: Boolean },
             value: { type: String },
             defaultValue: { type: String },
 
@@ -84,17 +88,20 @@ class MDTextareaFieldComponent extends MDElement {
                     ${this.leadingMeta?html`<div class="md-textarea-field__meta">${this.leadingMeta}</div>`:nothing}
                     <textarea
                         class="md-textarea-field__native"
-                        .autocapitalize="${ifDefined(this.autocapitalize)}"
-                        .autocomplete="${ifDefined(this.autocomplete??"off")}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .form="${ifDefined(this.form)}"
-                        .list="${ifDefined(this.list)}"
                         .name="${ifDefined(this.name)}"
+                        .placeholder="${ifDefined(this.placeholder)}"
+                        .cols="${ifDefined(this.cols)}"
+                        .rows="${ifDefined(this.rows??1)}"
+                        .maxlength="${ifDefined(this.maxlength)}"
+                        .minlength="${ifDefined(this.minlength)}"
                         .readonly="${ifDefined(this.readonly)}"
+                        .disabled="${ifDefined(this.disabled)}"
                         .required="${ifDefined(this.required)}"
+                        .autocomplete="${ifDefined(this.autocomplete)}"
+                        .autofocus="${ifDefined(this.autofocus)}"
+                        .spellcheck="${ifDefined(this.spellcheck)}"
                         .value="${ifDefined(this.value)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
-                        .rows="${ifDefined(this.rows??1)}"
                         @focus="${this.handleTextareaFieldNativeFocus}"
                         @blur="${this.handleTextareaFieldNativeBlur}"
                         @input="${this.handleTextareaFieldNativeInput}"
@@ -168,7 +175,7 @@ class MDTextareaFieldComponent extends MDElement {
     /**
      *
      */
-    get textFieldNative() {
+    get textareaFieldNative() {
         return this.querySelector(".md-textarea-field__native");
     }
 
@@ -203,9 +210,9 @@ class MDTextareaFieldComponent extends MDElement {
      * @fires MDTextareaFieldComponent#onTextareaFieldNativeInput
      */
     handleTextareaFieldNativeInput(event) {
-        this.value = this.textFieldNative.value;
+        this.value = this.textareaFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.textFieldNative.validationMessage;
+        this.validationMessage = this.textareaFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTextareaFieldNativeInput", event);
     }
@@ -216,7 +223,7 @@ class MDTextareaFieldComponent extends MDElement {
      */
     handleTextareaFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.textFieldNative.validationMessage;
+        this.validationMessage = this.textareaFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onTextareaFieldNativeInvalid", event);
     }
@@ -226,8 +233,8 @@ class MDTextareaFieldComponent extends MDElement {
      * @fires MDTextareaFieldComponent#onTextareaFieldNativeReset
      */
     handleTextareaFieldNativeReset(event) {
-        this.textFieldNative.value = this.defaultValue;
-        this.value = this.textFieldNative.value;
+        this.textareaFieldNative.value = this.defaultValue;
+        this.value = this.textareaFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;

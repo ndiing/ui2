@@ -120,13 +120,18 @@ class MDMenuComponent extends MDElement {
      *
      */
     updated(changedProperties) {
+
+        
         if (changedProperties.has("open")) {
             if (this.open) {
                 this.scrim.setAttribute("open", "");
+                this.emit("onMenuShow", this);
             } else {
                 this.scrim.removeAttribute("open", "");
+                this.emit("onMenuClose", this);
             }
         }
+
     }
 
     /**

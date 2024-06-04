@@ -179,7 +179,7 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
-    get colorFieldNative() {
+    get dateFieldNative() {
         return this.querySelector(".md-date-field__native");
     }
 
@@ -196,7 +196,7 @@ class MDDateFieldComponent extends MDElement {
      * @fires MDDateFieldComponent#onDateFieldNativeActionCalendarClockClick
      */
     handleDateFieldNativeActionCalendarClockClick(event) {
-        this.handleColorPicker();
+        this.handleDatePicker();
 
         this.emit("onDateFieldNativeActionCalendarClockClick", event);
     }
@@ -204,30 +204,30 @@ class MDDateFieldComponent extends MDElement {
     /**
      *
      */
-    handleColorPicker() {
-        this.dateFieldPicker = document.createElement("md-date-picker");
-        this.parentElement.insertBefore(this.dateFieldPicker, this.nextElementSibling);
-        if (this.value) this.dateFieldPicker.value = this.value;
+    handleDatePicker() {
+        this.datePicker = document.createElement("md-date-picker");
+        this.parentElement.insertBefore(this.datePicker, this.nextElementSibling);
+        if (this.value) this.datePicker.value = this.value;
 
         const callback = () => {
-            this.dateFieldPicker.removeEventListener("onDatePickerChange", this.handleDateFieldPickerChange);
-            this.dateFieldPicker.removeEventListener("onDatePickerButtonCancelClick", this.handleDateFieldPickerButtonCancelClick);
-            this.dateFieldPicker.removeEventListener("onDatePickerButtonOkClick", this.handleDateFieldPickerButtonOkClick);
-            this.dateFieldPicker.removeEventListener("onDatePickerClose", callback);
-            this.dateFieldPicker.remove();
+            this.datePicker.removeEventListener("onDatePickerChange", this.handleDateFieldPickerChange);
+            this.datePicker.removeEventListener("onDatePickerButtonCancelClick", this.handleDateFieldPickerButtonCancelClick);
+            this.datePicker.removeEventListener("onDatePickerButtonOkClick", this.handleDateFieldPickerButtonOkClick);
+            this.datePicker.removeEventListener("onDatePickerClose", callback);
+            this.datePicker.remove();
         };
 
         this.handleDateFieldPickerChange = this.handleDateFieldPickerChange.bind(this);
         this.handleDateFieldPickerButtonCancelClick = this.handleDateFieldPickerButtonCancelClick.bind(this);
         this.handleDateFieldPickerButtonOkClick = this.handleDateFieldPickerButtonOkClick.bind(this);
 
-        this.dateFieldPicker.addEventListener("onDatePickerClose", callback);
-        this.dateFieldPicker.addEventListener("onDatePickerChange", this.handleDateFieldPickerChange);
-        this.dateFieldPicker.addEventListener("onDatePickerButtonCancelClick", this.handleDateFieldPickerButtonCancelClick);
-        this.dateFieldPicker.addEventListener("onDatePickerButtonOkClick", this.handleDateFieldPickerButtonOkClick);
+        this.datePicker.addEventListener("onDatePickerClose", callback);
+        this.datePicker.addEventListener("onDatePickerChange", this.handleDateFieldPickerChange);
+        this.datePicker.addEventListener("onDatePickerButtonCancelClick", this.handleDateFieldPickerButtonCancelClick);
+        this.datePicker.addEventListener("onDatePickerButtonOkClick", this.handleDateFieldPickerButtonOkClick);
 
         window.requestAnimationFrame(() => {
-            this.dateFieldPicker.show(this);
+            this.datePicker.show(this);
         });
     }
 
@@ -235,10 +235,10 @@ class MDDateFieldComponent extends MDElement {
      *
      */
     handleDateFieldPickerChange(event) {
-        this.colorFieldNative.value = [this.dateFieldPicker.selected.getFullYear(), ("" + (this.dateFieldPicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.dateFieldPicker.selected.getDate()).padStart(2, "0")].join("-");
-        this.value = this.colorFieldNative.value;
+        this.dateFieldNative.value = [this.datePicker.selected.getFullYear(), ("" + (this.datePicker.selected.getMonth() + 1)).padStart(2, "0"), ("" + this.datePicker.selected.getDate()).padStart(2, "0")].join("-");
+        this.value = this.dateFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.dateFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
     }
 
@@ -246,16 +246,16 @@ class MDDateFieldComponent extends MDElement {
      *
      */
     handleDateFieldPickerButtonCancelClick(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
-        this.dateFieldPicker.close();
+        this.dateFieldNative.value = this.defaultValue;
+        this.value = this.dateFieldNative.value;
+        this.datePicker.close();
     }
 
     /**
      *
      */
     handleDateFieldPickerButtonOkClick(event) {
-        this.dateFieldPicker.close();
+        this.datePicker.close();
     }
 
     /**
@@ -281,9 +281,9 @@ class MDDateFieldComponent extends MDElement {
      * @fires MDDateFieldComponent#onDateFieldNativeInput
      */
     handleDateFieldNativeInput(event) {
-        this.value = this.colorFieldNative.value;
+        this.value = this.dateFieldNative.value;
         this.populated = !!this.value;
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.dateFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onDateFieldNativeInput", event);
     }
@@ -294,7 +294,7 @@ class MDDateFieldComponent extends MDElement {
      */
     handleDateFieldNativeInvalid(event) {
         event.preventDefault();
-        this.validationMessage = this.colorFieldNative.validationMessage;
+        this.validationMessage = this.dateFieldNative.validationMessage;
         this.invalid = !!this.validationMessage;
         this.emit("onDateFieldNativeInvalid", event);
     }
@@ -304,8 +304,8 @@ class MDDateFieldComponent extends MDElement {
      * @fires MDDateFieldComponent#onDateFieldNativeReset
      */
     handleDateFieldNativeReset(event) {
-        this.colorFieldNative.value = this.defaultValue;
-        this.value = this.colorFieldNative.value;
+        this.dateFieldNative.value = this.defaultValue;
+        this.value = this.dateFieldNative.value;
         this.populated = !!this.value;
         this.validationMessage = "";
         this.invalid = !!this.validationMessage;
