@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDImageComponent
  * @extends MDElement
  */
 class MDImageComponent extends MDElement {

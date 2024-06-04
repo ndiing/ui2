@@ -1,6 +1,5 @@
 /**
  *
- * @class LocalStore
  */
 class LocalStore {
     /**
@@ -260,7 +259,6 @@ class LocalStore {
 
 /**
  *
- * @class RemoteStore
  */
 class RemoteStore {
     /**
@@ -519,7 +517,6 @@ class RemoteStore {
 
 /**
  *
- * @class MDStoreModule
  */
 class MDStoreModule {
     /**

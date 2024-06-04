@@ -5,7 +5,6 @@ import { MDListComponent } from "../list/list";
 
 /**
  *
- * @class MDNavigationBarComponent
  * @extends MDElement
  */
 class MDNavigationBarComponent extends MDElement {

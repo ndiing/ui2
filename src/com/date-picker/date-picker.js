@@ -5,7 +5,6 @@ import { MDPopperModule } from "../popper/popper";
 
 /**
  *
- * @class MDDatePickerComponent
  * @extends MDElement
  */
 class MDDatePickerComponent extends MDElement {

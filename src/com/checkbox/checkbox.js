@@ -5,7 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @class MDCheckboxComponent
  * @extends MDElement
  */
 class MDCheckboxComponent extends MDElement {

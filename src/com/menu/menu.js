@@ -6,7 +6,6 @@ import { MDPopperModule } from "../popper/popper";
 
 /**
  *
- * @class MDMenuComponent
  * @extends MDElement
  */
 class MDMenuComponent extends MDElement {

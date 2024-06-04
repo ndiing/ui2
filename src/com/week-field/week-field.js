@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDWeekFieldComponent
  * @extends MDElement
  */
 class MDWeekFieldComponent extends MDElement {

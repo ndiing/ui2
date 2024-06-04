@@ -1,6 +1,5 @@
 /**
  *
- * @class MDLayoutModule
  */
 class MDLayoutModule {
     /**

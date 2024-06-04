@@ -5,7 +5,6 @@ import { MDPopperModule } from "../popper/popper";
 
 /**
  *
- * @class MDTooltipComponent
  * @extends MDElement
  */
 class MDTooltipComponent extends MDElement {

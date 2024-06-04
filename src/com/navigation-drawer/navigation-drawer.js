@@ -5,7 +5,6 @@ import { MDListComponent } from "../list/list";
 
 /**
  *
- * @class MDNavigationDrawerComponent
  * @extends MDElement
  */
 class MDNavigationDrawerComponent extends MDElement {

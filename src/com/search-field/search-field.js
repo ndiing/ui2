@@ -4,7 +4,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
  *
- * @class MDSearchFieldComponent
  * @extends MDElement
  */
 class MDSearchFieldComponent extends MDElement {

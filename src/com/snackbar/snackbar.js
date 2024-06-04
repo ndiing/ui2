@@ -6,7 +6,6 @@ import { queue } from "../mixin/mixin";
 
 /**
  *
- * @class MDSnackbarComponent
  * @extends MDElement
  */
 class MDSnackbarComponent extends MDElement {

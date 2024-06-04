@@ -5,7 +5,6 @@ import { MDRippleModule } from "../ripple/ripple";
 
 /**
  *
- * @class MDFabComponent
  * @extends MDElement
  */
 class MDFabComponent extends MDElement {

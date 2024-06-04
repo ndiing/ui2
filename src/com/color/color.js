@@ -2,7 +2,6 @@ import { Hct, applyTheme, argbFromHex, themeFromSourceColor, hexFromArgb } from 
 
 /**
  *
- * @class MDColorModule
  */
 class MDColorModule {
     /**

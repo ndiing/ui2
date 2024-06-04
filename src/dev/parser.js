@@ -91,9 +91,9 @@ function parse(content) {
             let data = "";
             data += `/**\r\n`;
             data += ` *\r\n`;
-            if (className) {
-                data += ` * @class ${className}\r\n`;
-            }
+            // if (className) {
+            //     data += ` * @class ${className}\r\n`;
+            // }
             if (inheritName) {
                 data += ` * @extends ${inheritName}\r\n`;
             }

@@ -1,6 +1,5 @@
 /**
  *
- * @class MDPopperModule
  */
 class MDPopperModule {
     /**
