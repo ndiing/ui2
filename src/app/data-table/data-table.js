@@ -80,18 +80,15 @@ class AppDataTableElement extends MDElement {
             scrollbar: this.scrollbar,
             container: this.container,
             itemHeight: 52,
-            total:100,
-            // threshold:10
+            total: 100,
         });
 
         // console.log(this.virtualScroll)
     }
 
     handleVirtualScrollChange(event) {
-        const {
-            start,
-            end,
-        } = event.detail;
+        const { start, end } = event.detail;
+
         this.data3
             .slice(start, end)
             .getAll()
