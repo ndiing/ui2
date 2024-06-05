@@ -11,12 +11,22 @@ class AppSegmentedButtonElement extends MDElement {
 
     render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-segmented-button .singleSelection="${true}" .buttons="${this.buttons1}"></md-segmented-button>
+                    <md-segmented-button
+                        .singleSelection="${true}"
+                        .buttons="${this.buttons1}"
+                    ></md-segmented-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-segmented-button .singleSelection="${true}" .multiSelection="${true}" .buttons="${this.buttons2}"></md-segmented-button>
+                    <md-segmented-button
+                        .singleSelection="${true}"
+                        .multiSelection="${true}"
+                        .buttons="${this.buttons2}"
+                    ></md-segmented-button>
                 </div>
             </div>
         `;

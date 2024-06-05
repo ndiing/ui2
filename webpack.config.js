@@ -23,6 +23,7 @@ const config = {
         static: {
             directory: path.join(__dirname, 'src','assets'),
           },
+          
     },
     plugins: [
         new HtmlWebpackPlugin({

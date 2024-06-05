@@ -4,7 +4,10 @@ import { MDElement } from "../../com/element/element";
 class AppWeekPickerElement extends MDElement {
     render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-week-picker
                         id="dateTimePicker1"
@@ -15,7 +18,11 @@ class AppWeekPickerElement extends MDElement {
                         @onWeekPickerButtonCancelClick="${(event) => dateTimePicker1.close()}"
                         value="2024-W22"
                     ></md-week-picker>
-                    <md-button id="button1" @click="${(event) => dateTimePicker1.show(event.currentTarget)}" label="week-picker"></md-button>
+                    <md-button
+                        id="button1"
+                        @click="${(event) => dateTimePicker1.show(event.currentTarget)}"
+                        label="week-picker"
+                    ></md-button>
                 </div>
             </div>
         `;

@@ -9,50 +9,112 @@ class AppDatetimeFieldElement extends MDElement {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
                 }}"
             >
-                <div class="md-layout-column" style="margin:24px;">
+                <div
+                    class="md-layout-column"
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field label="Datetime Field" name="color0"></md-datetime-field>
+                        <md-datetime-field
+                            label="Datetime Field"
+                            name="color0"
+                        ></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field label="Datetime Field (value)" name="color1" value="1990-10-17T20:30"></md-datetime-field>
+                        <md-datetime-field
+                            label="Datetime Field (value)"
+                            name="color1"
+                            value="1990-10-17T20:30"
+                        ></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field label="Datetime Field (required)" name="color2" required></md-datetime-field>
-                    </div>
-
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="filled" label="Datetime Field" name="color0"></md-datetime-field>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="filled" label="Datetime Field (value)" name="color1" value="1990-10-17T20:30"></md-datetime-field>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="filled" label="Datetime Field (required)" name="color2" required></md-datetime-field>
-                    </div>
-
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="outlined" label="Datetime Field" name="color0"></md-datetime-field>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="outlined" label="Datetime Field (value)" name="color1" value="1990-10-17T20:30"></md-datetime-field>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="outlined" label="Datetime Field (required)" name="color2" required></md-datetime-field>
+                        <md-datetime-field
+                            label="Datetime Field (required)"
+                            name="color2"
+                            required
+                        ></md-datetime-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="rounded" label="Datetime Field" name="color0"></md-datetime-field>
+                        <md-datetime-field
+                            ui="filled"
+                            label="Datetime Field"
+                            name="color0"
+                        ></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="rounded" label="Datetime Field (value)" name="color1" value="1990-10-17T20:30"></md-datetime-field>
+                        <md-datetime-field
+                            ui="filled"
+                            label="Datetime Field (value)"
+                            name="color1"
+                            value="1990-10-17T20:30"
+                        ></md-datetime-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-datetime-field ui="rounded" label="Datetime Field (required)" name="color2" required></md-datetime-field>
+                        <md-datetime-field
+                            ui="filled"
+                            label="Datetime Field (required)"
+                            name="color2"
+                            required
+                        ></md-datetime-field>
+                    </div>
+
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="outlined"
+                            label="Datetime Field"
+                            name="color0"
+                        ></md-datetime-field>
+                    </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="outlined"
+                            label="Datetime Field (value)"
+                            name="color1"
+                            value="1990-10-17T20:30"
+                        ></md-datetime-field>
+                    </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="outlined"
+                            label="Datetime Field (required)"
+                            name="color2"
+                            required
+                        ></md-datetime-field>
+                    </div>
+
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="rounded"
+                            label="Datetime Field"
+                            name="color0"
+                        ></md-datetime-field>
+                    </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="rounded"
+                            label="Datetime Field (value)"
+                            name="color1"
+                            value="1990-10-17T20:30"
+                        ></md-datetime-field>
+                    </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-datetime-field
+                            ui="rounded"
+                            label="Datetime Field (required)"
+                            name="color2"
+                            required
+                        ></md-datetime-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-button type="reset" label="Reset"></md-button>
-                        <md-button type="submit" label="Submit"></md-button>
+                        <md-button
+                            type="reset"
+                            label="Reset"
+                        ></md-button>
+                        <md-button
+                            type="submit"
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

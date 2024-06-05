@@ -131,9 +131,21 @@ class AppMainElement extends MDElement {
     render() {
         return html`
             <div class="md-layout-border md-layout-fit">
-                <md-top-app-bar id="bar" .leadingActions="${[{ icon: "menu" }]}" @onTopAppBarActionClick="${() => this.drawer.toggle()}" .open="${true}"></md-top-app-bar>
+                <md-top-app-bar
+                    id="bar"
+                    .leadingActions="${[{ icon: "menu" }]}"
+                    @onTopAppBarActionClick="${() => this.drawer.toggle()}"
+                    .open="${true}"
+                ></md-top-app-bar>
 
-                <md-navigation-drawer id="drawer" .list="${this.list}" .open="${true}" .ui="${"level"}" @onNestedListItemClick="${this.handleListItemClick}" @onNestedListItemSelected="${this.handleListItemSelected}"></md-navigation-drawer>
+                <md-navigation-drawer
+                    id="drawer"
+                    .list="${this.list}"
+                    .open="${true}"
+                    .ui="${"level"}"
+                    @onNestedListItemClick="${this.handleListItemClick}"
+                    @onNestedListItemSelected="${this.handleListItemSelected}"
+                ></md-navigation-drawer>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
                     <md-outlet></md-outlet>

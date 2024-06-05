@@ -10,10 +10,11 @@ function open(pathname) {
             if (dir.name.endsWith(".js")) {
                 let content = read(pathname2, "");
 
-                content = content.replace(/\/\*\*[\s\S]+?\*\//gm, "");
+                // content = content.replace(/\/\*\*[\s\S]+?\*\//gm, "");
 
                 content = parse(content);
-                write(pathname2, content);
+                // console.log(content)
+                // write(pathname2, content);
             }
         }
     }
@@ -53,7 +54,7 @@ function parse(content) {
             events.push({ name, parameters });
         }
 
-        const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/)?.[1];
+        const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/m)?.[1];
 
         const properties = [];
         if (content2) {

@@ -9,7 +9,10 @@ class AppSelectFieldElement extends MDElement {
                     console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
                 }}"
             >
-                <div class="md-layout-column" style="margin:24px;">
+                <div
+                    class="md-layout-column"
+                    style="margin:24px;"
+                >
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-select-field
                             label="Select Field"
@@ -55,8 +58,14 @@ class AppSelectFieldElement extends MDElement {
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-button type="reset" label="Reset"></md-button>
-                        <md-button type="submit" label="Submit"></md-button>
+                        <md-button
+                            type="reset"
+                            label="Reset"
+                        ></md-button>
+                        <md-button
+                            type="submit"
+                            label="Submit"
+                        ></md-button>
                     </div>
                 </div>
             </md-form>

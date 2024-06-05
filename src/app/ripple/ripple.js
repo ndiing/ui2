@@ -5,9 +5,16 @@ import { MDRippleModule } from "../../com/ripple/ripple";
 class AppRippleElement extends MDElement {
     render() {
         return html`
-            <div class="md-layout-column" style="margin:24px;">
+            <div
+                class="md-layout-column"
+                style="margin:24px;"
+            >
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-icon-button id="ripple1" ui="tonal">image</md-icon-button>
+                    <md-icon-button
+                        id="ripple1"
+                        ui="tonal"
+                        >image</md-icon-button
+                    >
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <div
