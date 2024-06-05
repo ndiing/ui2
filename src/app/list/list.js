@@ -250,6 +250,19 @@ class AppListElement extends MDElement {
             },
             { trailingSwitch: {}, leadingIcon: "image", label: "Headline" },
         ];
+
+        this.list=[
+            {label:'Item 1'},
+            {label:'Item 2'},
+            {label:'Item 3'},
+            {label:'Item 4'},
+            {label:'Item 5'},
+            {label:'Item 6'},
+            {label:'Item 7'},
+            {label:'Item 8'},
+            {label:'Item 9'},
+            {label:'Item 10'},
+        ]
     }
 
     render() {
@@ -258,6 +271,16 @@ class AppListElement extends MDElement {
                 class="md-layout-column"
                 style="margin:24px;"
             >
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-list 
+                        .list="${this.list}"
+                        singleSelection
+                        multiSelection
+                        rangeSelection
+                        allSelection
+                    ></md-list>
+                </div>
+
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                     <md-list .list="${this.list1}"></md-list>
                 </div>
