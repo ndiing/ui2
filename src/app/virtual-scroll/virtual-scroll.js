@@ -56,6 +56,9 @@ class AppVirtualScrollElement extends MDElement {
             total: this.data.length,
             itemHeight: 56,
         });
+        window.requestAnimationFrame(() => {
+            this.viewport.scrollTop=56*(500000/2)
+        })
     }
 
     handleVirtualScrollChange(event) {
@@ -63,10 +66,6 @@ class AppVirtualScrollElement extends MDElement {
         this.list = this.data.slice(start, end);
         this.requestUpdate();
     }
-
-    handleListItemClick(event) {}
-
-    handleListItemSelected(event) {}
 
     async disconnectedCallback() {
         super.disconnectedCallback();
