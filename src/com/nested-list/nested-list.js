@@ -431,6 +431,7 @@ class MDNestedListComponent extends MDElement {
             if (!data.isNode && !data.isParent) {
                 this.selectList(this.list, data);
             } else {
+                event.stopPropagation();
                 this.expandList(this.list, data.isParent ? data.parent : data);
             }
             this.lastIndex = this.list.indexOf(data);
