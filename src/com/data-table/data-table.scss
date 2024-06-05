@@ -1,6 +1,7 @@
 .md-data-table {
     display: flex;
     flex-direction: column;
+    padding: 8px 0;
 }
 
 .md-data-table__row {
@@ -33,12 +34,12 @@
 }
 
 .md-data-table__label {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 0 4px;
-    min-width: 0;
 }
 
 .md-data-table__label-primary {
@@ -46,7 +47,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    @include md-typography-body-medium;
+    @include md-typography-body-large;
 }
 
 .md-data-table__label-secondary {
@@ -56,13 +57,6 @@
     @include md-typography-body-medium;
 }
 
-.md-data-table__actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 0 16px;
-    margin-left: auto;
-}
-
 .md-data-table__text {
     margin-left: auto;
     @include md-typography-label-small;
@@ -70,8 +64,6 @@
 
 .md-data-table__item {
     min-height: 56px;
-    background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
 }
 
 .md-data-table__item--two-line {
@@ -92,82 +84,4 @@
     .md-data-table__label-secondary {
         height: 40px;
     }
-}
-
-.md-data-table {
-    width: 100%;
-    height: 100%;
-    table {
-        display: block;
-        overflow: auto;
-        width: 100%;
-        height: 100%;
-        border-spacing: 0;
-        border-collapse: separate;
-    }
-    th {
-        text-align: left;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
-
-        position: sticky;
-        top: 0;
-        z-index: 3;
-
-        .md-data-table__label-primary {
-            @include md-typography-label-large;
-        }
-    }
-    tbody {
-        tr {
-            &[selected] {
-                .md-data-table__item {
-                    @include md-ripple--selected;
-                }
-            }
-            &:focus {
-                .md-data-table__item {
-                    @include md-ripple--focused;
-                }
-            }
-            &:active {
-                .md-data-table__item {
-                    @include md-ripple--pressed;
-                }
-            }
-            &:hover {
-                .md-data-table__item {
-                    @include md-ripple--hover;
-                }
-            }
-        }
-    }
-    td {
-        max-width: 0;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
-
-        .md-data-table__item {
-            min-height: 52px;
-            @include md-ripple;
-            @include md-ripple--button;
-            @include md-ripple--containment;
-            --md-ripple-size: 200%;
-        }
-    }
-
-    .md-data-table__column-cell-checkbox {
-        position: sticky;
-        left: 0;
-        top: 0;
-        z-index: 3;
-    }
-    .md-data-table__row-cell-checkbox {
-        position: sticky;
-        left: 0;
-        top: 0;
-        z-index: 1;
-    }
-}
-
-.md-data-table__item--align-right {
-    justify-content: flex-end;
 }

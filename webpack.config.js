@@ -3,27 +3,27 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-
 const stylesHandler = 'style-loader';
-
-
 
 const config = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        clean: true
     },
     devServer: {
         open: true,
         host: 'localhost',
-        historyApiFallback:true,
+        historyApiFallback: true,
         static: {
-            directory: path.join(__dirname, 'src','assets'),
-          },
-          
+            directory: path.join(__dirname, 'src', 'assets'),
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -56,15 +56,26 @@ const config = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
+    optimization: {
+        minimize: isProduction,
+        minimizer: [new TerserPlugin()],
+    },
 };
 
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
-        config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-        
+
+        config.plugins.push(
+            new WorkboxWebpackPlugin.GenerateSW(),
+            new CompressionPlugin({
+                filename: '[path][base].gz',
+                algorithm: 'gzip',
+                test: /\.(js|css|html|svg)$/,
+                threshold: 8192,
+                minRatio: 0.8,
+            })
+        );
     } else {
         config.mode = 'development';
     }
