@@ -389,6 +389,7 @@ class MDDataTableComponent extends MDElement {
                         ${this.columns?.length && this.checkbox
                             ? html`
                                   <th
+                                      is="md-data-table-native-column-cell"
                                       class="md-data-table__column-cell-checkbox"
                                       @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxNativeInput}"
                                   >

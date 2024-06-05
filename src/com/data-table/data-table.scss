@@ -123,8 +123,9 @@
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
 
         position: sticky;
+        // left: 0;
         top: 0;
-        z-index: 2;
+        z-index: 3;
 
         // .md-data-table__item {
         //     @include md-ripple;
@@ -214,7 +215,7 @@
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
-            --md-ripple-size:200%;
+            --md-ripple-size: 200%;
         }
     }
 
@@ -232,6 +233,7 @@
         z-index: 1;
         // border-right: 1px solid var(--md-sys-color-outline-variant);
     }
+
 }
 
 .md-data-table__item--align-right {
