@@ -529,6 +529,23 @@ class MDDataTableComponent extends MDElement {
 
     updated(changedProperties) {}
 
+    // table
+    /**
+     *
+     * @fires MDDataTableComponent#onDataTableKeydown
+     */
+
+    handleDataTableKeydown(event) {
+        if (this.allSelection && event.ctrlKey && event.key == "a") {
+            event.preventDefault();
+            this.rows.forEach((row) => {
+                row.selected = true;
+            });
+            this.requestUpdate();
+        }
+        this.emit("onDataTableKeydown", event);
+    }
+
     // column
 
     handleDataTableColumnCellResizeStart(event) {
@@ -624,6 +641,63 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellDragEnd", event);
     }
 
+    // column
+
+    handleDataTableColumnCellPointerenter(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable && !data.order) {
+            data.sortableIcon = "arrow_upward";
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellPointerenter", event);
+    }
+
+    handleDataTableColumnCellPointerleave(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable && !data.order) {
+            data.sortableIcon = "";
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellPointerleave", event);
+    }
+
+    handleDataTableColumnCellSortableClick(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.order = "asc";
+                data.sortableIcon = "arrow_upward";
+            } else if (data.order == "asc") {
+                data.order = "desc";
+                data.sortableIcon = "arrow_downward";
+            } else {
+                data.order = "";
+                data.sortableIcon = "";
+            }
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellSortableClick", event);
+    }
+
+    // column
+    /**
+     *
+     */
+
+    handleDataTableColumnCellCheckboxNativeInput(event) {
+        const checked = event.detail.currentTarget.checked;
+        this.rows.forEach((row) => {
+            row.selected = checked;
+        });
+        this.requestUpdate();
+    }
+
     // row
 
     handleDataTableRowResizeStart(event) {
@@ -696,50 +770,6 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableRowDragEnd", event);
     }
 
-    // column
-
-    handleDataTableColumnCellPointerenter(event) {
-        const data = event.currentTarget.data;
-
-        if (data.sortable && !data.order) {
-            data.sortableIcon = "arrow_upward";
-            this.requestUpdate();
-        }
-
-        this.emit("onDataTableColumnCellPointerenter", event);
-    }
-
-    handleDataTableColumnCellPointerleave(event) {
-        const data = event.currentTarget.data;
-
-        if (data.sortable && !data.order) {
-            data.sortableIcon = "";
-            this.requestUpdate();
-        }
-
-        this.emit("onDataTableColumnCellPointerleave", event);
-    }
-
-    handleDataTableColumnCellSortableClick(event) {
-        const data = event.currentTarget.data;
-
-        if (data.sortable) {
-            if (!data.order) {
-                data.order = "asc";
-                data.sortableIcon = "arrow_upward";
-            } else if (data.order == "asc") {
-                data.order = "desc";
-                data.sortableIcon = "arrow_downward";
-            } else {
-                data.order = "";
-                data.sortableIcon = "";
-            }
-            this.requestUpdate();
-        }
-
-        this.emit("onDataTableColumnCellSortableClick", event);
-    }
-
     // row
 
     handleDataTableRowClick(event) {
@@ -775,36 +805,6 @@ class MDDataTableComponent extends MDElement {
         }
         this.requestUpdate();
         this.emit("onDataTableRowClick", event);
-    }
-
-    // table
-    /**
-     *
-     * @fires MDDataTableComponent#onDataTableKeydown
-     */
-
-    handleDataTableKeydown(event) {
-        if (this.allSelection && event.ctrlKey && event.key == "a") {
-            event.preventDefault();
-            this.rows.forEach((row) => {
-                row.selected = true;
-            });
-            this.requestUpdate();
-        }
-        this.emit("onDataTableKeydown", event);
-    }
-
-    // column
-    /**
-     *
-     */
-
-    handleDataTableColumnCellCheckboxNativeInput(event) {
-        const checked = event.detail.currentTarget.checked;
-        this.rows.forEach((row) => {
-            row.selected = checked;
-        });
-        this.requestUpdate();
     }
 
     // row
