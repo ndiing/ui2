@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const {execSync} = require('child_process');
+const { execSync } = require("child_process");
 
 function open(pathname) {
     for (const dir of fs.readdirSync(pathname, { withFileTypes: true })) {
@@ -11,12 +11,9 @@ function open(pathname) {
             if (dir.name.endsWith(".js")) {
                 // let content = read(pathname2, "");
 
-                let cmd=(
-                    'jsdoc2md '+pathname2+' > '+
-                    './docs/'+dir.name.replace('.js','.md')
-                )
-                let out=execSync(cmd)
-                console.log(out)
+                let cmd = "jsdoc2md " + pathname2 + " > " + "./docs/" + dir.name.replace(".js", ".md");
+                let out = execSync(cmd);
+                console.log(out);
             }
         }
     }

@@ -19,7 +19,7 @@ class MDNavigationRailComponent extends MDElement {
      * @property {String} [ui] - The user interface type of the navigation rail.
      * @property {Boolean} [open=false] - The open state of the navigation rail, default is false (closed).
      * @property {Object} [properties] - Additional properties inherited from MDListComponent.
-     * 
+     *
      * @returns {Object} The properties of the navigation rail component.
      */
     static get properties() {

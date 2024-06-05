@@ -1,5 +1,6 @@
 import { LitElement } from "lit";
 import { msg, updateWhenLocaleChanges } from "@lit/localize";
+import { choose } from "lit/directives/choose.js";
 
 /**
  *

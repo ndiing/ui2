@@ -13,13 +13,44 @@ function open(pathname) {
                 // content = content.replace(/\/\*\*[\s\S]+?\*\//gm, "");
 
                 content = parse(content);
-                // console.log(content)
+                // console.log(content);
+
+                for (let content2 of content) {
+                    if (content2.tagName) {
+                        code += `            ["${content2.tagName}", () => html\`\r\n`;
+                        code += `                <${content2.tagName}\r\n`;
+                        let properties = content2.methods.find((m) => m.methodName == "properties")?.properties;
+                        for (let { name } of properties || []) {
+                            code += `                    .${name}="\${ifDefined(item.${name})}"\r\n`;
+                        }
+                        code += `                >\r\n`;
+                        code += `                </${content2.tagName}>\r\n`;
+                        code += `                \r\n`;
+                        code += `            \`],\r\n`;
+                    }
+                }
                 // write(pathname2, content);
             }
         }
     }
 }
+
+let code = "";
+
+code += `function template(item) {\r\n`;
+code += `    return choose(\r\n`;
+code += `        item.tag,\r\n`;
+code += `        [\r\n`;
+
 open("./src/com");
+code += `        ],\r\n`;
+code += `        () => html\`\r\n`;
+code += `            \r\n`;
+code += `        \`,\r\n`;
+code += `    );\r\n`;
+code += `}\r\n`;
+write("./code", code);
+
 function read(file, content) {
     try {
         content = fs.readFileSync(file, { encoding: "utf8" });
@@ -32,115 +63,63 @@ function write(file, content) {
     fs.writeFileSync(file, content);
 }
 // let content = read("./src/com/nested-list/nested-list.js");
-
-// content=content.replace(/\/\*\*(?:.|\n)*?\*\//gm,'')
-
-// content=parse(content);
-// write("./src/dev/example.cjs", content);
+// content = parse(content);
+// console.log(content);
 function parse(content) {
-    content = content.replace(/^(class.*?\{)([\s\S]+?)(^\})/gm, ($, $1, $2, $3) => {
-        let content = $1 + $2 + $3;
-        const className = content.match(/^class (\w+)/m)?.[1];
-        const inheritName = content.match(/extends (\w+)/)?.[1];
-        const tagName = content.match(/^customElements.define\("([^"]+)",/m)?.[1];
+    let data = [];
+    content.split(/^class /gm).forEach((content) => {
+        let [, className, , inheritName] = content.match(/^(\w+)( extends (\w+))? \{/) || [];
 
-        const methods = [];
-        for (const [, static, async, , accessor, name, parameters] of content.matchAll(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{/gm)) {
-            methods.push({ static, async, accessor, name, parameters });
-        }
+        let [, tagName] = content.match(/customElements\.define\("([^"]+)",/) || [];
 
-        const events = [];
-        for (const [, name, parameters] of content.matchAll(/this\.emit\("([^"]+)", ([^)]+)\)/gm)) {
-            events.push({ name, parameters });
-        }
-
-        const content2 = content.match(/^    static get properties\(\) \{[\s\S]+?return \{([\s\S]+?)\};[\s\S]+?\}/m)?.[1];
-
-        const properties = [];
-        if (content2) {
-            for (const [, name, type] of content2.matchAll(/(\w+): { type: (\w+)/gm)) {
-                properties.push({ name, type });
+        let methods = [];
+        for (let [, static, async, , accessor, methodName, parameters, content2] of content.matchAll(/    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{([\s\S]+?)^    }/gm) || []) {
+            let properties = [];
+            if (methodName == "properties") {
+                for (let [, name, type] of content2.matchAll(/(\w+): \{ type: (\w+)/gm)) {
+                    properties.push({ name, type });
+                }
             }
+
+            let uis = [];
+            let [, content3] = content2.match(/\[([^\]]+)\]\.forEach\(\(ui\)/) || [];
+            if (methodName == "updated" && content3) {
+                for (let [, name] of content3.matchAll(/"([^"]+)"/gm)) {
+                    uis.push({ name });
+                }
+            }
+
+            let events = [];
+            for (let [, name] of content2.matchAll(/this\.emit\("([^"]+)",/gm)) {
+                events.push({ name });
+            }
+
+            methods.push({
+                static,
+                async,
+                accessor,
+                methodName,
+                parameters,
+                properties,
+                uis,
+                events,
+            });
         }
 
-        const functions = [];
-        for (const [, name, parameters] of content.matchAll(/^function (\w+)\(([^\)]+)?\) \{/gm)) {
+        let functions = [];
+        for (let [, name, parameters] of content.matchAll(/function (\w+)\(([^\)]+)\) \{/gm)) {
             functions.push({ name, parameters });
         }
 
-        const content3 = content.match(/\[([^\]]+)\]\.forEach\(\(ui\)/m)?.[1];
-
-        const variants = [];
-        if (content3) {
-            for (const [, name] of content3.matchAll(/"([^"]+)"/gm)) {
-                variants.push({ name });
-            }
-        }
-
-        // console.log({
-        //     className,
-        //     inheritName,
-        //     tagName,
-        //     properties,
-        //     methods,
-        //     events,
-        //     functions,
-        //     variants,
-        // });
-
-        content = content.replace(/(class )/, ($, $1) => {
-            let data = "";
-            data += `/**\r\n`;
-            data += ` *\r\n`;
-            // if (className) {
-            //     data += ` * @class ${className}\r\n`;
-            // }
-            if (inheritName) {
-                data += ` * @extends ${inheritName}\r\n`;
-            }
-            data += ` */\r\n`;
-            data += $1;
-            return data;
-        });
-
-        content = content.replace(/^    (static )?(async )?((get|set) )?(\w+)\(([^\)]+)?\) \{([\s\S]+?)^    \}/gm, ($, $static, $async, $accessor, $accessor2, $name, $parameters, content2) => {
-            const properties = [];
-            for (const [, name, type] of content2.matchAll(/(\w+): { type: (\w+)/gm)) {
-                properties.push({ name, type });
-            }
-
-            const events = [];
-            for (const [, name, parameters] of content2.matchAll(/this\.emit\("([^"]+)", ([^)]+)\)/gm)) {
-                events.push({ name, parameters });
-            }
-
-            let data = "";
-            data += `    /**\r\n`;
-            data += `     *\r\n`;
-            for (const { name, type } of properties) {
-                if (name == "ui") {
-                    data += `     * @property {${type}} [${name}] - @variant\r\n`;
-                } else {
-                    data += `     * @property {${type}} [${name}] - \r\n`;
-                }
-            }
-            for (const { name, type } of events) {
-                data += `     * @fires ${className}#${name} \r\n`;
-            }
-            data += `     */\r\n`;
-            data += `    ${$static ?? ""}${$async ?? ""}${$accessor ?? ""}${$name}(${$parameters ?? ""}) {`;
-            data += content2;
-            data += `    }`;
-            return data;
-        });
-
-        content = content.replace(
-            "@variant",
-            variants.map((doc) => doc.name),
-        );
-
-        return content;
+        if (!((className == undefined || className == "import") && inheritName == undefined && tagName == undefined && methods.length == 0 && functions.length == 0))
+            data.push({
+                className,
+                inheritName,
+                tagName,
+                methods,
+                functions,
+            });
     });
-    //
-    return content;
+    // console.log(data);
+    return data;
 }

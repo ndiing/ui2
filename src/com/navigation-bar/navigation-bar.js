@@ -10,7 +10,7 @@ import { MDListComponent } from "../list/list";
 class MDNavigationBarComponent extends MDElement {
     /**
      * Properties of the MDNavigationBarComponent.
-     * 
+     *
      * @property {Array} [leadingActions] - An array of actions to be displayed at the leading side of the navigation bar.
      * @property {String} [label] - The main label of the navigation bar.
      * @property {String} [subLabel] - A sub-label or description for the navigation bar.
@@ -19,7 +19,7 @@ class MDNavigationBarComponent extends MDElement {
      * @property {String} [ui] - The user interface type of the navigation bar.
      * @property {Boolean} [open=false] - The open state of the navigation bar, default is false (closed).
      * @property {Object} [properties] - Additional properties inherited from MDListComponent.
-     * 
+     *
      * @returns {Object} The properties of the navigation bar component.
      */
     static get properties() {

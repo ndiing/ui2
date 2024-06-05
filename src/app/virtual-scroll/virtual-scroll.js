@@ -57,8 +57,8 @@ class AppVirtualScrollElement extends MDElement {
             itemHeight: 56,
         });
         window.requestAnimationFrame(() => {
-            this.viewport.scrollTop=56*(500000/2)
-        })
+            this.viewport.scrollTop = 56 * (500000 / 2);
+        });
     }
 
     handleVirtualScrollChange(event) {

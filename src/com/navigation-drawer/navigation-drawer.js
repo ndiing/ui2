@@ -19,7 +19,7 @@ class MDNavigationDrawerComponent extends MDElement {
      * @property {String} [ui='modal'] - The user interface type of the navigation drawer. Possible values are 'modal', 'drawer', 'panel'.
      * @property {Boolean} [open=false] - The open state of the navigation drawer, default is false (closed).
      * @property {Object} [properties] - Additional properties inherited from MDListComponent.
-     * 
+     *
      * @returns {Object} The properties of the navigation drawer component.
      */
     static get properties() {

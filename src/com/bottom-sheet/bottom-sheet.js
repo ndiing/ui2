@@ -7,7 +7,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
  * @extends MDElement
  */
 class MDBottomSheetComponent extends MDElement {
-        /**
+    /**
      * Returns the properties of the bottom sheet component.
      *
      * @property {Array} [leadingActions] - An array of actions to be displayed at the leading side of the bottom sheet.
@@ -17,20 +17,20 @@ class MDBottomSheetComponent extends MDElement {
      * @property {Array} [buttons] - An array of button elements to be displayed in the bottom sheet.
      * @property {String} [ui='modal'] - The user interface type of the bottom sheet. Possible values are 'modal', 'drawer', 'panel'.
      * @property {Boolean} [open=false] - The open state of the bottom sheet, default is false (closed).
-     * 
+     *
      * @returns {Object} The properties of the bottom sheet component.
      */
-        static get properties() {
-            return {
-                leadingActions: { type: Array },
-                label: { type: String },
-                subLabel: { type: String },
-                trailingActions: { type: Array },
-                buttons: { type: Array },
-                ui: { type: String },
-                open: { type: Boolean, reflect: true },
-            };
-        }
+    static get properties() {
+        return {
+            leadingActions: { type: Array },
+            label: { type: String },
+            subLabel: { type: String },
+            trailingActions: { type: Array },
+            buttons: { type: Array },
+            ui: { type: String },
+            open: { type: Boolean, reflect: true },
+        };
+    }
 
     /**
      *

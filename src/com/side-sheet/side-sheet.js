@@ -17,7 +17,7 @@ class MDSideSheetComponent extends MDElement {
      * @property {Array} [buttons] - An array of button elements to be displayed in the side sheet.
      * @property {String} [ui='modal'] - The user interface type of the side sheet. Possible values are 'modal', 'drawer', 'panel'.
      * @property {Boolean} [open=false] - The open state of the side sheet, default is false (closed).
-     * 
+     *
      * @returns {Object} The properties of the side sheet component.
      */
     static get properties() {
