@@ -245,8 +245,8 @@ class MDSelectFieldComponent extends MDElement {
      */
     handleListItemClick(event) {
         this.requestUpdate();
-        this.selectFieldNative.dispatchEvent(new CustomEvent('input',{bubbles:true,cancelable:true}))
-        this.menu.close()
+        this.selectFieldNative.dispatchEvent(new CustomEvent("input", { bubbles: true, cancelable: true }));
+        this.menu.close();
         this.emit("onListItemClick", event);
     }
 

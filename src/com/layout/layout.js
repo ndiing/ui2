@@ -1,11 +1,18 @@
 /**
- *
+ * MDLayoutModule manages the layout changes based on media queries.
  */
 class MDLayoutModule {
     /**
+     * Initializes the MDLayoutModule instance.
      *
+     * The constructor sets up the list of layout configurations, binds the callback, and initializes the module.
      */
     constructor() {
+        /**
+         * @property {Array<Object>} list - An array of layout configurations with names and media queries.
+         * @property {String} list.name - The name of the layout configuration.
+         * @property {MediaQueryList} list.query - The media query associated with the layout configuration.
+         */
         this.list = [
             {
                 name: "compact",
@@ -26,14 +33,19 @@ class MDLayoutModule {
     }
 
     /**
+     * Initializes the layout module.
      *
+     * The init method calls the callback method to set the initial layout state.
      */
     init() {
         this.callback();
     }
 
     /**
+     * Handles layout changes and dispatches a custom event.
      *
+     * The callback method determines the current layout configuration based on the matching media query,
+     * dispatches an "onLayoutChange" event with the layout details, and sets up an event listener for changes.
      */
     callback() {
         if (this.item) {
