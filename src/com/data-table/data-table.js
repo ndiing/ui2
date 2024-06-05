@@ -503,7 +503,7 @@ class MDDataTableComponent extends MDElement {
     handleDataTableColumnCellDragStart(event) {
         const th = event.currentTarget;
         const { left, top, width, height } = th.getBoundingClientRect();
-        this.cloneTh = th.cloneNode(true);
+        this.cloneTh = th.cloneNode();
         this.cloneTh.style.setProperty("width", width + "px");
         this.cloneTh.style.setProperty("height", height + "px");
         this.cloneTh.style.setProperty("position", "absolute");
@@ -566,9 +566,8 @@ class MDDataTableComponent extends MDElement {
     }
     handleDataTableRowDragStart(event) {
         const tr = event.currentTarget;
-        const td = event.detail.target.closest("td");
-        const { left, top, width, height } = td.getBoundingClientRect();
-        this.cloneTr = td.cloneNode(true);
+        const { left, top, width, height } = tr.getBoundingClientRect();
+        this.cloneTr = tr.cloneNode();
         this.cloneTr.style.setProperty("width", width + "px");
         this.cloneTr.style.setProperty("height", height + "px");
         this.cloneTr.style.setProperty("position", "absolute");
