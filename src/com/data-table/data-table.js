@@ -427,9 +427,6 @@ class MDDataTableComponent extends MDElement {
                                               align: column.align,
                                               sortable: column.sortable,
                                               sortableIcon: column.sortableIcon ?? "",
-                                              //   actions:[
-                                              //     {icon:'keyboard_arrow_down'}
-                                              //   ]
                                           })}
                                       </th>
                                   `
@@ -529,7 +526,6 @@ class MDDataTableComponent extends MDElement {
 
     updated(changedProperties) {}
 
-    // table
     /**
      *
      * @fires MDDataTableComponent#onDataTableKeydown
@@ -545,8 +541,6 @@ class MDDataTableComponent extends MDElement {
         }
         this.emit("onDataTableKeydown", event);
     }
-
-    // column
 
     handleDataTableColumnCellResizeStart(event) {
         this.emit("onDataTableColumnCellResizeStart", event);
@@ -630,18 +624,13 @@ class MDDataTableComponent extends MDElement {
         if (currentTh !== th) {
             const from = this.columns.indexOf(data);
             const to = this.columns.indexOf(currentTh.data);
-            // swap
-            // [this.columns[from], this.columns[to]] = [this.columns[to], this.columns[from]];
 
-            // order
             let [column] = this.columns.splice(from, 1);
             this.columns.splice(to, 0, column);
             this.requestUpdate();
         }
         this.emit("onDataTableColumnCellDragEnd", event);
     }
-
-    // column
 
     handleDataTableColumnCellPointerenter(event) {
         const data = event.currentTarget.data;
@@ -685,7 +674,6 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortableClick", event);
     }
 
-    // column
     /**
      *
      */
@@ -697,8 +685,6 @@ class MDDataTableComponent extends MDElement {
         });
         this.requestUpdate();
     }
-
-    // row
 
     handleDataTableRowResizeStart(event) {
         this.emit("onDataTableRowResizeStart", event);
@@ -760,17 +746,13 @@ class MDDataTableComponent extends MDElement {
         if (currentTr !== tr) {
             const from = this.rows.indexOf(data);
             const to = this.rows.indexOf(currentTr.data);
-            // swap
-            // [this.rows[from], this.rows[to]] = [this.rows[to], this.rows[from]];
-            // order
+
             const [row] = this.rows.splice(from, 1);
             this.rows.splice(to, 0, row);
             this.requestUpdate();
         }
         this.emit("onDataTableRowDragEnd", event);
     }
-
-    // row
 
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
@@ -807,7 +789,6 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableRowClick", event);
     }
 
-    // row
     /**
      *
      */

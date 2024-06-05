@@ -49,8 +49,6 @@ class MDSelectFieldComponent extends MDElement {
             defaultValue: { type: String },
 
             options: { type: Array },
-            // selectedOptions: { type: Array },
-            // selectedIndex: { type: Number },
 
             label: { type: String },
             leadingIcon: { type: String },

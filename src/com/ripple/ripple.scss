@@ -139,7 +139,6 @@
     }
 }
 
-// Contoh penggunaan mixin untuk class .md-ripple
 .md-ripple {
     @include md-ripple;
 }
@@ -163,10 +162,6 @@
 .md-ripple[selected] {
     @include md-ripple--selected-attr;
 }
-
-// [selected] {
-//     @include md-ripple--selected-attr;
-// }
 
 .md-ripple--focused {
     @include md-ripple--focused;

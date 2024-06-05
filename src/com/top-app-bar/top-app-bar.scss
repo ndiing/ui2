@@ -39,8 +39,6 @@
     gap: 0 16px;
 }
 
-// .md-top-app-bar__action {}
-
 .md-top-app-bar__label {
     flex: 1;
     display: flex;
@@ -86,26 +84,11 @@
     gap: 0 8px;
 }
 
-// .md-top-app-bar__button {}
-
-// .md-top-app-bar {
-//     border-radius: var(--md-sys-shape-corner-none);
-//     background: var(--md-sys-color-surface-container);
-//     color: var(--md-sys-color-on-surface);
-//     box-shadow: var(--md-sys-elevation-level2);
-
-//     &:not([open]) {
-//         box-shadow: var(--md-sys-elevation-level0);
-//     }
-// }
-
 .md-top-app-bar--center-aligned {
     .md-top-app-bar__label {
         align-items: center;
     }
 }
-
-// .md-top-app-bar--small {}
 
 .md-top-app-bar--medium {
     height: 112px;

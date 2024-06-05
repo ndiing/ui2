@@ -43,8 +43,6 @@
     gap: 0 16px;
 }
 
-// .md-dialog__action {}
-
 .md-dialog__label {
     flex: 1;
     display: flex;
@@ -86,8 +84,6 @@
     gap: 0 8px;
 }
 
-// .md-dialog__button {}
-
 .md-dialog--full-screen {
     min-width: 100%;
     max-width: 100%;
@@ -97,13 +93,6 @@
     background: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
     box-shadow: var(--md-sys-elevation-level0);
-
-    // .md-dialog__header{
-    //     border-radius: var(--md-sys-shape-corner-none);
-    //     background: var(--md-sys-color-surface-container);
-    //     color: var(--md-sys-color-on-surface);
-    //     box-shadow: var(--md-sys-elevation-level2);
-    // }
 
     &:not([open]) {
         transform: translate3d(-50%, -50%, 0) scale(0.92);

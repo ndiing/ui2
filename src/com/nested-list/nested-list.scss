@@ -57,8 +57,6 @@
     @include md-typography-body-medium;
 }
 
-// .md-nested-list__icon{}
-
 .md-nested-list__indent {
     width: 24px;
     height: 24px;
@@ -71,12 +69,6 @@
     width: 24px;
     height: 24px;
 }
-
-// .md-nested-list__checkbox{}
-
-// .md-nested-list__radio-button{}
-
-// .md-nested-list__switch{}
 
 .md-nested-list__text {
     margin-left: auto;
@@ -377,8 +369,6 @@
     flex-direction: row;
     padding-top: 0;
     padding-bottom: 0;
-    // border-bottom: 1px solid var(--md-sys-color-surface-variant);
-    // overflow: auto;
 
     &::after {
         transition-property: all;
@@ -388,7 +378,6 @@
 
     .md-nested-list__row {
         flex: 1;
-        // flex: 1 0 auto;
     }
 
     .md-nested-list__item {

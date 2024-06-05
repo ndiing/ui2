@@ -6,8 +6,6 @@
     flex-direction: row;
     padding-top: 0;
     padding-bottom: 0;
-    // border-bottom: 1px solid var(--md-sys-color-surface-variant);
-    // overflow: auto;
 
     &::after {
         transition-property: all;
@@ -17,7 +15,6 @@
 
     .md-list__row {
         flex: 1;
-        // flex: 1 0 auto;
     }
 
     .md-list__item {
