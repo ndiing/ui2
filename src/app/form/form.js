@@ -59,6 +59,15 @@ class AppFormElement extends MDElement {
                     <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-textarea-field label="Textarea Field" name="textarea" value="Text"></md-textarea-field>
                     </div>
+                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                        <md-select-field label="Select Field" name="select" .options="${[
+                            {label:'Option 1',value:'1',selected:true},
+                            {label:'Option 2',value:'2',},
+                            {label:'Option 3',value:'3',},
+                            {label:'Option 4',value:'4',},
+                            {label:'Option 5',value:'5',},
+                        ]}"></md-select-field>
+                    </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
                         <md-checkbox name="checkbox"></md-checkbox>

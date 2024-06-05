@@ -87,7 +87,7 @@ class MDSelectFieldComponent extends MDElement {
                     class="md-select-field__native"
                     type="hidden"
                     .name="${ifDefined(this.name)}"
-                    .value="${this.options[this.selectedIndex]?.value??""}"
+                    .value="${this.selectedOptions.map(option=>option.value||option.label)}"
                 />
                 ${this.label?html`<div class="md-select-field__label">${this.label}</div>`:nothing}
                 <div class="md-select-field__container">
@@ -103,7 +103,7 @@ class MDSelectFieldComponent extends MDElement {
                         .autofocus="${ifDefined(this.autofocus)}"
                         .autocomplete="${ifDefined(this.autocomplete)}"
                         .spellcheck="${ifDefined(this.spellcheck)}"
-                        .value="${this.options[this.selectedIndex]?.label??""}"
+                        .value="${this.selectedOptions.map(option=>option.label)}"
                         .defaultValue="${ifDefined(this.defaultValue)}"
                         @focus="${this.handleSelectFieldNativeFocus}"
                         @blur="${this.handleSelectFieldNativeBlur}"
