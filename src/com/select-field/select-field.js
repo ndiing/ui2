@@ -220,7 +220,6 @@ class MDSelectFieldComponent extends MDElement {
     handleMenu() {
         this.menu = document.createElement("md-menu");
         this.parentElement.insertBefore(this.menu, this.nextElementSibling);
-        this.menu.style.height=(48*5)+'px'
         this.menu.singleSelection = true;
         this.menu.list = this.options;
 
