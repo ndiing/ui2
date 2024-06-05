@@ -28,7 +28,7 @@ class MDDataTableColumnNativeCellComponent extends HTMLTableCellElement {
         console.log(name, oldValue, newValue);
     }
 }
-customElements.define("md-data-table-navtive-column-cell", MDDataTableColumnNativeCellComponent, { extends: "th" });
+customElements.define("md-data-table-native-column-cell", MDDataTableColumnNativeCellComponent, { extends: "th" });
 
 class MDDataTableNativeRowComponent extends HTMLTableRowElement {
     constructor() {
@@ -81,7 +81,7 @@ customElements.define("md-data-table-native", MDDataTableNativeComponent, { exte
 class MDDataTableItemComponent extends MDElement {
     /**
      * Properties of the MDDataTableItemComponent.
-     * 
+     *
      * @property {String} [avatar] - URL of the avatar image.
      * @property {String} [thumbnail] - URL of the thumbnail image.
      * @property {String} [video] - URL of the video.
@@ -307,7 +307,7 @@ customElements.define("md-data-table-item", MDDataTableItemComponent);
 class MDDataTableComponent extends MDElement {
     /**
      * Properties of the MDDataTableComponent.
-     * 
+     *
      * @property {Array} [columns] - The array of columns to display in the table.
      * @property {Array} [rows] - The array of rows to display in the table.
      * @property {Boolean} [rangeSelection] - Indicates if range selection is enabled.
@@ -388,7 +388,10 @@ class MDDataTableComponent extends MDElement {
                     <tr>
                         ${this.columns?.length && this.checkbox
                             ? html`
-                                  <th @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxNativeInput}">
+                                  <th
+                                      class="md-data-table__column-cell-checkbox"
+                                      @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxNativeInput}"
+                                  >
                                       ${this.renderItem({
                                           leadingCheckbox: {},
                                           indeterminate: this.indeterminate,
@@ -401,7 +404,7 @@ class MDDataTableComponent extends MDElement {
                             column.selected !== false
                                 ? html`
                                       <th
-                                          is="md-data-table-navtive-column-cell"
+                                          is="md-data-table-native-column-cell"
                                           .data="${column}"
                                           index="${index}"
                                           style="${styleMap({
@@ -423,15 +426,15 @@ class MDDataTableComponent extends MDElement {
                                               align: column.align,
                                               sortable: column.sortable,
                                               sortableIcon: column.sortableIcon ?? "",
-                                              actions:[
-                                                {icon:'keyboard_arrow_down'}
-                                              ]
+                                              //   actions:[
+                                              //     {icon:'keyboard_arrow_down'}
+                                              //   ]
                                           })}
                                       </th>
                                   `
                                 : nothing,
                         )}
-                        <th style="width:100%"></th>
+                        <th style="width:100%"><div class="md-data-table__item"></div></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -454,7 +457,7 @@ class MDDataTableComponent extends MDElement {
                             >
                                 ${this.checkbox
                                     ? html`
-                                          <td>
+                                          <td class="md-data-table__row-cell-checkbox">
                                               ${this.renderItem({
                                                   leadingCheckbox: {},
                                                   selected: row.selected,
