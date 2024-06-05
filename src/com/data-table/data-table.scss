@@ -66,6 +66,14 @@
 
 // .md-data-table__switch{}
 
+.md-data-table__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 16px;
+    margin-left: auto;
+}
+// .md-data-table__action{}
+
 .md-data-table__text {
     margin-left: auto;
     @include md-typography-label-small;
@@ -73,8 +81,6 @@
 
 .md-data-table__item {
     min-height: 56px;
-    background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface);
 }
 
 .md-data-table__item--two-line {
@@ -113,32 +119,64 @@
     th {
         text-align: left;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        background: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
         position: sticky;
         top: 0;
         z-index: 2;
+
+        .md-data-table__item {
+            @include md-ripple;
+            @include md-ripple--button;
+            @include md-ripple--containment;
+        }
 
         .md-data-table__label-primary {
             @include md-typography-label-large;
         }
 
-        .md-resize__item {
-            position: relative;
-            &::before {
-                content: "";
-                width: 16px;
-                height: var(--md-data-table-height);
-                border-right: 1px solid var(--md-sys-color-outline-variant);
-                position: absolute;
-                right: 0;
-                top: 0;
+        // .md-resize__item {
+        //     position: relative;
+        //     &::before {
+        //         content: "";
+        //         width: 16px;
+        //         height: var(--md-data-table-height);
+        //         border-right: 1px solid var(--md-sys-color-outline-variant);
+        //         position: absolute;
+        //         right: 0;
+        //         top: 0;
+        //     }
+        // }
+
+        &:not(:hover) {
+            // .md-resize__item {
+            //     &::before {
+            //         opacity: 0;
+            //     }
+            // }
+            .md-data-table__actions {
+                opacity: 0;
             }
         }
 
-        &:not(:hover) {
-            .md-resize__item {
-                &::before {
-                    opacity: 0;
-                }
+        &[selected] {
+            .md-data-table__item {
+                @include md-ripple--selected;
+            }
+        }
+        &:focus {
+            .md-data-table__item {
+                @include md-ripple--focused;
+            }
+        }
+        &:active {
+            .md-data-table__item {
+                @include md-ripple--pressed;
+            }
+        }
+        &:hover {
+            .md-data-table__item {
+                @include md-ripple--hover;
             }
         }
     }

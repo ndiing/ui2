@@ -127,6 +127,7 @@ class MDDataTableItemComponent extends MDElement {
             align: { type: String },
             sortable: { type: Boolean },
             sortableIcon: { type: String },
+            actions: { type: Array },
         };
     }
 
@@ -154,8 +155,8 @@ class MDDataTableItemComponent extends MDElement {
             ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
+            
             ${this.sortable&&this.align=='right'?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable" .icon="${this.sortableIcon}"></md-icon-button>`:nothing}
-
             ${this.label||this.subLabel||this.badge?html`
                 <div class="md-data-table__label">
                     ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
@@ -163,8 +164,8 @@ class MDDataTableItemComponent extends MDElement {
                     ${this.badge?html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
                 </div>
             `:nothing}
-
             ${this.sortable&&this.align!=='right'?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable" .icon="${this.sortableIcon}"></md-icon-button>`:nothing}
+
             ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
 
             ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
@@ -172,6 +173,21 @@ class MDDataTableItemComponent extends MDElement {
             ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
+
+            ${this.actions?.length?html`
+                <div class="md-data-table__actions">
+                    ${this.actions?.map(action => html`
+                        <md-icon-button 
+                            @click="${this.handleDataTableItemActionClick}"
+                            class="md-data-table__action"
+                            .icon="${ifDefined(action?.icon??action)}"
+                            .ui="${ifDefined(action?.ui)}"
+                            .toggle="${ifDefined(action?.toggle)}"
+                            .selected="${ifDefined(action?.selected)}"
+                        ></md-icon-button>
+                    `)}
+                </div>
+            `:nothing}
         `;
     }
 
@@ -234,6 +250,15 @@ class MDDataTableItemComponent extends MDElement {
                 this.classList.add("md-data-table__item--align-right");
             }
         }
+    }
+
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemActionClick
+     */
+
+    handleDataTableItemActionClick(event) {
+        this.emit("onDataTableItemActionClick", event);
     }
 
     /**
@@ -346,6 +371,7 @@ class MDDataTableComponent extends MDElement {
                 .align="${ifDefined(item.align)}"
                 .sortable="${ifDefined(item.sortable)}"
                 .sortableIcon="${ifDefined(item.sortableIcon)}"
+                .actions="${ifDefined(item.actions)}"
             ></md-data-table-item>
         `;
     }
@@ -397,12 +423,15 @@ class MDDataTableComponent extends MDElement {
                                               align: column.align,
                                               sortable: column.sortable,
                                               sortableIcon: column.sortableIcon ?? "",
+                                              actions:[
+                                                {icon:'keyboard_arrow_down'}
+                                              ]
                                           })}
                                       </th>
                                   `
                                 : nothing,
                         )}
-                        <th style="width:100%"><div class="md-data-table__item"></div></th>
+                        <th style="width:100%"></th>
                     </tr>
                 </thead>
                 <tbody>

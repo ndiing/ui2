@@ -5,9 +5,9 @@ class AppDataTableElement extends MDElement {
     constructor() {
         super();
         this.columns = [
-            { name: "id", label: "ID", width: 56 * 2, align: "right", sortable: true, selected: true },
+            { name: "id", label: "ID", width: 56 * 2, /* align: "right", */ sortable: true, selected: true },
             { name: "name", label: "Name", width: 56 * 5, sortable: true, selected: true },
-            { name: "age", label: "Age", width: 56 * 2, align: "right", sortable: true, selected: true },
+            { name: "age", label: "Age", width: 56 * 2, /* align: "right", */ sortable: true, selected: true },
             { name: "email", label: "Email", width: 56 * 5, sortable: true, selected: true },
         ];
 
