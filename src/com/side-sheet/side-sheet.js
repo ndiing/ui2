@@ -8,14 +8,17 @@ import { ifDefined } from "lit/directives/if-defined.js";
  */
 class MDSideSheetComponent extends MDElement {
     /**
+     * Returns the properties of the side sheet component.
      *
-     * @property {Array} [leadingActions] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {Array} [trailingActions] -
-     * @property {Array} [buttons] -
-     * @property {String} [ui] - modal
-     * @property {Boolean} [open] -
+     * @property {Array} [leadingActions] - An array of actions to be displayed at the leading side of the side sheet.
+     * @property {String} [label] - The main label of the side sheet.
+     * @property {String} [subLabel] - A sub-label or description for the side sheet.
+     * @property {Array} [trailingActions] - An array of actions to be displayed at the trailing side of the side sheet.
+     * @property {Array} [buttons] - An array of button elements to be displayed in the side sheet.
+     * @property {String} [ui='modal'] - The user interface type of the side sheet. Possible values are 'modal', 'drawer', 'panel'.
+     * @property {Boolean} [open=false] - The open state of the side sheet, default is false (closed).
+     * 
+     * @returns {Object} The properties of the side sheet component.
      */
     static get properties() {
         return {

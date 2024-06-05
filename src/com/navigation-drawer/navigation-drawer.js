@@ -9,14 +9,18 @@ import { MDListComponent } from "../list/list";
  */
 class MDNavigationDrawerComponent extends MDElement {
     /**
+     * Returns the properties of the navigation drawer component.
      *
-     * @property {Array} [leadingActions] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {Array} [trailingActions] -
-     * @property {Array} [buttons] -
-     * @property {String} [ui] - modal
-     * @property {Boolean} [open] -
+     * @property {Array} [leadingActions] - An array of actions to be displayed at the leading side of the navigation drawer.
+     * @property {String} [label] - The main label of the navigation drawer.
+     * @property {String} [subLabel] - A sub-label or description for the navigation drawer.
+     * @property {Array} [trailingActions] - An array of actions to be displayed at the trailing side of the navigation drawer.
+     * @property {Array} [buttons] - An array of button elements to be displayed in the navigation drawer.
+     * @property {String} [ui='modal'] - The user interface type of the navigation drawer. Possible values are 'modal', 'drawer', 'panel'.
+     * @property {Boolean} [open=false] - The open state of the navigation drawer, default is false (closed).
+     * @property {Object} [properties] - Additional properties inherited from MDListComponent.
+     * 
+     * @returns {Object} The properties of the navigation drawer component.
      */
     static get properties() {
         return {

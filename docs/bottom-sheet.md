@@ -17,7 +17,7 @@
         * [.handleBottomSheetButtonClick()](#MDBottomSheetComponent+handleBottomSheetButtonClick)
         * [.handleBottomSheetScrimClick()](#MDBottomSheetComponent+handleBottomSheetScrimClick)
     * _static_
-        * [.properties](#MDBottomSheetComponent.properties)
+        * [.properties](#MDBottomSheetComponent.properties) ⇒ <code>Object</code>
 
 <a name="MDBottomSheetComponent+render"></a>
 
@@ -64,17 +64,20 @@
 **Emits**: <code>MDBottomSheetComponent#event:onBottomSheetScrimClick</code>  
 <a name="MDBottomSheetComponent.properties"></a>
 
-### MDBottomSheetComponent.properties
+### MDBottomSheetComponent.properties ⇒ <code>Object</code>
+Returns the properties of the bottom sheet component.
+
 **Kind**: static property of [<code>MDBottomSheetComponent</code>](#MDBottomSheetComponent)  
+**Returns**: <code>Object</code> - The properties of the bottom sheet component.  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | modal |
-| [open] | <code>Boolean</code> | - |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [leadingActions] | <code>Array</code> |  | An array of actions to be displayed at the leading side of the bottom sheet. |
+| [label] | <code>String</code> |  | The main label of the bottom sheet. |
+| [subLabel] | <code>String</code> |  | A sub-label or description for the bottom sheet. |
+| [trailingActions] | <code>Array</code> |  | An array of actions to be displayed at the trailing side of the bottom sheet. |
+| [buttons] | <code>Array</code> |  | An array of button elements to be displayed in the bottom sheet. |
+| [ui] | <code>String</code> | <code>&#x27;modal&#x27;</code> | The user interface type of the bottom sheet. Possible values are 'modal', 'drawer', 'panel'. |
+| [open] | <code>Boolean</code> | <code>false</code> | The open state of the bottom sheet, default is false (closed). |
 

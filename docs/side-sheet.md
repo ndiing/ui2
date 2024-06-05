@@ -17,7 +17,7 @@
         * [.handleSideSheetButtonClick()](#MDSideSheetComponent+handleSideSheetButtonClick)
         * [.handleSideSheetScrimClick()](#MDSideSheetComponent+handleSideSheetScrimClick)
     * _static_
-        * [.properties](#MDSideSheetComponent.properties)
+        * [.properties](#MDSideSheetComponent.properties) ⇒ <code>Object</code>
 
 <a name="MDSideSheetComponent+render"></a>
 
@@ -64,17 +64,20 @@
 **Emits**: <code>MDSideSheetComponent#event:onSideSheetScrimClick</code>  
 <a name="MDSideSheetComponent.properties"></a>
 
-### MDSideSheetComponent.properties
+### MDSideSheetComponent.properties ⇒ <code>Object</code>
+Returns the properties of the side sheet component.
+
 **Kind**: static property of [<code>MDSideSheetComponent</code>](#MDSideSheetComponent)  
+**Returns**: <code>Object</code> - The properties of the side sheet component.  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | modal |
-| [open] | <code>Boolean</code> | - |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [leadingActions] | <code>Array</code> |  | An array of actions to be displayed at the leading side of the side sheet. |
+| [label] | <code>String</code> |  | The main label of the side sheet. |
+| [subLabel] | <code>String</code> |  | A sub-label or description for the side sheet. |
+| [trailingActions] | <code>Array</code> |  | An array of actions to be displayed at the trailing side of the side sheet. |
+| [buttons] | <code>Array</code> |  | An array of button elements to be displayed in the side sheet. |
+| [ui] | <code>String</code> | <code>&#x27;modal&#x27;</code> | The user interface type of the side sheet. Possible values are 'modal', 'drawer', 'panel'. |
+| [open] | <code>Boolean</code> | <code>false</code> | The open state of the side sheet, default is false (closed). |
 

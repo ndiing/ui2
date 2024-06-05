@@ -81,6 +81,7 @@ customElements.define("md-data-table-native", MDDataTableNativeComponent, { exte
 class MDDataTableItemComponent extends MDElement {
     /**
      * Properties of the MDDataTableItemComponent.
+     * 
      * @property {String} [avatar] - URL of the avatar image.
      * @property {String} [thumbnail] - URL of the thumbnail image.
      * @property {String} [video] - URL of the video.
@@ -100,8 +101,9 @@ class MDDataTableItemComponent extends MDElement {
      * @property {Boolean} [indeterminate] - Indicates if the item selection is indeterminate.
      * @property {String} [routerLink] - URL for router link.
      * @property {String} [align] - Alignment of the item content.
+     * @property {Boolean} [sortable] - Indicates if the item is sortable.
+     * @property {String} [sortableIcon] - Icon to indicate sorting.
      */
-
     static get properties() {
         return {
             avatar: { type: String },
@@ -280,6 +282,7 @@ customElements.define("md-data-table-item", MDDataTableItemComponent);
 class MDDataTableComponent extends MDElement {
     /**
      * Properties of the MDDataTableComponent.
+     * 
      * @property {Array} [columns] - The array of columns to display in the table.
      * @property {Array} [rows] - The array of rows to display in the table.
      * @property {Boolean} [rangeSelection] - Indicates if range selection is enabled.
@@ -288,7 +291,6 @@ class MDDataTableComponent extends MDElement {
      * @property {Boolean} [allSelection] - Indicates if selecting all items is enabled.
      * @property {Boolean} [checkbox] - Indicates if checkboxes are displayed for selection.
      */
-
     static get properties() {
         return {
             columns: { type: Array },

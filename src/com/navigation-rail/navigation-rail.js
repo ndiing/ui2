@@ -9,14 +9,18 @@ import { MDListComponent } from "../list/list";
  */
 class MDNavigationRailComponent extends MDElement {
     /**
+     * Returns the properties of the navigation rail component.
      *
-     * @property {Array} [leadingActions] -
-     * @property {String} [label] -
-     * @property {String} [subLabel] -
-     * @property {Array} [trailingActions] -
-     * @property {Array} [buttons] -
-     * @property {String} [ui] -
-     * @property {Boolean} [open] -
+     * @property {Array} [leadingActions] - An array of actions to be displayed at the leading side of the navigation rail.
+     * @property {String} [label] - The main label of the navigation rail.
+     * @property {String} [subLabel] - A sub-label or description for the navigation rail.
+     * @property {Array} [trailingActions] - An array of actions to be displayed at the trailing side of the navigation rail.
+     * @property {Array} [buttons] - An array of button elements to be displayed in the navigation rail.
+     * @property {String} [ui] - The user interface type of the navigation rail.
+     * @property {Boolean} [open=false] - The open state of the navigation rail, default is false (closed).
+     * @property {Object} [properties] - Additional properties inherited from MDListComponent.
+     * 
+     * @returns {Object} The properties of the navigation rail component.
      */
     static get properties() {
         return {

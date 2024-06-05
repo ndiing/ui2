@@ -15,7 +15,7 @@
         * [.handleNavigationRailActionClick()](#MDNavigationRailComponent+handleNavigationRailActionClick)
         * [.handleNavigationRailButtonClick()](#MDNavigationRailComponent+handleNavigationRailButtonClick)
     * _static_
-        * [.properties](#MDNavigationRailComponent.properties)
+        * [.properties](#MDNavigationRailComponent.properties) ⇒ <code>Object</code>
 
 <a name="MDNavigationRailComponent+render"></a>
 
@@ -53,17 +53,21 @@
 **Emits**: <code>MDNavigationRailComponent#event:onNavigationRailButtonClick</code>  
 <a name="MDNavigationRailComponent.properties"></a>
 
-### MDNavigationRailComponent.properties
+### MDNavigationRailComponent.properties ⇒ <code>Object</code>
+Returns the properties of the navigation rail component.
+
 **Kind**: static property of [<code>MDNavigationRailComponent</code>](#MDNavigationRailComponent)  
+**Returns**: <code>Object</code> - The properties of the navigation rail component.  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| [leadingActions] | <code>Array</code> | - |
-| [label] | <code>String</code> | - |
-| [subLabel] | <code>String</code> | - |
-| [trailingActions] | <code>Array</code> | - |
-| [buttons] | <code>Array</code> | - |
-| [ui] | <code>String</code> | - |
-| [open] | <code>Boolean</code> | - |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [leadingActions] | <code>Array</code> |  | An array of actions to be displayed at the leading side of the navigation rail. |
+| [label] | <code>String</code> |  | The main label of the navigation rail. |
+| [subLabel] | <code>String</code> |  | A sub-label or description for the navigation rail. |
+| [trailingActions] | <code>Array</code> |  | An array of actions to be displayed at the trailing side of the navigation rail. |
+| [buttons] | <code>Array</code> |  | An array of button elements to be displayed in the navigation rail. |
+| [ui] | <code>String</code> |  | The user interface type of the navigation rail. |
+| [open] | <code>Boolean</code> | <code>false</code> | The open state of the navigation rail, default is false (closed). |
+| [properties] | <code>Object</code> |  | Additional properties inherited from MDListComponent. |
 
