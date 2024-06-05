@@ -39,6 +39,7 @@ class MDSelectFieldComponent extends MDElement {
         return {
             name: { type: String },
             size: { type: Number },
+            readOnly: { type: Boolean },
             multiple: { type: Boolean },
             disabled: { type: Boolean },
             required: { type: Boolean },
@@ -95,6 +96,7 @@ class MDSelectFieldComponent extends MDElement {
                         class="md-select-field__native"
                         type="text"
                         .size="${ifDefined(this.size)}"
+                        .readOnly="${ifDefined(this.readOnly??true)}"
                         .multiple="${ifDefined(this.multiple)}"
                         .disabled="${ifDefined(this.disabled)}"
                         .required="${ifDefined(this.required)}"
@@ -218,6 +220,7 @@ class MDSelectFieldComponent extends MDElement {
     handleMenu() {
         this.menu = document.createElement("md-menu");
         this.parentElement.insertBefore(this.menu, this.nextElementSibling);
+        this.menu.style.height=(48*5)+'px'
         this.menu.singleSelection = true;
         this.menu.list = this.options;
 
@@ -243,6 +246,8 @@ class MDSelectFieldComponent extends MDElement {
      */
     handleListItemClick(event) {
         this.requestUpdate();
+        this.selectFieldNative.dispatchEvent(new CustomEvent('input',{bubbles:true,cancelable:true}))
+        this.menu.close()
         this.emit("onListItemClick", event);
     }
 
