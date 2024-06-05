@@ -126,9 +126,13 @@ class MDRippleModule {
      *
      */
     handleRippleButtonAnimationend(event) {
-        if (event.animationName == "md-ripple-fadeout") {
+        if (this.options.fadeout) {
+            if (event.animationName == "md-ripple-fadeout") {
+                this.host.style.removeProperty("--md-ripple-animation");
+                this.host.style.removeProperty("--md-ripple-animation-fadeout");
+            }
+        } else {
             this.host.style.removeProperty("--md-ripple-animation");
-            this.host.style.removeProperty("--md-ripple-animation-fadeout");
         }
     }
 
