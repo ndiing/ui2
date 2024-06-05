@@ -11,13 +11,47 @@ class AppSelectFieldElement extends MDElement {
             >
                 <div class="md-layout-column" style="margin:24px;">
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-select-field label="Select Field" name="color0" .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"></md-select-field>
+                        <md-select-field
+                            label="Select Field"
+                            name="color0"
+                            .options="${[
+                                //
+                                { label: "Option 1", value: "1" },
+                                { label: "Option 2", value: "2" },
+                                { label: "Option 3", value: "3" },
+                                { label: "Option 4", value: "4" },
+                                { label: "Option 5", value: "5" },
+                            ]}"
+                        ></md-select-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-select-field label="Select Field (value)" name="color1" value="1990-10-17" .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"></md-select-field>
+                        <md-select-field
+                            label="Select Field (value)"
+                            name="color1"
+                            .options="${[
+                                //
+                                { label: "Option 1", value: "1", selected: true },
+                                { label: "Option 2", value: "2" },
+                                { label: "Option 3", value: "3" },
+                                { label: "Option 4", value: "4" },
+                                { label: "Option 5", value: "5" },
+                            ]}"
+                        ></md-select-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <md-select-field label="Select Field (required)" name="color2" required .options="${[{ label: "Option 1", selected: true }, { label: "Option 2" }, { label: "Option 3" }, { label: "Option 4" }, { label: "Option 5" }]}"></md-select-field>
+                        <md-select-field
+                            label="Select Field (required)"
+                            name="color2"
+                            required
+                            .options="${[
+                                //
+                                { label: "Option 1", value: "1" },
+                                { label: "Option 2", value: "2" },
+                                { label: "Option 3", value: "3" },
+                                { label: "Option 4", value: "4" },
+                                { label: "Option 5", value: "5" },
+                            ]}"
+                        ></md-select-field>
                     </div>
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
