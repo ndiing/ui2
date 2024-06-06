@@ -277,4 +277,8 @@ function notEmpty(value) {
     return value !== undefined && value !== null && value !== "";
 }
 
-export { toPascalCase, toCamelCase, toSnakeCase, toKebabCase, toFlatCase, toUpperFlatCase, toPascalSnakeCase, toCamelSnakeCase, toScreamingSnakeCase, toTrainCase, toCobolCase, toTitleCase, queue, notEmpty };
+function notNull(value) {
+    return value !== undefined && value !== null;
+}
+
+export { toPascalCase, toCamelCase, toSnakeCase, toKebabCase, toFlatCase, toUpperFlatCase, toPascalSnakeCase, toCamelSnakeCase, toScreamingSnakeCase, toTrainCase, toCobolCase, toTitleCase, queue, notEmpty,notNull };

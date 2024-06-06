@@ -66,7 +66,7 @@
 .md-data-table__item {
     min-height: 56px;
     background: var(--md-sys-color-surface);
-    color: var(--md-sys-color-on-surface-variant);
+    color: var(--md-sys-color-on-surface);
 }
 
 .md-data-table__item--two-line {
@@ -92,7 +92,6 @@
 .md-data-table {
     width: 100%;
     height: 100%;
-
     table {
         display: block;
         overflow: auto;
@@ -101,26 +100,19 @@
         border-spacing: 0;
         border-collapse: separate;
     }
-
     // thead{}
-
     // tr{}
-
     th {
         text-align: left;
+        position: sticky;
+        top: 0;
+        z-index: 2;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
-
-        &:last-child {
-            width: 100%;
-        }
 
         .md-data-table__label-primary {
             @include md-typography-label-large;
         }
-
-        
     }
-
     tbody {
         tr {
             &[selected] {
@@ -145,7 +137,6 @@
             }
         }
     }
-
     td {
         max-width: 0;
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
@@ -155,37 +146,24 @@
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
-            --md-ripple-size:200%;
         }
-
-        
     }
 }
-
-.md-data-table__sticky{
+th.md-data-table__column-cell-checkbox {
     position: sticky;
-}
-.md-data-table__sticky--header{
-    z-index: 2;
-}
-.md-data-table__sticky--column{
+    left: 0;
     z-index: 3;
 }
-.md-data-table__sticky--row{
+td.md-data-table__row-cell-checkbox {
+    position: sticky;
+    left: 0;
     z-index: 1;
 }
-.md-data-table__sticky--top{
-    top: 0;
-}
-.md-data-table__sticky--left{
-    left: 0;
-}
-.md-data-table__sticky--right{
-    right: 0;
-}
-.md-data-table__sticky--left-end{
-    border-right: 1px solid var(--md-sys-color-outline-variant);
-}
-.md-data-table__sticky--right-start{
-    border-left: 1px solid var(--md-sys-color-outline-variant);
-}
+
+.md-data-table__sticky{position: sticky;}
+th.md-data-table__sticky--column{z-index: 3;}
+td.md-data-table__sticky--row{z-index: 1;}
+.md-data-table__sticky--left{left: 0;}
+.md-data-table__sticky--right{right: 0;}
+.md-data-table__sticky--end{border-right: 1px solid var(--md-sys-color-outline-variant);}
+.md-data-table__sticky--start{border-left: 1px solid var(--md-sys-color-outline-variant);}
