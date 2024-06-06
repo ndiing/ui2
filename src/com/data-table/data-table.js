@@ -57,7 +57,57 @@ class MDDataTableColumnCellComponent extends HTMLTableCellElement{
     }
 }
 customElements.define('md-data-table-column-cell',MDDataTableColumnCellComponent,{extends:'th'})
-class MDDataTableRowCellComponent extends MDDataTableColumnCellComponent{}
+
+class MDDataTableRowCellComponent extends HTMLTableCellElement{
+    constructor(){
+        super()
+        this.callback=this.callback.bind(this)
+        this.resizeObserver=new ResizeObserver(this.callback)
+    }
+    callback(entries){
+        window.requestAnimationFrame(() => {
+            for(const entry of entries){
+                // console.log(entry)
+                if(this.classList.contains('md-data-table__sticky--left')){
+                    let prev = this.previousElementSibling
+                    let left=0
+                    while(prev){
+                        if(prev.classList.contains('md-data-table__sticky--left')){
+                            left+=prev.getBoundingClientRect().width
+                        }
+                        prev = prev.previousElementSibling
+                    }
+                    this.style.setProperty('left',left+'px')
+                    let next=this.nextElementSibling
+                    if(!next.classList.contains('md-data-table__sticky--left')){
+                        this.classList.add('md-data-table__sticky--end')
+                    }
+                }
+                else if(this.classList.contains('md-data-table__sticky--right')){
+                    let next = this.nextElementSibling
+                    let right=0
+                    while(next){
+                        if(next.classList.contains('md-data-table__sticky--right')){
+                            right+=next.getBoundingClientRect().width
+                        }
+                        next = next.nextElementSibling
+                    }
+                    this.style.setProperty('right',right+'px')
+                    let prev=this.previousElementSibling
+                    if(!prev.classList.contains('md-data-table__sticky--right')){
+                        this.classList.add('md-data-table__sticky--start')
+                    }
+                }
+            }
+        })
+    }
+    connectedCallback(){
+        this.resizeObserver.observe(this)
+    }
+    disconnectedCallback(){
+        this.resizeObserver.disconnect()
+    }
+}
 customElements.define('md-data-table-row-cell',MDDataTableRowCellComponent,{extends:'td'})
 
 /**

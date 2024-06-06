@@ -72,9 +72,3 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
-
-// node src/dev/cli remove component data-table list
-// node src/dev/cli remove app data-table list
-
-// node src/dev/cli create component data-table list
-// node src/dev/cli create app data-table icon

@@ -118,7 +118,6 @@
 .md-ripple--containment {@include md-ripple--containment;}
 .md-ripple--button {@include md-ripple--button;}
 .md-ripple--inverse {@include md-ripple--inverse;}
-.md-ripple--fadeout {@include md-ripple--fadeout;}
 
 .md-ripple--selected,
 .md-ripple[selected] {@include md-ripple--selected;}
@@ -126,5 +125,8 @@
 .md-ripple--hover {@include md-ripple--hover;}
 .md-ripple--pressed {@include md-ripple--pressed;}
 .md-ripple--dragged {@include md-ripple--dragged;}
+
+.md-ripple--fadeout {@include md-ripple--fadeout;}
+
 .md-ripple--disabled,
 .md-ripple[disabled] {@include md-ripple--disabled;}

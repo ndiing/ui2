@@ -6,9 +6,9 @@ import "./localization/localization.js";
 import "./router/router.js";
 import "./ripple/ripple.js";
 import "./popper/popper.js";
-import "./virtual-scroll/virtual-scroll.js";
 import "./gesture/gesture.js";
 import "./store/store.js";
+import "./virtual-scroll/virtual-scroll.js";
 import "./element/element.js";
 
 import "./image/image.js";
@@ -68,6 +68,5 @@ import "./time-field/time-field.js";
 
 import "./textarea-field/textarea-field.js";
 import "./select-field/select-field.js";
-
 
 import "./data-table/data-table.js";
