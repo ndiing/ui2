@@ -12,7 +12,7 @@ class MDGestureModule {
             drag: ["x", "y"],
             resizeAfterPress: false,
             dragAfterPress: false,
-            applyStyle: false,
+            updateStyle: false,
             ...options,
         };
         this.init();
@@ -133,7 +133,7 @@ class MDGestureModule {
 
         this.swipe = !this.drag && !this.resize && (currentX > 30 ? "Right" : currentX < -30 ? "Left" : currentY > 30 ? "Bottom" : currentY < -30 ? "Top" : false);
 
-        if (this.options.applyStyle) {
+        if (this.options.updateStyle) {
             this.host.style.setProperty("left", this.currentX + "px");
             this.host.style.setProperty("top", this.currentY + "px");
             this.host.style.setProperty("width", this.currentWidth + "px");
@@ -177,7 +177,7 @@ class MDGestureModule {
             this.emit("onResizeEnd", event);
         }
 
-        if (this.options.applyStyle) {
+        if (this.options.updateStyle) {
             this.endX = this.currentX;
             this.endY = this.currentY;
         }

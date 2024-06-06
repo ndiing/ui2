@@ -5,19 +5,19 @@ class AppDataTableElement extends MDElement {
     constructor() {
         super();
         this.columns = [
-            { name: "symbol", label: "Stock Symbol", width: 56 * 2, sticky: true, sortable: true },
-            { name: "company", label: "Company Name", width: 56 * 2, sticky: true, sortable: true },
-            { name: "currentPrice", label: "Current Price", width: 56 * 2, sortable: true },
-            { name: "changePercentage", label: "Change (%)", width: 56 * 2, sortable: true },
-            { name: "marketCap", label: "Market Capitalization", width: 56 * 2, sortable: true },
-            { name: "volume", label: "Volume", width: 56 * 2, sortable: true },
-            { name: "previousClose", label: "Previous Close", width: 56 * 2, sortable: true },
-            { name: "openPrice", label: "Open Price", width: 56 * 2, sortable: true },
-            { name: "highPrice", label: "High Price", width: 56 * 2, sortable: true },
-            { name: "lowPrice", label: "Low Price", width: 56 * 2, sortable: true },
-            { name: "dividendYield", label: "Dividend Yield (%)", width: 56 * 2, sortable: true },
-            { name: "52WeekHigh", label: "52-Week High", width: 56 * 2, sticky: true, sortable: true },
-            { name: "52WeekLow", label: "52-Week Low", width: 56 * 2, sticky: true, sortable: true },
+            { name: "symbol", label: "Stock Symbol", width: 112, sticky: true, sortable: true, selected: true },
+            { name: "company", label: "Company Name", width: 224, sticky: true, sortable: true, selected: true },
+            { name: "currentPrice", label: "Current Price", width: 112, sortable: true, selected: true },
+            { name: "changePercentage", label: "Change (%)", width: 112, sortable: true, selected: true },
+            { name: "marketCap", label: "Market Capitalization", width: 112, sortable: true, selected: true },
+            { name: "volume", label: "Volume", width: 112, sortable: true, selected: true },
+            { name: "previousClose", label: "Previous Close", width: 112, sortable: true, selected: true },
+            { name: "openPrice", label: "Open Price", width: 112, sortable: true, selected: true },
+            { name: "highPrice", label: "High Price", width: 112, sortable: true, selected: true },
+            { name: "lowPrice", label: "Low Price", width: 112, sortable: true, selected: true },
+            { name: "dividendYield", label: "Dividend Yield (%)", width: 112, sortable: true, selected: true },
+            { name: "52WeekHigh", label: "52-Week High", width: 112, sticky: true, sortable: true, selected: true },
+            { name: "52WeekLow", label: "52-Week Low", width: 112, sticky: true, sortable: true, selected: true },
         ];
         this.rows = [
             { symbol: "AAPL", company: "Apple Inc.", currentPrice: 150.25, changePercentage: 1.2, marketCap: "2.5T", volume: 98765432, previousClose: 148.5, openPrice: 149.0, highPrice: 151.0, lowPrice: 148.0, "52WeekHigh": 182.94, "52WeekLow": 116.21, dividendYield: 0.61 },
@@ -64,8 +64,9 @@ class AppDataTableElement extends MDElement {
                     class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4"
                 >
                     <md-data-table
+                        id="table"
                         .columns="${this.columns}"
-                        .rows="${this.rows?.slice(0, 20)}"
+                        .rows="${this.rows}"
                         .summaries="${this.summaries}"
                         checkbox
                     ></md-data-table>

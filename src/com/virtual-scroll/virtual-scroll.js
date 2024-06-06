@@ -30,7 +30,13 @@ class MDVirtualScrollModule {
         this.host.addEventListener("scroll", this.handleScroll);
         this.handleScroll({})
     }
-    destroy() {}
+    destroy() {
+        this.host.classList.remove("md-virtual-scroll");
+        this.options.scrollbar.classList.remove("md-virtual-scroll__scrollbar");
+        this.options.container.classList.remove("md-virtual-scroll__container");
+
+        this.host.removeEventListener("scroll", this.handleScroll);
+    }
 
     handleScroll(event) {
         window.requestAnimationFrame(() => {

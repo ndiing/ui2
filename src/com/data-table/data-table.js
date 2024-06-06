@@ -2,113 +2,99 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
+import { notNull } from "../mixin/mixin";
 import { styleMap } from "lit/directives/style-map.js";
 import { classMap } from "lit/directives/class-map.js";
-import { notEmpty, notNull } from "../mixin/mixin";
 
-class MDDataTableColumnCellComponent extends HTMLTableCellElement{
-    constructor(){
-        super()
-        this.callback=this.callback.bind(this)
-        this.resizeObserver=new ResizeObserver(this.callback)
+class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
+    constructor() {
+        super();
+
+        this.callback = this.callback.bind(this);
+
+        this.resizeObserver = new ResizeObserver(this.callback);
     }
-    callback(entries){
+
+    callback(entries) {
         window.requestAnimationFrame(() => {
-            for(const entry of entries){
-                // console.log(entry)
-                if(this.classList.contains('md-data-table__sticky--left')){
-                    let prev = this.previousElementSibling
-                    let left=0
-                    while(prev){
-                        if(prev.classList.contains('md-data-table__sticky--left')){
-                            left+=prev.getBoundingClientRect().width
-                        }
-                        prev = prev.previousElementSibling
+            if (this.classList.contains("md-data-table__sticky--left")) {
+                let prev = this.previousElementSibling;
+                let left = 0;
+                while (prev) {
+                    if (prev.classList.contains("md-data-table__sticky--left")) {
+                        left += prev.getBoundingClientRect().width;
                     }
-                    this.style.setProperty('left',left+'px')
-                    let next=this.nextElementSibling
-                    if(!next.classList.contains('md-data-table__sticky--left')){
-                        this.classList.add('md-data-table__sticky--end')
-                    }
+                    prev = prev.previousElementSibling;
                 }
-                else if(this.classList.contains('md-data-table__sticky--right')){
-                    let next = this.nextElementSibling
-                    let right=0
-                    while(next){
-                        if(next.classList.contains('md-data-table__sticky--right')){
-                            right+=next.getBoundingClientRect().width
-                        }
-                        next = next.nextElementSibling
+                this.style.setProperty("left", left + "px");
+            } else if (this.classList.contains("md-data-table__sticky--right")) {
+                let next = this.nextElementSibling;
+                let right = 0;
+                while (next) {
+                    if (next.classList.contains("md-data-table__sticky--right")) {
+                        right += next.getBoundingClientRect().width;
                     }
-                    this.style.setProperty('right',right+'px')
-                    let prev=this.previousElementSibling
-                    if(!prev.classList.contains('md-data-table__sticky--right')){
-                        this.classList.add('md-data-table__sticky--start')
-                    }
+                    next = next.nextElementSibling;
                 }
+                this.style.setProperty("right", right + "px");
             }
-        })
+        });
     }
-    connectedCallback(){
-        this.resizeObserver.observe(this)
+
+    connectedCallback() {
+        this.resizeObserver.observe(this);
     }
-    disconnectedCallback(){
-        this.resizeObserver.disconnect()
+
+    disconnectedCallback() {
+        this.resizeObserver.disconnect();
     }
 }
-customElements.define('md-data-table-column-cell',MDDataTableColumnCellComponent,{extends:'th'})
+customElements.define("md-data-table-native-column-cell", MDDataTableNativeColumnCellComponent, { extends: "th" });
 
-class MDDataTableRowCellComponent extends HTMLTableCellElement{
-    constructor(){
-        super()
-        this.callback=this.callback.bind(this)
-        this.resizeObserver=new ResizeObserver(this.callback)
+class MDDataTableNativeRowCellComponent extends HTMLTableCellElement {
+    constructor() {
+        super();
+
+        this.callback = this.callback.bind(this);
+
+        this.resizeObserver = new ResizeObserver(this.callback);
     }
-    callback(entries){
+
+    callback(entries) {
         window.requestAnimationFrame(() => {
-            for(const entry of entries){
-                // console.log(entry)
-                if(this.classList.contains('md-data-table__sticky--left')){
-                    let prev = this.previousElementSibling
-                    let left=0
-                    while(prev){
-                        if(prev.classList.contains('md-data-table__sticky--left')){
-                            left+=prev.getBoundingClientRect().width
-                        }
-                        prev = prev.previousElementSibling
+            if (this.classList.contains("md-data-table__sticky--left")) {
+                let prev = this.previousElementSibling;
+                let left = 0;
+                while (prev) {
+                    if (prev.classList.contains("md-data-table__sticky--left")) {
+                        left += prev.getBoundingClientRect().width;
                     }
-                    this.style.setProperty('left',left+'px')
-                    let next=this.nextElementSibling
-                    if(!next.classList.contains('md-data-table__sticky--left')){
-                        this.classList.add('md-data-table__sticky--end')
-                    }
+                    prev = prev.previousElementSibling;
                 }
-                else if(this.classList.contains('md-data-table__sticky--right')){
-                    let next = this.nextElementSibling
-                    let right=0
-                    while(next){
-                        if(next.classList.contains('md-data-table__sticky--right')){
-                            right+=next.getBoundingClientRect().width
-                        }
-                        next = next.nextElementSibling
+                this.style.setProperty("left", left + "px");
+            } else if (this.classList.contains("md-data-table__sticky--right")) {
+                let next = this.nextElementSibling;
+                let right = 0;
+                while (next) {
+                    if (next.classList.contains("md-data-table__sticky--right")) {
+                        right += next.getBoundingClientRect().width;
                     }
-                    this.style.setProperty('right',right+'px')
-                    let prev=this.previousElementSibling
-                    if(!prev.classList.contains('md-data-table__sticky--right')){
-                        this.classList.add('md-data-table__sticky--start')
-                    }
+                    next = next.nextElementSibling;
                 }
+                this.style.setProperty("right", right + "px");
             }
-        })
+        });
     }
-    connectedCallback(){
-        this.resizeObserver.observe(this)
+
+    connectedCallback() {
+        this.resizeObserver.observe(this);
     }
-    disconnectedCallback(){
-        this.resizeObserver.disconnect()
+
+    disconnectedCallback() {
+        this.resizeObserver.disconnect();
     }
 }
-customElements.define('md-data-table-row-cell',MDDataTableRowCellComponent,{extends:'td'})
+customElements.define("md-data-table-native-row-cell", MDDataTableNativeRowCellComponent, { extends: "td" });
 
 /**
  *
@@ -154,9 +140,10 @@ class MDDataTableItemComponent extends MDElement {
             badge: { type: Object },
             selected: { type: Boolean, reflect: true },
             routerLink: { type: String, reflect: true },
-            indeterminate: { type: Boolean},
-            sortable: { type: Boolean},
-            sortableIcon: { type: String},
+            indeterminate: { type: Boolean },
+            sortable: { type: Boolean },
+            sortableIcon: { type: String },
+            trailingActions: { type: Array },
         };
     }
 
@@ -200,6 +187,18 @@ class MDDataTableItemComponent extends MDElement {
             ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
+
+            ${this.trailingActions?.length?html`
+                <div class="md-data-table__actions">
+                    ${this.trailingActions.map(action => html`
+                        <md-icon-button 
+                            class="md-data-table__action"
+                            .icon="${ifDefined(action?.icon)}"
+                            @click="${this.handleDataTableItemActionClick}"
+                        ></md-icon-button>
+                    `)}
+                </div>
+            `:nothing}
         `;
     }
 
@@ -226,7 +225,6 @@ class MDDataTableItemComponent extends MDElement {
                 this.classList.add("md-data-table__item--two-line");
             }
         }
-        
     }
 
     /**
@@ -237,15 +235,14 @@ class MDDataTableItemComponent extends MDElement {
 
         this.classList.remove("md-data-table__item");
         await this.updateComplete;
-        
     }
 
-    firstUpdated(changedProperties) {}
-    
     /**
      *
      * @fires MDDataTableItemComponent#onDataTableItemSelected
      */
+    firstUpdated(changedProperties) {}
+
     updated(changedProperties) {
         if (changedProperties.has("selected")) {
             if (this.selected) {
@@ -257,7 +254,7 @@ class MDDataTableItemComponent extends MDElement {
     /**
      *
      * @fires MDDataTableItemComponent#onDataTableItemSortableClick
-    */
+     */
     handleDataTableItemSortableClick(event) {
         this.emit("onDataTableItemSortableClick", event);
     }
@@ -284,6 +281,14 @@ class MDDataTableItemComponent extends MDElement {
      */
     handleDataTableItemSwitchNativeInput(event) {
         this.emit("onDataTableItemSwitchNativeInput", event);
+    }
+
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemActionClick
+     */
+    handleDataTableItemActionClick(event) {
+        this.emit("onDataTableItemActionClick", event);
     }
 }
 
@@ -320,11 +325,10 @@ class MDDataTableComponent extends MDElement {
      */
     constructor() {
         super();
-
-        this.rangeSelection=true
-        this.multiSelection=true
-        this.singleSelection=true
-        this.allSelection=true
+        this.rangeSelection = true;
+        this.multiSelection = true;
+        this.singleSelection = true;
+        this.allSelection = true;
     }
 
     /**
@@ -355,103 +359,188 @@ class MDDataTableComponent extends MDElement {
                 .indeterminate="${ifDefined(item.indeterminate)}"
                 .sortable="${ifDefined(item.sortable)}"
                 .sortableIcon="${ifDefined(item.sortableIcon)}"
+                .trailingActions="${ifDefined(item.trailingActions)}"
             ></md-data-table-item>
         `;
+    }
+
+    get indeterminate() {
+        const selected = this.rows?.filter((row) => row.selected).length;
+        return selected > 0 && selected < this.rows?.length;
+    }
+
+    get selected() {
+        const selected = this.rows?.filter((row) => row.selected).length;
+        return selected > 0 && selected == this.rows?.length;
+    }
+
+    renderColumnCellCheckbox() {
+        /* prettier-ignore */
+        return this.checkbox?html`
+            <th
+                is="md-data-table-native-column-cell"
+                class="${classMap({
+                    'md-data-table__sticky':true,
+                    'md-data-table__sticky--column':true,
+                    'md-data-table__sticky--top':true,
+                    'md-data-table__sticky--left':true,
+                    'md-data-table__sticky--end':!this.hasSticky(),
+                })}"
+                @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxInput}"
+            >
+                ${this.renderItem({
+                    leadingCheckbox:{},
+                    indeterminate:this.indeterminate,
+                    selected:this.selected,
+                })}
+            </th>
+        `:nothing
+    }
+
+    renderRowCellCheckbox(row) {
+        /* prettier-ignore */
+        return this.checkbox?html`
+            <td
+                is="md-data-table-native-row-cell"
+                .data="${row}"
+                class="${classMap({
+                    'md-data-table__sticky':true,
+                    'md-data-table__sticky--row':true,
+                    'md-data-table__sticky--left':true,
+                    'md-data-table__sticky--end':!this.hasSticky(),
+                })}"
+                @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxInput}"
+            >
+                ${this.renderItem({
+                    leadingCheckbox:{},
+                    selected:row.selected
+                })}
+            </td>
+        `:nothing
+    }
+    isStickyLeft(index) {
+        const middle = Math.floor(this.columns.length / 2);
+        return index <= middle;
+    }
+
+    hasSticky() {
+        return !!this.columns.find((column) => column.sticky);
+    }
+
+    hasStickyBorder(position, index) {
+        const middle = Math.floor(this.columns.length / 2);
+
+        let maxLeftIndex = -1;
+        let minRightIndex = this.columns.length;
+
+        this.columns.forEach((column, i) => {
+            if (column.sticky) {
+                if (i <= middle) {
+                    if (i > maxLeftIndex) {
+                        maxLeftIndex = i;
+                    }
+                } else {
+                    if (i < minRightIndex) {
+                        minRightIndex = i;
+                    }
+                }
+            }
+        });
+
+        if (position === "left") {
+            return maxLeftIndex === index;
+        }
+
+        return minRightIndex === index;
+    }
+
+    renderColumnCells() {
+        /* prettier-ignore */
+        return this.columns?.filter(column=>column.selected)?.map((column, index) => html`
+            <th
+                .data="${column}"
+                is="md-data-table-native-column-cell"
+                style="${styleMap({
+                    'min-width':column.width+'px'
+                })}"
+                class="${classMap({
+                    'md-data-table__sticky':true,
+                    'md-data-table__sticky--top':true,
+                    'md-data-table__sticky--column':column.sticky,
+                    'md-data-table__sticky--left':column.sticky&&this.isStickyLeft(index),
+                    'md-data-table__sticky--right':column.sticky&&!this.isStickyLeft(index),
+                    'md-data-table__sticky--end':column.sticky&&this.hasStickyBorder('left',index),
+                    'md-data-table__sticky--start':column.sticky&&this.hasStickyBorder('right',index),
+                })}"
+                @pointerenter="${this.handleDataTableColumnCellSortablePointerenter}"
+                @pointerleave="${this.handleDataTableColumnCellSortablePointerleave}"
+                @onDataTableItemSortableClick="${this.handleDataTableColumnCellSortableClick}"
+            >
+                ${this.renderItem({
+                    label: column.label,
+                    sortable: column.sortable,
+                    sortableIcon: column.sortableIcon??'',
+                    // trailingActions:[
+                    //     {icon:'keyboard_arrow_down'}
+                    // ]
+                })}
+            </th>
+        `)
+    }
+
+    renderRows() {
+        /* prettier-ignore */
+        return this.rows?.map(row => html`
+            <tr
+                .data="${row}"
+                .tabIndex="${0}"
+                ?selected="${row.selected}"
+                @click="${this.handleDataTableRowClick}"
+            >
+                ${this.renderRowCellCheckbox(row)}
+                ${this.columns?.filter(column=>column.selected)?.map((column, index) => html`
+                    <td
+                        is="md-data-table-native-row-cell"
+                        class="${classMap({
+                            'md-data-table__sticky':column.sticky,
+                            'md-data-table__sticky--row':column.sticky,
+                            'md-data-table__sticky--left':column.sticky&&this.isStickyLeft(index),
+                            'md-data-table__sticky--right':column.sticky&&!this.isStickyLeft(index),
+                            'md-data-table__sticky--end':column.sticky&&this.hasStickyBorder('left',index),
+                            'md-data-table__sticky--start':column.sticky&&this.hasStickyBorder('right',index),
+                        })}"
+                    >
+                        ${this.renderItem({
+                            label: row[column.name]
+                        })}
+                    </td>
+                `)}
+            </tr>
+        `)
     }
 
     /**
      *
      */
     render() {
+        /* prettier-ignore */
         return html`
             <table>
                 <caption></caption>
                 <thead>
                     <tr>
-                        ${this.columns?.length&&this.checkbox?html`
-                            <th
-                                is="md-data-table-column-cell"
-                                class="${classMap({
-                                    'md-data-table__column-cell-checkbox':true,
-                                    'md-data-table__sticky':true,
-                                    'md-data-table__sticky--column':true,
-                                    'md-data-table__sticky--left':true,
-                                })}"
-                                @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxInput}"
-                            >${this.renderItem({
-                                leadingCheckbox:{},
-                                selected:this.selected,
-                                indeterminate:this.indeterminate,
-                            })}</th>
-                        `:nothing}
-                        ${this.columns?.map((column,index) => html`
-                            <th
-                                is="md-data-table-column-cell"
-                                .data="${column}"
-                                style="${styleMap({
-                                    'min-width':column.width+'px'
-                                })}"
-                                class="${classMap({
-                                    'md-data-table__sticky':column.sticky,
-                                    'md-data-table__sticky--column':column.sticky,
-                                    'md-data-table__sticky--left':column.sticky&&index<Math.ceil(this.columns?.length/2),
-                                    'md-data-table__sticky--right':column.sticky&&index>Math.floor(this.columns?.length/2),
-                                })}"
-                                @pointerenter="${this.handleDataTableColumnCellSortablePointerenter}"
-                                @pointerleave="${this.handleDataTableColumnCellSortablePointerleave}"
-                                @onDataTableItemSortableClick="${this.handleDataTableColumnCellSortableClick}"
-                            >${this.renderItem({
-                                label:column.label,
-                                sortable:column.sortable,
-                                sortableIcon:column.sortableIcon,
-                            })}</th>
-                        `)}
+                        ${this.renderColumnCellCheckbox()}
+                        ${this.renderColumnCells()}
                     </tr>
                 </thead>
                 <tbody>
-                    ${this.rows?.map(row => html`
-                        <tr
-                            .data="${row}"
-                            .tabIndex="${0}"
-                            ?selected="${row.selected}"
-                            @click="${this.handleDataTableRowClick}"
-                            @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxInput}"
-                        >
-                            ${this.checkbox?html`
-                                <td
-                                    is="md-data-table-row-cell"
-                                    class="${classMap({
-                                        'md-data-table__row-cell-checkbox':true,
-                                        'md-data-table__sticky':true,
-                                        'md-data-table__sticky--row':true,
-                                        'md-data-table__sticky--left':true,
-                                    })}"
-                                >${this.renderItem({
-                                    leadingCheckbox:{},
-                                    selected:row.selected
-                                })}</td>
-                            `:nothing}
-                            ${this.columns?.map((column,index) => html`
-                                <td
-                                    is="md-data-table-row-cell"
-                                    class="${classMap({
-                                        'md-data-table__sticky':column.sticky,
-                                        'md-data-table__sticky--row':column.sticky,
-                                        'md-data-table__sticky--left':column.sticky&&index<Math.ceil(this.columns?.length/2),
-                                        'md-data-table__sticky--right':column.sticky&&index>Math.floor(this.columns?.length/2),
-                                    })}"
-                                >${this.renderItem({
-                                    label:row[column.name]
-                                })}</td>
-                            `)}
-                        </tr>
-                    `)}
+                    ${this.renderRows()}
                 </tbody>
-                <!-- <tfoot>
+                <tfoot>
                     <tr>
                         <td></td>
                     </tr>
-                </tfoot> -->
+                </tfoot>
             </table>
         `
     }
@@ -481,57 +570,29 @@ class MDDataTableComponent extends MDElement {
 
     updated(changedProperties) {}
 
-    get selected(){
-        const selected = this.rows?.filter(row=>row.selected)?.length
-        return selected>0&&selected==this.rows?.length
-    }
-    
-    get indeterminate(){
-        const selected = this.rows?.filter(row=>row.selected)?.length
-        return selected>0&&selected<this.rows?.length
-    }
-    
-    /**
-     *
-     */
-    handleDataTableColumnCellCheckboxInput(event) {
-        const checked = event.detail.currentTarget.checked;
-        this.rows.forEach(row=>{
-            row.selected=checked
-        })
-        this.requestUpdate();
-        this.emit('onDataTableColumnCellCheckboxInput',event)
-    }
-    
-    /**
-     *
-     */
-    handleDataTableColumnCellSortablePointerenter(event) {
-        const data=event.currentTarget.data
+    handleDataTableColumnCellSortablePointerenter(event){
+        const data = event.currentTarget.data
+
         if(data.sortable&&!data.order){
             data.sortableIcon='arrow_upward'
             this.requestUpdate()
         }
+
         this.emit('onDataTableColumnCellSortablePointerenter',event)
     }
-    
-    /**
-     *
-     */
-    handleDataTableColumnCellSortablePointerleave(event) {
-        const data=event.currentTarget.data
+    handleDataTableColumnCellSortablePointerleave(event){
+        const data = event.currentTarget.data
+
         if(data.sortable&&!data.order){
             data.sortableIcon=''
             this.requestUpdate()
         }
+
         this.emit('onDataTableColumnCellSortablePointerleave',event)
     }
-    
-    /**
-     *
-     */
-    handleDataTableColumnCellSortableClick(event) {
-        const data=event.currentTarget.data
+    handleDataTableColumnCellSortableClick(event){
+        const data = event.currentTarget.data
+
         if(data.sortable){
             if(!data.order){
                 data.order='asc'
@@ -547,12 +608,13 @@ class MDDataTableComponent extends MDElement {
             }
             this.requestUpdate()
         }
+
         this.emit('onDataTableColumnCellSortableClick',event)
     }
 
     /**
      *
-     * @fires MDDataTableComponent#onDataTableRowClick
+     * @fires MDDataTableComponent#onDataTableItemClick
      */
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
@@ -586,7 +648,7 @@ class MDDataTableComponent extends MDElement {
             this.lastIndex = this.rows.indexOf(data);
         }
         this.requestUpdate();
-        this.emit("onDataTableRowClick", event);
+        this.emit("onDataTableItemClick", event);
     }
 
     /**
@@ -607,13 +669,22 @@ class MDDataTableComponent extends MDElement {
     /**
      *
      */
+    handleDataTableColumnCellCheckboxInput(event) {
+        const checked = event.detail.currentTarget.checked;
+        this.rows.forEach((row) => {
+            row.selected = checked;
+        });
+        this.requestUpdate();
+    }
+
+    /**
+     *
+     */
     handleDataTableRowCellCheckboxInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
-        this.emit('onDataTableRowCellCheckboxInput',event)
     }
-
 }
 
 customElements.define("md-data-table", MDDataTableComponent);
