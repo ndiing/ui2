@@ -5,19 +5,19 @@ class AppDataTableElement extends MDElement {
     constructor() {
         super();
         this.columns = [
-            { name: "symbol", label: "Stock Symbol", width: 56 * 2, sticky:true },
-            { name: "company", label: "Company Name", width: 56 * 2, sticky:true },
-            { name: "currentPrice", label: "Current Price", width: 56 * 2 },
-            { name: "changePercentage", label: "Change (%)", width: 56 * 2 },
-            { name: "marketCap", label: "Market Capitalization", width: 56 * 2 },
-            { name: "volume", label: "Volume", width: 56 * 2 },
-            { name: "previousClose", label: "Previous Close", width: 56 * 2 },
-            { name: "openPrice", label: "Open Price", width: 56 * 2 },
-            { name: "highPrice", label: "High Price", width: 56 * 2 },
-            { name: "lowPrice", label: "Low Price", width: 56 * 2 },
-            { name: "dividendYield", label: "Dividend Yield (%)", width: 56 * 2 },
-            { name: "52WeekHigh", label: "52-Week High", width: 56 * 2, sticky:true },
-            { name: "52WeekLow", label: "52-Week Low", width: 56 * 2, sticky:true },
+            { name: "symbol", label: "Stock Symbol", width: 56 * 2, sticky: true, sortable: true },
+            { name: "company", label: "Company Name", width: 56 * 2, sticky: true, sortable: true },
+            { name: "currentPrice", label: "Current Price", width: 56 * 2, sortable: true },
+            { name: "changePercentage", label: "Change (%)", width: 56 * 2, sortable: true },
+            { name: "marketCap", label: "Market Capitalization", width: 56 * 2, sortable: true },
+            { name: "volume", label: "Volume", width: 56 * 2, sortable: true },
+            { name: "previousClose", label: "Previous Close", width: 56 * 2, sortable: true },
+            { name: "openPrice", label: "Open Price", width: 56 * 2, sortable: true },
+            { name: "highPrice", label: "High Price", width: 56 * 2, sortable: true },
+            { name: "lowPrice", label: "Low Price", width: 56 * 2, sortable: true },
+            { name: "dividendYield", label: "Dividend Yield (%)", width: 56 * 2, sortable: true },
+            { name: "52WeekHigh", label: "52-Week High", width: 56 * 2, sticky: true, sortable: true },
+            { name: "52WeekLow", label: "52-Week Low", width: 56 * 2, sticky: true, sortable: true },
         ];
         this.rows = [
             { symbol: "AAPL", company: "Apple Inc.", currentPrice: 150.25, changePercentage: 1.2, marketCap: "2.5T", volume: 98765432, previousClose: 148.5, openPrice: 149.0, highPrice: 151.0, lowPrice: 148.0, "52WeekHigh": 182.94, "52WeekLow": 116.21, dividendYield: 0.61 },

@@ -105,6 +105,8 @@ class MDDataTableItemComponent extends MDElement {
             selected: { type: Boolean, reflect: true },
             routerLink: { type: String, reflect: true },
             indeterminate: { type: Boolean},
+            sortable: { type: Boolean},
+            sortableIcon: { type: String},
         };
     }
 
@@ -130,6 +132,7 @@ class MDDataTableItemComponent extends MDElement {
             ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
+            <!-- ${this.sortable?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>`:nothing} -->
 
             ${notNull(this.label)||this.subLabel||this.badge?html`
                 <div class="md-data-table__label">
@@ -139,6 +142,7 @@ class MDDataTableItemComponent extends MDElement {
                 </div>
             `:nothing}
 
+            ${this.sortable?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>`:nothing}
             ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
 
             ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
@@ -186,18 +190,26 @@ class MDDataTableItemComponent extends MDElement {
         
     }
 
+    firstUpdated(changedProperties) {}
+    
     /**
      *
      * @fires MDDataTableItemComponent#onDataTableItemSelected
      */
-    firstUpdated(changedProperties) {}
-
     updated(changedProperties) {
         if (changedProperties.has("selected")) {
             if (this.selected) {
                 this.emit("onDataTableItemSelected", this);
             }
         }
+    }
+
+    /**
+     *
+     * @fires MDDataTableItemComponent#onDataTableItemSortableClick
+    */
+    handleDataTableItemSortableClick(event) {
+        this.emit("onDataTableItemSortableClick", event);
     }
 
     /**
@@ -291,6 +303,8 @@ class MDDataTableComponent extends MDElement {
                 .selected="${ifDefined(item.selected)}"
                 .routerLink="${ifDefined(item.routerLink)}"
                 .indeterminate="${ifDefined(item.indeterminate)}"
+                .sortable="${ifDefined(item.sortable)}"
+                .sortableIcon="${ifDefined(item.sortableIcon)}"
             ></md-data-table-item>
         `;
     }
@@ -323,6 +337,7 @@ class MDDataTableComponent extends MDElement {
                         ${this.columns?.map((column,index) => html`
                             <th
                                 is="md-data-table-column-cell"
+                                .data="${column}"
                                 style="${styleMap({
                                     'min-width':column.width+'px'
                                 })}"
@@ -332,8 +347,13 @@ class MDDataTableComponent extends MDElement {
                                     'md-data-table__sticky--left':column.sticky&&index<Math.ceil(this.columns?.length/2),
                                     'md-data-table__sticky--right':column.sticky&&index>Math.floor(this.columns?.length/2),
                                 })}"
+                                @pointerenter="${this.handleDataTableColumnCellSortablePointerenter}"
+                                @pointerleave="${this.handleDataTableColumnCellSortablePointerleave}"
+                                @onDataTableItemSortableClick="${this.handleDataTableColumnCellSortableClick}"
                             >${this.renderItem({
-                                label:column.label
+                                label:column.label,
+                                sortable:column.sortable,
+                                sortableIcon:column.sortableIcon,
                             })}</th>
                         `)}
                     </tr>
@@ -431,6 +451,53 @@ class MDDataTableComponent extends MDElement {
         })
         this.requestUpdate();
         this.emit('onDataTableColumnCellCheckboxInput',event)
+    }
+    
+    /**
+     *
+     */
+    handleDataTableColumnCellSortablePointerenter(event) {
+        const data=event.currentTarget.data
+        if(data.sortable&&!data.order){
+            data.sortableIcon='arrow_upward'
+            this.requestUpdate()
+        }
+        this.emit('onDataTableColumnCellSortablePointerenter',event)
+    }
+    
+    /**
+     *
+     */
+    handleDataTableColumnCellSortablePointerleave(event) {
+        const data=event.currentTarget.data
+        if(data.sortable&&!data.order){
+            data.sortableIcon=''
+            this.requestUpdate()
+        }
+        this.emit('onDataTableColumnCellSortablePointerleave',event)
+    }
+    
+    /**
+     *
+     */
+    handleDataTableColumnCellSortableClick(event) {
+        const data=event.currentTarget.data
+        if(data.sortable){
+            if(!data.order){
+                data.order='asc'
+                data.sortableIcon='arrow_upward'
+            }
+            else if(data.order=='asc'){
+                data.order='desc'
+                data.sortableIcon='arrow_downward'
+            }
+            else {
+                data.order=''
+                data.sortableIcon=''
+            }
+            this.requestUpdate()
+        }
+        this.emit('onDataTableColumnCellSortableClick',event)
     }
 
     /**
