@@ -2,6 +2,65 @@ import { html, nothing } from "lit";
 import { MDElement } from "../element/element";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleModule } from "../ripple/ripple";
+import { notEmpty } from "../mixin/mixin";
+import { styleMap } from "lit/directives/style-map.js";
+import { classMap } from "lit/directives/class-map.js";
+
+class MDDataTableColumnCellComponent extends HTMLTableCellElement {
+    constructor() {
+        super();
+        this.callback = this.callback.bind(this);
+        this.resizeObserver = new ResizeObserver(this.callback);
+    }
+    callback(entries) {
+        window.requestAnimationFrame(() => {
+            for (const entry of entries) {
+                // console.log(entry);
+                if(this.classList.contains('md-data-table__sticky--left')){
+                    let prev=this.previousElementSibling
+                    let left=0
+                    while(prev){
+                        if(prev.classList.contains('md-data-table__sticky--left')){
+                            left+=prev.clientWidth
+                        }
+                        prev=prev.previousElementSibling
+                    }
+                    this.style.setProperty('left',left+'px')
+                    let next=this.nextElementSibling
+                    if(!next.classList.contains('md-data-table__sticky--left')){
+                        this.classList.add('md-data-table__sticky--left-end')
+                    }
+                }
+                else if(this.classList.contains('md-data-table__sticky--right')){
+                    let next=this.nextElementSibling
+                    let right=0
+                    while(next){
+                        if(next.classList.contains('md-data-table__sticky--right')){
+                            right+=next.clientWidth
+                        }
+                        next=next.nextElementSibling
+                    }
+                    this.style.setProperty('right',right+'px')
+                    let prev=this.previousElementSibling
+                    if(!prev.classList.contains('md-data-table__sticky--right')){
+                        this.classList.add('md-data-table__sticky--right-start')
+                    }
+                }
+            }
+        });
+    }
+    connectedCallback() {
+        this.resizeObserver.observe(this);
+    }
+    disconnectedCallback() {
+        this.resizeObserver.disconnect();
+    }
+}
+customElements.define("md-data-table-column-cell", MDDataTableColumnCellComponent, { extends: "th" });
+
+class MDDataTableRowCellComponent extends MDDataTableColumnCellComponent {
+}
+customElements.define("md-data-table-row-cell", MDDataTableRowCellComponent, { extends: "td" });
 
 /**
  *
@@ -47,6 +106,7 @@ class MDDataTableItemComponent extends MDElement {
             badge: { type: Object },
             selected: { type: Boolean, reflect: true },
             routerLink: { type: String, reflect: true },
+            indeterminate: { type: Boolean },
         };
     }
 
@@ -67,15 +127,15 @@ class MDDataTableItemComponent extends MDElement {
             ${this.thumbnail?html`<md-image class="md-data-table__thumbnail" .src="${this.thumbnail}"></md-image>`:nothing}
             ${this.video?html`<md-image class="md-data-table__video" .src="${this.video}" .ratio="${4/3}"></md-image>`:nothing}
 
-            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
-            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
-            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" class="md-data-table__switch"></md-switch>`:nothing}
+            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
+            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
+            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
 
-            ${this.label||this.subLabel||this.badge?html`
+            ${notEmpty(this.label)||this.subLabel||this.badge?html`
                 <div class="md-data-table__label">
-                    ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
+                    ${notEmpty(this.label)?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
                     ${this.subLabel?html`<div class="md-data-table__label-secondary">${this.subLabel}</div>`:nothing}
                     ${this.badge?html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
                 </div>
@@ -83,9 +143,9 @@ class MDDataTableItemComponent extends MDElement {
 
             ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
 
-            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
-            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
-            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" class="md-data-table__switch"></md-switch>`:nothing}
+            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
+            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
+            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
 
             ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
         `;
@@ -114,8 +174,6 @@ class MDDataTableItemComponent extends MDElement {
                 this.classList.add("md-data-table__item--two-line");
             }
         }
-        await this.updateComplete;
-        this.ripple = new MDRippleModule(this, {});
     }
 
     /**
@@ -126,7 +184,6 @@ class MDDataTableItemComponent extends MDElement {
 
         this.classList.remove("md-data-table__item");
         await this.updateComplete;
-        this.ripple.destroy();
     }
 
     /**
@@ -185,7 +242,9 @@ class MDDataTableComponent extends MDElement {
      */
     static get properties() {
         return {
-            list: { type: Array },
+            columns: { type: Array },
+            rows: { type: Array },
+            summaries: { type: Array },
             rangeSelection: { type: Boolean },
             multiSelection: { type: Boolean },
             singleSelection: { type: Boolean },
@@ -198,6 +257,10 @@ class MDDataTableComponent extends MDElement {
      */
     constructor() {
         super();
+        this.rangeSelection = true;
+        this.multiSelection = true;
+        this.singleSelection = true;
+        this.allSelection = true;
     }
 
     /**
@@ -225,19 +288,118 @@ class MDDataTableComponent extends MDElement {
                 .text="${ifDefined(item.text)}"
                 .selected="${ifDefined(item.selected)}"
                 .routerLink="${ifDefined(item.routerLink)}"
-                @click="${this.handleDataTableItemClick}"
-                @onDataTableItemCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}"
-                @onDataTableItemRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}"
-                @onDataTableItemSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}"
+                .indeterminate="${ifDefined(item.indeterminate)}"
             ></md-data-table-item>
         `;
     }
-
-    /**
-     *
-     */
     render() {
-        return this.list?.map((item) => this.renderItem(item));
+        /* prettier-ignore */
+        return html`
+            <table>
+                <caption></caption>
+                <thead>
+                    ${this.renderColumns()}
+                </thead>
+                <tbody>
+                    ${this.renderRows()}
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        `;
+    }
+
+    renderColumns() {
+        /* prettier-ignore */
+        return html`
+            <tr>
+
+                <th
+                    is="md-data-table-column-cell"
+                    class="${classMap({
+                        'md-data-table__sticky':true,
+                        'md-data-table__sticky--header':true,
+                        'md-data-table__sticky--top':true,
+                        'md-data-table__sticky--column':true,
+                        'md-data-table__sticky--left':true,
+                    })}"
+                    @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxInput}"
+                >${this.renderItem({
+                    leadingCheckbox:{},
+                    selected:this.selected,
+                    indeterminate:this.indeterminate
+                })}</th>
+
+                ${this.columns?.map((column,index) => html`
+                    <th
+                        is="md-data-table-column-cell"
+                        class="${classMap({
+                            'md-data-table__sticky':true,
+                            'md-data-table__sticky--header':true,
+                            'md-data-table__sticky--top':true,
+                            'md-data-table__sticky--column':column.sticky,
+                            'md-data-table__sticky--left':column.sticky&&index<Math.ceil(this.columns?.length/2),
+                            'md-data-table__sticky--right':column.sticky&&index>Math.floor(this.columns?.length/2),
+                        })}"
+                        style="${styleMap({
+                            'min-width':column.width+'px',
+                        })}"
+                    >${this.renderItem(column)}</th>
+                `)}
+
+                <!-- <th>
+                    <div class="md-data-table__item"></div>
+                </th> -->
+
+            </tr>
+        `;
+    }
+
+    renderRows() {
+        /* prettier-ignore */
+        return html`
+            ${this.rows?.map((row) => html`
+                <tr
+                    .data="${row}"
+                    .tabIndex="${0}"
+                    ?selected="${row.selected}"
+                    @click="${this.handleDataTableRowClick}"
+                    @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxInput}"
+                >
+
+                    <td
+                        is="md-data-table-row-cell"
+                        class="${classMap({
+                            'md-data-table__sticky':true,
+                            'md-data-table__sticky--row':true,
+                            'md-data-table__sticky--left':true,
+                        })}"
+                    >${this.renderItem({
+                        leadingCheckbox:{},
+                        selected:row.selected
+                    })}</td>
+
+                    ${this.columns?.map((column,index) => html`
+                        <td
+                            is="md-data-table-row-cell"
+                            class="${classMap({
+                                'md-data-table__sticky':column.sticky,
+                                'md-data-table__sticky--row':column.sticky,
+                                'md-data-table__sticky--left':column.sticky&&index<Math.ceil(this.columns?.length/2),
+                                'md-data-table__sticky--right':column.sticky&&index>Math.floor(this.columns?.length/2),
+                            })}"
+                        >${this.renderItem({
+                            label:row[column.name]
+                        })}</td>
+                    `)}
+                    
+                    <!-- <td>
+                        <div class="md-data-table__item"></div>
+                    </td> -->
+                    
+                </tr>
+            `)}
+        `;
     }
 
     /**
@@ -263,13 +425,27 @@ class MDDataTableComponent extends MDElement {
         this.removeEventListener("keydown", this.handleDataTableKeydown);
     }
 
-    /**
-     *
-     * @fires MDDataTableComponent#onDataTableItemClick
-     */
     updated(changedProperties) {}
 
-    handleDataTableItemClick(event) {
+    get selected() {
+        const selected = this.rows?.filter((row) => row.selected).length;
+        return selected > 0 && selected == this.rows?.length;
+    }
+    get indeterminate() {
+        const selected = this.rows?.filter((row) => row.selected).length;
+        return selected > 0 && selected < this.rows?.length;
+    }
+
+    handleDataTableColumnCellCheckboxInput(event) {
+        const checked = event.detail.currentTarget.checked;
+        this.rows.forEach((row) => {
+            row.selected = checked;
+        });
+        this.requestUpdate();
+        this.emit("onDataTableColumnCellCheckboxInput", event);
+    }
+
+    handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
             return;
         }
@@ -279,14 +455,14 @@ class MDDataTableComponent extends MDElement {
             if (this.lastIndex == undefined) {
                 this.lastIndex = 0;
             }
-            this.currentIndex = this.list.indexOf(data);
+            this.currentIndex = this.rows.indexOf(data);
             this.swapIndex = this.lastIndex > this.currentIndex;
 
             if (this.swapIndex) {
                 [this.currentIndex, this.lastIndex] = [this.lastIndex, this.currentIndex];
             }
-            this.list.forEach((item, index) => {
-                item.selected = index >= this.lastIndex && index <= this.currentIndex;
+            this.rows.forEach((row, index) => {
+                row.selected = index >= this.lastIndex && index <= this.currentIndex;
             });
 
             if (this.swapIndex) {
@@ -295,13 +471,13 @@ class MDDataTableComponent extends MDElement {
         } else if (this.multiSelection && event.ctrlKey) {
             data.selected = !data.selected;
         } else if (this.singleSelection) {
-            this.list.forEach((item) => {
-                item.selected = item == data;
+            this.rows.forEach((row) => {
+                row.selected = row == data;
             });
-            this.lastIndex = this.list.indexOf(data);
+            this.lastIndex = this.rows.indexOf(data);
         }
         this.requestUpdate();
-        this.emit("onDataTableItemClick", event);
+        this.emit("onDataTableRowClick", event);
     }
 
     /**
@@ -311,8 +487,8 @@ class MDDataTableComponent extends MDElement {
     handleDataTableKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
-            this.list.forEach((item) => {
-                item.selected = true;
+            this.rows.forEach((row) => {
+                row.selected = true;
             });
             this.requestUpdate();
         }
@@ -322,30 +498,11 @@ class MDDataTableComponent extends MDElement {
     /**
      *
      */
-    handleDataTableItemCheckboxNativeInput(event) {
+    handleDataTableRowCellCheckboxInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
-    }
-
-    /**
-     *
-     */
-    handleDataTableItemRadioButtonNativeInput(event) {
-        const data = event.currentTarget.data;
-        this.list.forEach((item) => {
-            item.selected = item == data;
-        });
-        this.requestUpdate();
-    }
-
-    /**
-     *
-     */
-    handleDataTableItemSwitchNativeInput(event) {
-        const data = event.currentTarget.data;
-        data.selected = !data.selected;
-        this.requestUpdate();
+        this.emit("onDataTableRowCellCheckboxInput", event);
     }
 }
 
