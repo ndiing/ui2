@@ -456,7 +456,7 @@ class MDDataTableComponent extends MDElement {
 
     renderColumnCells() {
         /* prettier-ignore */
-        return this.columns?.filter(column=>column.selected)?.map((column, index) => html`
+        return this.columns?.filter(column=>column.selected!==false)?.map((column, index) => html`
             <th
                 .data="${column}"
                 is="md-data-table-native-column-cell"
@@ -498,7 +498,7 @@ class MDDataTableComponent extends MDElement {
                 @click="${this.handleDataTableRowClick}"
             >
                 ${this.renderRowCellCheckbox(row)}
-                ${this.columns?.filter(column=>column.selected)?.map((column, index) => html`
+                ${this.columns?.filter(column=>column.selected!==false)?.map((column, index) => html`
                     <td
                         is="md-data-table-native-row-cell"
                         class="${classMap({
@@ -511,7 +511,7 @@ class MDDataTableComponent extends MDElement {
                         })}"
                     >
                         ${this.renderItem({
-                            label: row[column.name]
+                            label: (column.format||((value,row,column) => value))(row[column.name],row,column)
                         })}
                     </td>
                 `)}

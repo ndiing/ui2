@@ -53,12 +53,8 @@ class AppButtonElement extends MDElement {
                     ></md-button>
                 </div>
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-button label="Label"></md-button>
                     <md-button
-                        ui=""
-                        label="Label"
-                    ></md-button>
-                    <md-button
-                        ui=""
                         label="Label"
                         icon="image"
                     ></md-button>

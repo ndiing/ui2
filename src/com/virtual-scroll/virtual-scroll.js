@@ -4,7 +4,7 @@ class MDVirtualScrollModule {
         this.options = {
             total: 1000,
             rowHeight: 56,
-            threshold: 2,
+            buffer: 2,
             ...options,
         };
 
@@ -42,10 +42,10 @@ class MDVirtualScrollModule {
         window.requestAnimationFrame(() => {
             this.scrollbarHeight = this.options.total * this.options.rowHeight;
 
-            this.start = Math.floor(this.host.scrollTop / this.options.rowHeight) - this.options.threshold;
+            this.start = Math.floor(this.host.scrollTop / this.options.rowHeight) - this.options.buffer;
             this.start = Math.max(0, this.start);
 
-            this.limit = Math.ceil(this.host.clientHeight / this.options.rowHeight) + 2 * this.options.threshold;
+            this.limit = Math.ceil(this.host.clientHeight / this.options.rowHeight) + 2 * this.options.buffer;
             this.limit = Math.min(this.options.total - this.start, this.limit);
 
             this.translateY = this.start * this.options.rowHeight;
