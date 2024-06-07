@@ -6,6 +6,8 @@
 
 Material adalah sebuah framework desain berbasis Material Design yang dirancang untuk pengembangan web modern. Framework ini menyediakan komponen UI yang kaya dan responsif, serta berbagai alat yang berguna untuk membangun aplikasi web yang menarik.
 
+![Material Design Framework](https://github.com/ndiing/material/raw/main/Animation.gif)
+
 ## Instalasi
 
 Untuk menggunakan Material dalam proyek Anda, ikuti langkah-langkah berikut:
