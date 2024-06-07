@@ -1,145 +1,83 @@
-# Material
+# Material Design Framework
 
-Material adalah proyek frontend yang mengimplementasikan prinsip-prinsip Material Design 3. Proyek ini dibangun dengan menggunakan Node.js, Webpack, dan Lit Element untuk menyediakan komponen-komponen UI yang modern dan responsif.
+This is a Material Design Framework built with Node.js, Webpack, and Lit Element.
 
-## Instalasi
+## Repository
 
-Untuk menjalankan proyek ini secara lokal, pastikan Anda memiliki Node.js dan npm terinstal di komputer Anda. Kemudian, ikuti langkah-langkah berikut:
-
-1. Clone repositori ini ke komputer Anda:
-
-```js
-git clone https://github.com/ndiing/material.git
-```
-
-2. Masuk ke direktori proyek:
-
-```js
-cd material
-```
-
-3. Install semua dependensi menggunakan npm:
-
-```js
-npm install
-```
-
-4. Jalankan proyek:
-
-```js
-npm start
-```
-
-Proyek akan dijalankan di `localhost:3000` secara default. Buka browser Anda dan akses URL tersebut untuk melihat proyek.
-
-## Menggunakan Router
-
-Untuk mengatur routing dalam proyek ini, Anda dapat menggunakan modul router yang telah disediakan. Berikut adalah contoh penggunaannya:
-
-```js
-import { MDRouterModule } from "../com/router/router";
-
-const routes = [
-    // Daftar rute Anda
-];
-
-MDRouterModule.init(routes, {
-    historyApiFallback: false,
-});
-```
-
-Pastikan untuk menyesuaikan rute sesuai dengan struktur halaman proyek Anda.
-
-## Memuat Halaman Awal
-
-Untuk menampilkan halaman awal proyek, Anda dapat menggunakan komponen `AppMainElement`. Berikut adalah contoh penggunaannya:
-
-```js
-import { html } from "lit";
-import { MDElement } from "../../com/element/element";
-import { layout } from "../../com/layout/layout";
-
-class AppMainElement extends MDElement {
-    // Metode constructor dan lainnya
-}
-
-customElements.define("app-main", AppMainElement);
-
-export default document.createElement("app-main");
-```
-
-Pastikan Anda memanggil `customElements.define` untuk mendefinisikan elemen kustom Anda, dan `document.createElement("app-main")` untuk membuat elemen tersebut dalam halaman HTML Anda.
-
-## Contoh File `index.html`
-
-Berikut adalah contoh file `index.html` untuk mengatur tampilan awal proyek Anda:
-
-```js
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
-        <meta
-            name="theme-color"
-            content="#6750a4"
-        />
-        <meta
-            name="description"
-            content="Explore examples of Material Design frameworks to create sleek, modern interfaces."
-        />
-
-        <title>Material Design Framework Examples</title>
-
-        <base href="/" />
-
-        <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-        />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-    </head>
-    <body>
-        <md-outlet></md-outlet>
-    </body>
-</html>
-```
-
-## Dokumentasi
-
-Dokumentasi lengkap untuk proyek ini dapat ditemukan di direktori [docs](https://github.com/ndiing/material/tree/main/docs).
+[Material](https://github.com/ndiing/material)
 
 ## Demo
 
-Demo proyek ini dapat diakses melalui [halaman GitHub Pages](https://ndiing.github.io/material/dist/).
+[View Demo](https://ndiing.github.io/material)
 
-## Kontribusi
+## Documentation
 
-Anda ingin berkontribusi pada proyek ini? Kami senang menerima kontribusi dari berbagai pengembang. Berikut langkah-langkah untuk berkontribusi:
+[Read Documentation](https://ndiing.gitbook.io/material)
 
-1. Fork repositori ini.
-2. Buat branch baru untuk fitur Anda (`git checkout -b fitur-anda`).
-3. Lakukan perubahan yang diperlukan dan commit (`git commit -am 'Menambahkan fitur keren'`).
-4. Push ke branch Anda (`git push origin fitur-anda`).
-5. Buat pull request baru.
+## Overview
 
-Tim kami akan melakukan review terhadap pull request Anda secepat mungkin. Terima kasih atas kontribusi Anda!
+This Material Design Framework provides a robust set of components and tools adhering to the Material Design guidelines. It's developed with modern web technologies, ensuring flexibility and ease of use for web developers.
 
-## Kontak
+## Features
 
-Jika Anda memiliki pertanyaan atau saran terkait proyek ini, jangan ragu untuk menghubungi kami melalui email di ndiing.inc@gmail.com.
+- **Node.js**: Utilizes Node.js for server-side JavaScript environment.
+- **Webpack**: Bundles the project assets efficiently using Webpack.
+- **Lit Element**: Employs Lit Element for building lightweight, performant web components.
+
+## Installation
+
+To install Material Design Framework, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/ndiing/material.git
+```
+
+2. Install dependencies:
+
+```bash
+cd material
+npm install
+```
+
+## Usage
+
+After installation, you can start using the Material Design Framework in your project by importing the desired components. Here's a basic example:
+
+```js
+import { LitElement, html, css } from 'lit-element';
+import '@ndiing/material';
+
+class MyComponent extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+    }
+  `;
+
+  render() {
+    return html`
+      <md-button raised @click="${this.handleClick}">Click me</md-button>
+    `;
+  }
+
+  handleClick() {
+    console.log('Button clicked!');
+  }
+}
+
+customElements.define('my-component', MyComponent);
+```
+
+## Contribution
+
+Contributions are welcome! Feel free to submit issues, feature requests, or pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+© 2024 [ndiing](https://github.com/ndiing) • [Email](mailto:ndiing.inc@gmail.com) • [GitHub](https://github.com/ndiing) • [Demo](https://ndiing.github.io/material) • [Documentation](https://ndiing.gitbook.io/material)
