@@ -1,89 +1,100 @@
 # Material Design Framework
 
-This is a Material Design Framework built with Node.js, Webpack, and Lit Element.
-
-## Repository
-
-[Material](https://github.com/ndiing/material)
+Material adalah sebuah framework desain berbasis Material Design yang dirancang untuk pengembangan web modern. Framework ini menyediakan komponen UI yang kaya dan responsif, serta berbagai alat yang berguna untuk membangun aplikasi web yang menarik.
 
 ## Demo
 
-[View Demo](https://ndiing.github.io/material)
+Lihat demo: [Material Demo](https://ndiing.github.io/material/dist/)
 
-## Documentation
+## Dokumentasi
 
-[Read Documentation](https://ndiing.gitbook.io/material)
+Dokumentasi lengkap tersedia di: [Material Docs](https://ndiing.gitbook.io/material)
 
-## Overview
+## Instalasi
 
-Material Design Framework offers a comprehensive set of components and tools, strictly following the Material Design guidelines. Developed with modern web technologies, it guarantees flexibility and ease of use for web developers.
+Untuk menggunakan Material dalam proyek Anda, ikuti langkah-langkah berikut:
 
-## Features
+1. **Inisialisasi Proyek dengan npm**:
+   
+    ```bash
+    npm init -y
+    ```
 
-- **Node.js**: Utilizes Node.js for server-side JavaScript environment.
-- **Webpack**: Bundles the project assets efficiently using Webpack.
-- **Lit Element**: Employs Lit Element for building lightweight, performant web components.
+2. **Install webpack-cli**:
 
-## Installation
+    ```bash
+    npm install -D webpack-cli
+    ```
 
-Install the package via npm:
+3. **Inisialisasi webpack**:
 
-<pre>
-npm install @ndiinginc/material
-</pre>
+    ```bash
+    npx webpack init
+    ```
 
-To install Material Design Framework from the repository, follow these steps:
+    Ketika diminta, pilih opsi sebagai berikut:
 
-1. Clone the repository:
+    - Which of the following JS solutions do you want to use? **ES6**
+    - Do you want to use webpack-dev-server? **Yes**
+    - Do you want to simplify the creation of HTML files for your bundle? **Yes**
+    - Do you want to add PWA support? **No**
+    - Which of the following CSS solutions do you want to use? **SASS**
+    - Will you be using CSS styles along with SASS in your project? **Yes**
+    - Will you be using PostCSS in your project? **Yes**
+    - Do you want to extract CSS for every file? **No**
+    - Do you like to install prettier to format generated configuration? **Yes**
+    - Pick a package manager: **npm**
 
-<pre>
-git clone https://github.com/ndiing/material.git
-</pre>
+4. **Installasi Modul Tambahan**:
 
-2. Install dependencies:
+    ```bash
+    npm i @ndiinginc/material
+    ```
 
-<pre>
-cd material
-npm install
-</pre>
+5. **Konfigurasi `src/index.js`**:
 
-## Usage
+    Buka file `src/index.js` dan tambahkan load component:
 
-After installation, you can start using the Material Design Framework in your project by importing the desired components. Here's a basic example:
+    ```javascript
+    import "@ndiinginc/material/src/com/index.scss";
+    import "@ndiinginc/material/src/com/index.js";
+    ```
 
-<pre><code>
-import { LitElement, html, css } from 'lit-element';
-import '@ndiing/material';
+6. **Buat file `index.html`**:
 
-class MyComponent extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-  `;
+    Buka file `index.html` dan tambahkan kode HTML dasar:
 
-  render() {
-    return html`
-      <md-button raised @click="${this.handleClick}">Click me</md-button>
-    `;
-  }
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#6750a4" />
+        <meta name="description" content="description" />
+        <title>title</title>
+        <base href="/" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="dist/bundle.js" defer></script>
+    </head>
+    <body>
+        <md-button label="Label"></md-button>
+    </body>
+    </html>
+    ```
 
-  handleClick() {
-    console.log('Button clicked!');
-  }
-}
+    Dalam kode ini, saya menambahkan `<script src="dist/bundle.js" defer></script>` untuk memuat file JavaScript bundle yang dihasilkan oleh webpack. Jika direktori output webpack berbeda, sesuaikan path-nya.
 
-customElements.define('my-component', MyComponent);
-</code></pre>
+## Kontribusi
 
-## Contribution
+Jika Anda ingin berkontribusi pada proyek ini, silakan buka [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan kontribusi.
 
-Contributions are welcome! Feel free to submit issues, feature requests, or pull requests.
+## Lisensi
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-
-© 2024 [ndiing](https://github.com/ndiing) • [Email](mailto:ndiing.inc@gmail.com) • [GitHub](https://github.com/ndiing) • [Demo](https://ndiing.github.io/material) • [Documentation](https://ndiing.gitbook.io/material)
+© 2024 Ndiing | MIT License
