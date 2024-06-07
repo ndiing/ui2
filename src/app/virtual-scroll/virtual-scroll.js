@@ -44,7 +44,7 @@ class AppVirtualScrollElement extends MDElement {
 
         await this.updateComplete;
 
-        this.data = Array.from({ length: 10000 }, (v, k) => {
+        this.data = Array.from({ length: 1000 }, (v, k) => {
             return Array.from({ length: 100 }, (v2, k2) => {
                 return {
                     label: k * 100 + k2 + 1,
@@ -66,8 +66,8 @@ class AppVirtualScrollElement extends MDElement {
             row: ".row", //Selector for the row elements.
             totalY: this.data.length, //Total number of rows.
 
-            column: ".column", //Selector for the column elements.
-            totalX: this.data[0].length, //Total number of columns.
+            // column: ".column", //Selector for the column elements.
+            // totalX: this.data[0].length, //Total number of columns.
         });
     }
 

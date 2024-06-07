@@ -64,7 +64,6 @@ const routes = [
             { path: "textarea-field", load: () => import("./textarea-field/textarea-field.js").then((m) => m.default) },
             { path: "select-field", load: () => import("./select-field/select-field.js").then((m) => m.default) },
             { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
-            { path: "test", load: () => import("./test/test.js").then((m) => m.default) },
         ],
     },
     { path: "*", load: () => import("./main/main.js").then((m) => m.default) },

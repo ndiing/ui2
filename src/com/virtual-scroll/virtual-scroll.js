@@ -16,18 +16,18 @@ class MDVirtualScrollModule {
      * @param {number} [options.rowHeight=56] - The default height of a row.
      * @param {number} [options.rowWidth=56*3] - The default width of a row.
      */
-    constructor(host, options) {
+    constructor(host, options = {}) {
         this.host = host;
         this.options = {
-            scrollbar: undefined,
-            container: undefined,
-            row: undefined,
-            column: undefined,
+            scrollbar: '',
+            container: '',
+            row: '',
+            column: '',
             totalY: 0,
             totalX: 0,
             buffer: 2,
             rowHeight: 56,
-            rowWidth: 56*3,
+            rowWidth: 56 * 3,
             ...options,
         };
         this.init();
@@ -38,18 +38,18 @@ class MDVirtualScrollModule {
      */
     init() {
         this.viewport = this.host;
-        this.scrollbar = this.host.querySelector(this.options.scrollbar);
-        this.container = this.host.querySelector(this.options.container);
+        this.scrollbar = this.viewport.querySelector(this.options.scrollbar);
+        this.container = this.viewport.querySelector(this.options.container);
 
         this.viewport.classList.add("md-virtual-scroll");
         this.scrollbar.classList.add("md-virtual-scroll__scrollbar");
         this.container.classList.add("md-virtual-scroll__container");
 
         this.handleScroll = this.handleScroll.bind(this);
-        this.handleScroll();
         this.viewport.addEventListener("scroll", this.handleScroll);
-
         this.buffer = this.options.buffer; // Default buffer
+
+        this.handleScroll(); // Initial call to set up the scroll
     }
 
     /**
@@ -77,6 +77,7 @@ class MDVirtualScrollModule {
         this.host.dispatchEvent(event);
     }
 
+
     /**
      * Updates the scroll position.
      */
@@ -94,8 +95,19 @@ class MDVirtualScrollModule {
                 this.calculateHorizontalScroll(rows);
             }
 
+            let temp=(
+                [this.startX??0,
+                this.endX??0,
+                this.startY??0,
+                this.endY??0,].join()
+            )
+
             this.container.style.transform = `translate3d(${this.translateX}px,${this.translateY}px,0px)`;
-            this.emit("onVirtualScroll", this);
+
+            if(this.temp!==temp){
+                this.temp=temp
+                this.emit("onVirtualScroll", this);
+            }
         });
     }
 
@@ -111,12 +123,14 @@ class MDVirtualScrollModule {
                 const columns = [];
                 row.querySelectorAll(this.options.column).forEach((column) => {
                     const width = column.getBoundingClientRect().width;
+                    if (!column.data) column.data = {};
                     column.data.height = height;
                     column.data.width = width;
                     columns.push(column.data);
                 });
                 rows.push(columns);
             } else {
+                if (!row.data) row.data = {};
                 row.data.height = height;
                 rows.push(row.data);
             }
@@ -169,7 +183,7 @@ class MDVirtualScrollModule {
      */
     calculateAverageHeight(rows) {
         if (rows.length === 0) return this.options.rowHeight;
-        const totalHeight = rows.reduce((sum, row) => sum + (Array.isArray(row) ? row[0].height : row.height), 0);
+        const totalHeight = rows.reduce((sum, row) => sum + (this.options.column ? row[0].height : row.height), 0);
         return Math.round(totalHeight / rows.length);
     }
 
