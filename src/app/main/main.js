@@ -116,10 +116,10 @@ class AppMainElement extends MDElement {
 
         select(this.list);
         function select(list) {
-            list.sort((a, b) => a.label.localeCompare(b.label));
             list.forEach((item) => {
                 item.selected = item.routerLink == MDRouterModule.path;
                 if (item.children) {
+                    item.children.sort((a, b) => a.label.localeCompare(b.label));
                     select(item.children);
                 }
             });
