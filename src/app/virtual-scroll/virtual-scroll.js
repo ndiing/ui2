@@ -3,54 +3,92 @@ import { MDElement } from "../../com/element/element";
 import { MDVirtualScrollModule } from "../../com/virtual-scroll/virtual-scroll";
 
 class AppVirtualScrollElement extends MDElement {
+    constructor() {
+        super();
+    }
+
     render() {
         return html`
-            <div
-                class="md-layout-column"
-                style="margin:24px;"
-            >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <div class="viewport" style="height:calc(56px * 5);">
-                        <div class="scrollbar"></div>
-                        <div class="container">
-                            ${this.list?.map(item=>html`
-                                <div class="row" style="height:56px;line-height:56px;">${item.label}</div>
-                            `)}
-                        </div>
-                    </div>
+            <div class="viewport" style="width:100%;height:100%;">
+                <div class="scrollbar scrollbar--x"></div>
+                <div class="scrollbar scrollbar--y"></div>
+                <div class="container">
+                    ${this.list?.map(
+                        (row) => html`
+                            <div
+                                .data="${row}"
+                                class="row"
+                                style="display:flex;height:56px;"
+                            >
+                                ${row.map(
+                                    (column) => html`
+                                        <div
+                                            .data="${column}"
+                                            class="column"
+                                            style="flex:1 0 auto;width:200px;border:1px solid var(--md-sys-color-outline-variant);"
+                                        >
+                                            ${column.label}
+                                        </div>
+                                    `,
+                                )}
+                            </div>
+                        `,
+                    )}
                 </div>
             </div>
         `;
     }
-    async connectedCallback(){
-        super.connectedCallback()
-        await this.updateComplete
-        
-        this.viewport=this.querySelector('.viewport')
-        this.scrollbar=this.querySelector('.scrollbar')
-        this.container=this.querySelector('.container')
-        this.row='.row'
 
-        this.data=Array.from({length:500000},(v,k) => ({label:`Item ${k+1}`}))
+    async connectedCallback() {
+        super.connectedCallback();
 
-        this.viewport.addEventListener('onVirtualScroll',event=>{
-            const {start,limit} = event.detail
-            const end=start+limit
-            this.list=this.data.slice(start,end)
-            this.requestUpdate()
-        })
+        await this.updateComplete;
 
-        this.virtualScroll = new MDVirtualScrollModule(this.viewport,{
-            scrollbar:this.scrollbar,
-            container:this.container,
-            total: this.data.length,
-            rowHeight: 56,
-            threshold: 2,
-        })
+        this.data = Array.from({ length: 10000 }, (v, k) => {
+            return Array.from({ length: 100 }, (v2, k2) => {
+                return {
+                    label: k * 100 + k2 + 1,
+                };
+            });
+        });
+
+        // this.list=this.data
+        // this.requestUpdate()
+
+        this.viewport = this.querySelector(".viewport");
+        this.viewport.addEventListener("onVirtualScroll", this.onVirtualScroll.bind(this));
+
+        // Example of how to instantiate the VirtualScroll class
+        this.virtualScroll = new MDVirtualScrollModule(this.viewport, {
+            container: ".container", //Selector for the container element.
+            scrollbar: ".scrollbar", //Selector for the scrollbar.
+
+            row: ".row", //Selector for the row elements.
+            totalY: this.data.length, //Total number of rows.
+
+            column: ".column", //Selector for the column elements.
+            totalX: this.data[0].length, //Total number of columns.
+        });
     }
-    disconnectedCallback(){
-        super.disconnectedCallback()
-        this.virtualScroll.destroy()
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+
+        this.viewport.removeEventListener("onVirtualScroll", this.onVirtualScroll);
+        if (this.virtualScroll) {
+            this.virtualScroll.destroy();
+        }
+    }
+
+    onVirtualScroll(event) {
+        const { startX, startY, endX, endY, options:{column} } = event.detail;
+
+        if (column) {
+            this.list = this.data.slice(startY, endY).map((row) => row.slice(startX, endX));
+        } else {
+            this.list = this.data.slice(startY, endY);
+        }
+        this.requestUpdate();
     }
 }
 

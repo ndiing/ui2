@@ -71,33 +71,3 @@
 
 @import "./data-table/data-table.scss";
 
-.viewport {
-    width: calc(200px * 5);
-    width: 100%;
-    height: calc(56px * 5);
-    height: 100%;
-}
-.row {
-    display: flex;
-    align-items: center;
-    height: 56px;
-    &:nth-child(5n + 1) {height: calc(56px + (4px * -8));}
-    &:nth-child(5n + 2) {height: calc(56px + (4px * -6));}
-    &:nth-child(5n + 3) {height: calc(56px + (4px * -4));}
-    &:nth-child(5n + 4) {height: calc(56px + (4px * -2));}
-    &:nth-child(5n + 5) {height: calc(56px + (4px * 0));}
-}
-.column {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1 0 auto;
-    width: 200px;
-    height: 100%;
-    border: 1px solid;
-    &:nth-child(5n + 1) {width: calc(200px + (16px * -4));}
-    &:nth-child(5n + 2) {width: calc(200px + (16px * -3));}
-    &:nth-child(5n + 3) {width: calc(200px + (16px * -2));}
-    &:nth-child(5n + 4) {width: calc(200px + (16px * -1));}
-    &:nth-child(5n + 5) {width: calc(200px + (16px * 0));}
-}
