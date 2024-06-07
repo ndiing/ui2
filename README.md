@@ -1,14 +1,10 @@
 # Material Design Framework
 
+[![Demo](https://img.shields.io/badge/Demo-Lihat-blue.svg)](https://ndiing.github.io/material/dist/)
+[![Dokumentasi](https://img.shields.io/badge/Dokumentasi-Lihat-blue.svg)](https://ndiing.gitbook.io/material)
+[![npm](https://img.shields.io/npm/v/@ndiinginc/material)](https://www.npmjs.com/package/@ndiinginc/material)
+
 Material adalah sebuah framework desain berbasis Material Design yang dirancang untuk pengembangan web modern. Framework ini menyediakan komponen UI yang kaya dan responsif, serta berbagai alat yang berguna untuk membangun aplikasi web yang menarik.
-
-## Demo
-
-Lihat demo: [Material Demo](https://ndiing.github.io/material/dist/)
-
-## Dokumentasi
-
-Dokumentasi lengkap tersedia di: [Material Docs](https://ndiing.gitbook.io/material)
 
 ## Instalasi
 
