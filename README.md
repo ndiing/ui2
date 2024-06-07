@@ -8,7 +8,7 @@ This is a Material Design Framework built with Node.js, Webpack, and Lit Element
 
 ## Demo
 
-[View Demo](https://ndiing.github.io/material/dist)
+[View Demo](https://ndiing.github.io/material)
 
 ## Documentation
 
@@ -16,7 +16,7 @@ This is a Material Design Framework built with Node.js, Webpack, and Lit Element
 
 ## Overview
 
-This Material Design Framework provides a robust set of components and tools adhering to the Material Design guidelines. It's developed with modern web technologies, ensuring flexibility and ease of use for web developers.
+Material Design Framework offers a comprehensive set of components and tools, strictly following the Material Design guidelines. Developed with modern web technologies, it guarantees flexibility and ease of use for web developers.
 
 ## Features
 
@@ -26,26 +26,32 @@ This Material Design Framework provides a robust set of components and tools adh
 
 ## Installation
 
-To install Material Design Framework, follow these steps:
+Install the package via npm:
+
+<pre>
+npm install @ndiinginc/material
+</pre>
+
+To install Material Design Framework from the repository, follow these steps:
 
 1. Clone the repository:
 
-```bash
+<pre>
 git clone https://github.com/ndiing/material.git
-```
+</pre>
 
 2. Install dependencies:
 
-```bash
+<pre>
 cd material
 npm install
-```
+</pre>
 
 ## Usage
 
 After installation, you can start using the Material Design Framework in your project by importing the desired components. Here's a basic example:
 
-```js
+<pre><code>
 import { LitElement, html, css } from 'lit-element';
 import '@ndiing/material';
 
@@ -68,7 +74,7 @@ class MyComponent extends LitElement {
 }
 
 customElements.define('my-component', MyComponent);
-```
+</code></pre>
 
 ## Contribution
 

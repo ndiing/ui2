@@ -24,7 +24,7 @@
   },
   "version": "1.0.0",
   "description": "Material",
-  "name": "material",
+  "name": "@ndiinginc/material",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
