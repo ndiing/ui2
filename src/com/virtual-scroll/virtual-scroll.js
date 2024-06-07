@@ -19,10 +19,10 @@ class MDVirtualScrollModule {
     constructor(host, options = {}) {
         this.host = host;
         this.options = {
-            scrollbar: '',
-            container: '',
-            row: '',
-            column: '',
+            scrollbar: "",
+            container: "",
+            row: "",
+            column: "",
             totalY: 0,
             totalX: 0,
             buffer: 2,
@@ -77,7 +77,6 @@ class MDVirtualScrollModule {
         this.host.dispatchEvent(event);
     }
 
-
     /**
      * Updates the scroll position.
      */
@@ -105,8 +104,8 @@ class MDVirtualScrollModule {
             this.container.style.transform = `translate3d(${this.translateX}px,${this.translateY}px,0px)`;
 
             // if(this.temp!==temp){
-                // this.temp=temp
-                this.emit("onVirtualScroll", this);
+            // this.temp=temp
+            this.emit("onVirtualScroll", this);
             // }
         });
     }

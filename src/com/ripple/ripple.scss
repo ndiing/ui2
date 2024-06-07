@@ -76,7 +76,11 @@
     .md-icon,
     &.md-icon-button,
     .md-icon-button {
-        font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 100,"opsz" 24;
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 100,
+            "opsz" 24;
     }
 }
 
@@ -89,7 +93,11 @@
     .md-icon,
     &.md-icon-button,
     .md-icon-button {
-        font-variation-settings:"FILL" 0,"wght" 400,"GRAD" -100,"opsz" 24;
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" -100,
+            "opsz" 24;
     }
 }
 
@@ -114,19 +122,41 @@
     }
 }
 
-.md-ripple {@include md-ripple;}
-.md-ripple--containment {@include md-ripple--containment;}
-.md-ripple--button {@include md-ripple--button;}
-.md-ripple--inverse {@include md-ripple--inverse;}
+.md-ripple {
+    @include md-ripple;
+}
+.md-ripple--containment {
+    @include md-ripple--containment;
+}
+.md-ripple--button {
+    @include md-ripple--button;
+}
+.md-ripple--inverse {
+    @include md-ripple--inverse;
+}
 
 .md-ripple--selected,
-.md-ripple[selected] {@include md-ripple--selected;}
-.md-ripple--focused {@include md-ripple--focused;}
-.md-ripple--hover {@include md-ripple--hover;}
-.md-ripple--pressed {@include md-ripple--pressed;}
-.md-ripple--dragged {@include md-ripple--dragged;}
+.md-ripple[selected] {
+    @include md-ripple--selected;
+}
+.md-ripple--focused {
+    @include md-ripple--focused;
+}
+.md-ripple--hover {
+    @include md-ripple--hover;
+}
+.md-ripple--pressed {
+    @include md-ripple--pressed;
+}
+.md-ripple--dragged {
+    @include md-ripple--dragged;
+}
 
-.md-ripple--fadeout {@include md-ripple--fadeout;}
+.md-ripple--fadeout {
+    @include md-ripple--fadeout;
+}
 
 .md-ripple--disabled,
-.md-ripple[disabled] {@include md-ripple--disabled;}
+.md-ripple[disabled] {
+    @include md-ripple--disabled;
+}

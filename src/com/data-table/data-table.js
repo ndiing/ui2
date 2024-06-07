@@ -9,47 +9,77 @@ import { MDVirtualScrollModule } from "../virtual-scroll/virtual-scroll";
 import { MDGestureModule } from "../gesture/gesture";
 import { MDStoreModule } from "../store/store";
 import { MDRouterModule } from "../router/router";
-
+/**
+ * MDDataTableNativeColumnCellComponent class extends HTMLTableCellElement
+ * to manage sticky columns in a data table.
+ *
+ * @extends {HTMLTableCellElement}
+ */
 class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
+    /**
+     * Constructor for MDDataTableNativeColumnCellComponent.
+     * Binds the callback method and initializes a ResizeObserver.
+     */
     constructor() {
         super();
 
+        // Bind the callback method to maintain context
         this.callback = this.callback.bind(this);
 
+        // Initialize ResizeObserver with the callback
         this.resizeObserver = new ResizeObserver(this.callback);
     }
 
+    /**
+     * Callback function to handle resize events.
+     * Adjusts the position of sticky columns.
+     *
+     * @param {ResizeObserverEntry[]} entries - The resize observer entries.
+     */
     callback(entries) {
         window.requestAnimationFrame(() => {
+            // Handle left-sticky columns
             if (this.classList.contains("md-data-table__sticky--left")) {
                 let prev = this.previousElementSibling;
                 let left = 0;
 
+                // Calculate the total width of all previous sticky columns
                 while (prev) {
                     if (prev.classList.contains("md-data-table__sticky--left")) {
                         left += prev.getBoundingClientRect().width;
                     }
                     prev = prev.previousElementSibling;
                 }
+                // Set the left position of the current column
                 this.style.setProperty("left", left + "px");
-            } else if (this.classList.contains("md-data-table__sticky--right")) {
+            }
+            // Handle right-sticky columns
+            else if (this.classList.contains("md-data-table__sticky--right")) {
                 let next = this.nextElementSibling;
                 let right = 0;
 
+                // Calculate the total width of all next sticky columns
                 while (next) {
                     if (next.classList.contains("md-data-table__sticky--right")) {
                         right += next.getBoundingClientRect().width;
                     }
                     next = next.nextElementSibling;
                 }
+                // Set the right position of the current column
                 this.style.setProperty("right", right + "px");
             }
         });
     }
 
+    /**
+     * Called when the element is inserted into the DOM.
+     * Observes the element for resize events and initializes resizable features if needed.
+     */
     connectedCallback() {
+        // Observe the element for resize events
         this.resizeObserver.observe(this);
 
+        // Initialize resizable and draggable features if the attribute is set
         if (this.hasAttribute("resizable")) {
             this.gesture = new MDGestureModule(this, {
                 resize: ["e"],
@@ -59,64 +89,140 @@ class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
         }
     }
 
+    /**
+     * Called when the element is removed from the DOM.
+     * Disconnects the resize observer and destroys gesture features if they exist.
+     */
     disconnectedCallback() {
+        // Disconnect the resize observer
         this.resizeObserver.disconnect();
 
+        // Destroy the gesture features if they exist
         if (this.gesture) {
             this.gesture.destroy();
         }
     }
 }
-customElements.define("md-data-table-native-column-cell", MDDataTableNativeColumnCellComponent, { extends: "th" });
 
+// Define the custom element with the specified options
+customElements.define("md-data-table-native-column-cell", MDDataTableNativeColumnCellComponent, { extends: "th" });
+/**
+ * MDDataTableNativeRowCellComponent class extends HTMLTableCellElement
+ * to manage sticky cells in a data table row.
+ *
+ * @extends {HTMLTableCellElement}
+ */
 class MDDataTableNativeRowCellComponent extends HTMLTableCellElement {
+    /**
+     * Constructor for MDDataTableNativeRowCellComponent.
+     * Binds the callback method and initializes a ResizeObserver.
+     */
     constructor() {
         super();
 
+        // Bind the callback method to maintain context
         this.callback = this.callback.bind(this);
 
+        // Initialize ResizeObserver with the callback
         this.resizeObserver = new ResizeObserver(this.callback);
     }
 
+    /**
+     * Callback function to handle resize events.
+     * Adjusts the position of sticky cells.
+     *
+     * @param {ResizeObserverEntry[]} entries - The resize observer entries.
+     */
     callback(entries) {
         window.requestAnimationFrame(() => {
+            // Handle left-sticky cells
             if (this.classList.contains("md-data-table__sticky--left")) {
                 let prev = this.previousElementSibling;
                 let left = 0;
 
+                // Calculate the total width of all previous sticky cells
                 while (prev) {
                     if (prev.classList.contains("md-data-table__sticky--left")) {
                         left += prev.getBoundingClientRect().width;
                     }
                     prev = prev.previousElementSibling;
                 }
+                // Set the left position of the current cell
                 this.style.setProperty("left", left + "px");
-            } else if (this.classList.contains("md-data-table__sticky--right")) {
+            }
+            // Handle right-sticky cells
+            else if (this.classList.contains("md-data-table__sticky--right")) {
                 let next = this.nextElementSibling;
                 let right = 0;
 
+                // Calculate the total width of all next sticky cells
                 while (next) {
                     if (next.classList.contains("md-data-table__sticky--right")) {
                         right += next.getBoundingClientRect().width;
                     }
                     next = next.nextElementSibling;
                 }
+                // Set the right position of the current cell
                 this.style.setProperty("right", right + "px");
             }
         });
     }
 
+    /**
+     * Called when the element is inserted into the DOM.
+     * Observes the element for resize events.
+     */
     connectedCallback() {
+        // Observe the element for resize events
         this.resizeObserver.observe(this);
     }
 
+    /**
+     * Called when the element is removed from the DOM.
+     * Disconnects the resize observer.
+     */
     disconnectedCallback() {
+        // Disconnect the resize observer
         this.resizeObserver.disconnect();
     }
 }
-customElements.define("md-data-table-native-row-cell", MDDataTableNativeRowCellComponent, { extends: "td" });
 
+// Define the custom element with the specified options
+customElements.define("md-data-table-native-row-cell", MDDataTableNativeRowCellComponent, { extends: "td" });
+/**
+ * MDDataTableItemComponent class extends MDElement
+ * to represent an item in a data table.
+ *
+ * @extends {MDElement}
+ */
 class MDDataTableItemComponent extends MDElement {
+    /**
+     * Define the properties of the component.
+     *
+     * @property {String} avatar - The avatar image source URL.
+     * @property {String} thumbnail - The thumbnail image source URL.
+     * @property {String} video - The video source URL.
+     * @property {Object} leadingCheckbox - The leading checkbox configuration.
+     * @property {Object} leadingRadioButton - The leading radio button configuration.
+     * @property {Object} leadingSwitch - The leading switch configuration.
+     * @property {String} leadingIcon - The leading icon.
+     * @property {String} label - The primary label text.
+     * @property {String} subLabel - The secondary label text.
+     * @property {String} trailingIcon - The trailing icon.
+     * @property {Object} trailingCheckbox - The trailing checkbox configuration.
+     * @property {Object} trailingRadioButton - The trailing radio button configuration.
+     * @property {Object} trailingSwitch - The trailing switch configuration.
+     * @property {String} text - The additional text content.
+     * @property {Object} badge - The badge configuration.
+     * @property {Boolean} selected - The selected state of the item.
+     * @property {String} routerLink - The router link URL.
+     * @property {Boolean} indeterminate - The indeterminate state.
+     * @property {Boolean} sortable - The sortable state.
+     * @property {String} sortableIcon - The sortable icon.
+     * @property {Array} trailingActions - The trailing actions array.
+     *
+     * @returns {Object} The properties of the component.
+     */
     static get properties() {
         return {
             avatar: { type: String },
@@ -143,46 +249,57 @@ class MDDataTableItemComponent extends MDElement {
         };
     }
 
+    /**
+     * Constructor for MDDataTableItemComponent.
+     */
     constructor() {
         super();
     }
 
+    /**
+     * Get the secondary label element.
+     * @returns {Element} The secondary label element.
+     */
     get labelSecondary() {
         return this.querySelector(".md-data-table__label-secondary");
     }
 
+    /**
+     * Render the component's HTML template.
+     * @returns {TemplateResult} The rendered template.
+     */
     render() {
         /* prettier-ignore */
         return html`
-            ${this.avatar?html`<md-image class="md-data-table__avatar" .src="${this.avatar}" .ui="${"rounded"}"></md-image>`:nothing}
-            ${this.thumbnail?html`<md-image class="md-data-table__thumbnail" .src="${this.thumbnail}"></md-image>`:nothing}
-            ${this.video?html`<md-image class="md-data-table__video" .src="${this.video}" .ratio="${4/3}"></md-image>`:nothing}
+            ${this.avatar ? html`<md-image class="md-data-table__avatar" .src="${this.avatar}" .ui="${"rounded"}"></md-image>` : nothing}
+            ${this.thumbnail ? html`<md-image class="md-data-table__thumbnail" .src="${this.thumbnail}"></md-image>` : nothing}
+            ${this.video ? html`<md-image class="md-data-table__video" .src="${this.video}" .ratio="${4 / 3}"></md-image>` : nothing}
 
-            ${this.leadingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
-            ${this.leadingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
-            ${this.leadingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
+            ${this.leadingCheckbox ? html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>` : nothing}
+            ${this.leadingRadioButton ? html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>` : nothing}
+            ${this.leadingSwitch ? html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>` : nothing}
 
-            ${this.leadingIcon?html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>`:nothing}
-            <!-- ${this.sortable?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>`:nothing} -->
+            ${this.leadingIcon ? html`<md-icon class="md-data-table__icon">${this.leadingIcon}</md-icon>` : nothing}
+            <!-- ${this.sortable ? html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>` : nothing} -->
 
-            ${notNull(this.label)||this.subLabel||this.badge?html`
+            ${notNull(this.label) || this.subLabel || this.badge ? html`
                 <div class="md-data-table__label">
-                    ${notNull(this.label)?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
-                    ${this.subLabel?html`<div class="md-data-table__label-secondary">${this.subLabel}</div>`:nothing}
-                    ${this.badge?html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label??this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>`:nothing}
+                    ${notNull(this.label) ? html`<div class="md-data-table__label-primary">${this.label}</div>` : nothing}
+                    ${this.subLabel ? html`<div class="md-data-table__label-secondary">${this.subLabel}</div>` : nothing}
+                    ${this.badge ? html`<md-badge class="md-data-table__badge" .label="${ifDefined(this.badge?.label ?? this.badge)}" .max="${ifDefined(this.badge.max)}"></md-badge>` : nothing}
                 </div>
-            `:nothing}
+            ` : nothing}
 
-            ${this.sortable?html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>`:nothing}
-            ${this.trailingIcon?html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>`:nothing}
+            ${this.sortable ? html`<md-icon-button @click="${this.handleDataTableItemSortableClick}" class="md-data-table__sortable">${this.sortableIcon}</md-icon-button>` : nothing}
+            ${this.trailingIcon ? html`<md-icon class="md-data-table__icon">${this.trailingIcon}</md-icon>` : nothing}
 
-            ${this.trailingCheckbox?html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>`:nothing}
-            ${this.trailingRadioButton?html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>`:nothing}
-            ${this.trailingSwitch?html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>`:nothing}
+            ${this.trailingCheckbox ? html`<md-checkbox @onCheckboxNativeInput="${this.handleDataTableItemCheckboxNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__checkbox"></md-checkbox>` : nothing}
+            ${this.trailingRadioButton ? html`<md-radio-button @onRadioButtonNativeInput="${this.handleDataTableItemRadioButtonNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__radio-button"></md-radio-button>` : nothing}
+            ${this.trailingSwitch ? html`<md-switch @onSwitchNativeInput="${this.handleDataTableItemSwitchNativeInput}" .checked="${this.selected}" .indeterminate="${this.indeterminate}" class="md-data-table__switch"></md-switch>` : nothing}
 
-            ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
+            ${this.text ? html`<div class="md-data-table__text">${this.text}</div>` : nothing}
 
-            ${this.trailingActions?.length?html`
+            ${this.trailingActions?.length ? html`
                 <div class="md-data-table__actions">
                     ${this.trailingActions.map(action => html`
                         <md-icon-button 
@@ -192,16 +309,21 @@ class MDDataTableItemComponent extends MDElement {
                         ></md-icon-button>
                     `)}
                 </div>
-            `:nothing}
+            ` : nothing}
         `;
     }
 
+    /**
+     * Called when the element is inserted into the DOM.
+     * Adds the item class and adjusts line count based on label height.
+     */
     async connectedCallback() {
         super.connectedCallback();
 
         this.classList.add("md-data-table__item");
         await this.updateComplete;
 
+        // Adjust the item class based on the height of the secondary label
         if (this.labelSecondary) {
             if (this.labelSecondary.scrollHeight > this.labelSecondary.clientHeight) {
                 this.classList.add("md-data-table__item--three-line");
@@ -211,6 +333,10 @@ class MDDataTableItemComponent extends MDElement {
         }
     }
 
+    /**
+     * Called when the element is removed from the DOM.
+     * Removes the item class.
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
 
@@ -218,40 +344,135 @@ class MDDataTableItemComponent extends MDElement {
         await this.updateComplete;
     }
 
+    /**
+     * Called when the element is first updated.
+     * @param {Map} changedProperties - The changed properties.
+     */
     firstUpdated(changedProperties) {}
 
+    /**
+     * Called when the element is updated.
+     * Emits an event if the selected property changes.
+     *
+     * @param {Map} changedProperties - The changed properties.
+     * @fires MDDataTableItemComponent#onDataTableItemSelected
+     */
     updated(changedProperties) {
         if (changedProperties.has("selected")) {
             if (this.selected) {
+                /**
+                 * Data table item selected event.
+                 * @event MDDataTableItemComponent#onDataTableItemSelected
+                 * @type {Object}
+                 * @property {MDDataTableItemComponent} detail - The selected item component.
+                 */
                 this.emit("onDataTableItemSelected", this);
             }
         }
     }
 
+    /**
+     * Handle native input event for checkbox.
+     * @param {Event} event - The event object.
+     * @fires MDDataTableItemComponent#onDataTableItemCheckboxNativeInput
+     */
     handleDataTableItemCheckboxNativeInput(event) {
+        /**
+         * Data table item checkbox native input event.
+         * @event MDDataTableItemComponent#onDataTableItemCheckboxNativeInput
+         * @type {Event}
+         */
         this.emit("onDataTableItemCheckboxNativeInput", event);
     }
 
+    /**
+     * Handle native input event for radio button.
+     * @param {Event} event - The event object.
+     * @fires MDDataTableItemComponent#onDataTableItemRadioButtonNativeInput
+     */
     handleDataTableItemRadioButtonNativeInput(event) {
+        /**
+         * Data table item radio button native input event.
+         * @event MDDataTableItemComponent#onDataTableItemRadioButtonNativeInput
+         * @type {Event}
+         */
         this.emit("onDataTableItemRadioButtonNativeInput", event);
     }
 
+    /**
+     * Handle native input event for switch.
+     * @param {Event} event - The event object.
+     * @fires MDDataTableItemComponent#onDataTableItemSwitchNativeInput
+     */
     handleDataTableItemSwitchNativeInput(event) {
+        /**
+         * Data table item switch native input event.
+         * @event MDDataTableItemComponent#onDataTableItemSwitchNativeInput
+         * @type {Event}
+         */
         this.emit("onDataTableItemSwitchNativeInput", event);
     }
 
+    /**
+     * Handle click event for sortable button.
+     * @param {Event} event - The event object.
+     * @fires MDDataTableItemComponent#onDataTableItemSortableClick
+     */
     handleDataTableItemSortableClick(event) {
+        /**
+         * Data table item sortable click event.
+         * @event MDDataTableItemComponent#onDataTableItemSortableClick
+         * @type {Event}
+         */
         this.emit("onDataTableItemSortableClick", event);
     }
 
+    /**
+     * Handle click event for action button.
+     * @param {Event} event - The event object.
+     * @fires MDDataTableItemComponent#onDataTableItemActionClick
+     */
     handleDataTableItemActionClick(event) {
+        /**
+         * Data table item action click event.
+         * @event MDDataTableItemComponent#onDataTableItemActionClick
+         * @type {Event}
+         */
         this.emit("onDataTableItemActionClick", event);
     }
 }
 
 customElements.define("md-data-table-item", MDDataTableItemComponent);
-
+/**
+ * Represents a Material Design Data Table component with various selection options and rendering functionalities.
+ * @fires MDDataTableComponent#onDataTableKeydown
+ * @fires MDDataTableComponent#onDataTableNativeVirtualScroll
+ * @fires MDDataTableComponent#onDataTabaleColumnCellResizeStart
+ * @fires MDDataTableComponent#onDataTabaleColumnCellResize
+ * @fires MDDataTableComponent#onDataTabaleColumnCellResizeEnd
+ * @fires MDDataTableComponent#onDataTabaleColumnCellResizeDoubleTap
+ * @fires MDDataTableComponent#onDataTabaleColumnCellDragStart
+ * @fires MDDataTableComponent#onDataTabaleColumnCellDrag
+ * @fires MDDataTableComponent#onDataTabaleColumnCellDragEnd
+ * @fires MDDataTableComponent#onDataTableColumnCellSortablePointerenter
+ * @fires MDDataTableComponent#onDataTableColumnCellSortablePointerleave
+ * @fires MDDataTableComponent#onDataTableColumnCellSortableClick
+ * @fires MDDataTableComponent#onDataTableItemClick
+ * @extends {MDElement}
+ */
 class MDDataTableComponent extends MDElement {
+    /**
+     * Properties of the MDDataTableComponent.
+     * @property {Array} columns - The columns of the data table.
+     * @property {Array} rows - The rows of the data table.
+     * @property {Array} summaries - The summaries of the data table.
+     * @property {Boolean} rangeSelection - Enables range selection.
+     * @property {Boolean} multiSelection - Enables multi-selection.
+     * @property {Boolean} singleSelection - Enables single selection.
+     * @property {Boolean} allSelection - Enables selection of all rows.
+     * @property {Boolean} checkbox - Enables checkbox selection.
+     * @return {Object} The properties object.
+     */
     static get properties() {
         return {
             columns: { type: Array },
@@ -265,16 +486,30 @@ class MDDataTableComponent extends MDElement {
         };
     }
 
+    /**
+     * Get the indeterminate state for the checkbox.
+     * @return {boolean} True if some rows are selected, but not all.
+     * @readonly
+     */
     get indeterminate() {
         const selected = this.rows?.filter((row) => row.selected).length;
         return selected > 0 && selected < this.rows?.length;
     }
 
+    /**
+     * Get the selected state for the checkbox.
+     * @return {boolean} True if all rows are selected.
+     * @readonly
+     */
     get selected() {
         const selected = this.rows?.filter((row) => row.selected).length;
         return selected > 0 && selected == this.rows?.length;
     }
 
+    /**
+     * Constructor for MDDataTableComponent.
+     * Initializes default values for selection and store.
+     */
     constructor() {
         super();
         this.rangeSelection = true;
@@ -286,15 +521,30 @@ class MDDataTableComponent extends MDElement {
         // this.store.remoteStore.url.search=MDRouterModule.location.search
     }
 
+    /**
+     * Check if a column should be sticky to the left.
+     * @param {number} index - The index of the column.
+     * @return {boolean} True if the column should be sticky to the left.
+     */
     isStickyLeft(index) {
         const middle = Math.floor(this.columns.length / 2);
         return index <= middle;
     }
 
+    /**
+     * Check if there are any sticky columns.
+     * @return {boolean} True if there are sticky columns.
+     */
     hasSticky() {
         return !!this.columns.find((column) => column.sticky);
     }
 
+    /**
+     * Check if a column has a sticky border.
+     * @param {string} position - The position of the sticky border ('left' or 'right').
+     * @param {number} index - The index of the column.
+     * @return {boolean} True if the column has a sticky border.
+     */
     hasStickyBorder(position, index) {
         const middle = Math.floor(this.columns.length / 2);
 
@@ -322,8 +572,12 @@ class MDDataTableComponent extends MDElement {
         return minRightIndex === index;
     }
 
+    /**
+     * Render an item.
+     * @param {Object} item - The item to render.
+     * @return {TemplateResult} The rendered item.
+     */
     renderItem(item) {
-        /* prettier-ignore */
         return html`
             <md-data-table-item
                 .data="${item}"
@@ -352,51 +606,68 @@ class MDDataTableComponent extends MDElement {
         `;
     }
 
+    /**
+     * Render the column cell checkbox.
+     * @fires MDDataTableComponent#onDataTableItemCheckboxNativeInput
+     * @return {TemplateResult|null} The rendered column cell checkbox or nothing.
+     */
     renderColumnCellCheckbox() {
-        /* prettier-ignore */
-        return this.checkbox?html`
-            <th
-                is="md-data-table-native-column-cell"
-                class="${classMap({
-                    'md-data-table__sticky':true,
-                    'md-data-table__sticky--column':true,
-                    'md-data-table__sticky--top':true,
-                    'md-data-table__sticky--left':true,
-                    'md-data-table__sticky--end':!this.hasSticky(),
-                })}"
-                @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxInput}"
-            >
-                ${this.renderItem({
-                    leadingCheckbox:{},
-                    indeterminate:this.indeterminate,
-                    selected:this.selected,
-                })}
-            </th>
-        `:nothing
+        return this.checkbox
+            ? html`
+                  <th
+                      is="md-data-table-native-column-cell"
+                      class="${classMap({
+                          "md-data-table__sticky": true,
+                          "md-data-table__sticky--column": true,
+                          "md-data-table__sticky--top": true,
+                          "md-data-table__sticky--left": true,
+                          "md-data-table__sticky--end": !this.hasSticky(),
+                      })}"
+                      @onDataTableItemCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxInput}"
+                  >
+                      ${this.renderItem({
+                          leadingCheckbox: {},
+                          indeterminate: this.indeterminate,
+                          selected: this.selected,
+                      })}
+                  </th>
+              `
+            : nothing;
     }
 
+    /**
+     * Render the row cell checkbox.
+     * @fires MDDataTableComponent#onDataTableItemCheckboxNativeInput
+     * @param {Object} row - The row to render the checkbox for.
+     * @return {TemplateResult|null} The rendered row cell checkbox or nothing.
+     */
     renderRowCellCheckbox(row) {
-        /* prettier-ignore */
-        return this.checkbox?html`
-            <td
-                is="md-data-table-native-row-cell"
-                .data="${row}"
-                class="${classMap({
-                    'md-data-table__sticky':true,
-                    'md-data-table__sticky--row':true,
-                    'md-data-table__sticky--left':true,
-                    'md-data-table__sticky--end':!this.hasSticky(),
-                })}"
-                @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxInput}"
-            >
-                ${this.renderItem({
-                    leadingCheckbox:{},
-                    selected:row.selected
-                })}
-            </td>
-        `:nothing
+        return this.checkbox
+            ? html`
+                  <td
+                      is="md-data-table-native-row-cell"
+                      .data="${row}"
+                      class="${classMap({
+                          "md-data-table__sticky": true,
+                          "md-data-table__sticky--row": true,
+                          "md-data-table__sticky--left": true,
+                          "md-data-table__sticky--end": !this.hasSticky(),
+                      })}"
+                      @onDataTableItemCheckboxNativeInput="${this.handleDataTableRowCellCheckboxInput}"
+                  >
+                      ${this.renderItem({
+                          leadingCheckbox: {},
+                          selected: row.selected,
+                      })}
+                  </td>
+              `
+            : nothing;
     }
 
+    /**
+     * Render the column cells.
+     * @return {TemplateResult[]} The rendered column cells.
+     */
     renderColumnCells() {
         /* prettier-ignore */
         return this.columns?.filter(column=>column.selected!==false)?.map((column, index) => html`
@@ -440,6 +711,10 @@ class MDDataTableComponent extends MDElement {
         `)
     }
 
+    /**
+     * Renders the rows of the data table.
+     * @return {TemplateResult[]} The rendered rows.
+     */
     renderRows() {
         /* prettier-ignore */
         return this.virtualRows?.map(row => html`
@@ -474,6 +749,10 @@ class MDDataTableComponent extends MDElement {
         `)
     }
 
+    /**
+     * Renders the MDDataTableComponent.
+     * @return {TemplateResult} The rendered MDDataTableComponent.
+     */
     render() {
         /* prettier-ignore */
         return html`
@@ -505,6 +784,10 @@ class MDDataTableComponent extends MDElement {
         `
     }
 
+    /**
+     * Connected Callback lifecycle method of the MDDataTableComponent.
+     * Attaches event listeners and initializes virtual scrolling.
+     */
     async connectedCallback() {
         super.connectedCallback();
         await this.updateComplete;
@@ -523,6 +806,10 @@ class MDDataTableComponent extends MDElement {
         });
     }
 
+    /**
+     * Disconnected Callback lifecycle method of the MDDataTableComponent.
+     * Removes event listeners and destroys virtual scrolling.
+     */
     async disconnectedCallback() {
         super.disconnectedCallback();
         await this.updateComplete;
@@ -533,6 +820,10 @@ class MDDataTableComponent extends MDElement {
         this.virtualScroll.destroy();
     }
 
+    /**
+     * Updated lifecycle method of the MDDataTableComponent.
+     * @param {Map} changedProperties - The properties that have changed.
+     */
     async updated(changedProperties) {
         if (changedProperties.has("columns")) {
             await this.updateComplete;
@@ -552,6 +843,10 @@ class MDDataTableComponent extends MDElement {
 
     // Table
 
+    /**
+     * Handles keydown event for the data table.
+     * @param {Event} event - The keydown event.
+     */
     handleDataTableKeydown(event) {
         if (this.allSelection && event.ctrlKey && event.key == "a") {
             event.preventDefault();
@@ -563,6 +858,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableKeydown", event);
     }
 
+    /**
+     * Handles virtual scroll event for the data table.
+     * @param {CustomEvent} event - The virtual scroll event.
+     */
     async handleDataTableNativeVirtualScroll(event) {
         const { startY, endY } = event.detail;
         this.virtualRows = this.storeRows.slice(startY, endY);
@@ -572,12 +871,20 @@ class MDDataTableComponent extends MDElement {
 
     // Column
 
+    /**
+     * Handles resize start event for the data table column cell.
+     * @param {Event} event - The resize start event.
+     */
     handleDataTabaleColumnCellResizeStart(event) {
         const data = event.currentTarget.data;
         // this.requestUpdate()
         this.emit("onDataTabaleColumnCellResizeStart", event);
     }
 
+    /**
+     * Handles resize event for the data table column cell.
+     * @param {Event} event - The resize event.
+     */
     handleDataTabaleColumnCellResize(event) {
         const data = event.currentTarget.data;
 
@@ -587,12 +894,20 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTabaleColumnCellResize", event);
     }
 
+    /**
+     * Handles resize end event for the data table column cell.
+     * @param {Event} event - The resize end event.
+     */
     handleDataTabaleColumnCellResizeEnd(event) {
         const data = event.currentTarget.data;
         // this.requestUpdate()
         this.emit("onDataTabaleColumnCellResizeEnd", event);
     }
 
+    /**
+     * Handles double tap event for the data table column cell.
+     * @param {Event} event - The double tap event.
+     */
     handleDataTabaleColumnCellResizeDoubleTap(event) {
         const th = event.currentTarget;
         const data = th.data;
@@ -614,24 +929,40 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTabaleColumnCellResizeDoubleTap", event);
     }
 
+    /**
+     * Handles drag start event for the data table column cell.
+     * @param {Event} event - The drag start event.
+     */
     handleDataTabaleColumnCellDragStart(event) {
         const data = event.currentTarget.data;
         // this.requestUpdate()
         this.emit("onDataTabaleColumnCellDragStart", event);
     }
 
+    /**
+     * Handles drag event for the data table column cell.
+     * @param {Event} event - The drag event.
+     */
     handleDataTabaleColumnCellDrag(event) {
         const data = event.currentTarget.data;
         // this.requestUpdate()
         this.emit("onDataTabaleColumnCellDrag", event);
     }
 
+    /**
+     * Handles drag end event for the data table column cell.
+     * @param {Event} event - The drag end event.
+     */
     handleDataTabaleColumnCellDragEnd(event) {
         const data = event.currentTarget.data;
         // this.requestUpdate()
         this.emit("onDataTabaleColumnCellDragEnd", event);
     }
 
+    /**
+     * Handles sortable pointer enter event for the data table column cell.
+     * @param {Event} event - The sortable pointer enter event.
+     */
     handleDataTableColumnCellSortablePointerenter(event) {
         const data = event.currentTarget.data;
 
@@ -643,6 +974,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortablePointerenter", event);
     }
 
+    /**
+     * Handles sortable pointer leave event for the data table column cell.
+     * @param {Event} event - The sortable pointer leave event.
+     */
     handleDataTableColumnCellSortablePointerleave(event) {
         const data = event.currentTarget.data;
 
@@ -654,6 +989,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortablePointerleave", event);
     }
 
+    /**
+     * Handles sortable click event for the data table column cell.
+     * @param {Event} event - The sortable click event.
+     */
     async handleDataTableColumnCellSortableClick(event) {
         const data = event.currentTarget.data;
 
@@ -677,6 +1016,10 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableColumnCellSortableClick", event);
     }
 
+    /**
+     * Handles input event for the data table column cell checkbox.
+     * @param {Event} event - The input event.
+     */
     handleDataTableColumnCellCheckboxInput(event) {
         const checked = event.detail.currentTarget.checked;
         this.rows.forEach((row) => {
@@ -687,6 +1030,10 @@ class MDDataTableComponent extends MDElement {
 
     // Row
 
+    /**
+     * Handles click event for the data table row.
+     * @param {Event} event - The click event.
+     */
     handleDataTableRowClick(event) {
         if (event.target.closest(".md-data-table__checkbox,.md-data-table__radio-button,.md-data-table__switch")) {
             return;
@@ -722,12 +1069,19 @@ class MDDataTableComponent extends MDElement {
         this.emit("onDataTableItemClick", event);
     }
 
+    /**
+     * Handles input event for the data table row cell checkbox.
+     * @param {Event} event - The input event.
+     */
     handleDataTableRowCellCheckboxInput(event) {
         const data = event.currentTarget.data;
         data.selected = !data.selected;
         this.requestUpdate();
     }
 
+    /**
+     * Loads data into the data table.
+     */
     async load() {
         this.storeRows = await this.store.getAll();
         this.virtualScroll.handleScroll();

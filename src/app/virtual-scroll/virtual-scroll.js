@@ -9,7 +9,10 @@ class AppVirtualScrollElement extends MDElement {
 
     render() {
         return html`
-            <div class="viewport" style="max-width:100%;max-height:100%;">
+            <div
+                class="viewport"
+                style="max-width:100%;max-height:100%;"
+            >
                 <div class="scrollbar scrollbar--x"></div>
                 <div class="scrollbar scrollbar--y"></div>
                 <div class="container">
@@ -81,7 +84,13 @@ class AppVirtualScrollElement extends MDElement {
     }
 
     onVirtualScroll(event) {
-        const { startX, startY, endX, endY, options:{column} } = event.detail;
+        const {
+            startX,
+            startY,
+            endX,
+            endY,
+            options: { column },
+        } = event.detail;
 
         if (column) {
             this.list = this.data.slice(startY, endY).map((row) => row.slice(startX, endX));

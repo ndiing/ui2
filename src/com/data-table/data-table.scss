@@ -132,8 +132,8 @@
     // }
     th {
         text-align: left;
-        
-        .md-data-table__item{
+
+        .md-data-table__item {
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
         }
 
@@ -141,11 +141,11 @@
             @include md-typography-label-large;
         }
 
-        .md-resize__item{
+        .md-resize__item {
             position: relative;
             cursor: col-resize;
-            &::before{
-                content:'';
+            &::before {
+                content: "";
                 width: 16px;
                 height: var(--md-data-table-height);
                 border-right: 1px dashed var(--md-sys-color-outline-variant);
@@ -156,10 +156,10 @@
         }
 
         &.md-data-table__sticky--end {
-            .md-data-table__item{
+            .md-data-table__item {
                 position: relative;
-                &::before{
-                    content:'';
+                &::before {
+                    content: "";
                     width: 16px;
                     height: var(--md-data-table-height);
                     border-right: 1px solid var(--md-sys-color-outline-variant);
@@ -170,10 +170,10 @@
             }
         }
         &.md-data-table__sticky--start {
-            .md-data-table__item{
+            .md-data-table__item {
                 position: relative;
-                &::before{
-                    content:'';
+                &::before {
+                    content: "";
                     width: 16px;
                     height: var(--md-data-table-height);
                     border-left: 1px solid var(--md-sys-color-outline-variant);
@@ -183,14 +183,13 @@
                 }
             }
         }
-        
 
-        &:not(:hover){
-            .md-data-table__actions{
+        &:not(:hover) {
+            .md-data-table__actions {
                 visibility: hidden;
             }
-            .md-resize__item{
-                opacity: 0
+            .md-resize__item {
+                opacity: 0;
             }
         }
     }
@@ -220,7 +219,7 @@
     }
     td {
         max-width: 0;
-        
+
         .md-data-table__item {
             min-height: var(--md-data-table-row-height);
             border-bottom: 1px solid var(--md-sys-color-outline-variant);

@@ -1,92 +1,82 @@
 <a name="MDCheckboxComponent"></a>
 
 ## MDCheckboxComponent ⇐ <code>MDElement</code>
-
 **Kind**: global class  
-**Extends**: <code>MDElement</code>
+**Extends**: <code>MDElement</code>  
 
--   [MDCheckboxComponent](#MDCheckboxComponent) ⇐ <code>MDElement</code>
-    -   _instance_
-        -   [.checkboxTrack](#MDCheckboxComponent+checkboxTrack)
-        -   [.render()](#MDCheckboxComponent+render)
-        -   [.connectedCallback()](#MDCheckboxComponent+connectedCallback)
-        -   [.disconnectedCallback()](#MDCheckboxComponent+disconnectedCallback)
-        -   [.firstUpdated()](#MDCheckboxComponent+firstUpdated)
-        -   [.updated()](#MDCheckboxComponent+updated)
-        -   [.handleCheckboxNativeInput()](#MDCheckboxComponent+handleCheckboxNativeInput)
-        -   [.handleCheckboxNativeInvalid()](#MDCheckboxComponent+handleCheckboxNativeInvalid)
-        -   [.handleCheckboxNativeReset()](#MDCheckboxComponent+handleCheckboxNativeReset)
-    -   _static_
-        -   [.properties](#MDCheckboxComponent.properties)
+* [MDCheckboxComponent](#MDCheckboxComponent) ⇐ <code>MDElement</code>
+    * _instance_
+        * [.checkboxTrack](#MDCheckboxComponent+checkboxTrack)
+        * [.render()](#MDCheckboxComponent+render)
+        * [.connectedCallback()](#MDCheckboxComponent+connectedCallback)
+        * [.disconnectedCallback()](#MDCheckboxComponent+disconnectedCallback)
+        * [.firstUpdated()](#MDCheckboxComponent+firstUpdated)
+        * [.updated()](#MDCheckboxComponent+updated)
+        * [.handleCheckboxNativeInput()](#MDCheckboxComponent+handleCheckboxNativeInput)
+        * [.handleCheckboxNativeInvalid()](#MDCheckboxComponent+handleCheckboxNativeInvalid)
+        * [.handleCheckboxNativeReset()](#MDCheckboxComponent+handleCheckboxNativeReset)
+    * _static_
+        * [.properties](#MDCheckboxComponent.properties)
 
 <a name="MDCheckboxComponent+checkboxTrack"></a>
 
 ### mdCheckboxComponent.checkboxTrack
-
 **Kind**: instance property of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+render"></a>
 
 ### mdCheckboxComponent.render()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+connectedCallback"></a>
 
 ### mdCheckboxComponent.connectedCallback()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+disconnectedCallback"></a>
 
 ### mdCheckboxComponent.disconnectedCallback()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+firstUpdated"></a>
 
 ### mdCheckboxComponent.firstUpdated()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+updated"></a>
 
 ### mdCheckboxComponent.updated()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 <a name="MDCheckboxComponent+handleCheckboxNativeInput"></a>
 
 ### mdCheckboxComponent.handleCheckboxNativeInput()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 **Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeInput</code>  
 <a name="MDCheckboxComponent+handleCheckboxNativeInvalid"></a>
 
 ### mdCheckboxComponent.handleCheckboxNativeInvalid()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 **Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeInvalid</code>  
 <a name="MDCheckboxComponent+handleCheckboxNativeReset"></a>
 
 ### mdCheckboxComponent.handleCheckboxNativeReset()
-
 **Kind**: instance method of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 **Emits**: <code>MDCheckboxComponent#event:onCheckboxNativeReset</code>  
 <a name="MDCheckboxComponent.properties"></a>
 
 ### MDCheckboxComponent.properties
-
 Properties of the MDCheckboxComponent.
 
 **Kind**: static property of [<code>MDCheckboxComponent</code>](#MDCheckboxComponent)  
 **Properties**
 
-| Name                   | Type                 | Description                                                                         |
-| ---------------------- | -------------------- | ----------------------------------------------------------------------------------- |
-| [autocapitalize]       | <code>String</code>  | Specifies whether the browser should automatically capitalize the checkbox's value. |
-| [disabled]             | <code>Boolean</code> | Specifies whether the checkbox is disabled.                                         |
-| [form]                 | <code>String</code>  | Specifies the form element that the checkbox belongs to.                            |
-| [name]                 | <code>String</code>  | Specifies the name of the checkbox.                                                 |
-| [required]             | <code>Boolean</code> | Specifies whether the checkbox is required.                                         |
-| [type]                 | <code>String</code>  | Specifies the type of the checkbox.                                                 |
-| [value]                | <code>String</code>  | Specifies the value of the checkbox.                                                |
-| [checked]              | <code>Boolean</code> | Specifies whether the checkbox is checked by default.                               |
-| [defaultValue]         | <code>String</code>  | Specifies the default value of the checkbox.                                        |
-| [defaultChecked]       | <code>Boolean</code> | Specifies whether the checkbox is checked by default.                               |
-| [indeterminate]        | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state.                        |
-| [defaultIndeterminate] | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state by default.             |
+| Name | Type | Description |
+| --- | --- | --- |
+| [autocapitalize] | <code>String</code> | Specifies whether the browser should automatically capitalize the checkbox's value. |
+| [disabled] | <code>Boolean</code> | Specifies whether the checkbox is disabled. |
+| [form] | <code>String</code> | Specifies the form element that the checkbox belongs to. |
+| [name] | <code>String</code> | Specifies the name of the checkbox. |
+| [required] | <code>Boolean</code> | Specifies whether the checkbox is required. |
+| [type] | <code>String</code> | Specifies the type of the checkbox. |
+| [value] | <code>String</code> | Specifies the value of the checkbox. |
+| [checked] | <code>Boolean</code> | Specifies whether the checkbox is checked by default. |
+| [defaultValue] | <code>String</code> | Specifies the default value of the checkbox. |
+| [defaultChecked] | <code>Boolean</code> | Specifies whether the checkbox is checked by default. |
+| [indeterminate] | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state. |
+| [defaultIndeterminate] | <code>Boolean</code> | Specifies whether the checkbox is in an indeterminate state by default. |
+

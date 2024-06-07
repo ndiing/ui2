@@ -6,10 +6,10 @@ class AppDataTableElement extends MDElement {
     constructor() {
         super();
         this.columns = [
-            {name:'id',label:'id',width:56*2,sticky:true,sortable:true},
-            {name:'userId',label:'userId',width:56*2,sortable:true},
-            {name:'title',label:'title',width:56*5,sortable:true},
-            {name:'body',label:'body',width:56*10,sortable:true},
+            { name: "id", label: "id", width: 56 * 2, sticky: true, sortable: true },
+            { name: "userId", label: "userId", width: 56 * 2, sortable: true },
+            { name: "title", label: "title", width: 56 * 5, sortable: true },
+            { name: "body", label: "body", width: 56 * 10, sortable: true },
         ];
 
         /* prettier-ignore */
