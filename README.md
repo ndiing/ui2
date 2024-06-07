@@ -88,6 +88,10 @@ Untuk menggunakan Material dalam proyek Anda, ikuti langkah-langkah berikut:
 
     Dalam kode ini, saya menambahkan `<script src="dist/bundle.js" defer></script>` untuk memuat file JavaScript bundle yang dihasilkan oleh webpack. Jika direktori output webpack berbeda, sesuaikan path-nya.
 
+## Mengatur Warna Tema
+
+Anda dapat mengatur warna tema dengan mengubah konten dari tag meta `theme-color`. Ganti nilai `content` pada tag `<meta name="theme-color" content="#6750a4" />` dengan warna tema yang Anda inginkan.
+
 ## Kontribusi
 
 Jika Anda ingin berkontribusi pada proyek ini, silakan buka [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan kontribusi.
