@@ -8,7 +8,7 @@ This is a Material Design Framework built with Node.js, Webpack, and Lit Element
 
 ## Demo
 
-[View Demo](https://ndiing.github.io/material)
+[View Demo](https://ndiing.github.io/material/)
 
 ## Documentation
 
