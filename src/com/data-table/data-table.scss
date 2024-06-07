@@ -132,15 +132,65 @@
     // }
     th {
         text-align: left;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        
+        .md-data-table__item{
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
 
         .md-data-table__label-primary {
             @include md-typography-label-large;
         }
 
+        .md-resize__item{
+            position: relative;
+            cursor: col-resize;
+            &::before{
+                content:'';
+                width: 16px;
+                height: var(--md-data-table-height);
+                border-right: 1px dashed var(--md-sys-color-outline-variant);
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+
+        &.md-data-table__sticky--end {
+            .md-data-table__item{
+                position: relative;
+                &::before{
+                    content:'';
+                    width: 16px;
+                    height: var(--md-data-table-height);
+                    border-right: 1px solid var(--md-sys-color-outline-variant);
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+        &.md-data-table__sticky--start {
+            .md-data-table__item{
+                position: relative;
+                &::before{
+                    content:'';
+                    width: 16px;
+                    height: var(--md-data-table-height);
+                    border-left: 1px solid var(--md-sys-color-outline-variant);
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+        }
+        
+
         &:not(:hover){
             .md-data-table__actions{
                 visibility: hidden;
+            }
+            .md-resize__item{
+                opacity: 0
             }
         }
     }
@@ -170,10 +220,10 @@
     }
     td {
         max-width: 0;
-        border-bottom: 1px solid var(--md-sys-color-outline-variant);
-
+        
         .md-data-table__item {
             min-height: var(--md-data-table-row-height);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
             @include md-ripple;
             @include md-ripple--button;
             @include md-ripple--containment;
@@ -200,10 +250,4 @@
 }
 .md-data-table__sticky--right {
     right: 0;
-}
-.md-data-table__sticky--end {
-    border-right: 1px solid var(--md-sys-color-outline-variant);
-}
-.md-data-table__sticky--start {
-    border-left: 1px solid var(--md-sys-color-outline-variant);
 }

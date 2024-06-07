@@ -9,7 +9,7 @@ class AppVirtualScrollElement extends MDElement {
 
     render() {
         return html`
-            <div class="viewport" style="width:100%;height:100%;">
+            <div class="viewport" style="max-width:100%;max-height:100%;">
                 <div class="scrollbar scrollbar--x"></div>
                 <div class="scrollbar scrollbar--y"></div>
                 <div class="container">
