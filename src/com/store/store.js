@@ -1,3 +1,4 @@
+
 /**
  *
  */
@@ -8,7 +9,7 @@ class LocalStore {
     constructor(docs = [], options = {}) {
         this.docs = docs;
         this.options = {
-            primaryKey: "_id",
+            primaryKey: "id",
             ...options,
         };
     }
@@ -33,15 +34,15 @@ class LocalStore {
     /**
      *
      */
-    async get(_id) {
-        return this.docs.find((doc) => doc[this.options.primaryKey] == _id);
+    async get(id) {
+        return this.docs.find((doc) => doc[this.options.primaryKey] == id);
     }
 
     /**
      *
      */
-    async patch(_id, newDoc) {
-        const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == _id);
+    async patch(id, newDoc) {
+        const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == id);
 
         if (index !== -1) {
             const oldDocs = { ...this.docs[index], ...newDoc };
@@ -54,8 +55,8 @@ class LocalStore {
     /**
      *
      */
-    async delete(_id) {
-        const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == _id);
+    async delete(id) {
+        const index = this.docs.findIndex((doc) => doc[this.options.primaryKey] == id);
 
         if (index !== -1) {
             this.docs.splice(index, 1);
@@ -222,11 +223,11 @@ class RemoteStore {
     constructor(base = "http://localhost", options = {}) {
         this.base = base;
         this.options = {
-            primaryKey: "_id",
+            primaryKey: "id",
             post: "/",
-            get: "/:_id",
-            patch: "/:_id",
-            delete: "/:_id",
+            get: "/:id",
+            patch: "/:id",
+            delete: "/:id",
             ...options,
         };
 
@@ -259,11 +260,11 @@ class RemoteStore {
     /**
      *
      */
-    async get(_id) {
+    async get(id) {
         const url = this.createURL(
             this.options.get,
             {
-                [this.options.primaryKey]: _id,
+                [this.options.primaryKey]: id,
             },
             this.base,
         );
@@ -276,11 +277,11 @@ class RemoteStore {
     /**
      *
      */
-    async patch(_id, newDoc) {
+    async patch(id, newDoc) {
         const url = this.createURL(
             this.options.patch,
             {
-                [this.options.primaryKey]: _id,
+                [this.options.primaryKey]: id,
             },
             this.base,
         );
@@ -295,11 +296,11 @@ class RemoteStore {
     /**
      *
      */
-    async delete(_id) {
+    async delete(id) {
         const url = this.createURL(
             this.options.delete,
             {
-                [this.options.primaryKey]: _id,
+                [this.options.primaryKey]: id,
             },
             this.base,
         );
@@ -424,11 +425,11 @@ class MDStoreModule {
         const { docs = [], base = "http://localhost" } = options;
         this.options = {
             remote: false,
-            primaryKey: "_id",
+            primaryKey: "id",
             post: "/",
-            get: "/:_id",
-            patch: "/:_id",
-            delete: "/:_id",
+            get: "/:id",
+            patch: "/:id",
+            delete: "/:id",
             ...options,
         };
         this.localStore = new LocalStore(docs, this.options);

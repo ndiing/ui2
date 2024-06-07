@@ -95,19 +95,19 @@ class MDVirtualScrollModule {
                 this.calculateHorizontalScroll(rows);
             }
 
-            let temp=(
-                [this.startX??0,
-                this.endX??0,
-                this.startY??0,
-                this.endY??0,].join()
-            )
+            // let temp=(
+            //     [this.startX??0,
+            //     this.endX??0,
+            //     this.startY??0,
+            //     this.endY??0,].join()
+            // )
 
             this.container.style.transform = `translate3d(${this.translateX}px,${this.translateY}px,0px)`;
 
-            if(this.temp!==temp){
-                this.temp=temp
+            // if(this.temp!==temp){
+                // this.temp=temp
                 this.emit("onVirtualScroll", this);
-            }
+            // }
         });
     }
 
