@@ -104,7 +104,6 @@ class MDSliderComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-slider");
-        await this.updateComplete;
     }
 
     /**
@@ -113,7 +112,6 @@ class MDSliderComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-slider");
-        await this.updateComplete;
     }
 
     /**

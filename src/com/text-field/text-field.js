@@ -138,6 +138,11 @@ class MDTextFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-text-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-text-field__meta,.md-text-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-text-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -146,12 +151,6 @@ class MDTextFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-text-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-text-field__meta,.md-text-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-text-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

@@ -157,7 +157,7 @@ class MDChipsComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-chips");
-        await this.updateComplete;
+
         this.handleChipsKeydown = this.handleChipsKeydown.bind(this);
         this.addEventListener("keydown", this.handleChipsKeydown);
     }
@@ -168,7 +168,7 @@ class MDChipsComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-chips");
-        await this.updateComplete;
+
         this.removeEventListener("keydown", this.handleChipsKeydown);
     }
 

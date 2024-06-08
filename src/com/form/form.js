@@ -69,7 +69,6 @@ class MDFormComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-form");
-        await this.updateComplete;
     }
 
     /**
@@ -78,7 +77,6 @@ class MDFormComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-form");
-        await this.updateComplete;
     }
 
     /**

@@ -100,7 +100,6 @@ class MDNavigationBarComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-bar");
-        await this.updateComplete;
     }
 
     /**
@@ -109,7 +108,6 @@ class MDNavigationBarComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-bar");
-        await this.updateComplete;
     }
 
     /**

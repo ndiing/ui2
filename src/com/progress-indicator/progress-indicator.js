@@ -69,7 +69,6 @@ class MDProgressIndicatorComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-progress-indicator");
-        await this.updateComplete;
     }
 
     /**
@@ -78,7 +77,6 @@ class MDProgressIndicatorComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-progress-indicator");
-        await this.updateComplete;
     }
 
     /**

@@ -97,7 +97,7 @@ class MDMenuComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-menu");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-menu__scrim");
         this.handleMenuScrimClick = this.handleMenuScrimClick.bind(this);
@@ -111,7 +111,7 @@ class MDMenuComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-menu");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleMenuScrimClick);
         this.scrim.remove();
     }

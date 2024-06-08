@@ -64,7 +64,7 @@ class MDSegmentedButtonComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-segmented-button");
-        await this.updateComplete;
+
         this.handleSegmentedButtonKeydown = this.handleSegmentedButtonKeydown.bind(this);
         this.addEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
@@ -75,7 +75,7 @@ class MDSegmentedButtonComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-segmented-button");
-        await this.updateComplete;
+
         this.removeEventListener("keydown", this.handleSegmentedButtonKeydown);
     }
 

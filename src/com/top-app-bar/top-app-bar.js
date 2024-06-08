@@ -88,7 +88,6 @@ class MDTopAppBarComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-top-app-bar");
-        await this.updateComplete;
     }
 
     /**
@@ -97,7 +96,6 @@ class MDTopAppBarComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-top-app-bar");
-        await this.updateComplete;
     }
 
     /**

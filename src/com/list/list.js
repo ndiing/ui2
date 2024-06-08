@@ -125,7 +125,7 @@ class MDListItemComponent extends MDElement {
         super.disconnectedCallback();
 
         this.classList.remove("md-list__item");
-        await this.updateComplete;
+
         this.ripple.destroy();
     }
 
@@ -202,7 +202,6 @@ class MDListRowComponent extends MDElement {
      */
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
 
         this.classList.add("md-list__row");
     }
@@ -212,7 +211,6 @@ class MDListRowComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        await this.updateComplete;
 
         this.classList.remove("md-list__row");
     }
@@ -299,7 +297,6 @@ class MDListComponent extends MDElement {
      */
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
 
         this.classList.add("md-list");
         this.handleListKeydown = this.handleListKeydown.bind(this);
@@ -311,7 +308,6 @@ class MDListComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        await this.updateComplete;
 
         this.classList.remove("md-list");
         this.removeEventListener("keydown", this.handleListKeydown);

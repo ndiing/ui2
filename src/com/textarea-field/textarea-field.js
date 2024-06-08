@@ -135,6 +135,11 @@ class MDTextareaFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-textarea-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-textarea-field__meta,.md-textarea-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-textarea-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDTextareaFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-textarea-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-textarea-field__meta,.md-textarea-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-textarea-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

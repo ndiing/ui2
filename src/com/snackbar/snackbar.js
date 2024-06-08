@@ -138,7 +138,6 @@ ${this.buttons.map(button=>choose(button.is,[
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-snackbar");
-        await this.updateComplete;
     }
 
     /**

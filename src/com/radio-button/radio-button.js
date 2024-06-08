@@ -105,7 +105,7 @@ class MDRadioButtonComponent extends MDElement {
         super.disconnectedCallback();
 
         this.classList.remove("md-radio-button");
-        await this.updateComplete;
+
         this.ripple.destroy();
     }
 

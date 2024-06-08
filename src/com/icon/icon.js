@@ -35,7 +35,6 @@ class MDIconComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-icon");
-        await this.updateComplete;
     }
 
     /**
@@ -44,7 +43,6 @@ class MDIconComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-icon");
-        await this.updateComplete;
     }
 
     updated(changedProperties) {}

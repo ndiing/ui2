@@ -55,7 +55,6 @@ class MDTabsComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tabs");
-        await this.updateComplete;
     }
 
     /**
@@ -64,7 +63,6 @@ class MDTabsComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tabs");
-        await this.updateComplete;
     }
 
     /**

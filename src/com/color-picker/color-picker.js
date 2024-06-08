@@ -248,7 +248,7 @@ class MDColorPickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-color-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-color-picker__scrim");
         this.handleColorPickerScrimClick = this.handleColorPickerScrimClick.bind(this);
@@ -265,7 +265,7 @@ class MDColorPickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleColorPickerScrimClick);
         this.scrim.remove();
     }

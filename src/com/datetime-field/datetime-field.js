@@ -135,6 +135,11 @@ class MDDatetimeFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-datetime-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-datetime-field__meta,.md-datetime-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-datetime-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDDatetimeFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-datetime-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-datetime-field__meta,.md-datetime-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-datetime-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

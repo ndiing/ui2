@@ -138,6 +138,11 @@ class MDEmailFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-email-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-email-field__meta,.md-email-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-email-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -146,12 +151,6 @@ class MDEmailFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-email-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-email-field__meta,.md-email-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-email-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

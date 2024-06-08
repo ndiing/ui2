@@ -131,6 +131,11 @@ class MDColorFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-color-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-color-field__meta,.md-color-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-color-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -139,12 +144,6 @@ class MDColorFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-color-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-color-field__meta,.md-color-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-color-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

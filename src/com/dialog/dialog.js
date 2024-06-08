@@ -88,7 +88,7 @@ class MDDialogComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-dialog");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-dialog__scrim");
         this.handleDialogScrimClick = this.handleDialogScrimClick.bind(this);
@@ -102,7 +102,7 @@ class MDDialogComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-dialog");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleDialogScrimClick);
         this.scrim.remove();
     }

@@ -135,6 +135,11 @@ class MDMonthFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-month-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-month-field__meta,.md-month-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-month-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDMonthFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-month-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-month-field__meta,.md-month-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-month-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

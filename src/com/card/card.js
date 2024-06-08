@@ -89,7 +89,6 @@ class MDCardComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-card");
-        await this.updateComplete;
     }
 
     /**
@@ -98,7 +97,6 @@ class MDCardComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-card");
-        await this.updateComplete;
     }
 
     /**

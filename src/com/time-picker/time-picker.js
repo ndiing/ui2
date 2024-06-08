@@ -202,7 +202,7 @@ class MDTimePickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-time-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-time-picker__scrim");
         this.handleTimePickerScrimClick = this.handleTimePickerScrimClick.bind(this);
@@ -216,7 +216,7 @@ class MDTimePickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-time-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleTimePickerScrimClick);
         this.scrim.remove();
     }

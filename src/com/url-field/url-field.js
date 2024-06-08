@@ -135,6 +135,11 @@ class MDUrlFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-url-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-url-field__meta,.md-url-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-url-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDUrlFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-url-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-url-field__meta,.md-url-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-url-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

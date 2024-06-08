@@ -135,6 +135,11 @@ class MDNumberFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-number-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-number-field__meta,.md-number-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-number-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDNumberFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-number-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-number-field__meta,.md-number-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-number-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

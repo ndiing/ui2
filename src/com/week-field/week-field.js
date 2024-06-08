@@ -135,6 +135,11 @@ class MDWeekFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-week-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-week-field__meta,.md-week-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-week-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDWeekFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-week-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-week-field__meta,.md-week-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-week-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

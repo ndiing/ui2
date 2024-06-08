@@ -293,7 +293,7 @@ class MDDatePickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-date-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-date-picker__scrim");
         this.handleDatePickerScrimClick = this.handleDatePickerScrimClick.bind(this);
@@ -307,7 +307,7 @@ class MDDatePickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-date-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleDatePickerScrimClick);
         this.scrim.remove();
     }

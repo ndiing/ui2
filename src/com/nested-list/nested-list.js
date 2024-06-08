@@ -136,7 +136,7 @@ class MDNestedListItemComponent extends MDElement {
         super.disconnectedCallback();
 
         this.classList.remove("md-nested-list__item");
-        await this.updateComplete;
+
         this.ripple.destroy();
     }
 
@@ -197,7 +197,6 @@ class MDNestedListRowComponent extends MDElement {
      */
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
 
         this.classList.add("md-nested-list__row");
     }
@@ -207,7 +206,6 @@ class MDNestedListRowComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        await this.updateComplete;
 
         this.classList.remove("md-nested-list__row");
     }
@@ -297,7 +295,6 @@ class MDNestedListComponent extends MDElement {
      */
     async connectedCallback() {
         super.connectedCallback();
-        await this.updateComplete;
 
         this.classList.add("md-nested-list");
         this.handleNestedListKeydown = this.handleNestedListKeydown.bind(this);
@@ -309,7 +306,6 @@ class MDNestedListComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        await this.updateComplete;
 
         this.classList.remove("md-nested-list");
         this.removeEventListener("keydown", this.handleNestedListKeydown);

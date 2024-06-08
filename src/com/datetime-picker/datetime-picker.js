@@ -400,7 +400,7 @@ class MDDatetimePickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-datetime-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-datetime-picker__scrim");
         this.handleDatetimePickerScrimClick = this.handleDatetimePickerScrimClick.bind(this);
@@ -414,7 +414,7 @@ class MDDatetimePickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-datetime-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleDatetimePickerScrimClick);
         this.scrim.remove();
     }

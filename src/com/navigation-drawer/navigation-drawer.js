@@ -101,7 +101,7 @@ class MDNavigationDrawerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-drawer");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-navigation-drawer__scrim");
         this.handleNavigationDrawerScrimClick = this.handleNavigationDrawerScrimClick.bind(this);
@@ -115,7 +115,7 @@ class MDNavigationDrawerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-drawer");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleNavigationDrawerScrimClick);
         this.scrim.remove();
     }

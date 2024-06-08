@@ -91,7 +91,7 @@ class MDSideSheetComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-side-sheet");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-side-sheet__scrim");
         this.handleSideSheetScrimClick = this.handleSideSheetScrimClick.bind(this);
@@ -105,7 +105,7 @@ class MDSideSheetComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-side-sheet");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleSideSheetScrimClick);
         this.scrim.remove();
     }

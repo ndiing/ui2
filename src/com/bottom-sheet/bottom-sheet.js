@@ -91,7 +91,7 @@ class MDBottomSheetComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-bottom-sheet");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-bottom-sheet__scrim");
         this.handleBottomSheetScrimClick = this.handleBottomSheetScrimClick.bind(this);
@@ -105,7 +105,7 @@ class MDBottomSheetComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-sheet");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleBottomSheetScrimClick);
         this.scrim.remove();
     }

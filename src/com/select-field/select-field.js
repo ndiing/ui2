@@ -134,6 +134,11 @@ class MDSelectFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-select-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-select-field__meta,.md-select-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-select-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -142,12 +147,6 @@ class MDSelectFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-select-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-select-field__meta,.md-select-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-select-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

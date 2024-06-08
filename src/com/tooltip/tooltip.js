@@ -89,7 +89,7 @@ class MDTooltipComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-tooltip");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-tooltip__scrim");
         this.handleTooltipScrimClick = this.handleTooltipScrimClick.bind(this);
@@ -103,7 +103,7 @@ class MDTooltipComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tooltip");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleTooltipScrimClick);
         this.scrim.remove();
     }

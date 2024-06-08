@@ -357,7 +357,6 @@ class MDDataTableItemComponent extends MDElement {
         super.disconnectedCallback();
 
         this.classList.remove("md-data-table__item");
-        await this.updateComplete;
     }
 
     /**
@@ -829,7 +828,6 @@ class MDDataTableComponent extends MDElement {
      */
     async disconnectedCallback() {
         super.disconnectedCallback();
-        await this.updateComplete;
 
         this.classList.remove("md-data-table");
         this.removeEventListener("keydown", this.handleDataTableKeydown);
@@ -843,7 +841,6 @@ class MDDataTableComponent extends MDElement {
      */
     async updated(changedProperties) {
         if (changedProperties.has("columns")) {
-            await this.updateComplete;
             // for(const [name,value] of this.store.remoteStore.url.searchParams.entries()){
             //     console.log(name,value)
             // }

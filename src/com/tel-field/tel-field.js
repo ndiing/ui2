@@ -135,6 +135,11 @@ class MDTelFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-tel-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-tel-field__meta,.md-tel-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-tel-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDTelFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-tel-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-tel-field__meta,.md-tel-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-tel-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

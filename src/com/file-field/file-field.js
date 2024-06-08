@@ -119,6 +119,11 @@ class MDFileFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-file-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-file-field__meta,.md-file-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-file-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -127,12 +132,6 @@ class MDFileFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-file-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-file-field__meta,.md-file-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-file-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

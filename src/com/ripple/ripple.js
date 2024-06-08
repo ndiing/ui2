@@ -47,9 +47,9 @@ class MDRippleModule {
 
         this.container.classList.add("md-ripple");
 
-        this.container.classList.toggle("md-ripple--containment",this.options.containment);
-        this.container.classList.toggle("md-ripple--fadeout",this.options.fadeout);
-        this.container.classList.toggle("md-ripple--inverse",this.options.inverse);
+        this.container.classList.toggle("md-ripple--containment", this.options.containment);
+        this.container.classList.toggle("md-ripple--fadeout", this.options.fadeout);
+        this.container.classList.toggle("md-ripple--inverse", this.options.inverse);
 
         if (!this.options.size) {
             const { width, height } = this.container.getBoundingClientRect();

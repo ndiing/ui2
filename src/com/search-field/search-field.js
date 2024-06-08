@@ -135,6 +135,11 @@ class MDSearchFieldComponent extends MDElement {
         super.connectedCallback();
         this.classList.add("md-search-field");
         await this.updateComplete;
+
+        const offsetLeft = this.querySelector(".md-search-field__meta,.md-search-field__native")?.offsetLeft;
+        if (offsetLeft) {
+            this.style.setProperty("--md-search-field-offset-left", offsetLeft + "px");
+        }
     }
 
     /**
@@ -143,12 +148,6 @@ class MDSearchFieldComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-search-field");
-        await this.updateComplete;
-
-        const offsetLeft = this.querySelector(".md-search-field__meta,.md-search-field__native")?.offsetLeft;
-        if (offsetLeft) {
-            this.style.setProperty("--md-search-field-offset-left", offsetLeft + "px");
-        }
     }
 
     /**

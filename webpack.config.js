@@ -21,9 +21,6 @@ const config = {
         open: true,
         host: 'localhost',
         historyApiFallback: true,
-        static: {
-            directory: path.join(__dirname, 'src', 'assets'),
-        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -56,26 +53,26 @@ const config = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
-    optimization: {
-        minimize: isProduction,
-        minimizer: [new TerserPlugin()],
-    },
+    // optimization: {
+    //     minimize: isProduction,
+    //     minimizer: [new TerserPlugin()],
+    // },
 };
 
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
 
-        config.plugins.push(
-            new WorkboxWebpackPlugin.GenerateSW(),
-            new CompressionPlugin({
-                filename: '[path][base].gz',
-                algorithm: 'gzip',
-                test: /\.(js|css|html|svg)$/,
-                threshold: 8192,
-                minRatio: 0.8,
-            })
-        );
+        // config.plugins.push(
+        //     new WorkboxWebpackPlugin.GenerateSW(),
+        //     new CompressionPlugin({
+        //         filename: '[path][base].gz',
+        //         algorithm: 'gzip',
+        //         test: /\.(js|css|html|svg)$/,
+        //         threshold: 8192,
+        //         minRatio: 0.8,
+        //     })
+        // );
     } else {
         config.mode = 'development';
     }

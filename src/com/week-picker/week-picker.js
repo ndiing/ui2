@@ -298,7 +298,7 @@ class MDWeekPickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-week-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-week-picker__scrim");
         this.handleWeekPickerScrimClick = this.handleWeekPickerScrimClick.bind(this);
@@ -312,7 +312,7 @@ class MDWeekPickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-week-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleWeekPickerScrimClick);
         this.scrim.remove();
     }

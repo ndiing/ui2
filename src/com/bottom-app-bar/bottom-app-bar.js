@@ -91,7 +91,6 @@ class MDBottomAppBarComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-bottom-app-bar");
-        await this.updateComplete;
     }
 
     /**
@@ -100,7 +99,6 @@ class MDBottomAppBarComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-bottom-app-bar");
-        await this.updateComplete;
     }
 
     /**

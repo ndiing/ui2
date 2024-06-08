@@ -212,7 +212,7 @@ class MDMonthPickerComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-month-picker");
-        await this.updateComplete;
+
         this.scrim = document.createElement("div");
         this.scrim.classList.add("md-month-picker__scrim");
         this.handleMonthPickerScrimClick = this.handleMonthPickerScrimClick.bind(this);
@@ -226,7 +226,7 @@ class MDMonthPickerComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-month-picker");
-        await this.updateComplete;
+
         this.scrim.removeEventListener("click", this.handleMonthPickerScrimClick);
         this.scrim.remove();
     }

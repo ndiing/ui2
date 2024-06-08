@@ -41,7 +41,6 @@ class MDBadgeComponent extends MDElement {
         super.connectedCallback();
 
         this.classList.add("md-badge");
-        await this.updateComplete;
     }
 
     /**
@@ -51,7 +50,6 @@ class MDBadgeComponent extends MDElement {
         super.disconnectedCallback();
 
         this.classList.remove("md-badge");
-        await this.updateComplete;
     }
 
     updated(changedProperties) {}

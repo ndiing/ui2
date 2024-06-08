@@ -50,7 +50,6 @@ class MDImageComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-image");
-        await this.updateComplete;
     }
 
     /**
@@ -59,7 +58,6 @@ class MDImageComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-image");
-        await this.updateComplete;
     }
 
     /**

@@ -100,7 +100,6 @@ class MDNavigationRailComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
         this.classList.add("md-navigation-rail");
-        await this.updateComplete;
     }
 
     /**
@@ -109,7 +108,6 @@ class MDNavigationRailComponent extends MDElement {
     async disconnectedCallback() {
         super.disconnectedCallback();
         this.classList.remove("md-navigation-rail");
-        await this.updateComplete;
     }
 
     /**
