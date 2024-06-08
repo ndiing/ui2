@@ -1,14 +1,17 @@
 import { configureLocalization } from "@lit/localize";
 import { sourceLocale, targetLocales } from "../../generated/locale-codes.js";
+import { MDModule } from "../element/element.js";
 
 /**
  *
  */
-class MDLocalizationModule {
+class MDLocalizationModule extends MDModule {
     /**
      *
      */
     constructor() {
+        super()
+        
         const { getLocale, setLocale } = configureLocalization({
             sourceLocale,
             targetLocales,

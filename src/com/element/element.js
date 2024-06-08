@@ -13,7 +13,7 @@ class MDModule {
     constructor(host, options = {}) {
         this.host = host;
         this.options = options;
-        this.init();
+        // this.init();
     }
 
     /**

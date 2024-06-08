@@ -1,13 +1,17 @@
+import { MDModule } from "../element/element";
+
 /**
  * MDLayoutModule manages the layout changes based on media queries.
  */
-class MDLayoutModule {
+class MDLayoutModule extends MDModule {
     /**
      * Initializes the MDLayoutModule instance.
      *
      * The constructor sets up the list of layout configurations, binds the callback, and initializes the module.
      */
     constructor() {
+        super()
+        
         /**
          * @property {Array<Object>} list - An array of layout configurations with names and media queries.
          * @property {String} list.name - The name of the layout configuration.

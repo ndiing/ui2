@@ -1,13 +1,16 @@
 import { Hct, applyTheme, argbFromHex, themeFromSourceColor, hexFromArgb } from "@material/material-color-utilities";
+import { MDModule } from "../element/element";
 
 /**
  *
  */
-class MDColorModule {
+class MDColorModule extends MDModule {
     /**
      *
      */
     constructor() {
+        super()
+        
         this.list = [
             {
                 name: "light",

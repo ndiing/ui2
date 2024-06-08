@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmaterial=self.webpackChunkmaterial||[]).push([[4092],{4092:(e,a,s)=>{s.r(a),s.d(a,{templates:()=>t});var t={}}}]);
