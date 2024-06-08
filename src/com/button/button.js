@@ -72,6 +72,7 @@ class MDButtonComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-button");
         await this.updateComplete;
+        await this.updateComplete;
         this.ripple.destroy();
     }
 

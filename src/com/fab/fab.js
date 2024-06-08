@@ -57,6 +57,7 @@ class MDFabComponent extends MDElement {
         super.disconnectedCallback();
         this.classList.remove("md-fab");
         await this.updateComplete;
+        await this.updateComplete;
         this.ripple.destroy();
     }
 

@@ -137,6 +137,7 @@ class MDNestedListItemComponent extends MDElement {
 
         this.classList.remove("md-nested-list__item");
 
+        await this.updateComplete;
         this.ripple.destroy();
     }
 

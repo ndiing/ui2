@@ -126,6 +126,7 @@ class MDListItemComponent extends MDElement {
 
         this.classList.remove("md-list__item");
 
+        await this.updateComplete;
         this.ripple.destroy();
     }
 

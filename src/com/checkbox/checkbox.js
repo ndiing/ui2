@@ -105,6 +105,7 @@ class MDCheckboxComponent extends MDElement {
 
         this.classList.remove("md-checkbox");
         await this.updateComplete;
+        await this.updateComplete;
         this.ripple.destroy();
     }
 

@@ -108,6 +108,7 @@ class MDSwitchComponent extends MDElement {
 
         this.classList.remove("md-switch");
         await this.updateComplete;
+        await this.updateComplete;
         this.ripple.destroy();
     }
 
