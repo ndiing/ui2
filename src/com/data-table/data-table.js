@@ -52,6 +52,14 @@ class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
                 }
                 // Set the left position of the current column
                 this.style.setProperty("left", left + "px");
+
+                // const index = Array.from(this.parentElement.children).indexOf(this);
+                // this.closest("table")
+                //     .querySelectorAll(`td:nth-child(${index + 1})`)
+                //     .forEach((td) => {
+                //         td.classList.add("md-data-table__sticky", "md-data-table__sticky--row", "md-data-table__sticky--left");
+                //         td.style.setProperty("left", left + "px");
+                //     });
             }
             // Handle right-sticky columns
             else if (this.classList.contains("md-data-table__sticky--right")) {
@@ -67,6 +75,14 @@ class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
                 }
                 // Set the right position of the current column
                 this.style.setProperty("right", right + "px");
+
+                // const index = Array.from(this.parentElement.children).indexOf(this);
+                // this.closest("table")
+                //     .querySelectorAll(`td:nth-child(${index + 1})`)
+                //     .forEach((td) => {
+                //         td.classList.add("md-data-table__sticky", "md-data-table__sticky--row", "md-data-table__sticky--right");
+                //         td.style.setProperty("right", right + "px");
+                //     });
             }
         });
     }
@@ -80,10 +96,7 @@ class MDDataTableNativeColumnCellComponent extends HTMLTableCellElement {
         this.resizeObserver.observe(this);
 
         // Initialize resizable and draggable features if the attribute is set
-        if (
-            this.hasAttribute("resizable")||
-            this.hasAttribute("moveable")
-        ) {
+        if (this.hasAttribute("resizable") || this.hasAttribute("moveable")) {
             this.gesture = new MDGestureModule(this, {
                 resize: ["e"],
                 drag: ["x"],
@@ -737,8 +750,8 @@ class MDDataTableComponent extends MDElement {
                             'md-data-table__sticky--row':column.sticky,
                             'md-data-table__sticky--left':column.sticky&&this.isStickyLeft(index),
                             'md-data-table__sticky--right':column.sticky&&!this.isStickyLeft(index),
-                            // 'md-data-table__sticky--end':column.sticky&&this.hasStickyBorder('left',index),
-                            // 'md-data-table__sticky--start':column.sticky&&this.hasStickyBorder('right',index),
+                            'md-data-table__sticky--end':column.sticky&&this.hasStickyBorder('left',index),
+                            'md-data-table__sticky--start':column.sticky&&this.hasStickyBorder('right',index),
                         })}"
                     >
                         ${this.renderItem({
@@ -939,23 +952,18 @@ class MDDataTableComponent extends MDElement {
      */
     handleDataTabaleColumnCellDragStart(event) {
         const th = event.currentTarget;
-        const item=th.querySelector('.md-data-table__item')
-        const {left,top,width,height}=item.getBoundingClientRect()
-        this.cloneColumn=item.cloneNode(true)
-        this.cloneColumn.style.setProperty('position','absolute')
-        this.cloneColumn.style.setProperty('left',left+'px')
-        this.cloneColumn.style.setProperty('top',top+'px')
-        this.cloneColumn.style.setProperty('width',width+'px')
-        this.cloneColumn.style.setProperty('height',height+'px')
-        this.cloneColumn.style.setProperty('z-index',5)
-        this.cloneColumn.style.setProperty('pointer-events','none')
-        this.cloneColumn.classList.add(
-            'md-ripple',
-            'md-ripple--button',
-            'md-ripple--containment',
-            'md-ripple--dragged',
-        )
-        document.body.append(this.cloneColumn)
+        const item = th.querySelector(".md-data-table__item");
+        const { left, top, width, height } = item.getBoundingClientRect();
+        this.cloneColumn = item.cloneNode(true);
+        this.cloneColumn.style.setProperty("position", "absolute");
+        this.cloneColumn.style.setProperty("left", left + "px");
+        this.cloneColumn.style.setProperty("top", top + "px");
+        this.cloneColumn.style.setProperty("width", width + "px");
+        this.cloneColumn.style.setProperty("height", height + "px");
+        this.cloneColumn.style.setProperty("z-index", 5);
+        this.cloneColumn.style.setProperty("pointer-events", "none");
+        this.cloneColumn.classList.add("md-ripple", "md-ripple--button", "md-ripple--containment", "md-ripple--dragged");
+        document.body.append(this.cloneColumn);
 
         this.emit("onDataTabaleColumnCellDragStart", event);
     }
@@ -966,8 +974,8 @@ class MDDataTableComponent extends MDElement {
      */
     handleDataTabaleColumnCellDrag(event) {
         const currentX = event.currentTarget.gesture.currentX;
-        this.cloneColumn.style.setProperty('transform',`translate3d(${currentX}px,0px,0px)`)
-        
+        this.cloneColumn.style.setProperty("transform", `translate3d(${currentX}px,0px,0px)`);
+
         this.emit("onDataTabaleColumnCellDrag", event);
     }
 
@@ -976,20 +984,20 @@ class MDDataTableComponent extends MDElement {
      * @param {Event} event - The drag end event.
      */
     handleDataTabaleColumnCellDragEnd(event) {
-        this.cloneColumn.remove()
+        this.cloneColumn.remove();
 
-        const fromTh = event.currentTarget;        
-        const x=event.detail.clientX
-        const y=event.detail.clientY
-        const toTh=document.elementFromPoint(x,y)?.closest('th')
-        if(toTh&&fromTh!==toTh){
-            const from=this.columns.indexOf(fromTh.data)
-            const to=this.columns.indexOf(toTh.data)
-            const [column]=this.columns.splice(from,1)
-            this.columns.splice(to,0,column)
-            this.requestUpdate()
+        const fromTh = event.currentTarget;
+        const x = event.detail.clientX;
+        const y = event.detail.clientY;
+        const toTh = document.elementFromPoint(x, y)?.closest("th");
+        if (toTh && fromTh !== toTh) {
+            const from = this.columns.indexOf(fromTh.data);
+            const to = this.columns.indexOf(toTh.data);
+            const [column] = this.columns.splice(from, 1);
+            this.columns.splice(to, 0, column);
+            this.requestUpdate();
         }
-        
+
         this.emit("onDataTabaleColumnCellDragEnd", event);
     }
 
@@ -999,9 +1007,9 @@ class MDDataTableComponent extends MDElement {
      */
     handleDataTableColumnCellSortablePointerenter(event) {
         const data = event.currentTarget.data;
-        const dragged = document.documentElement.classList.contains('md-gesture--dragged')
+        const dragged = document.documentElement.classList.contains("md-gesture--dragged");
 
-        if (data.sortable && !data.order&&!dragged) {
+        if (data.sortable && !data.order && !dragged) {
             data.sortableIcon = "arrow_upward";
             this.requestUpdate();
         }
@@ -1119,6 +1127,7 @@ class MDDataTableComponent extends MDElement {
      */
     async load() {
         this.storeRows = await this.store.getAll();
+        this.virtualScroll.options.totalY = this.store.localStore.total_rows;
         this.virtualScroll.handleScroll();
     }
 }

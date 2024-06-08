@@ -155,34 +155,34 @@
             }
         }
 
-        &.md-data-table__sticky--end {
-            .md-data-table__item {
-                position: relative;
-                &::before {
-                    content: "";
-                    width: 16px;
-                    height: var(--md-data-table-height);
-                    border-right: 1px solid var(--md-sys-color-outline-variant);
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                }
-            }
-        }
-        &.md-data-table__sticky--start {
-            .md-data-table__item {
-                position: relative;
-                &::before {
-                    content: "";
-                    width: 16px;
-                    height: var(--md-data-table-height);
-                    border-left: 1px solid var(--md-sys-color-outline-variant);
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                }
-            }
-        }
+        // &.md-data-table__sticky--end {
+        //     .md-data-table__item {
+        //         position: relative;
+        //         &::before {
+        //             content: "";
+        //             width: 16px;
+        //             height: var(--md-data-table-height);
+        //             border-right: 1px solid var(--md-sys-color-outline-variant);
+        //             position: absolute;
+        //             right: 0;
+        //             top: 0;
+        //         }
+        //     }
+        // }
+        // &.md-data-table__sticky--start {
+        //     .md-data-table__item {
+        //         position: relative;
+        //         &::before {
+        //             content: "";
+        //             width: 16px;
+        //             height: var(--md-data-table-height);
+        //             border-left: 1px solid var(--md-sys-color-outline-variant);
+        //             position: absolute;
+        //             left: 0;
+        //             top: 0;
+        //         }
+        //     }
+        // }
 
         &:not(:hover) {
             .md-data-table__actions {
@@ -249,6 +249,16 @@
 }
 .md-data-table__sticky--right {
     right: 0;
+}
+.md-data-table__sticky--end {
+    .md-data-table__item {
+        border-right: 1px solid var(--md-sys-color-outline-variant);
+    }
+}
+.md-data-table__sticky--start {
+    .md-data-table__item {
+        border-left: 1px solid var(--md-sys-color-outline-variant);
+    }
 }
 
 :not(th) .md-data-table__item {
