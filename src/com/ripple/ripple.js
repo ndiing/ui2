@@ -1,53 +1,55 @@
+/**
+ * Represents a module for creating ripple effects on elements.
+ */
 class MDRippleModule {
+    /**
+     * Creates an instance of MDRippleModule.
+     * @param {HTMLElement} host - The host element to which the module is attached.
+     * @param {object} options - Options for configuring the ripple effect.
+     * @param {HTMLElement} [options.container=null] - The container element for the ripple effect. Defaults to the host element.
+     * @param {HTMLElement} [options.button=null] - The button element to which the ripple effect is applied. Defaults to the host element.
+     * @param {boolean} [options.containment=true] - Flag indicating whether the ripple effect is contained within the container. Defaults to true.
+     * @param {number} [options.size=null] - The size of the ripple effect in percentage. Defaults to dynamically calculated size based on container dimensions.
+     * @param {boolean} [options.centered=false] - Flag indicating whether the ripple effect is centered on the click position. Defaults to false.
+     * @param {boolean} [options.fadeout=false] - Flag indicating whether the ripple effect fades out. Defaults to false.
+     * @param {boolean} [options.inverse=false] - Flag indicating whether the ripple effect is inverted. Defaults to false.
+     */
     constructor(host, options) {
         this.host = host;
         this.options = {
             container: null,
             button: null,
-
             containment: true,
             size: null,
             centered: false,
             fadeout: false,
             inverse: false,
-
             ...options,
         };
 
-        this.handleRippleButtonPointerenter = this.handleRippleButtonPointerenter.bind(this);
-        this.handleRippleButtonPointerleave = this.handleRippleButtonPointerleave.bind(this);
-        this.handleRippleButtonPointerdown = this.handleRippleButtonPointerdown.bind(this);
-        this.handleRippleButtonPointerup = this.handleRippleButtonPointerup.bind(this);
-        this.handleRippleButtonFocus = this.handleRippleButtonFocus.bind(this);
-        this.handleRippleButtonBlur = this.handleRippleButtonBlur.bind(this);
-        this.handleRippleButtonAnimationend = this.handleRippleButtonAnimationend.bind(this);
+        this.handlePointerenter = this.handlePointerenter.bind(this);
+        this.handlePointerleave = this.handlePointerleave.bind(this);
+        this.handlePointerdown = this.handlePointerdown.bind(this);
+        this.handlePointerup = this.handlePointerup.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleAnimationend = this.handleAnimationend.bind(this);
 
         this.init();
     }
 
+    /**
+     * Initializes the ripple module.
+     */
     init() {
-        this.container = this.options.container||this.host;
-        this.button = this.options.button||this.host;
+        this.container = this.options.container || this.host;
+        this.button = this.options.button || this.host;
 
         this.container.classList.add("md-ripple");
 
-        if (this.options.containment) {
-            this.container.classList.add("md-ripple--containment");
-        } else {
-            this.container.classList.remove("md-ripple--containment");
-        }
-
-        if (this.options.fadeout) {
-            this.container.classList.add("md-ripple--fadeout");
-        } else {
-            this.container.classList.remove("md-ripple--fadeout");
-        }
-
-        if (this.options.inverse) {
-            this.container.classList.add("md-ripple--inverse");
-        } else {
-            this.container.classList.remove("md-ripple--inverse");
-        }
+        this.container.classList.toggle("md-ripple--containment",this.options.containment);
+        this.container.classList.toggle("md-ripple--fadeout",this.options.fadeout);
+        this.container.classList.toggle("md-ripple--inverse",this.options.inverse);
 
         if (!this.options.size) {
             const { width, height } = this.container.getBoundingClientRect();
@@ -60,24 +62,36 @@ class MDRippleModule {
         this.button.classList.add("md-ripple--button");
         this.button.setAttribute("tabIndex", "0");
 
-        this.button.addEventListener("pointerenter", this.handleRippleButtonPointerenter);
-        this.button.addEventListener("pointerleave", this.handleRippleButtonPointerleave);
-        this.button.addEventListener("pointerdown", this.handleRippleButtonPointerdown);
-        this.button.addEventListener("focus", this.handleRippleButtonFocus);
-        this.button.addEventListener("blur", this.handleRippleButtonBlur);
-        this.button.addEventListener("animationend", this.handleRippleButtonAnimationend);
+        this.button.addEventListener("pointerenter", this.handlePointerenter);
+        this.button.addEventListener("pointerleave", this.handlePointerleave);
+        this.button.addEventListener("pointerdown", this.handlePointerdown);
+        this.button.addEventListener("focus", this.handleFocus);
+        this.button.addEventListener("blur", this.handleBlur);
+        this.button.addEventListener("animationend", this.handleAnimationend);
     }
 
-    handleRippleButtonPointerenter(event) {
+    /**
+     * Event handler for the pointerenter event.
+     * @param {PointerEvent} event - The pointerenter event.
+     */
+    handlePointerenter(event) {
         this.container.classList.add("md-ripple--hover");
     }
 
-    handleRippleButtonPointerleave(event) {
+    /**
+     * Event handler for the pointerleave event.
+     * @param {PointerEvent} event - The pointerleave event.
+     */
+    handlePointerleave(event) {
         this.container.classList.remove("md-ripple--hover");
     }
 
-    handleRippleButtonPointerdown(event) {
-        window.addEventListener("pointerup", this.handleRippleButtonPointerup);
+    /**
+     * Event handler for the pointerdown event.
+     * @param {PointerEvent} event - The pointerdown event.
+     */
+    handlePointerdown(event) {
+        window.addEventListener("pointerup", this.handlePointerup);
 
         this.container.classList.add("md-ripple--pressed");
 
@@ -105,13 +119,21 @@ class MDRippleModule {
         this.container.style.setProperty("--md-ripple-animation-fadeout", "md-ripple-fadeout");
     }
 
-    handleRippleButtonPointerup(event) {
+    /**
+     * Event handler for the pointerup event.
+     * @param {PointerEvent} event - The pointerup event.
+     */
+    handlePointerup(event) {
         this.container.classList.remove("md-ripple--pressed");
 
-        window.removeEventListener("pointerup", this.handleRippleButtonPointerup);
+        window.removeEventListener("pointerup", this.handlePointerup);
     }
 
-    handleRippleButtonAnimationend(event) {
+    /**
+     * Event handler for the animationend event.
+     * @param {AnimationEvent} event - The animationend event.
+     */
+    handleAnimationend(event) {
         if (this.options.fadeout) {
             if (event.animationName == "md-ripple-fadeout") {
                 this.container.style.removeProperty("--md-ripple-animation");
@@ -122,14 +144,25 @@ class MDRippleModule {
         }
     }
 
-    handleRippleButtonFocus(event) {
+    /**
+     * Event handler for the focus event.
+     * @param {FocusEvent} event - The focus event.
+     */
+    handleFocus(event) {
         this.container.classList.add("md-ripple--focused");
     }
 
-    handleRippleButtonBlur(event) {
+    /**
+     * Event handler for the blur event.
+     * @param {FocusEvent} event - The blur event.
+     */
+    handleBlur(event) {
         this.container.classList.remove("md-ripple--focused");
     }
 
+    /**
+     * Destroys the ripple module and cleans up resources.
+     */
     destroy() {
         this.container.classList.remove("md-ripple");
         this.container.classList.remove("md-ripple--containment");
@@ -141,12 +174,13 @@ class MDRippleModule {
         this.button.classList.remove("md-ripple--button");
         this.button.removeAttribute("tabIndex");
 
-        this.button.removeEventListener("pointerenter", this.handleRippleButtonPointerenter);
-        this.button.removeEventListener("pointerleave", this.handleRippleButtonPointerleave);
-        this.button.removeEventListener("pointerdown", this.handleRippleButtonPointerdown);
-        this.button.removeEventListener("focus", this.handleRippleButtonFocus);
-        this.button.removeEventListener("blur", this.handleRippleButtonBlur);
-        this.button.removeEventListener("animationend", this.handleRippleButtonAnimationend);
+        this.button.removeEventListener("pointerenter", this.handlePointerenter);
+        this.button.removeEventListener("pointerleave", this.handlePointerleave);
+        this.button.removeEventListener("pointerdown", this.handlePointerdown);
+        this.button.removeEventListener("focus", this.handleFocus);
+        this.button.removeEventListener("blur", this.handleBlur);
+        this.button.removeEventListener("animationend", this.handleAnimationend);
     }
 }
+
 export { MDRippleModule };
