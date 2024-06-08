@@ -1,10 +1,4 @@
-/**
- *
- */
 class MDRippleModule {
-    /**
-     *
-     */
     constructor(host, options) {
         this.host = host;
         this.options = {
@@ -16,12 +10,18 @@ class MDRippleModule {
             inverse: false,
             ...options,
         };
+        
+        this.handleRippleButtonPointerenter = this.handleRippleButtonPointerenter.bind(this);
+        this.handleRippleButtonPointerleave = this.handleRippleButtonPointerleave.bind(this);
+        this.handleRippleButtonPointerdown = this.handleRippleButtonPointerdown.bind(this);
+        this.handleRippleButtonPointerup = this.handleRippleButtonPointerup.bind(this);
+        this.handleRippleButtonFocus = this.handleRippleButtonFocus.bind(this);
+        this.handleRippleButtonBlur = this.handleRippleButtonBlur.bind(this);
+        this.handleRippleButtonAnimationend = this.handleRippleButtonAnimationend.bind(this);
+
         this.init();
     }
 
-    /**
-     *
-     */
     init() {
         this.host.classList.add("md-ripple");
 
@@ -45,23 +45,15 @@ class MDRippleModule {
 
         if (!this.options.size) {
             const { width, height } = this.host.getBoundingClientRect();
+            
             this.options.size = (Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) / width) * 100;
         }
 
         this.host.style.setProperty("--md-ripple-size", this.options.size + "%");
 
         this.options.button.classList.add("md-ripple--button");
-
         this.options.button.setAttribute("tabIndex", "0");
-
-        this.handleRippleButtonPointerenter = this.handleRippleButtonPointerenter.bind(this);
-        this.handleRippleButtonPointerleave = this.handleRippleButtonPointerleave.bind(this);
-        this.handleRippleButtonPointerdown = this.handleRippleButtonPointerdown.bind(this);
-        this.handleRippleButtonPointerup = this.handleRippleButtonPointerup.bind(this);
-        this.handleRippleButtonFocus = this.handleRippleButtonFocus.bind(this);
-        this.handleRippleButtonBlur = this.handleRippleButtonBlur.bind(this);
-        this.handleRippleButtonAnimationend = this.handleRippleButtonAnimationend.bind(this);
-
+        
         this.options.button.addEventListener("pointerenter", this.handleRippleButtonPointerenter);
         this.options.button.addEventListener("pointerleave", this.handleRippleButtonPointerleave);
         this.options.button.addEventListener("pointerdown", this.handleRippleButtonPointerdown);
@@ -70,25 +62,17 @@ class MDRippleModule {
         this.options.button.addEventListener("animationend", this.handleRippleButtonAnimationend);
     }
 
-    /**
-     *
-     */
     handleRippleButtonPointerenter(event) {
         this.host.classList.add("md-ripple--hover");
     }
 
-    /**
-     *
-     */
     handleRippleButtonPointerleave(event) {
         this.host.classList.remove("md-ripple--hover");
     }
 
-    /**
-     *
-     */
     handleRippleButtonPointerdown(event) {
         window.addEventListener("pointerup", this.handleRippleButtonPointerup);
+
         this.host.classList.add("md-ripple--pressed");
 
         this.host.style.setProperty("--md-ripple-animation", "none");
@@ -98,6 +82,7 @@ class MDRippleModule {
 
         if (!this.options.centered) {
             const { clientX, clientY } = event;
+
             const size = this.options.size;
             const left = (clientX - _left) / width;
             const top = (clientY - _top) / height;
@@ -114,17 +99,12 @@ class MDRippleModule {
         this.host.style.setProperty("--md-ripple-animation-fadeout", "md-ripple-fadeout");
     }
 
-    /**
-     *
-     */
     handleRippleButtonPointerup(event) {
         this.host.classList.remove("md-ripple--pressed");
+
         window.removeEventListener("pointerup", this.handleRippleButtonPointerup);
     }
 
-    /**
-     *
-     */
     handleRippleButtonAnimationend(event) {
         if (this.options.fadeout) {
             if (event.animationName == "md-ripple-fadeout") {
@@ -136,36 +116,23 @@ class MDRippleModule {
         }
     }
 
-    /**
-     *
-     */
     handleRippleButtonFocus(event) {
         this.host.classList.add("md-ripple--focused");
     }
 
-    /**
-     *
-     */
     handleRippleButtonBlur(event) {
         this.host.classList.remove("md-ripple--focused");
     }
 
-    /**
-     *
-     */
     destroy() {
         this.host.classList.remove("md-ripple");
-
         this.host.classList.remove("md-ripple--containment");
-
         this.host.classList.remove("md-ripple--fadeout");
-
         this.host.classList.remove("md-ripple--inverse");
 
         this.host.style.removeProperty("--md-ripple-size");
 
         this.options.button.classList.remove("md-ripple--button");
-
         this.options.button.removeAttribute("tabIndex");
 
         this.options.button.removeEventListener("pointerenter", this.handleRippleButtonPointerenter);
@@ -176,5 +143,4 @@ class MDRippleModule {
         this.options.button.removeEventListener("animationend", this.handleRippleButtonAnimationend);
     }
 }
-
 export { MDRippleModule };
