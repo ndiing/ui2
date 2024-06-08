@@ -1,13 +1,12 @@
 import { html } from "lit";
 import { MDElement } from "../../com/element/element";
-import { MDStoreModule } from "../../com/store/store";
 
-class AppDataTableElement extends MDElement {
-    constructor() {
-        super();
+class AppDataGridElement extends MDElement {
+    constructor(){
+        super()
         this.columns = [
-            { name: "symbol", label: "Symbol", width: 56 * 2,sticky:true },
-            { name: "company", label: "Company", width: 56 * 4,sticky:true },
+            { name: "symbol", label: "Symbol", width: 56 * 2,freeze:'left' },
+            { name: "company", label: "Company", width: 56 * 4,freeze:'left' },
             { name: "price", label: "Price", width: 56 * 2 },
             { name: "change", label: "Change", width: 56 * 2 },
             { name: "volume", label: "Volume", width: 56 * 2 },
@@ -18,8 +17,8 @@ class AppDataTableElement extends MDElement {
             { name: "52WeekHigh", label: "52 Week High", width: 56 * 2 },
             { name: "52WeekLow", label: "52 Week Low", width: 56 * 2 },
             { name: "peRatio", label: "P/E Ratio", width: 56 * 2 },
-            { name: "dividendYield", label: "Dividend Yield", width: 56 * 2,sticky:true },
-            { name: "eps", label: "EPS", width: 56 * 2,sticky:true },
+            { name: "dividendYield", label: "Dividend Yield", width: 56 * 2,freeze:'right' },
+            { name: "eps", label: "EPS", width: 56 * 2,freeze:'right' },
         ];
 
         this.rows = [
@@ -108,32 +107,24 @@ class AppDataTableElement extends MDElement {
             { symbol: "CSCO", company: "Cisco Systems Inc.", price: 55.12, change: -0.2, volume: 23210000, openPrice: 55.5, highPrice: 56.0, lowPrice: 54.5, marketCap: 230000000000, "52WeekHigh": 60.0, "52WeekLow": 45.0, peRatio: 16.0, dividendYield: 2.8, eps: 3.5 },
             { symbol: "ADBE", company: "Adobe Inc.", price: 519.25, change: 1.75, volume: 6543210, openPrice: 517.0, highPrice: 522.0, lowPrice: 515.0, marketCap: 250000000000, "52WeekHigh": 550.0, "52WeekLow": 420.0, peRatio: 38.0, dividendYield: 0.0, eps: 13.65 },
         ];
-
-        this.summaries = [];
     }
     render() {
         return html`
             <div
                 class="md-layout-column"
-                style="height:100%;"
+                style="width:100%;height:100%;min-width:0;min-height:0;"
             >
-                <div
-                    style="height:100%;overflow:auto;"
-                    class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4"
-                >
-                    <md-data-table
-                        id="table"
+                <div style="width:100%;height:100%;min-width:0;min-height:0;" class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                    <md-data-grid
                         .columns="${this.columns}"
                         .rows="${this.rows}"
-                        .summaries="${this.summaries}"
-                        checkbox
-                    ></md-data-table>
+                    ></md-data-grid>
                 </div>
             </div>
         `;
     }
 }
 
-customElements.define("app-data-table", AppDataTableElement);
+customElements.define("app-data-grid", AppDataGridElement);
 
-export default document.createElement("app-data-table");
+export default document.createElement("app-data-grid");

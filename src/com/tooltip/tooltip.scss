@@ -1,7 +1,7 @@
 .md-tooltip {
     display: inline-flex;
     flex-direction: column;
-    overflow: hidden;
+    // overflow: hidden;
     max-width: calc(360px - (8px * 2));
     border-radius: var(--md-sys-shape-corner-medium);
     background: var(--md-sys-color-surface-container);

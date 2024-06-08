@@ -79,3 +79,4 @@ import "./textarea-field/textarea-field.js";
 import "./select-field/select-field.js";
 
 import "./data-table/data-table.js";
+import "./data-grid/data-grid.js";

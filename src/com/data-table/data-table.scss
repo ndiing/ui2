@@ -197,21 +197,28 @@
         tr {
             &[selected] {
                 .md-data-table__item {
+                    @include md-ripple--containment;
                     @include md-ripple--selected;
                 }
             }
             &:focus {
                 .md-data-table__item {
+                    @include md-ripple--containment;
                     @include md-ripple--focused;
                 }
             }
             &:hover {
                 .md-data-table__item {
+                    @include md-ripple--containment;
                     @include md-ripple--hover;
+                    &::after{
+                        width: var(--md-ripple-size, 141.4213562373095%);
+                    }
                 }
             }
             &:active {
                 .md-data-table__item {
+                    @include md-ripple--containment;
                     @include md-ripple--pressed;
                 }
             }
@@ -225,7 +232,6 @@
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
             @include md-ripple;
             @include md-ripple--button;
-            @include md-ripple--containment;
             --md-ripple-size: 200%;
         }
     }

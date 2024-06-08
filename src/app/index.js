@@ -64,6 +64,7 @@ const routes = [
             { path: "textarea-field", load: () => import("./textarea-field/textarea-field.js").then((m) => m.default) },
             { path: "select-field", load: () => import("./select-field/select-field.js").then((m) => m.default) },
             { path: "data-table", load: () => import("./data-table/data-table.js").then((m) => m.default) },
+            { path: "data-grid", load: () => import("./data-grid/data-grid.js").then((m) => m.default) },
         ],
     },
     { path: "*", load: () => import("./main/main.js").then((m) => m.default) },
@@ -72,3 +73,6 @@ const routes = [
 MDRouterModule.init(routes, {
     historyApiFallback: false,
 });
+
+// node src/dev/cli create component data-grid list
+// node src/dev/cli create app data-grid icon
