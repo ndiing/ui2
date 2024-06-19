@@ -26,7 +26,6 @@ class AppSnackbarComponent extends MDElement {
         return this.querySelector("#snackbar6");
     }
 
-
     render() {
         return html`
             <div
@@ -131,7 +130,6 @@ class AppSnackbarComponent extends MDElement {
         `;
     }
 
-
     handleSnackbarShow() {
         this.snackbar.show();
     }
@@ -156,7 +154,6 @@ class AppSnackbarComponent extends MDElement {
         this.snackbar6.show();
     }
 
-
     handleSnackbarClose() {
         this.snackbar.close();
     }
@@ -180,7 +177,6 @@ class AppSnackbarComponent extends MDElement {
     handleSnackbar6Close() {
         this.snackbar6.close();
     }
-
 }
 
 customElements.define("app-snackbar", AppSnackbarComponent);

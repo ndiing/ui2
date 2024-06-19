@@ -33,10 +33,10 @@
         "serve": "webpack serve",
         "localize:extract": "lit-localize extract",
         "localize:build": "lit-localize build",
-        "prettier:check": "prettier src/material/** --check",
-        "prettier:write": "prettier src/material/** --write",
-        "eslint": "eslint src/material/**",
-        "eslint:fix": "eslint src/material/** --fix",
+        "prettier:check": "prettier src/** --check",
+        "prettier:write": "prettier src/** --write",
+        "eslint": "eslint src/**",
+        "eslint:fix": "eslint src/** --fix",
         "jsdoc": "jsdoc -r src/material"
     },
     "dependencies": {

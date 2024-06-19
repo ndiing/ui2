@@ -140,11 +140,11 @@ class AppNavigationComponent extends MDElement {
                         class="md-tabs__list md-tabs__list--primary"
                         singleSelection
                         .list="${[
-                            { icon: "image", label: "Item 1", selected: true },
-                            { icon: "image", label: "Item 2", badge: 0 },
-                            { icon: "image", label: "Item 3", badge: 3 },
-                            { icon: "image", label: "Item 4", badge: 3333 },
-                        ]}"
+                    { icon: "image", label: "Item 1", selected: true },
+                    { icon: "image", label: "Item 2", badge: 0 },
+                    { icon: "image", label: "Item 3", badge: 3 },
+                    { icon: "image", label: "Item 4", badge: 3333 },
+                ]}"
                     ></md-list>
                 </div>
                 <div
@@ -155,11 +155,11 @@ class AppNavigationComponent extends MDElement {
                         class="md-tabs__list md-tabs__list--primary"
                         singleSelection
                         .list="${[
-                            { label: "Item 1", selected: true },
-                            { label: "Item 2", badge: 0 },
-                            { label: "Item 3", badge: 3 },
-                            { label: "Item 4", badge: 3333 },
-                        ]}"
+                    { label: "Item 1", selected: true },
+                    { label: "Item 2", badge: 0 },
+                    { label: "Item 3", badge: 3 },
+                    { label: "Item 4", badge: 3333 },
+                ]}"
                     ></md-list>
                 </div>
 
@@ -171,11 +171,11 @@ class AppNavigationComponent extends MDElement {
                         class="md-tabs__list md-tabs__list--secondary"
                         singleSelection
                         .list="${[
-                            { icon: "image", label: "Item 1", selected: true },
-                            { icon: "image", label: "Item 2", badge: 0 },
-                            { icon: "image", label: "Item 3", badge: 3 },
-                            { icon: "image", label: "Item 4", badge: 3333 },
-                        ]}"
+                    { icon: "image", label: "Item 1", selected: true },
+                    { icon: "image", label: "Item 2", badge: 0 },
+                    { icon: "image", label: "Item 3", badge: 3 },
+                    { icon: "image", label: "Item 4", badge: 3333 },
+                ]}"
                     ></md-list>
                 </div>
                 <div
@@ -186,11 +186,11 @@ class AppNavigationComponent extends MDElement {
                         class="md-tabs__list md-tabs__list--secondary"
                         singleSelection
                         .list="${[
-                            { label: "Item 1", selected: true },
-                            { label: "Item 2", badge: 0 },
-                            { label: "Item 3", badge: 3 },
-                            { label: "Item 4", badge: 3333 },
-                        ]}"
+                    { label: "Item 1", selected: true },
+                    { label: "Item 2", badge: 0 },
+                    { label: "Item 3", badge: 3 },
+                    { label: "Item 4", badge: 3333 },
+                ]}"
                     ></md-list>
                 </div> -->
             </div>

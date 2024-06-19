@@ -12,6 +12,7 @@ export default [
                     exceptAfterSingleLine: true,
                 },
             ],
+            
         },
         ignores: [],
     },

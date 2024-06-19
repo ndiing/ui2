@@ -2,8 +2,6 @@ import { html } from "lit";
 import { MDElement } from "../../material/element/element.js";
 
 class AppTooltipComponent extends MDElement {
-
-
     get tooltipPlain() {
         return this.querySelector("#tooltipPlain");
     }
@@ -16,7 +14,6 @@ class AppTooltipComponent extends MDElement {
         return this.querySelector("#tooltipRich");
     }
 
-
     get buttonTooltipPlain() {
         return this.querySelector("#buttonTooltipPlain");
     }
@@ -28,7 +25,6 @@ class AppTooltipComponent extends MDElement {
     get buttonTooltipRich() {
         return this.querySelector("#buttonTooltipRich");
     }
-
 
     render() {
         return html`
@@ -112,7 +108,6 @@ class AppTooltipComponent extends MDElement {
     handleTooltipRichClick() {
         this.tooltipRich.toggle(this.buttonTooltipRich);
     }
-
 }
 
 customElements.define("app-tooltip", AppTooltipComponent);

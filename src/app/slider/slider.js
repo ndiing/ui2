@@ -13,37 +13,55 @@ class AppSliderComponent extends MDElement {
                         style=""
                         class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
                     >
-                        <br>
-                        <br>
-                        <br>
-                        <md-slider name="centered" min="-1000000" max="1000000"></md-slider>
+                        <br />
+                        <br />
+                        <br />
+                        <md-slider
+                            name="centered"
+                            min="-1000000"
+                            max="1000000"
+                        ></md-slider>
                     </div>
                     <div
                         style=""
                         class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
                     >
-                        <br>
-                        <br>
-                        <br>
-                        <md-slider name="continuous" min="0" max="1000000"></md-slider>
+                        <br />
+                        <br />
+                        <br />
+                        <md-slider
+                            name="continuous"
+                            min="0"
+                            max="1000000"
+                        ></md-slider>
                     </div>
                     <div
                         style=""
                         class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
                     >
-                        <br>
-                        <br>
-                        <br>
-                        <md-slider name="discrete" step="100000" min="0" max="1000000"></md-slider>
+                        <br />
+                        <br />
+                        <br />
+                        <md-slider
+                            name="discrete"
+                            step="100000"
+                            min="0"
+                            max="1000000"
+                        ></md-slider>
                     </div>
                     <div
                         style=""
                         class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
                     >
-                        <br>
-                        <br>
-                        <br>
-                        <md-slider name="range-selection" min="1000000" max="10000000" value='[3000000,8000000]'></md-slider>
+                        <br />
+                        <br />
+                        <br />
+                        <md-slider
+                            name="range-selection"
+                            min="1000000"
+                            max="10000000"
+                            value="[3000000,8000000]"
+                        ></md-slider>
                     </div>
 
                     <div
@@ -64,7 +82,6 @@ class AppSliderComponent extends MDElement {
         `;
     }
 
-    
     handleFormNativeSubmit(event) {
         console.log(Array.from(new FormData(event.detail.currentTarget).entries()));
     }

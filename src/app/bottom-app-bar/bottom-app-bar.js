@@ -49,7 +49,6 @@ class AppBottomAppBarComponent extends MDElement {
                                         @click="${() => this.bottomAppBar2.toggle()}"
                                     ></md-button>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>

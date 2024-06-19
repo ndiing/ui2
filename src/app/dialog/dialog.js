@@ -2,7 +2,6 @@ import { html } from "lit";
 import { MDElement } from "../../material/element/element.js";
 
 class AppDialogComponent extends MDElement {
-
     get dialog() {
         return this.querySelector("#dialog");
     }
@@ -10,7 +9,6 @@ class AppDialogComponent extends MDElement {
     get dialogFullScreen() {
         return this.querySelector("#dialogFullScreen");
     }
-
 
     render() {
         return html`
@@ -59,7 +57,6 @@ class AppDialogComponent extends MDElement {
             </div>
         `;
     }
-
 
     handleDialogClick() {
         this.dialog.toggle();

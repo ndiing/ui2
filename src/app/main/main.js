@@ -51,9 +51,9 @@ class AppMainComponent extends MDElement {
         });
     }
 
-    topAppBar=createRef()
+    topAppBar = createRef();
 
-    navigationDrawer=createRef()
+    navigationDrawer = createRef();
 
     render() {
         return html`
@@ -77,37 +77,36 @@ class AppMainComponent extends MDElement {
         `;
     }
 
-    async connectedCallback(){
-        super.connectedCallback()
+    async connectedCallback() {
+        super.connectedCallback();
 
-        this.handleBreakpointChange=this.handleBreakpointChange.bind(this)
-        window.addEventListener('onBreakpointChange',this.handleBreakpointChange)
+        this.handleBreakpointChange = this.handleBreakpointChange.bind(this);
+        window.addEventListener("onBreakpointChange", this.handleBreakpointChange);
     }
 
-    async disconnectedCallback(){
-        super.disconnectedCallback()
+    async disconnectedCallback() {
+        super.disconnectedCallback();
 
-        window.removeEventListener('onBreakpointChange',this.handleBreakpointChange)
+        window.removeEventListener("onBreakpointChange", this.handleBreakpointChange);
     }
 
-    async handleBreakpointChange(event){
-        
-        await this.updateComplete
+    async handleBreakpointChange(event) {
+        await this.updateComplete;
 
-        if(event.detail.name=='expanded'){
-            this.navigationDrawer.value.variant=''
-            this.navigationDrawer.value.show()
-            this.topAppBar.value.close()
-        }else{
-            this.navigationDrawer.value.variant='modal'
-            this.navigationDrawer.value.close()
-            this.topAppBar.value.show()
+        if (event.detail.name == "expanded") {
+            this.navigationDrawer.value.variant = "";
+            this.navigationDrawer.value.show();
+            this.topAppBar.value.close();
+        } else {
+            this.navigationDrawer.value.variant = "modal";
+            this.navigationDrawer.value.close();
+            this.topAppBar.value.show();
         }
     }
 
     handleMainListItemSelected(event) {
-        if(!this.ready){
-            this.ready=true
+        if (!this.ready) {
+            this.ready = true;
             const listItem = event.detail;
             listItem.scrollIntoView({
                 block: "center",
@@ -117,13 +116,13 @@ class AppMainComponent extends MDElement {
         }
     }
 
-    handleMainPaneIconButtonClick(event){
-        this.navigationDrawer.value.toggle()
+    handleMainPaneIconButtonClick() {
+        this.navigationDrawer.value.toggle();
     }
 
-    handleMainListItemClick(event){
-        if(this.navigationDrawer.value.allVariants.includes('modal')){
-            this.navigationDrawer.value.close()
+    handleMainListItemClick() {
+        if (this.navigationDrawer.value.allVariants.includes("modal")) {
+            this.navigationDrawer.value.close();
         }
     }
 }

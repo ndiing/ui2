@@ -8,7 +8,7 @@ class AppTabsComponent extends MDElement {
                 style=""
                 class="md-layout-grid"
             >
-            <div
+                <div
                     style=""
                     class="md-layout-grid__item md-layout-grid__item--expanded6 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
                 >
