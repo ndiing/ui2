@@ -14,6 +14,7 @@ class AppImageComponent extends MDElement {
                 >
                     <md-image
                         src="https://placehold.co/112"
+                        alt="placehold"
                         @onImageNativeLoad="${console.log}"
                         @onImageNativeError="${console.log}"
                     ></md-image>
@@ -26,31 +27,37 @@ class AppImageComponent extends MDElement {
                         style="width:112px;"
                         aspectRatio="16/9"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         aspectRatio="3/2"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         aspectRatio="4/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         aspectRatio="1/1"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         aspectRatio="3/4"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         aspectRatio="2/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                 </div>
                 <div
@@ -62,36 +69,42 @@ class AppImageComponent extends MDElement {
                         variant="rounded"
                         aspectRatio="16/9"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         variant="rounded"
                         aspectRatio="3/2"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         variant="rounded"
                         aspectRatio="4/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         variant="rounded"
                         aspectRatio="1/1"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         variant="rounded"
                         aspectRatio="3/4"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="width:112px;"
                         variant="rounded"
                         aspectRatio="2/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                 </div>
                 <div
@@ -102,31 +115,37 @@ class AppImageComponent extends MDElement {
                         style="height:112px;"
                         aspectRatio="16/9"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         aspectRatio="3/2"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         aspectRatio="4/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         aspectRatio="1/1"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         aspectRatio="3/4"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         aspectRatio="2/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                 </div>
                 <div
@@ -138,36 +157,42 @@ class AppImageComponent extends MDElement {
                         variant="rounded"
                         aspectRatio="16/9"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         variant="rounded"
                         aspectRatio="3/2"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         variant="rounded"
                         aspectRatio="4/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         variant="rounded"
                         aspectRatio="1/1"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         variant="rounded"
                         aspectRatio="3/4"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                     <md-image
                         style="height:112px;"
                         variant="rounded"
                         aspectRatio="2/3"
                         src="https://placehold.co/112"
+                        alt="placehold"
                     ></md-image>
                 </div>
             </div>
