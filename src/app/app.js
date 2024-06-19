@@ -1,4 +1,3 @@
-import { MDObserver, breakpoints, schemes } from "../material/observer/observer.js";
 import { MDRouter } from "../material/router/router.js";
 
 const routes = [
