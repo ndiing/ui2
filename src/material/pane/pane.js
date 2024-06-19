@@ -212,17 +212,17 @@ class MDPaneElement extends MDElement {
         this.handlePaneScrimClick = this.handlePaneScrimClick.bind(this);
         this.scrim.addEventListener("click", this.handlePaneScrimClick);
 
-        this.resizeObserver = new ResizeObserver((entries) => {
-            window.requestAnimationFrame(() => {
-                entries.forEach((entry) => {
-                    this.style.setProperty("--md-comp-pane-height", entry.contentRect.height + "px");
-                    this.style.setProperty("--md-comp-pane-width", entry.contentRect.width + "px");
-                    this.style.setProperty("--md-comp-pane-height-pixel", entry.contentRect.height);
-                    this.style.setProperty("--md-comp-pane-width-pixel", entry.contentRect.width);
-                });
-            });
-        });
-        this.resizeObserver.observe(this);
+        // this.resizeObserver = new ResizeObserver((entries) => {
+        //     window.requestAnimationFrame(() => {
+        //         entries.forEach((entry) => {
+        //             this.style.setProperty("--md-comp-pane-height", entry.contentRect.height + "px");
+        //             this.style.setProperty("--md-comp-pane-width", entry.contentRect.width + "px");
+        //             this.style.setProperty("--md-comp-pane-height-pixel", entry.contentRect.height);
+        //             this.style.setProperty("--md-comp-pane-width-pixel", entry.contentRect.width);
+        //         });
+        //     });
+        // });
+        // this.resizeObserver.observe(this);
     }
 
     /**
@@ -235,7 +235,7 @@ class MDPaneElement extends MDElement {
         this.scrim.removeEventListener("click", this.handlePaneScrimClick);
         this.scrim.remove();
 
-        this.resizeObserver.disconnect();
+        // this.resizeObserver.disconnect();
     }
 
     /**
