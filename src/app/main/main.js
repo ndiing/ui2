@@ -79,12 +79,10 @@ class AppMainComponent extends MDElement {
 
     async connectedCallback() {
         super.connectedCallback();
-
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
-
     }
 
     handleMainListItemSelected(event) {
