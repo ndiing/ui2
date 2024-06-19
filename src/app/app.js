@@ -1,37 +1,6 @@
 import { MDObserver, breakpoints, schemes } from "../material/observer/observer.js";
 import { MDRouter } from "../material/router/router.js";
 
-// window.addEventListener('onNavigationStart',console.log)
-// window.addEventListener('onNavigation',console.log)
-// window.addEventListener('onNavigationError',console.log)
-// window.addEventListener('onNavigationEnd',console.log)
-// window.addEventListener('onBreakpointChange',console.log)
-// window.addEventListener('onSchemeChange',console.log)
-
-const emit = (type, detail) => {
-    const event = new CustomEvent(type, {
-        cancelable: true,
-        bubbles: true,
-        detail,
-    });
-    window.dispatchEvent(event);
-};
-
-const handleFirstLoad = () => {
-    window.removeEventListener("onNavigationEnd", handleFirstLoad);
-
-    const breakpoint = new MDObserver((detail) => {
-        emit("onBreakpointChange", detail);
-    });
-    breakpoint.observe(breakpoints);
-
-    const scheme = new MDObserver((detail) => {
-        emit("onSchemeChange", detail);
-    });
-    scheme.observe(schemes);
-};
-window.addEventListener("onNavigationEnd", handleFirstLoad);
-
 const routes = [
     {
         path: "",
