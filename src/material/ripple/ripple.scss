@@ -1,0 +1,156 @@
+@mixin ripple() {
+    --md-comp-ripple-size: 141.4213562373095%;
+    --md-comp-ripple-x: 0%;
+    --md-comp-ripple-y: 0%;
+    --md-comp-ripple-left: 50%;
+    --md-comp-ripple-top: 50%;
+    position: relative;
+
+    &::after {
+        content: "";
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: var(--md-sys-color-primary);
+        opacity: 0;
+        transform: translate3d(-50%, -50%, 0) translate3d(var(--md-comp-ripple-x), var(--md-comp-ripple-y), 0);
+        position: absolute;
+        left: var(--md-comp-ripple-left);
+        top: var(--md-comp-ripple-top);
+        pointer-events: none;
+    }
+}
+@mixin ripple-button() {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+@mixin ripple-size() {
+    &::after {
+        width: var(--md-comp-ripple-size);
+    }
+}
+@mixin ripple-clipped() {
+    overflow: hidden;
+}
+@mixin ripple-selected() {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+
+    .md-icon {
+        font-variation-settings:
+            "FILL" 1,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
+    }
+}
+@mixin ripple-focused() {
+    &::after {
+        opacity: 10%;
+        animation-name: var(--md-comp-ripple-animation, rippleIn);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        animation-duration: var(--md-sys-motion-duration-short4);
+    }
+}
+@mixin ripple-fade-out() {
+    &::after {
+        opacity: 0%;
+        animation-name: var(--md-comp-ripple-animation, rippleIn), var(--md-comp-ripple-animation, rippleOut);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized)), cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        animation-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-long4);
+    }
+}
+@mixin ripple-hover() {
+    &::after {
+        opacity: 8%;
+    }
+
+    .md-icon {
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 100,
+            "opsz" 24;
+    }
+}
+@mixin ripple-pressed() {
+    &::after {
+        opacity: 10%;
+    }
+
+    .md-icon {
+        font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" -100,
+            "opsz" 24;
+    }
+}
+@mixin ripple-dragged() {
+    &::after {
+        opacity: 16%;
+    }
+}
+@mixin ripple-disabled() {
+    opacity: 38%;
+    pointer-events: none;
+
+    &::after {
+        opacity: 0%;
+    }
+}
+@mixin ripple-reset() {
+    background: inherit;
+    color: inherit;
+
+    &::after {
+        content: none;
+    }
+}
+
+.md-ripple {
+    @include ripple();
+}
+.md-ripple--button {
+    @include ripple-button();
+}
+
+.md-ripple[selected],
+.md-ripple--focused,
+.md-ripple--hover,
+.md-ripple--pressed,
+.md-ripple[dragged],
+.md-ripple[disabled] {
+    @include ripple-size();
+}
+
+.md-ripple--clipped.md-ripple[selected],
+.md-ripple--clipped.md-ripple--focused,
+.md-ripple--clipped.md-ripple--hover,
+.md-ripple--clipped.md-ripple--pressed,
+.md-ripple--clipped.md-ripple[dragged],
+.md-ripple--clipped.md-ripple[disabled] {
+    @include ripple-clipped();
+}
+
+.md-ripple[selected] {
+    @include ripple-selected();
+}
+.md-ripple--focused {
+    @include ripple-focused();
+}
+.md-ripple--fade-out.md-ripple--focused {
+    @include ripple-fade-out();
+}
+.md-ripple--hover {
+    @include ripple-hover();
+}
+.md-ripple--pressed {
+    @include ripple-pressed();
+}
+.md-ripple[dragged] {
+    @include ripple-dragged();
+}
+.md-ripple[disabled] {
+    @include ripple-disabled();
+}

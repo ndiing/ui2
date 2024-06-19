@@ -2,9 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 <file target-language="zh-Hans" source-language="en" original="lit-localize-inputs" datatype="plaintext">
 <body>
-<trans-unit id="s49e763aed00877a8">
-  <source>Main</source>
-  <target>主要的</target>
+<trans-unit id="sa82cf0058e96a413">
+  <source>welcome</source>
+  <target>欢迎</target>
 </trans-unit>
 </body>
 </file>

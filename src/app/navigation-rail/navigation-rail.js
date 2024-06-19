@@ -1,54 +1,61 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppNavigationRailElement extends MDElement {
-    constructor() {
-        super();
+class AppNavigationRailComponent extends MDElement {
+    get navigationRail1() {
+        return this.querySelector("#navigationRail1");
+    }
 
-        this.list1 = [
-            { leadingIcon: "image", label: "Label 1", selected: true },
-            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
-            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
-            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
-        ];
-        this.list2 = [
-            { leadingIcon: "image", selected: true },
-            { leadingIcon: "image", badge: { label: 0 } },
-            { leadingIcon: "image", badge: { label: 1 } },
-            { leadingIcon: "image", badge: { label: 1000 } },
-        ];
+    get navigationRail2() {
+        return this.querySelector("#navigationRail2");
     }
 
     render() {
         return html`
-            <div class="md-layout-border md-layout-fit">
+            <div class="md-layout-border">
                 <md-navigation-rail
-                    .list="${this.list1}"
-                    id="navigationDrawer1"
+                    id="navigationRail1"
+                    .list="${[
+                        { icon: "image", label: "Item 1", selected: true },
+                        { icon: "image", label: "Item 2", badge: 0 },
+                        { icon: "image", label: "Item 3", badge: 3 },
+                        { icon: "image", label: "Item 4", badge: 3333 },
+                    ]}"
                 ></md-navigation-rail>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div class="md-layout-border md-layout-fit">
+                    <div class="md-layout-border">
                         <md-navigation-rail
-                            .list="${this.list2}"
-                            id="navigationDrawer2"
+                            id="navigationRail2"
+                            .list="${[
+                                { icon: "image", selected: true },
+                                { icon: "image", badge: 0 },
+                                { icon: "image", badge: 3 },
+                                { icon: "image", badge: 3333 },
+                            ]}"
                         ></md-navigation-rail>
 
                         <div class="md-layout-border__item md-layout-border__item--center">
                             <div
-                                class="md-layout-column"
-                                style="margin:24px;"
+                                style=""
+                                class="md-layout-grid"
                             >
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => navigationDrawer1.toggle()}"
-                                        label="navigation-rail"
+                                        label="navigation rail 1"
+                                        @click="${() => this.navigationRail1.toggle()}"
                                     ></md-button>
                                 </div>
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => navigationDrawer2.toggle()}"
-                                        label="navigation-rail"
+                                        label="navigation rail 2"
+                                        @click="${() => this.navigationRail2.toggle()}"
                                     ></md-button>
                                 </div>
                             </div>
@@ -60,6 +67,6 @@ class AppNavigationRailElement extends MDElement {
     }
 }
 
-customElements.define("app-navigation-rail", AppNavigationRailElement);
+customElements.define("app-navigation-rail", AppNavigationRailComponent);
 
 export default document.createElement("app-navigation-rail");

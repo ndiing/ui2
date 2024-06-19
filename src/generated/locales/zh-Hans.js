@@ -1,7 +1,8 @@
 // Do not modify this file by hand!
 // Re-generate this file by running lit-localize
 
-/* eslint-disable no-irregular-whitespace */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const templates = {};
+export const templates = {
+    sa82cf0058e96a413: `欢迎`,
+};

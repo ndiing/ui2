@@ -1,0 +1,42 @@
+.md-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 32px;
+    border-radius: var(--md-sys-shape-corner-small);
+    padding: 0 12px;
+    gap: 0 8px;
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    border: 1px solid var(--md-sys-color-outline);
+    &[selected] {
+        border: 1px solid var(--md-sys-color-secondary-container);
+    }
+}
+.md-chip__icon {
+    margin-left: -4px;
+}
+.md-chip__icon,
+.md-chip__action .md-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+}
+.md-chip__avatar {
+    width: 24px;
+    height: 24px;
+    margin-left: -8px;
+}
+.md-chip__label {
+    @include typography-label-large();
+}
+.md-chip__action {
+    margin-right: -4px;
+
+    &.md-ripple {
+        &::after {
+            width: 24px;
+        }
+    }
+}

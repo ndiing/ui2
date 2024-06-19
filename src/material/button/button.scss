@@ -1,0 +1,75 @@
+.md-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    color: var(--md-sys-color-primary);
+}
+.md-button__native {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: inherit;
+    padding: 0 12px;
+    gap: 0 8px;
+    border-radius: inherit;
+    background: inherit;
+    color: inherit;
+}
+.md-button__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    + .md-button__label {
+        margin-right: 4px;
+    }
+}
+.md-button__label {
+    @include typography-label-large();
+}
+
+.md-button--elevated,
+.md-button--filled,
+.md-button--tonal,
+.md-button--outlined {
+    .md-button__native {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .md-button__icon {
+        margin-left: -8px;
+        + .md-button__label {
+            margin-right: 0px;
+        }
+    }
+}
+
+.md-button--elevated {
+    background: var(--md-sys-color-surface-container-low);
+    color: var(--md-sys-color-primary);
+    box-shadow: var(--md-sys-elevation-level1);
+}
+.md-button--filled {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+
+    &.md-ripple {
+        &::after {
+            background: var(--md-sys-color-on-primary);
+        }
+    }
+}
+.md-button--tonal {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+.md-button--outlined {
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    border: 1px solid var(--md-sys-color-outline);
+}

@@ -1,0 +1,79 @@
+.md-checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.md-checkbox__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: relative;
+}
+.md-checkbox__label {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.md-checkbox__container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+.md-checkbox__native {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    transform: translate3d(-50%, -50%, 0);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+
+    &:indeterminate {
+        + .md-checkbox__track {
+            background: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+            .md-checkbox__thumb {
+                width: 10px;
+                height: 2px;
+                border-bottom: 2px solid var(--md-sys-color-on-primary);
+            }
+        }
+    }
+    &:checked {
+        + .md-checkbox__track {
+            background: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+            .md-checkbox__thumb {
+                width: 10px;
+                height: 5px;
+                margin-top: -2px;
+                transform: rotate(-45deg);
+                border-bottom: 2px solid var(--md-sys-color-on-primary);
+                border-left: 2px solid var(--md-sys-color-on-primary);
+            }
+        }
+    }
+}
+.md-checkbox__track {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    border: 2px solid var(--md-sys-color-outline);
+}
+// .md-checkbox__thumb {}

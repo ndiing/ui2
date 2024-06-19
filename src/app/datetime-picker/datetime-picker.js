@@ -1,50 +1,100 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppDatetimePickerElement extends MDElement {
+class AppDatetimePickerComponent extends MDElement {
+    get datetime() {
+        return this.querySelector("#datetime");
+    }
+
+    get datetimePicker() {
+        return this.querySelector("#datetimePicker");
+    }
+
     render() {
         return html`
-            <div
-                class="md-layout-column"
-                style="margin:24px;"
+            <md-form
+                @onFormNativeSubmit="${this.handleFormNativeSubmit}"
+                @onFormNativeReset="${this.handleFormNativeReset}"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-datetime-picker
-                        id="dateTimePicker1"
-                        @onDatetimePickerChange="${(event) => {
-                            button1.label = [[dateTimePicker1.selected.getFullYear(), dateTimePicker1.selected.getMonth() + 1, dateTimePicker1.selected.getDate()].join("-"), [dateTimePicker1.selected.getHours(), dateTimePicker1.selected.getMinutes()].join(":")].join("T");
-                        }}"
-                        @onDatetimePickerButtonOkClick="${(event) => dateTimePicker1.close()}"
-                        @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker1.close()}"
-                    ></md-datetime-picker>
-                    <md-button
-                        id="button1"
-                        @click="${(event) => dateTimePicker1.show(event.currentTarget)}"
-                        label="datetime-picker"
-                    ></md-button>
-                </div>
+                <div
+                    style=""
+                    class="md-layout-grid"
+                >
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <label for="">
+                            datetime-local
+                            <input
+                                @input="${this.handleDatetimeInput}"
+                                id="datetime"
+                                type="datetime-local"
+                                name="datetime-local"
+                                value="1990-10-17T00:00"
+                            />
+                        </label>
+                        <md-datetime-picker
+                            id="datetimePicker"
+                            value="1990-10-17T00:00"
+                            @onDatetimePickerItemClick="${this.handleDatetimePickerItemClick}"
+                            @onDatetimePickerButtonCancelClick="${this.handleDatetimePickerButtonCancelClick}"
+                            @onDatetimePickerButtonOkClick="${this.handleDatetimePickerButtonOkClick}"
+                        ></md-datetime-picker>
+                        <md-button
+                            label="Datetime Picker"
+                            @click="${(event) => this.datetimePicker.toggle(event.currentTarget)}"
+                        ></md-button>
+                    </div>
 
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-datetime-picker
-                        id="dateTimePicker2"
-                        @onDatetimePickerChange="${(event) => {
-                            button1.label = [[dateTimePicker2.selected.getFullYear(), dateTimePicker2.selected.getMonth() + 1, dateTimePicker2.selected.getDate()].join("-"), [dateTimePicker2.selected.getHours(), dateTimePicker2.selected.getMinutes()].join(":")].join("T");
-                        }}"
-                        @onDatetimePickerButtonOkClick="${(event) => dateTimePicker2.close()}"
-                        @onDatetimePickerButtonCancelClick="${(event) => dateTimePicker2.close()}"
-                        value="1990-10-17T20:30"
-                    ></md-datetime-picker>
-                    <md-button
-                        id="button1"
-                        @click="${(event) => dateTimePicker2.show(event.currentTarget)}"
-                        label="datetime-picker"
-                    ></md-button>
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <md-button
+                            type="reset"
+                            label="Reset"
+                        ></md-button>
+                        <md-button
+                            type="submit"
+                            label="Submit"
+                        ></md-button>
+                    </div>
                 </div>
-            </div>
+            </md-form>
         `;
+    }
+
+    handleDatetimeInput() {
+        this.datetimePicker.value = this.datetime.value;
+    }
+
+    handleDatetimePickerItemClick() {
+        this.datetime.value = this.datetimePicker.value;
+    }
+
+    handleDatetimePickerButtonCancelClick() {
+        this.datetime.value = this.datetimePicker.value;
+        this.datetimePicker.close();
+    }
+
+    handleDatetimePickerButtonOkClick() {
+        this.datetime.value = this.datetimePicker.value;
+        this.datetimePicker.close();
+    }
+
+    handleFormNativeReset() {
+        this.datetimePicker.value = this.datetimePicker.defaultValue;
+    }
+
+    handleFormNativeSubmit(event) {
+        const formData = new FormData(event.currentTarget.native.value);
+        const object = Object.fromEntries(formData.entries());
+        const json = JSON.stringify(object, null, 4);
+        console.log(json);
     }
 }
 
-customElements.define("app-datetime-picker", AppDatetimePickerElement);
+customElements.define("app-datetime-picker", AppDatetimePickerComponent);
 
 export default document.createElement("app-datetime-picker");

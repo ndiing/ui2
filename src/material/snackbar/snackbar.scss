@@ -1,0 +1,85 @@
+.md-snackbar {
+    display: inline-flex;
+    width: 344px;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    background: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
+    box-shadow: var(--md-sys-elevation-level3);
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    z-index: 7;
+    animation-name: var(--md-comp-pane-animation, snackbarIn);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
+
+    > * {
+        animation-name: var(--md-comp-pane-animation, snackbarInnerIn);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        animation-duration: var(--md-sys-motion-duration-short4);
+    }
+
+    &:not([open]) {
+        visibility: hidden;
+        pointer-events: none;
+        animation-name: var(--md-comp-pane-animation, snackbarOut);
+
+        > * {
+            animation-name: var(--md-comp-pane-animation, snackbarInnerOut);
+        }
+    }
+
+    .md-pane__header {
+        padding: 0;
+
+        + .md-pane__body {
+            margin-top: 0;
+        }
+    }
+
+    .md-pane__body {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 0 4px 0;
+    }
+
+    .md-pane__inner {
+        overflow: visible;
+        flex: 1 1 64%;
+        padding: 0 0 0 16px;
+        margin: 14px 0 10px 0;
+        letter-spacing: 0;
+
+        + .md-pane__footer {
+            margin-top: 0;
+        }
+    }
+
+    .md-pane__footer {
+        padding: 8px 8px 4px 0;
+        margin-left: auto;
+        column-gap: 12px;
+
+        .md-button {
+            height: 32px;
+            color: var(--md-sys-color-inverse-primary);
+
+            &.md-ripple {
+                &::after {
+                    background: var(--md-sys-color-on-primary);
+                }
+            }
+        }
+
+        .md-icon-button {
+            margin-right: 4px;
+            color: var(--md-sys-color-inverse-on-surface);
+
+            &.md-ripple {
+                &::after {
+                    background: var(--md-sys-color-on-primary);
+                }
+            }
+        }
+    }
+}

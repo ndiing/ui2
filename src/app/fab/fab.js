@@ -1,55 +1,74 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppFabElement extends MDElement {
+class AppFabComponent extends MDElement {
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-fab icon="image"></md-fab>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-fab
-                        ui=""
-                        icon="image"
-                    ></md-fab>
-                    <md-fab
-                        ui="small"
-                        icon="image"
-                    ></md-fab>
-                    <md-fab
-                        ui="large"
+                        variant="small"
                         icon="image"
                     ></md-fab>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-fab
-                        ui="extended"
+                        variant="large"
+                        icon="image"
+                    ></md-fab>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-fab
+                        variant="extended"
                         icon="image"
                         label="Label"
                     ></md-fab>
                     <md-fab
-                        ui="extended"
+                        variant="extended"
                         label="Label"
                     ></md-fab>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-fab
-                        ui="surface"
+                        variant="surface"
                         icon="image"
                     ></md-fab>
                     <md-fab
-                        ui="container"
+                        variant="secondary"
                         icon="image"
                     ></md-fab>
                     <md-fab
-                        ui="tertiary"
+                        variant="tertiary"
                         icon="image"
                     ></md-fab>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-fab
-                        ui="unelevated"
+                        variant="unelevated"
                         icon="image"
                     ></md-fab>
                 </div>
@@ -58,6 +77,6 @@ class AppFabElement extends MDElement {
     }
 }
 
-customElements.define("app-fab", AppFabElement);
+customElements.define("app-fab", AppFabComponent);
 
 export default document.createElement("app-fab");

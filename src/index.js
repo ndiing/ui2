@@ -1,5 +1,5 @@
-import "./com/index.scss";
-import "./com/index.js";
+import "./material/material.scss";
+import "./material/material.js";
 
-import "./app/index.scss";
-import "./app/index.js";
+import "./app/app.scss";
+import "./app/app.js";

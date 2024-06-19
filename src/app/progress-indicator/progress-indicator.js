@@ -1,36 +1,38 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppProgressIndicatorElement extends MDElement {
+class AppProgressIndicatorComponent extends MDElement {
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-progress-indicator></md-progress-indicator>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-progress-indicator value="50"></md-progress-indicator>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-progress-indicator value="25"></md-progress-indicator>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-progress-indicator value="100"></md-progress-indicator>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-progress-indicator variant="circular"></md-progress-indicator>
                 </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-progress-indicator ui="circular"></md-progress-indicator>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-progress-indicator
-                        ui="circular"
-                        value="50"
-                    ></md-progress-indicator>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded4 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-progress-indicator
-                        ui="circular"
-                        value="100"
+                        value="25"
+                        variant="circular"
                     ></md-progress-indicator>
                 </div>
             </div>
@@ -38,6 +40,6 @@ class AppProgressIndicatorElement extends MDElement {
     }
 }
 
-customElements.define("app-progress-indicator", AppProgressIndicatorElement);
+customElements.define("app-progress-indicator", AppProgressIndicatorComponent);
 
 export default document.createElement("app-progress-indicator");

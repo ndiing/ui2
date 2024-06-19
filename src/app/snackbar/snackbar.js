@@ -1,103 +1,188 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppSnackbarElement extends MDElement {
+class AppSnackbarComponent extends MDElement {
+    get snackbar() {
+        return this.querySelector("#snackbar");
+    }
+
+    get snackbar2() {
+        return this.querySelector("#snackbar2");
+    }
+
+    get snackbar3() {
+        return this.querySelector("#snackbar3");
+    }
+
+    get snackbar4() {
+        return this.querySelector("#snackbar4");
+    }
+
+    get snackbar5() {
+        return this.querySelector("#snackbar5");
+    }
+
+    get snackbar6() {
+        return this.querySelector("#snackbar6");
+    }
+
+
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
-                        .buttons="${[{ label: "Action" }]}"
-                        id="snackbar1"
-                        @onSnackbarButtonClick="${() => snackbar1.close()}"
+                        id="snackbar"
+                        @onPaneButtonClick="${this.handleSnackbarClose}"
+                        @onPaneIconButtonClick="${this.handleSnackbarClose}"
+                        buttons='[{"label":"Action"},{"component":"icon-button","icon":"close"}]'
                         >Single-line snackbar with action</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar1.show()}"
-                        label="snackbar"
+                        label="Snackbar"
+                        @click="${this.handleSnackbarShow}"
                     ></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
-                        .buttons="${[{ label: "Action" }, { is: "icon-button", icon: "close" }]}"
                         id="snackbar2"
-                        @onSnackbarButtonClick="${() => snackbar2.close()}"
-                        >Single-line snackbar with action</md-snackbar
+                        @onPaneButtonClick="${this.handleSnackbar2Close}"
+                        @onPaneIconButtonClick="${this.handleSnackbar2Close}"
+                        >Single-line snackbar</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar2.show()}"
-                        label="snackbar"
+                        label="Snackbar 2"
+                        @click="${this.handleSnackbar2Show}"
                     ></md-button>
                 </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
                         id="snackbar3"
-                        @onSnackbarButtonClick="${() => snackbar3.close()}"
-                        >Single-line snackbar without action</md-snackbar
-                    >
-                    <md-button
-                        @click="${() => snackbar3.show()}"
-                        label="snackbar"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-snackbar
-                        .buttons="${[{ label: "Action" }]}"
-                        id="snackbar4"
-                        @onSnackbarButtonClick="${() => snackbar4.close()}"
+                        @onPaneButtonClick="${this.handleSnackbar3Close}"
+                        @onPaneIconButtonClick="${this.handleSnackbar3Close}"
+                        buttons='[{"label":"Action"}]'
                         >Single-line snackbar with action</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar4.show()}"
-                        label="snackbar"
+                        label="Snackbar 3"
+                        @click="${this.handleSnackbar3Show}"
                     ></md-button>
                 </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
-                        id="snackbar5"
-                        @onSnackbarButtonClick="${() => snackbar5.close()}"
+                        id="snackbar4"
+                        @onPaneButtonClick="${this.handleSnackbar4Close}"
+                        @onPaneIconButtonClick="${this.handleSnackbar4Close}"
                         >Two-line snackbar<br />without action</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar5.show()}"
-                        label="snackbar"
+                        label="Snackbar 4"
+                        @click="${this.handleSnackbar4Show}"
                     ></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
-                        .buttons="${[{ label: "Action" }]}"
-                        id="snackbar6"
-                        @onSnackbarButtonClick="${() => snackbar6.close()}"
+                        id="snackbar5"
+                        @onPaneButtonClick="${this.handleSnackbar5Close}"
+                        @onPaneIconButtonClick="${this.handleSnackbar5Close}"
+                        buttons='[{"label":"Action"}]'
                         >Two-line snackbar<br />with action</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar6.show()}"
-                        label="snackbar"
+                        label="Snackbar 5"
+                        @click="${this.handleSnackbar5Show}"
                     ></md-button>
                 </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-snackbar
-                        .buttons="${[{ label: "Longer action" }]}"
-                        id="snackbar7"
-                        @onSnackbarButtonClick="${() => snackbar7.close()}"
+                        id="snackbar6"
+                        @onPaneButtonClick="${this.handleSnackbar6Close}"
+                        @onPaneIconButtonClick="${this.handleSnackbar6Close}"
+                        buttons='[{"label":"Longer action"}]'
                         >Two-line snackbar<br />with longer action</md-snackbar
                     >
                     <md-button
-                        @click="${() => snackbar7.show()}"
-                        label="snackbar"
+                        label="Snackbar 6"
+                        @click="${this.handleSnackbar6Show}"
                     ></md-button>
                 </div>
             </div>
         `;
     }
+
+
+    handleSnackbarShow() {
+        this.snackbar.show();
+    }
+
+    handleSnackbar2Show() {
+        this.snackbar2.show();
+    }
+
+    handleSnackbar3Show() {
+        this.snackbar3.show();
+    }
+
+    handleSnackbar4Show() {
+        this.snackbar4.show();
+    }
+
+    handleSnackbar5Show() {
+        this.snackbar5.show();
+    }
+
+    handleSnackbar6Show() {
+        this.snackbar6.show();
+    }
+
+
+    handleSnackbarClose() {
+        this.snackbar.close();
+    }
+
+    handleSnackbar2Close() {
+        this.snackbar2.close();
+    }
+
+    handleSnackbar3Close() {
+        this.snackbar3.close();
+    }
+
+    handleSnackbar4Close() {
+        this.snackbar4.close();
+    }
+
+    handleSnackbar5Close() {
+        this.snackbar5.close();
+    }
+
+    handleSnackbar6Close() {
+        this.snackbar6.close();
+    }
+
 }
 
-customElements.define("app-snackbar", AppSnackbarElement);
+customElements.define("app-snackbar", AppSnackbarComponent);
 
 export default document.createElement("app-snackbar");

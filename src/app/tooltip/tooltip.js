@@ -1,97 +1,69 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppTooltipElement extends MDElement {
+class AppTooltipComponent extends MDElement {
+
+
+    get tooltipPlain() {
+        return this.querySelector("#tooltipPlain");
+    }
+
+    get tooltipPlain2() {
+        return this.querySelector("#tooltipPlain2");
+    }
+
+    get tooltipRich() {
+        return this.querySelector("#tooltipRich");
+    }
+
+
+    get buttonTooltipPlain() {
+        return this.querySelector("#buttonTooltipPlain");
+    }
+
+    get buttonTooltipPlain2() {
+        return this.querySelector("#buttonTooltipPlain2");
+    }
+
+    get buttonTooltipRich() {
+        return this.querySelector("#buttonTooltipRich");
+    }
+
+
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-tooltip
-                        label="Rich tooltip"
-                        .buttons="${[{ label: "Action" }, { label: "Action" }]}"
-                        id="tooltip1"
-                        @onTooltipButtonClick="${() => tooltip1.close()}"
-                        @pointerleave="${() => tooltip1.close()}"
+                        id="tooltipPlain"
+                        @onPaneButtonClick="${this.handleTooltipPlainClick}"
+                        @onPaneIconButtonClick="${this.handleTooltipPlainClick}"
+                        variant="tooltip plain"
                     >
-                        Rich tooltips bring attention to a particular<br />
-                        element of feature that warrants the user's<br />
-                        focus.
+                        Save to favorites
                     </md-tooltip>
                     <md-button
-                        @pointerenter="${(event) => tooltip1.show(event.currentTarget)}"
-                        label="tooltip"
+                        id="buttonTooltipPlain"
+                        label="Tooltip Plain"
+                        variant="plain"
+                        @click="${this.handleTooltipPlainClick}"
                     ></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-tooltip
-                        label="Rich tooltip"
-                        .buttons="${[{ label: "Action" }]}"
-                        id="tooltip2"
-                        @onTooltipButtonClick="${() => tooltip2.close()}"
-                        @pointerleave="${() => tooltip2.close()}"
-                    >
-                        Rich tooltips bring attention to a particular<br />
-                        element of feature that warrants the user's<br />
-                        focus.
-                    </md-tooltip>
-                    <md-button
-                        @pointerenter="${(event) => tooltip2.show(event.currentTarget)}"
-                        label="tooltip"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip
-                        label="Rich tooltip"
-                        id="tooltip3"
-                        @onTooltipButtonClick="${() => tooltip3.close()}"
-                        @pointerleave="${() => tooltip3.close()}"
-                    >
-                        Rich tooltips bring attention to a particular<br />
-                        element of feature that warrants the user's<br />
-                        focus.
-                    </md-tooltip>
-                    <md-button
-                        @pointerenter="${(event) => tooltip3.show(event.currentTarget)}"
-                        label="tooltip"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip
-                        id="tooltip4"
-                        @onTooltipButtonClick="${() => tooltip4.close()}"
-                        @pointerleave="${() => tooltip4.close()}"
-                    >
-                        Rich tooltips bring attention to a particular<br />
-                        element of feature that warrants the user's<br />
-                        focus.
-                    </md-tooltip>
-                    <md-button
-                        @pointerenter="${(event) => tooltip4.show(event.currentTarget)}"
-                        label="tooltip"
-                    ></md-button>
-                </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip
-                        id="tooltip5"
-                        ui="plain"
-                        @onTooltipButtonClick="${() => tooltip5.close()}"
-                        >Save to favorites</md-tooltip
-                    >
-                    <md-button
-                        @pointerleave="${() => tooltip5.close()}"
-                        @pointerenter="${(event) => tooltip5.show(event.currentTarget)}"
-                        label="tooltip"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-tooltip
-                        id="tooltip6"
-                        ui="plain"
-                        @onTooltipButtonClick="${() => tooltip6.close()}"
+                        id="tooltipPlain2"
+                        @onPaneButtonClick="${this.handleTooltipPlain2Click}"
+                        @onPaneIconButtonClick="${this.handleTooltipPlain2Click}"
+                        variant="plain"
                     >
                         Grant value is calculated using the<br />
                         closing stock price from the day<br />
@@ -99,16 +71,50 @@ class AppTooltipElement extends MDElement {
                         not reflect tax witholdings.
                     </md-tooltip>
                     <md-button
-                        @pointerleave="${() => tooltip6.close()}"
-                        @pointerenter="${(event) => tooltip6.show(event.currentTarget)}"
-                        label="tooltip"
+                        id="buttonTooltipPlain2"
+                        label="Tooltip Plain 2"
+                        @click="${this.handleTooltipPlain2Click}"
+                    ></md-button>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-tooltip
+                        id="tooltipRich"
+                        @onPaneButtonClick="${this.handleTooltipRichClick}"
+                        @onPaneIconButtonClick="${this.handleTooltipRichClick}"
+                        label="Rich tooltip"
+                        buttons='[{"label":"Action"},{"label":"Action"}]'
+                    >
+                        Rich tooltips bring attention to a particular<br />
+                        element of feature that warrants the user's<br />
+                        focus.
+                    </md-tooltip>
+                    <md-button
+                        id="buttonTooltipRich"
+                        label="Tooltip Rich"
+                        @click="${this.handleTooltipRichClick}"
                     ></md-button>
                 </div>
             </div>
         `;
     }
+
+    handleTooltipPlainClick() {
+        this.tooltipPlain.toggle(this.buttonTooltipPlain);
+    }
+
+    handleTooltipPlain2Click() {
+        this.tooltipPlain2.toggle(this.buttonTooltipPlain2);
+    }
+
+    handleTooltipRichClick() {
+        this.tooltipRich.toggle(this.buttonTooltipRich);
+    }
+
 }
 
-customElements.define("app-tooltip", AppTooltipElement);
+customElements.define("app-tooltip", AppTooltipComponent);
 
 export default document.createElement("app-tooltip");

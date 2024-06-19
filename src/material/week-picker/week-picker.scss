@@ -1,0 +1,59 @@
+.md-week-picker {
+    .md-datetime-picker__grid-row--day {
+        .md-datetime-picker__grid-item {
+            @include ripple-reset();
+        }
+
+        border-radius: 20px;
+
+        & {
+            @include ripple();
+        }
+        & {
+            @include ripple-button();
+        }
+
+        &[selected],
+        &:focus,
+        &:hover,
+        &:active,
+        &[dragged],
+        &[disabled] {
+            @include ripple-size();
+        }
+
+        &[selected],
+        &:focus,
+        &:hover,
+        &:active,
+        &[dragged],
+        &[disabled] {
+            @include ripple-clipped();
+        }
+
+        &[activated] {
+            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+        }
+        &[selected] {
+            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+        &:focus {
+            @include ripple-focused();
+        }
+        &:hover {
+            @include ripple-hover();
+        }
+        &:active {
+            @include ripple-pressed();
+        }
+        &[dragged] {
+            @include ripple-dragged();
+        }
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
+}

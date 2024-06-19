@@ -1,161 +1,173 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppImageElement extends MDElement {
+class AppImageComponent extends MDElement {
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                    ></md-image>
-                    <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                    ></md-image>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="16/9"
-                    ></md-image>
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/2"
-                    ></md-image>
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="4/3"
-                    ></md-image>
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="1/1"
-                    ></md-image>
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/4"
-                    ></md-image>
-                    <md-image
-                        style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="2/3"
+                        src="https://placehold.co/112"
+                        @onImageNativeLoad="${console.log}"
+                        @onImageNativeError="${console.log}"
                     ></md-image>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="16/9"
+                        style="width:112px;"
+                        aspectRatio="16/9"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/2"
+                        style="width:112px;"
+                        aspectRatio="3/2"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="4/3"
+                        style="width:112px;"
+                        aspectRatio="4/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="1/1"
+                        style="width:112px;"
+                        aspectRatio="1/1"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/4"
+                        style="width:112px;"
+                        aspectRatio="3/4"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
-                        style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="2/3"
+                        style="width:112px;"
+                        aspectRatio="2/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="16/9"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="16/9"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/2"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="3/2"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="4/3"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="4/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="1/1"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="1/1"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/4"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="3/4"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="width:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="2/3"
-                        ui="rounded"
+                        variant="rounded"
+                        aspectRatio="2/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="16/9"
-                        ui="rounded"
+                        aspectRatio="16/9"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/2"
-                        ui="rounded"
+                        aspectRatio="3/2"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="4/3"
-                        ui="rounded"
+                        aspectRatio="4/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="1/1"
-                        ui="rounded"
+                        aspectRatio="1/1"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="3/4"
-                        ui="rounded"
+                        aspectRatio="3/4"
+                        src="https://placehold.co/112"
                     ></md-image>
                     <md-image
                         style="height:112px;"
-                        src="https://api.dicebear.com/8.x/icons/svg?seed=Abby&scale=70"
-                        ratio="2/3"
-                        ui="rounded"
+                        aspectRatio="2/3"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="16/9"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="3/2"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="4/3"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="1/1"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="3/4"
+                        src="https://placehold.co/112"
+                    ></md-image>
+                    <md-image
+                        style="height:112px;"
+                        variant="rounded"
+                        aspectRatio="2/3"
+                        src="https://placehold.co/112"
                     ></md-image>
                 </div>
             </div>
@@ -163,6 +175,6 @@ class AppImageElement extends MDElement {
     }
 }
 
-customElements.define("app-image", AppImageElement);
+customElements.define("app-image", AppImageComponent);
 
 export default document.createElement("app-image");

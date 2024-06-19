@@ -3,19 +3,20 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = "style-loader";
 
 const config = {
+    target: ["web", "es2017"],
+    // experiments: {
+    //   outputModule: true,
+    // },
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        clean: true,
+        // module: true,
     },
     devServer: {
         open: true,
@@ -24,7 +25,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html",
+            template: "index.html",
         }),
 
         // Add your plugins here
@@ -64,26 +65,13 @@ const config = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
-    // optimization: {
-    //     minimize: isProduction,
-    //     minimizer: [new TerserPlugin()],
-    // },
 };
 
 module.exports = () => {
     if (isProduction) {
         config.mode = "production";
 
-        // config.plugins.push(
-        //     new WorkboxWebpackPlugin.GenerateSW(),
-        //     new CompressionPlugin({
-        //         filename: '[path][base].gz',
-        //         algorithm: 'gzip',
-        //         test: /\.(js|css|html|svg)$/,
-        //         threshold: 8192,
-        //         minRatio: 0.8,
-        //     })
-        // );
+        config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
     } else {
         config.mode = "development";
     }

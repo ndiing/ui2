@@ -1,0 +1,98 @@
+.md-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+
+    &.md-icon-button--toggle {
+        background: transparent;
+        color: var(--md-sys-color-on-surface-variant);
+
+        &[selected] {
+            background: transparent;
+            color: var(--md-sys-color-primary);
+        }
+    }
+}
+
+// .md-icon-button__icon {}
+
+.md-icon-button--filled,
+.md-icon-button--tonal,
+.md-icon-button--outlined {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.md-icon-button--filled {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+
+    &.md-icon-button--toggle {
+        background: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-primary);
+
+        &[selected] {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+
+            &.md-ripple {
+                &::after {
+                    background: var(--md-sys-color-on-primary);
+                }
+            }
+        }
+
+        &.md-ripple {
+            &::after {
+                background: var(--md-sys-color-primary);
+            }
+        }
+    }
+
+    &.md-ripple {
+        &::after {
+            background: var(--md-sys-color-on-primary);
+        }
+    }
+}
+.md-icon-button--tonal {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+
+    &.md-icon-button--toggle {
+        background: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface-variant);
+
+        &[selected] {
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+    }
+}
+.md-icon-button--outlined {
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    border: 1px solid var(--md-sys-color-outline);
+
+    &.md-icon-button--toggle {
+        background: transparent;
+        color: var(--md-sys-color-on-surface-variant);
+        border: 1px solid var(--md-sys-color-outline);
+
+        &[selected] {
+            background: var(--md-sys-color-inverse-surface);
+            color: var(--md-sys-color-inverse-on-surface);
+            border: 1px solid var(--md-sys-color-inverse-surface);
+
+            &.md-ripple {
+                &::after {
+                    background: var(--md-sys-color-on-primary);
+                }
+            }
+        }
+    }
+}

@@ -1,102 +1,106 @@
-# Material Design Framework
+### Coding Style
 
-[![Demo](https://img.shields.io/badge/Demo-Lihat-blue.svg)](https://ndiing.github.io/material/dist/)
-[![Dokumentasi](https://img.shields.io/badge/Dokumentasi-Lihat-blue.svg)](https://ndiing.gitbook.io/material)
-[![npm](https://img.shields.io/npm/v/@ndiinginc/material)](https://www.npmjs.com/package/@ndiinginc/material)
+-   [JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+-   [HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html)
 
-Material adalah sebuah framework desain berbasis Material Design yang dirancang untuk pengembangan web modern. Framework ini menyediakan komponen UI yang kaya dan responsif, serta berbagai alat yang berguna untuk membangun aplikasi web yang menarik.
+### Naming convention
 
-![Material Design Framework](https://github.com/ndiing/material/raw/main/Animation.gif)
+```js
+// Module
+class MDExample {
+    property = null;
 
-## Instalasi
+    privateProperty_ = null;
 
-Untuk menggunakan Material dalam proyek Anda, ikuti langkah-langkah berikut:
+    static property = null;
 
-1. **Inisialisasi Proyek dengan npm**:
-   
-    ```bash
-    npm init -y
-    ```
+    static privateProperty_ = null;
 
-2. **Install webpack-cli**:
+    constructor() {}
 
-    ```bash
-    npm install -D webpack-cli
-    ```
+    method() {}
 
-3. **Inisialisasi webpack**:
+    privateMethod_() {}
 
-    ```bash
-    npx webpack init
-    ```
+    static method() {}
 
-    Ketika diminta, pilih opsi sebagai berikut:
+    static privateMethod_() {}
+}
 
-    - Which of the following JS solutions do you want to use? **ES6**
-    - Do you want to use webpack-dev-server? **Yes**
-    - Do you want to simplify the creation of HTML files for your bundle? **Yes**
-    - Do you want to add PWA support? **No**
-    - Which of the following CSS solutions do you want to use? **SASS**
-    - Will you be using CSS styles along with SASS in your project? **Yes**
-    - Will you be using PostCSS in your project? **Yes**
-    - Do you want to extract CSS for every file? **No**
-    - Do you like to install prettier to format generated configuration? **Yes**
-    - Pick a package manager: **npm**
+// new MDExample()
 
-4. **Installasi Modul Tambahan**:
+// Element
+class MDExampleElement {}
 
-    ```bash
-    npm i @ndiinginc/material
-    ```
+// tag-name
+// md-example
 
-5. **Konfigurasi `src/index.js`**:
+// Controller
+class MDExampleController {}
 
-    Buka file `src/index.js` dan tambahkan load component:
+// this.example = new MDExampleController(this)
+```
 
-    ```javascript
-    import "@ndiinginc/material/src/com/index.scss";
-    import "@ndiinginc/material/src/com/index.js";
-    ```
+```css
+.md-example {
+}
 
-6. **Buat file `index.html`**:
+.md-example--modifier {
+}
 
-    Buka file `index.html` dan tambahkan kode HTML dasar:
+.md-example__child {
+}
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#6750a4" />
-        <meta name="description" content="description" />
-        <title>title</title>
-        <base href="/" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <script src="dist/bundle.js" defer></script>
-    </head>
-    <body>
-        <md-button label="Label"></md-button>
-    </body>
-    </html>
-    ```
+.md-example__child--modifier {
+}
 
-    Dalam kode ini, saya menambahkan `<script src="dist/bundle.js" defer></script>` untuk memuat file JavaScript bundle yang dihasilkan oleh webpack. Jika direktori output webpack berbeda, sesuaikan path-nya.
+.md-example__child-primary {
+}
 
-## Mengatur Warna Tema
+.md-example__child-secondary {
+}
 
-Anda dapat mengatur warna tema dengan mengubah konten dari tag meta `theme-color`. Ganti nilai `content` pada tag `<meta name="theme-color" content="#6750a4" />` dengan warna tema yang Anda inginkan.
+.md-example__child-tertiary {
+}
+```
 
-## Kontribusi
-
-Jika Anda ingin berkontribusi pada proyek ini, silakan buka [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan kontribusi.
-
-## Lisensi
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-© 2024 Ndiing | MIT License
+```html
+<!-- <md-layout></md-layout> -->
+<!-- <md-color></md-color> -->
+<!-- <md-elevation></md-elevation> -->
+<!-- <md-icon></md-icon> -->
+<!-- <md-motion></md-motion> -->
+<!-- <md-shape></md-shape> -->
+<!-- <md-typography></md-typography> -->
+<md-bottom-app-bar></md-bottom-app-bar>
+<md-top-app-bar></md-top-app-bar>
+<md-badge></md-badge>
+<md-button></md-button>
+<md-fab></md-fab>
+<md-icon-button></md-icon-button>
+<md-segmented-button></md-segmented-button>
+<md-card></md-card>
+<md-carousel></md-carousel>
+<md-checkbox></md-checkbox>
+<md-chip></md-chip>
+<md-date-picker></md-date-picker>
+<md-dialog></md-dialog>
+<md-divider></md-divider>
+<md-list></md-list>
+<md-menu></md-menu>
+<md-navigation-bar></md-navigation-bar>
+<md-navigation-drawer></md-navigation-drawer>
+<md-navigation-rail></md-navigation-rail>
+<md-progress-indicator></md-progress-indicator>
+<md-radio-button></md-radio-button>
+<md-search></md-search>
+<md-bottom-sheet></md-bottom-sheet>
+<md-side-sheet></md-side-sheet>
+<md-slider></md-slider>
+<md-snackbar></md-snackbar>
+<md-switch></md-switch>
+<md-tab></md-tab>
+<md-text-field></md-text-field>
+<md-time-picker></md-time-picker>
+<md-tooltip></md-tooltip>
+```

@@ -1,45 +1,53 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppSideSheetElement extends MDElement {
+class AppBottomSheetComponent extends MDElement {
+    get sideSheet1() {
+        return this.querySelector("#sideSheet1");
+    }
+
+    get sideSheet2() {
+        return this.querySelector("#sideSheet2");
+    }
+
     render() {
         return html`
-            <div class="md-layout-border md-layout-fit">
-                <md-side-sheet
-                    label="Label"
-                    .buttons="${[{ label: "Button" }, { label: "Button" }]}"
-                    id="sidesheet1"
-                    @onSideSheetButtonClick="${() => sidesheet1.toggle()}"
-                    >body</md-side-sheet
-                >
-                <md-side-sheet
-                    label="Label"
-                    .leadingActions="${[{ icon: "image" }]}"
-                    .trailingActions="${[{ icon: "image" }]}"
-                    .buttons="${[{ label: "Button" }, { label: "Button" }]}"
-                    ui="modal"
-                    id="sidesheet2"
-                    @onSideSheetActionClick="${() => sidesheet2.toggle()}"
-                    @onSideSheetButtonClick="${() => sidesheet2.toggle()}"
-                    >body</md-side-sheet
-                >
+            <div class="md-layout-border">
+                <md-side-sheet id="sideSheet1"> Lorem, ipsum dolor. Eos, dignissimos ullam? Quaerat, quas tempore? </md-side-sheet>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div
-                        class="md-layout-column"
-                        style="margin:24px;"
-                    >
-                        <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button
-                                @click="${() => sidesheet1.toggle()}"
-                                label="side-sheet"
-                            ></md-button>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button
-                                @click="${() => sidesheet2.toggle()}"
-                                label="side-sheet modal"
-                            ></md-button>
+                    <div class="md-layout-border">
+                        <md-side-sheet
+                            id="sideSheet2"
+                            variant="modal"
+                        >
+                            Lorem, ipsum dolor. Eos, dignissimos ullam? Quaerat, quas tempore?
+                        </md-side-sheet>
+
+                        <div class="md-layout-border__item md-layout-border__item--center">
+                            <div
+                                style=""
+                                class="md-layout-grid"
+                            >
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
+                                    <md-button
+                                        label="side sheet 1"
+                                        @click="${() => this.sideSheet1.toggle()}"
+                                    ></md-button>
+                                </div>
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
+                                    <md-button
+                                        label="side sheet 2"
+                                        @click="${() => this.sideSheet2.toggle()}"
+                                    ></md-button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,6 +56,6 @@ class AppSideSheetElement extends MDElement {
     }
 }
 
-customElements.define("app-side-sheet", AppSideSheetElement);
+customElements.define("app-side-sheet", AppBottomSheetComponent);
 
 export default document.createElement("app-side-sheet");

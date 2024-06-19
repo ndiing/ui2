@@ -1,54 +1,61 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppNavigationBarElement extends MDElement {
-    constructor() {
-        super();
+class AppNavigationBarComponent extends MDElement {
+    get navigationBar1() {
+        return this.querySelector("#navigationBar1");
+    }
 
-        this.list1 = [
-            { leadingIcon: "image", label: "Label 1", selected: true },
-            { leadingIcon: "image", label: "Label 2", badge: { label: 0 } },
-            { leadingIcon: "image", label: "Label 3", badge: { label: 1 } },
-            { leadingIcon: "image", label: "Label 4", badge: { label: 1000 } },
-        ];
-        this.list2 = [
-            { leadingIcon: "image", selected: true },
-            { leadingIcon: "image", badge: { label: 0 } },
-            { leadingIcon: "image", badge: { label: 1 } },
-            { leadingIcon: "image", badge: { label: 1000 } },
-        ];
+    get navigationBar2() {
+        return this.querySelector("#navigationBar2");
     }
 
     render() {
         return html`
-            <div class="md-layout-border md-layout-fit">
+            <div class="md-layout-border">
                 <md-navigation-bar
-                    .list="${this.list1}"
-                    id="navigationDrawer1"
+                    id="navigationBar1"
+                    .list="${[
+                        { icon: "image", label: "Item 1", selected: true },
+                        { icon: "image", label: "Item 2", badge: 0 },
+                        { icon: "image", label: "Item 3", badge: 3 },
+                        { icon: "image", label: "Item 4", badge: 3333 },
+                    ]}"
                 ></md-navigation-bar>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div class="md-layout-border md-layout-fit">
+                    <div class="md-layout-border">
                         <md-navigation-bar
-                            .list="${this.list2}"
-                            id="navigationDrawer2"
+                            id="navigationBar2"
+                            .list="${[
+                                { icon: "image", selected: true },
+                                { icon: "image", badge: 0 },
+                                { icon: "image", badge: 3 },
+                                { icon: "image", badge: 3333 },
+                            ]}"
                         ></md-navigation-bar>
 
                         <div class="md-layout-border__item md-layout-border__item--center">
                             <div
-                                class="md-layout-column"
-                                style="margin:24px;"
+                                style=""
+                                class="md-layout-grid"
                             >
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => navigationDrawer1.toggle()}"
-                                        label="navigation-bar"
+                                        label="navigation bar 1"
+                                        @click="${() => this.navigationBar1.toggle()}"
                                     ></md-button>
                                 </div>
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => navigationDrawer2.toggle()}"
-                                        label="navigation-bar"
+                                        label="navigation bar 2"
+                                        @click="${() => this.navigationBar2.toggle()}"
                                     ></md-button>
                                 </div>
                             </div>
@@ -60,6 +67,6 @@ class AppNavigationBarElement extends MDElement {
     }
 }
 
-customElements.define("app-navigation-bar", AppNavigationBarElement);
+customElements.define("app-navigation-bar", AppNavigationBarComponent);
 
 export default document.createElement("app-navigation-bar");

@@ -1,0 +1,80 @@
+.md-tabs {
+    flex-direction: row;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: inset 0 -1px 0 0 var(--md-sys-color-surface-variant);
+    position: relative;
+    &::before {
+        content: "";
+        width: var(--md-comp-tabs-indicator-width);
+        background: var(--md-sys-color-primary);
+        position: absolute;
+        left: var(--md-comp-tabs-indicator-left);
+        right: var(--md-comp-tabs-indicator-right);
+        bottom: 0;
+        transition-property: var(--md-comp-tabs-transition, left), var(--md-comp-tabs-transition, right);
+        transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized)), cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        transition-duration: var(--md-sys-motion-duration-short4), var(--md-sys-motion-duration-short4);
+        transition-delay: var(--md-comp-tabs-indicator-delay-left, var(--md-sys-motion-duration-short2)), var(--md-comp-tabs-indicator-delay-right, var(--md-sys-motion-duration-short2));
+    }
+    .md-list__row {
+        flex: 1 0 auto;
+    }
+    .md-list__item {
+        justify-content: center;
+        min-height: 48px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        column-gap: 8px;
+        &[selected] {
+            background: inherit;
+            color: var(--md-sys-color-primary);
+        }
+    }
+    .md-list__inner {
+        flex: 0 0 auto;
+        gap: 0 4px;
+    }
+    .md-list__label {
+        flex: 0 0 auto;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .md-list__label-primary {
+        @include typography-label-large();
+        height: var(--md-sys-typescale-label-large-line-height);
+    }
+}
+
+.md-tabs {
+    &::before {
+        height: 2px;
+    }
+}
+
+.md-tabs--primary {
+    &::before {
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+    }
+    .md-list__item {
+        flex-direction: column;
+    }
+    .md-list__icon {
+        + .md-list__inner {
+            .md-list__label {
+                + .md-list__badge {
+                    margin-top: -22px;
+                    transform: translate3d(0%, -50%, 0);
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+
+                    &:empty {
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

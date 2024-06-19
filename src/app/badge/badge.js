@@ -1,33 +1,27 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppBadgeElement extends MDElement {
+class AppBadgeComponent extends MDElement {
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-badge label=""></md-badge>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-badge label="1"></md-badge>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-badge label="1000"></md-badge>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-badge
-                        label="1000"
-                        max="99"
-                    ></md-badge>
+                    <md-badge label="3"></md-badge>
+                    <md-badge label="33"></md-badge>
+                    <md-badge label="3333"></md-badge>
                 </div>
             </div>
         `;
     }
 }
 
-customElements.define("app-badge", AppBadgeElement);
+customElements.define("app-badge", AppBadgeComponent);
 
 export default document.createElement("app-badge");

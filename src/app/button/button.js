@@ -1,89 +1,77 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppButtonElement extends MDElement {
+class AppButtonComponent extends MDElement {
     render() {
         return html`
             <div
-                class="md-layout-column"
-                style="margin:24px;"
+                style=""
+                class="md-layout-grid"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-button
-                        ui="elevated"
-                        label="Label"
-                    ></md-button>
-                    <md-button
-                        ui="elevated"
-                        label="Label"
-                        icon="image"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-button
-                        ui="filled"
-                        label="Label"
-                    ></md-button>
-                    <md-button
-                        ui="filled"
-                        label="Label"
-                        icon="image"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-button
-                        ui="tonal"
-                        label="Label"
-                    ></md-button>
-                    <md-button
-                        ui="tonal"
-                        label="Label"
-                        icon="image"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-button
-                        ui="outlined"
-                        label="Label"
-                    ></md-button>
-                    <md-button
-                        ui="outlined"
-                        label="Label"
-                        icon="image"
-                    ></md-button>
-                </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-button label="Label"></md-button>
                     <md-button
-                        label="Label"
                         icon="image"
+                        label="Label"
                     ></md-button>
                 </div>
-
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-button
-                        style="width:112px;"
-                        ui="tonal"
+                        variant="elevated"
                         label="Label"
                     ></md-button>
                     <md-button
-                        style="width:112px;"
-                        ui="tonal"
-                        label="Label"
+                        variant="elevated"
                         icon="image"
+                        label="Label"
                     ></md-button>
                 </div>
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
                     <md-button
-                        style="width:560px;"
-                        ui="tonal"
+                        variant="filled"
                         label="Label"
                     ></md-button>
                     <md-button
-                        style="width:560px;"
-                        ui="tonal"
-                        label="Label"
+                        variant="filled"
                         icon="image"
+                        label="Label"
+                    ></md-button>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-button
+                        variant="tonal"
+                        label="Label"
+                    ></md-button>
+                    <md-button
+                        variant="tonal"
+                        icon="image"
+                        label="Label"
+                    ></md-button>
+                </div>
+                <div
+                    style=""
+                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                >
+                    <md-button
+                        variant="outlined"
+                        label="Label"
+                    ></md-button>
+                    <md-button
+                        variant="outlined"
+                        icon="image"
+                        label="Label"
                     ></md-button>
                 </div>
             </div>
@@ -91,6 +79,6 @@ class AppButtonElement extends MDElement {
     }
 }
 
-customElements.define("app-button", AppButtonElement);
+customElements.define("app-button", AppButtonComponent);
 
 export default document.createElement("app-button");

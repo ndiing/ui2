@@ -1,76 +1,55 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-const format = new Intl.NumberFormat("id", {
-    currency: "IDR",
-    style: "currency",
-}).format;
-
-class AppSliderElement extends MDElement {
+class AppSliderComponent extends MDElement {
     render() {
         return html`
-            <md-form
-                @onFormNativeSubmit="${(event) => {
-                    console.log(Object.fromEntries(new FormData(event.detail.currentTarget).entries()));
-                }}"
-            >
+            <md-form @onFormNativeSubmit="${this.handleFormNativeSubmit}">
                 <div
-                    class="md-layout-column"
-                    style="margin:24px;"
+                    style=""
+                    class="md-layout-grid"
                 >
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <md-slider
-                            name="slider1"
-                            min="-50"
-                            max="50"
-                            value="-23"
-                        ></md-slider>
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <br>
+                        <br>
+                        <br>
+                        <md-slider name="centered" min="-1000000" max="1000000"></md-slider>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <md-slider name="slider2"></md-slider>
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <br>
+                        <br>
+                        <br>
+                        <md-slider name="continuous" min="0" max="1000000"></md-slider>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <md-slider
-                            name="slider3"
-                            step="10"
-                        ></md-slider>
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <br>
+                        <br>
+                        <br>
+                        <md-slider name="discrete" step="100000" min="0" max="1000000"></md-slider>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <md-slider
-                            name="slider4"
-                            value="[25,75]"
-                        ></md-slider>
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <br>
+                        <br>
+                        <br>
+                        <md-slider name="range-selection" min="1000000" max="10000000" value='[3000000,8000000]'></md-slider>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <md-slider
-                            name="slider5"
-                            min="1000000"
-                            max="10000000"
-                            value="[2000000,4000000]"
-                            .convertLabel="${format}"
-                        ></md-slider>
-                    </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
+
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
                         <md-button
                             type="reset"
                             label="Reset"
@@ -84,8 +63,13 @@ class AppSliderElement extends MDElement {
             </md-form>
         `;
     }
+
+    
+    handleFormNativeSubmit(event) {
+        console.log(Array.from(new FormData(event.detail.currentTarget).entries()));
+    }
 }
 
-customElements.define("app-slider", AppSliderElement);
+customElements.define("app-slider", AppSliderComponent);
 
 export default document.createElement("app-slider");

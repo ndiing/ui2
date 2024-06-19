@@ -1,40 +1,55 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppBottomAppBarElement extends MDElement {
+class AppBottomAppBarComponent extends MDElement {
+    get bottomAppBar1() {
+        return this.querySelector("#bottomAppBar1");
+    }
+
+    get bottomAppBar2() {
+        return this.querySelector("#bottomAppBar2");
+    }
+
     render() {
         return html`
-            <div class="md-layout-border md-layout-fit">
+            <div class="md-layout-border">
                 <md-bottom-app-bar
-                    .leadingActions="${[{ icon: "image" }, { icon: "image" }, { icon: "image" }, { icon: "image" }]}"
-                    .fab="${{ icon: "image" }}"
-                    id="sidesheet1"
+                    id="bottomAppBar1"
+                    leadingActions='[{"icon":"image"},{"icon":"image"},{"icon":"image"}]'
                 ></md-bottom-app-bar>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div class="md-layout-border md-layout-fit">
+                    <div class="md-layout-border">
                         <md-bottom-app-bar
-                            .leadingActions="${[{ icon: "image" }, { icon: "image" }, { icon: "image" }, { icon: "image" }]}"
-                            id="sidesheet2"
+                            id="bottomAppBar2"
+                            leadingActions='[{"icon":"image"},{"icon":"image"},{"icon":"image"}]'
+                            fab="add"
                         ></md-bottom-app-bar>
 
                         <div class="md-layout-border__item md-layout-border__item--center">
                             <div
-                                class="md-layout-column"
-                                style="margin:24px;"
+                                style=""
+                                class="md-layout-grid"
                             >
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => sidesheet1.toggle()}"
-                                        label="bottom-app-bar"
+                                        label="bottom app bar 1"
+                                        @click="${() => this.bottomAppBar1.toggle()}"
                                     ></md-button>
                                 </div>
-                                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
                                     <md-button
-                                        @click="${() => sidesheet2.toggle()}"
-                                        label="bottom-app-bar"
+                                        label="bottom app bar 2"
+                                        @click="${() => this.bottomAppBar2.toggle()}"
                                     ></md-button>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -44,6 +59,6 @@ class AppBottomAppBarElement extends MDElement {
     }
 }
 
-customElements.define("app-bottom-app-bar", AppBottomAppBarElement);
+customElements.define("app-bottom-app-bar", AppBottomAppBarComponent);
 
 export default document.createElement("app-bottom-app-bar");

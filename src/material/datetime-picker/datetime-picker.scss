@@ -1,0 +1,351 @@
+.md-datetime-picker {
+    display: inline-flex;
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level0);
+    position: absolute;
+    z-index: 7;
+    animation-name: var(--md-comp-pane-animation, datetimePickerIn);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
+
+    > * {
+        animation-name: var(--md-comp-pane-animation, datetimePickerInnerIn);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        animation-duration: var(--md-sys-motion-duration-short4);
+        transform-origin: inherit;
+    }
+
+    &:not([open]) {
+        visibility: hidden;
+        pointer-events: none;
+        animation-name: var(--md-comp-pane-animation, datetimePickerOut);
+
+        > * {
+            animation-name: var(--md-comp-pane-animation, datetimePickerInnerOut);
+        }
+    }
+
+    .md-pane__header {
+        padding: 16px;
+
+        + .md-pane__body {
+            margin-top: 0;
+        }
+    }
+
+    .md-pane__actions {
+        .md-button {
+            color: var(--md-sys-color-on-surface-variant);
+        }
+    }
+
+    .md-pane__inner {
+        padding: 0;
+        margin: 0;
+        @include typography-body-large();
+
+        + .md-pane__footer {
+            margin-top: 0;
+        }
+    }
+
+    .md-layout-card {
+        width: 360px;
+        height: 336px;
+    }
+
+    .md-layout-card__item {
+        overflow: auto;
+    }
+
+    .md-pane__footer {
+        justify-content: flex-end;
+        padding: 16px;
+    }
+}
+
+.md-datetime-picker__list {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+}
+.md-datetime-picker__list-item {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+    gap: 0 16px;
+
+    & {
+        @include ripple();
+    }
+    & {
+        @include ripple-button();
+    }
+
+    &[selected],
+    &:focus,
+    &:hover,
+    &:active,
+    &[dragged],
+    &[disabled] {
+        @include ripple-size();
+    }
+
+    &[selected],
+    &:focus,
+    &:hover,
+    &:active,
+    &[dragged],
+    &[disabled] {
+        @include ripple-clipped();
+    }
+
+    &[activated] {
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
+    }
+    &[selected] {
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-surface-variant);
+        background: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface-variant);
+    }
+    &:focus {
+        @include ripple-focused();
+    }
+    &:hover {
+        @include ripple-hover();
+    }
+    &:active {
+        @include ripple-pressed();
+    }
+    &[dragged] {
+        @include ripple-dragged();
+    }
+    &[disabled] {
+        @include ripple-disabled();
+    }
+}
+// .md-datetime-picker__list-icon{}
+// .md-datetime-picker__list-label{}
+
+.md-datetime-picker__grid {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 4px 16px;
+    gap: 8px 0;
+}
+.md-datetime-picker__grid-row {
+    display: flex;
+    gap: 0 8px;
+}
+// .md-datetime-picker__grid-row--weekday{}
+.md-datetime-picker__grid-row--day {
+    .md-datetime-picker__grid-item {
+        & {
+            @include ripple();
+        }
+        & {
+            @include ripple-button();
+        }
+
+        &[selected],
+        &:focus,
+        &:hover,
+        &:active,
+        &[dragged],
+        &[disabled] {
+            @include ripple-size();
+        }
+
+        &[selected],
+        &:focus,
+        &:hover,
+        &:active,
+        &[dragged],
+        &[disabled] {
+            @include ripple-clipped();
+        }
+
+        &[activated] {
+            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+        }
+        &[selected] {
+            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+        &:focus {
+            @include ripple-focused();
+        }
+        &:hover {
+            @include ripple-hover();
+        }
+        &:active {
+            @include ripple-pressed();
+        }
+        &[dragged] {
+            @include ripple-dragged();
+        }
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
+}
+.md-datetime-picker__grid-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+// .md-datetime-picker__grid-label{}
+
+.md-datetime-picker__absolute {
+    width: 256px;
+    height: 256px;
+    margin: 40px 52px;
+    border-radius: 128px;
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-variant);
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        transform: translate3d(-50%, -50%, 0);
+        background: var(--md-sys-color-primary);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+}
+.md-datetime-picker__absolute--hour {
+    @for $i from 1 through 12 {
+        .md-datetime-picker__absolute-item:nth-child(#{$i}) {
+            left: calc(100px * cos(($i - 4) / 12 * 2 * pi) + 104px);
+            top: calc(100px * sin(($i - 4) / 12 * 2 * pi) + 104px);
+
+            &::before {
+                width: 100px;
+                transform: rotate(calc(360deg / 12) * ($i - 4));
+            }
+        }
+    }
+    @for $i from 1 through 12 {
+        .md-datetime-picker__absolute-item:nth-child(#{$i + 12}) {
+            left: calc(72px * cos(($i - 4) / 12 * 2 * pi) + 104px);
+            top: calc(72px * sin(($i - 4) / 12 * 2 * pi) + 104px);
+
+            &::before {
+                width: 72px;
+                transform: rotate(calc(360deg / 12) * ($i - 4));
+            }
+        }
+    }
+}
+.md-datetime-picker__absolute--minute {
+    @for $i from 1 through 60 {
+        .md-datetime-picker__absolute-item:nth-child(#{$i}) {
+            @if ((($i - 16) % 5) == 0) {
+                left: calc(100px * cos(($i - 16) / 60 * 2 * pi) + 104px);
+                top: calc(100px * sin(($i - 16) / 60 * 2 * pi) + 104px);
+            } @else {
+                width: 24px;
+                height: 24px;
+                border-radius: 12px;
+                left: calc(100px * cos(($i - 16) / 60 * 2 * pi) + 116px);
+                top: calc(100px * sin(($i - 16) / 60 * 2 * pi) + 116px);
+            }
+
+            &::before {
+                width: 100px;
+                transform: rotate(calc(360deg / 60) * ($i - 16));
+            }
+        }
+    }
+}
+.md-datetime-picker__absolute-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    position: absolute;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        width: 100px;
+        height: 2px;
+        background: var(--md-sys-color-primary);
+        opacity: 0%;
+        transform: rotate(calc(360deg / 60) * 1);
+        transform-origin: 100% 50%;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        z-index: -1;
+    }
+
+    & {
+        @include ripple();
+        position: absolute;
+    }
+    & {
+        @include ripple-button();
+    }
+
+    &[selected],
+    &:focus,
+    &:hover,
+    &:active,
+    &[dragged],
+    &[disabled] {
+        &::after {
+            width: 48px;
+        }
+    }
+
+    &[activated] {
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+    }
+
+    &[selected] {
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+
+        &::before {
+            opacity: 100%;
+        }
+    }
+    &:focus {
+        @include ripple-focused();
+    }
+    &:hover {
+        @include ripple-hover();
+
+        &::before {
+            opacity: 10%;
+        }
+    }
+    &:active {
+        @include ripple-pressed();
+    }
+    &[dragged] {
+        @include ripple-dragged();
+    }
+    &[disabled] {
+        @include ripple-disabled();
+    }
+}
+// .md-datetime-picker__absolute-label{}

@@ -1,0 +1,87 @@
+.md-side-sheet {
+    display: inline-flex;
+    width: 256px;
+    border-radius: var(--md-sys-shape-corner-none);
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level0);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
+
+    &:not([open]) {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .md-side-sheet__header {
+        padding: 24px;
+        gap: 0 12px;
+
+        + .md-side-sheet__body {
+            margin-top: -24px;
+        }
+    }
+
+    .md-side-sheet__label-primary {
+        @include typography-title-large();
+        height: var(--md-sys-typescale-title-large-line-height);
+    }
+
+    .md-side-sheet__inner {
+        padding: 0 24px;
+        margin: 24px 0;
+
+        + .md-side-sheet__footer {
+            margin-top: -24px;
+        }
+    }
+
+    .md-side-sheet__footer {
+        padding: 24px;
+    }
+}
+
+.md-side-sheet {
+    grid-area: east;
+    animation-name: var(--md-comp-pane-animation, sheetEastIn);
+
+    &:not([open]) {
+        margin-right: calc(0px - var(--md-comp-pane-width, 100vw));
+        animation-name: var(--md-comp-pane-animation, sheetEastOut);
+    }
+}
+
+.md-side-sheet--modal {
+    background: var(--md-sys-color-surface-container-low);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level1);
+    position: absolute;
+    z-index: 7;
+
+    .md-side-sheet__header {
+        padding: 24px 24px 24px 16px;
+    }
+
+    .md-side-sheet__inner {
+        padding: 0 24px 0 16px;
+        margin: 24px 0;
+    }
+
+    .md-side-sheet__footer {
+        padding: 24px 24px 24px 16px;
+    }
+
+    &.md-side-sheet {
+        border-radius: var(--md-sys-shape-corner-large) 0 0 var(--md-sys-shape-corner-large);
+        grid-area: auto;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        animation-name: var(--md-comp-pane-animation, sheetEastModalIn);
+
+        &:not([open]) {
+            margin-right: 0;
+            animation-name: var(--md-comp-pane-animation, sheetEastModalOut);
+        }
+    }
+}

@@ -1,0 +1,49 @@
+.md-progress-indicator {
+    display: flex;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.md-progress-indicator__track {
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--md-sys-color-secondary-container);
+}
+
+.md-progress-indicator__indicator {
+    width: var(--md-progress-indicator-value);
+    height: 4px;
+    border-radius: 2px;
+    background: var(--md-sys-color-primary);
+}
+
+.md-progress-indicator--circular {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
+
+    .md-progress-indicator__container {
+        transform: rotate(-90deg);
+    }
+
+    .md-progress-indicator__track,
+    .md-progress-indicator__indicator {
+        fill: none;
+        stroke-width: 8.333333333333332%;
+        stroke-linecap: round;
+        stroke-dasharray: calc(2 * pi * 45.833333333333336);
+    }
+    .md-progress-indicator__track {
+        stroke: var(--md-sys-color-secondary-container);
+        stroke-dashoffset: 0;
+    }
+    .md-progress-indicator__indicator {
+        stroke: var(--md-sys-color-primary);
+        stroke-dashoffset: calc((2 * pi * 45.833333333333336) * (1 - var(--md-progress-indicator-value-percentage) / 100));
+    }
+}

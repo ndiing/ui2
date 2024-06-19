@@ -1,0 +1,73 @@
+.md-dialog {
+    display: inline-flex;
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 7;
+    animation-name: var(--md-comp-pane-animation, dialogIn);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
+
+    > * {
+        animation-name: var(--md-comp-pane-animation, dialogInnerIn);
+        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+        animation-duration: var(--md-sys-motion-duration-short4);
+        transform-origin: inherit;
+    }
+
+    &:not([open]) {
+        visibility: hidden;
+        pointer-events: none;
+        animation-name: var(--md-comp-pane-animation, dialogOut);
+
+        > * {
+            animation-name: var(--md-comp-pane-animation, dialogInnerOut);
+        }
+    }
+
+    .md-pane__header {
+        padding: 24px;
+
+        + .md-pane__body {
+            margin-top: -24px;
+        }
+    }
+
+    .md-pane__label-primary {
+        @include typography-title-large();
+        height: var(--md-sys-typescale-title-large-line-height);
+    }
+
+    .md-pane__inner {
+        padding: 0 24px;
+        margin: 24px 0;
+
+        + .md-pane__footer {
+            margin-top: -24px;
+        }
+    }
+
+    .md-pane__footer {
+        justify-content: flex-end;
+        padding: 24px;
+    }
+}
+
+.md-dialog--full-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--md-sys-shape-corner-none);
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level0);
+    animation-name: var(--md-comp-pane-animation, dialogFullScreenIn);
+
+    &:not([open]) {
+        animation-name: var(--md-comp-pane-animation, dialogFullScreenOut);
+    }
+}

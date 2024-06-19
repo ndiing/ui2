@@ -1,45 +1,53 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppBottomSheetElement extends MDElement {
+class AppBottomSheetComponent extends MDElement {
+    get bottomSheet1() {
+        return this.querySelector("#bottomSheet1");
+    }
+
+    get bottomSheet2() {
+        return this.querySelector("#bottomSheet2");
+    }
+
     render() {
         return html`
-            <div class="md-layout-border md-layout-fit">
-                <md-bottom-sheet
-                    label="Label"
-                    .buttons="${[{ label: "Button" }, { label: "Button" }]}"
-                    id="bottomSheet1"
-                    @onBottomSheetButtonClick="${() => bottomSheet1.toggle()}"
-                    >body</md-bottom-sheet
-                >
-                <md-bottom-sheet
-                    label="Label"
-                    .leadingActions="${[{ icon: "image" }]}"
-                    .trailingActions="${[{ icon: "image" }]}"
-                    .buttons="${[{ label: "Button" }, { label: "Button" }]}"
-                    ui="modal"
-                    id="bottomSheet2"
-                    @onBottomSheetActionClick="${() => bottomSheet2.toggle()}"
-                    @onBottomSheetButtonClick="${() => bottomSheet2.toggle()}"
-                    >body</md-bottom-sheet
-                >
+            <div class="md-layout-border">
+                <md-bottom-sheet id="bottomSheet1"> Lorem, ipsum dolor. Eos, dignissimos ullam? Quaerat, quas tempore? </md-bottom-sheet>
 
                 <div class="md-layout-border__item md-layout-border__item--center">
-                    <div
-                        class="md-layout-column"
-                        style="margin:24px;"
-                    >
-                        <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button
-                                @click="${() => bottomSheet1.toggle()}"
-                                label="bottom-sheet"
-                            ></md-button>
-                        </div>
-                        <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                            <md-button
-                                @click="${() => bottomSheet2.toggle()}"
-                                label="bottom-sheet modal"
-                            ></md-button>
+                    <div class="md-layout-border">
+                        <md-bottom-sheet
+                            id="bottomSheet2"
+                            variant="modal"
+                        >
+                            Lorem, ipsum dolor. Eos, dignissimos ullam? Quaerat, quas tempore?
+                        </md-bottom-sheet>
+
+                        <div class="md-layout-border__item md-layout-border__item--center">
+                            <div
+                                style=""
+                                class="md-layout-grid"
+                            >
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
+                                    <md-button
+                                        label="bottom sheet 1"
+                                        @click="${() => this.bottomSheet1.toggle()}"
+                                    ></md-button>
+                                </div>
+                                <div
+                                    style=""
+                                    class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                                >
+                                    <md-button
+                                        label="bottom sheet 2"
+                                        @click="${() => this.bottomSheet2.toggle()}"
+                                    ></md-button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,6 +56,6 @@ class AppBottomSheetElement extends MDElement {
     }
 }
 
-customElements.define("app-bottom-sheet", AppBottomSheetElement);
+customElements.define("app-bottom-sheet", AppBottomSheetComponent);
 
 export default document.createElement("app-bottom-sheet");

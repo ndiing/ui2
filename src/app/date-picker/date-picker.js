@@ -1,34 +1,100 @@
 import { html } from "lit";
-import { MDElement } from "../../com/element/element";
+import { MDElement } from "../../material/element/element.js";
 
-class AppDatePickerElement extends MDElement {
+class AppDatePickerComponent extends MDElement {
+    get date() {
+        return this.querySelector("#date");
+    }
+
+    get datePicker() {
+        return this.querySelector("#datePicker");
+    }
+
     render() {
         return html`
-            <div
-                class="md-layout-column"
-                style="margin:24px;"
+            <md-form
+                @onFormNativeSubmit="${this.handleFormNativeSubmit}"
+                @onFormNativeReset="${this.handleFormNativeReset}"
             >
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium4 md-layout-column__item--compact4">
-                    <md-date-picker
-                        id="dateTimePicker1"
-                        @onDatePickerChange="${(event) => {
-                            button1.label = [dateTimePicker1.selected.getFullYear(), dateTimePicker1.selected.getMonth() + 1, dateTimePicker1.selected.getDate()].join("-");
-                        }}"
-                        @onDatePickerButtonOkClick="${(event) => dateTimePicker1.close()}"
-                        @onDatePickerButtonCancelClick="${(event) => dateTimePicker1.close()}"
-                        value="1990-10-17"
-                    ></md-date-picker>
-                    <md-button
-                        id="button1"
-                        @click="${(event) => dateTimePicker1.show(event.currentTarget)}"
-                        label="date-picker"
-                    ></md-button>
+                <div
+                    style=""
+                    class="md-layout-grid"
+                >
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded3 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <label for="">
+                            date-local
+                            <input
+                                @input="${this.handleDateInput}"
+                                id="date"
+                                type="date"
+                                name="date"
+                                value="1990-10-17"
+                            />
+                        </label>
+                        <md-date-picker
+                            id="datePicker"
+                            value="1990-10-17"
+                            @onDatePickerItemClick="${this.handleDatePickerItemClick}"
+                            @onDatePickerButtonCancelClick="${this.handleDatePickerButtonCancelClick}"
+                            @onDatePickerButtonOkClick="${this.handleDatePickerButtonOkClick}"
+                        ></md-date-picker>
+                        <md-button
+                            label="Date Picker"
+                            @click="${(event) => this.datePicker.toggle(event.currentTarget)}"
+                        ></md-button>
+                    </div>
+
+                    <div
+                        style=""
+                        class="md-layout-grid__item md-layout-grid__item--expanded12 md-layout-grid__item--medium8 md-layout-grid__item--compact4"
+                    >
+                        <md-button
+                            type="reset"
+                            label="Reset"
+                        ></md-button>
+                        <md-button
+                            type="submit"
+                            label="Submit"
+                        ></md-button>
+                    </div>
                 </div>
-            </div>
+            </md-form>
         `;
+    }
+
+    handleDateInput() {
+        this.datePicker.value = this.date.value;
+    }
+
+    handleDatePickerItemClick() {
+        this.date.value = this.datePicker.value;
+    }
+
+    handleDatePickerButtonCancelClick() {
+        this.date.value = this.datePicker.value;
+        this.datePicker.close();
+    }
+
+    handleDatePickerButtonOkClick() {
+        this.date.value = this.datePicker.value;
+        this.datePicker.close();
+    }
+
+    handleFormNativeReset() {
+        this.datePicker.value = this.datePicker.defaultValue;
+    }
+
+    handleFormNativeSubmit(event) {
+        const formData = new FormData(event.currentTarget.native.value);
+        const object = Object.fromEntries(formData.entries());
+        const json = JSON.stringify(object, null, 4);
+        console.log(json);
     }
 }
 
-customElements.define("app-date-picker", AppDatePickerElement);
+customElements.define("app-date-picker", AppDatePickerComponent);
 
 export default document.createElement("app-date-picker");
