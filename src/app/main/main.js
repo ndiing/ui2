@@ -59,12 +59,12 @@ class AppMainComponent extends MDElement {
         return html`
             <div class="md-layout-border">
                 <md-top-app-bar
-                    open
                     leadingActions='[{"icon":"menu"}]'
                     @onPaneIconButtonClick="${this.handleMainPaneIconButtonClick}"
                     ${ref(this.topAppBar)}
                 ></md-top-app-bar>
                 <md-navigation-drawer
+                    open
                     .list="${this.list}"
                     @onListItemSelected="${this.handleMainListItemSelected}"
                     @onListItemClick="${this.handleMainListItemClick}"
@@ -80,28 +80,11 @@ class AppMainComponent extends MDElement {
     async connectedCallback() {
         super.connectedCallback();
 
-        this.handleBreakpointChange = this.handleBreakpointChange.bind(this);
-        window.addEventListener("onBreakpointChange", this.handleBreakpointChange);
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
 
-        window.removeEventListener("onBreakpointChange", this.handleBreakpointChange);
-    }
-
-    async handleBreakpointChange(event) {
-        await this.updateComplete;
-
-        if (event.detail.name == "expanded") {
-            this.navigationDrawer.value.variant = "";
-            this.navigationDrawer.value.show();
-            this.topAppBar.value.close();
-        } else {
-            this.navigationDrawer.value.variant = "modal";
-            this.navigationDrawer.value.close();
-            this.topAppBar.value.show();
-        }
     }
 
     handleMainListItemSelected(event) {
