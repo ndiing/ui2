@@ -47,4 +47,7 @@
     }
 }
 .md-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 8px;
 }
