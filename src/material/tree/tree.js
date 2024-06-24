@@ -83,7 +83,7 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     get leafIcon() {
-        return this.leafIcons_[~~this.expanded];
+        return this.leafIcons_[~~this.selected];
     }
 
     get icon_() {
@@ -214,6 +214,9 @@ class MDTreeComponent extends MDComponent {
                 .activated="${ifDefined(item.activated)}"
                 .variant="${ifDefined(this.variant)}"
                 .isParent="${ifDefined(item.isParent)}"
+                .nodeActions="${ifDefined(item.nodeActions)}"
+                .nodeIcons="${ifDefined(item.nodeIcons)}"
+                .leafIcons="${ifDefined(item.leafIcons)}"
                 @click="${this.handleTreeItemClick}"
                 @onTreeItemSelected="${this.handleTreeItemSelected}"
             ></md-tree-item>
