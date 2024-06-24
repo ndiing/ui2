@@ -1,65 +1,75 @@
 /**
- * Class representing a Router for navigating through routes and managing components.
+ * Represents a route configuration object.
+ * @typedef {Object} Route
+ * @property {string} path - The path of the route.
+ * @property {HTMLElement} component - The component associated with the route.
+ * @property {Function} load - Function that loads the component asynchronously.
+ * @property {Array<Route>} [children] - Optional array of child routes.
+ * @property {Function} [beforeLoad] - Function called before loading the route.
+ */
+
+/**
+ * MDRouter is a client-side router for managing routes and navigation within a single-page application.
+ * @property {Array<Route>} stacks - The array of routes configured in the router.
+ * @fires MDRouter#onRouterCurrentEntryChange
+ * @fires MDRouter#onRouterNavigate
+ * @fires MDRouter#onRouterNavigateError
+ * @fires MDRouter#onRouterNavigateSuccess
  * @example
- * // Define some route components
- * class HomeComponent extends HTMLElement {
- *   connectedCallback() {
- *     this.innerHTML = '<h1>Home</h1>';
- *   }
- * }
  *
- * class AboutComponent extends HTMLElement {
- *   connectedCallback() {
- *     this.innerHTML = '<h1>About</h1>';
- *   }
- * }
+ * const route = {
+ *     path: "/home",
+ *     component: null,
+ *     load: async () => {
  *
- * // Define custom elements for the components
- * customElements.define('home-component', HomeComponent);
- * customElements.define('about-component', AboutComponent);
+ *         const component = document.createElement("div");
+ *         component.textContent = "Home Component";
+ *         return component;
+ *     },
+ *     children: [
+ *         {
+ *             path: "/profile",
+ *             component: null,
+ *             load: async () => {
  *
- * // Define routes
- * const routes = [
- *   { path: '', component: new HomeComponent() },
- *   { path: 'about', component: new AboutComponent() },
- * ];
+ *                 const component = document.createElement("div");
+ *                 component.textContent = "Profile Component";
+ *                 return component;
+ *             },
+ *         },
+ *     ],
+ * };
  *
- * // Initialize the router with the defined routes
+ *
+ * const routes = [route];
+ *
+ *
  * MDRouter.init(routes);
- *
- * // Navigate to the about page programmatically
- * MDRouter.navigate('/about');
- *
- * // HTML structure
- * // <body>
- * //   <md-outlet></md-outlet>
- * // </body>
  */
 class MDRouter {
     /**
-     * Sets routes recursively, assigns parent references, and constructs pathnames.
-     * @param {Array} routes - The array of route objects to set.
-     * @param {Object} parent - The parent route object (default: null).
-     * @returns {Array} The array of routes with parent and pathname properties set.
+     * Set routes recursively with parent-child relationships.
+     * @param {Array<Route>} routes - The array of route objects.
+     * @param {Route} [parent] - The parent route object (optional).
+     * @returns {Array<Route>} - The flattened array of routes.
      */
-    static setRoutes(routes = [], parent = null) {
-        return routes.reduce((prev, curr) => {
+    static setRoutes(routes, parent) {
+        return routes.reduce((acc, curr) => {
             curr.parent = parent;
-            curr.pathname = ((curr.parent?.pathname ?? "") + "/" + curr.path).replace(/\/+/g, "/");
+            curr.pathname = `${parent?.pathname ?? ""}/${curr.path}`.replace(/\/+/g, "/");
 
-            prev.push(curr);
+            acc.push(curr);
 
             if (curr.children?.length) {
-                prev.push(...this.setRoutes(curr.children, curr));
+                acc.push(...this.setRoutes(curr.children, curr));
             }
-
-            return prev;
+            return acc;
         }, []);
     }
 
     /**
-     * Retrieves the current path based on the browser's location.
-     * @returns {String} The current path.
+     * Get the current path based on history API or hash fallback.
+     * @returns {string} - The current path.
      */
     static get path() {
         if (this.historyApiFallback) {
@@ -70,58 +80,75 @@ class MDRouter {
     }
 
     /**
-     * Retrieves query parameters from the current URL.
-     * @returns {Object} The object containing query parameters.
+     * Get the query parameters from the current URL.
+     * @returns {Object} - The parsed query parameters.
      */
     static get query() {
         let search;
-
         if (this.historyApiFallback) {
             search = window.location.search;
         } else {
-            search = window.location.hash.replace(/(\?.*)$/, "") || "";
+            search = window.location.hash.replace(/^#/, "").match(/(\?.*)$/)?.[1] || "";
         }
 
-        return Object.fromEntries(new URLSearchParams(search).entries());
+        const query = {};
+        for (const [name, value] of new URLSearchParams(search).entries()) {
+            if (query[name]) {
+                if (Array.isArray(query[name])) {
+                    query[name].push(value);
+                } else {
+                    query[name] = [query[name], value];
+                }
+            } else {
+                query[name] = value;
+            }
+        }
+
+        return query;
     }
 
     /**
-     * Retrieves the route matching the given path.
-     * @param {String} path - The path to match against routes.
-     * @returns {Object|undefined} The matched route object or undefined if not found.
+     * Find a route object that matches the given path.
+     * @param {string} path - The path to match against.
+     * @returns {Route|undefined} - The matched route object or undefined if not found.
      */
-    static getRoutes(path) {
-        return this.stacks.find((stack) => {
-            const pattern = "^" + stack.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/g, "(?:.*)") + "(?:/?$)";
+    static getRoute(path) {
+        return this.stacks.find((route) => {
+            const pattern = `^${route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)")}(?:/?\$)`;
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
 
-            this.params = { ...matches?.groups };
+            if (matches) {
+                this.params = { ...matches.groups };
+                return true;
+            }
 
-            return matches;
+            return false;
         });
     }
 
     /**
-     * Recursively retrieves all routes up to the root for a given route.
-     * @param {Object} route - The route object to start from.
-     * @returns {Array} The array of routes from the given route up to the root.
+     * Get all routes from the current route up to the root.
+     * @param {Route} route - The current route object.
+     * @returns {Array<Route>} - The array of all routes from root to the current route.
      */
-    static getRoute(route) {
-        return [route].reduce((prev, curr) => {
+    static getRoutes(route) {
+        return [route].reduce((acc, curr) => {
             if (curr.parent) {
-                prev.push(...this.getRoute(curr.parent));
+                acc.push(...this.getRoutes(curr.parent));
             }
-            prev.push(curr);
-            return prev;
+
+            acc.push(curr);
+
+            return acc;
         }, []);
     }
 
     /**
-     * Retrieves the outlet element associated with the route.
-     * @param {HTMLElement} container - The container element to search for the outlet.
-     * @param {Object} route - The route object containing outlet information.
-     * @returns {Promise<HTMLElement>} Promise resolving to the outlet HTMLElement.
+     * Resolve the outlet element where a route component should be rendered.
+     * @param {HTMLElement} container - The container element to search within.
+     * @param {Route} route - The route object containing outlet information.
+     * @returns {Promise<HTMLElement>} - Resolves with the outlet element.
      */
     static getOutlet(container, route) {
         return new Promise((resolve) => {
@@ -142,6 +169,7 @@ class MDRouter {
                     if (observer) {
                         observer.disconnect();
                     }
+
                     resolve(outlet);
                 }
             };
@@ -150,19 +178,26 @@ class MDRouter {
 
             if (!outlet) {
                 observer = new MutationObserver(callback);
-                observer.observe(target, { childList: true, subtree: true });
+                observer.observe(target, {
+                    childList: true,
+                    subtree: true,
+                });
             }
         });
     }
 
     /**
-     * Handles the navigation process on page load and popstate/hashchange events.
-     * @param {Event} event - The event triggering the navigation process.
-     * @returns {void}
+     * Handle the load event triggered during initial load or navigation.
+     * @param {Event} event - The load or navigation event.
+     * @returns {Promise<void>} - Resolves when navigation and component loading is complete.
      */
     static async handleLoad(event) {
-        this.route = this.getRoutes(this.path);
-        this.routes = this.getRoute(this.route);
+        this.emit("onRouterCurrentEntryChange", event);
+        performance.mark("markRouterCurrentEntryChange");
+
+        this.params = {};
+        this.route = this.getRoute(this.path);
+        this.routes = this.getRoutes(this.route);
 
         if (this.controller && !this.controller.signal.aborted) {
             this.controller.abort();
@@ -172,15 +207,15 @@ class MDRouter {
             this.controller = new AbortController();
         }
 
-        MDRouter.emit("onNavigationStart", event);
-
         for (const route of this.routes) {
-            MDRouter.emit("onNavigation", event);
+            this.emit("onRouterNavigate", event);
+            performance.mark("markRouterNavigate");
 
             if (route.beforeLoad) {
                 try {
                     await new Promise((resolve, reject) => {
                         const next = (err) => {
+                            this.controller.signal.removeEventListener("abort", next);
                             if (err) {
                                 reject(err);
                             } else {
@@ -191,7 +226,8 @@ class MDRouter {
                         route.beforeLoad(next);
                     });
                 } catch (error) {
-                    MDRouter.emit("onNavigationError", event);
+                    this.emit("onRouterNavigateError", event);
+                    performance.mark("markRouterNavigateError");
                     console.error(error);
                     break;
                 }
@@ -202,43 +238,42 @@ class MDRouter {
             }
 
             const container = route.parent?.component ?? document.body;
+
             const outlet = await this.getOutlet(container, route);
 
             if (!route.component.isConnected) {
                 outlet.parentElement.insertBefore(route.component, outlet.nextElementSibling);
             }
 
-            document.querySelectorAll("md-outlet").forEach((outlet, index, outlets) => {
+            const outlets = Array.from(document.body.querySelectorAll("md-outlet"));
+            for (const outlet of outlets) {
                 let nextElement = outlet.nextElementSibling;
-
                 while (nextElement) {
-                    const component = this.routes.find((route) => route.component == nextElement);
-                    let element;
+                    const notComponent = !this.routes.find((route) => route.component == nextElement);
+                    const notOutlet = !outlets.find((outlet) => outlet == nextElement);
 
-                    for (let outlet of outlets) {
-                        element = outlet == nextElement;
-
-                        if (element) {
-                            break;
-                        }
-                    }
-
-                    if (!component && !element) {
+                    if (notComponent && notOutlet) {
                         nextElement.remove();
                     }
 
                     nextElement = nextElement.nextElementSibling;
                 }
-            });
+            }
         }
+        this.emit("onRouterNavigateSuccess", event);
+        performance.mark("markRouterNavigateSuccess");
+        performance.measure("measureRouterNavigateSuccess", "markRouterCurrentEntryChange", "markRouterNavigateSuccess");
 
-        MDRouter.emit("onNavigationEnd", event);
+        performance.clearMarks("markRouterCurrentEntryChange");
+        performance.clearMarks("markRouterNavigate");
+        performance.clearMarks("markRouterNavigateError");
+        performance.clearMarks("markRouterNavigateSuccess");
+        performance.clearMeasures("measureRouterNavigateSuccess");
     }
 
     /**
-     * Navigates to the specified URL using history API or hash fragment.
-     * @param {String} url - The URL to navigate to.
-     * @returns {void}
+     * Navigate to a specified URL using history API or hash fallback.
+     * @param {string} url - The URL to navigate to.
      */
     static navigate(url) {
         if (this.historyApiFallback) {
@@ -249,13 +284,11 @@ class MDRouter {
     }
 
     /**
-     * Handles click events on elements with 'routerLink' attribute to trigger navigation.
+     * Handle click events on elements with `[routerLink]` attribute to trigger navigation.
      * @param {MouseEvent} event - The click event.
-     * @returns {void}
      */
     static handleClick(event) {
         const routerLink = event.target.closest("[routerLink]");
-
         if (routerLink) {
             const url = routerLink.getAttribute("routerLink");
             this.navigate(url);
@@ -263,45 +296,50 @@ class MDRouter {
     }
 
     /**
-     * Emits a custom event with the specified type and detail.
-     * @param {String} type - The type of the event.
-     * @param {Object} detail - The detail object to include with the event.
-     * @returns {void}
-     */
-    static emit(type, detail) {
-        const event = new CustomEvent(type, { bubbles: true, cancelable: true, detail });
-        window.dispatchEvent(event);
-    }
-
-    /**
-     * Flag indicating whether to use history API for routing (true) or hash fragment (false).
-     * @type {Boolean}
+     * Flag indicating whether to use history API (true) or hash fallback (false).
+     * @type {boolean}
      */
     static historyApiFallback = true;
 
     /**
-     * Initializes the router with the provided routes and sets up event listeners.
-     * @param {Array} routes - The array of route objects to initialize the router with.
-     * @returns {void}
+     * Emit a custom event with specified type and detail.
+     * @param {string} type - The event type to emit.
+     * @param {*} detail - The event detail to include.
+     */
+    static emit(type, detail) {
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
+        window.dispatchEvent(event);
+    }
+
+    /**
+     * Initialize the router with the provided routes and set up event listeners.
+     * @param {Array<Route>} routes - The array of route objects to configure the router.
      */
     static init(routes) {
         this.stacks = this.setRoutes(routes);
 
-        window.addEventListener("load", this.handleLoad.bind(this));
+        this.handleLoad = this.handleLoad.bind(this);
+        window.addEventListener("DOMContentLoaded", this.handleLoad);
 
         if (this.historyApiFallback) {
-            window.addEventListener("popstate", this.handleLoad.bind(this));
-            const pushState = window.history.pushState;
+            window.addEventListener("popstate", this.handleLoad);
 
+            const pushState = window.history.pushState;
             window.history.pushState = function () {
                 pushState.apply(this, arguments);
+
                 MDRouter.emit("popstate");
             };
         } else {
-            window.addEventListener("hashchange", this.handleLoad.bind(this));
+            window.addEventListener("hashchange", this.handleLoad);
         }
 
-        window.addEventListener("click", this.handleClick.bind(this));
+        this.handleClick = this.handleClick.bind(this);
+        window.addEventListener("click", this.handleClick);
     }
 }
 

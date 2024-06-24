@@ -1,78 +1,90 @@
 import { html } from "lit";
-import { MDElement } from "../element/element.js";
+import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
- * Material Design Segmented Button element.
- * @extends MDElement
+ * MDSegmentedButtonComponent provides a segmented button component
+ * that supports single and multiple selection modes.
+ * @extends MDComponent
  */
-class MDSegmentedButtonElement extends MDElement {
+class MDSegmentedButtonComponent extends MDComponent {
     /**
-     * Static properties for defining behavior and attributes.
-     * @property {Array} list - Array of items to render as segmented buttons.
-     * @property {Boolean} singleSelection - Indicates single selection mode.
-     * @property {Boolean} multiSelection - Indicates multi-selection mode.
+     * Defines the properties for the component.
      */
     static properties = {
-        ...MDElement.properties,
-        list: { type: Array },
-        singleSelection: { type: Boolean },
-        multiSelection: { type: Boolean },
+        ...MDComponent.properties,
+        buttons: { type: Array },
+        singleSelect: { type: Boolean, attribute: "single-select" },
+        multiSelect: { type: Boolean, attribute: "multi-select" },
     };
 
     /**
-     * Renders a segmented button for the given item.
-     * @param {Object} item - The item to render as a segmented button.
-     * @returns {TemplateResult} Rendered template for the segmented button item.
+     * Renders an individual button item.
+     * @param {Object} item - The button item data.
+     * @returns {TemplateResult} The template result for the button item.
      */
     renderButton(item) {
         /* prettier-ignore */
         return html`
-            <md-button 
-                .data="${item}"
+            <md-button
                 class="md-segmented-button__item"
+                .data="${item}"
                 .name="${ifDefined(item.name)}"
-                .label="${ifDefined(item.label)}"
-                .icon="${ifDefined(item.selected ? 'check' : item.icon)}"
+                .variant="${item.variant ?? "outlined"}"
                 .type="${ifDefined(item.type)}"
+                .icon="${ifDefined(item.selected ? "check" : item.icon)}"
+                .label="${ifDefined(item.label)}"
                 .selected="${ifDefined(item.selected)}"
-                .variant="${ifDefined(item.variant ?? 'outlined')}"
+                .disabled="${ifDefined(item.disabled)}"
                 @click="${this.handleSegmentedButtonItemClick}"
             ></md-button>
         `;
     }
 
     /**
-     * Renders the segmented button element.
-     * @returns {TemplateResult[]} Array of rendered segmented button items.
+     * Renders the segmented button component.
+     * @returns {TemplateResult} The template result for the segmented button.
      */
     render() {
-        return this.list?.map((item) => this.renderButton(item));
+        /* prettier-ignore */
+        return this.buttons.map(item => this.renderButton(item));
     }
 
     /**
-     * Handles click events on segmented button items.
-     * Depending on the selection mode, updates the `selected` state of items.
-     * @param {MouseEvent} event - The click event.
-     * @fires MDSegmentedButtonElement#onSegmentedButtonItemClick
+     * Lifecycle method called when the element is connected to the DOM.
+     * Adds necessary classes for the segmented button component.
+     */
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.classList.add("md-segmented-button");
+    }
+
+    /**
+     * Handles the click event for an individual segmented button item.
+     * @fires MDSegmentedButtonComponent#onSegmentedButtonItemClick
+     * @param {Event} event - The click event.
      */
     handleSegmentedButtonItemClick(event) {
-        const data = event.currentTarget.data;
+        if (this.multiSelect || this.singleSelect) {
+            const data = event.currentTarget.data;
 
-        if (this.multiSelection) {
-            data.selected = !data.selected;
-        } else if (this.singleSelection) {
-            this.list.forEach((item) => {
-                item.selected = item === data;
-            });
+            if (this.multiSelect) {
+                data.selected = !data.selected;
+            } else if (this.singleSelect) {
+                for (let i = 0; i < this.buttons.length; i++) {
+                    let item = this.buttons[i];
+                    item.selected = item === data;
+                }
+            }
+
+            this.requestUpdate();
         }
-        this.requestUpdate();
 
         this.emit("onSegmentedButtonItemClick", event);
     }
 }
 
-// Define the custom element 'md-segmented-button' using MDSegmentedButtonElement class
-customElements.define("md-segmented-button", MDSegmentedButtonElement);
+customElements.define("md-segmented-button", MDSegmentedButtonComponent);
 
-export { MDSegmentedButtonElement };
+export { MDSegmentedButtonComponent };

@@ -1,32 +1,34 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
-const isProduction = process.env.NODE_ENV == "production";
+const isProduction = process.env.NODE_ENV == 'production';
 
-const stylesHandler = "style-loader";
+
+const stylesHandler = MiniCssExtractPlugin.loader;
+
+
 
 const config = {
-    target: ["web", "es2017"],
-    // experiments: {
-    //   outputModule: true,
-    // },
-    entry: "./src/index.js",
+    entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, "dist"),
-        // module: true,
+        path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
         open: true,
-        host: "localhost",
+        host: 'localhost',
         historyApiFallback: true,
+        static: './'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "index.html",
+            template: 'index.html',
         }),
+
+        new MiniCssExtractPlugin(),
 
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
@@ -35,30 +37,28 @@ const config = {
         rules: [
             // {
             //     test: /\.(js|jsx)$/i,
-            //     loader: "babel-loader",
+            //     loader: 'babel-loader',
             // },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    //
-                    stylesHandler,
-                    "css-loader",
-                    // "postcss-loader",
-                    "sass-loader",
+                    stylesHandler, 
+                    'css-loader', 
+                    // 'postcss-loader', 
+                    'sass-loader'
                 ],
             },
             {
                 test: /\.css$/i,
                 use: [
-                    //
-                    stylesHandler,
-                    "css-loader",
-                    // "postcss-loader",
+                    stylesHandler, 
+                    'css-loader', 
+                    // 'postcss-loader'
                 ],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: "asset",
+                type: 'asset',
             },
 
             // Add your rules for custom modules here
@@ -69,11 +69,13 @@ const config = {
 
 module.exports = () => {
     if (isProduction) {
-        config.mode = "production";
-
+        config.mode = 'production';
+        
+        
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
+        
     } else {
-        config.mode = "development";
+        config.mode = 'development';
     }
     return config;
 };

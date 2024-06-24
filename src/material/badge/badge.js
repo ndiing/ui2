@@ -1,46 +1,30 @@
 import { html, nothing } from "lit";
-import { MDElement } from "../element/element.js";
+import { MDComponent } from "../component/component.js";
 
-/**
- * Class representing a custom badge element.
- * @extends MDElement
- */
-class MDBadgeElement extends MDElement {
-    /**
-     * Properties of the MDBadgeElement.
-     * @type {Object}
-     * @property {Number} label - The numerical label of the badge.
-     * @property {Number} limit - The maximum numerical value to display before showing a "+".
-     */
+class MDBadgeComponent extends MDComponent {
     static properties = {
-        ...MDElement.properties,
         label: { type: Number },
         limit: { type: Number },
     };
 
-    /**
-     * Creates an instance of MDBadgeElement.
-     */
     constructor() {
         super();
 
-        /** @type {number} */
         this.limit = 999;
     }
 
-    /**
-     * Renders the badge element.
-     * @return {import('lit').TemplateResult|typeof nothing} The template result or nothing if no label.
-     */
     render() {
         /* prettier-ignore */
-        return this.label ? html`<div class="md-badge__label">${this.label > this.limit ? this.limit + '+' : this.label}</div>` : nothing;
+        return this.label?html`<div class="md-badge__label">${this.label>this.limit?this.limit+'+':this.label}</div>`:nothing
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.classList.add("md-badge");
     }
 }
 
-/**
- * Defines a custom element 'md-badge'.
- */
-customElements.define("md-badge", MDBadgeElement);
+customElements.define("md-badge", MDBadgeComponent);
 
-export { MDBadgeElement };
+export { MDBadgeComponent };

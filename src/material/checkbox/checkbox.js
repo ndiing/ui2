@@ -1,152 +1,116 @@
 import { html } from "lit";
-import { MDElement } from "../element/element.js";
+import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { createRef, ref } from "lit/directives/ref.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
-/**
- * Class representing a custom checkbox element.
- * @extends MDElement
- */
-class MDCheckboxElement extends MDElement {
-    /**
-     * Properties of the MDCheckboxElement.
-     * @type {Object}
-     * @property {Boolean} checked - The checked state of the checkbox.
-     * @property {Boolean} defaultChecked - The default checked state of the checkbox.
-     * @property {Boolean} disabled - The disabled state of the checkbox.
-     * @property {String} name - The name attribute of the checkbox.
-     * @property {String} value - The value attribute of the checkbox.
-     * @property {String} defaultValue - The default value attribute of the checkbox.
-     * @property {Boolean} indeterminate - The indeterminate state of the checkbox.
-     * @property {Boolean} required - The required state of the checkbox.
-     * @property {Boolean} readOnly - The read-only state of the checkbox.
-     */
+class MDCheckboxComponent extends MDComponent {
     static properties = {
-        ...MDElement.properties,
         checked: { type: Boolean },
         defaultChecked: { type: Boolean },
         disabled: { type: Boolean },
-        name: { type: String },
-        value: { type: String },
-        defaultValue: { type: String },
         indeterminate: { type: Boolean },
-        required: { type: Boolean },
-        readOnly: { type: Boolean },
+        value: { type: String },
+        name: { type: String },
+        form: { type: Object },
+        type: { type: String },
     };
 
-    /**
-     * Creates an instance of MDCheckboxElement.
-     */
     constructor() {
         super();
 
-        /**
-         * Ripple controller for the checkbox element.
-         * @type {MDRippleController}
-         */
+        this.type = "checkbox";
+
         this.ripple = new MDRippleController(this, {
-            containerSelector: ".md-checkbox__container",
             buttonSelector: ".md-checkbox__native",
-            clipped: false,
+            containerSelector: ".md-checkbox__track",
             size: 40,
             centered: true,
             fadeOut: true,
         });
     }
 
-    /**
-     * Reference to the native checkbox input element.
-     * @type {import('lit').Ref<HTMLInputElement>}
-     */
-    native = createRef();
+    renderNative() {
+        /* prettier-ignore */
+        return html`
+            <input 
+                .type="${this.type}" 
+                class="md-checkbox__native"
+                .checked="${ifDefined(this.checked)}"
+                .defaultChecked="${ifDefined(this.defaultChecked)}"
+                .disabled="${ifDefined(this.disabled)}"
+                .indeterminate="${ifDefined(this.indeterminate)}"
+                .value="${ifDefined(this.value)}"
+                .defaultValue="${ifDefined(this.defaultValue)}"
+                .name="${ifDefined(this.name)}"
+                .form="${ifDefined(this.form)}"
+                @input="${this.handleCheckboxNativeInput}"
+                @reset="${this.handleCheckboxNativeReset}"
+            >
+        `
+    }
 
-    /**
-     * Renders the checkbox element.
-     * @return {import('lit').TemplateResult} The template result.
-     */
+    renderTrack() {
+        /* prettier-ignore */
+        return html`
+            <div class="md-checkbox__track"><div class="md-checkbox__thumb"></div></div>
+        `
+    }
+
+    renderContainer() {
+        /* prettier-ignore */
+        return html`
+            <div class="md-checkbox__container">
+                ${this.renderNative()}
+                ${this.renderTrack()}
+            </div>
+        `
+    }
+
     render() {
         /* prettier-ignore */
         return html`
             <label class="md-checkbox__inner">
-                <div class="md-checkbox__label">Checkbox</div>
-                <div class="md-checkbox__container">
-                    <input 
-                        type="checkbox" 
-                        class="md-checkbox__native"
-                        .checked="${ifDefined(this.checked)}"
-                        .defaultChecked="${ifDefined(this.defaultChecked)}"
-                        .disabled="${ifDefined(this.disabled)}"
-                        .name="${ifDefined(this.name)}"
-                        .value="${ifDefined(this.value)}"
-                        .defaultValue="${ifDefined(this.defaultValue)}"
-                        .indeterminate="${ifDefined(this.indeterminate)}"
-                        .required="${ifDefined(this.required)}"
-                        .readOnly="${ifDefined(this.readOnly)}"
-                        ${ref(this.native)}
-                        @input="${this.handleCheckboxNativeInput}"
-                        @reset="${this.handleCheckboxNativeReset}"
-                    >
-                    <div class="md-checkbox__track"><div class="md-checkbox__thumb"></div></div>
-                </div>
+                <div class="md-checkbox__label">${this.type}</div>
+                ${this.renderContainer()}
             </label>
-        `;
+        `
     }
 
-    /**
-     * Called when the element is connected to the DOM.
-     * Initializes default values.
-     */
     connectedCallback() {
         super.connectedCallback();
 
+        this.defaultValue = this.value || "on";
         this.defaultChecked = this.checked;
-        this.defaultValue = this.value;
         this.defaultIndeterminate = this.indeterminate;
+
+        this.classList.add("md-checkbox");
     }
 
-    /**
-     * Called when the element is disconnected from the DOM.
-     */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-    }
-
-    /**
-     * Handles input event from the native checkbox.
-     * Updates component state from native checkbox state.
-     * @param {Event} event - The input event object.
-     */
     handleCheckboxNativeInput(event) {
-        this.checked = this.native.value.checked;
-        this.value = this.native.value.value;
-        this.indeterminate = this.native.value.indeterminate;
+        const native = event.currentTarget;
+
+        this.value = native.value;
+        this.checked = native.checked;
+        this.indeterminate = native.indeterminate;
 
         this.emit("onCheckboxNativeInput", event);
     }
 
-    /**
-     * Handles reset event from the native checkbox.
-     * Resets native checkbox state to default values.
-     * Updates component state accordingly.
-     * @param {Event} event - The reset event object.
-     */
     handleCheckboxNativeReset(event) {
-        this.native.value.checked = this.defaultChecked;
-        this.native.value.value = this.defaultValue;
-        this.native.value.indeterminate = this.defaultIndeterminate;
+        const native = event.currentTarget;
 
-        this.checked = this.native.value.checked;
-        this.value = this.native.value.value;
-        this.indeterminate = this.native.value.indeterminate;
+        native.value = this.defaultValue;
+        native.checked = this.defaultChecked;
+        native.indeterminate = this.defaultIndeterminate;
+
+        this.value = this.defaultValue;
+        this.checked = this.defaultChecked;
+        this.indeterminate = this.defaultIndeterminate;
 
         this.emit("onCheckboxNativeReset", event);
     }
 }
 
-/**
- * Defines a custom element 'md-checkbox'.
- */
-customElements.define("md-checkbox", MDCheckboxElement);
+customElements.define("md-checkbox", MDCheckboxComponent);
 
-export { MDCheckboxElement };
+export { MDCheckboxComponent };

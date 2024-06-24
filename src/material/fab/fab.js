@@ -1,53 +1,63 @@
 import { html, nothing } from "lit";
-import { MDElement } from "../element/element.js";
+import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
-/**
- * Material Design Floating Action Button (FAB) element.
- * @extends MDElement
- */
-class MDFabElement extends MDElement {
-    /**
-     * Static properties for defining behavior and attributes.
-     * @property {String} label - Label text for the FAB.
-     * @property {String} icon - Icon to display within the FAB.
-     */
+class MDFabComponent extends MDComponent {
     static properties = {
-        ...MDElement.properties,
-        label: { type: String },
+        variant: { type: String },
         icon: { type: String },
+        label: { type: String },
+        selected: { type: Boolean, reflect: true },
+        disabled: { type: Boolean, reflect: true },
     };
 
-    /**
-     * Variants available for the FAB.
-     * @type {String[]}
-     */
-    variants = ["small", "large", "surface", "secondary", "tertiary", "extended", "unelevated"];
+    variants = ["small", "large", "surface", "secondary", "tertiary", "unelevated", "extended"];
 
-    /**
-     * Constructs an instance of MDFabElement.
-     */
     constructor() {
         super();
 
-        // Initialize ripple effect for the FAB
-        this.ripple = new MDRippleController(this, {});
+        this.ripple = new MDRippleController(this, {
+            clipped: true,
+            fadeOut: true,
+        });
     }
 
-    /**
-     * Renders the FAB with optional icon and label.
-     * @returns {TemplateResult} Rendered template of the FAB.
-     */
     render() {
         /* prettier-ignore */
         return html`
             ${this.icon ? html`<md-icon class="md-fab__icon">${this.icon}</md-icon>` : nothing}
-            ${this.label ? html`<div class="md-fab__label">${this.label}</div>` : nothing}
+            ${this.label?html`<div class="md-fab__label">${this.label}</div>`:nothing}
         `;
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.classList.add("md-fab");
+    }
+
+    updated(changedProperties) {
+        super.updated(changedProperties);
+
+        if (changedProperties.has("variant")) {
+            for (let i = 0; i < this.variants.length; i++) {
+                let variant = this.variants[i];
+                this.classList.toggle(`md-fab--${variant}`, (this.variant ?? "").split(" ").includes(variant));
+            }
+        }
+
+        if (changedProperties.has("disabled")) {
+            if (this.disabled) {
+                this.setAttribute("aria-disabled", "true");
+                this.setAttribute("tabindex", "-1");
+            } else {
+                this.removeAttribute("aria-disabled");
+                this.removeAttribute("tabindex");
+            }
+        }
     }
 }
 
-// Define the custom element 'md-fab' using MDFabElement class
-customElements.define("md-fab", MDFabElement);
+customElements.define("md-fab", MDFabComponent);
 
-export { MDFabElement };
+export { MDFabComponent };

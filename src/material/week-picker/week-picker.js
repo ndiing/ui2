@@ -1,106 +1,116 @@
+import { parseWeek, stringifyWeek, stringifyYear } from "../functions/functions.js";
+import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { html } from "lit";
-import { MDDatetimePickerElement } from "../datetime-picker/datetime-picker.js";
-import { parseWeek, stringifyWeek } from "../helper/helper.js";
-import { ref } from "lit/directives/ref.js";
 
-/**
- * Custom element for a week picker.
- * Extends MDDatetimePickerElement to provide week selection functionality.
- *
- * @extends MDDatetimePickerElement
- */
-class MDWeekPickerElement extends MDDatetimePickerElement {
+class MDWeekPickerComponent extends MDDatetimePickerComponent {
     /**
-     * Retrieves the list of weekdays with labels and error flags for Sundays.
-     * @type {Object[]} An array containing objects with label and error properties for each weekday.
+     * Getter for weekdays array.
+     * @returns {Array<Object>} Array of weekday objects.
      */
     get weekdays() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 7; i++) {
             const date = new Date(0, 0, i + 1);
-            list.push({
+            rows.push({
                 label: this.weekdayFormat(date),
-                error: date.getDay() === 0,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Retrieves the list of days organized by weeks and their child days.
-     * @type {Object[]} An array containing objects representing rows of weeks and their child day objects.
+     * Getter for days grid.
+     * @returns {Array<Object>} Array of day objects.
      */
     get days() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 6; i++) {
-            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), i * 7 + 6 - this.first + 1 + 1);
+            const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + 0 + 1 - this.first + 1);
             const year = date.getFullYear();
+            const month = date.getMonth();
             const week = date.getWeek();
-            const rows = {
-                activated: year === this.date.getFullYear() && week === this.date.getWeek(),
-                selected: year === this.selected.getFullYear() && week === this.selected.getWeek(),
+            const children = [];
+            const column = {
+                activated: year == this.activated.getFullYear() && week == this.activated.getWeek(),
+                selected: year == this.selected.getFullYear() && week == this.selected.getWeek(),
                 year,
+                month,
                 week,
-                children: [],
             };
-            for (let j = 0; j < 7; j++) {
-                const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), i * 7 + j - this.first + 1 + 1);
 
-                rows.children.push({
+            for (let j = 0; j < 7; j++) {
+                const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + j + 1 - this.first + 1);
+                children.push({
                     label: this.dayFormat(date),
                 });
             }
-            list.push(rows);
+            column.children = children;
+            rows.push(column);
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Override of the body property to customize the week picker layout.
-     * @type {TemplateResult[]} An array containing the Lit HTML template for week picker layout.
+     * Getter for body content.
+     * @returns {TemplateResult[]} Array containing the body HTML.
      */
     get body() {
         /* prettier-ignore */
         return [html`
-            <div class="md-layout-card">
-                <div class="md-layout-card__item" ${ref(this.cardItemYear)}>${this.renderYear()}</div>
-                <div class="md-layout-card__item" ${ref(this.cardItemMonth)}>${this.renderMonth()}</div>
-                <div class="md-layout-card__item">${this.renderDay()}</div>
+            <div class="md-datetime-picker__card">
+                <div class="md-datetime-picker__card-item">${this.renderYear()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderMonth()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderDay()}</div>
             </div>
         `];
     }
 
     /**
-     * Setter for the body property.
-     * @param {TemplateResult[]} value - The value to set for the body property.
+     * Setter for body content.
+     * @param {TemplateResult[]} value - HTML template to set as body.
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * Renders the day grid for the week picker.
-     * @returns {TemplateResult} The Lit HTML template result for the day grid.
+     * Getter for leading actions.
+     * @returns {Object[]} Array of leading action objects.
+     */
+    get leadingActions() {
+        let label;
+        if (this.index == 0) {
+            label = [this.years[0].label, this.years[this.years.length - 1].label].join("-");
+        } else if (this.index == 1) {
+            label = stringifyYear(this.selection);
+        } else if (this.index == 2) {
+            label = stringifyWeek(this.selection);
+        }
+
+        return [{ name: "label", component: "button", label }];
+    }
+
+    /**
+     * Renders the day grid.
+     * @returns {TemplateResult} HTML template for rendering days.
      */
     renderDay() {
         /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__grid">
-                <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--weekday">
-                    ${this.weekdays.map(item => html`
-                        <div class="md-datetime-picker__grid-item" ?error="${item.error}">
+                <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--weekdays">
+                    ${this.weekdays.map(item=>html`
+                        <div class="md-datetime-picker__grid-item">
                             <div class="md-datetime-picker__grid-label">${item.label}</div>
-                        </div>
+                        </div>    
                     `)}
                 </div>
-                ${this.days.map(row => html`
-                    <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--day"
-                        @click="${this.handleDatetimePickerDayItemClick}" .data="${row}"
-                        ?activated="${row.activated}" ?selected="${row.selected}" ?error="${row.error}" ?disabled="${row.disabled}">
-                        ${row.children.map(item => html`
-                            <div class="md-datetime-picker__grid-item">
+                ${this.days.map(row=>html`
+                    <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--days" ?activated="${row.activated}" ?selected="${row.selected}" .data="${row}" @click="${this.handleDatetimePickerDayItemClick}">
+                        ${row.children.map(item=>html`
+                            <div class="md-datetime-picker__grid-item" >
                                 <div class="md-datetime-picker__grid-label">${item.label}</div>
-                            </div>
+                            </div>    
                         `)}
                     </div>
                 `)}
@@ -108,104 +118,158 @@ class MDWeekPickerElement extends MDDatetimePickerElement {
         `;
     }
 
-    /**
-     * Callback when the element is connected to the DOM.
-     * Adds necessary CSS classes for styling.
-     */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-datetime-picker");
-
-        this.defaultValue = this.value;
+        this.classList.add("md-week-picker");
     }
 
     /**
-     * Callback when the element is disconnected from the DOM.
-     * Removes added CSS classes.
+     * Converts the value to Date object.
      */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-
-        this.classList.remove("md-datetime-picker");
-    }
-
-    /**
-     * Updates the selected week value based on the current input value.
-     */
-    updateSelectedValue() {
+    updateDate() {
         const date = parseWeek(this.value);
+
+        this.selection.setFullYear(date.getFullYear());
+        this.selection.setWeek(date.getWeek());
 
         this.selected.setFullYear(date.getFullYear());
         this.selected.setWeek(date.getWeek());
     }
 
     /**
-     * Handles click events on various buttons within the week picker pane.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on previous icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerIconButtonPrevClick
      */
-    handlePaneButtonClick(event) {
-        if (event.currentTarget.name === "label") {
-            if (this.index === 2) {
-                this.index = 1;
-            } else if (this.index === 1) {
-                this.index = 0;
-            } else if (this.index === 0) {
-                this.index = 2;
-            }
-        } else if (event.currentTarget.name === "cancel") {
-            this.value = this.defaultValue;
-
-            this.index = 2;
-
-            this.emit("onWeekPickerButtonCancelClick", event);
-        } else if (event.currentTarget.name === "ok") {
-            this.index = 2;
-
-            this.emit("onWeekPickerButtonOkClick", event);
+    handleCardIconButtonPrevClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() - 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() - 1);
+        } else if (this.index == 2) {
+            this.selection.setMonth(this.selection.getMonth() - 1);
         }
+
+        this.requestUpdate();
+
+        this.emit("onWeekPickerSelection", event);
+        this.emit("onWeekPickerIconButtonPrevClick", event);
     }
 
     /**
-     * Handles click events on year items within the week picker pane.
-     * Updates the selected year and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on next icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerIconButtonNextClick
+     */
+    handleCardIconButtonNextClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() + 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() + 1);
+        } else if (this.index == 2) {
+            this.selection.setMonth(this.selection.getMonth() + 1);
+        }
+
+        this.requestUpdate();
+
+        this.emit("onWeekPickerSelection", event);
+        this.emit("onWeekPickerIconButtonNextClick", event);
+    }
+
+    /**
+     * Handles click on label button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerButtonLabelClick
+     */
+    handleCardButtonLabelClick(event) {
+        if (this.index == 0) {
+            this.index = 2;
+        } else if (this.index == 1) {
+            this.index = 0;
+        } else if (this.index == 2) {
+            this.index = 1;
+        }
+
+        this.emit("onWeekPickerButtonLabelClick", event);
+    }
+
+    /**
+     * Handles click on cancel button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerButtonCancelClick
+     */
+    handleCardButtonCancelClick(event) {
+        this.value = this.defaultValue;
+        this.updateDate();
+        this.requestUpdate();
+        this.index = 2;
+
+        this.emit("onWeekPickerSelection", event);
+        this.emit("onWeekPickerButtonCancelClick", event);
+    }
+
+    /**
+     * Handles click on OK button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerButtonOkClick
+     */
+    handleCardButtonOkClick(event) {
+        this.selected.setFullYear(this.selection.getFullYear());
+        this.selected.setWeek(this.selection.getWeek());
+
+        this.value = this.getValue();
+        this.requestUpdate();
+
+        this.index = 2;
+
+        this.emit("onWeekPickerSelection", event);
+        this.emit("onWeekPickerButtonOkClick", event);
+    }
+
+    /**
+     * Handles click on year item in the year selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerYearItemClick
      */
     handleDatetimePickerYearItemClick(event) {
         const data = event.currentTarget.data;
 
-        this.selected.setFullYear(data.year);
-
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
 
         this.index = 1;
 
-        this.emit("onWeekPickerItemClick", event);
+        this.emit("onWeekPickerSelection", event);
         this.emit("onWeekPickerYearItemClick", event);
     }
 
     /**
-     * Handles click events on month items within the week picker pane.
-     * Updates the selected year and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on month item in the month selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerMonthItemClick
      */
     handleDatetimePickerMonthItemClick(event) {
         const data = event.currentTarget.data;
 
-        this.selected.setFullYear(data.year);
-
-        this.value = this.toString();
+        this.selection.setMonth(data.month);
 
         this.index = 2;
 
-        this.emit("onWeekPickerItemClick", event);
+        this.emit("onWeekPickerSelection", event);
         this.emit("onWeekPickerMonthItemClick", event);
     }
 
     /**
-     * Handles click events on day items within the week picker pane.
-     * Updates the selected year and week, and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on day item in the day grid.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onWeekPickerSelection
+     * @fires MDDatetimePickerComponent#onWeekPickerDayItemClick
      */
     handleDatetimePickerDayItemClick(event) {
         const data = event.currentTarget.data;
@@ -213,21 +277,24 @@ class MDWeekPickerElement extends MDDatetimePickerElement {
         this.selected.setFullYear(data.year);
         this.selected.setWeek(data.week);
 
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
+        this.selection.setWeek(data.week);
 
-        this.emit("onWeekPickerItemClick", event);
+        this.requestUpdate();
+
+        this.emit("onWeekPickerSelection", event);
         this.emit("onWeekPickerDayItemClick", event);
     }
 
     /**
-     * Converts the selected week to a string representation.
-     * @returns {string} A string representation of the selected week.
+     * Converts the selected date to a string.
+     * @returns {string} String representation of selected date.
      */
-    toString() {
+    getValue() {
         return stringifyWeek(this.selected);
     }
 }
 
-customElements.define("md-week-picker", MDWeekPickerElement);
+customElements.define("md-week-picker", MDWeekPickerComponent);
 
-export { MDWeekPickerElement };
+export { MDWeekPickerComponent };

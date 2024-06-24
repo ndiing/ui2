@@ -1,162 +1,204 @@
+import { parseTime, stringifyTime, stringifyYear } from "../functions/functions.js";
+import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { html } from "lit";
-import { MDDatetimePickerElement } from "../datetime-picker/datetime-picker.js";
-import { parseTime, stringifyTime } from "../helper/helper.js";
 
-/**
- * Custom element for a time picker.
- * Extends MDDatetimePickerElement to provide time selection functionality.
- *
- * @extends MDDatetimePickerElement
- */
-class MDTimePickerElement extends MDDatetimePickerElement {
+class MDTimePickerComponent extends MDDatetimePickerComponent {
     /**
-     * Retrieves the body of the time picker, which includes hour and minute sections.
-     * @type {TemplateResult[]} An array containing the Lit HTML template for time picker body.
+     * Getter for body content.
+     * @returns {TemplateResult[]} Array containing the body HTML.
      */
     get body() {
         /* prettier-ignore */
         return [html`
-            <div class="md-layout-card">
-                <div class="md-layout-card__item">${this.renderHour()}</div>
-                <div class="md-layout-card__item">${this.renderMinute()}</div>
+            <div class="md-datetime-picker__card">
+                <div class="md-datetime-picker__card-item">${this.renderHour()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderMinute()}</div>
             </div>
         `];
     }
 
     /**
-     * Setter for the body property.
-     * @param {TemplateResult[]} value - The value to set for the body property.
+     * Setter for body content.
+     * @param {TemplateResult[]} value - HTML template to set as body.
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * Retrieves the leading actions for the time picker, which includes a button with current time label.
-     * @type {Object[]} An array containing objects with component and label properties for leading actions.
+     * Getter for leading actions.
+     * @returns {Object[]} Array of leading action objects.
      */
     get leadingActions() {
         let label;
-        if (this.index === 0 || this.index === 1) {
-            label = stringifyTime(this.selected);
+        if (this.index == 0) {
+            label = stringifyTime(this.selection);
+        } else if (this.index == 1) {
+            label = stringifyTime(this.selection);
         }
-        return [{ component: "button", name: "label", label }];
+        return [{ name: "label", component: "button", label }];
     }
 
-    /**
-     * Constructor for MDTimePickerElement class.
-     * Initializes the index property to 0.
-     */
     constructor() {
         super();
         this.index = 0;
     }
 
-    /**
-     * Callback when the element is connected to the DOM.
-     * Adds necessary CSS classes for styling.
-     */
     connectedCallback() {
         super.connectedCallback();
-        this.classList.add("md-datetime-picker");
-        this.defaultValue = this.value;
+
+        this.classList.add("md-time-picker");
     }
 
     /**
-     * Callback when the element is disconnected from the DOM.
-     * Removes added CSS classes.
+     * Converts the value to Date object.
      */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.classList.remove("md-datetime-picker");
-    }
-
-    /**
-     * Updates the selected time value based on the current input value.
-     */
-    updateSelectedValue() {
+    updateDate() {
         const date = parseTime(this.value);
+
+        this.selection.setHours(date.getHours());
+        this.selection.setMinutes(date.getMinutes());
+
         this.selected.setHours(date.getHours());
         this.selected.setMinutes(date.getMinutes());
     }
 
     /**
-     * Handles click events on various buttons within the time picker pane.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on previous icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerIconButtonPrevClick
      */
-    handlePaneButtonClick(event) {
-        if (event.currentTarget.name === "label") {
-            this.index = this.index === 0 ? 1 : 0;
-        } else if (event.currentTarget.name === "cancel") {
-            this.value = this.defaultValue;
-            this.index = 0;
-            this.emit("onTimePickerButtonCancelClick", event);
-        } else if (event.currentTarget.name === "ok") {
-            this.index = 0;
-            this.emit("onTimePickerButtonOkClick", event);
+    handleCardIconButtonPrevClick(event) {
+        if (this.index == 0) {
+            this.selection.setHours(this.selection.getHours() - 1);
+        } else if (this.index == 1) {
+            this.selection.setMinutes(this.selection.getMinutes() - 1);
         }
-    }
 
-    /**
-     * Handles click events on previous/next buttons within the time picker pane.
-     * Adjusts the selected hour or minute based on the button clicked.
-     * @param {MouseEvent} event - The click event object.
-     */
-    handlePaneIconButtonClick(event) {
-        if (event.currentTarget.name === "prev") {
-            if (this.index === 0) {
-                this.selected.setHours(this.selected.getHours() - 1);
-            } else if (this.index === 1) {
-                this.selected.setMinutes(this.selected.getMinutes() - 1);
-            }
-        } else if (event.currentTarget.name === "next") {
-            if (this.index === 0) {
-                this.selected.setHours(this.selected.getHours() + 1);
-            } else if (this.index === 1) {
-                this.selected.setMinutes(this.selected.getMinutes() + 1);
-            }
-        }
         this.requestUpdate();
+
+        this.emit("onTimePickerSelection", event);
+        this.emit("onTimePickerIconButtonPrevClick", event);
     }
 
     /**
-     * Handles click events on hour items within the time picker pane.
-     * Updates the selected hour and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on next icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerIconButtonNextClick
+     */
+    handleCardIconButtonNextClick(event) {
+        if (this.index == 0) {
+            this.selection.setHours(this.selection.getHours() + 1);
+        } else if (this.index == 1) {
+            this.selection.setMinutes(this.selection.getMinutes() + 1);
+        }
+
+        this.requestUpdate();
+
+        this.emit("onTimePickerSelection", event);
+        this.emit("onTimePickerIconButtonNextClick", event);
+    }
+
+    /**
+     * Handles click on label button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerButtonLabelClick
+     */
+    handleCardButtonLabelClick(event) {
+        if (this.index == 0) {
+            this.index = 1;
+        } else if (this.index == 1) {
+            this.index = 0;
+        }
+
+        this.emit("onTimePickerButtonLabelClick", event);
+    }
+
+    /**
+     * Handles click on cancel button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerButtonCancelClick
+     */
+    handleCardButtonCancelClick(event) {
+        this.value = this.defaultValue;
+        this.updateDate();
+        this.requestUpdate();
+        this.index = 0;
+
+        this.emit("onTimePickerSelection", event);
+        this.emit("onTimePickerButtonCancelClick", event);
+    }
+
+    /**
+     * Handles click on OK button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerButtonOkClick
+     */
+    handleCardButtonOkClick(event) {
+        this.selected.setMinutes(this.selection.getMinutes());
+
+        this.value = this.getValue();
+        this.requestUpdate();
+
+        this.index = 0;
+
+        this.emit("onTimePickerSelection", event);
+        this.emit("onTimePickerButtonOkClick", event);
+    }
+
+    /**
+     * Handles click on hour item in the hour selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerHourItemClick
      */
     handleDatetimePickerHourItemClick(event) {
         const data = event.currentTarget.data;
+
         this.selected.setHours(data.hour);
-        this.value = this.toString();
+
+        this.selection.setHours(data.hour);
+
         this.index = 1;
-        this.emit("onTimePickerItemClick", event);
+
+        this.emit("onTimePickerSelection", event);
         this.emit("onTimePickerHourItemClick", event);
     }
 
     /**
-     * Handles click events on minute items within the time picker pane.
-     * Updates the selected hour and minute, and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on minute item in the minute selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onTimePickerSelection
+     * @fires MDDatetimePickerComponent#onTimePickerMinuteItemClick
      */
     handleDatetimePickerMinuteItemClick(event) {
         const data = event.currentTarget.data;
+
         this.selected.setHours(data.hour);
         this.selected.setMinutes(data.minute);
-        this.value = this.toString();
+
+        this.selection.setHours(data.hour);
+        this.selection.setMinutes(data.minute);
+
         this.index = 0;
-        this.emit("onTimePickerItemClick", event);
+
+        this.emit("onTimePickerSelection", event);
         this.emit("onTimePickerMinuteItemClick", event);
     }
 
     /**
-     * Converts the selected time to a string representation.
-     * @returns {string} A string representation of the selected time.
+     * Converts the selected date to a string.
+     * @returns {string} String representation of selected date.
      */
-    toString() {
+    getValue() {
         return stringifyTime(this.selected);
     }
 }
 
-customElements.define("md-time-picker", MDTimePickerElement);
+customElements.define("md-time-picker", MDTimePickerComponent);
 
-export { MDTimePickerElement };
+export { MDTimePickerComponent };

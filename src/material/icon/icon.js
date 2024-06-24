@@ -1,25 +1,22 @@
-import { MDElement } from "../element/element.js";
+import { MDComponent } from "../component/component.js";
 
 /**
- * Class representing a custom icon element.
- * @extends MDElement
- * @example
- * // Example usage:
- * // Assuming 'md-icon' is defined in HTML:
- * // <md-icon icon="favorite"></md-icon>
- *
- * // JavaScript to interact with the custom element:
- * const iconElement = document.querySelector('md-icon');
- * iconElement.setAttribute('icon', 'favorite'); // Set the icon attribute
- * iconElement.addEventListener('click', () => {
- *   console.log('Icon clicked!');
- * });
+ * Icon component that extends MDComponent.
+ * Adds 'md-icon' class to the component's class list when connected to the DOM.
+ * @extends MDComponent
  */
-class MDIconElement extends MDElement {}
+class MDIconComponent extends MDComponent {
+    /**
+     * Callback invoked when the element is connected to the DOM.
+     * Adds the 'md-icon' class to the component's class list.
+     */
+    connectedCallback() {
+        super.connectedCallback();
 
-/**
- * Defines a custom element 'md-icon'.
- */
-customElements.define("md-icon", MDIconElement);
+        this.classList.add("md-icon");
+    }
+}
 
-export { MDIconElement };
+customElements.define("md-icon", MDIconComponent);
+
+export { MDIconComponent };

@@ -1,36 +1,43 @@
-import { MDPaneElement } from "../pane/pane.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * MDDialogElement extends MDPaneElement to represent a dialog element.
- * Dialogs typically inherit pane-like behavior with additional styling or functionality.
+ * Dialog component that extends MDSheetComponent.
+ * Provides functionality to show, hide, and handle modal dialogs with additional animations.
+ * @extends MDSheetComponent
  */
-class MDDialogElement extends MDPaneElement {
-    constructor() {
-        super();
-        this.defaultVariant = "dialog";
-    }
+class MDDialogComponent extends MDSheetComponent {
+    /**
+     * Array of valid dialog variants.
+     * @type {Array<String>}
+     */
+    variants = ["full"];
 
     /**
-     * Lifecycle method called when the element is connected to the DOM.
-     * Adds 'md-pane' class to the element.
+     * Callback invoked when the element is connected to the DOM.
+     * Adds necessary classes and sets initial dialog animation property.
      */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-pane");
+        this.classList.add("md-card");
+        this.classList.add("md-dialog");
     }
 
     /**
-     * Lifecycle method called when the element is disconnected from the DOM.
-     * Removes 'md-pane' class from the element.
+     * Shows the dialog by removing the animation property and setting the open property to true.
      */
-    disconnectedCallback() {
-        super.disconnectedCallback();
+    show() {
+        super.show();
+    }
 
-        this.classList.remove("md-pane");
+    /**
+     * Shows the modal dialog by removing the animation property, creating and displaying a scrim element, and setting the open property to true.
+     */
+    showModal() {
+        super.showModal();
     }
 }
 
-customElements.define("md-dialog", MDDialogElement);
+customElements.define("md-dialog", MDDialogComponent);
 
-export { MDDialogElement };
+export { MDDialogComponent };

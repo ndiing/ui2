@@ -1,76 +1,119 @@
+@keyframes datetimePickerIn {
+    0% {
+        visibility: visible;
+        height: calc(456px - (56px * 2));
+        transform: translate3d(0, 56px, 0);
+        opacity: 0;
+    }
+    100% {
+        height: 456px;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+@keyframes datetimePickerOut {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes datetimePickerWrapperIn {
+    0% {
+        transform: translate3d(0, -56px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 .md-datetime-picker {
+    // --md-comp-datetime-picker-card-index: 1;
+
     display: inline-flex;
-    border-radius: var(--md-sys-shape-corner-extra-large);
-    background: var(--md-sys-color-surface-container-high);
+    border-radius: var(--md-sys-shape-corner-large);
+    background-color: var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface-variant);
     box-shadow: var(--md-sys-elevation-level0);
     position: absolute;
     z-index: 7;
-    animation-name: var(--md-comp-pane-animation, datetimePickerIn);
+    visibility: hidden;
+    animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
     animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
     animation-duration: var(--md-sys-motion-duration-short4);
 
-    > * {
-        animation-name: var(--md-comp-pane-animation, datetimePickerInnerIn);
-        animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
-        animation-duration: var(--md-sys-motion-duration-short4);
-        transform-origin: inherit;
-    }
-
-    &:not([open]) {
-        visibility: hidden;
-        pointer-events: none;
-        animation-name: var(--md-comp-pane-animation, datetimePickerOut);
+    &[open] {
+        visibility: visible;
+        animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
 
         > * {
-            animation-name: var(--md-comp-pane-animation, datetimePickerInnerOut);
+            animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
+            animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+            animation-duration: var(--md-sys-motion-duration-short4);
         }
     }
 
-    .md-pane__header {
-        padding: 16px;
+    + .md-scrim {
+        opacity: 0;
+    }
 
-        + .md-pane__body {
-            margin-top: 0;
+    .md-card__header {
+        padding: 12px 12px;
+        gap: 0 16px;
+
+        + .md-card__body {
+            margin-top: -4px;
         }
     }
 
-    .md-pane__actions {
-        .md-button {
+    .md-card__actions {
+        gap: 0 24px;
+
+        .md-card__button {
             color: var(--md-sys-color-on-surface-variant);
         }
     }
 
-    .md-pane__inner {
+    .md-card__inner {
+        overflow: hidden;
         padding: 0;
         margin: 0;
-        @include typography-body-large();
+        @include typescale-body-large();
 
-        + .md-pane__footer {
-            margin-top: 0;
+        + .md-card__footer {
+            margin-top: -4px;
         }
     }
 
-    .md-layout-card {
-        width: 360px;
-        height: 336px;
+    .md-card__footer {
+        padding: 12px 12px;
+        gap: 0 8px;
     }
+}
 
-    .md-layout-card__item {
-        overflow: auto;
-    }
+.md-datetime-picker__card {
+    display: flex;
+    overflow: hidden;
+    width: 360px;
+    height: 336px;
+}
+.md-datetime-picker__card-item {
+    flex: 1 0 100%;
+    overflow: auto;
 
-    .md-pane__footer {
-        justify-content: flex-end;
-        padding: 16px;
-    }
+    transform: translate3d(calc((0 - var(--md-comp-datetime-picker-card-index)) * 100%), 0, 0);
 }
 
 .md-datetime-picker__list {
     display: flex;
     flex-direction: column;
-    padding: 8px 0;
 }
+// .md-datetime-picker__list--years{}
+// .md-datetime-picker__list--months{}
 .md-datetime-picker__list-item {
     display: flex;
     align-items: center;
@@ -78,38 +121,23 @@
     padding: 0 16px;
     gap: 0 16px;
 
-    & {
-        @include ripple();
-    }
-    & {
-        @include ripple-button();
-    }
-
-    &[selected],
+    @include ripple();
+    @include ripple-button();
     &:focus,
     &:hover,
     &:active,
+    &[selected],
     &[dragged],
     &[disabled] {
         @include ripple-size();
     }
-
-    &[selected],
     &:focus,
     &:hover,
     &:active,
+    &[selected],
     &[dragged],
     &[disabled] {
         @include ripple-clipped();
-    }
-
-    &[activated] {
-        box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
-    }
-    &[selected] {
-        box-shadow: inset 0 0 0 1px var(--md-sys-color-surface-variant);
-        background: var(--md-sys-color-surface-variant);
-        color: var(--md-sys-color-on-surface-variant);
     }
     &:focus {
         @include ripple-focused();
@@ -119,6 +147,13 @@
     }
     &:active {
         @include ripple-pressed();
+    }
+    &[activated] {
+        border: 1px solid var(--md-sys-color-outline-variant);
+    }
+    &[selected] {
+        background-color: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface-variant);
     }
     &[dragged] {
         @include ripple-dragged();
@@ -131,50 +166,36 @@
 // .md-datetime-picker__list-label{}
 
 .md-datetime-picker__grid {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    padding: 4px 16px;
     gap: 8px 0;
+    padding: 4px 16px;
 }
+
 .md-datetime-picker__grid-row {
     display: flex;
     gap: 0 8px;
 }
-// .md-datetime-picker__grid-row--weekday{}
-.md-datetime-picker__grid-row--day {
+// .md-datetime-picker__grid-row--weekdays{}
+.md-datetime-picker__grid-row--days {
     .md-datetime-picker__grid-item {
-        & {
-            @include ripple();
-        }
-        & {
-            @include ripple-button();
-        }
-
-        &[selected],
+        @include ripple();
+        @include ripple-button();
         &:focus,
         &:hover,
         &:active,
+        &[selected],
         &[dragged],
         &[disabled] {
             @include ripple-size();
         }
-
-        &[selected],
         &:focus,
         &:hover,
         &:active,
+        &[selected],
         &[dragged],
         &[disabled] {
             @include ripple-clipped();
-        }
-
-        &[activated] {
-            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
-        }
-        &[selected] {
-            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
-            background: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
         }
         &:focus {
             @include ripple-focused();
@@ -185,15 +206,22 @@
         &:active {
             @include ripple-pressed();
         }
+        &[activated] {
+            border: 1px solid var(--md-sys-color-primary);
+        }
+        &[selected] {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
         &[dragged] {
             @include ripple-dragged();
         }
         &[disabled] {
-            pointer-events: none;
-            opacity: 0;
+            @include ripple-disabled();
         }
     }
 }
+
 .md-datetime-picker__grid-item {
     display: inline-flex;
     align-items: center;
@@ -206,67 +234,69 @@
 // .md-datetime-picker__grid-label{}
 
 .md-datetime-picker__absolute {
+    position: relative;
     width: 256px;
     height: 256px;
     margin: 40px 52px;
     border-radius: 128px;
-    background: var(--md-sys-color-surface-container-highest);
+    background-color: var(--md-sys-color-surface-container-highest);
     color: var(--md-sys-color-on-surface-variant);
-    position: relative;
 
     &::before {
         content: "";
         width: 8px;
         height: 8px;
-        border-radius: 4px;
         transform: translate3d(-50%, -50%, 0);
-        background: var(--md-sys-color-primary);
+        border-radius: 4px;
+        background-color: var(--md-sys-color-primary);
         position: absolute;
         left: 50%;
         top: 50%;
     }
 }
-.md-datetime-picker__absolute--hour {
-    @for $i from 1 through 12 {
-        .md-datetime-picker__absolute-item:nth-child(#{$i}) {
-            left: calc(100px * cos(($i - 4) / 12 * 2 * pi) + 104px);
-            top: calc(100px * sin(($i - 4) / 12 * 2 * pi) + 104px);
+.md-datetime-picker__absolute--hours {
+    .md-datetime-picker__absolute-item {
+        @for $i from 1 through 12 {
+            &:nth-child(#{$i}) {
+                left: calc(100px * cos((($i - 4) / 12) * 2 * pi) + 104px);
+                top: calc(100px * sin((($i - 4) / 12) * 2 * pi) + 104px);
 
-            &::before {
-                width: 100px;
-                transform: rotate(calc(360deg / 12) * ($i - 4));
+                &::before {
+                    width: 100px;
+                    transform: rotate(calc((360deg / 12) * ($i - 4)));
+                }
             }
         }
-    }
-    @for $i from 1 through 12 {
-        .md-datetime-picker__absolute-item:nth-child(#{$i + 12}) {
-            left: calc(72px * cos(($i - 4) / 12 * 2 * pi) + 104px);
-            top: calc(72px * sin(($i - 4) / 12 * 2 * pi) + 104px);
 
-            &::before {
-                width: 72px;
-                transform: rotate(calc(360deg / 12) * ($i - 4));
+        @for $i from 1 through 12 {
+            &:nth-child(#{$i + 12}) {
+                left: calc(76px * cos((($i - 4) / 12) * 2 * pi) + 104px);
+                top: calc(76px * sin((($i - 4) / 12) * 2 * pi) + 104px);
+
+                &::before {
+                    width: 76px;
+                    transform: rotate(calc((360deg / 12) * ($i - 4)));
+                }
             }
         }
     }
 }
-.md-datetime-picker__absolute--minute {
-    @for $i from 1 through 60 {
-        .md-datetime-picker__absolute-item:nth-child(#{$i}) {
-            @if ((($i - 16) % 5) == 0) {
-                left: calc(100px * cos(($i - 16) / 60 * 2 * pi) + 104px);
-                top: calc(100px * sin(($i - 16) / 60 * 2 * pi) + 104px);
-            } @else {
-                width: 24px;
-                height: 24px;
-                border-radius: 12px;
-                left: calc(100px * cos(($i - 16) / 60 * 2 * pi) + 116px);
-                top: calc(100px * sin(($i - 16) / 60 * 2 * pi) + 116px);
-            }
+.md-datetime-picker__absolute--minutes {
+    .md-datetime-picker__absolute-item {
+        @for $i from 1 through 60 {
+            &:nth-child(#{$i}) {
+                left: calc(100px * cos((($i - 16) / 60) * 2 * pi) + 104px);
+                top: calc(100px * sin((($i - 16) / 60) * 2 * pi) + 104px);
 
-            &::before {
-                width: 100px;
-                transform: rotate(calc(360deg / 60) * ($i - 16));
+                &::before {
+                    width: 100px;
+                    transform: rotate(calc((360deg / 60) * ($i - 16)));
+                }
+            }
+            &:nth-child(#{$i}) {
+                @if ((($i - 16) % 5) != 0) {
+                    color: transparent;
+                }
             }
         }
     }
@@ -279,73 +309,58 @@
     width: 48px;
     height: 48px;
     border-radius: 24px;
+
+    @include ripple();
     position: absolute;
-    z-index: 1;
-
-    &::before {
-        content: "";
-        width: 100px;
-        height: 2px;
-        background: var(--md-sys-color-primary);
-        opacity: 0%;
-        transform: rotate(calc(360deg / 60) * 1);
-        transform-origin: 100% 50%;
-        position: absolute;
-        right: 50%;
-        top: 50%;
-        z-index: -1;
-    }
-
-    & {
-        @include ripple();
-        position: absolute;
-    }
-    & {
-        @include ripple-button();
-    }
-
-    &[selected],
+    @include ripple-button();
     &:focus,
     &:hover,
     &:active,
+    &[selected],
     &[dragged],
     &[disabled] {
-        &::after {
-            width: 48px;
-        }
-    }
-
-    &[activated] {
-        box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
-    }
-
-    &[selected] {
-        box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
-        background: var(--md-sys-color-primary);
-        color: var(--md-sys-color-on-primary);
-
-        &::before {
-            opacity: 100%;
-        }
+        @include ripple-size();
     }
     &:focus {
         @include ripple-focused();
     }
     &:hover {
         @include ripple-hover();
-
+        color: var(--md-sys-color-on-surface-variant);
         &::before {
-            opacity: 10%;
+            background-color: var(--md-sys-color-on-surface);
+            opacity: 8%;
         }
     }
     &:active {
         @include ripple-pressed();
+    }
+    &[activated] {
+        border: 1px solid var(--md-sys-color-primary);
+    }
+    &[selected] {
+        background-color: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+        &::before {
+            opacity: 100%;
+        }
     }
     &[dragged] {
         @include ripple-dragged();
     }
     &[disabled] {
         @include ripple-disabled();
+    }
+
+    &::before {
+        content: "";
+        height: 2px;
+        transform-origin: 100% 100%;
+        background-color: var(--md-sys-color-primary);
+        opacity: 0;
+        position: absolute;
+        right: 50%;
+        top: 50%;
     }
 }
 // .md-datetime-picker__absolute-label{}

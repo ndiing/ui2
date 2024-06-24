@@ -5,17 +5,16 @@
     vertical-align: middle;
     min-width: 16px;
     height: 16px;
-    padding: 0 4px;
     border-radius: 8px;
-    background: var(--md-sys-color-error);
+    padding: 0 4px;
+    @include typescale-label-small();
+    background-color: var(--md-sys-color-error);
     color: var(--md-sys-color-on-error);
-}
-.md-badge:empty {
-    min-width: 6px;
-    height: 6px;
-    padding: 0;
-    border-radius: 3px;
-}
-.md-badge__label {
-    @include typography-label-small();
+
+    &:empty {
+        min-width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        padding: 0;
+    }
 }

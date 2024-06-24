@@ -1,22 +1,29 @@
 import { argbFromHex, themeFromSourceColor, applyTheme, themeFromImage } from "@material/material-color-utilities";
 
-const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+/**
+ * Checks if a string is a valid hexadecimal color.
+ * @param {string} color - The color string to validate.
+ * @returns {boolean} Returns true if the color string is a valid hexadecimal color, otherwise false.
+ */
+function isValidHexColor(color) {
+    const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    return hexColorRegex.test(color);
+}
 
 /**
- * Sets the theme based on a given color value or image URL.
- * @param {string} value - The color value (hexadecimal) or image URL to derive the theme from.
- * @returns {Promise<void>} A promise that resolves once the theme is applied.
+ * Sets the theme based on a given color or image.
+ * @param {string|HTMLImageElement} colorOrImage - The hexadecimal color string or HTMLImageElement to set the theme with.
+ * @returns {Promise<void>} Promise that resolves once the theme is applied.
  */
-const setTheme = async (value) => {
+async function setTheme(colorOrImage, customColors) {
     let theme;
 
-    if (hexColorRegex.test(value)) {
-        theme = themeFromSourceColor(argbFromHex(value), []);
+    if (isValidHexColor(colorOrImage)) {
+        theme = themeFromSourceColor(argbFromHex(colorOrImage), customColors);
     } else {
-        theme = await themeFromImage(value);
+        theme = await themeFromImage(colorOrImage, customColors);
     }
 
-    // Customize theme properties based on color scheme
     theme.schemes.dark.props.surfaceDim = theme.palettes.neutral.tone(6);
     theme.schemes.dark.props.surfaceBright = theme.palettes.neutral.tone(24);
     theme.schemes.dark.props.surfaceContainerLowest = theme.palettes.neutral.tone(4);
@@ -24,6 +31,7 @@ const setTheme = async (value) => {
     theme.schemes.dark.props.surfaceContainer = theme.palettes.neutral.tone(12);
     theme.schemes.dark.props.surfaceContainerHigh = theme.palettes.neutral.tone(17);
     theme.schemes.dark.props.surfaceContainerHighest = theme.palettes.neutral.tone(22);
+
     theme.schemes.light.props.surfaceDim = theme.palettes.neutral.tone(87);
     theme.schemes.light.props.surfaceBright = theme.palettes.neutral.tone(98);
     theme.schemes.light.props.surfaceContainerLowest = theme.palettes.neutral.tone(100);
@@ -32,11 +40,21 @@ const setTheme = async (value) => {
     theme.schemes.light.props.surfaceContainerHigh = theme.palettes.neutral.tone(92);
     theme.schemes.light.props.surfaceContainerHighest = theme.palettes.neutral.tone(90);
 
-    // Determine system dark mode preference
     const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    // Apply the theme to the document body
     applyTheme(theme, { target: document.body, dark: systemDark });
-};
+}
 
 export { setTheme };
+
+/**
+ * Example usage of the setTheme function.
+ * @example
+ * import { setTheme } from "./path/to/your/module.js";
+ *
+ * setTheme('#009688');
+ *
+ * const image = new Image();
+ * image.src = './src/assets/ln4j2i04-02.png';
+ * setTheme(image);
+ */

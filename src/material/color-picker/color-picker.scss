@@ -1,0 +1,174 @@
+.md-color-picker {
+    // --md-comp-color-picker-card-index: 1;
+
+    display: inline-flex;
+    border-radius: var(--md-sys-shape-corner-large);
+    background-color: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-level0);
+    position: absolute;
+    z-index: 7;
+    visibility: hidden;
+    animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
+
+    &[open] {
+        visibility: visible;
+        animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
+
+        > * {
+            animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
+            animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+            animation-duration: var(--md-sys-motion-duration-short4);
+        }
+    }
+
+    + .md-scrim {
+        opacity: 0;
+    }
+
+    .md-card__header {
+        padding: 12px 12px;
+        gap: 0 16px;
+
+        + .md-card__body {
+            margin-top: -4px;
+        }
+    }
+
+    .md-card__actions {
+        gap: 0 24px;
+
+        .md-card__button {
+            color: var(--md-sys-color-on-surface-variant);
+        }
+    }
+
+    .md-card__inner {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        @include typescale-body-large();
+
+        + .md-card__footer {
+            margin-top: -4px;
+        }
+    }
+
+    .md-card__footer {
+        padding: 12px 12px;
+        gap: 0 8px;
+    }
+}
+
+.md-color-picker__card {
+    display: flex;
+    overflow: hidden;
+    width: 360px;
+    height: 336px;
+}
+.md-color-picker__card-item {
+    flex: 1 0 100%;
+    overflow: auto;
+
+    transform: translate3d(calc((0 - var(--md-comp-color-picker-card-index)) * 100%), 0, 0);
+}
+
+.md-color-picker__area {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    height: 336px;
+}
+
+.md-color-picker__gradient {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.md-color-picker__gradient-track {
+    width: 360px;
+    height: 256px;
+    background: linear-gradient(to bottom, transparent, #000000), linear-gradient(to right, #ffffff, transparent), #ff0000;
+}
+.md-color-picker__gradient-thumb {
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border-radius: 20px;
+    border: 4px solid #fff;
+    box-shadow: var(--md-sys-elevation-level1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.md-color-picker__hue,
+.md-color-picker__opacity {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    position: relative;
+}
+
+.md-color-picker__hue-label,
+.md-color-picker__opacity-label {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.md-color-picker__hue-native,
+.md-color-picker__opacity-native {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+
+    &::-webkit-slider-container {
+        appearance: none;
+        width: 100%;
+        height: 100%;
+    }
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 100%;
+    }
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        border: 4px solid #fff;
+        box-shadow: var(--md-sys-elevation-level1);
+    }
+}
+
+.md-color-picker__hue-native {
+    transform: rotate(-180deg);
+    background: linear-gradient(to right, hsl(0deg, 100%, 50%), hsl(60deg, 100%, 50%), hsl(120deg, 100%, 50%), hsl(180deg, 100%, 50%), hsl(240deg, 100%, 50%), hsl(300deg, 100%, 50%), hsl(360deg, 100%, 50%));
+}
+
+.md-color-picker__opacity-native {
+    background:
+        linear-gradient(to left, var(--md-comp-color-picker-base), rgba(0, 204, 255, 0)),
+        linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface-container-high) 75%) 0px 0px / 20px 20px,
+        linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, var(--md-sys-color-surface) 25%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface-container-high) 75%) 10px 10px / 20px 20px;
+}
+
+.md-color-picker--unselectable {
+    &,
+    & * {
+        user-select: none;
+    }
+}

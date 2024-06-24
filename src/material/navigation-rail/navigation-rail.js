@@ -1,78 +1,35 @@
 import { html } from "lit";
-import { MDListElement } from "../list/list.js";
-import { MDPaneElement } from "../pane/pane.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
+import { MDTreeComponent } from "../tree/tree.js";
 
-/**
- * Custom element representing a navigation rail.
- * Extends MDPaneElement to inherit pane functionality.
- */
-class MDNavigationRailElement extends MDPaneElement {
-    /**
-     * Properties inherited from MDPaneElement and MDListElement.
-     * @type {Object}
-     */
+class MDNavigationBarComponent extends MDSheetComponent {
     static properties = {
-        ...MDPaneElement.properties,
-        ...MDListElement.properties,
+        ...MDSheetComponent.properties,
+        ...MDTreeComponent.properties,
     };
 
-    /**
-     * Returns the body content of the navigation rail.
-     * Uses Lit HTML template to render an MDList.
-     * @returns {TemplateResult[]} Array of Lit HTML templates representing the body content.
-     */
     get body() {
         /* prettier-ignore */
         return [html`
-            <md-list
-                class="md-navigation-rail__list"
-                singleSelection
+            <md-tree
+                class="md-navigation-rail__tree"
+                .variant="${"plain"}"
                 .list="${this.list}"
-                @onListItemClick="${this.handleNavigationRailListItemClick}"
-            ></md-list>    
-        `];
+            ></md-tree>
+        `]
     }
-
-    /**
-     * Setter for the body content of the navigation rail.
-     * @param {any} value - Value to set as the body content.
-     */
     set body(value) {
         this._body = value;
     }
 
-    /**
-     * Called when the element is connected to the DOM.
-     * Adds 'md-pane' class to the element's class list.
-     */
     connectedCallback() {
-        super.connectedCallback(); // Call parent connectedCallback if any
+        super.connectedCallback();
 
-        this.classList.add("md-pane");
-    }
-
-    /**
-     * Called when the element is disconnected from the DOM.
-     * Removes 'md-pane' class from the element's class list.
-     */
-    disconnectedCallback() {
-        super.disconnectedCallback(); // Call parent disconnectedCallback if any
-
-        this.classList.remove("md-pane");
-    }
-
-    /**
-     * Event handler for when a list item in the navigation rail is clicked.
-     * Emits an 'onNavigationRailListItemClick' event.
-     * @param {Event} event - Click event object.
-     */
-    handleNavigationRailListItemClick(event) {
-        this.emit("onNavigationRailListItemClick", event);
+        this.classList.add("md-sheet");
+        this.classList.add("md-navigation-rail");
     }
 }
 
-// Define the custom element using the defined class.
-customElements.define("md-navigation-rail", MDNavigationRailElement);
+customElements.define("md-navigation-rail", MDNavigationBarComponent);
 
-// Export the class for external use if needed.
-export { MDNavigationRailElement };
+export { MDNavigationBarComponent };

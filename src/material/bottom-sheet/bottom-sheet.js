@@ -1,31 +1,29 @@
-import { MDPaneElement } from "../pane/pane.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Custom element representing a bottom sheet.
- * Extends MDPaneElement for pane functionality.
+ * Bottom Sheet component that extends MDSheetComponent.
+ * Provides a variant for modal bottom sheets.
+ * @extends MDSheetComponent
  */
-class MDBottomSheetElement extends MDPaneElement {
+class MDBottomSheetComponent extends MDSheetComponent {
     /**
-     * Called when the element is inserted into the DOM.
-     * Adds the 'md-pane' class to the element.
+     * Array of valid bottom sheet variants.
+     * @type {Array<String>}
+     */
+    variants = ["modal"];
+
+    /**
+     * Callback invoked when the element is connected to the DOM.
+     * Adds necessary classes for the bottom sheet component.
      */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-pane");
-    }
-
-    /**
-     * Called when the element is removed from the DOM.
-     * Removes the 'md-pane' class from the element.
-     */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-
-        this.classList.remove("md-pane");
+        this.classList.add("md-card");
+        this.classList.add("md-bottom-sheet");
     }
 }
 
-customElements.define("md-bottom-sheet", MDBottomSheetElement);
+customElements.define("md-bottom-sheet", MDBottomSheetComponent);
 
-export { MDBottomSheetElement };
+export { MDBottomSheetComponent };

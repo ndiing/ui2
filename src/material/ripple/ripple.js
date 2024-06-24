@@ -1,68 +1,35 @@
 /**
- * MDRippleController manages ripple effect behavior on a host element.
- * @example
- * // HTML structure
- * // <div id="host">
- * //   <div class="button">
- * //     Click Me
- * //   </div>
- * // </div>
- *
- * // Define the host element
- * const hostElement = document.getElementById('host');
- *
- * // Define configuration options
- * const options = {
- *   containerSelector: '#host',
- *   buttonSelector: '.button',
- *   size: 150,
- *   fadeOut: true,
- *   centered: false,
- *   clipped: true
- * };
- *
- * // Instantiate the ripple controller
- * const rippleController = new MDRippleController(hostElement, options);
- *
- * // Add methods to handle connecting and disconnecting the host element
- * hostElement.connectedCallback = () => rippleController.hostConnected();
- * hostElement.disconnectedCallback = () => rippleController.hostDisconnected();
- *
- * // Simulate connecting the host element to the DOM
- * hostElement.connectedCallback();
- *
- * // To disconnect the host element and clean up
- * // hostElement.disconnectedCallback();
+ * Controller class for managing ripple effects on a host element.
  */
 class MDRippleController {
     /**
      * Constructs an instance of MDRippleController.
-     * @param {HTMLElement} host - The host element to which the ripple effect is applied.
-     * @param {Object} options - Options for configuring the ripple effect.
-     * @param {string} [options.containerSelector=null] - Selector for the container element within the host.
-     * @param {string} [options.buttonSelector=null] - Selector for the button element within the host.
-     * @param {number} [options.size=null] - Size of the ripple relative to the container's dimensions.
-     * @param {boolean} [options.fadeOut=false] - Whether to fade out the ripple effect.
-     * @param {boolean} [options.centered=false] - Whether to center the ripple effect.
-     * @param {boolean} [options.clipped=true] - Whether the ripple effect is clipped within the container.
+     * @param {HTMLElement} host - The host element to apply ripple effects to.
+     * @param {Object} [options={}] - Optional configuration options.
+     * @param {string} [options.buttonSelector] - Selector for the button element within the host.
+     * @param {boolean} [options.centered=false] - Whether the ripple effect should be centered.
+     * @param {boolean} [options.clipped=false] - Whether the ripple effect is clipped.
+     * @param {string} [options.containerSelector] - Selector for the container element within the host.
+     * @param {boolean} [options.fadeOut=false] - Whether the ripple effect should fade out.
+     * @param {number} [options.size=null] - Size of the ripple effect relative to the container.
      */
-    constructor(host, options) {
+    constructor(host, options = {}) {
         (this.host = host).addController(this);
+
         this.options = {
-            containerSelector: null,
             buttonSelector: null,
-            size: null,
-            fadeOut: false,
             centered: false,
-            clipped: true,
+            clipped: false,
+            containerSelector: null,
+            fadeOut: false,
+            size: null,
             ...options,
         };
     }
 
     /**
-     * Performs setup tasks when the host element is connected to the DOM.
-     * Waits for host's update to complete and sets up event listeners and initial styles.
-     * @returns {Promise<void>} A promise that resolves when setup is complete.
+     * Method called when the host element is connected to the DOM.
+     * Initializes the ripple effect listeners and configuration.
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -72,81 +39,80 @@ class MDRippleController {
 
         this.container.classList.add("md-ripple");
 
-        let size;
-        if (this.options.size) {
-            size = (this.options.size / this.container.clientWidth) * 100;
-        } else {
-            size = (Math.sqrt(Math.pow(this.container.clientWidth, 2) + Math.pow(this.container.clientHeight, 2)) / this.container.clientWidth) * 100;
-        }
-        this.container.style.setProperty("--md-comp-ripple-size", size + "%");
-        this.size = size;
-
-        this.button.setAttribute("tabIndex", 0);
         this.button.classList.add("md-ripple--button");
 
-        this.container.classList.toggle("md-ripple--fade-out", !!this.options.fadeOut);
+        this.button.setAttribute("tabIndex", 0);
+
         this.container.classList.toggle("md-ripple--clipped", !!this.options.clipped);
+        this.container.classList.toggle("md-ripple--fade-out", !!this.options.fadeOut);
 
-        this.handlePointerenter = this.handlePointerenter.bind(this);
-        this.handlePointerleave = this.handlePointerleave.bind(this);
-        this.handlePointerdown = this.handlePointerdown.bind(this);
-        this.handlePointerup = this.handlePointerup.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
+        if (this.options.size) {
+            this.size = (this.options.size / this.container.clientWidth) * 100;
+        } else {
+            this.size = (Math.sqrt(Math.pow(this.container.clientWidth, 2) + Math.pow(this.container.clientHeight, 2)) / this.container.clientWidth) * 100;
+        }
+        this.container.style.setProperty("--md-comp-ripple-size", `${this.size}%`);
+        this.container.style.setProperty("--md-comp-ripple-animation", "none");
 
-        this.button.addEventListener("pointerenter", this.handlePointerenter);
-        this.button.addEventListener("pointerleave", this.handlePointerleave);
-        this.button.addEventListener("pointerdown", this.handlePointerdown);
-        this.button.addEventListener("focus", this.handleFocus);
-        this.button.addEventListener("blur", this.handleBlur);
+        this.handleRipplePointerenter = this.handleRipplePointerenter.bind(this);
+        this.handleRipplePointerleave = this.handleRipplePointerleave.bind(this);
+        this.handleRipplePointerdown = this.handleRipplePointerdown.bind(this);
+        this.handleRipplePointerup = this.handleRipplePointerup.bind(this);
+        this.handleRippleFocus = this.handleRippleFocus.bind(this);
+        this.handleRippleBlur = this.handleRippleBlur.bind(this);
+
+        this.button.addEventListener("pointerenter", this.handleRipplePointerenter);
+        this.button.addEventListener("pointerleave", this.handleRipplePointerleave);
+        this.button.addEventListener("pointerdown", this.handleRipplePointerdown);
+        this.button.addEventListener("focus", this.handleRippleFocus);
+        this.button.addEventListener("blur", this.handleRippleBlur);
     }
 
     /**
-     * Cleans up resources when the host element is disconnected from the DOM.
-     * Waits for host's update to complete and removes event listeners and styles.
-     * @returns {Promise<void>} A promise that resolves when cleanup is complete.
+     * Method called when the host element is disconnected from the DOM.
+     * Placeholder for future functionality if needed.
      */
     async hostDisconnected() {
         await this.host.updateComplete;
 
         this.container.classList.remove("md-ripple");
+        this.button.classList.remove("md-ripple--button");
+        this.button.removeAttribute("tabIndex");
+
+        this.container.classList.remove("md-ripple--clipped");
+        this.container.classList.remove("md-ripple--fade-out");
 
         this.container.style.removeProperty("--md-comp-ripple-size");
 
-        this.button.removeAttribute("tabIndex");
-
-        this.button.classList.remove("md-ripple--button");
-        this.container.classList.remove("md-ripple--fade-out");
-        this.container.classList.remove("md-ripple--clipped");
-
-        this.button.removeEventListener("pointerenter", this.handlePointerenter);
-        this.button.removeEventListener("pointerleave", this.handlePointerleave);
-        this.button.removeEventListener("pointerdown", this.handlePointerdown);
-        this.button.removeEventListener("focus", this.handleFocus);
-        this.button.removeEventListener("blur", this.handleBlur);
+        this.button.removeEventListener("pointerenter", this.handleRipplePointerenter);
+        this.button.removeEventListener("pointerleave", this.handleRipplePointerleave);
+        this.button.removeEventListener("pointerdown", this.handleRipplePointerdown);
+        this.button.removeEventListener("focus", this.handleRippleFocus);
+        this.button.removeEventListener("blur", this.handleRippleBlur);
     }
 
     /**
-     * Handles the pointerenter event on the button to add hover effect.
+     * Handles pointerenter event to add hover effect to the ripple container.
      */
-    handlePointerenter() {
+    handleRipplePointerenter() {
         this.container.classList.add("md-ripple--hover");
     }
 
     /**
-     * Handles the pointerleave event on the button to remove hover effect.
+     * Handles pointerleave event to remove hover effect from the ripple container.
      */
-    handlePointerleave() {
+    handleRipplePointerleave() {
         this.container.classList.remove("md-ripple--hover");
     }
 
     /**
-     * Handles the pointerdown event on the button to initiate the ripple effect.
+     * Handles pointerdown event to initiate the ripple effect.
      * @param {PointerEvent} event - The pointerdown event object.
      */
-    handlePointerdown(event) {
-        window.addEventListener("pointerup", this.handlePointerup);
+    handleRipplePointerdown(event) {
         this.container.classList.add("md-ripple--pressed");
+
+        window.addEventListener("pointerup", this.handleRipplePointerup);
 
         this.container.style.setProperty("--md-comp-ripple-animation", "none");
 
@@ -161,33 +127,34 @@ class MDRippleController {
             const x = (0.5 - left) * (100 / size);
             const y = (0.5 - top) * ((100 / size) * (rect.height / rect.width));
 
-            this.container.style.setProperty("--md-comp-ripple-size", size + "%");
-            this.container.style.setProperty("--md-comp-ripple-left", left * 100 + "%");
-            this.container.style.setProperty("--md-comp-ripple-top", top * 100 + "%");
-            this.container.style.setProperty("--md-comp-ripple-x", x * 100 + "%");
-            this.container.style.setProperty("--md-comp-ripple-y", y * 100 + "%");
+            this.container.style.setProperty("--md-comp-ripple-size", `${size}%`);
+            this.container.style.setProperty("--md-comp-ripple-left", `${left * 100}%`);
+            this.container.style.setProperty("--md-comp-ripple-top", `${top * 100}%`);
+            this.container.style.setProperty("--md-comp-ripple-x", `${x * 100}%`);
+            this.container.style.setProperty("--md-comp-ripple-y", `${y * 100}%`);
         }
     }
 
     /**
-     * Handles the pointerup event on the button to end the ripple effect.
+     * Handles pointerup event to end the ripple effect.
      */
-    handlePointerup() {
+    handleRipplePointerup() {
         this.container.classList.remove("md-ripple--pressed");
-        window.removeEventListener("pointerup", this.handlePointerup);
+
+        window.removeEventListener("pointerup", this.handleRipplePointerup);
     }
 
     /**
-     * Handles the focus event on the button to add focus effect.
+     * Handles focus event to add focus effect to the ripple container.
      */
-    handleFocus() {
+    handleRippleFocus() {
         this.container.classList.add("md-ripple--focused");
     }
 
     /**
-     * Handles the blur event on the button to remove focus effect.
+     * Handles blur event to remove focus effect from the ripple container.
      */
-    handleBlur() {
+    handleRippleBlur() {
         this.container.classList.remove("md-ripple--focused");
     }
 }

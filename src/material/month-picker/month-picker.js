@@ -1,138 +1,178 @@
+import { parseMonth, stringifyMonth, stringifyYear } from "../functions/functions.js";
+import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { html } from "lit";
-import { MDDatetimePickerElement } from "../datetime-picker/datetime-picker.js";
-import { parseMonth, stringifyMonth } from "../helper/helper.js";
-import { ref } from "lit/directives/ref.js";
 
-/**
- * Custom element for a month picker.
- * Extends MDDatetimePickerElement to provide month selection functionality.
- *
- * @extends MDDatetimePickerElement
- */
-class MDMonthPickerElement extends MDDatetimePickerElement {
+class MDMonthPickerComponent extends MDDatetimePickerComponent {
     /**
-     * Override of the body property to customize the month picker layout.
-     * @type {TemplateResult[]} An array containing the Lit HTML template for month picker layout.
-     */
-    get body() {
-        /* prettier-ignore */
-        return [html`
-            <div class="md-layout-card">
-                <div class="md-layout-card__item" ${ref(this.cardItemYear)}>${this.renderYear()}</div>
-                <div class="md-layout-card__item" ${ref(this.cardItemMonth)}>${this.renderMonth()}</div>
-            </div>
-        `];
-    }
-
-    /**
-     * Setter for the body property.
-     * @param {TemplateResult[]} value - The value to set for the body property.
-     */
-    set body(value) {
-        this._body = value;
-    }
-
-    /**
-     * Override of the leadingActions property to provide dynamic label based on the current index.
-     * @type {Object[]} An array containing an object with component, name, and label properties.
+     * Getter for leading actions.
+     * @returns {Object[]} Array of leading action objects.
      */
     get leadingActions() {
         let label;
         if (this.index == 0) {
             label = [this.years[0].label, this.years[this.years.length - 1].label].join("-");
         } else if (this.index == 1) {
-            label = this.toString();
+            label = stringifyMonth(this.selection);
         }
-
-        return [{ component: "button", name: "label", label }];
+        return [{ name: "label", component: "button", label }];
     }
 
     /**
-     * Initializes the month picker with index set to 1 (months view).
+     * Getter for body content.
+     * @returns {TemplateResult[]} Array containing the body HTML.
      */
+    get body() {
+        /* prettier-ignore */
+        return [html`
+            <div class="md-datetime-picker__card">
+                <div class="md-datetime-picker__card-item">${this.renderYear()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderMonth()}</div>
+            </div>
+        `];
+    }
+
+    /**
+     * Setter for body content.
+     * @param {TemplateResult[]} value - HTML template to set as body.
+     */
+    set body(value) {
+        this._body = value;
+    }
+
     constructor() {
         super();
         this.index = 1;
     }
 
-    /**
-     * Callback when the element is connected to the DOM.
-     * Adds necessary CSS classes for styling.
-     */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-datetime-picker");
-
-        this.defaultValue = this.value;
+        this.classList.add("md-month-picker");
     }
 
     /**
-     * Callback when the element is disconnected from the DOM.
-     * Removes added CSS classes.
+     * Converts the value to Date object.
      */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-
-        this.classList.remove("md-datetime-picker");
-    }
-
-    /**
-     * Updates the selected month value based on the current input value.
-     */
-    updateSelectedValue() {
+    updateDate() {
         const date = parseMonth(this.value);
+
+        this.selection.setFullYear(date.getFullYear());
+        this.selection.setMonth(date.getMonth());
 
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
     }
 
     /**
-     * Handles click events on various buttons within the month picker pane.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on previous icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerIconButtonPrevClick
      */
-    handlePaneButtonClick(event) {
-        if (event.currentTarget.name == "label") {
-            if (this.index == 0) {
-                this.index = 1;
-            } else if (this.index == 1) {
-                this.index = 0;
-            }
-        } else if (event.currentTarget.name == "cancel") {
-            this.value = this.defaultValue;
-
-            this.index = 1;
-
-            this.emit("onMonthPickerButtonCancelClick", event);
-        } else if (event.currentTarget.name == "ok") {
-            this.index = 1;
-
-            this.emit("onMonthPickerButtonOkClick", event);
+    handleCardIconButtonPrevClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() - 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() - 1);
         }
+
+        this.requestUpdate();
+
+        this.emit("onMonthPickerSelection", event);
+        this.emit("onMonthPickerIconButtonPrevClick", event);
     }
 
     /**
-     * Handles click events on year items within the month picker pane.
-     * Updates the selected year and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on next icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerIconButtonNextClick
+     */
+    handleCardIconButtonNextClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() + 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() + 1);
+        }
+
+        this.requestUpdate();
+
+        this.emit("onMonthPickerSelection", event);
+        this.emit("onMonthPickerIconButtonNextClick", event);
+    }
+
+    /**
+     * Handles click on label button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerButtonLabelClick
+     */
+    handleCardButtonLabelClick(event) {
+        if (this.index == 0) {
+            this.index = 1;
+        } else if (this.index == 1) {
+            this.index = 0;
+        }
+
+        this.emit("onMonthPickerButtonLabelClick", event);
+    }
+
+    /**
+     * Handles click on cancel button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerButtonCancelClick
+     */
+    handleCardButtonCancelClick(event) {
+        this.value = this.defaultValue;
+        this.updateDate();
+        this.requestUpdate();
+        this.index = 1;
+
+        this.emit("onMonthPickerSelection", event);
+        this.emit("onMonthPickerButtonCancelClick", event);
+    }
+
+    /**
+     * Handles click on OK button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerButtonOkClick
+     */
+    handleCardButtonOkClick(event) {
+        this.selected.setFullYear(this.selection.getFullYear());
+        this.selected.setMonth(this.selection.getMonth());
+
+        this.value = this.getValue();
+        this.requestUpdate();
+
+        this.index = 1;
+
+        this.emit("onMonthPickerSelection", event);
+        this.emit("onMonthPickerButtonOkClick", event);
+    }
+
+    /**
+     * Handles click on year item in the year selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerYearItemClick
      */
     handleDatetimePickerYearItemClick(event) {
         const data = event.currentTarget.data;
 
-        this.selected.setFullYear(data.year);
-
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
 
         this.index = 1;
 
-        this.emit("onMonthPickerItemClick", event);
+        this.emit("onMonthPickerSelection", event);
         this.emit("onMonthPickerYearItemClick", event);
     }
 
     /**
-     * Handles click events on month items within the month picker pane.
-     * Updates the selected month and emits relevant events.
-     * @param {MouseEvent} event - The click event object.
+     * Handles click on month item in the month selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onMonthPickerSelection
+     * @fires MDDatetimePickerComponent#onMonthPickerMonthItemClick
      */
     handleDatetimePickerMonthItemClick(event) {
         const data = event.currentTarget.data;
@@ -140,21 +180,24 @@ class MDMonthPickerElement extends MDDatetimePickerElement {
         this.selected.setFullYear(data.year);
         this.selected.setMonth(data.month);
 
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
+        this.selection.setMonth(data.month);
 
-        this.emit("onMonthPickerItemClick", event);
+        this.requestUpdate();
+
+        this.emit("onMonthPickerSelection", event);
         this.emit("onMonthPickerMonthItemClick", event);
     }
 
     /**
-     * Converts the selected month to a string representation.
-     * @returns {string} A string representation of the selected month.
+     * Converts the selected date to a string.
+     * @returns {string} String representation of selected date.
      */
-    toString() {
+    getValue() {
         return stringifyMonth(this.selected);
     }
 }
 
-customElements.define("md-month-picker", MDMonthPickerElement);
+customElements.define("md-month-picker", MDMonthPickerComponent);
 
-export { MDMonthPickerElement };
+export { MDMonthPickerComponent };

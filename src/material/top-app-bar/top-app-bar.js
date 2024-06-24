@@ -1,30 +1,29 @@
-import { MDPaneElement } from "../pane/pane.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Custom top app bar element that extends MDPaneElement.
+ * Top App Bar component that extends MDSheetComponent.
+ * Provides additional variants for different sizes and positions.
+ * @extends MDSheetComponent
  */
-class MDTopAppBarElement extends MDPaneElement {
+class MDTopAppBarComponent extends MDSheetComponent {
     /**
-     * Called when the element is added to the DOM.
-     * Adds the necessary class to the element.
+     * Array of valid top app bar variants.
+     * @type {Array<String>}
+     */
+    variants = ["center", "small", "medium", "large"];
+
+    /**
+     * Callback invoked when the element is connected to the DOM.
+     * Adds necessary classes for the top app bar component.
      */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-pane");
-    }
-
-    /**
-     * Called when the element is removed from the DOM.
-     * Removes the class from the element.
-     */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-
-        this.classList.remove("md-pane");
+        this.classList.add("md-card");
+        this.classList.add("md-top-app-bar");
     }
 }
 
-customElements.define("md-top-app-bar", MDTopAppBarElement);
+customElements.define("md-top-app-bar", MDTopAppBarComponent);
 
-export { MDTopAppBarElement };
+export { MDTopAppBarComponent };

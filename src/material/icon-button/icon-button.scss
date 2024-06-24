@@ -3,17 +3,23 @@
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    background: transparent;
+    background-color: transparent;
     color: var(--md-sys-color-on-surface-variant);
 
-    &.md-icon-button--toggle {
-        background: transparent;
-        color: var(--md-sys-color-on-surface-variant);
+    transition-property: background-color, color, border-color;
+    transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    transition-duration: var(--md-sys-motion-duration-short4);
 
+    &.md-icon-button--toggle {
         &[selected] {
-            background: transparent;
+            background-color: transparent;
             color: var(--md-sys-color-primary);
         }
+    }
+
+    &[disabled] {
+        background-color: transparent;
+        color: var(--md-sys-color-on-surface38);
     }
 }
 
@@ -24,75 +30,88 @@
 .md-icon-button--outlined {
     width: 40px;
     height: 40px;
-    border-radius: 20px;
+    border-radius: calc(40px / 2);
+
+    &[disabled] {
+        background-color: var(--md-sys-color-on-surface12);
+        border-color: var(--md-sys-color-on-surface12);
+        color: var(--md-sys-color-on-surface38);
+        box-shadow: var(--md-sys-elevation-level0);
+    }
 }
 
 .md-icon-button--filled {
-    background: var(--md-sys-color-primary);
+    background-color: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 
     &.md-icon-button--toggle {
-        background: var(--md-sys-color-surface-variant);
+        background-color: var(--md-sys-color-surface-container-highest);
         color: var(--md-sys-color-primary);
 
         &[selected] {
-            background: var(--md-sys-color-primary);
+            background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
 
             &.md-ripple {
                 &::after {
-                    background: var(--md-sys-color-on-primary);
+                    background-color: var(--md-sys-color-surface);
                 }
             }
         }
 
         &.md-ripple {
             &::after {
-                background: var(--md-sys-color-primary);
+                background-color: var(--md-sys-color-on-surface);
             }
         }
     }
 
     &.md-ripple {
         &::after {
-            background: var(--md-sys-color-on-primary);
+            background-color: var(--md-sys-color-surface);
         }
     }
 }
+
 .md-icon-button--tonal {
-    background: var(--md-sys-color-secondary-container);
+    background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
 
     &.md-icon-button--toggle {
-        background: var(--md-sys-color-surface-variant);
+        background-color: var(--md-sys-color-surface-container-highest);
         color: var(--md-sys-color-on-surface-variant);
 
         &[selected] {
-            background: var(--md-sys-color-secondary-container);
+            background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
         }
     }
 }
+
 .md-icon-button--outlined {
-    background: transparent;
+    background-color: transparent;
     color: var(--md-sys-color-on-surface-variant);
     border: 1px solid var(--md-sys-color-outline);
 
     &.md-icon-button--toggle {
-        background: transparent;
+        background-color: transparent;
         color: var(--md-sys-color-on-surface-variant);
-        border: 1px solid var(--md-sys-color-outline);
 
         &[selected] {
-            background: var(--md-sys-color-inverse-surface);
+            border-color: var(--md-sys-color-inverse-surface);
+            background-color: var(--md-sys-color-inverse-surface);
             color: var(--md-sys-color-inverse-on-surface);
-            border: 1px solid var(--md-sys-color-inverse-surface);
 
             &.md-ripple {
                 &::after {
-                    background: var(--md-sys-color-on-primary);
+                    background-color: var(--md-sys-color-surface);
                 }
             }
         }
+    }
+
+    &[disabled] {
+        background-color: transparent;
+        color: var(--md-sys-color-on-surface38);
     }
 }

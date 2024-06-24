@@ -1,335 +1,279 @@
 /**
- * Gesture controller for handling drag, resize, selection, and other gestures on a host element.
- *
- * @example
- * // Example usage of MDGestureController:
- * // Assuming `element` is an existing HTMLElement in the DOM.
- * const gestureController = new MDGestureController(element, {
- *     drag: ["x", "y"],
- *     resize: ["n", "s", "e", "w"],
- *     selection: true,
- *     dragAfterLongPress: true,
- *     resizeAfterLongPress: true,
- *     selectionAfterLongPress: true,
- *     updateStyle: true
- * });
- *
- * gestureController.hostConnected(); // Initialize gesture controller when element is connected
- *
- * // Listen to gesture events
- * element.addEventListener('onDragStart', (event) => {
- *     console.log('Drag started!', event);
- * });
- *
- * element.addEventListener('onResizeStart', (event) => {
- *     console.log('Resize started!', event);
- * });
- *
- * element.addEventListener('onSelectionStart', (event) => {
- *     console.log('Selection started!', event);
- * });
- *
- * // Example: show how to handle pointer events if needed
- * element.addEventListener('pointerdown', (event) => {
- *     // Handle pointer down event
- * });
- *
- * element.addEventListener('pointermove', (event) => {
- *     // Handle pointer move event
- * });
- *
- * element.addEventListener('pointerup', (event) => {
- *     // Handle pointer up event
- * });
+ * MDGestureController class for handling drag, resize, and selection gestures.
+ * @fires MDGestureController#onDragStart
+ * @fires MDGestureController#onDrag
+ * @fires MDGestureController#onDragEnd
+ * @fires MDGestureController#onResizeStart
+ * @fires MDGestureController#onResize
+ * @fires MDGestureController#onResizeEnd
+ * @fires MDGestureController#onSelectionStart
+ * @fires MDGestureController#onSelection
+ * @fires MDGestureController#onSelectionEnd
+ * @fires MDGestureController#onSwipeLeft
+ * @fires MDGestureController#onSwipeTop
+ * @fires MDGestureController#onSwipeRight
+ * @fires MDGestureController#onSwipeBottom
+ * @fires MDGestureController#onLongPress
+ * @fires MDGestureController#onTap
+ * @fires MDGestureController#onDoubleTap
  */
 class MDGestureController {
     /**
      * Creates an instance of MDGestureController.
-     * @param {HTMLElement} host - The host element on which gestures are applied.
-     * @param {Object} [options={}] - Options to configure the gesture behavior.
-     * @param {string[]} [options.drag=["x", "y"]] - Directions in which dragging is allowed ("x", "y").
-     * @param {string} [options.dragHandleSelector=null] - Selector for the handle to initiate dragging.
-     * @param {string[]} [options.resize=["n", "s", "w", "e", "nw", "ne", "se", "sw"]] - Directions in which resizing is allowed.
-     * @param {boolean} [options.selection=false] - Whether selection gestures are enabled.
-     * @param {boolean} [options.dragAfterLongPress=false] - Whether dragging is enabled after a long press.
-     * @param {boolean} [options.resizeAfterLongPress=false] - Whether resizing is enabled after a long press.
-     * @param {boolean} [options.selectionAfterLongPress=false] - Whether selection is enabled after a long press.
-     * @param {boolean} [options.updateStyle=false] - Whether to update element style during interaction.
+     * @param {HTMLElement} host - The host element that this controller is associated with.
+     * @param {Object} [options] - Configuration options for the gesture controller.
+     * @property {string} [options.containerSelector] - Selector for the container element.
+     * @property {string} [options.dragHandleSelector] - Selector for the drag handle element.
+     * @property {string[]} [options.drag] - Array of directions in which dragging is allowed ("x", "y").
+     * @property {boolean} [options.dragAfterLongPress] - Enables dragging after a long press.
+     * @property {string[]} [options.resize] - Array of directions in which resizing is allowed ("n", "e", "s", "w", "ne", "se", "sw", "nw").
+     * @property {boolean} [options.resizeAfterLongPress] - Enables resizing after a long press.
+     * @property {boolean} [options.selection] - Enables selection.
+     * @property {boolean} [options.selectionAfterLongPress] - Enables selection after a long press.
+     * @property {boolean} [options.updateStyle] - Automatically updates the style of the container during gestures.
      */
-    constructor(host, options = {}) {
-        this.host = host;
-        this.host.addController(this); // Register this controller with the host element
+    constructor(host, options) {
+        (this.host = host).addController(this);
         this.options = {
-            drag: ["x", "y"], // Default drag directions
-            dragHandleSelector: null, // Optional selector for drag handle within host
-            resize: ["n", "s", "w", "e", "nw", "ne", "se", "sw"], // Default resize directions
-            selection: false, // Whether selection is enabled
-            dragAfterLongPress: false, // Enable drag after a long press
-            resizeAfterLongPress: false, // Enable resize after a long press
-            selectionAfterLongPress: false, // Enable selection after a long press
-            updateStyle: false, // Whether to update element style during interaction
-            ...options, // Override default options with user-provided options
+            containerSelector: undefined,
+            dragHandleSelector: undefined,
+            drag: ["x", "y"],
+            dragAfterLongPress: false,
+            resize: ["n", "e", "s", "w", "ne", "se", "sw", "nw"],
+            resizeAfterLongPress: false,
+            selection: false,
+            selectionAfterLongPress: false,
+            updateStyle: false,
+            ...options,
         };
     }
 
     /**
-     * Initializes the gesture controller when the host element is connected to the DOM.
-     * Sets up classes, drag handles, resizable handles, and event listeners.
+     * Emits a custom event from the container.
+     * @param {string} type - The type of the event.
+     * @param {any} detail - The detail of the event.
+     */
+    emit(type, detail) {
+        const event = new CustomEvent(type, {
+            bubbles: true,
+            cancelable: true,
+            detail,
+        });
+        this.container.dispatchEvent(event);
+    }
+
+    /**
+     * Called when the host is connected.
+     * @returns {Promise<void>}
      */
     async hostConnected() {
-        await this.host.updateComplete; // Ensure host element is fully updated
+        await this.host.updateComplete;
 
-        this.container = this.host;
-        this.container.classList.add("md-gesture"); // Add gesture class to host element
+        this.container = this.options.containerSelector ? this.host.querySelector(this.options.containerSelector) : this.host;
 
-        // Setup drag handle if specified
-        if (this.options.drag?.length) {
-            const dragHandle = this.options.dragHandleSelector ? this.host.querySelector(this.options.dragHandleSelector) : this.host;
+        this.container.classList.add("md-gesture");
 
-            if (dragHandle) {
-                this.dragHandle = dragHandle;
-                this.dragHandle.classList.add("md-draggable", "md-draggable__handle");
-            }
+        if (this.options.drag.length) {
+            this.dragHandle = this.options.dragHandleSelector ? this.container.querySelector(this.options.dragHandleSelector) : this.container;
+            this.dragHandle.classList.add("md-draggable");
         }
 
-        // Setup resizable handles if specified
-        if (this.options.resize?.length) {
+        if (this.options.resize.length) {
             this.resizable = document.createElement("div");
             this.resizable.classList.add("md-resizable");
 
-            this.options.resize.forEach((direction) => {
+            for (const direction of this.options.resize) {
                 const handle = document.createElement("div");
-                handle.classList.add("md-resizable__handle", `md-resizable__handle--${direction}`);
+                handle.classList.add("md-resizable__handle");
+                handle.classList.add("md-resizable__handle--" + direction);
                 this.resizable.append(handle);
-            });
+            }
 
             this.container.append(this.resizable);
         }
 
-        // Bind event handlers
-        this.handlePointerdown = this.handlePointerdown.bind(this);
-        this.handlePointermove = this.handlePointermove.bind(this);
-        this.handlePointerup = this.handlePointerup.bind(this);
+        this.handleGesturePointerdown = this.handleGesturePointerdown.bind(this);
+        this.handleGesturePointermove = this.handleGesturePointermove.bind(this);
+        this.handleGesturePointerup = this.handleGesturePointerup.bind(this);
 
-        this.container.addEventListener("pointerdown", this.handlePointerdown);
+        this.container.addEventListener("pointerdown", this.handleGesturePointerdown);
     }
 
     /**
-     * Cleans up when the host element is disconnected from the DOM.
-     * Removes added classes, drag handles, resizable elements, and event listeners.
+     * Called when the host is disconnected.
+     * @returns {Promise<void>}
      */
     async hostDisconnected() {
-        await this.host.updateComplete; // Ensure host element is fully updated
-
-        this.container = this.host;
-        this.container.classList.remove("md-gesture"); // Remove gesture class from host element
-
-        // Remove drag handle classes if present
-        if (this.dragHandle) {
-            this.dragHandle.classList.remove("md-draggable", "md-draggable__handle");
-        }
-
-        // Remove resizable element if present
-        if (this.resizable) {
-            this.resizable.remove();
-        }
-
-        this.container.removeEventListener("pointerdown", this.handlePointerdown);
+        await this.host.updateComplete;
     }
 
     /**
-     * Handles the pointerdown event on the host element.
-     * Initializes gesture states and starts timers for long press detection.
-     * @param {PointerEvent} event - The pointerdown event object.
+     * Handles the pointerdown event for gestures.
+     * @param {PointerEvent} event - The pointerdown event.
      */
-    handlePointerdown(event) {
-        // Determine if drag handle is clicked
-        const dragHandle = this.dragHandle && this.dragHandle == (this.options.dragHandleSelector ? event.target.closest(this.options.dragHandleSelector) : this.host);
+    handleGesturePointerdown(event) {
+        if (event.button !== 0) {
+            return;
+        }
 
-        // Determine if resize handle is clicked
-        this.resizeHandle = this.resizable && event.target.closest(".md-resizable__handle");
-        this.resizeDirection = this.resizeHandle?.classList.value.match(/--(\w+)$/)[1];
+        const dragHandle = (this.options.dragHandleSelector ? event.target.closest(this.options.dragHandleSelector) : this.container) == this.dragHandle;
+        const resizeDirection = event.target.closest(".md-resizable__handle")?.classList.value.match(/--(\w+)$/)[1];
 
-        // Add global event listeners for move and up events
-        window.addEventListener("pointermove", this.handlePointermove);
-        window.addEventListener("pointerup", this.handlePointerup);
+        window.addEventListener("pointermove", this.handleGesturePointermove);
+        window.addEventListener("pointerup", this.handleGesturePointerup);
 
-        // Prevent text selection during drag/resize
-        document.documentElement.classList.add("md-gesture--unselectable");
+        document.body.classList.add("md-gesture--unselectable");
 
-        // Initialize gesture states
-        this.endX = this.endX ?? 0;
-        this.endY = this.endY ?? 0;
+        this.endX = this.endX || 0;
+        this.endY = this.endY || 0;
+
         this.startX = event.clientX - this.endX;
         this.startY = event.clientY - this.endY;
+
         this.startWidth = this.container.clientWidth;
         this.startHeight = this.container.clientHeight;
 
-        // Initialize gesture types
+        this.swipe = false;
+
         this.drag = false;
-        if (!this.options.dragAfterLongPress && dragHandle && !this.resizeHandle) {
+        if (!this.options.dragAfterLongPress && dragHandle && !resizeDirection) {
             this.drag = true;
-            this.dragHandle.classList.add("md-draggable__handle--drag");
-            this.host.emit("onDragStart", event);
+            this.dragHandle.classList.add("md-draggable--drag");
+            this.emit("onDragStart", event);
         }
 
         this.resize = false;
-        if (!this.options.resizeAfterLongPress && this.resizeHandle) {
-            this.resize = true;
-            this.host.emit("onResizeStart", event);
+        if (!this.options.resizeAfterLongPress && resizeDirection) {
+            this.resize = resizeDirection;
+            this.emit("onResizeStart", event);
         }
 
         this.selection = false;
-        if (!this.options.selectionAfterLongPress && this.options.selection && !this.drag && !this.resize) {
+        if (!this.options.selectionAfterLongPress && this.options.selection) {
             this.selection = true;
-            this.host.emit("onSelectionStart", event);
+            this.emit("onSelectionStart", event);
         }
 
-        this.swipe = false;
-
-        // Start long press timer
         this.longPress = false;
         this.longPressTimeout = window.setTimeout(() => {
             this.longPress = true;
-            this.host.emit("onLongPress", event);
+            this.emit("onLongPress", event);
 
-            if (this.options.dragAfterLongPress && dragHandle && !this.resizeHandle) {
+            if (this.options.dragAfterLongPress && dragHandle && !resizeDirection) {
                 this.drag = true;
-                this.dragHandle.classList.add("md-draggable__handle--drag");
-                this.host.emit("onDragStart", event);
+                this.dragHandle.classList.add("md-draggable--drag");
+                this.emit("onDragStart", event);
             }
 
-            if (this.options.resizeAfterLongPress && this.resizeHandle) {
-                this.resize = true;
-                this.host.emit("onResizeStart", event);
+            if (this.options.resizeAfterLongPress && resizeDirection) {
+                this.resize = resizeDirection;
+                this.emit("onResizeStart", event);
             }
 
-            if (this.options.selectionAfterLongPress && this.options.selection && !this.drag && !this.resize) {
+            if (!this.drag && !this.resize && this.options.selectionAfterLongPress && this.options.selection) {
                 this.selection = true;
-                this.host.emit("onSelectionStart", event);
+                this.emit("onSelectionStart", event);
             }
         }, 300);
     }
 
     /**
-     * Handles the pointermove event on the host element.
-     * Updates gesture states based on pointer movement.
-     * @param {PointerEvent} event - The pointermove event object.
+     * Handles the pointermove event for gestures.
+     * @param {PointerEvent} event - The pointermove event.
      */
-    handlePointermove(event) {
-        window.clearTimeout(this.longPressTimeout); // Clear long press timeout
+    handleGesturePointermove(event) {
+        window.clearTimeout(this.longPressTimeout);
 
-        // Calculate movement
-        const moveX = event.clientX - this.startX;
-        const moveY = event.clientY - this.startY;
+        const currentX = event.clientX - this.startX;
+        const currentY = event.clientY - this.startY;
 
-        // Handle dragging
+        this.swipe = !this.drag && !this.resize && (currentX - this.endX < -30 ? "Left" : currentY - this.endY < -30 ? "Top" : currentX - this.endX > 30 ? "Right" : currentY - this.endY > 30 ? "Bottom" : "");
+
         if (this.drag) {
             if (this.options.drag.includes("x")) {
-                this.moveX = moveX;
+                this.currentX = currentX;
             }
-
             if (this.options.drag.includes("y")) {
-                this.moveY = moveY;
+                this.currentY = currentY;
             }
 
-            this.host.emit("onDrag", event);
+            this.emit("onDrag", event);
         }
 
-        // Handle resizing
         if (this.resize) {
-            if (this.resizeDirection.includes("e")) {
-                this.currentWidth = this.startWidth + moveX - this.endX;
+            if (this.resize.includes("e")) {
+                this.currentWidth = this.startWidth + currentX - this.endX;
             }
-
-            if (this.resizeDirection.includes("s")) {
-                this.currentHeight = this.startHeight + moveY - this.endY;
+            if (this.resize.includes("s")) {
+                this.currentHeight = this.startHeight + currentY - this.endY;
             }
-
-            if (this.resizeDirection.includes("w")) {
-                this.moveX = moveX;
-                this.currentWidth = this.startWidth - this.moveX + this.endX;
+            if (this.resize.includes("w")) {
+                this.currentX = currentX;
+                this.currentWidth = this.startWidth - this.currentX + this.endX;
             }
-
-            if (this.resizeDirection.includes("n")) {
-                this.moveY = moveY;
-                this.currentHeight = this.startHeight - this.moveY + this.endY;
+            if (this.resize.includes("n")) {
+                this.currentY = currentY;
+                this.currentHeight = this.startHeight - this.currentY + this.endY;
             }
-
-            this.host.emit("onResize", event);
+            this.emit("onResize", event);
         }
 
-        // Handle selection
         if (this.selection) {
-            this.host.emit("onSelection", event);
+            this.emit("onSelection", event);
         }
 
-        // Detect swipe gesture
-        this.swipe = !this.drag && !this.resize && !this.selection && (moveX - this.endX < -30 ? "Left" : moveY - this.endY < -30 ? "Top" : moveX - this.endX > 30 ? "Right" : moveY - this.endY > 30 ? "Bottom" : false);
-
-        // Update element style if enabled
         if (this.options.updateStyle) {
-            this.container.style.width = `${this.currentWidth ?? this.startWidth}px`;
-            this.container.style.height = `${this.currentHeight ?? this.startHeight}px`;
-            this.container.style.left = `${this.moveX ?? 0}px`;
-            this.container.style.top = `${this.moveY ?? 0}px`;
+            this.container.style.left = (this.currentX ?? 0) + "px";
+            this.container.style.top = (this.currentY ?? 0) + "px";
+            this.container.style.width = (this.currentWidth ?? this.startWidth) + "px";
+            this.container.style.height = (this.currentHeight ?? this.startHeight) + "px";
         }
     }
 
     /**
-     * Handles the pointerup event on the host element.
-     * Finalizes gesture actions, emits corresponding events, and cleans up.
-     * @param {PointerEvent} event - The pointerup event object.
+     * Handles the pointerup event for gestures.
+     * @param {PointerEvent} event - The pointerup event.
      */
-    handlePointerup(event) {
-        window.clearTimeout(this.longPressTimeout); // Clear long press timeout
+    handleGesturePointerup(event) {
+        window.clearTimeout(this.longPressTimeout);
 
-        // Update end coordinates for style updating
         if (this.options.updateStyle) {
-            this.endX = this.moveX;
-            this.endY = this.moveY;
+            this.endX = this.currentX;
+            this.endY = this.currentY;
         }
 
-        // Handle drag end
-        if (this.drag) {
-            this.dragHandle.classList.remove("md-draggable__handle--drag");
-            this.host.emit("onDragEnd", event);
-        }
-
-        // Handle resize end
-        if (this.resize) {
-            this.host.emit("onResizeEnd", event);
-        }
-
-        // Handle selection end
-        if (this.selection) {
-            this.host.emit("onSelectionEnd", event);
-        }
-
-        // Handle swipe gesture
-        if (this.swipe) {
-            this.host.emit(`onSwipe${this.swipe}`, event);
-        }
-
-        // Handle tap and double tap
-        if (!this.swipe && !this.longPress) {
-            this.host.emit("onTap", event);
-
-            if (Date.now() - this.lastTap < 300) {
+        if (!this.longPress && !this.swipe) {
+            this.emit("onTap", event);
+            if (performance.now() - this.lastTap < 300) {
                 if (this.lastTap - this.lastDoubleTap !== 0) {
-                    this.host.emit("onDoubleTap", event);
+                    this.emit("onDoubleTap", event);
                 }
-                this.lastDoubleTap = Date.now();
+                this.lastDoubleTap = performance.now();
             }
-            this.lastTap = Date.now();
+            this.lastTap = performance.now();
         }
 
-        // Remove unselectable class from document
-        document.documentElement.classList.remove("md-gesture--unselectable");
+        if (this.swipe && !this.selection) {
+            this.emit("onSwipe" + this.swipe, event);
+        }
 
-        // Remove event listeners for move and up events
-        window.removeEventListener("pointermove", this.handlePointermove);
-        window.removeEventListener("pointerup", this.handlePointerup);
+        if (this.selection) {
+            this.emit("onSelectionEnd", event);
+        }
+
+        if (this.drag) {
+            this.dragHandle.classList.remove("md-draggable--drag");
+            this.emit("onDragEnd", event);
+        }
+
+        if (this.resize) {
+            this.emit("onResizeEnd", event);
+        }
+
+        document.body.classList.remove("md-gesture--unselectable");
+
+        window.removeEventListener("pointermove", this.handleGesturePointermove);
+        window.removeEventListener("pointerup", this.handleGesturePointerup);
     }
 }
 

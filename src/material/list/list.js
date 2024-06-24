@@ -1,269 +1,341 @@
-import { html } from "lit";
-import { MDElement } from "../element/element.js";
+import { html, nothing } from "lit";
+import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
+import { MDRippleController } from "../ripple/ripple.js";
+import { MDGestureController } from "../gesture/gesture.js";
 
-/**
- * MDListElement extends MDElement and represents a list component.
- * It provides various selection modes (single, multi, range) and supports keyboard interactions.
- */
-class MDListElement extends MDElement {
-    /**
-     * @property {Object} properties - Properties inherited from MDElement and additional list-specific properties.
-     * @property {Array} properties.list - The array of items to render in the list.
-     * @property {Boolean} properties.selection - Whether selection mode is enabled.
-     * @property {Boolean} properties.allSelection - Whether all selection (Ctrl + A) is enabled.
-     * @property {Boolean} properties.singleSelection - Whether single selection mode is enabled.
-     * @property {Boolean} properties.multiSelection - Whether multi-selection mode is enabled.
-     * @property {Boolean} properties.rangeSelection - Whether range selection mode is enabled.
-     */
+class MDListItemComponent extends MDComponent {
     static properties = {
-        ...MDElement.properties,
-        list: { type: Array },
-        selection: { type: Boolean },
-        allSelection: { type: Boolean },
-        singleSelection: { type: Boolean },
-        multiSelection: { type: Boolean },
-        rangeSelection: { type: Boolean },
+        avatar: { type: String },
+        thumbnail: { type: String },
+        video: { type: String },
+
+        icon: { type: String },
+
+        label: { type: String },
+        subLabel: { type: String },
+
+        badge: { type: Number },
+
+        text: { type: String },
+
+        leadingCheckbox: { type: Boolean },
+        leadingRadioButton: { type: Boolean },
+        leadingSwitch: { type: Boolean },
+
+        trailingCheckbox: { type: Boolean },
+        trailingRadioButton: { type: Boolean },
+        trailingSwitch: { type: Boolean },
+
+        selected: { type: Boolean, reflect: true },
+        routerLink: { type: String, reflect: true },
     };
 
-    /**
-     * Constructs an instance of MDListElement.
-     */
+    constructor() {
+        super();
+
+        this.ripple = new MDRippleController(this, {
+            clipped: true,
+        });
+
+        this.gesture = new MDGestureController(this, {
+            drag: [],
+            dragAfterLongPress: true,
+            resize: [],
+            resizeAfterLongPress: true,
+            selection: true,
+            selectionAfterLongPress: true,
+        });
+    }
+
+    renderCheckbox() {
+        /* prettier-ignore */
+        return html`<md-checkbox 
+            class="md-list__checkbox"
+            .checked="${this.selected}"
+        ></md-checkbox>`
+    }
+
+    renderRadioButton() {
+        /* prettier-ignore */
+        return html`<md-radio-button 
+            class="md-list__radio-button"
+            .checked="${this.selected}"
+        ></md-radio-button>`
+    }
+
+    renderSwitch() {
+        /* prettier-ignore */
+        return html`<md-switch 
+            class="md-list__switch"
+            .checked="${this.selected}"
+        ></md-switch>`
+    }
+
+    render() {
+        /* prettier-ignore */
+        return html`
+            ${this.leadingCheckbox?this.renderCheckbox():nothing}
+            ${this.leadingRadioButton?this.renderRadioButton():nothing}
+            ${this.leadingSwitch?this.renderSwitch():nothing}
+
+            ${this.avatar?html`<md-image class="md-list__avatar" .src="${this.avatar}" .alt="${"avatar"}" .variant="${"rounded"}"></md-image>`:nothing}
+            ${this.thumbnail?html`<md-image class="md-list__thumbnail" .src="${this.thumbnail}" .alt="${"thumbnail"}"></md-image>`:nothing}
+            ${this.video?html`<md-image class="md-list__video" .src="${this.video}" .alt="${"video"}" .ratio="${"3/2"}"></md-image>`:nothing}
+
+            ${this.icon?html`<md-icon class="md-list__icon">${this.icon}</md-icon>`:nothing}
+
+            ${this.label||this.subLabel||this.badge?html`
+                    <div class="md-list__inner">
+                        ${this.label||this.subLabel?html`
+                                <div class="md-list__label">
+                                    ${this.label?html`<div class="md-list__label-primary">${this.label}</div>`:nothing}
+                                    ${this.subLabel?html`<div class="md-list__label-secondary">${this.subLabel}</div>`:nothing}
+                                </div>
+                        `:nothing}
+                        ${this.badge?html`<md-badge class="md-list__badge" .label="${this.badge}"></md-badge>`:nothing}
+                    </div>
+            `:nothing}
+
+            ${this.text?html`<div class="md-list__text">${this.text}</div>`:nothing}
+
+            ${this.trailingCheckbox?this.renderCheckbox():nothing}
+            ${this.trailingRadioButton?this.renderRadioButton():nothing}
+            ${this.trailingSwitch?this.renderSwitch():nothing}
+        `
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+
+        this.classList.add("md-list__item");
+    }
+
+    async updated(changedProperties) {
+        super.updated(changedProperties);
+
+        if (changedProperties.has("subLabel")) {
+            await this.requestUpdate;
+            const secondary = this.querySelector(".md-list__label-secondary");
+            const style = window.getComputedStyle(secondary);
+            const lineHeight = parseFloat(style.getPropertyValue("line-height"));
+            if (secondary.scrollHeight > lineHeight) {
+                this.classList.add("md-list__item--three");
+            } else {
+                this.classList.add("md-list__item--two");
+            }
+        }
+    }
+}
+
+customElements.define("md-list-item", MDListItemComponent);
+
+class MDListComponent extends MDComponent {
+    static properties = {
+        list: { type: Array },
+
+        selection: { type: Boolean },
+        rangeSelection: { type: Boolean },
+        multiSelection: { type: Boolean },
+        singleSelection: { type: Boolean },
+        allSelection: { type: Boolean },
+    };
+
     constructor() {
         super();
     }
 
-    /**
-     * Renders a list item based on the provided item data.
-     * @param {Object} item - The data object representing the list item.
-     * @returns {TemplateResult} HTML template result for the list item.
-     */
     renderListItem(item) {
+        /* prettier-ignore */
         return html`
-            <md-list-row>
-                <md-list-item
-                    .data="${item}"
-                    .avatar="${ifDefined(item.avatar)}"
-                    .image="${ifDefined(item.image)}"
-                    .video="${ifDefined(item.video)}"
-                    .icon="${ifDefined(item.icon)}"
-                    .label="${ifDefined(item.label)}"
-                    .subLabel="${ifDefined(item.subLabel)}"
-                    .badge="${ifDefined(item.badge)}"
-                    .text="${ifDefined(item.text)}"
-                    .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
-                    .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
-                    .leadingSwitch="${ifDefined(item.leadingSwitch)}"
-                    .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
-                    .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
-                    .trailingSwitch="${ifDefined(item.trailingSwitch)}"
-                    .selected="${ifDefined(item.selected)}"
-                    .routerLink="${ifDefined(item.routerLink)}"
-                    @click="${this.handleListItemClick}"
-                    @onListItemSelected="${this.handleListItemSelected}"
-                    @onCheckboxNativeInput="${this.handleListItemCheckboxNativeInput}"
-                    @onRadioButtonNativeInput="${this.handleListItemRadioButtonNativeInput}"
-                    @onSwitchNativeInput="${this.handleListItemSwitchNativeInput}"
-                    @onSelectionStart="${this.handleListItemSelectionStart}"
-                    @onSelection="${this.handleListItemSelection}"
-                    @onSelectionEnd="${this.handleListItemSelectionEnd}"
-                ></md-list-item>
-            </md-list-row>
-        `;
+            <md-list-item
+                .data="${item}"
+                .avatar="${ifDefined(item.avatar)}"
+                .thumbnail="${ifDefined(item.thumbnail)}"
+                .video="${ifDefined(item.video)}"
+                .icon="${ifDefined(item.icon)}"
+                .label="${ifDefined(item.label)}"
+                .subLabel="${ifDefined(item.subLabel)}"
+                .badge="${ifDefined(item.badge)}"
+                .text="${ifDefined(item.text)}"
+                .leadingCheckbox="${ifDefined(item.leadingCheckbox)}"
+                .leadingRadioButton="${ifDefined(item.leadingRadioButton)}"
+                .leadingSwitch="${ifDefined(item.leadingSwitch)}"
+                .trailingCheckbox="${ifDefined(item.trailingCheckbox)}"
+                .trailingRadioButton="${ifDefined(item.trailingRadioButton)}"
+                .trailingSwitch="${ifDefined(item.trailingSwitch)}"
+                .selected="${ifDefined(item.selected)}"
+                .routerLink="${ifDefined(item.routerLink)}"
+                @click="${this.handleListItemClick}"
+                @onCheckboxNativeInput="${this.handleListItemCheckboxNativeInput}"
+                @onRadioButtonNativeInput="${this.handleListItemRadioButtonNativeInput}"
+                @onSwitchNativeInput="${this.handleListItemSwitchNativeInput}"
+                @onSelectionStart="${this.handleListItemSelectionStart}"
+                @onSelection="${this.handleListItemSelection}"
+                @onSelectionEnd="${this.handleListItemSelectionEnd}"
+            ></md-list-item>
+        `
     }
 
-    /**
-     * Renders the list by mapping over the list items and rendering each one.
-     * @returns {Array<TemplateResult>} Array of HTML template results for each list item.
-     */
     render() {
-        return this.list?.map((item) => this.renderListItem(item));
+        /* prettier-ignore */
+        return this.list?.map(item=>this.renderListItem(item))
     }
 
-    /**
-     * Lifecycle method called when the element is connected to the DOM.
-     * Adds event listeners for keyboard interactions.
-     */
     connectedCallback() {
         super.connectedCallback();
-        this.handleListKeyDown = this.handleListKeyDown.bind(this);
-        this.addEventListener("keydown", this.handleListKeyDown);
+
+        this.classList.add("md-list");
+
+        this.on("keydown", this.handleListKeydown);
     }
 
-    /**
-     * Lifecycle method called when the element is disconnected from the DOM.
-     * Removes event listeners for keyboard interactions.
-     */
     disconnectedCallback() {
         super.disconnectedCallback();
-        this.removeEventListener("keydown", this.handleListKeyDown);
+
+        this.off("keydown", this.handleListKeydown);
     }
 
-    /**
-     * Handles keyboard events for list navigation and selection.
-     * @param {KeyboardEvent} event - The keyboard event object.
-     */
-    handleListKeyDown(event) {
-        if (this.allSelection && event.ctrlKey && event.key == "a") {
-            this.allSelect();
-            this.requestUpdate();
-            this.emit("onListKeyDown", event);
+    select(data) {
+        for (let i = 0; i < this.list.length; i++) {
+            let item = this.list[i];
+            item.selected = item === data;
+        }
+        this.endIndex = this.list.indexOf(data);
+    }
+
+    multiSelect(data) {
+        data.selected = !data.selected;
+
+        if (this.selectionMode && this.list.findIndex((item) => item.selected) == -1) {
+            this.selectionMode = false;
         }
     }
 
-    /**
-     * Handles click events on list items, triggering appropriate selection actions.
-     * @param {MouseEvent} event - The mouse event object.
-     */
+    selectRange(data) {
+        this.endIndex = this.endIndex || 0;
+        this.startIndex = this.list.indexOf(data);
+        this.swapIndex = this.startIndex > this.endIndex;
+
+        if (this.swapIndex) {
+            [this.endIndex, this.startIndex] = [this.startIndex, this.endIndex];
+        }
+
+        for (let i = 0; i < this.list.length; i++) {
+            let item = this.list[i];
+            item.selected = i >= this.startIndex && i <= this.endIndex;
+        }
+
+        if (this.swapIndex) {
+            [this.startIndex, this.endIndex] = [this.endIndex, this.startIndex];
+        }
+    }
+
+    selectAll() {
+        for (let i = 0; i < this.list.length; i++) {
+            let item = this.list[i];
+            item.selected = true;
+        }
+    }
+
     handleListItemClick(event) {
-        if (event.target.closest(".md-list__checkbox,.md-list__radio-button,.md-list__switch")) {
+        if (event.target.closest(".md-list__checkbox," + ".md-list__radio-button," + ".md-list__switch")) {
             return;
         }
 
         const data = event.currentTarget.data;
 
         if (this.rangeSelection && event.shiftKey) {
-            this.rangeSelect(data);
+            this.selectRange(data);
         } else if ((this.multiSelection && event.ctrlKey) || this.selectionMode) {
             this.multiSelect(data);
         } else if (this.singleSelection) {
-            this.singleSelect(data);
+            this.select(data);
         }
 
         this.requestUpdate();
-        this.emit("onListItemClick");
+
+        this.emit("onListItemClick", event);
     }
 
-    /**
-     * Handles native input events from checkbox elements in list items.
-     * @param {Event} event - The input event object.
-     */
-    handleListItemCheckboxNativeInput(event) {
-        const data = event.currentTarget.data;
-        this.multiSelect(data);
-        this.requestUpdate();
-        this.emit("onListItemCheckboxNativeInput");
+    handleListKeydown(event) {
+        if (this.allSelection && event.ctrlKey && event.key == "a") {
+            this.selectAll();
+
+            this.requestUpdate();
+        }
+
+        this.emit("handleListKeydown", event);
     }
 
-    /**
-     * Handles native input events from radio button elements in list items.
-     * @param {Event} event - The input event object.
-     */
-    handleListItemRadioButtonNativeInput(event) {
-        const data = event.currentTarget.data;
-        this.singleSelect(data);
-        this.requestUpdate();
-        this.emit("onListItemRadioButtonNativeInput");
-    }
-
-    /**
-     * Handles native input events from switch elements in list items.
-     * @param {Event} event - The input event object.
-     */
-    handleListItemSwitchNativeInput(event) {
-        const data = event.currentTarget.data;
-        this.multiSelect(data);
-        this.requestUpdate();
-        this.emit("onListItemSwitchNativeInput");
-    }
-
-    /**
-     * Handles the start of a selection action on a list item.
-     * @param {CustomEvent} event - The custom event object.
-     */
     handleListItemSelectionStart(event) {
         if (!this.selection) {
             return;
         }
         const data = event.currentTarget.data;
-        this.singleSelect(data);
+
+        this.select(data);
+
         this.requestUpdate();
+
         this.emit("onListItemSelectionStart", event);
     }
 
-    /**
-     * Handles the ongoing selection action on a list item.
-     * @param {CustomEvent} event - The custom event object.
-     */
     handleListItemSelection(event) {
         if (!this.selection) {
             return;
         }
         const data = event.detail.target.closest(".md-list__item")?.data;
-        if (data && this.temp !== data) {
-            this.temp = data;
-            this.rangeSelect(data);
+        if (data && this.data !== data) {
+            this.data = data;
+            this.selectRange(data);
             this.requestUpdate();
         }
+
         this.emit("onListItemSelection", event);
     }
 
-    /**
-     * Handles the end of a selection action on a list item.
-     * @param {CustomEvent} event - The custom event object.
-     */
-    handleListItemSelectionEnd(event) {
+    async handleListItemSelectionEnd(event) {
         if (!this.selection) {
             return;
         }
-        this.temp = undefined;
+        const data = event.currentTarget.data;
+
         window.requestAnimationFrame(() => {
             this.selectionMode = true;
         });
+
         this.emit("onListItemSelectionEnd", event);
     }
 
-    /**
-     * Selects all items in the list when the all selection shortcut is triggered (Ctrl + A).
-     */
-    allSelect() {
-        this.list.forEach((item) => {
-            item.selected = true;
-        });
+    handleListItemCheckboxNativeInput(event) {
+        const data = event.currentTarget.data;
+
+        this.multiSelect(data);
+        this.requestUpdate();
+
+        this.emit("onListItemCheckboxNativeInput", event);
     }
 
-    /**
-     * Selects a single item in the list.
-     * @param {Object} data - The data object representing the item to select.
-     */
-    singleSelect(data) {
-        this.list.forEach((item) => {
-            item.selected = item === data;
-        });
-        this.prevIndex = this.list.indexOf(data);
+    handleListItemRadioButtonNativeInput(event) {
+        const data = event.currentTarget.data;
+
+        this.select(data);
+        this.requestUpdate();
+
+        this.emit("onListItemRadioButtonNativeInput", event);
     }
 
-    /**
-     * Toggles the selection state of a single item in the list.
-     * @param {Object} data - The data object representing the item to toggle selection for.
-     */
-    multiSelect(data) {
-        data.selected = !data.selected;
-        this.selectionMode = this.list.some((item) => item.selected);
-    }
+    handleListItemSwitchNativeInput(event) {
+        const data = event.currentTarget.data;
 
-    /**
-     * Selects a range of items in the list.
-     * @param {Object} data - The data object representing the item to include in the range selection.
-     */
-    rangeSelect(data) {
-        this.prevIndex = this.prevIndex ?? 0;
-        this.currIndex = this.list.indexOf(data);
-        this.swapIndex = this.prevIndex > this.currIndex;
-        if (this.swapIndex) {
-            [this.prevIndex, this.currIndex] = [this.currIndex, this.prevIndex];
-        }
-        this.list.forEach((item, index) => {
-            item.selected = index >= this.prevIndex && index <= this.currIndex;
-        });
-        if (this.swapIndex) {
-            [this.currIndex, this.prevIndex] = [this.prevIndex, this.currIndex];
-        }
-    }
+        this.multiSelect(data);
+        this.requestUpdate();
 
-    handleListItemSelected() {}
+        this.emit("onListItemSwitchNativeInput", event);
+    }
 }
 
-customElements.define("md-list", MDListElement);
+customElements.define("md-list", MDListComponent);
 
-export { MDListElement };
+export { MDListComponent };

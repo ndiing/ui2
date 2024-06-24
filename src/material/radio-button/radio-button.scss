@@ -5,10 +5,6 @@
     vertical-align: middle;
 }
 .md-radio-button__inner {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
     position: relative;
 }
 .md-radio-button__label {
@@ -47,7 +43,7 @@
                 width: 10px;
                 height: 10px;
                 border-radius: 5px;
-                background: var(--md-sys-color-primary);
+                background-color: var(--md-sys-color-primary);
             }
         }
     }
@@ -62,4 +58,3 @@
     border-radius: 10px;
     border: 2px solid var(--md-sys-color-outline);
 }
-// .md-radio-button__thumb {}

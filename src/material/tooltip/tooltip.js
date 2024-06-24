@@ -1,64 +1,60 @@
-import { MDPaneElement } from "../pane/pane.js";
+import { MDPopperController } from "../popper/popper.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Class representing a custom tooltip element.
- * @extends MDPaneElement
+ * MDTooltipComponent provides a tooltip component that displays additional information
+ * when hovering over an element.
+ * @extends MDSheetComponent
  */
-class MDTooltipElement extends MDPaneElement {
+class MDTooltipComponent extends MDSheetComponent {
     /**
-     * Called when the element is connected to the DOM.
-     * Adds 'md-pane' class to the element.
+     * Variants available for the tooltip component.
+     * @type {Array.<String>}
+     */
+    variants = ["plain", "rich"];
+
+    /**
+     * Initializes the tooltip component and sets up the popper for positioning.
+     */
+    constructor() {
+        super();
+
+        /**
+         * Popper controller instance used for positioning the tooltip.
+         * @type {MDPopperController}
+         */
+        this.popper = new MDPopperController(this, {});
+    }
+
+    /**
+     * Lifecycle method called when the element is connected to the DOM.
+     * Sets up initial styles and adds necessary classes for the tooltip component.
      */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-pane");
+        this.classList.add("md-card");
+        this.classList.add("md-tooltip");
     }
 
     /**
-     * Called when the element is disconnected from the DOM.
-     * Removes 'md-pane' class from the element.
+     * Displays the tooltip relative to the provided button element with specified options.
+     * @param {HTMLElement} button - The button or element to which the tooltip is anchored.
+     * @param {Object} options - Additional options for configuring the tooltip's behavior.
+     * @param {Array.<String>} [options.placements=["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west"]] - List of possible placements for the tooltip relative to the button.
+     * @param {Number} [options.offset=8] - Offset value in pixels for adjusting the tooltip's position.
      */
-    disconnectedCallback() {
-        super.disconnectedCallback();
+    show(button, options) {
+        super.show();
 
-        this.classList.remove("md-pane");
-    }
-
-    /**
-     * Shows the tooltip relative to a button element.
-     * @param {HTMLElement} button - The button element to which the tooltip is anchored.
-     * @param {Object} [options={}] - Additional options for showing the tooltip.
-     */
-    show(button, options = {}) {
-        this.style.removeProperty("--md-comp-pane-animation");
-
-        this.open = true;
-
-        if (button) {
-            /* prettier-ignore */
-            let placements = [
-                "below",
-                "above",
-                "before",
-                "after",
-                "north-east",
-                "south-east",
-                "south-west",
-                "north-west",
-            ];
-            this.popper.show(button, {
-                placements,
-                offset: 8,
-                ...options,
-            });
-        }
+        this.popper.setPlacement(button, {
+            placements: ["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west", "center"],
+            offset: 8,
+            ...options,
+        });
     }
 }
 
-/**
- * Defines a custom element 'md-tooltip'.
- */
-customElements.define("md-tooltip", MDTooltipElement);
+customElements.define("md-tooltip", MDTooltipComponent);
 
-export { MDTooltipElement };
+export { MDTooltipComponent };

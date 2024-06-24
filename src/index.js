@@ -1,5 +1,5 @@
 import "./material/material.scss";
 import "./material/material.js";
 
-import "./app/app.scss";
-import "./app/app.js";
+import "./dev/dev.scss";
+import "./dev/dev.js";

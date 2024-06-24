@@ -1,172 +1,171 @@
 import { html, nothing } from "lit";
-import { MDPaneElement } from "../pane/pane.js";
-import { stringifyDatetimeLocal, parseDatetimeLocal, stringifyTime } from "../helper/helper.js";
-import { createRef, ref } from "lit/directives/ref.js";
+import { MDSheetComponent } from "../sheet/sheet.js";
+import { parseDatetimeLocal, stringifyDatetimeLocal, stringifyTime, stringifyYear } from "../functions/functions.js";
+import { MDPopperController } from "../popper/popper.js";
 
 /**
- * Custom element representing a datetime picker.
- * @extends MDPaneElement
+ * MDDatetimePickerComponent merupakan elemen untuk memilih tanggal dan waktu.
+ * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick
+ * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection
  */
-class MDDatetimePickerElement extends MDPaneElement {
+class MDDatetimePickerComponent extends MDSheetComponent {
     /**
-     * Properties for the MDDatetimePickerElement.
-     * @static
-     * @type {Object}
-     * @property {Number} index - The current index.
-     * @property {String} value - The selected value in string format.
+     * @property {Object} properties - Static properties inherited from MDSheetComponent.
+     * @property {number} properties.index - Current index.
+     * @property {string} properties.value - Current value.
      */
     static properties = {
-        ...MDPaneElement.properties,
+        ...MDSheetComponent.properties,
         index: { type: Number },
         value: { type: String },
     };
 
     /**
-     * Get the first day of the selected month.
-     * @type {Number}
-     */
-    get first() {
-        return new Date(this.selected.getFullYear(), this.selected.getMonth()).getDay();
-    }
-
-    /**
-     * Get the last day of the selected month.
-     * @type {Number}
-     */
-    get last() {
-        return 32 - new Date(this.selected.getFullYear(), this.selected.getMonth(), 32).getDate();
-    }
-
-    /**
-     * Get the list of years around the selected year.
-     * @type {Object[]}
+     * Getter for years array.
+     * @returns {Array<Object>} Array of year objects.
      */
     get years() {
-        const year = this.selected.getFullYear();
-        const start = Math.floor((year - 0) / 10) * 10;
+        const rows = [];
+        const year = this.selection.getFullYear();
+        const start = Math.floor(year / 10) * 10;
         const end = Math.floor((year + 10) / 10) * 10;
-        const list = [];
         for (let i = 0; i < end - start; i++) {
             const date = new Date(start + i, 0);
             const year = date.getFullYear();
-            list.push({
-                activated: year == this.date.getFullYear(),
-                selected: year == this.selected.getFullYear(),
+            rows.push({
                 label: this.yearFormat(date),
+                activated: year == this.activated.getFullYear(),
+                selected: year == this.selected.getFullYear(),
                 year,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Get the list of months in the selected year.
-     * @type {Object[]}
+     * Getter for months array.
+     * @returns {Array<Object>} Array of month objects.
      */
     get months() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 12; i++) {
-            const date = new Date(this.selected.getFullYear(), i);
+            const date = new Date(this.selection.getFullYear(), i);
             const year = date.getFullYear();
             const month = date.getMonth();
-            list.push({
-                activated: year == this.date.getFullYear() && month == this.date.getMonth(),
-                selected: year == this.selected.getFullYear() && month == this.selected.getMonth(),
+            rows.push({
                 label: this.monthFormat(date),
+                activated: year == this.activated.getFullYear() && month == this.activated.getMonth(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth(),
                 year,
                 month,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Get the list of weekdays.
-     * @type {Object[]}
+     * Getter for first day of the month.
+     * @returns {number} Day index (0-6).
+     */
+    get first() {
+        return new Date(this.selection.getFullYear(), this.selection.getMonth()).getDay();
+    }
+
+    /**
+     * Getter for last day of the month.
+     * @returns {number} Last day of the month.
+     */
+    get last() {
+        return 32 - new Date(this.selection.getFullYear(), this.selection.getMonth(), 32).getDate();
+    }
+
+    /**
+     * Getter for weekdays array.
+     * @returns {Array<Object>} Array of weekday objects.
      */
     get weekdays() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 7; i++) {
             const date = new Date(0, 0, i);
-            list.push({
+            rows.push({
                 label: this.weekdayFormat(date),
-                error: date.getDay() == 0,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Get the list of days in the selected month.
-     * @type {Object[]}
+     * Getter for days grid.
+     * @returns {Array<Object>} Array of day objects.
      */
     get days() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 6; i++) {
-            const rows = { children: [] };
+            const column = {};
+            const children = [];
             for (let j = 0; j < 7; j++) {
-                const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), i * 7 + j - this.first + 1);
+                const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + j + 1 - this.first);
                 const year = date.getFullYear();
                 const month = date.getMonth();
                 const day = date.getDate();
-                rows.children.push({
-                    activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate(),
-                    selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate(),
-                    error: date.getDay() == 0,
-                    disabled: !(year == this.selected.getFullYear() && month == this.selected.getMonth()),
+                children.push({
                     label: this.dayFormat(date),
+                    activated: year == this.activated.getFullYear() && month == this.activated.getMonth() && day == this.activated.getDate(),
+                    selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate(),
                     year,
                     month,
                     day,
                 });
             }
-            list.push(rows);
+            column.children = children;
+            rows.push(column);
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Get the list of hours in the selected day.
-     * @type {Object[]}
+     * Getter for hours array.
+     * @returns {Array<Object>} Array of hour objects.
      */
     get hours() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 24; i++) {
-            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), i);
+            const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), this.selection.getDate(), i);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
             const hour = date.getHours();
-            list.push({
-                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours(),
-                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours(),
+            rows.push({
                 label: this.hourFormat(date),
+                activated: year == this.activated.getFullYear() && month == this.activated.getMonth() && day == this.activated.getDate() && hour == this.activated.getHours(),
+                selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours(),
                 year,
                 month,
                 day,
                 hour,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Get the list of minutes in the selected hour.
-     * @type {Object[]}
+     * Getter for minutes array.
+     * @returns {Array<Object>} Array of minute objects.
      */
     get minutes() {
-        const list = [];
+        const rows = [];
         for (let i = 0; i < 60; i++) {
-            const date = new Date(this.selected.getFullYear(), this.selected.getMonth(), this.selected.getDate(), this.selected.getHours(), i);
+            const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), this.selection.getDate(), this.selection.getHours(), i);
             const year = date.getFullYear();
             const month = date.getMonth();
             const day = date.getDate();
             const hour = date.getHours();
             const minute = date.getMinutes();
-            list.push({
-                activated: year == this.date.getFullYear() && month == this.date.getMonth() && day == this.date.getDate() && hour == this.date.getHours() && minute == this.date.getMinutes(),
+            rows.push({
+                label: this.minuteFormat(date),
+                activated: year == this.activated.getFullYear() && month == this.activated.getMonth() && day == this.activated.getDate() && hour == this.activated.getHours() && minute == this.activated.getMinutes(),
                 selected: year == this.selected.getFullYear() && month == this.selected.getMonth() && day == this.selected.getDate() && hour == this.selected.getHours() && minute == this.selected.getMinutes(),
-                label: i % 5 == 0 ? this.minuteFormat(date) : "",
                 year,
                 month,
                 day,
@@ -174,300 +173,270 @@ class MDDatetimePickerElement extends MDPaneElement {
                 minute,
             });
         }
-        return list;
+        return rows;
     }
 
     /**
-     * Reference to the card item for years.
-     * @type {HTMLElement}
-     */
-    cardItemYear = createRef();
-
-    /**
-     * Reference to the card item for months.
-     * @type {HTMLElement}
-     */
-    cardItemMonth = createRef();
-
-    /**
-     * Render the body of the datetime picker.
-     * @type {TemplateResult[]}
+     * Getter for body content.
+     * @returns {TemplateResult[]} Array containing the body HTML.
      */
     get body() {
         /* prettier-ignore */
         return [html`
-            <div class="md-layout-card">
-                <div class="md-layout-card__item" ${ref(this.cardItemYear)}>${this.renderYear()}</div>
-                <div class="md-layout-card__item" ${ref(this.cardItemMonth)}>${this.renderMonth()}</div>
-                <div class="md-layout-card__item">${this.renderDay()}</div>
-                <div class="md-layout-card__item">${this.renderHour()}</div>
-                <div class="md-layout-card__item">${this.renderMinute()}</div>
+            <div class="md-datetime-picker__card">
+                <div class="md-datetime-picker__card-item">${this.renderYear()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderMonth()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderDay()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderHour()}</div>
+                <div class="md-datetime-picker__card-item">${this.renderMinute()}</div>
             </div>
         `];
     }
 
     /**
-     * Set the body content.
-     * @param {TemplateResult[]} value - The new body content.
+     * Setter for body content.
+     * @param {TemplateResult[]} value - HTML template to set as body.
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * Get the leading actions for the datetime picker.
-     * @type {Object[]}
+     * Getter for leading actions.
+     * @returns {Object[]} Array of leading action objects.
      */
     get leadingActions() {
         let label;
         if (this.index == 0) {
             label = [this.years[0].label, this.years[this.years.length - 1].label].join("-");
         } else if (this.index == 1) {
-            label = this.selected.getFullYear();
+            label = stringifyYear(this.selection);
         } else if (this.index == 2) {
-            label = this.toString();
+            label = stringifyDatetimeLocal(this.selection);
         } else if (this.index == 3) {
-            label = stringifyTime(this.selected);
+            label = stringifyTime(this.selection);
         } else if (this.index == 4) {
-            label = stringifyTime(this.selected);
+            label = stringifyTime(this.selection);
         }
-        return [{ component: "button", name: "label", label }];
+        return [{ name: "label", component: "button", label }];
     }
 
     /**
-     * Initialize the datetime picker element.
+     * Getter for trailing actions.
+     * @returns {Object[]} Array of trailing action objects.
+     */
+    get trailingActions() {
+        return [
+            { name: "prev", icon: "keyboard_arrow_left" },
+            { name: "next", icon: "keyboard_arrow_right" },
+        ];
+    }
+
+    /**
+     * Getter for general actions.
+     * @returns {Object[]} Array of action objects.
+     */
+    get actions() {
+        return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
+    }
+
+    /**
+     * Constructor for initializing the component.
      */
     constructor() {
         super();
 
-        /**
-         * Formatter for the year part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.yearFormat = new Intl.DateTimeFormat(undefined, { year: "numeric" }).format;
-
-        /**
-         * Formatter for the month part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.monthFormat = new Intl.DateTimeFormat(undefined, { month: "long" }).format;
-
-        /**
-         * Formatter for the weekday part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.weekdayFormat = new Intl.DateTimeFormat(undefined, { weekday: "narrow" }).format;
-
-        /**
-         * Formatter for the day part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.dayFormat = new Intl.DateTimeFormat(undefined, { day: "numeric" }).format;
-
-        /**
-         * Formatter for the hour part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.hourFormat = new Intl.DateTimeFormat(undefined, { hour: "numeric", hour12: false }).format;
-
-        /**
-         * Formatter for the minute part.
-         * @type {Intl.DateTimeFormat}
-         */
         this.minuteFormat = new Intl.DateTimeFormat(undefined, { minute: "numeric", hour12: false }).format;
 
-        /**
-         * Reference to the currently selected date.
-         * @type {Date}
-         */
-        this.date = new Date();
-
-        /**
-         * The currently selected date.
-         * @type {Date}
-         */
+        this.activated = new Date();
+        this.selection = new Date();
         this.selected = new Date();
 
-        /**
-         * The value of the datetime picker in string format.
-         * @type {String}
-         */
-        this.value = this.toString();
-
-        /**
-         * The current index of the datetime picker.
-         * @type {Number}
-         */
         this.index = 2;
+        this.value = this.getValue();
 
-        /**
-         * Trailing actions for the datetime picker.
-         * @type {Object[]}
-         */
-        this.trailingActions = [
-            { name: "prev", icon: "keyboard_arrow_left" },
-            { name: "next", icon: "keyboard_arrow_right" },
-        ];
-
-        /**
-         * Buttons for the datetime picker.
-         * @type {Object[]}
-         */
-        this.buttons = [
-            { name: "cancel", label: "Cancel" },
-            { name: "ok", label: "Ok" },
-        ];
-
-        /**
-         * Default variant of the datetime picker.
-         * @type {String}
-         */
-        this.defaultVariant = "menu";
+        this.popper = new MDPopperController(this, {});
     }
 
     /**
-     * Render the year list.
-     * @returns {TemplateResult}
+     * Renders the year selector.
+     * @returns {TemplateResult} HTML template for rendering years.
      */
     renderYear() {
         /* prettier-ignore */
         return html`
-            <div class="md-datetime-picker__list">
+            <div class="md-datetime-picker__list md-datetime-picker__list--years">
                 ${this.years.map(item=>html`
-                    <div class="md-datetime-picker__list-item" @click="${this.handleDatetimePickerYearItemClick}" .data="${item}" ?activated="${item.activated}" ?selected="${item.selected}">
+                    <div class="md-datetime-picker__list-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerYearItemClick}">
                         <md-icon class="md-datetime-picker__list-icon">${item.selected?'check':nothing}</md-icon>
                         <div class="md-datetime-picker__list-label">${item.label}</div>
-                    </div>
+                    </div>    
                 `)}
             </div>
-        `
+        `;
     }
 
     /**
-     * Render the month list.
-     * @returns {TemplateResult}
+     * Renders the month selector.
+     * @returns {TemplateResult} HTML template for rendering months.
      */
     renderMonth() {
         /* prettier-ignore */
         return html`
-            <div class="md-datetime-picker__list">
+            <div class="md-datetime-picker__list md-datetime-picker__list--months">
                 ${this.months.map(item=>html`
-                    <div class="md-datetime-picker__list-item" @click="${this.handleDatetimePickerMonthItemClick}" .data="${item}" ?activated="${item.activated}" ?selected="${item.selected}">
+                    <div class="md-datetime-picker__list-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerMonthItemClick}">
                         <md-icon class="md-datetime-picker__list-icon">${item.selected?'check':nothing}</md-icon>
                         <div class="md-datetime-picker__list-label">${item.label}</div>
-                    </div>
+                    </div>    
                 `)}
             </div>
-        `
+        `;
     }
 
     /**
-     * Render the day grid.
-     * @returns {TemplateResult}
+     * Renders the day grid.
+     * @returns {TemplateResult} HTML template for rendering days.
      */
     renderDay() {
         /* prettier-ignore */
         return html`
             <div class="md-datetime-picker__grid">
-                <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--weekday">
+                <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--weekdays">
                     ${this.weekdays.map(item=>html`
-                        <div class="md-datetime-picker__grid-item" ?error="${item.error}">
+                        <div class="md-datetime-picker__grid-item">
                             <div class="md-datetime-picker__grid-label">${item.label}</div>
-                        </div>
+                        </div>    
                     `)}
                 </div>
                 ${this.days.map(row=>html`
-                    <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--day">
+                    <div class="md-datetime-picker__grid-row md-datetime-picker__grid-row--days">
                         ${row.children.map(item=>html`
-                            <div class="md-datetime-picker__grid-item" @click="${this.handleDatetimePickerDayItemClick}" .data="${item}" ?activated="${item.activated}" ?selected="${item.selected}" ?error="${item.error}" ?disabled="${item.disabled}">
+                            <div class="md-datetime-picker__grid-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerDayItemClick}">
                                 <div class="md-datetime-picker__grid-label">${item.label}</div>
-                            </div>
+                            </div>    
                         `)}
                     </div>
                 `)}
             </div>
-        `
+        `;
     }
 
     /**
-     * Render the hour list.
-     * @returns {TemplateResult}
+     * Renders the hour selector.
+     * @returns {TemplateResult} HTML template for rendering hours.
      */
     renderHour() {
         /* prettier-ignore */
         return html`
-            <div class="md-datetime-picker__absolute md-datetime-picker__absolute--hour">
+            <div class="md-datetime-picker__absolute md-datetime-picker__absolute--hours">
                 ${this.hours.map(item=>html`
-                    <div class="md-datetime-picker__absolute-item" @click="${this.handleDatetimePickerHourItemClick}" .data="${item}" ?activated="${item.activated}" ?selected="${item.selected}">
+                    <div class="md-datetime-picker__absolute-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerHourItemClick}">
                         <div class="md-datetime-picker__absolute-label">${item.label}</div>
-                    </div>
+                    </div>    
                 `)}
             </div>
-        `
+        `;
     }
 
     /**
-     * Render the minute list.
-     * @returns {TemplateResult}
+     * Renders the minute selector.
+     * @returns {TemplateResult} HTML template for rendering minutes.
      */
     renderMinute() {
         /* prettier-ignore */
         return html`
-            <div class="md-datetime-picker__absolute md-datetime-picker__absolute--minute">
+            <div class="md-datetime-picker__absolute md-datetime-picker__absolute--minutes">
                 ${this.minutes.map(item=>html`
-                    <div class="md-datetime-picker__absolute-item" @click="${this.handleDatetimePickerMinuteItemClick}" .data="${item}" ?activated="${item.activated}" ?selected="${item.selected}">
+                    <div class="md-datetime-picker__absolute-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerMinuteItemClick}">
                         <div class="md-datetime-picker__absolute-label">${item.label}</div>
-                    </div>
+                    </div>    
                 `)}
             </div>
-        `
+        `;
     }
 
     /**
-     * Callback when the element is connected to the DOM.
+     * Callback when the component is connected to the DOM.
      */
     connectedCallback() {
         super.connectedCallback();
 
-        this.classList.add("md-pane");
+        this.classList.add("md-card");
+        this.classList.add("md-datetime-picker");
 
         this.defaultValue = this.value;
+        this.updateDate();
     }
 
     /**
-     * Callback when the element is disconnected from the DOM.
-     */
-    disconnectedCallback() {
-        super.disconnectedCallback();
-
-        this.classList.remove("md-pane");
-    }
-
-    /**
-     * Callback when the element is updated.
-     * @param {Map<any, any>} changedProperties - Map of changed properties.
+     * Callback when the component is updated.
+     * @param {Map} changedProperties - Map of changed properties.
      */
     async updated(changedProperties) {
         super.updated(changedProperties);
 
         if (changedProperties.has("index")) {
-            this.style.setProperty("--md-comp-layout-card-index", this.index);
+            this.style.setProperty("--md-comp-datetime-picker-card-index", this.index);
         }
 
-        if (changedProperties.has("value")) {
+        if (changedProperties.has("value") && changedProperties.get("value")) {
             if (this.value) {
                 await this.updateComplete;
-                this.updateSelectedValue();
+                this.updateDate();
                 this.requestUpdate();
             }
         }
     }
 
     /**
-     * Update the selected value based on the current value.
+     * Handles click on icon buttons.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick
      */
-    updateSelectedValue() {
+    handleCardIconButtonClick(event) {
+        if (event.currentTarget.name == "prev") {
+            this.handleCardIconButtonPrevClick(event);
+        } else if (event.currentTarget.name == "next") {
+            this.handleCardIconButtonNextClick(event);
+        }
+
+        this.emit("onDatetimePickerIconButtonClick", event);
+    }
+
+    /**
+     * Handles click on action buttons.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick
+     */
+    handleCardButtonClick(event) {
+        if (event.currentTarget.name == "label") {
+            this.handleCardButtonLabelClick(event);
+        } else if (event.currentTarget.name == "cancel") {
+            this.handleCardButtonCancelClick(event);
+        } else if (event.currentTarget.name == "ok") {
+            this.handleCardButtonOkClick(event);
+        }
+
+        this.emit("onDatetimePickerButtonClick", event);
+    }
+
+    /**
+     * Converts the value to Date object.
+     */
+    updateDate() {
         const date = parseDatetimeLocal(this.value);
+
+        this.selection.setFullYear(date.getFullYear());
+        this.selection.setMonth(date.getMonth());
+        this.selection.setDate(date.getDate());
+        this.selection.setHours(date.getHours());
+        this.selection.setMinutes(date.getMinutes());
 
         this.selected.setFullYear(date.getFullYear());
         this.selected.setMonth(date.getMonth());
@@ -477,107 +446,153 @@ class MDDatetimePickerElement extends MDPaneElement {
     }
 
     /**
-     * Callback when a button in the pane is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on previous icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonPrevClick
      */
-    handlePaneButtonClick(event) {
-        if (event.currentTarget.name == "label") {
-            if (this.index == 2) {
-                this.index = 1;
-            } else if (this.index == 1) {
-                this.index = 0;
-            } else if (this.index == 0) {
-                this.index = 2;
-            } else if (this.index == 3) {
-                this.index = 4;
-            } else if (this.index == 4) {
-                this.index = 2;
-            }
-        } else if (event.currentTarget.name == "cancel") {
-            this.value = this.defaultValue;
-
-            this.index = 2;
-
-            this.emit("onDatetimePickerButtonCancelClick", event);
-        } else if (event.currentTarget.name == "ok") {
-            this.index = 2;
-
-            this.emit("onDatetimePickerButtonOkClick", event);
-        }
-    }
-
-    /**
-     * Callback when an icon button in the pane is clicked.
-     * @param {Event} event - The click event.
-     */
-    handlePaneIconButtonClick(event) {
-        if (event.currentTarget.name == "prev") {
-            if (this.index == 0) {
-                this.selected.setFullYear(this.selected.getFullYear() - 10);
-            } else if (this.index == 1) {
-                this.selected.setFullYear(this.selected.getFullYear() - 1);
-            } else if (this.index == 2) {
-                this.selected.setMonth(this.selected.getMonth() - 1);
-            } else if (this.index == 3) {
-                this.selected.setHours(this.selected.getHours() - 1);
-            } else if (this.index == 4) {
-                this.selected.setMinutes(this.selected.getMinutes() - 1);
-            }
-        } else if (event.currentTarget.name == "next") {
-            if (this.index == 0) {
-                this.selected.setFullYear(this.selected.getFullYear() + 10);
-            } else if (this.index == 1) {
-                this.selected.setFullYear(this.selected.getFullYear() + 1);
-            } else if (this.index == 2) {
-                this.selected.setMonth(this.selected.getMonth() + 1);
-            } else if (this.index == 3) {
-                this.selected.setHours(this.selected.getHours() + 1);
-            } else if (this.index == 4) {
-                this.selected.setMinutes(this.selected.getMinutes() + 1);
-            }
+    handleCardIconButtonPrevClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() - 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() - 1);
+        } else if (this.index == 2) {
+            this.selection.setMonth(this.selection.getMonth() - 1);
+        } else if (this.index == 3) {
+            this.selection.setHours(this.selection.getHours() - 1);
+        } else if (this.index == 4) {
+            this.selection.setMinutes(this.selection.getMinutes() - 1);
         }
 
         this.requestUpdate();
+
+        this.emit("onDatetimePickerSelection", event);
+        this.emit("onDatetimePickerIconButtonPrevClick", event);
     }
 
     /**
-     * Callback when a year item in the datetime picker is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on next icon button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonNextClick
+     */
+    handleCardIconButtonNextClick(event) {
+        if (this.index == 0) {
+            this.selection.setFullYear(this.selection.getFullYear() + 10);
+        } else if (this.index == 1) {
+            this.selection.setFullYear(this.selection.getFullYear() + 1);
+        } else if (this.index == 2) {
+            this.selection.setMonth(this.selection.getMonth() + 1);
+        } else if (this.index == 3) {
+            this.selection.setHours(this.selection.getHours() + 1);
+        } else if (this.index == 4) {
+            this.selection.setMinutes(this.selection.getMinutes() + 1);
+        }
+
+        this.requestUpdate();
+
+        this.emit("onDatetimePickerSelection", event);
+        this.emit("onDatetimePickerIconButtonNextClick", event);
+    }
+
+    /**
+     * Handles click on label button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonLabelClick
+     */
+    handleCardButtonLabelClick(event) {
+        if (this.index == 0) {
+            this.index = 2;
+        } else if (this.index == 1) {
+            this.index = 0;
+        } else if (this.index == 2) {
+            this.index = 1;
+        } else if (this.index == 3) {
+            this.index = 4;
+        } else if (this.index == 4) {
+            this.index = 2;
+        }
+
+        this.emit("onDatetimePickerButtonLabelClick", event);
+    }
+
+    /**
+     * Handles click on cancel button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonCancelClick
+     */
+    handleCardButtonCancelClick(event) {
+        this.value = this.defaultValue;
+        this.updateDate();
+        this.requestUpdate();
+        this.index = 2;
+
+        this.emit("onDatetimePickerSelection", event);
+        this.emit("onDatetimePickerButtonCancelClick", event);
+    }
+
+    /**
+     * Handles click on OK button.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerButtonOkClick
+     */
+    handleCardButtonOkClick(event) {
+        this.selected.setFullYear(this.selection.getFullYear());
+        this.selected.setMonth(this.selection.getMonth());
+        this.selected.setDate(this.selection.getDate());
+        this.selected.setHours(this.selection.getHours());
+        this.selected.setMinutes(this.selection.getMinutes());
+
+        this.value = this.getValue();
+        this.requestUpdate();
+
+        this.index = 2;
+
+        this.emit("onDatetimePickerSelection", event);
+        this.emit("onDatetimePickerButtonOkClick", event);
+    }
+
+    /**
+     * Handles click on year item in the year selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerYearItemClick
      */
     handleDatetimePickerYearItemClick(event) {
         const data = event.currentTarget.data;
 
-        this.selected.setFullYear(data.year);
-
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
 
         this.index = 1;
 
-        this.emit("onDatetimePickerItemClick", event);
+        this.emit("onDatetimePickerSelection", event);
         this.emit("onDatetimePickerYearItemClick", event);
     }
 
     /**
-     * Callback when a month item in the datetime picker is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on month item in the month selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerMonthItemClick
      */
     handleDatetimePickerMonthItemClick(event) {
         const data = event.currentTarget.data;
 
-        this.selected.setFullYear(data.year);
-        this.selected.setMonth(data.month);
-
-        this.value = this.toString();
+        this.selection.setMonth(data.month);
 
         this.index = 2;
 
-        this.emit("onDatetimePickerItemClick", event);
+        this.emit("onDatetimePickerSelection", event);
         this.emit("onDatetimePickerMonthItemClick", event);
     }
 
     /**
-     * Callback when a day item in the datetime picker is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on day item in the day grid.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerDayItemClick
      */
     handleDatetimePickerDayItemClick(event) {
         const data = event.currentTarget.data;
@@ -586,17 +601,21 @@ class MDDatetimePickerElement extends MDPaneElement {
         this.selected.setMonth(data.month);
         this.selected.setDate(data.day);
 
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
+        this.selection.setMonth(data.month);
+        this.selection.setDate(data.day);
 
         this.index = 3;
 
-        this.emit("onDatetimePickerItemClick", event);
+        this.emit("onDatetimePickerSelection", event);
         this.emit("onDatetimePickerDayItemClick", event);
     }
 
     /**
-     * Callback when an hour item in the datetime picker is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on hour item in the hour selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerHourItemClick
      */
     handleDatetimePickerHourItemClick(event) {
         const data = event.currentTarget.data;
@@ -606,17 +625,22 @@ class MDDatetimePickerElement extends MDPaneElement {
         this.selected.setDate(data.day);
         this.selected.setHours(data.hour);
 
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
+        this.selection.setMonth(data.month);
+        this.selection.setDate(data.day);
+        this.selection.setHours(data.hour);
 
         this.index = 4;
 
-        this.emit("onDatetimePickerItemClick", event);
+        this.emit("onDatetimePickerSelection", event);
         this.emit("onDatetimePickerHourItemClick", event);
     }
 
     /**
-     * Callback when a minute item in the datetime picker is clicked.
-     * @param {Event} event - The click event.
+     * Handles click on minute item in the minute selector.
+     * @param {Event} event - Click event.
+     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
+     * @fires MDDatetimePickerComponent#onDatetimePickerMinuteItemClick
      */
     handleDatetimePickerMinuteItemClick(event) {
         const data = event.currentTarget.data;
@@ -627,68 +651,43 @@ class MDDatetimePickerElement extends MDPaneElement {
         this.selected.setHours(data.hour);
         this.selected.setMinutes(data.minute);
 
-        this.value = this.toString();
+        this.selection.setFullYear(data.year);
+        this.selection.setMonth(data.month);
+        this.selection.setDate(data.day);
+        this.selection.setHours(data.hour);
+        this.selection.setMinutes(data.minute);
 
         this.index = 2;
 
-        this.emit("onDatetimePickerItemClick", event);
+        this.emit("onDatetimePickerSelection", event);
         this.emit("onDatetimePickerMinuteItemClick", event);
     }
 
     /**
-     * Show the datetime picker relative to a button.
-     * @param {HTMLElement} button - The button to show the datetime picker relative to.
-     * @param {Object} options - Options for showing the datetime picker.
+     * Converts the selected date to a string.
+     * @returns {string} String representation of selected date.
      */
-    show(button, options = {}) {
-        this.style.removeProperty("--md-comp-pane-animation");
-
-        this.open = true;
-
-        if (button) {
-            let placements = [
-                //
-                "top-start",
-                "top-end",
-                "top",
-                "below-start",
-                "below-end",
-                "below",
-                "bottom-start",
-                "bottom-end",
-                "bottom",
-                "above-start",
-                "above-end",
-                "above",
-                "left-start",
-                "left-end",
-                "left",
-                "right-start",
-                "right-end",
-                "right",
-                "before-start",
-                "before-end",
-                "before",
-                "after-start",
-                "after-end",
-                "after",
-            ];
-            this.popper.show(button, {
-                placements,
-                ...options,
-            });
-        }
+    getValue() {
+        return stringifyDatetimeLocal(this.selected);
     }
 
     /**
-     * Convert the selected date to a string.
-     * @returns {String} The selected date as a string.
+     * Displays the datetime-picker relative to the provided button element with specified options.
+     * @param {HTMLElement} button - The button or element to which the datetime-picker is anchored.
+     * @param {Object} options - Additional options for configuring the datetime-picker's behavior.
+     * @param {Array.<String>} [options.placements=["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west"]] - List of possible placements for the datetime-picker relative to the button.
+     * @param {Number} [options.offset=8] - Offset value in pixels for adjusting the datetime-picker's position.
      */
-    toString() {
-        return stringifyDatetimeLocal(this.selected);
+    show(button, options) {
+        this.showModal();
+
+        this.popper.setPlacement(button, {
+            placements: ["top-start", "top-end", "top", "below-start", "below-end", "below", "bottom-start", "bottom-end", "bottom", "above-start", "above-end", "above", "left-start", "left-end", "left", "after-start", "after-end", "after", "right-start", "right-end", "right", "before-start", "before-end", "before", "center"],
+            ...options,
+        });
     }
 }
 
-customElements.define("md-datetime-picker", MDDatetimePickerElement);
+customElements.define("md-datetime-picker", MDDatetimePickerComponent);
 
-export { MDDatetimePickerElement };
+export { MDDatetimePickerComponent };
