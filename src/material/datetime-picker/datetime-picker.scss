@@ -149,7 +149,7 @@
         @include ripple-pressed();
     }
     &[activated] {
-        border: 1px solid var(--md-sys-color-outline-variant);
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
     }
     &[selected] {
         background-color: var(--md-sys-color-surface-variant);
@@ -207,7 +207,7 @@
             @include ripple-pressed();
         }
         &[activated] {
-            border: 1px solid var(--md-sys-color-primary);
+            box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
         }
         &[selected] {
             background-color: var(--md-sys-color-primary);
@@ -336,7 +336,7 @@
         @include ripple-pressed();
     }
     &[activated] {
-        border: 1px solid var(--md-sys-color-primary);
+        box-shadow: inset 0 0 0 1px var(--md-sys-color-primary);
     }
     &[selected] {
         background-color: var(--md-sys-color-primary);
