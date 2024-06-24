@@ -2,50 +2,51 @@ import { MDRouter } from "../material/router/router.js";
 
 MDRouter.historyApiFallback = false;
 
-import DevMainComponent from "./main/main.js"
-import DevIconComponent from "./icon/icon.js"
-import DevButtonComponent from "./button/button.js"
-import DevIconButtonComponent from "./icon-button/icon-button.js"
-import DevCardComponent from "./card/card.js"
-import DevSheetComponent from "./sheet/sheet.js"
-import DevDialogComponent from "./dialog/dialog.js"
-import DevTopAppBarComponent from "./top-app-bar/top-app-bar.js"
-import DevSideSheetComponent from "./side-sheet/side-sheet.js"
-import DevBottomSheetComponent from "./bottom-sheet/bottom-sheet.js"
-import DevSegmentedButtonComponent from "./segmented-button/segmented-button.js"
-import DevSnackbarComponent from "./snackbar/snackbar.js"
-import DevLocalizationComponent from "./localization/localization.js"
-import DevColorComponent from "./color/color.js"
-import DevRippleComponent from "./ripple/ripple.js"
-import DevTooltipComponent from "./tooltip/tooltip.js"
-import DevPickerComponent from "./picker/picker.js"
-import DevDatetimePickerComponent from "./datetime-picker/datetime-picker.js"
-import DevDatePickerComponent from "./date-picker/date-picker.js"
-import DevMonthPickerComponent from "./month-picker/month-picker.js"
-import DevTimePickerComponent from "./time-picker/time-picker.js"
-import DevWeekPickerComponent from "./week-picker/week-picker.js"
-import DevColorPickerComponent from "./color-picker/color-picker.js"
-import DevFabComponent from "./fab/fab.js"
-import DevBottomAppBarComponent from "./bottom-app-bar/bottom-app-bar.js"
-import DevImageComponent from "./image/image.js"
-import DevPopperComponent from "./popper/popper.js"
-import DevBadgeComponent from "./badge/badge.js"
-import DevFormComponent from "./form/form.js"
-import DevCheckboxComponent from "./checkbox/checkbox.js"
-import DevRadioButtonComponent from "./radio-button/radio-button.js"
-import DevSwitchComponent from "./switch/switch.js"
-import DevSliderComponent from "./slider/slider.js"
-import DevForm2Component from "./form2/form2.js"
-import DevProgressIndicatorComponent from "./progress-indicator/progress-indicator.js"
-import DevGestureComponent from "./gesture/gesture.js"
-import DevListComponent from "./list/list.js"
-import DevSelectionComponent from "./selection/selection.js"
-import DevTreeComponent from "./tree/tree.js"
-import DevNavigationComponent from "./navigation/navigation.js"
-import DevNavigationBarComponent from "./navigation-bar/navigation-bar.js"
-import DevNavigationDrawerComponent from "./navigation-drawer/navigation-drawer.js"
-import DevNavigationRailComponent from "./navigation-rail/navigation-rail.js"
-import DevMenuComponent from "./menu/menu.js"
+import DevMainComponent from "./main/main.js";
+import DevIconComponent from "./icon/icon.js";
+import DevButtonComponent from "./button/button.js";
+import DevIconButtonComponent from "./icon-button/icon-button.js";
+import DevCardComponent from "./card/card.js";
+import DevSheetComponent from "./sheet/sheet.js";
+import DevDialogComponent from "./dialog/dialog.js";
+import DevTopAppBarComponent from "./top-app-bar/top-app-bar.js";
+import DevSideSheetComponent from "./side-sheet/side-sheet.js";
+import DevBottomSheetComponent from "./bottom-sheet/bottom-sheet.js";
+import DevSegmentedButtonComponent from "./segmented-button/segmented-button.js";
+import DevSnackbarComponent from "./snackbar/snackbar.js";
+import DevLocalizationComponent from "./localization/localization.js";
+import DevColorComponent from "./color/color.js";
+import DevRippleComponent from "./ripple/ripple.js";
+import DevTooltipComponent from "./tooltip/tooltip.js";
+import DevPickerComponent from "./picker/picker.js";
+import DevDatetimePickerComponent from "./datetime-picker/datetime-picker.js";
+import DevDatePickerComponent from "./date-picker/date-picker.js";
+import DevMonthPickerComponent from "./month-picker/month-picker.js";
+import DevTimePickerComponent from "./time-picker/time-picker.js";
+import DevWeekPickerComponent from "./week-picker/week-picker.js";
+import DevColorPickerComponent from "./color-picker/color-picker.js";
+import DevFabComponent from "./fab/fab.js";
+import DevBottomAppBarComponent from "./bottom-app-bar/bottom-app-bar.js";
+import DevImageComponent from "./image/image.js";
+import DevPopperComponent from "./popper/popper.js";
+import DevBadgeComponent from "./badge/badge.js";
+import DevFormComponent from "./form/form.js";
+import DevCheckboxComponent from "./checkbox/checkbox.js";
+import DevRadioButtonComponent from "./radio-button/radio-button.js";
+import DevSwitchComponent from "./switch/switch.js";
+import DevSliderComponent from "./slider/slider.js";
+import DevForm2Component from "./form2/form2.js";
+import DevProgressIndicatorComponent from "./progress-indicator/progress-indicator.js";
+import DevGestureComponent from "./gesture/gesture.js";
+import DevListComponent from "./list/list.js";
+import DevSelectionComponent from "./selection/selection.js";
+import DevTreeComponent from "./tree/tree.js";
+import DevNavigationComponent from "./navigation/navigation.js";
+import DevNavigationBarComponent from "./navigation-bar/navigation-bar.js";
+import DevNavigationDrawerComponent from "./navigation-drawer/navigation-drawer.js";
+import DevNavigationRailComponent from "./navigation-rail/navigation-rail.js";
+import DevMenuComponent from "./menu/menu.js";
+import DevTabsComponent from "./tabs/tabs.js";
 
 const routes = [
     {
@@ -95,10 +96,10 @@ const routes = [
             { path: "navigation-drawer", component: DevNavigationDrawerComponent },
             { path: "navigation-rail", component: DevNavigationRailComponent },
             { path: "menu", component: DevMenuComponent },
+            { path: "tabs", component: DevTabsComponent },
         ],
     },
     { path: "*", component: DevMainComponent },
 ];
-
 
 MDRouter.init(routes);

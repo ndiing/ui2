@@ -7,76 +7,102 @@ class DevPickerComponent extends MDComponent {
         return html`
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    <label for="datetimeLocal">Select datetime-local</label>
-                    <input
-                        id="datetimeLocal"
-                        name="datetime-local"
-                        type="datetime-local"
-                        value="1990-10-17T20:30"
-                        @input="${this.handleDatetimeLocalInput}"
-                    />
-                    <md-datetime-picker
-                        id="datetimePicker"
-                        value="1990-10-17T20:30"
-                        @onDatetimePickerButtonCancelClick="${this.handleDatetimePickerButtonCancelClick}"
-                        @onDatetimePickerButtonOkClick="${this.handleDatetimePickerButtonOkClick}"
-                        @onDatetimePickerSelection="${this.handleDatetimePickerSelection}"
-                    ></md-datetime-picker>
+                    <md-datetime-picker id="datetimePicker"></md-datetime-picker>
                     <md-button
                         variant="tonal"
                         label="Datetime Picker"
                         @click="${this.handleDatetimePickerButtonClick}"
                     ></md-button>
                 </div>
+
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    <md-datetime-picker id="datetimePicker2"></md-datetime-picker>
+                    <md-date-picker id="datePicker"></md-date-picker>
                     <md-button
                         variant="tonal"
-                        label="Datetime Picker 2"
-                        @click="${this.handleDatetimePickerButtonClick2}"
+                        label="Date Picker"
+                        @click="${this.handleDatePickerButtonClick}"
+                    ></md-button>
+                </div>
+
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-month-picker id="monthPicker"></md-month-picker>
+                    <md-button
+                        variant="tonal"
+                        label="Month Picker"
+                        @click="${this.handleMonthPickerButtonClick}"
+                    ></md-button>
+                </div>
+
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-time-picker id="timePicker"></md-time-picker>
+                    <md-button
+                        variant="tonal"
+                        label="Time Picker"
+                        @click="${this.handleTimePickerButtonClick}"
+                    ></md-button>
+                </div>
+
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-week-picker id="weekPicker"></md-week-picker>
+                    <md-button
+                        variant="tonal"
+                        label="Week Picker"
+                        @click="${this.handleWeekPickerButtonClick}"
+                    ></md-button>
+                </div>
+
+                <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <md-color-picker id="colorPicker"></md-color-picker>
+                    <md-button
+                        variant="tonal"
+                        label="Color Picker"
+                        @click="${this.handleColorPickerButtonClick}"
                     ></md-button>
                 </div>
             </div>
         `;
     }
 
-    get datetimeLocal() {
-        return this.querySelector("#datetimeLocal");
-    }
-
     get datetimePicker() {
         return this.querySelector("#datetimePicker");
     }
-
-    get datetimePicker2() {
-        return this.querySelector("#datetimePicker2");
-    }
-
-    // button
     handleDatetimePickerButtonClick(event) {
         this.datetimePicker.toggle(event.currentTarget);
     }
 
-    handleDatetimePickerButtonClick2(event) {
-        this.datetimePicker2.toggle(event.currentTarget);
+    get datePicker() {
+        return this.querySelector("#datePicker");
+    }
+    handleDatePickerButtonClick(event) {
+        this.datePicker.toggle(event.currentTarget);
     }
 
-    // input
-    handleDatetimeLocalInput() {
-        this.datetimePicker.value = this.datetimeLocal.value;
+    get monthPicker() {
+        return this.querySelector("#monthPicker");
+    }
+    handleMonthPickerButtonClick(event) {
+        this.monthPicker.toggle(event.currentTarget);
     }
 
-    // picker
-    handleDatetimePickerButtonCancelClick() {
-        this.datetimeLocal.value = this.datetimePicker.value;
+    get timePicker() {
+        return this.querySelector("#timePicker");
+    }
+    handleTimePickerButtonClick(event) {
+        this.timePicker.toggle(event.currentTarget);
     }
 
-    handleDatetimePickerButtonOkClick() {
-        this.datetimeLocal.value = this.datetimePicker.value;
+    get weekPicker() {
+        return this.querySelector("#weekPicker");
+    }
+    handleWeekPickerButtonClick(event) {
+        this.weekPicker.toggle(event.currentTarget);
     }
 
-    handleDatetimePickerSelection() {
-        this.datetimeLocal.value = stringifyDatetimeLocal(this.datetimePicker.selection);
+    get colorPicker() {
+        return this.querySelector("#colorPicker");
+    }
+    handleColorPickerButtonClick(event) {
+        this.colorPicker.toggle(event.currentTarget);
     }
 }
 

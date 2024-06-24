@@ -60,6 +60,7 @@ class DevMainComponent extends MDComponent {
             { routerLink: "/navigation-drawer", label: "Navigation Drawer" },
             { routerLink: "/navigation-rail", label: "Navigation Rail" },
             { routerLink: "/menu", label: "Menu" },
+            { routerLink: "/tabs", label: "Tabs" },
         ];
 
         for (let i = 0; i < this.list.length; i++) {
@@ -77,6 +78,7 @@ class DevMainComponent extends MDComponent {
             <div class="md-layout-border">
                 <md-top-app-bar
                     id="topAppBar"
+                    label="Material Design"
                     open
                     leadingActions='[{"icon":"menu"}]'
                     @onCardIconButtonClick="${this.handleCardIconButtonClick}"
@@ -99,10 +101,10 @@ class DevMainComponent extends MDComponent {
     }
 
     handleTreeItemSelected(event) {
-        const item = event.detail;
+        const treeItem = event.detail;
         if (!this.ready) {
             this.ready = true;
-            item.scrollIntoView({
+            treeItem.scrollIntoView({
                 block: "center",
                 inline: "center",
                 behavior: "instant",

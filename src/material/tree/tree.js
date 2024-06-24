@@ -159,10 +159,10 @@ class MDTreeItemComponent extends MDComponent {
     render() {
         /* prettier-ignore */
         return choose(this.variant,[
-            ['plain', () => this.renderPlain()],
             ['accordion', () => this.renderAccordion()],
+            ['tree', () => this.renderTree()],
             ['level', () => this.renderLevel()],
-        ],() => this.renderTree())
+        ],() => this.renderPlain())
     }
 
     connectedCallback() {
@@ -215,6 +215,7 @@ class MDTreeComponent extends MDComponent {
                 .variant="${ifDefined(this.variant)}"
                 .isParent="${ifDefined(item.isParent)}"
                 @click="${this.handleTreeItemClick}"
+                @onTreeItemSelected="${this.handleTreeItemSelected}"
             ></md-tree-item>
             ${item.expanded&&item.children?.length?item.children.map(item=>this.renderTreeItem(item)):nothing}
         `
@@ -237,7 +238,7 @@ class MDTreeComponent extends MDComponent {
         if (changedProperties.has("variant")) {
             for (let i = 0; i < this.variants.length; i++) {
                 let variant = this.variants[i];
-                this.classList.toggle(`md-tree--${variant}`, (this.variant ?? "").split(" ").includes(variant));
+                this.classList.toggle(`${this.localName}--${variant}`, (this.variant ?? "").split(" ").includes(variant));
             }
         }
 
@@ -356,6 +357,8 @@ class MDTreeComponent extends MDComponent {
 
         this.emit("onTreeItemClick", event);
     }
+
+    handleTreeItemSelected() {}
 }
 
 customElements.define("md-tree", MDTreeComponent);

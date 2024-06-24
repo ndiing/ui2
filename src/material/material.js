@@ -43,3 +43,4 @@ import "./navigation-bar/navigation-bar.js";
 import "./navigation-drawer/navigation-drawer.js";
 import "./navigation-rail/navigation-rail.js";
 import "./menu/menu.js";
+import "./tabs/tabs.js";
