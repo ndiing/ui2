@@ -166,9 +166,3 @@
         linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, var(--md-sys-color-surface) 25%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface-container-high) 75%) 10px 10px / 20px 20px;
 }
 
-.md-color-picker--unselectable {
-    &,
-    & * {
-        user-select: none;
-    }
-}

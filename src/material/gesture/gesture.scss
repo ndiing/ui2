@@ -7,6 +7,17 @@
         user-select: none;
     }
 }
+.md-gesture--preload {
+    &,
+    & * {
+        &,
+        &::before,
+        &::after{
+            animation-duration: 0s;
+            transition-duration: 0s;
+        }
+    }
+}
 
 .md-draggable {
     cursor: grab;

@@ -48,6 +48,7 @@ import DevNavigationRailComponent from "./navigation-rail/navigation-rail.js";
 import DevMenuComponent from "./menu/menu.js";
 import DevTabsComponent from "./tabs/tabs.js";
 import DevChipsComponent from "./chips/chips.js";
+import DevTextFieldComponent from "./text-field/text-field.js";
 
 const routes = [
     {
@@ -99,6 +100,7 @@ const routes = [
             { path: "menu", component: DevMenuComponent },
             { path: "tabs", component: DevTabsComponent },
             { path: "chips", component: DevChipsComponent },
+            { path: "text-field", component: DevTextFieldComponent },
         ],
     },
     { path: "*", component: DevMainComponent },

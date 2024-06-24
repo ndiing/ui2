@@ -398,7 +398,7 @@ class MDColorPickerComponent extends MDSheetComponent {
         window.addEventListener("pointermove", this.handleColorPickerGradientTrackPointermove);
         window.addEventListener("pointerup", this.handleColorPickerGradientTrackPointerup);
 
-        document.documentElement.classList.add("md-color-picker--unselectable");
+        document.documentElement.classList.add("md-gesture--unselectable");
 
         this.canvasRect = this.canvas.getBoundingClientRect();
 
@@ -430,7 +430,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     handleColorPickerGradientTrackPointerup(event) {
         this.updateRgba(event);
 
-        document.documentElement.classList.remove("md-color-picker--unselectable");
+        document.documentElement.classList.remove("md-gesture--unselectable");
 
         window.removeEventListener("pointermove", this.handleColorPickerGradientTrackPointermove);
         window.removeEventListener("pointerup", this.handleColorPickerGradientTrackPointerup);

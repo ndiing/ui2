@@ -1,0 +1,14 @@
+.md-text-field{}
+.md-text-field__inner{
+    position: relative;
+}
+.md-text-field__placeholder{
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
