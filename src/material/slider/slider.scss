@@ -118,14 +118,11 @@
     background-color: var(--md-sys-color-primary);
 }
 
-// .md-slider__hidden{}
-
 .md-slider--centered {
     .md-slider__container {
         background: var(--md-sys-color-secondary-container);
     }
 }
-// .md-slider--continuous{}
 .md-slider--discrete {
     .md-slider__indicator {
         &[activated] {

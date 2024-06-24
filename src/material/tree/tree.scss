@@ -13,7 +13,6 @@
     width: 24px;
     height: 24px;
 }
-// .md-tree__icon{}
 .md-tree__inner {
     flex: 1;
     display: flex;
@@ -30,16 +29,10 @@
     height: var(--md-sys-typescale-label-large-line-height);
     overflow: hidden;
 }
-// .md-tree__badge{}
 
 .md-tree__item {
     min-height: 56px;
 }
-
-// .md-tree--plain{}
-// .md-tree--accordion{}
-// .md-tree--tree{}
-// .md-tree--level{}
 
 .md-navigation-bar__tree {
     flex-direction: row;

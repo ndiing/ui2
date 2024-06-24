@@ -1,7 +1,6 @@
 import { MDComponent } from "../component/component.js";
 
 class MDTextFieldComponent extends MDComponent {
- 
     connectedCallback() {
         super.connectedCallback();
 

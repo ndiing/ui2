@@ -58,14 +58,4 @@ class MDAttributeObserver {
     }
 }
 
-export {
-    schemes,
-    breakpoints,
-    MDObserver,
-    MDAttributeObserver,
-}
-
-// new MDAttributeObserver(console.log).observe(document.documentElement, "lang");
-// new MDAttributeObserver(console.log).observe(document.head.querySelector('meta[name="theme-color"]'), "content");
-// new MDObserver(console.log).observe(breakpoints);
-// new MDObserver(console.log).observe(schemes);
+export { schemes, breakpoints, MDObserver, MDAttributeObserver };

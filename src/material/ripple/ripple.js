@@ -95,6 +95,8 @@ class MDRippleController {
      * Handles pointerenter event to add hover effect to the ripple container.
      */
     handleRipplePointerenter() {
+        this.container.style.removeProperty("--md-comp-ripple-animation");
+
         this.container.classList.add("md-ripple--hover");
     }
 

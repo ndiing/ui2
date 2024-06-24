@@ -138,18 +138,8 @@ class MDDatetimePickerComponent extends MDSheetComponent {
             const hour = date.getHours();
             rows.push({
                 label: this.hourFormat(date),
-                //
-                activated:
-                    // year == this.activated.getFullYear() && //
-                    // month == this.activated.getMonth() && //
-                    // day == this.activated.getDate() && //
-                    hour == this.activated.getHours(),
-                //
-                selected:
-                    // year == this.selected.getFullYear() && //
-                    // month == this.selected.getMonth() && //
-                    // day == this.selected.getDate() && //
-                    hour == this.selected.getHours(),
+                activated: hour == this.activated.getHours(),
+                selected: hour == this.selected.getHours(),
                 year,
                 month,
                 day,
@@ -174,19 +164,9 @@ class MDDatetimePickerComponent extends MDSheetComponent {
             const minute = date.getMinutes();
             rows.push({
                 label: this.minuteFormat(date),
-                //
-                activated:
-                    // year == this.activated.getFullYear() && //
-                    // month == this.activated.getMonth() && //
-                    // day == this.activated.getDate() && //
-                    hour == this.activated.getHours() && //
-                    minute == this.activated.getMinutes(),
-                //
-                selected:
-                    // year == this.selected.getFullYear() && //
-                    // month == this.selected.getMonth() && //
-                    // day == this.selected.getDate() && //
-                    hour == this.selected.getHours() && minute == this.selected.getMinutes(),
+                activated: hour == this.activated.getHours() && minute == this.activated.getMinutes(),
+
+                selected: hour == this.selected.getHours() && minute == this.selected.getMinutes(),
                 year,
                 month,
                 day,

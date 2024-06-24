@@ -1,6 +1,4 @@
 .md-color-picker {
-    // --md-comp-color-picker-card-index: 1;
-
     display: inline-flex;
     border-radius: var(--md-sys-shape-corner-large);
     background-color: var(--md-sys-color-surface-container-high);
@@ -100,10 +98,9 @@
     margin-left: -20px;
     margin-top: -20px;
     border-radius: 20px;
-    box-shadow: 
+    box-shadow:
         inset 0 0 0 4px var(--md-sys-color-surface-container-lowest),
         var(--md-sys-elevation-level1);
-    // box-shadow: var(--md-sys-elevation-level1);
     position: absolute;
     left: 0;
     top: 0;
@@ -151,10 +148,9 @@
         width: 40px;
         height: 40px;
         border-radius: 20px;
-        box-shadow: 
+        box-shadow:
             inset 0 0 0 4px var(--md-sys-color-surface-container-lowest),
             var(--md-sys-elevation-level1);
-        // box-shadow: var(--md-sys-elevation-level1);
     }
 }
 
@@ -169,4 +165,3 @@
         linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, transparent 25%, transparent 75%, var(--md-sys-color-surface-container-high) 75%) 0px 0px / 20px 20px,
         linear-gradient(45deg, var(--md-sys-color-surface-container-high) 25%, var(--md-sys-color-surface) 25%, var(--md-sys-color-surface) 75%, var(--md-sys-color-surface-container-high) 75%) 10px 10px / 20px 20px;
 }
-
