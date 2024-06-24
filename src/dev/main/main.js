@@ -61,6 +61,7 @@ class DevMainComponent extends MDComponent {
             { routerLink: "/navigation-rail", label: "Navigation Rail" },
             { routerLink: "/menu", label: "Menu" },
             { routerLink: "/tabs", label: "Tabs" },
+            { routerLink: "/chips", label: "Chips" },
         ];
 
         for (let i = 0; i < this.list.length; i++) {
@@ -78,8 +79,6 @@ class DevMainComponent extends MDComponent {
             <div class="md-layout-border">
                 <md-top-app-bar
                     id="topAppBar"
-                    label="Material Design"
-                    open
                     leadingActions='[{"icon":"menu"}]'
                     @onCardIconButtonClick="${this.handleCardIconButtonClick}"
                 ></md-top-app-bar>

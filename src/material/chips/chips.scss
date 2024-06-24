@@ -1,0 +1,50 @@
+.md-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 32px;
+    padding: 0 12px;
+    gap: 0 8px;
+    border-radius: var(--md-sys-shape-corner-small);
+    background-color: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    border: 1px solid var(--md-sys-color-outline);
+    &[selected] {
+        border: 1px solid var(--md-sys-color-secondary-container);
+        background-color: var(--md-sys-color-secondary-container);
+        color: var(--md-sys-color-on-secondary-container);
+    }
+}
+.md-chip__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    margin-left: -4px;
+}
+.md-chip__avatar {
+    width: 24px;
+    height: 24px;
+    margin-left: -8px;
+}
+.md-chip__label {
+    flex: 1;
+    @include typescale-label-large();
+}
+.md-chip__action {
+    margin-right: -4px;
+
+    .md-icon-button__icon {
+        width: 18px;
+        height: 18px;
+        font-size: 18px;
+    }
+
+    &.md-ripple {
+        &::after {
+            width: 24px;
+        }
+    }
+}
+.md-chips {
+}

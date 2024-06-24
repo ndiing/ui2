@@ -47,6 +47,7 @@ import DevNavigationDrawerComponent from "./navigation-drawer/navigation-drawer.
 import DevNavigationRailComponent from "./navigation-rail/navigation-rail.js";
 import DevMenuComponent from "./menu/menu.js";
 import DevTabsComponent from "./tabs/tabs.js";
+import DevChipsComponent from "./chips/chips.js";
 
 const routes = [
     {
@@ -97,6 +98,7 @@ const routes = [
             { path: "navigation-rail", component: DevNavigationRailComponent },
             { path: "menu", component: DevMenuComponent },
             { path: "tabs", component: DevTabsComponent },
+            { path: "chips", component: DevChipsComponent },
         ],
     },
     { path: "*", component: DevMainComponent },
