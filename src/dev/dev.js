@@ -1,59 +1,101 @@
 import { MDRouter } from "../material/router/router.js";
 
+import DevMainComponent from "./main/main.js"
+import DevIconComponent from "./icon/icon.js"
+import DevButtonComponent from "./button/button.js"
+import DevIconButtonComponent from "./icon-button/icon-button.js"
+import DevCardComponent from "./card/card.js"
+import DevSheetComponent from "./sheet/sheet.js"
+import DevDialogComponent from "./dialog/dialog.js"
+import DevTopAppBarComponent from "./top-app-bar/top-app-bar.js"
+import DevSideSheetComponent from "./side-sheet/side-sheet.js"
+import DevBottomSheetComponent from "./bottom-sheet/bottom-sheet.js"
+import DevSegmentedButtonComponent from "./segmented-button/segmented-button.js"
+import DevSnackbarComponent from "./snackbar/snackbar.js"
+import DevLocalizationComponent from "./localization/localization.js"
+import DevColorComponent from "./color/color.js"
+import DevRippleComponent from "./ripple/ripple.js"
+import DevTooltipComponent from "./tooltip/tooltip.js"
+import DevPickerComponent from "./picker/picker.js"
+import DevDatetimePickerComponent from "./datetime-picker/datetime-picker.js"
+import DevDatePickerComponent from "./date-picker/date-picker.js"
+import DevMonthPickerComponent from "./month-picker/month-picker.js"
+import DevTimePickerComponent from "./time-picker/time-picker.js"
+import DevWeekPickerComponent from "./week-picker/week-picker.js"
+import DevColorPickerComponent from "./color-picker/color-picker.js"
+import DevFabComponent from "./fab/fab.js"
+import DevBottomAppBarComponent from "./bottom-app-bar/bottom-app-bar.js"
+import DevImageComponent from "./image/image.js"
+import DevPopperComponent from "./popper/popper.js"
+import DevBadgeComponent from "./badge/badge.js"
+import DevFormComponent from "./form/form.js"
+import DevCheckboxComponent from "./checkbox/checkbox.js"
+import DevRadioButtonComponent from "./radio-button/radio-button.js"
+import DevSwitchComponent from "./switch/switch.js"
+import DevSliderComponent from "./slider/slider.js"
+import DevForm2Component from "./form2/form2.js"
+import DevProgressIndicatorComponent from "./progress-indicator/progress-indicator.js"
+import DevGestureComponent from "./gesture/gesture.js"
+import DevListComponent from "./list/list.js"
+import DevSelectionComponent from "./selection/selection.js"
+import DevTreeComponent from "./tree/tree.js"
+import DevNavigationComponent from "./navigation/navigation.js"
+import DevNavigationBarComponent from "./navigation-bar/navigation-bar.js"
+import DevNavigationDrawerComponent from "./navigation-drawer/navigation-drawer.js"
+import DevNavigationRailComponent from "./navigation-rail/navigation-rail.js"
+import DevMenuComponent from "./menu/menu.js"
+
 const routes = [
     {
         path: "",
-        load: () => import("./main/main.js").then((module) => module.default),
+        component: DevMainComponent,
         children: [
-            { path: "users", load: () => import("./users/users.js").then((module) => module.default), children: [{ path: ":id", load: () => import("./user/user.js").then((module) => module.default), children: [] }] },
-            { path: "blogs", load: () => import("./blogs/blogs.js").then((module) => module.default), children: [{ path: ":id", load: () => import("./blog/blog.js").then((module) => module.default), children: [] }] },
-
-            { path: "icon", load: () => import("./icon/icon.js").then((module) => module.default), children: [] },
-            { path: "button", load: () => import("./button/button.js").then((module) => module.default), children: [] },
-            { path: "icon-button", load: () => import("./icon-button/icon-button.js").then((module) => module.default), children: [] },
-            { path: "card", load: () => import("./card/card.js").then((module) => module.default), children: [] },
-            { path: "sheet", load: () => import("./sheet/sheet.js").then((module) => module.default), children: [] },
-            { path: "dialog", load: () => import("./dialog/dialog.js").then((module) => module.default), children: [] },
-            { path: "top-app-bar", load: () => import("./top-app-bar/top-app-bar.js").then((module) => module.default), children: [] },
-            { path: "side-sheet", load: () => import("./side-sheet/side-sheet.js").then((module) => module.default), children: [] },
-            { path: "bottom-sheet", load: () => import("./bottom-sheet/bottom-sheet.js").then((module) => module.default), children: [] },
-            { path: "segmented-button", load: () => import("./segmented-button/segmented-button.js").then((module) => module.default), children: [] },
-            { path: "snackbar", load: () => import("./snackbar/snackbar.js").then((module) => module.default), children: [] },
-            { path: "localization", load: () => import("./localization/localization.js").then((module) => module.default), children: [] },
-            { path: "color", load: () => import("./color/color.js").then((module) => module.default), children: [] },
-            { path: "ripple", load: () => import("./ripple/ripple.js").then((module) => module.default), children: [] },
-            { path: "tooltip", load: () => import("./tooltip/tooltip.js").then((module) => module.default), children: [] },
-            { path: "picker", load: () => import("./picker/picker.js").then((module) => module.default), children: [] },
-            { path: "datetime-picker", load: () => import("./datetime-picker/datetime-picker.js").then((module) => module.default), children: [] },
-            { path: "date-picker", load: () => import("./date-picker/date-picker.js").then((module) => module.default), children: [] },
-            { path: "month-picker", load: () => import("./month-picker/month-picker.js").then((module) => module.default), children: [] },
-            { path: "time-picker", load: () => import("./time-picker/time-picker.js").then((module) => module.default), children: [] },
-            { path: "week-picker", load: () => import("./week-picker/week-picker.js").then((module) => module.default), children: [] },
-            { path: "color-picker", load: () => import("./color-picker/color-picker.js").then((module) => module.default), children: [] },
-            { path: "fab", load: () => import("./fab/fab.js").then((module) => module.default), children: [] },
-            { path: "bottom-app-bar", load: () => import("./bottom-app-bar/bottom-app-bar.js").then((module) => module.default), children: [] },
-            { path: "image", load: () => import("./image/image.js").then((module) => module.default), children: [] },
-            { path: "popper", load: () => import("./popper/popper.js").then((module) => module.default), children: [] },
-            { path: "badge", load: () => import("./badge/badge.js").then((module) => module.default), children: [] },
-            { path: "form", load: () => import("./form/form.js").then((module) => module.default), children: [] },
-            { path: "checkbox", load: () => import("./checkbox/checkbox.js").then((module) => module.default), children: [] },
-            { path: "radio-button", load: () => import("./radio-button/radio-button.js").then((module) => module.default), children: [] },
-            { path: "switch", load: () => import("./switch/switch.js").then((module) => module.default), children: [] },
-            { path: "slider", load: () => import("./slider/slider.js").then((module) => module.default), children: [] },
-            { path: "form2", load: () => import("./form2/form2.js").then((module) => module.default), children: [] },
-            { path: "progress-indicator", load: () => import("./progress-indicator/progress-indicator.js").then((module) => module.default), children: [] },
-            { path: "gesture", load: () => import("./gesture/gesture.js").then((module) => module.default), children: [] },
-            { path: "list", load: () => import("./list/list.js").then((module) => module.default), children: [] },
-            { path: "selection", load: () => import("./selection/selection.js").then((module) => module.default), children: [] },
-            { path: "tree", load: () => import("./tree/tree.js").then((module) => module.default), children: [] },
-            { path: "navigation", load: () => import("./navigation/navigation.js").then((module) => module.default), children: [] },
-            { path: "navigation-bar", load: () => import("./navigation-bar/navigation-bar.js").then((module) => module.default), children: [] },
-            { path: "navigation-drawer", load: () => import("./navigation-drawer/navigation-drawer.js").then((module) => module.default), children: [] },
-            { path: "navigation-rail", load: () => import("./navigation-rail/navigation-rail.js").then((module) => module.default), children: [] },
-            { path: "menu", load: () => import("./menu/menu.js").then((module) => module.default), children: [] },
+            { path: "icon", component: DevIconComponent, children: [] },
+            { path: "button", component: DevButtonComponent, children: [] },
+            { path: "icon-button", component: DevIconButtonComponent, children: [] },
+            { path: "card", component: DevCardComponent, children: [] },
+            { path: "sheet", component: DevSheetComponent, children: [] },
+            { path: "dialog", component: DevDialogComponent, children: [] },
+            { path: "top-app-bar", component: DevTopAppBarComponent, children: [] },
+            { path: "side-sheet", component: DevSideSheetComponent, children: [] },
+            { path: "bottom-sheet", component: DevBottomSheetComponent, children: [] },
+            { path: "segmented-button", component: DevSegmentedButtonComponent, children: [] },
+            { path: "snackbar", component: DevSnackbarComponent, children: [] },
+            { path: "localization", component: DevLocalizationComponent, children: [] },
+            { path: "color", component: DevColorComponent, children: [] },
+            { path: "ripple", component: DevRippleComponent, children: [] },
+            { path: "tooltip", component: DevTooltipComponent, children: [] },
+            { path: "picker", component: DevPickerComponent, children: [] },
+            { path: "datetime-picker", component: DevDatetimePickerComponent, children: [] },
+            { path: "date-picker", component: DevDatePickerComponent, children: [] },
+            { path: "month-picker", component: DevMonthPickerComponent, children: [] },
+            { path: "time-picker", component: DevTimePickerComponent, children: [] },
+            { path: "week-picker", component: DevWeekPickerComponent, children: [] },
+            { path: "color-picker", component: DevColorPickerComponent, children: [] },
+            { path: "fab", component: DevFabComponent, children: [] },
+            { path: "bottom-app-bar", component: DevBottomAppBarComponent, children: [] },
+            { path: "image", component: DevImageComponent, children: [] },
+            { path: "popper", component: DevPopperComponent, children: [] },
+            { path: "badge", component: DevBadgeComponent, children: [] },
+            { path: "form", component: DevFormComponent, children: [] },
+            { path: "checkbox", component: DevCheckboxComponent, children: [] },
+            { path: "radio-button", component: DevRadioButtonComponent, children: [] },
+            { path: "switch", component: DevSwitchComponent, children: [] },
+            { path: "slider", component: DevSliderComponent, children: [] },
+            { path: "form2", component: DevForm2Component, children: [] },
+            { path: "progress-indicator", component: DevProgressIndicatorComponent, children: [] },
+            { path: "gesture", component: DevGestureComponent, children: [] },
+            { path: "list", component: DevListComponent, children: [] },
+            { path: "selection", component: DevSelectionComponent, children: [] },
+            { path: "tree", component: DevTreeComponent, children: [] },
+            { path: "navigation", component: DevNavigationComponent, children: [] },
+            { path: "navigation-bar", component: DevNavigationBarComponent, children: [] },
+            { path: "navigation-drawer", component: DevNavigationDrawerComponent, children: [] },
+            { path: "navigation-rail", component: DevNavigationRailComponent, children: [] },
+            { path: "menu", component: DevMenuComponent, children: [] },
         ],
     },
-    { path: "*", load: () => import("./error/error.js").then((module) => module.default), children: [] },
+    { path: "*", component: DevMainComponent, children: [] },
 ];
 
 MDRouter.historyApiFallback = false;
