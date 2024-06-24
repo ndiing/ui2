@@ -2,10 +2,13 @@ import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
 import { MDRouter } from "../../material/router/router.js";
 
+MDRouter.historyApiFallback = false;
+
 class DevMainComponent extends MDComponent {
     get topAppBar() {
         return this.querySelector("#topAppBar");
     }
+
     get navigationDrawer() {
         return this.querySelector("#navigationDrawer");
     }
@@ -14,57 +17,59 @@ class DevMainComponent extends MDComponent {
         super();
 
         this.list = [
-            { routerLink: "/icon", label: "icon" },
-            { routerLink: "/button", label: "button" },
-            { routerLink: "/icon-button", label: "icon-button" },
-            { routerLink: "/card", label: "card" },
-            { routerLink: "/sheet", label: "sheet" },
-            { routerLink: "/dialog", label: "dialog" },
-            { routerLink: "/top-app-bar", label: "top-app-bar" },
-            { routerLink: "/side-sheet", label: "side-sheet" },
-            { routerLink: "/bottom-sheet", label: "bottom-sheet" },
-            { routerLink: "/segmented-button", label: "segmented-button" },
-            { routerLink: "/snackbar", label: "snackbar" },
-            { routerLink: "/localization", label: "localization" },
-            { routerLink: "/color", label: "color" },
-            { routerLink: "/ripple", label: "ripple" },
-            { routerLink: "/tooltip", label: "tooltip" },
-            { routerLink: "/picker", label: "picker" },
-            { routerLink: "/datetime-picker", label: "datetime-picker" },
-            { routerLink: "/date-picker", label: "date-picker" },
-            { routerLink: "/month-picker", label: "month-picker" },
-            { routerLink: "/time-picker", label: "time-picker" },
-            { routerLink: "/week-picker", label: "week-picker" },
-            { routerLink: "/color-picker", label: "color-picker" },
-            { routerLink: "/fab", label: "fab" },
-            { routerLink: "/bottom-app-bar", label: "bottom-app-bar" },
-            { routerLink: "/image", label: "image" },
-            { routerLink: "/popper", label: "popper" },
-            { routerLink: "/badge", label: "badge" },
-            { routerLink: "/form", label: "form" },
-            { routerLink: "/checkbox", label: "checkbox" },
-            { routerLink: "/radio-button", label: "radio-button" },
-            { routerLink: "/switch", label: "switch" },
-            { routerLink: "/slider", label: "slider" },
-            { routerLink: "/form2", label: "form2" },
-            { routerLink: "/progress-indicator", label: "progress-indicator" },
-            { routerLink: "/gesture", label: "gesture" },
-            { routerLink: "/list", label: "list" },
-            { routerLink: "/selection", label: "selection" },
-            { routerLink: "/tree", label: "tree" },
-            { routerLink: "/navigation", label: "navigation" },
-            { routerLink: "/navigation-bar", label: "navigation-bar" },
-            { routerLink: "/navigation-drawer", label: "navigation-drawer" },
-            { routerLink: "/navigation-rail", label: "navigation-rail" },
-            { routerLink: "/menu", label: "menu" },
-        ]
-            .sort((a, b) => {
-                return a.label.localeCompare(b.label);
-            })
-            .map((item) => {
-                item.selected = item.routerLink == MDRouter.path;
-                return item;
-            });
+            { routerLink: "/icon", label: "Icon" },
+            { routerLink: "/button", label: "Button" },
+            { routerLink: "/icon-button", label: "Icon Button" },
+            { routerLink: "/card", label: "Card" },
+            { routerLink: "/sheet", label: "Sheet" },
+            { routerLink: "/dialog", label: "Dialog" },
+            { routerLink: "/top-app-bar", label: "Top App Bar" },
+            { routerLink: "/side-sheet", label: "Side Sheet" },
+            { routerLink: "/bottom-sheet", label: "Bottom Sheet" },
+            { routerLink: "/segmented-button", label: "Segmented Button" },
+            { routerLink: "/snackbar", label: "Snackbar" },
+            { routerLink: "/localization", label: "Localization" },
+            { routerLink: "/color", label: "Color" },
+            { routerLink: "/ripple", label: "Ripple" },
+            { routerLink: "/tooltip", label: "Tooltip" },
+            { routerLink: "/picker", label: "Picker" },
+            { routerLink: "/datetime-picker", label: "Datetime Picker" },
+            { routerLink: "/date-picker", label: "Date Picker" },
+            { routerLink: "/month-picker", label: "Month Picker" },
+            { routerLink: "/time-picker", label: "Time Picker" },
+            { routerLink: "/week-picker", label: "Week Picker" },
+            { routerLink: "/color-picker", label: "Color Picker" },
+            { routerLink: "/fab", label: "Fab" },
+            { routerLink: "/bottom-app-bar", label: "Bottom App Bar" },
+            { routerLink: "/image", label: "Image" },
+            { routerLink: "/popper", label: "Popper" },
+            { routerLink: "/badge", label: "Badge" },
+            { routerLink: "/form", label: "Form" },
+            { routerLink: "/checkbox", label: "Checkbox" },
+            { routerLink: "/radio-button", label: "Radio Button" },
+            { routerLink: "/switch", label: "Switch" },
+            { routerLink: "/slider", label: "Slider" },
+            { routerLink: "/form2", label: "Form2" },
+            { routerLink: "/progress-indicator", label: "Progress Indicator" },
+            { routerLink: "/gesture", label: "Gesture" },
+            { routerLink: "/list", label: "List" },
+            { routerLink: "/selection", label: "Selection" },
+            { routerLink: "/tree", label: "Tree" },
+            { routerLink: "/navigation", label: "Navigation" },
+            { routerLink: "/navigation-bar", label: "Navigation Bar" },
+            { routerLink: "/navigation-drawer", label: "Navigation Drawer" },
+            { routerLink: "/navigation-rail", label: "Navigation Rail" },
+            { routerLink: "/menu", label: "Menu" },
+        ];
+
+        for (let i = 0; i < this.list.length; i++) {
+            let item = this.list[i];
+            item.selected = item.routerLink === MDRouter.path;
+        }
+
+        this.list.sort((a, b) => {
+            return a.label.localeCompare(b.label);
+        });
     }
 
     render() {
