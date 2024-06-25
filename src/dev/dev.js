@@ -49,6 +49,7 @@ import DevMenuComponent from "./menu/menu.js";
 import DevTabsComponent from "./tabs/tabs.js";
 import DevChipsComponent from "./chips/chips.js";
 import DevTextFieldComponent from "./text-field/text-field.js";
+import DevTextField2Component from "./text-field2/text-field2.js";
 
 const routes = [
     {
@@ -101,6 +102,7 @@ const routes = [
             { path: "tabs", component: DevTabsComponent },
             { path: "chips", component: DevChipsComponent },
             { path: "text-field", component: DevTextFieldComponent },
+            { path: "text-field2", component: DevTextField2Component },
         ],
     },
     { path: "*", component: DevMainComponent },

@@ -49,7 +49,7 @@ class DevMainComponent extends MDComponent {
             { icon: "deployed_code", routerLink: "/radio-button", label: "Radio Button" },
             { icon: "deployed_code", routerLink: "/switch", label: "Switch" },
             { icon: "deployed_code", routerLink: "/slider", label: "Slider" },
-            { icon: "deployed_code", routerLink: "/form2", label: "Form2" },
+            { icon: "deployed_code", routerLink: "/form2", label: "Form 2" },
             { icon: "deployed_code", routerLink: "/progress-indicator", label: "Progress Indicator" },
             { icon: "deployed_code", routerLink: "/gesture", label: "Gesture" },
             { icon: "deployed_code", routerLink: "/list", label: "List" },
@@ -63,6 +63,7 @@ class DevMainComponent extends MDComponent {
             { icon: "deployed_code", routerLink: "/tabs", label: "Tabs" },
             { icon: "deployed_code", routerLink: "/chips", label: "Chips" },
             { icon: "deployed_code", routerLink: "/text-field", label: "Text Field" },
+            { icon: "deployed_code", routerLink: "/text-field2", label: "Text Field 2" },
         ];
 
         for (let i = 0; i < this.list.length; i++) {
