@@ -54,11 +54,11 @@ class DevWeekPickerComponent extends MDComponent {
 
     // button
     handleWeekPickerButtonClick(event) {
-        this.weekPicker.toggle(event.currentTarget);
+        this.weekPicker.showModal(event.currentTarget);
     }
 
     handleWeekPickerButtonClick2(event) {
-        this.weekPicker2.toggle(event.currentTarget);
+        this.weekPicker2.showModal(event.currentTarget);
     }
 
     // input

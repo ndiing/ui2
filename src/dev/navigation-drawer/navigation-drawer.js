@@ -70,7 +70,7 @@ class DevNavigationDrawerComponent extends MDComponent {
         this.navigationDrawer.toggle();
     }
     handleButtonNavigationDrawer2Click() {
-        this.navigationDrawer2.toggle();
+        this.navigationDrawer2.showModal();
     }
 
     navigationDrawerClick() {

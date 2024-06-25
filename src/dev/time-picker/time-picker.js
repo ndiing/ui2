@@ -54,11 +54,11 @@ class DevTimePickerComponent extends MDComponent {
 
     // button
     handleTimePickerButtonClick(event) {
-        this.timePicker.toggle(event.currentTarget);
+        this.timePicker.showModal(event.currentTarget);
     }
 
     handleTimePickerButtonClick2(event) {
-        this.timePicker2.toggle(event.currentTarget);
+        this.timePicker2.showModal(event.currentTarget);
     }
 
     // input

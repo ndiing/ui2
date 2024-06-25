@@ -53,11 +53,11 @@ class DevColorPickerComponent extends MDComponent {
 
     // button
     handleColorPickerButtonClick(event) {
-        this.colorPicker.toggle(event.currentTarget);
+        this.colorPicker.showModal(event.currentTarget);
     }
 
     handleColorPickerButtonClick2(event) {
-        this.colorPicker2.toggle(event.currentTarget);
+        this.colorPicker2.showModal(event.currentTarget);
     }
 
     // input

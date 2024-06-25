@@ -23,13 +23,13 @@ class DevSwitchComponent extends MDComponent {
 
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-switch
-                            icons='["check","close"]'
+                            icons='["close","check"]'
                             name="switch2"
                             value="item1"
                             checked
                         ></md-switch>
                         <md-switch
-                            icons='["check","close"]'
+                            icons='["close","check"]'
                             name="switch2"
                             value="item2"
                         ></md-switch>

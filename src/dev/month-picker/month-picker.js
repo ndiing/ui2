@@ -54,11 +54,11 @@ class DevMonthPickerComponent extends MDComponent {
 
     // button
     handleMonthPickerButtonClick(event) {
-        this.monthPicker.toggle(event.currentTarget);
+        this.monthPicker.showModal(event.currentTarget);
     }
 
     handleMonthPickerButtonClick2(event) {
-        this.monthPicker2.toggle(event.currentTarget);
+        this.monthPicker2.showModal(event.currentTarget);
     }
 
     // input

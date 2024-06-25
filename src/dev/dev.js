@@ -51,6 +51,8 @@ import DevChipsComponent from "./chips/chips.js";
 import DevTextFieldComponent from "./text-field/text-field.js";
 import DevTextField2Component from "./text-field2/text-field2.js";
 import DevTextField3Component from "./text-field3/text-field3.js";
+import DevVirtualComponent from "./virtual/virtual.js";
+import DevEmojiComponent from "./emoji/emoji.js";
 
 const routes = [
     {
@@ -105,6 +107,8 @@ const routes = [
             { path: "text-field", component: DevTextFieldComponent },
             { path: "text-field2", component: DevTextField2Component },
             { path: "text-field3", component: DevTextField3Component },
+            { path: "virtual", component: DevVirtualComponent },
+            { path: "emoji", component: DevEmojiComponent },
         ],
     },
     { path: "*", component: DevMainComponent },

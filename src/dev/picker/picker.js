@@ -67,42 +67,42 @@ class DevPickerComponent extends MDComponent {
         return this.querySelector("#datetimePicker");
     }
     handleDatetimePickerButtonClick(event) {
-        this.datetimePicker.toggle(event.currentTarget);
+        this.datetimePicker.showModal(event.currentTarget);
     }
 
     get datePicker() {
         return this.querySelector("#datePicker");
     }
     handleDatePickerButtonClick(event) {
-        this.datePicker.toggle(event.currentTarget);
+        this.datePicker.showModal(event.currentTarget);
     }
 
     get monthPicker() {
         return this.querySelector("#monthPicker");
     }
     handleMonthPickerButtonClick(event) {
-        this.monthPicker.toggle(event.currentTarget);
+        this.monthPicker.showModal(event.currentTarget);
     }
 
     get timePicker() {
         return this.querySelector("#timePicker");
     }
     handleTimePickerButtonClick(event) {
-        this.timePicker.toggle(event.currentTarget);
+        this.timePicker.showModal(event.currentTarget);
     }
 
     get weekPicker() {
         return this.querySelector("#weekPicker");
     }
     handleWeekPickerButtonClick(event) {
-        this.weekPicker.toggle(event.currentTarget);
+        this.weekPicker.showModal(event.currentTarget);
     }
 
     get colorPicker() {
         return this.querySelector("#colorPicker");
     }
     handleColorPickerButtonClick(event) {
-        this.colorPicker.toggle(event.currentTarget);
+        this.colorPicker.showModal(event.currentTarget);
     }
 }
 

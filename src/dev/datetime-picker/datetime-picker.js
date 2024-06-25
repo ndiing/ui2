@@ -54,11 +54,11 @@ class DevDatetimePickerComponent extends MDComponent {
 
     // button
     handleDatetimePickerButtonClick(event) {
-        this.datetimePicker.toggle(event.currentTarget);
+        this.datetimePicker.showModal(event.currentTarget);
     }
 
     handleDatetimePickerButtonClick2(event) {
-        this.datetimePicker2.toggle(event.currentTarget);
+        this.datetimePicker2.showModal(event.currentTarget);
     }
 
     // input

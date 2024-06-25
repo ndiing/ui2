@@ -8,6 +8,7 @@ import "./popper/popper.js";
 import "./progress/progress.js";
 import "./gesture/gesture.js";
 import "./observer/observer.js";
+import "./virtual/virtual.js";
 
 import "./icon/icon.js";
 import "./button/button.js";
@@ -47,3 +48,4 @@ import "./menu/menu.js";
 import "./tabs/tabs.js";
 import "./chips/chips.js";
 import "./text-field/text-field.js";
+import "./emoji/emoji.js";

@@ -66,10 +66,10 @@ class DevMenuComponent extends MDComponent {
     }
 
     handleButtonMenuClick(event) {
-        this.menu.toggle(event.currentTarget);
+        this.menu.showModal(event.currentTarget);
     }
     handleButtonMenu2Click(event) {
-        this.menu2.toggle(event.currentTarget);
+        this.menu2.showModal(event.currentTarget);
     }
 
     menuClick() {

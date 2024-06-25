@@ -673,13 +673,13 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     showModal(button, options) {
-        this.showModal();
+        super.showModal();
 
         this.setPlacement(button, options);
     }
 
     show(button, options) {
-        this.show();
+        super.show();
 
         this.setPlacement(button, options);
     }
