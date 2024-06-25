@@ -59,7 +59,7 @@ class MDTextFieldComponent extends MDComponent {
         // length: { type: Number },
         // selectedIndex: { type: Number },
         // selectedOptions: { type: HTMLCollection },
-        // options: { type: HTMLOptionsCollection },
+        options: { type: Array },
 
         errorText: { type: String },
         error: { type: Boolean },
@@ -82,7 +82,7 @@ class MDTextFieldComponent extends MDComponent {
         this.renderIconButton = this.renderIconButton.bind(this);
     }
 
-    renderNative() {
+    renderInput() {
         /* prettier-ignore */
         return html`
             <input 
@@ -106,8 +106,6 @@ class MDTextFieldComponent extends MDComponent {
                 .type="${ifDefined(this.type)}"
                 .defaultValue="${ifDefined(this.defaultValue)}"
                 .value="${ifDefined(this.value)}"
-                .cols="${ifDefined(this.cols)}"
-                .rows="${ifDefined(this.rows)}"
                 @focus="${this.handleTextFieldNativeFocus}"
                 @blur="${this.handleTextFieldNativeBlur}"
                 @input="${this.handleTextFieldNativeInput}"
@@ -115,6 +113,70 @@ class MDTextFieldComponent extends MDComponent {
                 @reset="${this.handleTextFieldNativeReset}"
             >
         `;
+    }
+
+    renderTextarea() {
+        /* prettier-ignore */
+        return html`
+            <textarea 
+                class="md-text-field__native"
+                .autocomplete="${ifDefined(this.autocomplete)}"
+                .disabled="${ifDefined(this.disabled)}"
+                .maxLength="${ifDefined(this.maxLength)}"
+                .minLength="${ifDefined(this.minLength)}"
+                .name="${ifDefined(this.name)}"
+                .placeholder="${ifDefined(this.placeholder)}"
+                .readOnly="${ifDefined(this.readOnly)}"
+                .required="${ifDefined(this.required)}"
+                .defaultValue="${ifDefined(this.defaultValue)}"
+                .value="${ifDefined(this.value)}"
+                .cols="${ifDefined(this.cols)}"
+                .rows="${ifDefined(this.rows)}"
+                @focus="${this.handleTextFieldNativeFocus}"
+                @blur="${this.handleTextFieldNativeBlur}"
+                @input="${this.handleTextFieldNativeInput}"
+                @invalid="${this.handleTextFieldNativeInvalid}"
+                @reset="${this.handleTextFieldNativeReset}"
+            ></textarea>
+        `;
+    }
+
+    renderSelect() {
+        /* prettier-ignore */
+        return html`
+            <select 
+                class="md-text-field__native"
+                .autocomplete="${ifDefined(this.autocomplete)}"
+                .disabled="${ifDefined(this.disabled)}"
+                .multiple="${ifDefined(this.multiple)}"
+                .name="${ifDefined(this.name)}"
+                .required="${ifDefined(this.required)}"
+                .size="${ifDefined(this.size)}"
+                .value="${ifDefined(this.value)}"
+                @focus="${this.handleTextFieldNativeFocus}"
+                @blur="${this.handleTextFieldNativeBlur}"
+                @input="${this.handleTextFieldNativeInput}"
+                @invalid="${this.handleTextFieldNativeInvalid}"
+                @reset="${this.handleTextFieldNativeReset}"
+            >
+                ${this.options?.map(option => html`
+                    <option 
+                        .disabled="${ifDefined(option.disabled)}"
+                        .label="${ifDefined(option.label)}"
+                        .selected="${ifDefined(option.selected)}"
+                        .value="${ifDefined(option.value)}"
+                        .text="${ifDefined(option.text)}"
+                    ></option>
+                `)}
+            </select>
+        `;
+    }
+
+    renderNative(){
+        return choose(this.type,[
+            ['textarea', () => this.renderTextarea()],
+            ['select', () => this.renderSelect()],
+        ],() => this.renderInput())
     }
 
     renderIconButton(item) {
@@ -132,11 +194,19 @@ class MDTextFieldComponent extends MDComponent {
         `;
     }
 
-    renderAction(item, defaultAction = this.renderIconButton) {
+    renderAction(item) {
         /* prettier-ignore */
-        return choose(item.component, [
-            ['icon-button', () => this.renderIconButton(item)],
-        ], () => defaultAction(item));
+        return this.renderIconButton(item)
+    }
+
+    renderActions(item) {
+        /* prettier-ignore */
+        return this.actions?.length||this.error?html`
+            <div class="md-text-field__actions">
+                ${this.error?html`<md-icon class="md-text-field__icon md-text-field__icon--error">error</md-icon>`:nothing}
+                ${this.actions?.map(item=>this.renderAction(item))}
+            </div>
+        `:nothing
     }
 
     render() {
@@ -149,12 +219,7 @@ class MDTextFieldComponent extends MDComponent {
                     ${this.prefix?html`<div class="md-text-field__meta">${this.prefix}</div>`:nothing}
                     ${this.renderNative()}
                     ${this.suffix?html`<div class="md-text-field__meta">${this.suffix}</div>`:nothing}
-                    ${this.actions?.length||this.error?html`
-                        <div class="md-text-field__actions">
-                            ${this.error?html`<md-icon class="md-text-field__icon md-text-field__icon--error">error</md-icon>`:nothing}
-                            ${this.actions?.map(item=>this.renderAction(item))}
-                        </div>
-                    `:nothing}
+                    ${this.renderActions()}
                 </div>
                 ${this.errorText||this.text?html`<div class="md-text-field__text">${this.errorText||this.text}</div>`:nothing}
             </label>

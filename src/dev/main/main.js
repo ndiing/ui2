@@ -64,6 +64,7 @@ class DevMainComponent extends MDComponent {
             { icon: "deployed_code", routerLink: "/chips", label: "Chips" },
             { icon: "deployed_code", routerLink: "/text-field", label: "Text Field" },
             { icon: "deployed_code", routerLink: "/text-field2", label: "Text Field 2" },
+            { icon: "deployed_code", routerLink: "/text-field3", label: "Text Field 3" },
         ];
 
         for (let i = 0; i < this.list.length; i++) {
