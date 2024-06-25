@@ -235,10 +235,19 @@ class MDTextFieldComponent extends MDComponent {
 
         this.classList.add("md-text-field");
 
-        // await this.updateComplete;
+        const defaultValue={
+            'color':'#000000',
+            'datetime-local':'',
+            'date':'',
+            'time':'',
+            'week':'',
+            'month':'',
+            'url':'',
+            'email':'',
+        }
 
-        // this.value = this.value || this.native?.value;
-        this.defaultValue = this.value;
+        this.value=this.value||defaultValue[this.type];
+        this.defaultValue = this.value
 
         this.populate();
     }
@@ -310,6 +319,7 @@ class MDTextFieldComponent extends MDComponent {
     validate() {
         this.errorText = this.native.validationMessage;
         this.error = !!this.errorText;
+
         this.classList.toggle("md-text-field--error", this.error);
     }
 }
