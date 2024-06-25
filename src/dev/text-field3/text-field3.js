@@ -9,28 +9,35 @@ class DevTextField3Component extends MDComponent {
                 @onFormNativeSubmit="${this.handleFormNativeSubmit}"
             >
                 <div class="md-layout-column">
-
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                        <md-text-field name="text" label="Text field" type="text"></md-text-field>
+                        <md-text-field
+                            name="text"
+                            label="Text field"
+                            type="text"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                        <md-text-field name="textarea" label="Textarea field" type="textarea"></md-text-field>
+                        <md-text-field
+                            name="textarea"
+                            label="Textarea field"
+                            type="textarea"
+                        ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                        <md-text-field 
-                            name="select" label="Select field" 
+                        <md-text-field
+                            name="select"
+                            label="Select field"
                             type="select"
                             .options="${[
-                                {label:'Option 1', value:'1'},
-                                {label:'Option 2', value:'2'},
-                                {label:'Option 3', value:'3'},
-                                {label:'Option 4', value:'4'},
-                                {label:'Option 5', value:'5', selected:true},
+                                { label: "Option 1", value: "1" },
+                                { label: "Option 2", value: "2" },
+                                { label: "Option 3", value: "3" },
+                                { label: "Option 4", value: "4" },
+                                { label: "Option 5", value: "5", selected: true },
                             ]}"
                         ></md-text-field>
                     </div>
-                    
-                    
+
                     <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-button
                             label="Reset"

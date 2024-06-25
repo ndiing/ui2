@@ -172,11 +172,15 @@ class MDTextFieldComponent extends MDComponent {
         `;
     }
 
-    renderNative(){
-        return choose(this.type,[
-            ['textarea', () => this.renderTextarea()],
-            ['select', () => this.renderSelect()],
-        ],() => this.renderInput())
+    renderNative() {
+        return choose(
+            this.type,
+            [
+                ["textarea", () => this.renderTextarea()],
+                ["select", () => this.renderSelect()],
+            ],
+            () => this.renderInput(),
+        );
     }
 
     renderIconButton(item) {
