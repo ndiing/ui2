@@ -29,13 +29,6 @@ class MDNavigationBarComponent extends MDSheetComponent {
         this.classList.add("md-navigation-drawer");
     }
 
-    show() {
-        if (this.variant && this.variant.includes("modal")) {
-            this.showModal();
-        } else {
-            super.show();
-        }
-    }
 }
 
 customElements.define("md-navigation-drawer", MDNavigationBarComponent);

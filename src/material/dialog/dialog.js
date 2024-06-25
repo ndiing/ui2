@@ -23,19 +23,6 @@ class MDDialogComponent extends MDSheetComponent {
         this.classList.add("md-dialog");
     }
 
-    /**
-     * Shows the dialog by removing the animation property and setting the open property to true.
-     */
-    show() {
-        super.show();
-    }
-
-    /**
-     * Shows the modal dialog by removing the animation property, creating and displaying a scrim element, and setting the open property to true.
-     */
-    showModal() {
-        super.showModal();
-    }
 }
 
 customElements.define("md-dialog", MDDialogComponent);
