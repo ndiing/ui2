@@ -13,22 +13,22 @@ class MDTextFieldComponent extends MDComponent {
         text: { type: String },
 
         accept: { type: String },
-        alt: { type: String },
+        // alt: { type: String },
         autocomplete: { type: String },
-        autofocus: { type: Boolean },
-        checked: { type: Boolean },
-        defaultChecked: { type: Boolean },
+        // autofocus: { type: Boolean },
+        // checked: { type: Boolean },
+        // defaultChecked: { type: Boolean },
         disabled: { type: Boolean },
-        form: { type: Object }, // Reference to the associated form element
-        files: { type: FileList }, // Used with type="file"
-        formAction: { type: String },
-        formEnctype: { type: String },
-        formMethod: { type: String },
-        formNoValidate: { type: Boolean },
-        formTarget: { type: String },
-        height: { type: Number },
-        indeterminate: { type: Boolean },
-        list: { type: Object }, // Reference to the associated <datalist> element
+        // files: { type: FileList },
+        // form: { type: Object },
+        // formAction: { type: String },
+        // formEnctype: { type: String },
+        // formMethod: { type: String },
+        // formNoValidate: { type: Boolean },
+        // formTarget: { type: String },
+        // height: { type: Number },
+        // indeterminate: { type: Boolean },
+        // list: { type: Object },
         max: { type: String },
         maxLength: { type: Number },
         min: { type: String },
@@ -45,15 +45,21 @@ class MDTextFieldComponent extends MDComponent {
         type: { type: String },
         defaultValue: { type: String },
         value: { type: String },
-        width: { type: Number },
+        // width: { type: Number },
+        // inputMode: { type: String },
+        // selectionDirection: { type: String },
+        // selectionEnd: { type: Number },
+        // selectionStart: { type: Number },
+        // align: { type: String },
+        // useMap: { type: String },
         cols: { type: Number },
-        inputMode: { type: String },
         rows: { type: Number },
-        selectionDirection: { type: String },
-        selectionEnd: { type: Number },
-        selectionStart: { type: Number },
-        textLength: { type: Number },
-        wrap: { type: String },
+        // spellcheck: { type: Boolean },
+        // wrap: { type: String },
+        // length: { type: Number },
+        // selectedIndex: { type: Number },
+        // selectedOptions: { type: HTMLCollection },
+        // options: { type: HTMLOptionsCollection },
 
         errorText: { type: String },
         error: { type: Boolean },
@@ -61,11 +67,7 @@ class MDTextFieldComponent extends MDComponent {
         variant: { type: String },
     };
 
-    variants=[
-        'filled',
-        'outlined',
-        'rounded',
-    ]
+    variants = ["filled", "outlined", "rounded"];
 
     get native() {
         return this.querySelector(".md-text-field__native");
@@ -75,9 +77,7 @@ class MDTextFieldComponent extends MDComponent {
         super();
 
         this.type = "text";
-        this.autocomplete='off'
-        this.rows=1
-        this.size=1
+        this.autocomplete = "off";
 
         this.renderIconButton = this.renderIconButton.bind(this);
     }
@@ -87,7 +87,7 @@ class MDTextFieldComponent extends MDComponent {
         return html`
             <input 
                 class="md-text-field__native"
-                .type="${ifDefined(this.type)}"
+                .accept="${ifDefined(this.accept)}"
                 .autocomplete="${ifDefined(this.autocomplete)}"
                 .disabled="${ifDefined(this.disabled)}"
                 .max="${ifDefined(this.max)}"
@@ -103,15 +103,11 @@ class MDTextFieldComponent extends MDComponent {
                 .size="${ifDefined(this.size)}"
                 .src="${ifDefined(this.src)}"
                 .step="${ifDefined(this.step)}"
+                .type="${ifDefined(this.type)}"
                 .defaultValue="${ifDefined(this.defaultValue)}"
                 .value="${ifDefined(this.value)}"
                 .cols="${ifDefined(this.cols)}"
                 .rows="${ifDefined(this.rows)}"
-                .selectionDirection="${ifDefined(this.selectionDirection)}"
-                .selectionEnd="${ifDefined(this.selectionEnd)}"
-                .selectionStart="${ifDefined(this.selectionStart)}"
-                .textLength="${ifDefined(this.textLength)}"
-                .wrap="${ifDefined(this.wrap)}"
                 @focus="${this.handleTextFieldNativeFocus}"
                 @blur="${this.handleTextFieldNativeBlur}"
                 @input="${this.handleTextFieldNativeInput}"
@@ -147,7 +143,7 @@ class MDTextFieldComponent extends MDComponent {
         /* prettier-ignore */
         return html`
             <label class="md-text-field__inner">
-                ${this.label?html`<div class="md-text-field__label">${this.label}</div>`:nothing}
+                ${this.label?html`<div class="md-text-field__label">${this.label}</div>`:html`<div class="md-text-field__nolabel">Label</div>`}
                 <div class="md-text-field__container">
                     ${this.icon?html`<md-icon class="md-text-field__icon">${this.icon}</md-icon>`:nothing}
                     ${this.prefix?html`<div class="md-text-field__meta">${this.prefix}</div>`:nothing}
@@ -170,11 +166,10 @@ class MDTextFieldComponent extends MDComponent {
 
         this.classList.add("md-text-field");
 
-        await this.updateComplete
-        this.value=this.value||this.native.value
+        await this.updateComplete;
+        this.value = this.value || this.native.value;
         this.defaultValue = this.value;
         this.populate();
-
     }
 
     updated(changedProperties) {
@@ -188,12 +183,10 @@ class MDTextFieldComponent extends MDComponent {
         }
 
         if (changedProperties.has("icon")) {
-        
             window.requestAnimationFrame(() => {
-                this.style.setProperty('--md-comp-text-field-offset-left',this.native.offsetLeft+'px')
-            })
+                this.style.setProperty("--md-comp-text-field-offset-left", this.native.offsetLeft + "px");
+            });
         }
-
     }
 
     handleTextFieldNativeFocus(event) {
@@ -207,7 +200,7 @@ class MDTextFieldComponent extends MDComponent {
     }
 
     handleTextFieldNativeInput(event) {
-        if(this.type!=='file'){
+        if (this.type !== "file") {
             this.value = this.native.value;
         }
         this.populate();
@@ -225,11 +218,11 @@ class MDTextFieldComponent extends MDComponent {
     }
 
     handleTextFieldNativeReset(event) {
-        if(this.type!=='file'){
+        if (this.type !== "file") {
             this.native.value = this.defaultValue;
             this.value = this.defaultValue;
         }
-        
+
         this.populate();
         this.validate();
 
@@ -237,7 +230,7 @@ class MDTextFieldComponent extends MDComponent {
     }
 
     populate() {
-        this.classList.toggle("md-text-field--populated", !!this.value||this.type=='file');
+        this.classList.toggle("md-text-field--populated", !!this.value || this.type == "file");
     }
 
     validate() {

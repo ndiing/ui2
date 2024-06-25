@@ -128,7 +128,7 @@ new PerformanceObserver(function (list) {
         var entry = entries[i];
         var name = entry.name;
 
-        start(entry.duration || 100);
+        start(entry.duration || 1000);
 
         if (name === "markRouterNavigate") {
             pause();

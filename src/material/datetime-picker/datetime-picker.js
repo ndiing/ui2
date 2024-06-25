@@ -219,7 +219,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         } else if (this.index == 4) {
             label = stringifyTime(this.selection);
         }
-        return [{ name: "label", component: "button", label }];
+        return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
     /**

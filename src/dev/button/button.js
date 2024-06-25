@@ -16,6 +16,11 @@ class DevButtonComponent extends MDComponent {
                         icon="add"
                     ></md-button>
                     <md-button
+                        variant="elevated icon-right"
+                        label="Elevated button"
+                        icon="add"
+                    ></md-button>
+                    <md-button
                         variant="elevated"
                         label="Elevated button"
                         icon="add"
@@ -33,6 +38,11 @@ class DevButtonComponent extends MDComponent {
                         icon="add"
                     ></md-button>
                     <md-button
+                        variant="filled icon-right"
+                        label="Filled button"
+                        icon="add"
+                    ></md-button>
+                    <md-button
                         variant="filled"
                         label="Filled button"
                         icon="add"
@@ -50,6 +60,11 @@ class DevButtonComponent extends MDComponent {
                         icon="add"
                     ></md-button>
                     <md-button
+                        variant="tonal icon-right"
+                        label="Tonal button"
+                        icon="add"
+                    ></md-button>
+                    <md-button
                         variant="tonal"
                         label="Tonal button"
                         icon="add"
@@ -67,6 +82,11 @@ class DevButtonComponent extends MDComponent {
                         icon="add"
                     ></md-button>
                     <md-button
+                        variant="outlined icon-right"
+                        label="Outlined button"
+                        icon="add"
+                    ></md-button>
+                    <md-button
                         variant="outlined"
                         label="Outlined button"
                         icon="add"
@@ -76,6 +96,11 @@ class DevButtonComponent extends MDComponent {
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <md-button label="Text button"></md-button>
                     <md-button
+                        label="Text button"
+                        icon="add"
+                    ></md-button>
+                    <md-button
+                        variant="icon-right"
                         label="Text button"
                         icon="add"
                     ></md-button>

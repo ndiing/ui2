@@ -14,7 +14,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
         } else if (this.index == 1) {
             label = stringifyMonth(this.selection);
         }
-        return [{ name: "label", component: "button", label }];
+        return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
     /**

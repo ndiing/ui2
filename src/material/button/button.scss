@@ -47,6 +47,17 @@
     height: var(--md-sys-typescale-label-large-line-height);
     overflow: hidden;
 }
+
+.md-button--icon-right{
+    .md-button__icon{
+        order: 1;
+        +.md-button__label{
+            margin-right: 0;
+            margin-left: 4px;
+        }
+    }
+}
+
 .md-button--elevated,
 .md-button--filled,
 .md-button--tonal,
@@ -62,6 +73,19 @@
             margin-right: 0;
         }
     }
+
+    &.md-button--icon-right{
+        .md-button__icon{
+            margin-left: 0;
+            margin-right: -8px;
+
+            +.md-button__label{
+                margin-right: 0;
+                margin-left: 0;
+            }
+        }
+    }
+    
 
     &[disabled] {
         background-color: var(--md-sys-color-on-surface12);

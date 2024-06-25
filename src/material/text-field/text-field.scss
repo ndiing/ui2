@@ -18,6 +18,16 @@
     margin: 4px 0;
     @include typescale-body-small();
 }
+.md-text-field__nolabel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+}
 .md-text-field__container {
     display: flex;
     align-items: flex-start;

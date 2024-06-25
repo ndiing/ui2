@@ -10,243 +10,243 @@ class DevTextFieldComponent extends MDComponent {
             >
                 <div class="md-layout-column">
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="filled" required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="outlined" required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded" required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded filled" required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder"></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" 
                         required text="Text" label="Label" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" label="Label" prefix="Prefix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" label="Label" prefix="Prefix" suffix="Suffix" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" label="Label" icon="image" name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
-                    <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
+                    <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
                         <md-text-field variant="rounded outlined" required text="Text" label="Label" icon="image" actions='[{"icon":"image"}]' name="text" placeholder="Placeholder" value=""></md-text-field>
                     </div>
 

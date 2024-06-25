@@ -30,7 +30,7 @@ class MDButtonComponent extends MDComponent {
      * Array of valid button variants.
      * @type {Array<String>}
      */
-    variants = ["elevated", "filled", "tonal", "outlined"];
+    variants = ["elevated", "filled", "tonal", "outlined",'icon-right'];
 
     /**
      * Constructs an instance of MDButtonComponent.
