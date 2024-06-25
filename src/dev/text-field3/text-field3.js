@@ -14,6 +14,7 @@ class DevTextField3Component extends MDComponent {
                             name="text"
                             label="Text field"
                             type="text"
+                            value="text"
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -21,6 +22,7 @@ class DevTextField3Component extends MDComponent {
                             name="textarea"
                             label="Textarea field"
                             type="textarea"
+                            value="textarea"
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">

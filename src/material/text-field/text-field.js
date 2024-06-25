@@ -161,11 +161,11 @@ class MDTextFieldComponent extends MDComponent {
             >
                 ${this.options?.map(option => html`
                     <option 
-                        .disabled="${ifDefined(option.disabled)}"
-                        .label="${ifDefined(option.label)}"
-                        .selected="${ifDefined(option.selected)}"
-                        .value="${ifDefined(option.value)}"
-                        .text="${ifDefined(option.text)}"
+                        ?disabled="${ifDefined(option.disabled)}"
+                        label="${ifDefined(option.label)}"
+                        ?selected="${ifDefined(option.selected)}"
+                        value="${ifDefined(option.value)}"
+                        text="${ifDefined(option.text)}"
                     ></option>
                 `)}
             </select>
@@ -235,19 +235,19 @@ class MDTextFieldComponent extends MDComponent {
 
         this.classList.add("md-text-field");
 
-        const defaultValue={
-            'color':'#000000',
-            'datetime-local':'',
-            'date':'',
-            'time':'',
-            'week':'',
-            'month':'',
-            'url':'',
-            'email':'',
-        }
+        const defaultValue = {
+            color: "#000000",
+            "datetime-local": "",
+            date: "",
+            time: "",
+            week: "",
+            month: "",
+            url: "",
+            email: "",
+        };
 
-        this.value=this.value||defaultValue[this.type];
-        this.defaultValue = this.value
+        this.value = this.value || defaultValue[this.type];
+        this.defaultValue = this.value;
 
         this.populate();
     }
