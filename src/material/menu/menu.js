@@ -36,18 +36,28 @@ class MDMenuComponent extends MDSheetComponent {
         this.classList.add("md-menu");
     }
 
-    show(button, options) {
+    handleMenuTreeItemClick(event) {
+        this.close();
+        this.emit("onMenuTreeItemClick", event);
+    }
+
+    showModal(button, options) {
         this.showModal();
 
+        this.setPlacement(button, options);
+    }
+
+    show(button, options) {
+        this.show();
+
+        this.setPlacement(button, options);
+    }
+
+    setPlacement(button, options) {
         this.popper.setPlacement(button, {
             placements: ["top-start", "top-end", "top", "below-start", "below-end", "below", "bottom-start", "bottom-end", "bottom", "above-start", "above-end", "above", "left-start", "left-end", "left", "after-start", "after-end", "after", "right-start", "right-end", "right", "before-start", "before-end", "before", "center"],
             ...options,
         });
-    }
-
-    handleMenuTreeItemClick(event) {
-        this.close();
-        this.emit("onMenuTreeItemClick", event);
     }
 }
 

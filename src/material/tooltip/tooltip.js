@@ -37,16 +37,19 @@ class MDTooltipComponent extends MDSheetComponent {
         this.classList.add("md-tooltip");
     }
 
-    /**
-     * Displays the tooltip relative to the provided button element with specified options.
-     * @param {HTMLElement} button - The button or element to which the tooltip is anchored.
-     * @param {Object} options - Additional options for configuring the tooltip's behavior.
-     * @param {Array.<String>} [options.placements=["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west"]] - List of possible placements for the tooltip relative to the button.
-     * @param {Number} [options.offset=8] - Offset value in pixels for adjusting the tooltip's position.
-     */
-    show(button, options) {
-        super.show();
+    showModal(button, options) {
+        this.showModal();
 
+        this.setPlacement(button, options);
+    }
+
+    show(button, options) {
+        this.show();
+
+        this.setPlacement(button, options);
+    }
+
+    setPlacement(button, options) {
         this.popper.setPlacement(button, {
             placements: ["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west", "center"],
             offset: 8,

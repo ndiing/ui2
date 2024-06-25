@@ -484,16 +484,19 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.emit("onColorPickerOpacityNativeInput", event);
     }
 
-    /**
-     * Displays the datetime-picker relative to the provided button element with specified options.
-     * @param {HTMLElement} button - The button or element to which the datetime-picker is anchored.
-     * @param {Object} options - Additional options for configuring the datetime-picker's behavior.
-     * @param {Array.<String>} [options.placements=["below", "above", "after", "before", "north-east", "south-east", "south-west", "north-west"]] - List of possible placements for the datetime-picker relative to the button.
-     * @param {Number} [options.offset=8] - Offset value in pixels for adjusting the datetime-picker's position.
-     */
-    show(button, options) {
+    showModal(button, options) {
         this.showModal();
 
+        this.setPlacement(button, options);
+    }
+
+    show(button, options) {
+        this.show();
+
+        this.setPlacement(button, options);
+    }
+
+    setPlacement(button, options) {
         this.popper.setPlacement(button, {
             placements: ["top-start", "top-end", "top", "below-start", "below-end", "below", "bottom-start", "bottom-end", "bottom", "above-start", "above-end", "above", "left-start", "left-end", "left", "after-start", "after-end", "after", "right-start", "right-end", "right", "before-start", "before-end", "before", "center"],
             ...options,
