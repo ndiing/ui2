@@ -235,9 +235,11 @@ class MDTextFieldComponent extends MDComponent {
 
         this.classList.add("md-text-field");
 
-        await this.updateComplete;
-        this.value = this.value || this.native.value;
+        // await this.updateComplete;
+
+        // this.value = this.value || this.native?.value;
         this.defaultValue = this.value;
+
         this.populate();
     }
 
@@ -260,11 +262,13 @@ class MDTextFieldComponent extends MDComponent {
 
     handleTextFieldNativeFocus(event) {
         this.classList.add("md-text-field--focused");
+
         this.emit("onTextFieldNativeFocus", event);
     }
 
     handleTextFieldNativeBlur(event) {
         this.classList.remove("md-text-field--focused");
+
         this.emit("onTextFieldNativeBlur", event);
     }
 
@@ -272,6 +276,7 @@ class MDTextFieldComponent extends MDComponent {
         if (this.type !== "file") {
             this.value = this.native.value;
         }
+
         this.populate();
         this.validate();
 

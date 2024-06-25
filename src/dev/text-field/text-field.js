@@ -23,7 +23,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -33,7 +32,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -44,7 +42,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -54,7 +51,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -65,7 +61,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -85,7 +80,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -96,7 +90,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -108,7 +101,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -119,7 +111,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -131,7 +122,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -151,7 +141,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -162,7 +151,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -174,7 +162,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -185,7 +172,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -197,7 +183,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -219,7 +204,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -231,7 +215,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -244,7 +227,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -256,7 +238,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -269,7 +250,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -289,7 +269,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -300,7 +279,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -312,7 +290,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -323,7 +300,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -335,7 +311,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -357,7 +332,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -369,7 +343,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -382,7 +355,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -394,7 +366,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -407,7 +378,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -427,7 +397,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -438,7 +407,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -450,7 +418,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -461,7 +428,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -473,7 +439,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -495,7 +460,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -507,7 +471,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -520,7 +483,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -532,7 +494,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -545,7 +506,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -565,7 +525,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -576,7 +535,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -588,7 +546,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -599,7 +556,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -611,7 +567,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -633,7 +588,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -645,7 +599,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -658,7 +611,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -670,7 +622,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -683,7 +634,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -703,7 +653,6 @@ class DevTextFieldComponent extends MDComponent {
                             text="Text"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -714,7 +663,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -726,7 +674,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -737,7 +684,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -749,7 +695,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
@@ -771,7 +716,6 @@ class DevTextFieldComponent extends MDComponent {
                             label="Label"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -783,7 +727,6 @@ class DevTextFieldComponent extends MDComponent {
                             prefix="Prefix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -796,7 +739,6 @@ class DevTextFieldComponent extends MDComponent {
                             suffix="Suffix"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -808,7 +750,6 @@ class DevTextFieldComponent extends MDComponent {
                             icon="image"
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
                     <div class="md-layout-column__item md-layout-column__item--expanded2 md-layout-column__item--medium8 md-layout-column__item--compact4">
@@ -821,7 +762,6 @@ class DevTextFieldComponent extends MDComponent {
                             actions='[{"icon":"image"}]'
                             name="text"
                             placeholder="Placeholder"
-                            value=""
                         ></md-text-field>
                     </div>
 
