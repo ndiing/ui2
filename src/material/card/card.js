@@ -61,12 +61,12 @@ class MDCardComponent extends MDComponent {
     renderIcon(item) {
         /* prettier-ignore */
         return html`
-            <md-icon
-                class="md-card__icon"
+            <div
+                class="md-icon md-card__icon"
                 name="${ifDefined(item.name)}"
                 .name="${ifDefined(item.name)}"
                 @click="${this.handleCardIconClick}"
-            >${item.icon}</md-icon>
+            >${item.icon}</div>
         `;
     }
 

@@ -42,7 +42,7 @@ class MDButtonComponent extends MDComponent {
         /* prettier-ignore */
         return html`
             <button class="md-button__native" .type="${this.type}">
-                ${this.icon ? html`<md-icon class="md-button__icon">${this.icon}</md-icon>` : nothing}
+                ${this.icon ? html`<div class="md-icon md-button__icon">${this.icon}</div>` : nothing}
                 <div class="md-button__label">${this.label}</div>
             </button>
         `;

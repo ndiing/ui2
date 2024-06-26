@@ -37,7 +37,7 @@ class MDFabComponent extends MDComponent {
     render() {
         /* prettier-ignore */
         return html`
-            ${this.icon ? html`<md-icon class="md-fab__icon">${this.icon}</md-icon>` : nothing}
+            ${this.icon ? html`<div class="md-icon md-fab__icon">${this.icon}</div>` : nothing}
             ${this.label?html`<div class="md-fab__label">${this.label}</div>`:nothing}
         `;
     }

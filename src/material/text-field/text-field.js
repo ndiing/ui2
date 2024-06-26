@@ -279,7 +279,7 @@ class MDTextFieldComponent extends MDComponent {
         /* prettier-ignore */
         return this.actions?.length||this.error?html`
             <div class="md-text-field__actions">
-                ${this.error?html`<md-icon class="md-text-field__icon md-text-field__icon--error">error</md-icon>`:nothing}
+                ${this.error?html`<div class="md-icon md-text-field__icon md-text-field__icon--error">error</div>`:nothing}
                 ${this.actions?.map(item=>this.renderAction(item))}
             </div>
         `:nothing
@@ -291,7 +291,7 @@ class MDTextFieldComponent extends MDComponent {
             <label class="md-text-field__inner">
                 ${this.label?html`<div class="md-text-field__label">${this.label}</div>`:html`<div class="md-text-field__nolabel">Label</div>`}
                 <div class="md-text-field__container">
-                    ${this.icon?html`<md-icon class="md-text-field__icon">${this.icon}</md-icon>`:nothing}
+                    ${this.icon?html`<div class="md-icon md-text-field__icon">${this.icon}</div>`:nothing}
                     ${this.prefix?html`<div class="md-text-field__meta">${this.prefix}</div>`:nothing}
                     ${this.renderNative()}
                     ${this.suffix?html`<div class="md-text-field__meta">${this.suffix}</div>`:nothing}

@@ -71,7 +71,7 @@ class MDSwitchComponent extends MDComponent {
     renderTrack() {
         /* prettier-ignore */
         return html`
-            <div class="md-switch__track"><md-icon class="md-switch__thumb">${this.icons?.length?this.icons[~~this.checked]:nothing}</md-icon></div>
+            <div class="md-switch__track"><div class="md-icon md-switch__thumb">${this.icons?.length?this.icons[~~this.checked]:nothing}</div></div>
         `
     }
 

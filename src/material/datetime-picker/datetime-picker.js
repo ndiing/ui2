@@ -273,7 +273,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
             <div class="md-datetime-picker__list md-datetime-picker__list--years">
                 ${this.years.map(item=>html`
                     <div class="md-datetime-picker__list-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerYearItemClick}">
-                        <md-icon class="md-datetime-picker__list-icon">${item.selected?'check':nothing}</md-icon>
+                        <div class="md-icon md-datetime-picker__list-icon">${item.selected?'check':nothing}</div>
                         <div class="md-datetime-picker__list-label">${item.label}</div>
                     </div>    
                 `)}
@@ -287,7 +287,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
             <div class="md-datetime-picker__list md-datetime-picker__list--months">
                 ${this.months.map(item=>html`
                     <div class="md-datetime-picker__list-item" ?activated="${item.activated}" ?selected="${item.selected}" .data="${item}" @click="${this.handleDatetimePickerMonthItemClick}">
-                        <md-icon class="md-datetime-picker__list-icon">${item.selected?'check':nothing}</md-icon>
+                        <div class="md-icon md-datetime-picker__list-icon">${item.selected?'check':nothing}</div>
                         <div class="md-datetime-picker__list-label">${item.label}</div>
                     </div>    
                 `)}
