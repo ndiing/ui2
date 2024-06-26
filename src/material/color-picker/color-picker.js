@@ -36,7 +36,6 @@ class MDColorPickerComponent extends MDSheetComponent {
      */
     static properties = {
         ...MDSheetComponent.properties,
-        index: { type: Number },
         value: { type: String },
     };
 
@@ -45,11 +44,7 @@ class MDColorPickerComponent extends MDSheetComponent {
      */
     get body() {
         /* prettier-ignore */
-        return [html`
-            <div class="md-color-picker__card">
-                <div class="md-color-picker__card-item">${this.renderArea()}</div>
-            </div>
-        `];
+        return [this.renderArea()];
     }
 
     /**
@@ -65,7 +60,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     get leadingActions() {
         let label = this.selection.hex;
 
-        return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
+        return [{ /* icon: "arrow_drop_down", variant: "icon-right", */ name: "label", component: "button", label }];
     }
 
     /**
@@ -79,8 +74,6 @@ class MDColorPickerComponent extends MDSheetComponent {
         super();
 
         this.selection = {};
-
-        this.index = 0;
 
         this.value = "#000000";
 
@@ -147,10 +140,6 @@ class MDColorPickerComponent extends MDSheetComponent {
 
     async updated(changedProperties) {
         super.updated(changedProperties);
-
-        if (changedProperties.has("index")) {
-            this.style.setProperty("--md-comp-color-picker-card-index", this.index);
-        }
 
         if (changedProperties.has("value") && changedProperties.get("value")) {
             if (this.value) {

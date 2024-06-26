@@ -6,11 +6,11 @@ class DevColorPickerComponent extends MDComponent {
         return html`
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    <label for="color">Select color-local</label>
+                    <label for="color">Select color</label>
                     <input
                         id="color"
-                        name="color-local"
-                        type="color-local"
+                        name="color"
+                        type="color"
                         value="#6750a4"
                         @input="${this.handleColorLocalInput}"
                     />

@@ -64,18 +64,6 @@
     }
 }
 
-.md-color-picker__card {
-    display: flex;
-    overflow: hidden;
-    width: 360px;
-    height: 336px;
-}
-.md-color-picker__card-item {
-    flex: 1 0 100%;
-    overflow: auto;
-
-    transform: translate3d(calc((0 - var(--md-comp-color-picker-card-index)) * 100%), 0, 0);
-}
 
 .md-color-picker__area {
     display: flex;
