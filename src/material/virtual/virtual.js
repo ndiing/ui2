@@ -33,9 +33,7 @@ class MDVirtualController {
     async hostConnected() {
         await this.host.updateComplete;
 
-        this.viewport = this.options.viewportSelector
-            ? this.host.querySelector(this.options.viewportSelector)
-            : this.host;
+        this.viewport = this.options.viewportSelector ? this.host.querySelector(this.options.viewportSelector) : this.host;
 
         if (this.viewport) {
             this.handleVirtualScroll = this.handleVirtualScroll.bind(this);
@@ -73,12 +71,7 @@ class MDVirtualController {
                 this.translateX = this.columnStart * this.options.columnWidth;
             }
 
-            let cache = JSON.stringify([
-                this.rowStart,
-                this.rowEnd,
-                this.columnStart,
-                this.columnEnd,
-            ]);
+            let cache = JSON.stringify([this.rowStart, this.rowEnd, this.columnStart, this.columnEnd]);
 
             if (this.cache !== cache) {
                 this.cache = cache;

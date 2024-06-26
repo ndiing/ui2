@@ -3,17 +3,22 @@ import { MDComponent } from "../../material/component/component.js";
 import { MDVirtualController } from "../../material/virtual/virtual.js";
 
 class DevVirtualComponent extends MDComponent {
-
-    get viewport(){return this.querySelector('.md-virtual')}
-    get scrollbar(){return this.querySelector('.md-virtual__scrollbar')}
-    get container(){return this.querySelector('.md-virtual__container')}
+    get viewport() {
+        return this.querySelector(".md-virtual");
+    }
+    get scrollbar() {
+        return this.querySelector(".md-virtual__scrollbar");
+    }
+    get container() {
+        return this.querySelector(".md-virtual__container");
+    }
 
     constructor() {
         super();
 
-        this.virtualScroll=new MDVirtualController(this, {
+        this.virtualScroll = new MDVirtualController(this, {
             viewportSelector: ".md-virtual",
-            
+
             rowTotal: 1000,
             rowHeight: 52,
             buffer: 2,
@@ -22,16 +27,11 @@ class DevVirtualComponent extends MDComponent {
             columnWidth: 156,
         });
 
-        this.addEventListener('onVirtualScrollChange',() => {
-            console.log(
-                this.virtualScroll.rowStart,
-                this.virtualScroll.rowEnd,
-                this.virtualScroll.columnStart,
-                this.virtualScroll.columnEnd,
-            )
-            this.scrollbar.style.height=this.virtualScroll.scrollbarHeight+'px'
-            this.scrollbar.style.width=this.virtualScroll.scrollbarWidth+'px'
-        })
+        this.addEventListener("onVirtualScrollChange", () => {
+            console.log(this.virtualScroll.rowStart, this.virtualScroll.rowEnd, this.virtualScroll.columnStart, this.virtualScroll.columnEnd);
+            this.scrollbar.style.height = this.virtualScroll.scrollbarHeight + "px";
+            this.scrollbar.style.width = this.virtualScroll.scrollbarWidth + "px";
+        });
     }
 
     render() {
