@@ -3,7 +3,7 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 
-class MDIconComponent extends MDComponent {
+class MDImageComponent extends MDComponent {
     static properties = {
         src: { type: String },
         alt: { type: String },
@@ -106,6 +106,6 @@ class MDIconComponent extends MDComponent {
     }
 }
 
-customElements.define("md-image", MDIconComponent);
+customElements.define("md-image", MDImageComponent);
 
-export { MDIconComponent };
+export { MDImageComponent };
