@@ -7,7 +7,7 @@ class DevIconComponent extends MDComponent {
         return html`
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    ${icons.map(row => html`
+                    ${icons.slice(0,20).map(row => html`
                         <div>
                             ${row.map(icon => icon.label?html`
                                 <div>${icon.label}</div>

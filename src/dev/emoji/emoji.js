@@ -7,7 +7,7 @@ class DevEmojiComponent extends MDComponent {
         return html`
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    ${emojis.map(row => html`
+                    ${emojis.rows.slice(0,20).map(row => html`
                         <div>
                             ${row.map(emoji => emoji.label?html`
                                 <div>${emoji.label}</div>
