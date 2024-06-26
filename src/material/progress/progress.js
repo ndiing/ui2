@@ -98,22 +98,3 @@ function loop(resolve) {
 
 export { start, pause, resume, stop };
 
-new PerformanceObserver(function (list) {
-    var entries = list.getEntries();
-    for (var i = 0; i < entries.length; i++) {
-        var entry = entries[i];
-        var name = entry.name;
-
-        start(entry.duration || 1000);
-
-        if (name === "markRouterNavigate") {
-            pause();
-        } else if (name === "measureRouterNavigateSuccess") {
-            resume();
-        } else if (name === "markRouterNavigateSuccess") {
-            stop();
-        }
-    }
-}).observe({
-    entryTypes: ["mark", "measure", "navigation"],
-});
