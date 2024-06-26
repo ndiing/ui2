@@ -5,6 +5,7 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { calcDecimal, calcPercentage, isArrayString } from "../functions/functions.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-slider
  * @fires MDSliderComponent#onSliderNativeInput -
@@ -12,15 +13,15 @@ import { calcDecimal, calcPercentage, isArrayString } from "../functions/functio
  */
 class MDSliderComponent extends MDComponent {
     /**
-     * @property {Array} defaultValue -
-     * @property {Number} min -
-     * @property {Number} max -
-     * @property {Number} step -
-     * @property {Boolean} disabled -
-     * @property {String} form -
-     * @property {String} name -
-     * @property {String} list -
-     * @property {String} autocomplete -
+     * @property {Array} defaultValue - Tambahkan deskripsi
+     * @property {Number} min - Tambahkan deskripsi
+     * @property {Number} max - Tambahkan deskripsi
+     * @property {Number} step - Tambahkan deskripsi
+     * @property {Boolean} disabled - Tambahkan deskripsi
+     * @property {String} form - Tambahkan deskripsi
+     * @property {String} name - Tambahkan deskripsi
+     * @property {String} list - Tambahkan deskripsi
+     * @property {String} autocomplete - Tambahkan deskripsi
      */
     static properties = {
         value: {
@@ -162,7 +163,7 @@ class MDSliderComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get natives() {
         return this.querySelectorAll(".md-slider__native");

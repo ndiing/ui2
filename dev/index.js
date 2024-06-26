@@ -45,7 +45,7 @@ content = content.replace(/(^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) 
     }
     let code = "";
     code += `    /**\r\n`;
-    code += `     * \r\n`;
+    code += `     * Tambahkan deskripsi\r\n`;
     code += `     */\r\n`;
     code += text;
     if (
@@ -82,7 +82,7 @@ content = content.replace(/(^    (static )?(\w+) = \{([\s\S]+?)^    \})/gm, ($, 
     let code = "";
     code += `    /**\r\n`;
     for (let doc of props) {
-        code += `     * @property {${doc.propertyType}} ${doc.propertyName} - \r\n`;
+        code += `     * @property {${doc.propertyType}} ${doc.propertyName} - Tambahkan deskripsi\r\n`;
     }
     code += `     */\r\n`;
     code += text;
@@ -95,6 +95,7 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
     let code = "";
     code += `/**\r\n`;
 
+    code += ` * Tambahkan deskripsi\r\n`;
     if (inheritName) code += ` * @extends ${inheritName}\r\n`;
     if (tagName) code += ` * @tagname ${tagName}\r\n`;
     for (let doc of emits) {

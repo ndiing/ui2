@@ -3,6 +3,7 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { parseDate, stringifyDate, stringifyYear } from "../functions/functions.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDDatetimePickerComponent
  * @tagname md-date-picker
  * @fires MDDatePickerComponent#onDatePickerSelection -
@@ -23,7 +24,7 @@ import { parseDate, stringifyDate, stringifyYear } from "../functions/functions.
  */
 class MDDatePickerComponent extends MDDatetimePickerComponent {
     /**
-     *
+     * Tambahkan deskripsi
      */
     get leadingActions() {
         let label;
@@ -38,7 +39,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get body() {
         /* prettier-ignore */
@@ -52,7 +53,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     set body(value) {
         this._body = value;
@@ -65,7 +66,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateDate() {
         const date = parseDate(this.value);
@@ -185,7 +186,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     getValue() {
         return stringifyDate(this.selected);

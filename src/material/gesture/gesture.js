@@ -1,4 +1,5 @@
 /**
+ * Tambahkan deskripsi
  * @fires MDGestureController#onDragStart -
  * @fires MDGestureController#onResizeStart -
  * @fires MDGestureController#onSelectionStart -
@@ -42,7 +43,7 @@ class MDGestureController {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -78,7 +79,7 @@ class MDGestureController {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     async hostDisconnected() {
         await this.host.updateComplete;

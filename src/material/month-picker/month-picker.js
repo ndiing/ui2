@@ -3,6 +3,7 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { html } from "lit";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDDatetimePickerComponent
  * @tagname md-month-picker
  * @fires MDMonthPickerComponent#onMonthPickerSelection -
@@ -21,7 +22,7 @@ import { html } from "lit";
  */
 class MDMonthPickerComponent extends MDDatetimePickerComponent {
     /**
-     *
+     * Tambahkan deskripsi
      */
     get leadingActions() {
         let label;
@@ -34,7 +35,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get body() {
         /* prettier-ignore */
@@ -47,7 +48,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     set body(value) {
         this._body = value;
@@ -65,7 +66,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateDate() {
         const date = parseMonth(this.value);
@@ -163,7 +164,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     getValue() {
         return stringifyMonth(this.selected);

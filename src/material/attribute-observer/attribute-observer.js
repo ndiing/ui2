@@ -1,4 +1,5 @@
 /**
+ * Tambahkan deskripsi
  */
 class MDAttributeObserver {
     constructor(callback = () => {}) {
@@ -6,7 +7,7 @@ class MDAttributeObserver {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     observe(target, attributeName) {
         this.callback({

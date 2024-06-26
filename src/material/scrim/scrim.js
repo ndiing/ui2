@@ -1,12 +1,13 @@
 import { MDComponent } from "../component/component.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-scrim
  */
 class MDScrimComponent extends MDComponent {
     /**
-     * @property {Boolean} open -
+     * @property {Boolean} open - Tambahkan deskripsi
      */
     static properties = {
         ...MDComponent.properties,
@@ -20,21 +21,21 @@ class MDScrimComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show() {
         this.open = true;
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     close() {
         this.open = false;
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     toggle() {
         if (this.open) {

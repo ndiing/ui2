@@ -2,6 +2,7 @@ import { LitElement } from "lit";
 import { updateWhenLocaleChanges } from "@lit/localize";
 
 /**
+ * Tambahkan deskripsi
  * @extends LitElement
  */
 class MDComponent extends LitElement {

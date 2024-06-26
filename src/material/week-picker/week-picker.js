@@ -3,6 +3,7 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { html } from "lit";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDDatetimePickerComponent
  * @tagname md-week-picker
  * @fires MDWeekPickerComponent#onWeekPickerSelection -
@@ -23,7 +24,7 @@ import { html } from "lit";
  */
 class MDWeekPickerComponent extends MDDatetimePickerComponent {
     /**
-     *
+     * Tambahkan deskripsi
      */
     get weekdays() {
         const rows = [];
@@ -37,7 +38,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get days() {
         const rows = [];
@@ -68,7 +69,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get body() {
         /* prettier-ignore */
@@ -82,14 +83,14 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get leadingActions() {
         let label;
@@ -135,7 +136,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateDate() {
         const date = parseWeek(this.value);
@@ -250,7 +251,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     getValue() {
         return stringifyWeek(this.selected);

@@ -5,27 +5,28 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-list-item
  */
 class MDListItemComponent extends MDComponent {
     /**
-     * @property {String} avatar -
-     * @property {String} thumbnail -
-     * @property {String} video -
-     * @property {String} icon -
-     * @property {String} label -
-     * @property {String} subLabel -
-     * @property {Number} badge -
-     * @property {String} text -
-     * @property {Boolean} leadingCheckbox -
-     * @property {Boolean} leadingRadioButton -
-     * @property {Boolean} leadingSwitch -
-     * @property {Boolean} trailingCheckbox -
-     * @property {Boolean} trailingRadioButton -
-     * @property {Boolean} trailingSwitch -
-     * @property {Boolean} selected -
-     * @property {String} routerLink -
+     * @property {String} avatar - Tambahkan deskripsi
+     * @property {String} thumbnail - Tambahkan deskripsi
+     * @property {String} video - Tambahkan deskripsi
+     * @property {String} icon - Tambahkan deskripsi
+     * @property {String} label - Tambahkan deskripsi
+     * @property {String} subLabel - Tambahkan deskripsi
+     * @property {Number} badge - Tambahkan deskripsi
+     * @property {String} text - Tambahkan deskripsi
+     * @property {Boolean} leadingCheckbox - Tambahkan deskripsi
+     * @property {Boolean} leadingRadioButton - Tambahkan deskripsi
+     * @property {Boolean} leadingSwitch - Tambahkan deskripsi
+     * @property {Boolean} trailingCheckbox - Tambahkan deskripsi
+     * @property {Boolean} trailingRadioButton - Tambahkan deskripsi
+     * @property {Boolean} trailingSwitch - Tambahkan deskripsi
+     * @property {Boolean} selected - Tambahkan deskripsi
+     * @property {String} routerLink - Tambahkan deskripsi
      */
     static properties = {
         avatar: { type: String },

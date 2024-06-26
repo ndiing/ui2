@@ -9,6 +9,7 @@ const breakpoints = [
 ];
 
 /**
+ * Tambahkan deskripsi
  */
 class MDObserver {
     constructor(callback = () => {}) {
@@ -16,7 +17,7 @@ class MDObserver {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     observe(list) {
         const handleChange = () => {

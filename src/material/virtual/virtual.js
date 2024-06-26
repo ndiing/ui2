@@ -1,4 +1,5 @@
 /**
+ * Tambahkan deskripsi
  * @fires MDVirtualController#onVirtualScrollChange -
  * @fires MDVirtualController#onVirtualScroll -
  */
@@ -35,7 +36,7 @@ class MDVirtualController {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -50,7 +51,7 @@ class MDVirtualController {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     async hostDisconnected() {
         await this.host.updateComplete;

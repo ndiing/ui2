@@ -4,14 +4,15 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-chips
  * @fires MDChipsComponent#onChipClick -
  */
 class MDChipsComponent extends MDComponent {
     /**
-     * @property {Array} list -
-     * @property {Boolean} multiSelection -
+     * @property {Array} list - Tambahkan deskripsi
+     * @property {Boolean} multiSelection - Tambahkan deskripsi
      */
     static properties = {
         list: { type: Array },

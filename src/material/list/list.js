@@ -5,6 +5,7 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-list
  * @fires MDListComponent#onListItemClick -
@@ -18,12 +19,12 @@ import { MDGestureController } from "../gesture/gesture.js";
  */
 class MDListComponent extends MDComponent {
     /**
-     * @property {Array} list -
-     * @property {Boolean} selection -
-     * @property {Boolean} rangeSelection -
-     * @property {Boolean} multiSelection -
-     * @property {Boolean} singleSelection -
-     * @property {Boolean} allSelection -
+     * @property {Array} list - Tambahkan deskripsi
+     * @property {Boolean} selection - Tambahkan deskripsi
+     * @property {Boolean} rangeSelection - Tambahkan deskripsi
+     * @property {Boolean} multiSelection - Tambahkan deskripsi
+     * @property {Boolean} singleSelection - Tambahkan deskripsi
+     * @property {Boolean} allSelection - Tambahkan deskripsi
      */
     static properties = {
         list: { type: Array },
@@ -91,7 +92,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     select(data) {
         for (let i = 0; i < this.list.length; i++) {
@@ -102,7 +103,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     multiSelect(data) {
         data.selected = !data.selected;
@@ -113,7 +114,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     selectRange(data) {
         this.endIndex = this.endIndex || 0;
@@ -135,7 +136,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     selectAll() {
         for (let i = 0; i < this.list.length; i++) {

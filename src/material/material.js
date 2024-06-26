@@ -1,15 +1,15 @@
-import "./functions/functions.js";
-import "./localization/localization.js";
-import "./color/color.js";
-import "./component/component.js";
-import "./router/router.js";
-import "./ripple/ripple.js";
-import "./popper/popper.js";
-import "./progress/progress.js";
-import "./gesture/gesture.js";
-import "./observer/observer.js";
-import "./attribute-observer/attribute-observer.js";
-import "./virtual/virtual.js";
+// import "./functions/functions.js";
+// import "./localization/localization.js";
+// import "./color/color.js";
+// import "./component/component.js";
+// import "./router/router.js";
+// import "./ripple/ripple.js";
+// import "./popper/popper.js";
+// import "./progress/progress.js";
+// import "./gesture/gesture.js";
+// import "./observer/observer.js";
+// import "./attribute-observer/attribute-observer.js";
+// import "./virtual/virtual.js";
 
 import "./icon/icon.js";
 import "./button/button.js";

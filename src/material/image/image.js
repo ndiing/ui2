@@ -4,6 +4,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-image
  * @fires MDImageComponent#onImageNativeLoad -
@@ -11,23 +12,23 @@ import { styleMap } from "lit/directives/style-map.js";
  */
 class MDImageComponent extends MDComponent {
     /**
-     * @property {String} src -
-     * @property {String} alt -
-     * @property {String} srcset -
-     * @property {String} sizes -
-     * @property {String} crossorigin -
-     * @property {String} usemap -
-     * @property {Boolean} ismap -
-     * @property {Number} width -
-     * @property {Number} height -
-     * @property {String} referrerpolicy -
-     * @property {String} decoding -
-     * @property {String} loading -
-     * @property {String} title -
-     * @property {String} longdesc -
-     * @property {String} fetchpriority -
-     * @property {String} ratio -
-     * @property {String} variant -
+     * @property {String} src - Tambahkan deskripsi
+     * @property {String} alt - Tambahkan deskripsi
+     * @property {String} srcset - Tambahkan deskripsi
+     * @property {String} sizes - Tambahkan deskripsi
+     * @property {String} crossorigin - Tambahkan deskripsi
+     * @property {String} usemap - Tambahkan deskripsi
+     * @property {Boolean} ismap - Tambahkan deskripsi
+     * @property {Number} width - Tambahkan deskripsi
+     * @property {Number} height - Tambahkan deskripsi
+     * @property {String} referrerpolicy - Tambahkan deskripsi
+     * @property {String} decoding - Tambahkan deskripsi
+     * @property {String} loading - Tambahkan deskripsi
+     * @property {String} title - Tambahkan deskripsi
+     * @property {String} longdesc - Tambahkan deskripsi
+     * @property {String} fetchpriority - Tambahkan deskripsi
+     * @property {String} ratio - Tambahkan deskripsi
+     * @property {String} variant - Tambahkan deskripsi
      */
     static properties = {
         src: { type: String },

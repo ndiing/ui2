@@ -1,4 +1,5 @@
 /**
+ * Tambahkan deskripsi
  * @fires MDRouter#onRouterCurrentEntryChange -
  * @fires MDRouter#onRouterNavigate -
  * @fires MDRouter#onRouterNavigateError -
@@ -6,7 +7,7 @@
  */
 class MDRouter {
     /**
-     *
+     * Tambahkan deskripsi
      */
     static setRoutes(routes, parent) {
         return routes.reduce((acc, curr) => {
@@ -23,7 +24,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static get path() {
         if (this.historyApiFallback) {
@@ -34,7 +35,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static get query() {
         let search;
@@ -61,7 +62,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static getRoute(path) {
         return this.stacks.find((route) => {
@@ -79,7 +80,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static getRoutes(route) {
         return [route].reduce((acc, curr) => {
@@ -94,7 +95,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static getOutlet(container, route) {
         return new Promise((resolve) => {
@@ -213,7 +214,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static navigate(url) {
         if (this.historyApiFallback) {
@@ -243,7 +244,7 @@ class MDRouter {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     static init(routes) {
         this.stacks = this.setRoutes(routes);

@@ -3,16 +3,17 @@ import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-fab
  */
 class MDFabComponent extends MDComponent {
     /**
-     * @property {String} variant -
-     * @property {String} icon -
-     * @property {String} label -
-     * @property {Boolean} selected -
-     * @property {Boolean} disabled -
+     * @property {String} variant - Tambahkan deskripsi
+     * @property {String} icon - Tambahkan deskripsi
+     * @property {String} label - Tambahkan deskripsi
+     * @property {Boolean} selected - Tambahkan deskripsi
+     * @property {Boolean} disabled - Tambahkan deskripsi
      */
     static properties = {
         variant: { type: String },

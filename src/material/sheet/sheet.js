@@ -1,13 +1,14 @@
 import { MDCardComponent } from "../card/card.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDCardComponent
  * @tagname md-sheet
  * @fires MDSheetComponent#onSheetScrimClick -
  */
 class MDSheetComponent extends MDCardComponent {
     /**
-     * @property {Boolean} open -
+     * @property {Boolean} open - Tambahkan deskripsi
      */
     static properties = {
         ...MDCardComponent.properties,
@@ -26,7 +27,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     showModal() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -52,7 +53,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -63,7 +64,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     close() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -80,7 +81,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     toggle(...args) {
         if (this.open) {

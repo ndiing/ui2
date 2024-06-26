@@ -2,6 +2,7 @@ import { MDPopperController } from "../popper/popper.js";
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDSheetComponent
  * @tagname md-tooltip
  */
@@ -22,7 +23,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     showModal(button, options) {
         super.showModal();
@@ -31,7 +32,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show(button, options) {
         super.show();
@@ -40,7 +41,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

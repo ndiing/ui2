@@ -5,6 +5,7 @@ import { choose } from "lit/directives/choose.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-card
  * @fires MDCardComponent#onCardIconButtonClick -
@@ -13,12 +14,12 @@ import { MDRippleController } from "../ripple/ripple.js";
  */
 class MDCardComponent extends MDComponent {
     /**
-     * @property {String} variant -
-     * @property {Array} leadingActions -
-     * @property {String} label -
-     * @property {String} subLabel -
-     * @property {Array} trailingActions -
-     * @property {Array} actions -
+     * @property {String} variant - Tambahkan deskripsi
+     * @property {Array} leadingActions - Tambahkan deskripsi
+     * @property {String} label - Tambahkan deskripsi
+     * @property {String} subLabel - Tambahkan deskripsi
+     * @property {Array} trailingActions - Tambahkan deskripsi
+     * @property {Array} actions - Tambahkan deskripsi
      */
     static properties = {
         variant: { type: String },

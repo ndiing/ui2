@@ -6,14 +6,15 @@ import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-tree
  * @fires MDTreeComponent#onTreeItemClick -
  */
 class MDTreeComponent extends MDComponent {
     /**
-     * @property {Array} list -
-     * @property {String} variant -
+     * @property {Array} list - Tambahkan deskripsi
+     * @property {String} variant - Tambahkan deskripsi
      */
     static properties = {
         list: { type: Array },
@@ -83,7 +84,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     getList(list) {
         let children;
@@ -108,7 +109,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     setList(list, indent = 0) {
         let expanded;
@@ -155,7 +156,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     select(list, data) {
         let activated;
@@ -181,7 +182,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     expand(list, data) {
         data.expanded = !data.expanded;

@@ -4,19 +4,20 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-chip
  * @fires MDChipComponent#onChipActionClick -
  */
 class MDChipComponent extends MDComponent {
     /**
-     * @property {String} variant -
-     * @property {String} avatar -
-     * @property {String} icon -
-     * @property {String} label -
-     * @property {String} action -
-     * @property {Boolean} selected -
-     * @property {Boolean} disabled -
+     * @property {String} variant - Tambahkan deskripsi
+     * @property {String} avatar - Tambahkan deskripsi
+     * @property {String} icon - Tambahkan deskripsi
+     * @property {String} label - Tambahkan deskripsi
+     * @property {String} action - Tambahkan deskripsi
+     * @property {Boolean} selected - Tambahkan deskripsi
+     * @property {Boolean} disabled - Tambahkan deskripsi
      */
     static properties = {
         variant: { type: String },

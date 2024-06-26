@@ -2,6 +2,7 @@ import { createQueue } from "../functions/functions.js";
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDSheetComponent
  * @tagname md-snackbar
  * @fires MDSnackbarComponent#onSnackbarShow -
@@ -24,7 +25,7 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show() {
         return MDSnackbarComponent.queue(() => {
@@ -50,7 +51,7 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     close() {
         super.close();

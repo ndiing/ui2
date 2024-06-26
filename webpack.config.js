@@ -65,6 +65,10 @@ const config = {
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
+    optimization: {
+        minimize: true, // Ensure JS files are minified
+      },
+    
 };
 
 module.exports = () => {

@@ -4,6 +4,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-switch
  * @fires MDSwitchComponent#onSwitchNativeInput -
@@ -11,15 +12,15 @@ import { MDRippleController } from "../ripple/ripple.js";
  */
 class MDSwitchComponent extends MDComponent {
     /**
-     * @property {Boolean} checked -
-     * @property {Boolean} defaultChecked -
-     * @property {Boolean} disabled -
-     * @property {Boolean} indeterminate -
-     * @property {String} value -
-     * @property {String} name -
-     * @property {Object} form -
-     * @property {String} type -
-     * @property {Array} icons -
+     * @property {Boolean} checked - Tambahkan deskripsi
+     * @property {Boolean} defaultChecked - Tambahkan deskripsi
+     * @property {Boolean} disabled - Tambahkan deskripsi
+     * @property {Boolean} indeterminate - Tambahkan deskripsi
+     * @property {String} value - Tambahkan deskripsi
+     * @property {String} name - Tambahkan deskripsi
+     * @property {Object} form - Tambahkan deskripsi
+     * @property {String} type - Tambahkan deskripsi
+     * @property {Array} icons - Tambahkan deskripsi
      */
     static properties = {
         checked: { type: Boolean },

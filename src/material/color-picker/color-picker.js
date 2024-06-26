@@ -4,6 +4,7 @@ import { hexToHsla, hslaToRgba, rgbaToHex, rgbaToHsla } from "../functions/funct
 import { MDPopperController } from "../popper/popper.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDSheetComponent
  * @tagname md-color-picker
  * @fires MDColorPickerComponent#onColorPickerIconButtonClick -
@@ -30,8 +31,8 @@ import { MDPopperController } from "../popper/popper.js";
  */
 class MDColorPickerComponent extends MDSheetComponent {
     /**
-     * @property {Number} index -
-     * @property {String} value -
+     * @property {Number} index - Tambahkan deskripsi
+     * @property {String} value - Tambahkan deskripsi
      */
     static properties = {
         ...MDSheetComponent.properties,
@@ -40,7 +41,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     };
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get body() {
         /* prettier-ignore */
@@ -52,14 +53,14 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get leadingActions() {
         let label = this.selection.hex;
@@ -68,7 +69,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
@@ -165,7 +166,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     init() {
         this.canvas = this.querySelector(".md-color-picker__gradient-track");
@@ -178,7 +179,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     draw() {
         const ctx = this.context;
@@ -202,7 +203,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     findPixel(r, g, b) {
         const data = this.data;
@@ -228,7 +229,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateHsla() {
         const { hue, saturation, lightness, red, green, blue, alpha } = hexToHsla(this.value);
@@ -243,7 +244,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateThumb() {
         const { x, y } = this.findPixel(this.selection.red, this.selection.green, this.selection.blue);
@@ -253,7 +254,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateRgba(event) {
         const { width, height, left, top } = this.canvasRect;
@@ -396,7 +397,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     showModal(button, options) {
         super.showModal();
@@ -405,7 +406,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show(button, options) {
         super.show();
@@ -414,7 +415,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

@@ -4,6 +4,7 @@ import { parseDatetimeLocal, stringifyDatetimeLocal, stringifyTime, stringifyYea
 import { MDPopperController } from "../popper/popper.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDSheetComponent
  * @tagname md-datetime-picker
  * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick -
@@ -30,8 +31,8 @@ import { MDPopperController } from "../popper/popper.js";
  */
 class MDDatetimePickerComponent extends MDSheetComponent {
     /**
-     * @property {Number} index -
-     * @property {String} value -
+     * @property {Number} index - Tambahkan deskripsi
+     * @property {String} value - Tambahkan deskripsi
      */
     static properties = {
         ...MDSheetComponent.properties,
@@ -40,7 +41,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     };
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get years() {
         const rows = [];
@@ -61,7 +62,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get months() {
         const rows = [];
@@ -81,21 +82,21 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get first() {
         return new Date(this.selection.getFullYear(), this.selection.getMonth()).getDay();
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get last() {
         return 32 - new Date(this.selection.getFullYear(), this.selection.getMonth(), 32).getDate();
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get weekdays() {
         const rows = [];
@@ -109,7 +110,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get days() {
         const rows = [];
@@ -137,7 +138,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get hours() {
         const rows = [];
@@ -161,7 +162,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get minutes() {
         const rows = [];
@@ -188,7 +189,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get body() {
         /* prettier-ignore */
@@ -204,14 +205,14 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get leadingActions() {
         let label;
@@ -230,7 +231,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get trailingActions() {
         return [
@@ -240,7 +241,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
@@ -393,7 +394,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     updateDate() {
         const date = parseDatetimeLocal(this.value);
@@ -571,14 +572,14 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     getValue() {
         return stringifyDatetimeLocal(this.selected);
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     showModal(button, options) {
         super.showModal();
@@ -587,7 +588,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     show(button, options) {
         super.show();
@@ -596,7 +597,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     *
+     * Tambahkan deskripsi
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

@@ -1,6 +1,7 @@
 import { MDTreeComponent } from "../tree/tree.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDTreeComponent
  * @tagname md-tabs
  */

@@ -3,15 +3,16 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
+ * Tambahkan deskripsi
  * @extends MDComponent
  * @tagname md-segmented-button
  * @fires MDSegmentedButtonComponent#onSegmentedButtonItemClick -
  */
 class MDSegmentedButtonComponent extends MDComponent {
     /**
-     * @property {Array} buttons -
-     * @property {Boolean} singleSelect -
-     * @property {Boolean} multiSelect -
+     * @property {Array} buttons - Tambahkan deskripsi
+     * @property {Boolean} singleSelect - Tambahkan deskripsi
+     * @property {Boolean} multiSelect - Tambahkan deskripsi
      */
     static properties = {
         ...MDComponent.properties,
