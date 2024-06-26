@@ -1,21 +1,19 @@
 /**
- * @extends undefined
- * @tagname undefined
- * @fires MDGestureController#onDragStart - 
- * @fires MDGestureController#onResizeStart - 
- * @fires MDGestureController#onSelectionStart - 
- * @fires MDGestureController#onLongPress - 
- * @fires MDGestureController#onDragStart - 
- * @fires MDGestureController#onResizeStart - 
- * @fires MDGestureController#onSelectionStart - 
- * @fires MDGestureController#onDrag - 
- * @fires MDGestureController#onResize - 
- * @fires MDGestureController#onSelection - 
- * @fires MDGestureController#onTap - 
- * @fires MDGestureController#onDoubleTap - 
- * @fires MDGestureController#onSelectionEnd - 
- * @fires MDGestureController#onDragEnd - 
- * @fires MDGestureController#onResizeEnd - 
+ * @fires MDGestureController#onDragStart -
+ * @fires MDGestureController#onResizeStart -
+ * @fires MDGestureController#onSelectionStart -
+ * @fires MDGestureController#onLongPress -
+ * @fires MDGestureController#onDragStart -
+ * @fires MDGestureController#onResizeStart -
+ * @fires MDGestureController#onSelectionStart -
+ * @fires MDGestureController#onDrag -
+ * @fires MDGestureController#onResize -
+ * @fires MDGestureController#onSelection -
+ * @fires MDGestureController#onTap -
+ * @fires MDGestureController#onDoubleTap -
+ * @fires MDGestureController#onSelectionEnd -
+ * @fires MDGestureController#onDragEnd -
+ * @fires MDGestureController#onResizeEnd -
  */
 class MDGestureController {
     constructor(host, options) {
@@ -34,9 +32,6 @@ class MDGestureController {
         };
     }
 
-    /**
-     * 
-     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -47,7 +42,7 @@ class MDGestureController {
     }
 
     /**
-     * 
+     *
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -83,7 +78,7 @@ class MDGestureController {
     }
 
     /**
-     * 
+     *
      */
     async hostDisconnected() {
         await this.host.updateComplete;

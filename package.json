@@ -32,7 +32,8 @@
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
     "prettier:write": "npx prettier src/ --write",
-    "prettier:check": "npx prettier src/ --check"
+    "prettier:check": "npx prettier src/ --check",
+    "jsdoc": "jsdoc -r src/material -d docs"
   },
   "dependencies": {
     "@lit/localize": "^0.12.1",

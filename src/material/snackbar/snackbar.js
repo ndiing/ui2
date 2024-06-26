@@ -4,8 +4,8 @@ import { MDSheetComponent } from "../sheet/sheet.js";
 /**
  * @extends MDSheetComponent
  * @tagname md-snackbar
- * @fires MDSnackbarComponent#onSnackbarShow - 
- * @fires MDSnackbarComponent#onSnackbarClose - 
+ * @fires MDSnackbarComponent#onSnackbarShow -
+ * @fires MDSnackbarComponent#onSnackbarClose -
  */
 class MDSnackbarComponent extends MDSheetComponent {
     /**
@@ -24,7 +24,7 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     show() {
         return MDSnackbarComponent.queue(() => {
@@ -50,7 +50,7 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     close() {
         super.close();

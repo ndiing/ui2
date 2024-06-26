@@ -5,20 +5,20 @@ import { ifDefined } from "lit/directives/if-defined.js";
 /**
  * @extends MDComponent
  * @tagname md-form
- * @fires MDFormComponent#onFormNativeReset - 
- * @fires MDFormComponent#onFormNativeSubmit - 
+ * @fires MDFormComponent#onFormNativeReset -
+ * @fires MDFormComponent#onFormNativeSubmit -
  */
 class MDFormComponent extends MDComponent {
     /**
-     * @property {String} acceptCharset - 
-     * @property {String} action - 
-     * @property {String} autocomplete - 
-     * @property {String} enctype - 
-     * @property {String} method - 
-     * @property {String} name - 
-     * @property {Boolean} novalidate - 
-     * @property {String} target - 
-     * @property {String} rel - 
+     * @property {String} acceptCharset -
+     * @property {String} action -
+     * @property {String} autocomplete -
+     * @property {String} enctype -
+     * @property {String} method -
+     * @property {String} name -
+     * @property {Boolean} novalidate -
+     * @property {String} target -
+     * @property {String} rel -
      */
     static properties = {
         acceptCharset: { type: String },

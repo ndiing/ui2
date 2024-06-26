@@ -7,20 +7,20 @@ import { calcDecimal, calcPercentage, isArrayString } from "../functions/functio
 /**
  * @extends MDComponent
  * @tagname md-slider
- * @fires MDSliderComponent#onSliderNativeInput - 
- * @fires MDSliderComponent#onSliderNativeReset - 
+ * @fires MDSliderComponent#onSliderNativeInput -
+ * @fires MDSliderComponent#onSliderNativeReset -
  */
 class MDSliderComponent extends MDComponent {
     /**
-     * @property {Array} defaultValue - 
-     * @property {Number} min - 
-     * @property {Number} max - 
-     * @property {Number} step - 
-     * @property {Boolean} disabled - 
-     * @property {String} form - 
-     * @property {String} name - 
-     * @property {String} list - 
-     * @property {String} autocomplete - 
+     * @property {Array} defaultValue -
+     * @property {Number} min -
+     * @property {Number} max -
+     * @property {Number} step -
+     * @property {Boolean} disabled -
+     * @property {String} form -
+     * @property {String} name -
+     * @property {String} list -
+     * @property {String} autocomplete -
      */
     static properties = {
         value: {
@@ -162,7 +162,7 @@ class MDSliderComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     get natives() {
         return this.querySelectorAll(".md-slider__native");

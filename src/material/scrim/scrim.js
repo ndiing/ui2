@@ -6,7 +6,7 @@ import { MDComponent } from "../component/component.js";
  */
 class MDScrimComponent extends MDComponent {
     /**
-     * @property {Boolean} open - 
+     * @property {Boolean} open -
      */
     static properties = {
         ...MDComponent.properties,
@@ -20,21 +20,21 @@ class MDScrimComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     show() {
         this.open = true;
     }
 
     /**
-     * 
+     *
      */
     close() {
         this.open = false;
     }
 
     /**
-     * 
+     *
      */
     toggle() {
         if (this.open) {

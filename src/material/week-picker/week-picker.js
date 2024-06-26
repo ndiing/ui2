@@ -5,25 +5,25 @@ import { html } from "lit";
 /**
  * @extends MDDatetimePickerComponent
  * @tagname md-week-picker
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerIconButtonPrevClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerIconButtonNextClick - 
- * @fires MDWeekPickerComponent#onWeekPickerButtonLabelClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerYearItemClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerMonthItemClick - 
- * @fires MDWeekPickerComponent#onWeekPickerSelection - 
- * @fires MDWeekPickerComponent#onWeekPickerDayItemClick - 
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerIconButtonPrevClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerIconButtonNextClick -
+ * @fires MDWeekPickerComponent#onWeekPickerButtonLabelClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerYearItemClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerMonthItemClick -
+ * @fires MDWeekPickerComponent#onWeekPickerSelection -
+ * @fires MDWeekPickerComponent#onWeekPickerDayItemClick -
  */
 class MDWeekPickerComponent extends MDDatetimePickerComponent {
     /**
-     * 
+     *
      */
     get weekdays() {
         const rows = [];
@@ -37,7 +37,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * 
+     *
      */
     get days() {
         const rows = [];
@@ -68,7 +68,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * 
+     *
      */
     get body() {
         /* prettier-ignore */
@@ -82,14 +82,14 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * 
+     *
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * 
+     *
      */
     get leadingActions() {
         let label;
@@ -135,7 +135,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * 
+     *
      */
     updateDate() {
         const date = parseWeek(this.value);
@@ -250,7 +250,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * 
+     *
      */
     getValue() {
         return stringifyWeek(this.selected);

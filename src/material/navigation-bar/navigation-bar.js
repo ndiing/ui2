@@ -15,7 +15,7 @@ class MDNavigationBarComponent extends MDSheetComponent {
     };
 
     /**
-     * 
+     *
      */
     get body() {
         /* prettier-ignore */
@@ -29,7 +29,7 @@ class MDNavigationBarComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     set body(value) {
         this._body = value;

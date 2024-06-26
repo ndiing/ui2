@@ -97,4 +97,3 @@ function loop(resolve) {
 }
 
 export { start, pause, resume, stop };
-

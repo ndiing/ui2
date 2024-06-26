@@ -3,11 +3,11 @@ import { MDCardComponent } from "../card/card.js";
 /**
  * @extends MDCardComponent
  * @tagname md-sheet
- * @fires MDSheetComponent#onSheetScrimClick - 
+ * @fires MDSheetComponent#onSheetScrimClick -
  */
 class MDSheetComponent extends MDCardComponent {
     /**
-     * @property {Boolean} open - 
+     * @property {Boolean} open -
      */
     static properties = {
         ...MDCardComponent.properties,
@@ -26,7 +26,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * 
+     *
      */
     showModal() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -52,7 +52,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * 
+     *
      */
     show() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -63,7 +63,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * 
+     *
      */
     close() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -80,7 +80,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * 
+     *
      */
     toggle(...args) {
         if (this.open) {

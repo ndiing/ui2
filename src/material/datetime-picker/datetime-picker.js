@@ -6,32 +6,32 @@ import { MDPopperController } from "../popper/popper.js";
 /**
  * @extends MDSheetComponent
  * @tagname md-datetime-picker
- * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonPrevClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonNextClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerButtonLabelClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerButtonCancelClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerButtonOkClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerYearItemClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerMonthItemClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerDayItemClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerHourItemClick - 
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection - 
- * @fires MDDatetimePickerComponent#onDatetimePickerMinuteItemClick - 
+ * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonPrevClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonNextClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerButtonLabelClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerButtonCancelClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerButtonOkClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerYearItemClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerMonthItemClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerDayItemClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerHourItemClick -
+ * @fires MDDatetimePickerComponent#onDatetimePickerSelection -
+ * @fires MDDatetimePickerComponent#onDatetimePickerMinuteItemClick -
  */
 class MDDatetimePickerComponent extends MDSheetComponent {
     /**
-     * @property {Number} index - 
-     * @property {String} value - 
+     * @property {Number} index -
+     * @property {String} value -
      */
     static properties = {
         ...MDSheetComponent.properties,
@@ -40,7 +40,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     };
 
     /**
-     * 
+     *
      */
     get years() {
         const rows = [];
@@ -61,7 +61,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get months() {
         const rows = [];
@@ -81,21 +81,21 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get first() {
         return new Date(this.selection.getFullYear(), this.selection.getMonth()).getDay();
     }
 
     /**
-     * 
+     *
      */
     get last() {
         return 32 - new Date(this.selection.getFullYear(), this.selection.getMonth(), 32).getDate();
     }
 
     /**
-     * 
+     *
      */
     get weekdays() {
         const rows = [];
@@ -109,7 +109,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get days() {
         const rows = [];
@@ -137,7 +137,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get hours() {
         const rows = [];
@@ -161,7 +161,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get minutes() {
         const rows = [];
@@ -188,7 +188,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get body() {
         /* prettier-ignore */
@@ -204,14 +204,14 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * 
+     *
      */
     get leadingActions() {
         let label;
@@ -230,7 +230,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get trailingActions() {
         return [
@@ -240,7 +240,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
@@ -393,7 +393,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     updateDate() {
         const date = parseDatetimeLocal(this.value);
@@ -571,14 +571,14 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     getValue() {
         return stringifyDatetimeLocal(this.selected);
     }
 
     /**
-     * 
+     *
      */
     showModal(button, options) {
         super.showModal();
@@ -587,7 +587,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     show(button, options) {
         super.show();
@@ -596,7 +596,7 @@ class MDDatetimePickerComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

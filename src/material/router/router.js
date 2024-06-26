@@ -1,14 +1,12 @@
 /**
- * @extends undefined
- * @tagname undefined
- * @fires MDRouter#onRouterCurrentEntryChange - 
- * @fires MDRouter#onRouterNavigate - 
- * @fires MDRouter#onRouterNavigateError - 
- * @fires MDRouter#onRouterNavigateSuccess - 
+ * @fires MDRouter#onRouterCurrentEntryChange -
+ * @fires MDRouter#onRouterNavigate -
+ * @fires MDRouter#onRouterNavigateError -
+ * @fires MDRouter#onRouterNavigateSuccess -
  */
 class MDRouter {
     /**
-     * 
+     *
      */
     static setRoutes(routes, parent) {
         return routes.reduce((acc, curr) => {
@@ -25,7 +23,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static get path() {
         if (this.historyApiFallback) {
@@ -36,7 +34,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static get query() {
         let search;
@@ -63,7 +61,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static getRoute(path) {
         return this.stacks.find((route) => {
@@ -81,7 +79,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static getRoutes(route) {
         return [route].reduce((acc, curr) => {
@@ -96,7 +94,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static getOutlet(container, route) {
         return new Promise((resolve) => {
@@ -215,7 +213,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static navigate(url) {
         if (this.historyApiFallback) {
@@ -235,9 +233,6 @@ class MDRouter {
 
     static historyApiFallback = true;
 
-    /**
-     * 
-     */
     static emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -248,7 +243,7 @@ class MDRouter {
     }
 
     /**
-     * 
+     *
      */
     static init(routes) {
         this.stacks = this.setRoutes(routes);

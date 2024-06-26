@@ -7,23 +7,23 @@ import { MDGestureController } from "../gesture/gesture.js";
 /**
  * @extends MDComponent
  * @tagname md-list
- * @fires MDListComponent#onListItemClick - 
- * @fires MDListComponent#handleListKeydown - 
- * @fires MDListComponent#onListItemSelectionStart - 
- * @fires MDListComponent#onListItemSelection - 
- * @fires MDListComponent#onListItemSelectionEnd - 
- * @fires MDListComponent#onListItemCheckboxNativeInput - 
- * @fires MDListComponent#onListItemRadioButtonNativeInput - 
- * @fires MDListComponent#onListItemSwitchNativeInput - 
+ * @fires MDListComponent#onListItemClick -
+ * @fires MDListComponent#handleListKeydown -
+ * @fires MDListComponent#onListItemSelectionStart -
+ * @fires MDListComponent#onListItemSelection -
+ * @fires MDListComponent#onListItemSelectionEnd -
+ * @fires MDListComponent#onListItemCheckboxNativeInput -
+ * @fires MDListComponent#onListItemRadioButtonNativeInput -
+ * @fires MDListComponent#onListItemSwitchNativeInput -
  */
 class MDListComponent extends MDComponent {
     /**
-     * @property {Array} list - 
-     * @property {Boolean} selection - 
-     * @property {Boolean} rangeSelection - 
-     * @property {Boolean} multiSelection - 
-     * @property {Boolean} singleSelection - 
-     * @property {Boolean} allSelection - 
+     * @property {Array} list -
+     * @property {Boolean} selection -
+     * @property {Boolean} rangeSelection -
+     * @property {Boolean} multiSelection -
+     * @property {Boolean} singleSelection -
+     * @property {Boolean} allSelection -
      */
     static properties = {
         list: { type: Array },
@@ -91,7 +91,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     select(data) {
         for (let i = 0; i < this.list.length; i++) {
@@ -102,7 +102,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     multiSelect(data) {
         data.selected = !data.selected;
@@ -113,7 +113,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     selectRange(data) {
         this.endIndex = this.endIndex || 0;
@@ -135,7 +135,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     selectAll() {
         for (let i = 0; i < this.list.length; i++) {

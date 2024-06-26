@@ -6,7 +6,7 @@ import { MDPopperController } from "../popper/popper.js";
 /**
  * @extends MDSheetComponent
  * @tagname md-menu
- * @fires MDMenuComponent#onMenuTreeItemClick - 
+ * @fires MDMenuComponent#onMenuTreeItemClick -
  */
 class MDMenuComponent extends MDSheetComponent {
     /**
@@ -17,7 +17,7 @@ class MDMenuComponent extends MDSheetComponent {
     };
 
     /**
-     * 
+     *
      */
     get body() {
         /* prettier-ignore */
@@ -32,7 +32,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     set body(value) {
         this._body = value;
@@ -56,7 +56,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     showModal(button, options) {
         super.showModal();
@@ -65,7 +65,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     show(button, options) {
         super.show();
@@ -74,7 +74,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

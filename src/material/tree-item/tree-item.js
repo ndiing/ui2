@@ -8,24 +8,24 @@ import { isDefined } from "../functions/functions.js";
 /**
  * @extends MDComponent
  * @tagname md-tree-item
- * @fires MDTreeItemComponent#onTreeItemSelected - 
+ * @fires MDTreeItemComponent#onTreeItemSelected -
  */
 class MDTreeItemComponent extends MDComponent {
     /**
-     * @property {String} icon - 
-     * @property {String} label - 
-     * @property {Number} badge - 
-     * @property {Boolean} selected - 
-     * @property {String} routerLink - 
-     * @property {Number} indent - 
-     * @property {Boolean} isNode - 
-     * @property {Boolean} expanded - 
-     * @property {Boolean} activated - 
-     * @property {String} variant - 
-     * @property {Boolean} isParent - 
-     * @property {Array} nodeActions - 
-     * @property {Array} nodeIcons - 
-     * @property {Array} leafIcons - 
+     * @property {String} icon -
+     * @property {String} label -
+     * @property {Number} badge -
+     * @property {Boolean} selected -
+     * @property {String} routerLink -
+     * @property {Number} indent -
+     * @property {Boolean} isNode -
+     * @property {Boolean} expanded -
+     * @property {Boolean} activated -
+     * @property {String} variant -
+     * @property {Boolean} isParent -
+     * @property {Array} nodeActions -
+     * @property {Array} nodeIcons -
+     * @property {Array} leafIcons -
      */
     static properties = {
         icon: { type: String },
@@ -45,7 +45,7 @@ class MDTreeItemComponent extends MDComponent {
     };
 
     /**
-     * 
+     *
      */
     get nodeActions_() {
         let icons = [];
@@ -67,7 +67,7 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     get nodeIcons_() {
         let icons = [];
@@ -86,7 +86,7 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     get leafIcons_() {
         let icons = [];
@@ -105,28 +105,28 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     get nodeAction() {
         return this.nodeActions_[~~this.expanded];
     }
 
     /**
-     * 
+     *
      */
     get nodeicon() {
         return this.nodeIcons_[~~this.expanded];
     }
 
     /**
-     * 
+     *
      */
     get leafIcon() {
         return this.leafIcons_[~~this.selected];
     }
 
     /**
-     * 
+     *
      */
     get icon_() {
         return this.isNode ? this.nodeicon : this.leafIcon;

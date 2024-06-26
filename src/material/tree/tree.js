@@ -8,12 +8,12 @@ import { isDefined } from "../functions/functions.js";
 /**
  * @extends MDComponent
  * @tagname md-tree
- * @fires MDTreeComponent#onTreeItemClick - 
+ * @fires MDTreeComponent#onTreeItemClick -
  */
 class MDTreeComponent extends MDComponent {
     /**
-     * @property {Array} list - 
-     * @property {String} variant - 
+     * @property {Array} list -
+     * @property {String} variant -
      */
     static properties = {
         list: { type: Array },
@@ -83,7 +83,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     getList(list) {
         let children;
@@ -108,7 +108,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     setList(list, indent = 0) {
         let expanded;
@@ -155,7 +155,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     select(list, data) {
         let activated;
@@ -181,7 +181,7 @@ class MDTreeComponent extends MDComponent {
     }
 
     /**
-     * 
+     *
      */
     expand(list, data) {
         data.expanded = !data.expanded;

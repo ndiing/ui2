@@ -7,8 +7,8 @@ import { MDComponent } from "../component/component.js";
  */
 class MDBadgeComponent extends MDComponent {
     /**
-     * @property {Number} label - 
-     * @property {Number} limit - 
+     * @property {Number} label -
+     * @property {Number} limit -
      */
     static properties = {
         label: { type: Number },

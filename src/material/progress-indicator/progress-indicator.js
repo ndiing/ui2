@@ -8,9 +8,9 @@ import { calcPercentage } from "../functions/functions.js";
  */
 class MDProgressIndicatorComponent extends MDComponent {
     /**
-     * @property {String} variant - 
-     * @property {Number} value - 
-     * @property {Number} max - 
+     * @property {String} variant -
+     * @property {Number} value -
+     * @property {Number} max -
      */
     static properties = {
         variant: { type: String },

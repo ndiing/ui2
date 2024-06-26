@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: color-picker/color-picker.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: color-picker/color-picker.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { html } from "lit";
+import { MDSheetComponent } from "../sheet/sheet.js";
+import { hexToHsla, hslaToRgba, rgbaToHex, rgbaToHsla } from "../functions/functions.js";
+import { MDPopperController } from "../popper/popper.js";
+
+
+
+
+/**
+ * @extends MDSheetComponent
+ * @tagname md-color-picker
+ * @fires MDColorPickerComponent#onColorPickerIconButtonClick - 
+ * @fires MDColorPickerComponent#onColorPickerButtonClick - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerIconButtonPrevClick - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerIconButtonNextClick - 
+ * @fires MDColorPickerComponent#onColorPickerButtonLabelClick - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerButtonCancelClick - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerButtonOkClick - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerdown - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointermove - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerup - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerHueNativeInput - 
+ * @fires MDColorPickerComponent#onColorPickerSelection - 
+ * @fires MDColorPickerComponent#onColorPickerOpacityNativeInput - 
+ */
+class MDColorPickerComponent extends MDSheetComponent {
+    
+    
+    
+    /**
+     * @property {Number} index - 
+     * @property {String} value - 
+     */
+    static properties = {
+        ...MDSheetComponent.properties,
+        index: { type: Number },
+        value: { type: String },
+    };
+
+    
+    
+    
+    /**
+     * 
+     */
+    get body() {
+        /* prettier-ignore */
+        return [html`
+            &lt;div class="md-color-picker__card">
+                &lt;div class="md-color-picker__card-item">${this.renderArea()}&lt;/div>
+            &lt;/div>
+        `];
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    set body(value) {
+        this._body = value;
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    get leadingActions() {
+        let label = this.selection.hex;
+
+        return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    get actions() {
+        return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
+    }
+
+    constructor() {
+        super();
+
+        this.selection = {};
+
+        this.index = 0;
+
+        this.value = "#000000";
+
+        this.handleColorPickerGradientTrackPointermove = this.handleColorPickerGradientTrackPointermove.bind(this);
+        this.handleColorPickerGradientTrackPointerup = this.handleColorPickerGradientTrackPointerup.bind(this);
+
+        this.popper = new MDPopperController(this, {});
+    }
+
+    renderArea() {
+        /* prettier-ignore */
+        return html`
+            &lt;div class="md-color-picker__area">
+                &lt;div class="md-color-picker__gradient">
+                    &lt;canvas 
+                        class="md-color-picker__gradient-track"
+                        width="360"
+                        height="256"
+                        @pointerdown="${this.handleColorPickerGradientTrackPointerdown}"
+                    >&lt;/canvas>
+                    &lt;div class="md-color-picker__gradient-thumb">&lt;/div>
+                &lt;/div>
+                &lt;label class="md-color-picker__hue">
+                    &lt;div class="md-color-picker__hue-label">Hue&lt;/div>
+                    &lt;input 
+                        type="range" 
+                        class="md-color-picker__hue-native"
+                        min="0"
+                        max="360"
+                        .value="${this.selection.hue}"
+                        @input="${this.handleColorPickerHueNativeInput}"
+                    >
+                &lt;/label>
+                &lt;label class="md-color-picker__opacity">
+                    &lt;div class="md-color-picker__opacity-label">Opacity&lt;/div>
+                    &lt;input 
+                        type="range" 
+                        class="md-color-picker__opacity-native"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        .value="${this.selection.alpha}"
+                        @input="${this.handleColorPickerOpacityNativeInput}"
+                    >
+                &lt;/label>
+            &lt;/div>
+        `;
+    }
+
+    async connectedCallback() {
+        super.connectedCallback();
+
+        this.classList.add("md-card");
+        this.classList.add("md-color-picker");
+
+        this.defaultValue = this.value;
+
+        this.updateHsla();
+
+        await this.updateComplete;
+
+        this.init();
+    }
+
+    async updated(changedProperties) {
+        super.updated(changedProperties);
+
+        if (changedProperties.has("index")) {
+            this.style.setProperty("--md-comp-color-picker-card-index", this.index);
+        }
+
+        if (changedProperties.has("value") &amp;&amp; changedProperties.get("value")) {
+            if (this.value) {
+                await this.updateComplete;
+                this.updateHsla();
+                this.draw();
+                this.updateThumb();
+                this.requestUpdate();
+            }
+        }
+
+        this.style.setProperty("--md-comp-color-picker-base", `rgb(${this.selection.red},${this.selection.green},${this.selection.blue})`);
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    init() {
+        this.canvas = this.querySelector(".md-color-picker__gradient-track");
+        this.thumb = this.querySelector(".md-color-picker__gradient-thumb");
+
+        this.context = this.canvas.getContext("2d", { willReadFrequently: true });
+
+        this.draw();
+        this.updateThumb();
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    draw() {
+        const ctx = this.context;
+
+        ctx.fillStyle = `hsl(${this.selection.hue}deg, 100%, 50%)`;
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const gradient2 = ctx.createLinearGradient(0, 0, this.canvas.width, 0);
+        gradient2.addColorStop(0 + 1 / 100, "#ffffff");
+        gradient2.addColorStop(1, "transparent");
+        ctx.fillStyle = gradient2;
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const gradient1 = ctx.createLinearGradient(0, 0, 0, this.canvas.height);
+        gradient1.addColorStop(0, "transparent");
+        gradient1.addColorStop(1, "#000000");
+        ctx.fillStyle = gradient1;
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.data = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    findPixel(r, g, b) {
+        const data = this.data;
+        let xx;
+        let yy;
+
+        for (let y = 0; y &lt; this.canvas.height; y++) {
+            for (let x = 0; x &lt; this.canvas.width; x++) {
+                const index = (y * this.canvas.width + x) * 4;
+
+                const red = data[index];
+                const green = data[index + 1];
+                const blue = data[index + 2];
+
+                if (red === r &amp;&amp; green === g &amp;&amp; blue === b) {
+                    xx = x;
+                    yy = y;
+                }
+            }
+        }
+
+        return { x: xx, y: yy };
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    updateHsla() {
+        const { hue, saturation, lightness, red, green, blue, alpha } = hexToHsla(this.value);
+        this.selection.hue = hue;
+        this.selection.saturation = saturation;
+        this.selection.lightness = lightness;
+        this.selection.red = red;
+        this.selection.green = green;
+        this.selection.blue = blue;
+        this.selection.alpha = alpha;
+        this.selection.hex = this.value;
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    updateThumb() {
+        const { x, y } = this.findPixel(this.selection.red, this.selection.green, this.selection.blue);
+
+        this.thumb.style.left = x + "px";
+        this.thumb.style.top = y + "px";
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    updateRgba(event) {
+        const { width, height, left, top } = this.canvasRect;
+        const x = Math.min(Math.max(0, event.clientX - left), width - 1 / 100);
+        const y = Math.min(Math.max(0, event.clientY - top), height);
+
+        const [red, green, blue] = this.context.getImageData(x, y, width, height).data;
+        this.selection.red = red;
+        this.selection.green = green;
+        this.selection.blue = blue;
+
+        const { hue, saturation, lightness } = rgbaToHsla(this.selection.red, this.selection.green, this.selection.blue);
+        this.selection.saturation = saturation;
+        this.selection.lightness = lightness;
+
+        this.selection.hex = rgbaToHex(this.selection.red, this.selection.green, this.selection.blue, this.selection.alpha);
+
+        this.thumb.style.left = x + "px";
+        this.thumb.style.top = y + "px";
+
+        this.requestUpdate();
+    }
+
+    handleCardIconButtonClick(event) {
+        if (event.currentTarget.name == "prev") {
+            this.handleCardIconButtonPrevClick(event);
+        } else if (event.currentTarget.name == "next") {
+            this.handleCardIconButtonNextClick(event);
+        }
+        this.emit("onColorPickerIconButtonClick", event);
+    }
+
+    handleCardButtonClick(event) {
+        if (event.currentTarget.name == "label") {
+            this.handleCardButtonLabelClick(event);
+        } else if (event.currentTarget.name == "cancel") {
+            this.handleCardButtonCancelClick(event);
+        } else if (event.currentTarget.name == "ok") {
+            this.handleCardButtonOkClick(event);
+        }
+        this.emit("onColorPickerButtonClick", event);
+    }
+
+    handleCardIconButtonPrevClick(event) {
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerIconButtonPrevClick", event);
+    }
+
+    handleCardIconButtonNextClick(event) {
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerIconButtonNextClick", event);
+    }
+
+    handleCardButtonLabelClick(event) {
+        this.emit("onColorPickerButtonLabelClick", event);
+    }
+
+    handleCardButtonCancelClick(event) {
+        this.value = this.defaultValue;
+        this.updateHsla();
+        this.draw();
+        this.updateThumb();
+        this.requestUpdate();
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerButtonCancelClick", event);
+    }
+
+    handleCardButtonOkClick(event) {
+        this.value = this.selection.hex;
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerButtonOkClick", event);
+    }
+
+    handleColorPickerGradientTrackPointerdown(event) {
+        window.addEventListener("pointermove", this.handleColorPickerGradientTrackPointermove);
+        window.addEventListener("pointerup", this.handleColorPickerGradientTrackPointerup);
+
+        document.documentElement.classList.add("md-gesture--unselectable");
+
+        this.canvasRect = this.canvas.getBoundingClientRect();
+
+        this.updateRgba(event);
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerGradientTrackPointerdown", event);
+    }
+
+    handleColorPickerGradientTrackPointermove(event) {
+        this.updateRgba(event);
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerGradientTrackPointermove", event);
+    }
+
+    handleColorPickerGradientTrackPointerup(event) {
+        this.updateRgba(event);
+
+        document.documentElement.classList.remove("md-gesture--unselectable");
+
+        window.removeEventListener("pointermove", this.handleColorPickerGradientTrackPointermove);
+        window.removeEventListener("pointerup", this.handleColorPickerGradientTrackPointerup);
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerGradientTrackPointerup", event);
+    }
+
+    handleColorPickerHueNativeInput(event) {
+        const hue = parseFloat(event.currentTarget.value);
+
+        this.selection.hue = hue;
+
+        this.draw();
+
+        const { red, green, blue } = hslaToRgba(this.selection.hue, this.selection.saturation, this.selection.lightness);
+        this.selection.red = red;
+        this.selection.green = green;
+        this.selection.blue = blue;
+
+        this.selection.hex = rgbaToHex(this.selection.red, this.selection.green, this.selection.blue, this.selection.alpha);
+
+        this.requestUpdate();
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerHueNativeInput", event);
+    }
+
+    handleColorPickerOpacityNativeInput(event) {
+        const alpha = parseFloat(event.currentTarget.value);
+
+        this.selection.alpha = alpha;
+
+        this.selection.hex = rgbaToHex(this.selection.red, this.selection.green, this.selection.blue, this.selection.alpha);
+
+        this.requestUpdate();
+
+        this.emit("onColorPickerSelection", event);
+        this.emit("onColorPickerOpacityNativeInput", event);
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    showModal(button, options) {
+        super.showModal();
+
+        this.setPlacement(button, options);
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    show(button, options) {
+        super.show();
+
+        this.setPlacement(button, options);
+    }
+
+    
+    
+    
+    /**
+     * 
+     */
+    setPlacement(button, options) {
+        this.popper.setPlacement(button, {
+            placements: ["top-start", "top-end", "top", "below-start", "below-end", "below", "bottom-start", "bottom-end", "bottom", "above-start", "above-end", "above", "left-start", "left-end", "left", "after-start", "after-end", "after", "right-start", "right-end", "right", "before-start", "before-end", "before", "center"],
+            ...options,
+        });
+    }
+}
+
+customElements.define("md-color-picker", MDColorPickerComponent);
+
+export { MDColorPickerComponent };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="MDAttributeObserver.html">MDAttributeObserver</a></li><li><a href="MDBadgeComponent.html">MDBadgeComponent</a></li><li><a href="MDBottomAppBarComponent.html">MDBottomAppBarComponent</a></li><li><a href="MDBottomSheetComponent.html">MDBottomSheetComponent</a></li><li><a href="MDButtonComponent.html">MDButtonComponent</a></li><li><a href="MDCardComponent.html">MDCardComponent</a></li><li><a href="MDCheckboxComponent.html">MDCheckboxComponent</a></li><li><a href="MDChipComponent.html">MDChipComponent</a></li><li><a href="MDChipsComponent.html">MDChipsComponent</a></li><li><a href="MDColorPickerComponent.html">MDColorPickerComponent</a></li><li><a href="MDComponent.html">MDComponent</a></li><li><a href="MDDatePickerComponent.html">MDDatePickerComponent</a></li><li><a href="MDDatetimePickerComponent.html">MDDatetimePickerComponent</a></li><li><a href="MDDialogComponent.html">MDDialogComponent</a></li><li><a href="MDEmojiComponent.html">MDEmojiComponent</a></li><li><a href="MDFabComponent.html">MDFabComponent</a></li><li><a href="MDFormComponent.html">MDFormComponent</a></li><li><a href="MDGestureController.html">MDGestureController</a></li><li><a href="MDIconButtonComponent.html">MDIconButtonComponent</a></li><li><a href="MDIconComponent.html">MDIconComponent</a></li><li><a href="MDImageComponent.html">MDImageComponent</a></li><li><a href="MDListComponent.html">MDListComponent</a></li><li><a href="MDListItemComponent.html">MDListItemComponent</a></li><li><a href="MDMenuComponent.html">MDMenuComponent</a></li><li><a href="MDMonthPickerComponent.html">MDMonthPickerComponent</a></li><li><a href="MDNavigationBarComponent.html">MDNavigationBarComponent</a></li><li><a href="MDObserver.html">MDObserver</a></li><li><a href="MDPopperController.html">MDPopperController</a></li><li><a href="MDProgressIndicatorComponent.html">MDProgressIndicatorComponent</a></li><li><a href="MDRadioButtonComponent.html">MDRadioButtonComponent</a></li><li><a href="MDRippleController.html">MDRippleController</a></li><li><a href="MDRouter.html">MDRouter</a></li><li><a href="MDScrimComponent.html">MDScrimComponent</a></li><li><a href="MDSegmentedButtonComponent.html">MDSegmentedButtonComponent</a></li><li><a href="MDSheetComponent.html">MDSheetComponent</a></li><li><a href="MDSideSheetComponent.html">MDSideSheetComponent</a></li><li><a href="MDSliderComponent.html">MDSliderComponent</a></li><li><a href="MDSnackbarComponent.html">MDSnackbarComponent</a></li><li><a href="MDSwitchComponent.html">MDSwitchComponent</a></li><li><a href="MDTabsComponent.html">MDTabsComponent</a></li><li><a href="MDTextFieldComponent.html">MDTextFieldComponent</a></li><li><a href="MDTimePickerComponent.html">MDTimePickerComponent</a></li><li><a href="MDTooltipComponent.html">MDTooltipComponent</a></li><li><a href="MDTopAppBarComponent.html">MDTopAppBarComponent</a></li><li><a href="MDTreeComponent.html">MDTreeComponent</a></li><li><a href="MDTreeItemComponent.html">MDTreeItemComponent</a></li><li><a href="MDVirtualController.html">MDVirtualController</a></li><li><a href="MDWeekPickerComponent.html">MDWeekPickerComponent</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 09:02:10 GMT+0700 (Western Indonesia Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

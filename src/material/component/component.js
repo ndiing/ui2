@@ -3,7 +3,6 @@ import { updateWhenLocaleChanges } from "@lit/localize";
 
 /**
  * @extends LitElement
- * @tagname undefined
  */
 class MDComponent extends LitElement {
     constructor() {
@@ -11,24 +10,15 @@ class MDComponent extends LitElement {
         updateWhenLocaleChanges(this);
     }
 
-    /**
-     * 
-     */
     createRenderRoot() {
         return this;
     }
 
-    /**
-     * 
-     */
     on(type, listener) {
         listener = listener.bind(this);
         this.addEventListener(type, listener);
     }
 
-    /**
-     * 
-     */
     once(type, listener) {
         const handleListener = (event) => {
             listener(event);
@@ -37,16 +27,10 @@ class MDComponent extends LitElement {
         this.on(type, handleListener);
     }
 
-    /**
-     * 
-     */
     off(type, listener) {
         this.removeEventListener(type, listener);
     }
 
-    /**
-     * 
-     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,

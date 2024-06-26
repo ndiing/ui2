@@ -6,19 +6,19 @@ import { MDRippleController } from "../ripple/ripple.js";
 /**
  * @extends MDComponent
  * @tagname md-checkbox
- * @fires MDCheckboxComponent#onCheckboxNativeInput - 
- * @fires MDCheckboxComponent#onCheckboxNativeReset - 
+ * @fires MDCheckboxComponent#onCheckboxNativeInput -
+ * @fires MDCheckboxComponent#onCheckboxNativeReset -
  */
 class MDCheckboxComponent extends MDComponent {
     /**
-     * @property {Boolean} checked - 
-     * @property {Boolean} defaultChecked - 
-     * @property {Boolean} disabled - 
-     * @property {Boolean} indeterminate - 
-     * @property {String} value - 
-     * @property {String} name - 
-     * @property {Object} form - 
-     * @property {String} type - 
+     * @property {Boolean} checked -
+     * @property {Boolean} defaultChecked -
+     * @property {Boolean} disabled -
+     * @property {Boolean} indeterminate -
+     * @property {String} value -
+     * @property {String} name -
+     * @property {Object} form -
+     * @property {String} type -
      */
     static properties = {
         checked: { type: Boolean },

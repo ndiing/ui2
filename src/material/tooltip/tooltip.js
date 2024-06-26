@@ -22,7 +22,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     showModal(button, options) {
         super.showModal();
@@ -31,7 +31,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     show(button, options) {
         super.show();
@@ -40,7 +40,7 @@ class MDTooltipComponent extends MDSheetComponent {
     }
 
     /**
-     * 
+     *
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

@@ -7,18 +7,18 @@ import { MDRippleController } from "../ripple/ripple.js";
 /**
  * @extends MDComponent
  * @tagname md-card
- * @fires MDCardComponent#onCardIconButtonClick - 
- * @fires MDCardComponent#onCardButtonClick - 
- * @fires MDCardComponent#onCardFabClick - 
+ * @fires MDCardComponent#onCardIconButtonClick -
+ * @fires MDCardComponent#onCardButtonClick -
+ * @fires MDCardComponent#onCardFabClick -
  */
 class MDCardComponent extends MDComponent {
     /**
-     * @property {String} variant - 
-     * @property {Array} leadingActions - 
-     * @property {String} label - 
-     * @property {String} subLabel - 
-     * @property {Array} trailingActions - 
-     * @property {Array} actions - 
+     * @property {String} variant -
+     * @property {Array} leadingActions -
+     * @property {String} label -
+     * @property {String} subLabel -
+     * @property {Array} trailingActions -
+     * @property {Array} actions -
      */
     static properties = {
         variant: { type: String },

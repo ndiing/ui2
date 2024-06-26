@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const [,,name] = process.argv
+const [, , name] = process.argv;
 
 function read(file, data) {
     try {
@@ -23,11 +23,11 @@ function write(file, data) {
     fs.writeFileSync(file, data);
 }
 
-let content = read("./src/material/"+name+"/"+name+".js");
+let content = read("./src/material/" + name + "/" + name + ".js");
 
-content=content.replace(/\/\*\*[\s\S]+?\*\//gm, ($,) => {
-    return''
-})
+content = content.replace(/\/\*\*[\s\S]+?\*\//gm, ($) => {
+    return "";
+});
 
 let emits = [];
 
@@ -48,7 +48,24 @@ content = content.replace(/(^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) 
     code += `     * \r\n`;
     code += `     */\r\n`;
     code += text;
-    if (![/^render/, /^handle/, /^firstUpdate/, /^updated/, /^connected/, /^disconnected/, /^constructor/, /style$/i].some((regexp) => regexp.test(methodName))) {
+    if (
+        ![
+            //
+            /^render/,
+            /^handle/,
+            /^firstUpdate/,
+            /^updated/,
+            /^connected/,
+            /^disconnected/,
+            /^constructor/,
+            /style$/i,
+            /^on$/,
+            /^off$/,
+            /^emit$/,
+            /^createRenderRoot$/,
+            /^once$/,
+        ].some((regexp) => regexp.test(methodName))
+    ) {
         return code;
     }
     return text;
@@ -78,8 +95,8 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
     let code = "";
     code += `/**\r\n`;
 
-    code += ` * @extends ${inheritName}\r\n`;
-    code += ` * @tagname ${tagName}\r\n`;
+    if (inheritName) code += ` * @extends ${inheritName}\r\n`;
+    if (tagName) code += ` * @tagname ${tagName}\r\n`;
     for (let doc of emits) {
         code += ` * @fires ${className}#${doc.eventName} - \r\n`;
     }
@@ -88,5 +105,5 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
     return code;
 });
 
-write("./src/material/"+name+"/"+name+".js",content)
+write("./src/material/" + name + "/" + name + ".js", content);
 // console.log(content)

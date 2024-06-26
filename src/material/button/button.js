@@ -8,12 +8,12 @@ import { MDRippleController } from "../ripple/ripple.js";
  */
 class MDButtonComponent extends MDComponent {
     /**
-     * @property {String} variant - 
-     * @property {String} type - 
-     * @property {String} icon - 
-     * @property {String} label - 
-     * @property {Boolean} selected - 
-     * @property {Boolean} disabled - 
+     * @property {String} variant -
+     * @property {String} type -
+     * @property {String} icon -
+     * @property {String} label -
+     * @property {Boolean} selected -
+     * @property {Boolean} disabled -
      */
     static properties = {
         variant: { type: String },

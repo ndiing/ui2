@@ -10,22 +10,22 @@ import { MDGestureController } from "../gesture/gesture.js";
  */
 class MDListItemComponent extends MDComponent {
     /**
-     * @property {String} avatar - 
-     * @property {String} thumbnail - 
-     * @property {String} video - 
-     * @property {String} icon - 
-     * @property {String} label - 
-     * @property {String} subLabel - 
-     * @property {Number} badge - 
-     * @property {String} text - 
-     * @property {Boolean} leadingCheckbox - 
-     * @property {Boolean} leadingRadioButton - 
-     * @property {Boolean} leadingSwitch - 
-     * @property {Boolean} trailingCheckbox - 
-     * @property {Boolean} trailingRadioButton - 
-     * @property {Boolean} trailingSwitch - 
-     * @property {Boolean} selected - 
-     * @property {String} routerLink - 
+     * @property {String} avatar -
+     * @property {String} thumbnail -
+     * @property {String} video -
+     * @property {String} icon -
+     * @property {String} label -
+     * @property {String} subLabel -
+     * @property {Number} badge -
+     * @property {String} text -
+     * @property {Boolean} leadingCheckbox -
+     * @property {Boolean} leadingRadioButton -
+     * @property {Boolean} leadingSwitch -
+     * @property {Boolean} trailingCheckbox -
+     * @property {Boolean} trailingRadioButton -
+     * @property {Boolean} trailingSwitch -
+     * @property {Boolean} selected -
+     * @property {String} routerLink -
      */
     static properties = {
         avatar: { type: String },
