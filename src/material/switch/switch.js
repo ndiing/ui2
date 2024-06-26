@@ -3,7 +3,24 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-switch
+ * @fires MDSwitchComponent#onSwitchNativeInput - 
+ * @fires MDSwitchComponent#onSwitchNativeReset - 
+ */
 class MDSwitchComponent extends MDComponent {
+    /**
+     * @property {Boolean} checked - 
+     * @property {Boolean} defaultChecked - 
+     * @property {Boolean} disabled - 
+     * @property {Boolean} indeterminate - 
+     * @property {String} value - 
+     * @property {String} name - 
+     * @property {Object} form - 
+     * @property {String} type - 
+     * @property {Array} icons - 
+     */
     static properties = {
         checked: { type: Boolean },
         defaultChecked: { type: Boolean },

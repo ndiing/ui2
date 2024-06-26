@@ -2,7 +2,16 @@ import { html } from "lit";
 import { MDComponent } from "../component/component.js";
 import { calcPercentage } from "../functions/functions.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-progress-indicator
+ */
 class MDProgressIndicatorComponent extends MDComponent {
+    /**
+     * @property {String} variant - 
+     * @property {Number} value - 
+     * @property {Number} max - 
+     */
     static properties = {
         variant: { type: String },
         value: { type: Number },

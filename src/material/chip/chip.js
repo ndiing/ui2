@@ -3,7 +3,21 @@ import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-chip
+ * @fires MDChipComponent#onChipActionClick - 
+ */
 class MDChipComponent extends MDComponent {
+    /**
+     * @property {String} variant - 
+     * @property {String} avatar - 
+     * @property {String} icon - 
+     * @property {String} label - 
+     * @property {String} action - 
+     * @property {Boolean} selected - 
+     * @property {Boolean} disabled - 
+     */
     static properties = {
         variant: { type: String },
         avatar: { type: String },

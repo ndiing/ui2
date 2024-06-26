@@ -4,7 +4,27 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-list
+ * @fires MDListComponent#onListItemClick - 
+ * @fires MDListComponent#handleListKeydown - 
+ * @fires MDListComponent#onListItemSelectionStart - 
+ * @fires MDListComponent#onListItemSelection - 
+ * @fires MDListComponent#onListItemSelectionEnd - 
+ * @fires MDListComponent#onListItemCheckboxNativeInput - 
+ * @fires MDListComponent#onListItemRadioButtonNativeInput - 
+ * @fires MDListComponent#onListItemSwitchNativeInput - 
+ */
 class MDListComponent extends MDComponent {
+    /**
+     * @property {Array} list - 
+     * @property {Boolean} selection - 
+     * @property {Boolean} rangeSelection - 
+     * @property {Boolean} multiSelection - 
+     * @property {Boolean} singleSelection - 
+     * @property {Boolean} allSelection - 
+     */
     static properties = {
         list: { type: Array },
 
@@ -70,6 +90,9 @@ class MDListComponent extends MDComponent {
         this.off("keydown", this.handleListKeydown);
     }
 
+    /**
+     * 
+     */
     select(data) {
         for (let i = 0; i < this.list.length; i++) {
             let item = this.list[i];
@@ -78,6 +101,9 @@ class MDListComponent extends MDComponent {
         this.endIndex = this.list.indexOf(data);
     }
 
+    /**
+     * 
+     */
     multiSelect(data) {
         data.selected = !data.selected;
 
@@ -86,6 +112,9 @@ class MDListComponent extends MDComponent {
         }
     }
 
+    /**
+     * 
+     */
     selectRange(data) {
         this.endIndex = this.endIndex || 0;
         this.startIndex = this.list.indexOf(data);
@@ -105,6 +134,9 @@ class MDListComponent extends MDComponent {
         }
     }
 
+    /**
+     * 
+     */
     selectAll() {
         for (let i = 0; i < this.list.length; i++) {
             let item = this.list[i];

@@ -3,7 +3,75 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { choose } from "lit/directives/choose.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-text-field
+ * @fires MDTextFieldComponent#onTextFieldNativeFocus - 
+ * @fires MDTextFieldComponent#onTextFieldNativeBlur - 
+ * @fires MDTextFieldComponent#onTextFieldNativeInput - 
+ * @fires MDTextFieldComponent#onTextFieldNativeInvalid - 
+ * @fires MDTextFieldComponent#onTextFieldNativeReset - 
+ */
 class MDTextFieldComponent extends MDComponent {
+    /**
+     * @property {String} label - 
+     * @property {String} icon - 
+     * @property {String} prefix - 
+     * @property {String} suffix - 
+     * @property {Array} actions - 
+     * @property {String} text - 
+     * @property {String} accept - 
+     * @property {String} alt - 
+     * @property {String} autocomplete - 
+     * @property {Boolean} autofocus - 
+     * @property {Boolean} checked - 
+     * @property {Boolean} defaultChecked - 
+     * @property {Boolean} disabled - 
+     * @property {FileList} files - 
+     * @property {Object} form - 
+     * @property {String} formAction - 
+     * @property {String} formEnctype - 
+     * @property {String} formMethod - 
+     * @property {Boolean} formNoValidate - 
+     * @property {String} formTarget - 
+     * @property {Number} height - 
+     * @property {Boolean} indeterminate - 
+     * @property {Object} list - 
+     * @property {String} max - 
+     * @property {Number} maxLength - 
+     * @property {String} min - 
+     * @property {Number} minLength - 
+     * @property {Boolean} multiple - 
+     * @property {String} name - 
+     * @property {String} pattern - 
+     * @property {String} placeholder - 
+     * @property {Boolean} readOnly - 
+     * @property {Boolean} required - 
+     * @property {Number} size - 
+     * @property {String} src - 
+     * @property {String} step - 
+     * @property {String} type - 
+     * @property {String} defaultValue - 
+     * @property {String} value - 
+     * @property {Number} width - 
+     * @property {String} inputMode - 
+     * @property {String} selectionDirection - 
+     * @property {Number} selectionEnd - 
+     * @property {Number} selectionStart - 
+     * @property {String} align - 
+     * @property {String} useMap - 
+     * @property {Number} cols - 
+     * @property {Number} rows - 
+     * @property {Boolean} spellcheck - 
+     * @property {String} wrap - 
+     * @property {Number} length - 
+     * @property {Number} selectedIndex - 
+     * @property {HTMLCollection} selectedOptions - 
+     * @property {Array} options - 
+     * @property {String} errorText - 
+     * @property {Boolean} error - 
+     * @property {String} variant - 
+     */
     static properties = {
         label: { type: String },
         icon: { type: String },
@@ -69,6 +137,9 @@ class MDTextFieldComponent extends MDComponent {
 
     variants = ["filled", "outlined", "rounded"];
 
+    /**
+     * 
+     */
     get native() {
         return this.querySelector(".md-text-field__native");
     }
@@ -312,10 +383,16 @@ class MDTextFieldComponent extends MDComponent {
         this.emit("onTextFieldNativeReset", event);
     }
 
+    /**
+     * 
+     */
     populate() {
         this.classList.toggle("md-text-field--populated", !!this.value || this.type == "file");
     }
 
+    /**
+     * 
+     */
     validate() {
         this.errorText = this.native.validationMessage;
         this.error = !!this.errorText;

@@ -8,11 +8,18 @@ const breakpoints = [
     { name: "expanded", query: "(min-width: 840px)" },
 ];
 
+/**
+ * @extends undefined
+ * @tagname undefined
+ */
 class MDObserver {
     constructor(callback = () => {}) {
         this.callback = callback;
     }
 
+    /**
+     * 
+     */
     observe(list) {
         const handleChange = () => {
             this.media?.removeEventListener("change", handleChange);

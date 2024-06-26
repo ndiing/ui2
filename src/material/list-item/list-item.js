@@ -4,7 +4,29 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-list-item
+ */
 class MDListItemComponent extends MDComponent {
+    /**
+     * @property {String} avatar - 
+     * @property {String} thumbnail - 
+     * @property {String} video - 
+     * @property {String} icon - 
+     * @property {String} label - 
+     * @property {String} subLabel - 
+     * @property {Number} badge - 
+     * @property {String} text - 
+     * @property {Boolean} leadingCheckbox - 
+     * @property {Boolean} leadingRadioButton - 
+     * @property {Boolean} leadingSwitch - 
+     * @property {Boolean} trailingCheckbox - 
+     * @property {Boolean} trailingRadioButton - 
+     * @property {Boolean} trailingSwitch - 
+     * @property {Boolean} selected - 
+     * @property {String} routerLink - 
+     */
     static properties = {
         avatar: { type: String },
         thumbnail: { type: String },

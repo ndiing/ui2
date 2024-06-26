@@ -1,6 +1,14 @@
 import { MDCardComponent } from "../card/card.js";
 
+/**
+ * @extends MDCardComponent
+ * @tagname md-sheet
+ * @fires MDSheetComponent#onSheetScrimClick - 
+ */
 class MDSheetComponent extends MDCardComponent {
+    /**
+     * @property {Boolean} open - 
+     */
     static properties = {
         ...MDCardComponent.properties,
         open: { type: Boolean, reflect: true },
@@ -17,6 +25,9 @@ class MDSheetComponent extends MDCardComponent {
         this.classList.add("md-sheet");
     }
 
+    /**
+     * 
+     */
     showModal() {
         this.style.removeProperty("--md-comp-sheet-animation");
         this.style.setProperty("--md-comp-sheet-height", this.clientHeight + "px");
@@ -40,6 +51,9 @@ class MDSheetComponent extends MDCardComponent {
         this.emit("onSheetScrimClick", event);
     }
 
+    /**
+     * 
+     */
     show() {
         this.style.removeProperty("--md-comp-sheet-animation");
         this.style.setProperty("--md-comp-sheet-height", this.clientHeight + "px");
@@ -48,6 +62,9 @@ class MDSheetComponent extends MDCardComponent {
         this.open = true;
     }
 
+    /**
+     * 
+     */
     close() {
         this.style.removeProperty("--md-comp-sheet-animation");
         this.style.setProperty("--md-comp-sheet-height", this.clientHeight + "px");
@@ -62,6 +79,9 @@ class MDSheetComponent extends MDCardComponent {
         this.open = false;
     }
 
+    /**
+     * 
+     */
     toggle(...args) {
         if (this.open) {
             this.close();

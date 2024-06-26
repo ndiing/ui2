@@ -2,7 +2,18 @@ import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-icon-button
+ * @fires MDIconButtonComponent#onIconButtonClick - 
+ */
 class MDIconButtonComponent extends MDComponent {
+    /**
+     * @property {String} variant - 
+     * @property {String} icon - 
+     * @property {Boolean} selected - 
+     * @property {Boolean} disabled - 
+     */
     static properties = {
         variant: { type: String },
         icon: { type: String },

@@ -1,5 +1,9 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
+/**
+ * @extends MDSheetComponent
+ * @tagname md-bottom-app-bar
+ */
 class MDBottomAppBarComponent extends MDSheetComponent {
     connectedCallback() {
         super.connectedCallback();

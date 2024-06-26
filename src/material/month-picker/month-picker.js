@@ -2,7 +2,27 @@ import { parseMonth, stringifyMonth, stringifyYear } from "../functions/function
 import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { html } from "lit";
 
+/**
+ * @extends MDDatetimePickerComponent
+ * @tagname md-month-picker
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerIconButtonPrevClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerIconButtonNextClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerButtonLabelClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerButtonCancelClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerButtonOkClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerYearItemClick - 
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - 
+ * @fires MDMonthPickerComponent#onMonthPickerMonthItemClick - 
+ */
 class MDMonthPickerComponent extends MDDatetimePickerComponent {
+    /**
+     * 
+     */
     get leadingActions() {
         let label;
         if (this.index == 0) {
@@ -13,6 +33,9 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
         return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
+    /**
+     * 
+     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -23,6 +46,9 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
         `];
     }
 
+    /**
+     * 
+     */
     set body(value) {
         this._body = value;
     }
@@ -38,6 +64,9 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
         this.classList.add("md-month-picker");
     }
 
+    /**
+     * 
+     */
     updateDate() {
         const date = parseMonth(this.value);
 
@@ -133,6 +162,9 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
         this.emit("onMonthPickerMonthItemClick", event);
     }
 
+    /**
+     * 
+     */
     getValue() {
         return stringifyMonth(this.selected);
     }

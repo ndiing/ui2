@@ -5,7 +5,28 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-tree-item
+ * @fires MDTreeItemComponent#onTreeItemSelected - 
+ */
 class MDTreeItemComponent extends MDComponent {
+    /**
+     * @property {String} icon - 
+     * @property {String} label - 
+     * @property {Number} badge - 
+     * @property {Boolean} selected - 
+     * @property {String} routerLink - 
+     * @property {Number} indent - 
+     * @property {Boolean} isNode - 
+     * @property {Boolean} expanded - 
+     * @property {Boolean} activated - 
+     * @property {String} variant - 
+     * @property {Boolean} isParent - 
+     * @property {Array} nodeActions - 
+     * @property {Array} nodeIcons - 
+     * @property {Array} leafIcons - 
+     */
     static properties = {
         icon: { type: String },
         label: { type: String },
@@ -23,6 +44,9 @@ class MDTreeItemComponent extends MDComponent {
         leafIcons: { type: Array },
     };
 
+    /**
+     * 
+     */
     get nodeActions_() {
         let icons = [];
 
@@ -42,6 +66,9 @@ class MDTreeItemComponent extends MDComponent {
         return icons;
     }
 
+    /**
+     * 
+     */
     get nodeIcons_() {
         let icons = [];
 
@@ -58,6 +85,9 @@ class MDTreeItemComponent extends MDComponent {
         return icons;
     }
 
+    /**
+     * 
+     */
     get leafIcons_() {
         let icons = [];
 
@@ -74,18 +104,30 @@ class MDTreeItemComponent extends MDComponent {
         return icons;
     }
 
+    /**
+     * 
+     */
     get nodeAction() {
         return this.nodeActions_[~~this.expanded];
     }
 
+    /**
+     * 
+     */
     get nodeicon() {
         return this.nodeIcons_[~~this.expanded];
     }
 
+    /**
+     * 
+     */
     get leafIcon() {
         return this.leafIcons_[~~this.selected];
     }
 
+    /**
+     * 
+     */
     get icon_() {
         return this.isNode ? this.nodeicon : this.leafIcon;
     }

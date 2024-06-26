@@ -2,7 +2,29 @@ import { html } from "lit";
 import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { parseDate, stringifyDate, stringifyYear } from "../functions/functions.js";
 
+/**
+ * @extends MDDatetimePickerComponent
+ * @tagname md-date-picker
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerIconButtonPrevClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerIconButtonNextClick - 
+ * @fires MDDatePickerComponent#onDatePickerButtonLabelClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerButtonCancelClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerButtonOkClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerYearItemClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerMonthItemClick - 
+ * @fires MDDatePickerComponent#onDatePickerSelection - 
+ * @fires MDDatePickerComponent#onDatePickerDayItemClick - 
+ */
 class MDDatePickerComponent extends MDDatetimePickerComponent {
+    /**
+     * 
+     */
     get leadingActions() {
         let label;
         if (this.index == 0) {
@@ -15,6 +37,9 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
+    /**
+     * 
+     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -26,6 +51,9 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         `];
     }
 
+    /**
+     * 
+     */
     set body(value) {
         this._body = value;
     }
@@ -36,6 +64,9 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.classList.add("md-date-picker");
     }
 
+    /**
+     * 
+     */
     updateDate() {
         const date = parseDate(this.value);
 
@@ -153,6 +184,9 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerDayItemClick", event);
     }
 
+    /**
+     * 
+     */
     getValue() {
         return stringifyDate(this.selected);
     }

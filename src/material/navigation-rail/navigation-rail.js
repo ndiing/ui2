@@ -2,12 +2,21 @@ import { html } from "lit";
 import { MDSheetComponent } from "../sheet/sheet.js";
 import { MDTreeComponent } from "../tree/tree.js";
 
+/**
+ * @extends MDSheetComponent
+ * @tagname md-navigation-rail
+ */
 class MDNavigationBarComponent extends MDSheetComponent {
+    /**
+     */
     static properties = {
         ...MDSheetComponent.properties,
         ...MDTreeComponent.properties,
     };
 
+    /**
+     * 
+     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -19,6 +28,9 @@ class MDNavigationBarComponent extends MDSheetComponent {
         `];
     }
 
+    /**
+     * 
+     */
     set body(value) {
         this._body = value;
     }

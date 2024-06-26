@@ -1,5 +1,9 @@
 import { MDTreeComponent } from "../tree/tree.js";
 
+/**
+ * @extends MDTreeComponent
+ * @tagname md-tabs
+ */
 class MDTabsComponent extends MDTreeComponent {
     constructor() {
         super();

@@ -1,3 +1,9 @@
+/**
+ * @extends undefined
+ * @tagname undefined
+ * @fires MDVirtualController#onVirtualScrollChange - 
+ * @fires MDVirtualController#onVirtualScroll - 
+ */
 class MDVirtualController {
     constructor(host, options) {
         (this.host = host).addController(this);
@@ -18,6 +24,9 @@ class MDVirtualController {
         this.cache = null; // Initialize cache
     }
 
+    /**
+     * 
+     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -30,6 +39,9 @@ class MDVirtualController {
         }
     }
 
+    /**
+     * 
+     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -42,6 +54,9 @@ class MDVirtualController {
         }
     }
 
+    /**
+     * 
+     */
     async hostDisconnected() {
         await this.host.updateComplete;
         if (this.viewport) {

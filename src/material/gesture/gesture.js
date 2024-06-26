@@ -1,3 +1,22 @@
+/**
+ * @extends undefined
+ * @tagname undefined
+ * @fires MDGestureController#onDragStart - 
+ * @fires MDGestureController#onResizeStart - 
+ * @fires MDGestureController#onSelectionStart - 
+ * @fires MDGestureController#onLongPress - 
+ * @fires MDGestureController#onDragStart - 
+ * @fires MDGestureController#onResizeStart - 
+ * @fires MDGestureController#onSelectionStart - 
+ * @fires MDGestureController#onDrag - 
+ * @fires MDGestureController#onResize - 
+ * @fires MDGestureController#onSelection - 
+ * @fires MDGestureController#onTap - 
+ * @fires MDGestureController#onDoubleTap - 
+ * @fires MDGestureController#onSelectionEnd - 
+ * @fires MDGestureController#onDragEnd - 
+ * @fires MDGestureController#onResizeEnd - 
+ */
 class MDGestureController {
     constructor(host, options) {
         (this.host = host).addController(this);
@@ -15,6 +34,9 @@ class MDGestureController {
         };
     }
 
+    /**
+     * 
+     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -24,6 +46,9 @@ class MDGestureController {
         this.container.dispatchEvent(event);
     }
 
+    /**
+     * 
+     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -57,6 +82,9 @@ class MDGestureController {
         this.container.addEventListener("pointerdown", this.handleGesturePointerdown);
     }
 
+    /**
+     * 
+     */
     async hostDisconnected() {
         await this.host.updateComplete;
     }

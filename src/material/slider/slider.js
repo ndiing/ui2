@@ -4,7 +4,24 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { calcDecimal, calcPercentage, isArrayString } from "../functions/functions.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-slider
+ * @fires MDSliderComponent#onSliderNativeInput - 
+ * @fires MDSliderComponent#onSliderNativeReset - 
+ */
 class MDSliderComponent extends MDComponent {
+    /**
+     * @property {Array} defaultValue - 
+     * @property {Number} min - 
+     * @property {Number} max - 
+     * @property {Number} step - 
+     * @property {Boolean} disabled - 
+     * @property {String} form - 
+     * @property {String} name - 
+     * @property {String} list - 
+     * @property {String} autocomplete - 
+     */
     static properties = {
         value: {
             type: Array,
@@ -144,6 +161,9 @@ class MDSliderComponent extends MDComponent {
         }
     }
 
+    /**
+     * 
+     */
     get natives() {
         return this.querySelectorAll(".md-slider__native");
     }

@@ -3,7 +3,34 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 
+
+/**
+ * @extends MDComponent
+ * @tagname md-image
+ * @fires MDImageComponent#onImageNativeLoad - 
+ * @fires MDImageComponent#onImageNativeError - 
+ */
 class MDImageComponent extends MDComponent {
+    
+    /**
+     * @property {String} src - 
+     * @property {String} alt - 
+     * @property {String} srcset - 
+     * @property {String} sizes - 
+     * @property {String} crossorigin - 
+     * @property {String} usemap - 
+     * @property {Boolean} ismap - 
+     * @property {Number} width - 
+     * @property {Number} height - 
+     * @property {String} referrerpolicy - 
+     * @property {String} decoding - 
+     * @property {String} loading - 
+     * @property {String} title - 
+     * @property {String} longdesc - 
+     * @property {String} fetchpriority - 
+     * @property {String} ratio - 
+     * @property {String} variant - 
+     */
     static properties = {
         src: { type: String },
         alt: { type: String },

@@ -1,4 +1,15 @@
+/**
+ * @extends undefined
+ * @tagname undefined
+ * @fires MDRouter#onRouterCurrentEntryChange - 
+ * @fires MDRouter#onRouterNavigate - 
+ * @fires MDRouter#onRouterNavigateError - 
+ * @fires MDRouter#onRouterNavigateSuccess - 
+ */
 class MDRouter {
+    /**
+     * 
+     */
     static setRoutes(routes, parent) {
         return routes.reduce((acc, curr) => {
             curr.parent = parent;
@@ -13,6 +24,9 @@ class MDRouter {
         }, []);
     }
 
+    /**
+     * 
+     */
     static get path() {
         if (this.historyApiFallback) {
             return window.location.pathname;
@@ -21,6 +35,9 @@ class MDRouter {
         }
     }
 
+    /**
+     * 
+     */
     static get query() {
         let search;
         if (this.historyApiFallback) {
@@ -45,6 +62,9 @@ class MDRouter {
         return query;
     }
 
+    /**
+     * 
+     */
     static getRoute(path) {
         return this.stacks.find((route) => {
             const pattern = `^${route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)")}(?:/?\$)`;
@@ -60,6 +80,9 @@ class MDRouter {
         });
     }
 
+    /**
+     * 
+     */
     static getRoutes(route) {
         return [route].reduce((acc, curr) => {
             if (curr.parent) {
@@ -72,6 +95,9 @@ class MDRouter {
         }, []);
     }
 
+    /**
+     * 
+     */
     static getOutlet(container, route) {
         return new Promise((resolve) => {
             let outlet;
@@ -188,6 +214,9 @@ class MDRouter {
         performance.clearMeasures("measureRouterNavigateSuccess");
     }
 
+    /**
+     * 
+     */
     static navigate(url) {
         if (this.historyApiFallback) {
             window.history.pushState({}, "", url);
@@ -206,6 +235,9 @@ class MDRouter {
 
     static historyApiFallback = true;
 
+    /**
+     * 
+     */
     static emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -215,6 +247,9 @@ class MDRouter {
         window.dispatchEvent(event);
     }
 
+    /**
+     * 
+     */
     static init(routes) {
         this.stacks = this.setRoutes(routes);
 

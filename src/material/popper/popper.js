@@ -1,3 +1,7 @@
+/**
+ * @extends undefined
+ * @tagname undefined
+ */
 class MDPopperController {
     constructor(host, options = {}) {
         this.host = host;
@@ -20,6 +24,9 @@ class MDPopperController {
         };
     }
 
+    /**
+     * 
+     */
     async setPlacement(button, options = {}) {
         this.button = button;
         this.options = {
@@ -81,6 +88,9 @@ class MDPopperController {
         }
     }
 
+    /**
+     * 
+     */
     getRect(button) {
         if (button instanceof Event) {
             const { clientX: left, clientY: top, width, height } = button;

@@ -5,7 +5,16 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
 
+/**
+ * @extends MDComponent
+ * @tagname md-tree
+ * @fires MDTreeComponent#onTreeItemClick - 
+ */
 class MDTreeComponent extends MDComponent {
+    /**
+     * @property {Array} list - 
+     * @property {String} variant - 
+     */
     static properties = {
         list: { type: Array },
         variant: { type: String },
@@ -73,6 +82,9 @@ class MDTreeComponent extends MDComponent {
         }
     }
 
+    /**
+     * 
+     */
     getList(list) {
         let children;
 
@@ -95,6 +107,9 @@ class MDTreeComponent extends MDComponent {
         return children;
     }
 
+    /**
+     * 
+     */
     setList(list, indent = 0) {
         let expanded;
         let activated;
@@ -139,6 +154,9 @@ class MDTreeComponent extends MDComponent {
         return { expanded, activated };
     }
 
+    /**
+     * 
+     */
     select(list, data) {
         let activated;
 
@@ -162,6 +180,9 @@ class MDTreeComponent extends MDComponent {
         return activated;
     }
 
+    /**
+     * 
+     */
     expand(list, data) {
         data.expanded = !data.expanded;
     }

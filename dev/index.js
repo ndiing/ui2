@@ -72,8 +72,8 @@ content = content.replace(/(^    (static )?(\w+) = \{([\s\S]+?)^    \})/gm, ($, 
     return code;
 });
 
-let inheritName = content.match(/extends (\w+)/)[1];
-let tagName = content.match(/define\("(.*?)"/)[1];
+let inheritName = content.match(/extends (\w+)/)?.[1];
+let tagName = content.match(/define\("(.*?)"/)?.[1];
 content = content.replace(/(class (\w+))/, ($, text, className) => {
     let code = "";
     code += `/**\r\n`;
@@ -89,3 +89,4 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
 });
 
 write("./src/material/"+name+"/"+name+".js",content)
+// console.log(content)
