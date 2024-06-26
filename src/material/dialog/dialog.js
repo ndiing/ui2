@@ -1,7 +1,7 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a dialog component that extends MDSheetComponent.
  * @extends MDSheetComponent
  * @tagname md-dialog
  */

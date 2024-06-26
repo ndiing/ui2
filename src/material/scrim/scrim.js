@@ -1,13 +1,13 @@
 import { MDComponent } from "../component/component.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a scrim component that extends MDComponent.
  * @extends MDComponent
  * @tagname md-scrim
  */
 class MDScrimComponent extends MDComponent {
     /**
-     * @property {Boolean} open - Tambahkan deskripsi
+     * @property {Boolean} open - Indicates whether the scrim is currently open.
      */
     static properties = {
         ...MDComponent.properties,
@@ -21,21 +21,21 @@ class MDScrimComponent extends MDComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Shows the scrim by setting the `open` property to `true`.
      */
     show() {
         this.open = true;
     }
 
     /**
-     * Tambahkan deskripsi
+     * Closes the scrim by setting the `open` property to `false`.
      */
     close() {
         this.open = false;
     }
 
     /**
-     * Tambahkan deskripsi
+     * Toggles the visibility of the scrim. If currently open, it closes; if closed, it opens.
      */
     toggle() {
         if (this.open) {

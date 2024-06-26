@@ -3,15 +3,15 @@ import { MDComponent } from "../component/component.js";
 import { calcPercentage } from "../functions/functions.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-progress-indicator
  */
 class MDProgressIndicatorComponent extends MDComponent {
     /**
-     * @property {String} variant - Tambahkan deskripsi
-     * @property {Number} value - Tambahkan deskripsi
-     * @property {Number} max - Tambahkan deskripsi
+     * @property {String} variant - {{desc}}
+     * @property {Number} value - {{desc}}
+     * @property {Number} max - {{desc}}
      */
     static properties = {
         variant: { type: String },

@@ -4,74 +4,74 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { choose } from "lit/directives/choose.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-text-field
- * @fires MDTextFieldComponent#onTextFieldNativeFocus -
- * @fires MDTextFieldComponent#onTextFieldNativeBlur -
- * @fires MDTextFieldComponent#onTextFieldNativeInput -
- * @fires MDTextFieldComponent#onTextFieldNativeInvalid -
- * @fires MDTextFieldComponent#onTextFieldNativeReset -
+ * @fires MDTextFieldComponent#onTextFieldNativeFocus - {{desc}}
+ * @fires MDTextFieldComponent#onTextFieldNativeBlur - {{desc}}
+ * @fires MDTextFieldComponent#onTextFieldNativeInput - {{desc}}
+ * @fires MDTextFieldComponent#onTextFieldNativeInvalid - {{desc}}
+ * @fires MDTextFieldComponent#onTextFieldNativeReset - {{desc}}
  */
 class MDTextFieldComponent extends MDComponent {
     /**
-     * @property {String} label - Tambahkan deskripsi
-     * @property {String} icon - Tambahkan deskripsi
-     * @property {String} prefix - Tambahkan deskripsi
-     * @property {String} suffix - Tambahkan deskripsi
-     * @property {Array} actions - Tambahkan deskripsi
-     * @property {String} text - Tambahkan deskripsi
-     * @property {String} accept - Tambahkan deskripsi
-     * @property {String} alt - Tambahkan deskripsi
-     * @property {String} autocomplete - Tambahkan deskripsi
-     * @property {Boolean} autofocus - Tambahkan deskripsi
-     * @property {Boolean} checked - Tambahkan deskripsi
-     * @property {Boolean} defaultChecked - Tambahkan deskripsi
-     * @property {Boolean} disabled - Tambahkan deskripsi
-     * @property {FileList} files - Tambahkan deskripsi
-     * @property {Object} form - Tambahkan deskripsi
-     * @property {String} formAction - Tambahkan deskripsi
-     * @property {String} formEnctype - Tambahkan deskripsi
-     * @property {String} formMethod - Tambahkan deskripsi
-     * @property {Boolean} formNoValidate - Tambahkan deskripsi
-     * @property {String} formTarget - Tambahkan deskripsi
-     * @property {Number} height - Tambahkan deskripsi
-     * @property {Boolean} indeterminate - Tambahkan deskripsi
-     * @property {Object} list - Tambahkan deskripsi
-     * @property {String} max - Tambahkan deskripsi
-     * @property {Number} maxLength - Tambahkan deskripsi
-     * @property {String} min - Tambahkan deskripsi
-     * @property {Number} minLength - Tambahkan deskripsi
-     * @property {Boolean} multiple - Tambahkan deskripsi
-     * @property {String} name - Tambahkan deskripsi
-     * @property {String} pattern - Tambahkan deskripsi
-     * @property {String} placeholder - Tambahkan deskripsi
-     * @property {Boolean} readOnly - Tambahkan deskripsi
-     * @property {Boolean} required - Tambahkan deskripsi
-     * @property {Number} size - Tambahkan deskripsi
-     * @property {String} src - Tambahkan deskripsi
-     * @property {String} step - Tambahkan deskripsi
-     * @property {String} type - Tambahkan deskripsi
-     * @property {String} defaultValue - Tambahkan deskripsi
-     * @property {String} value - Tambahkan deskripsi
-     * @property {Number} width - Tambahkan deskripsi
-     * @property {String} inputMode - Tambahkan deskripsi
-     * @property {String} selectionDirection - Tambahkan deskripsi
-     * @property {Number} selectionEnd - Tambahkan deskripsi
-     * @property {Number} selectionStart - Tambahkan deskripsi
-     * @property {String} align - Tambahkan deskripsi
-     * @property {String} useMap - Tambahkan deskripsi
-     * @property {Number} cols - Tambahkan deskripsi
-     * @property {Number} rows - Tambahkan deskripsi
-     * @property {Boolean} spellcheck - Tambahkan deskripsi
-     * @property {String} wrap - Tambahkan deskripsi
-     * @property {Number} length - Tambahkan deskripsi
-     * @property {Number} selectedIndex - Tambahkan deskripsi
-     * @property {HTMLCollection} selectedOptions - Tambahkan deskripsi
-     * @property {Array} options - Tambahkan deskripsi
-     * @property {String} errorText - Tambahkan deskripsi
-     * @property {Boolean} error - Tambahkan deskripsi
-     * @property {String} variant - Tambahkan deskripsi
+     * @property {String} label - {{desc}}
+     * @property {String} icon - {{desc}}
+     * @property {String} prefix - {{desc}}
+     * @property {String} suffix - {{desc}}
+     * @property {Array} actions - {{desc}}
+     * @property {String} text - {{desc}}
+     * @property {String} accept - {{desc}}
+     * @property {String} alt - {{desc}}
+     * @property {String} autocomplete - {{desc}}
+     * @property {Boolean} autofocus - {{desc}}
+     * @property {Boolean} checked - {{desc}}
+     * @property {Boolean} defaultChecked - {{desc}}
+     * @property {Boolean} disabled - {{desc}}
+     * @property {FileList} files - {{desc}}
+     * @property {Object} form - {{desc}}
+     * @property {String} formAction - {{desc}}
+     * @property {String} formEnctype - {{desc}}
+     * @property {String} formMethod - {{desc}}
+     * @property {Boolean} formNoValidate - {{desc}}
+     * @property {String} formTarget - {{desc}}
+     * @property {Number} height - {{desc}}
+     * @property {Boolean} indeterminate - {{desc}}
+     * @property {Object} list - {{desc}}
+     * @property {String} max - {{desc}}
+     * @property {Number} maxLength - {{desc}}
+     * @property {String} min - {{desc}}
+     * @property {Number} minLength - {{desc}}
+     * @property {Boolean} multiple - {{desc}}
+     * @property {String} name - {{desc}}
+     * @property {String} pattern - {{desc}}
+     * @property {String} placeholder - {{desc}}
+     * @property {Boolean} readOnly - {{desc}}
+     * @property {Boolean} required - {{desc}}
+     * @property {Number} size - {{desc}}
+     * @property {String} src - {{desc}}
+     * @property {String} step - {{desc}}
+     * @property {String} type - {{desc}}
+     * @property {String} defaultValue - {{desc}}
+     * @property {String} value - {{desc}}
+     * @property {Number} width - {{desc}}
+     * @property {String} inputMode - {{desc}}
+     * @property {String} selectionDirection - {{desc}}
+     * @property {Number} selectionEnd - {{desc}}
+     * @property {Number} selectionStart - {{desc}}
+     * @property {String} align - {{desc}}
+     * @property {String} useMap - {{desc}}
+     * @property {Number} cols - {{desc}}
+     * @property {Number} rows - {{desc}}
+     * @property {Boolean} spellcheck - {{desc}}
+     * @property {String} wrap - {{desc}}
+     * @property {Number} length - {{desc}}
+     * @property {Number} selectedIndex - {{desc}}
+     * @property {HTMLCollection} selectedOptions - {{desc}}
+     * @property {Array} options - {{desc}}
+     * @property {String} errorText - {{desc}}
+     * @property {Boolean} error - {{desc}}
+     * @property {String} variant - {{desc}}
      */
     static properties = {
         label: { type: String },
@@ -139,7 +139,7 @@ class MDTextFieldComponent extends MDComponent {
     variants = ["filled", "outlined", "rounded"];
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get native() {
         return this.querySelector(".md-text-field__native");
@@ -385,14 +385,14 @@ class MDTextFieldComponent extends MDComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     populate() {
         this.classList.toggle("md-text-field--populated", !!this.value || this.type == "file");
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     validate() {
         this.errorText = this.native.validationMessage;

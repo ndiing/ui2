@@ -4,10 +4,10 @@ import { MDTreeComponent } from "../tree/tree.js";
 import { MDPopperController } from "../popper/popper.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-menu
- * @fires MDMenuComponent#onMenuTreeItemClick -
+ * @fires MDMenuComponent#onMenuTreeItemClick - {{desc}}
  */
 class MDMenuComponent extends MDSheetComponent {
     /**
@@ -18,7 +18,7 @@ class MDMenuComponent extends MDSheetComponent {
     };
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get body() {
         /* prettier-ignore */
@@ -33,7 +33,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     set body(value) {
         this._body = value;
@@ -57,7 +57,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     showModal(button, options) {
         super.showModal();
@@ -66,7 +66,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     show(button, options) {
         super.show();
@@ -75,7 +75,7 @@ class MDMenuComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {

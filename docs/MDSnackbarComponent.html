@@ -30,6 +30,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>MDSnackbarComponent<span class="signature">()</span><span class="type-signature"></span></h2>
         
+            <div class="class-description">Represents a snackbar component that extends MDSheetComponent.</div>
+        
     
 </header>
 
@@ -38,6 +40,8 @@
     
         
 
+    
+    <h2>Constructor</h2>
     
 
     
@@ -89,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line13">line 13</a>
+        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -106,9 +110,9 @@
 
 <h5>Fires:</h5>
 <ul>
-    <li>MDSnackbarComponent#event:onSnackbarShow -</li>
+    <li>MDSnackbarComponent#event:onSnackbarShow - Triggered when the snackbar is shown.</li>
 
-    <li>MDSnackbarComponent#event:onSnackbarClose -</li>
+    <li>MDSnackbarComponent#event:onSnackbarClose - Triggered when the snackbar is closed.</li>
 </ul>
 
 
@@ -168,6 +172,58 @@
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>open</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Indicates whether the sheet is currently open.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
 <dl class="details">
 
     
@@ -202,7 +258,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line19">line 19</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -236,6 +292,10 @@
     
 
 
+
+<div class="description">
+    Closes the snackbar.
+</div>
 
 
 
@@ -283,7 +343,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line67">line 67</a>
+        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -319,12 +379,16 @@
     
 
     
-    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
     
 
 
+
+<div class="description">
+    Shows the snackbar.
+</div>
 
 
 
@@ -372,7 +436,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line38">line 38</a>
+        <a href="snackbar_snackbar.js.html">snackbar/snackbar.js</a>, <a href="snackbar_snackbar.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -397,6 +461,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    A promise that resolves when the snackbar is shown and closed.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -414,6 +500,10 @@
     
 
 
+
+<div class="description">
+    Shows the sheet as a modal.
+</div>
 
 
 
@@ -461,7 +551,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line40">line 40</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -503,6 +593,10 @@
     
 
 
+
+<div class="description">
+    Toggles the visibility of the sheet. If currently open, it closes; if closed, it opens.
+</div>
 
 
 
@@ -550,7 +644,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line103">line 103</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -602,7 +696,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 09:02:10 GMT+0700 (Western Indonesia Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 10:28:48 GMT+0700 (Western Indonesia Time)
 </footer>
 
 <script> prettyPrint(); </script>

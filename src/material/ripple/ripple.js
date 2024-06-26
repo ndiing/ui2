@@ -1,5 +1,5 @@
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  */
 class MDRippleController {
     constructor(host, options = {}) {
@@ -17,7 +17,7 @@ class MDRippleController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -57,7 +57,7 @@ class MDRippleController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     async hostDisconnected() {
         await this.host.updateComplete;

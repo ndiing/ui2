@@ -2,14 +2,14 @@ import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-badge
  */
 class MDBadgeComponent extends MDComponent {
     /**
-     * @property {Number} label - Tambahkan deskripsi
-     * @property {Number} limit - Tambahkan deskripsi
+     * @property {Number} label - {{desc}}
+     * @property {Number} limit - {{desc}}
      */
     static properties = {
         label: { type: Number },

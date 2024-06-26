@@ -1,7 +1,7 @@
 import { MDComponent } from "../component/component.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-emoji
  */

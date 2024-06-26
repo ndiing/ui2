@@ -30,6 +30,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>MDTooltipComponent<span class="signature">()</span><span class="type-signature"></span></h2>
         
+            <div class="class-description">Represents a tooltip component that extends MDSheetComponent.</div>
+        
     
 </header>
 
@@ -38,6 +40,8 @@
     
         
 
+    
+    <h2>Constructor</h2>
     
 
     
@@ -89,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line11">line 11</a>
+        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -203,7 +207,7 @@
 
             
 
-            <td class="description last">-</td>
+            <td class="description last">Indicates whether the sheet is currently open.</td>
         </tr>
 
     
@@ -247,7 +251,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line18">line 18</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -281,6 +285,10 @@
     
 
 
+
+<div class="description">
+    Closes the sheet.
+</div>
 
 
 
@@ -328,7 +336,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line83">line 83</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -364,19 +372,95 @@
     
 
     
-    <h4 class="name" id="setPlacement"><span class="type-signature"></span>setPlacement<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setPlacement"><span class="type-signature"></span>setPlacement<span class="signature">(button, options)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Sets the placement of the tooltip relative to the button.
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>button</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The button or element triggering the tooltip.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Options for positioning the tooltip.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -412,7 +496,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line57">line 57</a>
+        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -448,19 +532,95 @@
     
 
     
-    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">(button, options)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Shows the tooltip.
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>button</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The button or element triggering the tooltip.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Options for positioning the tooltip.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -501,7 +661,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line45">line 45</a>
+        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -537,19 +697,95 @@
     
 
     
-    <h4 class="name" id="showModal"><span class="type-signature"></span>showModal<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="showModal"><span class="type-signature"></span>showModal<span class="signature">(button, options)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Shows the tooltip as a modal.
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>button</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The button or element triggering the tooltip.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Options for positioning the tooltip.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -590,7 +826,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line33">line 33</a>
+        <a href="tooltip_tooltip.js.html">tooltip/tooltip.js</a>, <a href="tooltip_tooltip.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -632,6 +868,10 @@
     
 
 
+
+<div class="description">
+    Toggles the visibility of the sheet. If currently open, it closes; if closed, it opens.
+</div>
 
 
 
@@ -679,7 +919,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line103">line 103</a>
+        <a href="sheet_sheet.js.html">sheet/sheet.js</a>, <a href="sheet_sheet.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -731,7 +971,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 09:02:10 GMT+0700 (Western Indonesia Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 10:28:48 GMT+0700 (Western Indonesia Time)
 </footer>
 
 <script> prettyPrint(); </script>

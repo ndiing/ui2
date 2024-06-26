@@ -4,22 +4,22 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-radio-button
- * @fires MDRadioButtonComponent#onRadioButtonNativeInput -
- * @fires MDRadioButtonComponent#onRadioButtonNativeReset -
+ * @fires MDRadioButtonComponent#onRadioButtonNativeInput - {{desc}}
+ * @fires MDRadioButtonComponent#onRadioButtonNativeReset - {{desc}}
  */
 class MDRadioButtonComponent extends MDComponent {
     /**
-     * @property {Boolean} checked - Tambahkan deskripsi
-     * @property {Boolean} defaultChecked - Tambahkan deskripsi
-     * @property {Boolean} disabled - Tambahkan deskripsi
-     * @property {Boolean} indeterminate - Tambahkan deskripsi
-     * @property {String} value - Tambahkan deskripsi
-     * @property {String} name - Tambahkan deskripsi
-     * @property {Object} form - Tambahkan deskripsi
-     * @property {String} type - Tambahkan deskripsi
+     * @property {Boolean} checked - {{desc}}
+     * @property {Boolean} defaultChecked - {{desc}}
+     * @property {Boolean} disabled - {{desc}}
+     * @property {Boolean} indeterminate - {{desc}}
+     * @property {String} value - {{desc}}
+     * @property {String} name - {{desc}}
+     * @property {Object} form - {{desc}}
+     * @property {String} type - {{desc}}
      */
     static properties = {
         checked: { type: Boolean },

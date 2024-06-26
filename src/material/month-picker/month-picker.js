@@ -3,26 +3,26 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { html } from "lit";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDDatetimePickerComponent
  * @tagname md-month-picker
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerIconButtonPrevClick -
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerIconButtonNextClick -
- * @fires MDMonthPickerComponent#onMonthPickerButtonLabelClick -
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerButtonCancelClick -
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerButtonOkClick -
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerYearItemClick -
- * @fires MDMonthPickerComponent#onMonthPickerSelection -
- * @fires MDMonthPickerComponent#onMonthPickerMonthItemClick -
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerIconButtonPrevClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerIconButtonNextClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerButtonLabelClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerButtonCancelClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerButtonOkClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerYearItemClick - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerSelection - {{desc}}
+ * @fires MDMonthPickerComponent#onMonthPickerMonthItemClick - {{desc}}
  */
 class MDMonthPickerComponent extends MDDatetimePickerComponent {
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get leadingActions() {
         let label;
@@ -35,7 +35,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get body() {
         /* prettier-ignore */
@@ -48,7 +48,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     set body(value) {
         this._body = value;
@@ -66,7 +66,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     updateDate() {
         const date = parseMonth(this.value);
@@ -164,7 +164,7 @@ class MDMonthPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     getValue() {
         return stringifyMonth(this.selected);

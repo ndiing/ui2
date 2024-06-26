@@ -3,7 +3,7 @@ import { MDSheetComponent } from "../sheet/sheet.js";
 import { MDTreeComponent } from "../tree/tree.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-navigation-bar
  */
@@ -16,7 +16,7 @@ class MDNavigationBarComponent extends MDSheetComponent {
     };
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get body() {
         /* prettier-ignore */
@@ -30,7 +30,7 @@ class MDNavigationBarComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     set body(value) {
         this._body = value;

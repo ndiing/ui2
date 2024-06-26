@@ -1,20 +1,20 @@
 /**
- * Tambahkan deskripsi
- * @fires MDGestureController#onDragStart -
- * @fires MDGestureController#onResizeStart -
- * @fires MDGestureController#onSelectionStart -
- * @fires MDGestureController#onLongPress -
- * @fires MDGestureController#onDragStart -
- * @fires MDGestureController#onResizeStart -
- * @fires MDGestureController#onSelectionStart -
- * @fires MDGestureController#onDrag -
- * @fires MDGestureController#onResize -
- * @fires MDGestureController#onSelection -
- * @fires MDGestureController#onTap -
- * @fires MDGestureController#onDoubleTap -
- * @fires MDGestureController#onSelectionEnd -
- * @fires MDGestureController#onDragEnd -
- * @fires MDGestureController#onResizeEnd -
+ * {{desc}}
+ * @fires MDGestureController#onDragStart - {{desc}}
+ * @fires MDGestureController#onResizeStart - {{desc}}
+ * @fires MDGestureController#onSelectionStart - {{desc}}
+ * @fires MDGestureController#onLongPress - {{desc}}
+ * @fires MDGestureController#onDragStart - {{desc}}
+ * @fires MDGestureController#onResizeStart - {{desc}}
+ * @fires MDGestureController#onSelectionStart - {{desc}}
+ * @fires MDGestureController#onDrag - {{desc}}
+ * @fires MDGestureController#onResize - {{desc}}
+ * @fires MDGestureController#onSelection - {{desc}}
+ * @fires MDGestureController#onTap - {{desc}}
+ * @fires MDGestureController#onDoubleTap - {{desc}}
+ * @fires MDGestureController#onSelectionEnd - {{desc}}
+ * @fires MDGestureController#onDragEnd - {{desc}}
+ * @fires MDGestureController#onResizeEnd - {{desc}}
  */
 class MDGestureController {
     constructor(host, options) {
@@ -43,7 +43,7 @@ class MDGestureController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     async hostConnected() {
         await this.host.updateComplete;
@@ -79,7 +79,7 @@ class MDGestureController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     async hostDisconnected() {
         await this.host.updateComplete;

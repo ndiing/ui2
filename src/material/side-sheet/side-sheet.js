@@ -1,11 +1,14 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a side sheet component that extends MDSheetComponent.
  * @extends MDSheetComponent
  * @tagname md-side-sheet
  */
 class MDSideSheetComponent extends MDSheetComponent {
+    /**
+     * @property {Array} variants - Variants of the side sheet.
+     */
     variants = ["modal"];
 
     connectedCallback() {

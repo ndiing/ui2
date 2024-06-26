@@ -3,28 +3,28 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { parseDate, stringifyDate, stringifyYear } from "../functions/functions.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDDatetimePickerComponent
  * @tagname md-date-picker
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerIconButtonPrevClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerIconButtonNextClick -
- * @fires MDDatePickerComponent#onDatePickerButtonLabelClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerButtonCancelClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerButtonOkClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerYearItemClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerMonthItemClick -
- * @fires MDDatePickerComponent#onDatePickerSelection -
- * @fires MDDatePickerComponent#onDatePickerDayItemClick -
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerIconButtonPrevClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerIconButtonNextClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerButtonLabelClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerButtonCancelClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerButtonOkClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerYearItemClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerMonthItemClick - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerSelection - {{desc}}
+ * @fires MDDatePickerComponent#onDatePickerDayItemClick - {{desc}}
  */
 class MDDatePickerComponent extends MDDatetimePickerComponent {
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get leadingActions() {
         let label;
@@ -39,7 +39,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get body() {
         /* prettier-ignore */
@@ -53,7 +53,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     set body(value) {
         this._body = value;
@@ -66,7 +66,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     updateDate() {
         const date = parseDate(this.value);
@@ -186,7 +186,7 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     getValue() {
         return stringifyDate(this.selected);

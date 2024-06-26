@@ -1,14 +1,14 @@
 import { MDCardComponent } from "../card/card.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a sheet component that extends MDCardComponent.
  * @extends MDCardComponent
  * @tagname md-sheet
- * @fires MDSheetComponent#onSheetScrimClick -
+ * @fires MDSheetComponent#onSheetScrimClick - Fired when the scrim of the sheet is clicked.
  */
 class MDSheetComponent extends MDCardComponent {
     /**
-     * @property {Boolean} open - Tambahkan deskripsi
+     * @property {Boolean} open - Indicates whether the sheet is currently open.
      */
     static properties = {
         ...MDCardComponent.properties,
@@ -27,7 +27,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Shows the sheet as a modal.
      */
     showModal() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -53,7 +53,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Shows the sheet.
      */
     show() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -64,7 +64,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Closes the sheet.
      */
     close() {
         this.style.removeProperty("--md-comp-sheet-animation");
@@ -81,7 +81,7 @@ class MDSheetComponent extends MDCardComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Toggles the visibility of the sheet. If currently open, it closes; if closed, it opens.
      */
     toggle(...args) {
         if (this.open) {

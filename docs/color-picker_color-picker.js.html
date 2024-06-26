@@ -31,41 +31,36 @@ import { MDSheetComponent } from "../sheet/sheet.js";
 import { hexToHsla, hslaToRgba, rgbaToHex, rgbaToHsla } from "../functions/functions.js";
 import { MDPopperController } from "../popper/popper.js";
 
-
-
-
 /**
+ * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-color-picker
- * @fires MDColorPickerComponent#onColorPickerIconButtonClick - 
- * @fires MDColorPickerComponent#onColorPickerButtonClick - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerIconButtonPrevClick - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerIconButtonNextClick - 
- * @fires MDColorPickerComponent#onColorPickerButtonLabelClick - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerButtonCancelClick - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerButtonOkClick - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerdown - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerGradientTrackPointermove - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerup - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerHueNativeInput - 
- * @fires MDColorPickerComponent#onColorPickerSelection - 
- * @fires MDColorPickerComponent#onColorPickerOpacityNativeInput - 
+ * @fires MDColorPickerComponent#onColorPickerIconButtonClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerButtonClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerIconButtonPrevClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerIconButtonNextClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerButtonLabelClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerButtonCancelClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerButtonOkClick - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerdown - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointermove - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerup - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerHueNativeInput - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
+ * @fires MDColorPickerComponent#onColorPickerOpacityNativeInput - {{desc}}
  */
 class MDColorPickerComponent extends MDSheetComponent {
-    
-    
-    
     /**
-     * @property {Number} index - 
-     * @property {String} value - 
+     * @property {Number} index - {{desc}}
+     * @property {String} value - {{desc}}
      */
     static properties = {
         ...MDSheetComponent.properties,
@@ -73,11 +68,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         value: { type: String },
     };
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     get body() {
         /* prettier-ignore */
@@ -88,21 +80,15 @@ class MDColorPickerComponent extends MDSheetComponent {
         `];
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     set body(value) {
         this._body = value;
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     get leadingActions() {
         let label = this.selection.hex;
@@ -110,11 +96,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
@@ -210,11 +193,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.style.setProperty("--md-comp-color-picker-base", `rgb(${this.selection.red},${this.selection.green},${this.selection.blue})`);
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     init() {
         this.canvas = this.querySelector(".md-color-picker__gradient-track");
@@ -226,11 +206,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.updateThumb();
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     draw() {
         const ctx = this.context;
@@ -253,11 +230,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.data = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     findPixel(r, g, b) {
         const data = this.data;
@@ -282,11 +256,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         return { x: xx, y: yy };
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     updateHsla() {
         const { hue, saturation, lightness, red, green, blue, alpha } = hexToHsla(this.value);
@@ -300,11 +271,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.selection.hex = this.value;
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     updateThumb() {
         const { x, y } = this.findPixel(this.selection.red, this.selection.green, this.selection.blue);
@@ -313,11 +281,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.thumb.style.top = y + "px";
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     updateRgba(event) {
         const { width, height, left, top } = this.canvasRect;
@@ -459,11 +424,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.emit("onColorPickerOpacityNativeInput", event);
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     showModal(button, options) {
         super.showModal();
@@ -471,11 +433,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.setPlacement(button, options);
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     show(button, options) {
         super.show();
@@ -483,11 +442,8 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.setPlacement(button, options);
     }
 
-    
-    
-    
     /**
-     * 
+     * {{desc}}
      */
     setPlacement(button, options) {
         this.popper.setPlacement(button, {
@@ -516,7 +472,7 @@ export { MDColorPickerComponent };
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 09:02:10 GMT+0700 (Western Indonesia Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 26 2024 10:28:48 GMT+0700 (Western Indonesia Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,15 +2,13 @@ import { createQueue } from "../functions/functions.js";
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a snackbar component that extends MDSheetComponent.
  * @extends MDSheetComponent
  * @tagname md-snackbar
- * @fires MDSnackbarComponent#onSnackbarShow -
- * @fires MDSnackbarComponent#onSnackbarClose -
+ * @fires MDSnackbarComponent#onSnackbarShow - Triggered when the snackbar is shown.
+ * @fires MDSnackbarComponent#onSnackbarClose - Triggered when the snackbar is closed.
  */
 class MDSnackbarComponent extends MDSheetComponent {
-    /**
-     */
     static properties = {
         ...MDSheetComponent.properties,
     };
@@ -25,7 +23,8 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Shows the snackbar.
+     * @returns {Promise} A promise that resolves when the snackbar is shown and closed.
      */
     show() {
         return MDSnackbarComponent.queue(() => {
@@ -51,7 +50,7 @@ class MDSnackbarComponent extends MDSheetComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * Closes the snackbar.
      */
     close() {
         super.close();

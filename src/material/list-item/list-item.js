@@ -5,28 +5,28 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-list-item
  */
 class MDListItemComponent extends MDComponent {
     /**
-     * @property {String} avatar - Tambahkan deskripsi
-     * @property {String} thumbnail - Tambahkan deskripsi
-     * @property {String} video - Tambahkan deskripsi
-     * @property {String} icon - Tambahkan deskripsi
-     * @property {String} label - Tambahkan deskripsi
-     * @property {String} subLabel - Tambahkan deskripsi
-     * @property {Number} badge - Tambahkan deskripsi
-     * @property {String} text - Tambahkan deskripsi
-     * @property {Boolean} leadingCheckbox - Tambahkan deskripsi
-     * @property {Boolean} leadingRadioButton - Tambahkan deskripsi
-     * @property {Boolean} leadingSwitch - Tambahkan deskripsi
-     * @property {Boolean} trailingCheckbox - Tambahkan deskripsi
-     * @property {Boolean} trailingRadioButton - Tambahkan deskripsi
-     * @property {Boolean} trailingSwitch - Tambahkan deskripsi
-     * @property {Boolean} selected - Tambahkan deskripsi
-     * @property {String} routerLink - Tambahkan deskripsi
+     * @property {String} avatar - {{desc}}
+     * @property {String} thumbnail - {{desc}}
+     * @property {String} video - {{desc}}
+     * @property {String} icon - {{desc}}
+     * @property {String} label - {{desc}}
+     * @property {String} subLabel - {{desc}}
+     * @property {Number} badge - {{desc}}
+     * @property {String} text - {{desc}}
+     * @property {Boolean} leadingCheckbox - {{desc}}
+     * @property {Boolean} leadingRadioButton - {{desc}}
+     * @property {Boolean} leadingSwitch - {{desc}}
+     * @property {Boolean} trailingCheckbox - {{desc}}
+     * @property {Boolean} trailingRadioButton - {{desc}}
+     * @property {Boolean} trailingSwitch - {{desc}}
+     * @property {Boolean} selected - {{desc}}
+     * @property {String} routerLink - {{desc}}
      */
     static properties = {
         avatar: { type: String },

@@ -4,31 +4,31 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { styleMap } from "lit/directives/style-map.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-image
- * @fires MDImageComponent#onImageNativeLoad -
- * @fires MDImageComponent#onImageNativeError -
+ * @fires MDImageComponent#onImageNativeLoad - {{desc}}
+ * @fires MDImageComponent#onImageNativeError - {{desc}}
  */
 class MDImageComponent extends MDComponent {
     /**
-     * @property {String} src - Tambahkan deskripsi
-     * @property {String} alt - Tambahkan deskripsi
-     * @property {String} srcset - Tambahkan deskripsi
-     * @property {String} sizes - Tambahkan deskripsi
-     * @property {String} crossorigin - Tambahkan deskripsi
-     * @property {String} usemap - Tambahkan deskripsi
-     * @property {Boolean} ismap - Tambahkan deskripsi
-     * @property {Number} width - Tambahkan deskripsi
-     * @property {Number} height - Tambahkan deskripsi
-     * @property {String} referrerpolicy - Tambahkan deskripsi
-     * @property {String} decoding - Tambahkan deskripsi
-     * @property {String} loading - Tambahkan deskripsi
-     * @property {String} title - Tambahkan deskripsi
-     * @property {String} longdesc - Tambahkan deskripsi
-     * @property {String} fetchpriority - Tambahkan deskripsi
-     * @property {String} ratio - Tambahkan deskripsi
-     * @property {String} variant - Tambahkan deskripsi
+     * @property {String} src - {{desc}}
+     * @property {String} alt - {{desc}}
+     * @property {String} srcset - {{desc}}
+     * @property {String} sizes - {{desc}}
+     * @property {String} crossorigin - {{desc}}
+     * @property {String} usemap - {{desc}}
+     * @property {Boolean} ismap - {{desc}}
+     * @property {Number} width - {{desc}}
+     * @property {Number} height - {{desc}}
+     * @property {String} referrerpolicy - {{desc}}
+     * @property {String} decoding - {{desc}}
+     * @property {String} loading - {{desc}}
+     * @property {String} title - {{desc}}
+     * @property {String} longdesc - {{desc}}
+     * @property {String} fetchpriority - {{desc}}
+     * @property {String} ratio - {{desc}}
+     * @property {String} variant - {{desc}}
      */
     static properties = {
         src: { type: String },

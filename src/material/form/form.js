@@ -3,23 +3,23 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-form
- * @fires MDFormComponent#onFormNativeReset -
- * @fires MDFormComponent#onFormNativeSubmit -
+ * @fires MDFormComponent#onFormNativeReset - {{desc}}
+ * @fires MDFormComponent#onFormNativeSubmit - {{desc}}
  */
 class MDFormComponent extends MDComponent {
     /**
-     * @property {String} acceptCharset - Tambahkan deskripsi
-     * @property {String} action - Tambahkan deskripsi
-     * @property {String} autocomplete - Tambahkan deskripsi
-     * @property {String} enctype - Tambahkan deskripsi
-     * @property {String} method - Tambahkan deskripsi
-     * @property {String} name - Tambahkan deskripsi
-     * @property {Boolean} novalidate - Tambahkan deskripsi
-     * @property {String} target - Tambahkan deskripsi
-     * @property {String} rel - Tambahkan deskripsi
+     * @property {String} acceptCharset - {{desc}}
+     * @property {String} action - {{desc}}
+     * @property {String} autocomplete - {{desc}}
+     * @property {String} enctype - {{desc}}
+     * @property {String} method - {{desc}}
+     * @property {String} name - {{desc}}
+     * @property {Boolean} novalidate - {{desc}}
+     * @property {String} target - {{desc}}
+     * @property {String} rel - {{desc}}
      */
     static properties = {
         acceptCharset: { type: String },

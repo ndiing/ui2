@@ -5,21 +5,21 @@ import { choose } from "lit/directives/choose.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * Tambahkan deskripsi
+ * Represents a card component that extends MDComponent.
  * @extends MDComponent
  * @tagname md-card
- * @fires MDCardComponent#onCardIconButtonClick -
- * @fires MDCardComponent#onCardButtonClick -
- * @fires MDCardComponent#onCardFabClick -
+ * @fires MDCardComponent#onCardIconButtonClick - Fired when an icon button in the card is clicked.
+ * @fires MDCardComponent#onCardButtonClick - Fired when a button in the card is clicked.
+ * @fires MDCardComponent#onCardFabClick - Fired when a FAB (Floating Action Button) in the card is clicked.
  */
 class MDCardComponent extends MDComponent {
     /**
-     * @property {String} variant - Tambahkan deskripsi
-     * @property {Array} leadingActions - Tambahkan deskripsi
-     * @property {String} label - Tambahkan deskripsi
-     * @property {String} subLabel - Tambahkan deskripsi
-     * @property {Array} trailingActions - Tambahkan deskripsi
-     * @property {Array} actions - Tambahkan deskripsi
+     * @property {String} variant - The variant style of the card (e.g., "elevated", "filled", "outlined").
+     * @property {Array} leadingActions - An array of leading actions displayed in the card.
+     * @property {String} label - The primary label of the card.
+     * @property {String} subLabel - The secondary label of the card.
+     * @property {Array} trailingActions - An array of trailing actions displayed in the card.
+     * @property {Array} actions - An array of actions displayed in the card footer.
      */
     static properties = {
         variant: { type: String },

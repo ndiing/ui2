@@ -6,27 +6,27 @@ import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-tree-item
- * @fires MDTreeItemComponent#onTreeItemSelected -
+ * @fires MDTreeItemComponent#onTreeItemSelected - {{desc}}
  */
 class MDTreeItemComponent extends MDComponent {
     /**
-     * @property {String} icon - Tambahkan deskripsi
-     * @property {String} label - Tambahkan deskripsi
-     * @property {Number} badge - Tambahkan deskripsi
-     * @property {Boolean} selected - Tambahkan deskripsi
-     * @property {String} routerLink - Tambahkan deskripsi
-     * @property {Number} indent - Tambahkan deskripsi
-     * @property {Boolean} isNode - Tambahkan deskripsi
-     * @property {Boolean} expanded - Tambahkan deskripsi
-     * @property {Boolean} activated - Tambahkan deskripsi
-     * @property {String} variant - Tambahkan deskripsi
-     * @property {Boolean} isParent - Tambahkan deskripsi
-     * @property {Array} nodeActions - Tambahkan deskripsi
-     * @property {Array} nodeIcons - Tambahkan deskripsi
-     * @property {Array} leafIcons - Tambahkan deskripsi
+     * @property {String} icon - {{desc}}
+     * @property {String} label - {{desc}}
+     * @property {Number} badge - {{desc}}
+     * @property {Boolean} selected - {{desc}}
+     * @property {String} routerLink - {{desc}}
+     * @property {Number} indent - {{desc}}
+     * @property {Boolean} isNode - {{desc}}
+     * @property {Boolean} expanded - {{desc}}
+     * @property {Boolean} activated - {{desc}}
+     * @property {String} variant - {{desc}}
+     * @property {Boolean} isParent - {{desc}}
+     * @property {Array} nodeActions - {{desc}}
+     * @property {Array} nodeIcons - {{desc}}
+     * @property {Array} leafIcons - {{desc}}
      */
     static properties = {
         icon: { type: String },
@@ -46,7 +46,7 @@ class MDTreeItemComponent extends MDComponent {
     };
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get nodeActions_() {
         let icons = [];
@@ -68,7 +68,7 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get nodeIcons_() {
         let icons = [];
@@ -87,7 +87,7 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get leafIcons_() {
         let icons = [];
@@ -106,28 +106,28 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get nodeAction() {
         return this.nodeActions_[~~this.expanded];
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get nodeicon() {
         return this.nodeIcons_[~~this.expanded];
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get leafIcon() {
         return this.leafIcons_[~~this.selected];
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     get icon_() {
         return this.isNode ? this.nodeicon : this.leafIcon;

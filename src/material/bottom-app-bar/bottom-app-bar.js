@@ -1,7 +1,7 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-bottom-app-bar
  */

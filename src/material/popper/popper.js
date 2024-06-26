@@ -1,5 +1,5 @@
 /**
- * Tambahkan deskripsi
+ * {{desc}}
  */
 class MDPopperController {
     constructor(host, options = {}) {
@@ -24,7 +24,7 @@ class MDPopperController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     async setPlacement(button, options = {}) {
         this.button = button;
@@ -88,7 +88,7 @@ class MDPopperController {
     }
 
     /**
-     * Tambahkan deskripsi
+     * {{desc}}
      */
     getRect(button) {
         if (button instanceof Event) {
