@@ -1,37 +1,4 @@
-/**
- * MDGestureController class for handling drag, resize, and selection gestures.
- * @fires MDGestureController#onDragStart
- * @fires MDGestureController#onDrag
- * @fires MDGestureController#onDragEnd
- * @fires MDGestureController#onResizeStart
- * @fires MDGestureController#onResize
- * @fires MDGestureController#onResizeEnd
- * @fires MDGestureController#onSelectionStart
- * @fires MDGestureController#onSelection
- * @fires MDGestureController#onSelectionEnd
- * @fires MDGestureController#onSwipeLeft
- * @fires MDGestureController#onSwipeTop
- * @fires MDGestureController#onSwipeRight
- * @fires MDGestureController#onSwipeBottom
- * @fires MDGestureController#onLongPress
- * @fires MDGestureController#onTap
- * @fires MDGestureController#onDoubleTap
- */
 class MDGestureController {
-    /**
-     * Creates an instance of MDGestureController.
-     * @param {HTMLElement} host - The host element that this controller is associated with.
-     * @param {Object} [options] - Configuration options for the gesture controller.
-     * @property {string} [options.containerSelector] - Selector for the container element.
-     * @property {string} [options.dragHandleSelector] - Selector for the drag handle element.
-     * @property {string[]} [options.drag] - Array of directions in which dragging is allowed ("x", "y").
-     * @property {boolean} [options.dragAfterLongPress] - Enables dragging after a long press.
-     * @property {string[]} [options.resize] - Array of directions in which resizing is allowed ("n", "e", "s", "w", "ne", "se", "sw", "nw").
-     * @property {boolean} [options.resizeAfterLongPress] - Enables resizing after a long press.
-     * @property {boolean} [options.selection] - Enables selection.
-     * @property {boolean} [options.selectionAfterLongPress] - Enables selection after a long press.
-     * @property {boolean} [options.updateStyle] - Automatically updates the style of the container during gestures.
-     */
     constructor(host, options) {
         (this.host = host).addController(this);
         this.options = {
@@ -48,11 +15,6 @@ class MDGestureController {
         };
     }
 
-    /**
-     * Emits a custom event from the container.
-     * @param {string} type - The type of the event.
-     * @param {any} detail - The detail of the event.
-     */
     emit(type, detail) {
         const event = new CustomEvent(type, {
             bubbles: true,
@@ -62,10 +24,6 @@ class MDGestureController {
         this.container.dispatchEvent(event);
     }
 
-    /**
-     * Called when the host is connected.
-     * @returns {Promise<void>}
-     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -99,18 +57,10 @@ class MDGestureController {
         this.container.addEventListener("pointerdown", this.handleGesturePointerdown);
     }
 
-    /**
-     * Called when the host is disconnected.
-     * @returns {Promise<void>}
-     */
     async hostDisconnected() {
         await this.host.updateComplete;
     }
 
-    /**
-     * Handles the pointerdown event for gestures.
-     * @param {PointerEvent} event - The pointerdown event.
-     */
     handleGesturePointerdown(event) {
         if (event.button !== 0) {
             return;
@@ -177,10 +127,6 @@ class MDGestureController {
         }, 300);
     }
 
-    /**
-     * Handles the pointermove event for gestures.
-     * @param {PointerEvent} event - The pointermove event.
-     */
     handleGesturePointermove(event) {
         window.clearTimeout(this.longPressTimeout);
 
@@ -230,10 +176,6 @@ class MDGestureController {
         }
     }
 
-    /**
-     * Handles the pointerup event for gestures.
-     * @param {PointerEvent} event - The pointerup event.
-     */
     handleGesturePointerup(event) {
         window.clearTimeout(this.longPressTimeout);
 

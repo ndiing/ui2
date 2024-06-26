@@ -101,68 +101,67 @@ class MDTreeItemComponent extends MDComponent {
     renderPlain() {
         /* prettier-ignore */
         return html`
-            ${this.icon_?html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>`:nothing}
-            ${this.label||isDefined(this.badge)?html`
+            ${this.icon_ ? html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>` : nothing}
+            ${this.label || isDefined(this.badge) ? html`
                 <div class="md-tree__inner">
-                    ${this.label?html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>`:nothing}
-                    ${isDefined(this.badge)?html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>`:nothing}
+                    ${this.label ? html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>` : nothing}
+                    ${isDefined(this.badge) ? html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>` : nothing}
                 </div>
-            `:nothing}
-            ${this.isNode?html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>`:nothing}
-        `
+            ` : nothing}
+            ${this.isNode ? html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>` : nothing}
+        `;
     }
 
     renderAccordion() {
         /* prettier-ignore */
         return html`
-            ${this.icon_?html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>`:this.indent>0?html`<div class="md-tree__indent"></div>`:nothing}
-            ${this.label||isDefined(this.badge)?html`
+            ${this.icon_ ? html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>` : this.indent > 0 ? html`<div class="md-tree__indent"></div>` : nothing}
+            ${this.label || isDefined(this.badge) ? html`
                 <div class="md-tree__inner">
-                    ${this.label?html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>`:nothing}
-                    ${isDefined(this.badge)?html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>`:nothing}
+                    ${this.label ? html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>` : nothing}
+                    ${isDefined(this.badge) ? html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>` : nothing}
                 </div>
-            `:nothing}
-            ${this.isNode?html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>`:nothing}
-        `
+            ` : nothing}
+            ${this.isNode ? html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>` : nothing}
+        `;
     }
 
     renderTree() {
         /* prettier-ignore */
         return html`
-            ${Array.from({length:this.indent}, () => html`<div class="md-tree__indent"></div>`)}
-            ${this.isNode?html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>`:this.indent>0?html`<div class="md-tree__indent"></div>`:nothing}
-            ${this.icon_?html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>`:nothing}
-            ${this.label||isDefined(this.badge)?html`
+            ${Array.from({ length: this.indent }, () => html`<div class="md-tree__indent"></div>`)}
+            ${this.isNode ? html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeAction}"></md-icon-button>` : this.indent > 0 ? html`<div class="md-tree__indent"></div>` : nothing}
+            ${this.icon_ ? html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>` : nothing}
+            ${this.label || isDefined(this.badge) ? html`
                 <div class="md-tree__inner">
-                    ${this.label?html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>`:nothing}
-                    ${isDefined(this.badge)?html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>`:nothing}
+                    ${this.label ? html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>` : nothing}
+                    ${isDefined(this.badge) ? html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>` : nothing}
                 </div>
-            `:nothing}
-        `
+            ` : nothing}
+        `;
     }
 
     renderLevel() {
         /* prettier-ignore */
         return html`
-            ${this.isParent?html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeActions_[1]}"></md-icon-button>`:this.icon_?html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>`:this.indent>0?html`<div class="md-tree__indent"></div>`:nothing}
-            ${this.label||isDefined(this.badge)?html`
+            ${this.isParent ? html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeActions_[1]}"></md-icon-button>` : this.icon_ ? html`<md-icon class="md-tree__icon">${this.icon_}</md-icon>` : this.indent > 0 ? html`<div class="md-tree__indent"></div>` : nothing}
+            ${this.label || isDefined(this.badge) ? html`
                 <div class="md-tree__inner">
-                    ${this.label?html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>`:nothing}
-                    ${isDefined(this.badge)?html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>`:nothing}
+                    ${this.label ? html`<div class="md-tree__label"><div class="md-tree__label-primary">${this.label}</div></div>` : nothing}
+                    ${isDefined(this.badge) ? html`<md-badge class="md-tree__badge" .label="${this.badge}"></md-badge>` : nothing}
                 </div>
-            `:nothing}
-            ${this.isNode?html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeActions_[0]}"></md-icon-button>`:nothing}
-            
-        `
+            ` : nothing}
+            ${this.isNode ? html`<md-icon-button class="md-tree__icon-button" .icon="${this.nodeActions_[0]}"></md-icon-button>` : nothing}
+        `;
     }
 
     render() {
         /* prettier-ignore */
-        return choose(this.variant,[
+        return choose(this.variant, [
             ['accordion', () => this.renderAccordion()],
             ['tree', () => this.renderTree()],
             ['level', () => this.renderLevel()],
-        ],() => this.renderPlain())
+        ], () => this.renderPlain());
     }
 
     connectedCallback() {
@@ -220,13 +219,13 @@ class MDTreeComponent extends MDComponent {
                 @click="${this.handleTreeItemClick}"
                 @onTreeItemSelected="${this.handleTreeItemSelected}"
             ></md-tree-item>
-            ${item.expanded&&item.children?.length?item.children.map(item=>this.renderTreeItem(item)):nothing}
-        `
+            ${item.expanded && item.children?.length ? item.children.map(item => this.renderTreeItem(item)) : nothing}
+        `;
     }
 
     render() {
         /* prettier-ignore */
-        return (this.variant=='level'?this.getList(this.list)||this.list:this.list)?.map(item=>this.renderTreeItem(item))
+        return (this.variant == 'level' ? this.getList(this.list) || this.list : this.list)?.map(item => this.renderTreeItem(item));
     }
 
     connectedCallback() {

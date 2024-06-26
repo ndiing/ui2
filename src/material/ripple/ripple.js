@@ -1,18 +1,4 @@
-/**
- * Controller class for managing ripple effects on a host element.
- */
 class MDRippleController {
-    /**
-     * Constructs an instance of MDRippleController.
-     * @param {HTMLElement} host - The host element to apply ripple effects to.
-     * @param {Object} [options={}] - Optional configuration options.
-     * @param {string} [options.buttonSelector] - Selector for the button element within the host.
-     * @param {boolean} [options.centered=false] - Whether the ripple effect should be centered.
-     * @param {boolean} [options.clipped=false] - Whether the ripple effect is clipped.
-     * @param {string} [options.containerSelector] - Selector for the container element within the host.
-     * @param {boolean} [options.fadeOut=false] - Whether the ripple effect should fade out.
-     * @param {number} [options.size=null] - Size of the ripple effect relative to the container.
-     */
     constructor(host, options = {}) {
         (this.host = host).addController(this);
 
@@ -27,10 +13,6 @@ class MDRippleController {
         };
     }
 
-    /**
-     * Method called when the host element is connected to the DOM.
-     * Initializes the ripple effect listeners and configuration.
-     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -68,10 +50,6 @@ class MDRippleController {
         this.button.addEventListener("blur", this.handleRippleBlur);
     }
 
-    /**
-     * Method called when the host element is disconnected from the DOM.
-     * Placeholder for future functionality if needed.
-     */
     async hostDisconnected() {
         await this.host.updateComplete;
 
@@ -91,26 +69,16 @@ class MDRippleController {
         this.button.removeEventListener("blur", this.handleRippleBlur);
     }
 
-    /**
-     * Handles pointerenter event to add hover effect to the ripple container.
-     */
     handleRipplePointerenter() {
         this.container.style.removeProperty("--md-comp-ripple-animation");
 
         this.container.classList.add("md-ripple--hover");
     }
 
-    /**
-     * Handles pointerleave event to remove hover effect from the ripple container.
-     */
     handleRipplePointerleave() {
         this.container.classList.remove("md-ripple--hover");
     }
 
-    /**
-     * Handles pointerdown event to initiate the ripple effect.
-     * @param {PointerEvent} event - The pointerdown event object.
-     */
     handleRipplePointerdown(event) {
         this.container.classList.add("md-ripple--pressed");
 
@@ -137,25 +105,16 @@ class MDRippleController {
         }
     }
 
-    /**
-     * Handles pointerup event to end the ripple effect.
-     */
     handleRipplePointerup() {
         this.container.classList.remove("md-ripple--pressed");
 
         window.removeEventListener("pointerup", this.handleRipplePointerup);
     }
 
-    /**
-     * Handles focus event to add focus effect to the ripple container.
-     */
     handleRippleFocus() {
         this.container.classList.add("md-ripple--focused");
     }
 
-    /**
-     * Handles blur event to remove focus effect from the ripple container.
-     */
     handleRippleBlur() {
         this.container.classList.remove("md-ripple--focused");
     }

@@ -1,10 +1,6 @@
 import { configureLocalization } from "@lit/localize";
 import { sourceLocale, targetLocales } from "../../generated/locale-codes.js";
 
-/**
- * Language map to convert language names to ISO codes.
- * @type {Object.<string, string>}
- */
 const languageMap = {
     Afrikaans: "af",
     Akan: "ak",
@@ -141,21 +137,6 @@ const languageMap = {
     Zulu: "zu",
 };
 
-/**
- * Get the current locale and set locale functions from the localization module.
- * @typedef {Object} LocalizationFunctions
- * @property {Function} getLocale - Function to retrieve the current locale.
- * @property {Function} setLocale - Function to set the current locale.
- */
-
-/**
- * Configure localization with provided parameters.
- * @param {Object} options - Configuration options for localization.
- * @param {string} options.sourceLocale - Source locale for localization.
- * @param {string[]} options.targetLocales - Array of target locales for localization.
- * @param {Function} options.loadLocale - Function to load a specific locale.
- * @returns {LocalizationFunctions} Object containing getLocale and setLocale functions.
- */
 const { getLocale, setLocale } = configureLocalization({
     sourceLocale,
     targetLocales,
@@ -163,20 +144,3 @@ const { getLocale, setLocale } = configureLocalization({
 });
 
 export { sourceLocale, targetLocales, languageMap, getLocale, setLocale };
-
-/**
- * Example usage of the localization module.
- * @example
- * import { setLocale, getLocale, languageMap } from "./path/to/your/module.js";
- *
- * console.log("Target Locales:", targetLocales);
- *
- * setLocale("id");
- *
- * const currentLocale = getLocale();
- * console.log("Current Locale:", currentLocale);
- *
- * const languageName = "French";
- * const isoCode = languageMap[languageName];
- * console.log(`${languageName} ISO Code:`, isoCode);
- */

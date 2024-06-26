@@ -3,28 +3,13 @@ import { MDSheetComponent } from "../sheet/sheet.js";
 import { parseDatetimeLocal, stringifyDatetimeLocal, stringifyTime, stringifyYear } from "../functions/functions.js";
 import { MDPopperController } from "../popper/popper.js";
 
-/**
- * MDDatetimePickerComponent merupakan elemen untuk memilih tanggal dan waktu.
- * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick
- * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick
- * @fires MDDatetimePickerComponent#onDatetimePickerSelection
- */
 class MDDatetimePickerComponent extends MDSheetComponent {
-    /**
-     * @property {Object} properties - Static properties inherited from MDSheetComponent.
-     * @property {number} properties.index - Current index.
-     * @property {string} properties.value - Current value.
-     */
     static properties = {
         ...MDSheetComponent.properties,
         index: { type: Number },
         value: { type: String },
     };
 
-    /**
-     * Getter for years array.
-     * @returns {Array<Object>} Array of year objects.
-     */
     get years() {
         const rows = [];
         const year = this.selection.getFullYear();
@@ -43,10 +28,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for months array.
-     * @returns {Array<Object>} Array of month objects.
-     */
     get months() {
         const rows = [];
         for (let i = 0; i < 12; i++) {
@@ -64,26 +45,14 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for first day of the month.
-     * @returns {number} Day index (0-6).
-     */
     get first() {
         return new Date(this.selection.getFullYear(), this.selection.getMonth()).getDay();
     }
 
-    /**
-     * Getter for last day of the month.
-     * @returns {number} Last day of the month.
-     */
     get last() {
         return 32 - new Date(this.selection.getFullYear(), this.selection.getMonth(), 32).getDate();
     }
 
-    /**
-     * Getter for weekdays array.
-     * @returns {Array<Object>} Array of weekday objects.
-     */
     get weekdays() {
         const rows = [];
         for (let i = 0; i < 7; i++) {
@@ -95,10 +64,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for days grid.
-     * @returns {Array<Object>} Array of day objects.
-     */
     get days() {
         const rows = [];
         for (let i = 0; i < 6; i++) {
@@ -124,10 +89,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for hours array.
-     * @returns {Array<Object>} Array of hour objects.
-     */
     get hours() {
         const rows = [];
         for (let i = 0; i < 24; i++) {
@@ -149,10 +110,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for minutes array.
-     * @returns {Array<Object>} Array of minute objects.
-     */
     get minutes() {
         const rows = [];
         for (let i = 0; i < 60; i++) {
@@ -177,10 +134,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return rows;
     }
 
-    /**
-     * Getter for body content.
-     * @returns {TemplateResult[]} Array containing the body HTML.
-     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -194,18 +147,10 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `];
     }
 
-    /**
-     * Setter for body content.
-     * @param {TemplateResult[]} value - HTML template to set as body.
-     */
     set body(value) {
         this._body = value;
     }
 
-    /**
-     * Getter for leading actions.
-     * @returns {Object[]} Array of leading action objects.
-     */
     get leadingActions() {
         let label;
         if (this.index == 0) {
@@ -222,10 +167,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
-    /**
-     * Getter for trailing actions.
-     * @returns {Object[]} Array of trailing action objects.
-     */
     get trailingActions() {
         return [
             { name: "prev", icon: "keyboard_arrow_left" },
@@ -233,17 +174,10 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         ];
     }
 
-    /**
-     * Getter for general actions.
-     * @returns {Object[]} Array of action objects.
-     */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
     }
 
-    /**
-     * Constructor for initializing the component.
-     */
     constructor() {
         super();
 
@@ -264,10 +198,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.popper = new MDPopperController(this, {});
     }
 
-    /**
-     * Renders the year selector.
-     * @returns {TemplateResult} HTML template for rendering years.
-     */
     renderYear() {
         /* prettier-ignore */
         return html`
@@ -282,10 +212,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `;
     }
 
-    /**
-     * Renders the month selector.
-     * @returns {TemplateResult} HTML template for rendering months.
-     */
     renderMonth() {
         /* prettier-ignore */
         return html`
@@ -300,10 +226,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `;
     }
 
-    /**
-     * Renders the day grid.
-     * @returns {TemplateResult} HTML template for rendering days.
-     */
     renderDay() {
         /* prettier-ignore */
         return html`
@@ -328,10 +250,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `;
     }
 
-    /**
-     * Renders the hour selector.
-     * @returns {TemplateResult} HTML template for rendering hours.
-     */
     renderHour() {
         /* prettier-ignore */
         return html`
@@ -345,10 +263,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `;
     }
 
-    /**
-     * Renders the minute selector.
-     * @returns {TemplateResult} HTML template for rendering minutes.
-     */
     renderMinute() {
         /* prettier-ignore */
         return html`
@@ -362,9 +276,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         `;
     }
 
-    /**
-     * Callback when the component is connected to the DOM.
-     */
     connectedCallback() {
         super.connectedCallback();
 
@@ -375,10 +286,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.updateDate();
     }
 
-    /**
-     * Callback when the component is updated.
-     * @param {Map} changedProperties - Map of changed properties.
-     */
     async updated(changedProperties) {
         super.updated(changedProperties);
 
@@ -395,11 +302,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         }
     }
 
-    /**
-     * Handles click on icon buttons.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonClick
-     */
     handleCardIconButtonClick(event) {
         if (event.currentTarget.name == "prev") {
             this.handleCardIconButtonPrevClick(event);
@@ -410,11 +312,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerIconButtonClick", event);
     }
 
-    /**
-     * Handles click on action buttons.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerButtonClick
-     */
     handleCardButtonClick(event) {
         if (event.currentTarget.name == "label") {
             this.handleCardButtonLabelClick(event);
@@ -427,9 +324,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerButtonClick", event);
     }
 
-    /**
-     * Converts the value to Date object.
-     */
     updateDate() {
         const date = parseDatetimeLocal(this.value);
 
@@ -446,12 +340,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.selected.setMinutes(date.getMinutes());
     }
 
-    /**
-     * Handles click on previous icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonPrevClick
-     */
     handleCardIconButtonPrevClick(event) {
         if (this.index == 0) {
             this.selection.setFullYear(this.selection.getFullYear() - 10);
@@ -471,12 +359,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerIconButtonPrevClick", event);
     }
 
-    /**
-     * Handles click on next icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerIconButtonNextClick
-     */
     handleCardIconButtonNextClick(event) {
         if (this.index == 0) {
             this.selection.setFullYear(this.selection.getFullYear() + 10);
@@ -496,11 +378,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerIconButtonNextClick", event);
     }
 
-    /**
-     * Handles click on label button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerButtonLabelClick
-     */
     handleCardButtonLabelClick(event) {
         if (this.index == 0) {
             this.index = 2;
@@ -517,12 +394,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerButtonLabelClick", event);
     }
 
-    /**
-     * Handles click on cancel button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerButtonCancelClick
-     */
     handleCardButtonCancelClick(event) {
         this.value = this.defaultValue;
         this.updateDate();
@@ -533,12 +404,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerButtonCancelClick", event);
     }
 
-    /**
-     * Handles click on OK button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerButtonOkClick
-     */
     handleCardButtonOkClick(event) {
         this.selected.setFullYear(this.selection.getFullYear());
         this.selected.setMonth(this.selection.getMonth());
@@ -555,12 +420,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerButtonOkClick", event);
     }
 
-    /**
-     * Handles click on year item in the year selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerYearItemClick
-     */
     handleDatetimePickerYearItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -572,12 +431,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerYearItemClick", event);
     }
 
-    /**
-     * Handles click on month item in the month selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerMonthItemClick
-     */
     handleDatetimePickerMonthItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -589,12 +442,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerMonthItemClick", event);
     }
 
-    /**
-     * Handles click on day item in the day grid.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerDayItemClick
-     */
     handleDatetimePickerDayItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -612,12 +459,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerDayItemClick", event);
     }
 
-    /**
-     * Handles click on hour item in the hour selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerHourItemClick
-     */
     handleDatetimePickerHourItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -637,12 +478,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerHourItemClick", event);
     }
 
-    /**
-     * Handles click on minute item in the minute selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatetimePickerSelection
-     * @fires MDDatetimePickerComponent#onDatetimePickerMinuteItemClick
-     */
     handleDatetimePickerMinuteItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -664,10 +499,6 @@ class MDDatetimePickerComponent extends MDSheetComponent {
         this.emit("onDatetimePickerMinuteItemClick", event);
     }
 
-    /**
-     * Converts the selected date to a string.
-     * @returns {string} String representation of selected date.
-     */
     getValue() {
         return stringifyDatetimeLocal(this.selected);
     }

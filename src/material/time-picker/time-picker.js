@@ -3,10 +3,6 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { html } from "lit";
 
 class MDTimePickerComponent extends MDDatetimePickerComponent {
-    /**
-     * Getter for body content.
-     * @returns {TemplateResult[]} Array containing the body HTML.
-     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -17,18 +13,10 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         `];
     }
 
-    /**
-     * Setter for body content.
-     * @param {TemplateResult[]} value - HTML template to set as body.
-     */
     set body(value) {
         this._body = value;
     }
 
-    /**
-     * Getter for leading actions.
-     * @returns {Object[]} Array of leading action objects.
-     */
     get leadingActions() {
         let label;
         if (this.index == 0) {
@@ -50,9 +38,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.classList.add("md-time-picker");
     }
 
-    /**
-     * Converts the value to Date object.
-     */
     updateDate() {
         const date = parseTime(this.value);
 
@@ -63,12 +48,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.selected.setMinutes(date.getMinutes());
     }
 
-    /**
-     * Handles click on previous icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerIconButtonPrevClick
-     */
     handleCardIconButtonPrevClick(event) {
         if (this.index == 0) {
             this.selection.setHours(this.selection.getHours() - 1);
@@ -86,12 +65,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerIconButtonPrevClick", event);
     }
 
-    /**
-     * Handles click on next icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerIconButtonNextClick
-     */
     handleCardIconButtonNextClick(event) {
         if (this.index == 0) {
             this.selection.setHours(this.selection.getHours() + 1);
@@ -109,11 +82,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerIconButtonNextClick", event);
     }
 
-    /**
-     * Handles click on label button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerButtonLabelClick
-     */
     handleCardButtonLabelClick(event) {
         if (this.index == 0) {
             this.index = 1;
@@ -124,12 +92,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerButtonLabelClick", event);
     }
 
-    /**
-     * Handles click on cancel button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerButtonCancelClick
-     */
     handleCardButtonCancelClick(event) {
         this.value = this.defaultValue;
         this.updateDate();
@@ -140,12 +102,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerButtonCancelClick", event);
     }
 
-    /**
-     * Handles click on OK button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerButtonOkClick
-     */
     handleCardButtonOkClick(event) {
         this.selected.setMinutes(this.selection.getMinutes());
 
@@ -158,12 +114,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerButtonOkClick", event);
     }
 
-    /**
-     * Handles click on hour item in the hour selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerHourItemClick
-     */
     handleDatetimePickerHourItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -177,12 +127,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerHourItemClick", event);
     }
 
-    /**
-     * Handles click on minute item in the minute selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onTimePickerSelection
-     * @fires MDDatetimePickerComponent#onTimePickerMinuteItemClick
-     */
     handleDatetimePickerMinuteItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -198,10 +142,6 @@ class MDTimePickerComponent extends MDDatetimePickerComponent {
         this.emit("onTimePickerMinuteItemClick", event);
     }
 
-    /**
-     * Converts the selected date to a string.
-     * @returns {string} String representation of selected date.
-     */
     getValue() {
         return stringifyTime(this.selected);
     }

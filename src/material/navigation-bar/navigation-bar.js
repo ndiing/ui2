@@ -16,8 +16,9 @@ class MDNavigationBarComponent extends MDSheetComponent {
                 .variant="${"plain"}"
                 .list="${this.list}"
             ></md-tree>
-        `]
+        `];
     }
+
     set body(value) {
         this._body = value;
     }

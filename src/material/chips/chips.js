@@ -94,7 +94,7 @@ class MDChipsComponent extends MDComponent {
                 @click="${this.handleChipClick}"
                 @onChipActionClick="${this.handleChipActionClick}"
             ></md-chip>
-        `
+        `;
     }
 
     render() {

@@ -1,21 +1,8 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
-/**
- * Side Sheet component that extends MDSheetComponent.
- * Provides a variant for modal side sheets.
- * @extends MDSheetComponent
- */
 class MDSideSheetComponent extends MDSheetComponent {
-    /**
-     * Array of valid side sheet variants.
-     * @type {Array<String>}
-     */
     variants = ["modal"];
 
-    /**
-     * Callback invoked when the element is connected to the DOM.
-     * Adds necessary classes for the side sheet component.
-     */
     connectedCallback() {
         super.connectedCallback();
 

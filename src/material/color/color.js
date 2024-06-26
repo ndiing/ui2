@@ -1,20 +1,10 @@
 import { argbFromHex, themeFromSourceColor, applyTheme, themeFromImage } from "@material/material-color-utilities";
 
-/**
- * Checks if a string is a valid hexadecimal color.
- * @param {string} color - The color string to validate.
- * @returns {boolean} Returns true if the color string is a valid hexadecimal color, otherwise false.
- */
 function isValidHexColor(color) {
     const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
     return hexColorRegex.test(color);
 }
 
-/**
- * Sets the theme based on a given color or image.
- * @param {string|HTMLImageElement} colorOrImage - The hexadecimal color string or HTMLImageElement to set the theme with.
- * @returns {Promise<void>} Promise that resolves once the theme is applied.
- */
 async function setTheme(colorOrImage, customColors) {
     let theme;
 
@@ -46,15 +36,3 @@ async function setTheme(colorOrImage, customColors) {
 }
 
 export { setTheme };
-
-/**
- * Example usage of the setTheme function.
- * @example
- * import { setTheme } from "./path/to/your/module.js";
- *
- * setTheme('#009688');
- *
- * const image = new Image();
- * image.src = './src/assets/ln4j2i04-02.png';
- * setTheme(image);
- */

@@ -3,10 +3,6 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { parseDate, stringifyDate, stringifyYear } from "../functions/functions.js";
 
 class MDDatePickerComponent extends MDDatetimePickerComponent {
-    /**
-     * Getter for leading actions.
-     * @returns {Object[]} Array of leading action objects.
-     */
     get leadingActions() {
         let label;
         if (this.index == 0) {
@@ -19,10 +15,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         return [{ icon: "arrow_drop_down", variant: "icon-right", name: "label", component: "button", label }];
     }
 
-    /**
-     * Getter for body content.
-     * @returns {TemplateResult[]} Array containing the body HTML.
-     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -34,10 +26,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         `];
     }
 
-    /**
-     * Setter for body content.
-     * @param {TemplateResult[]} value - HTML template to set as body.
-     */
     set body(value) {
         this._body = value;
     }
@@ -48,9 +36,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.classList.add("md-date-picker");
     }
 
-    /**
-     * Converts the value to Date object.
-     */
     updateDate() {
         const date = parseDate(this.value);
 
@@ -63,12 +48,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.selected.setDate(date.getDate());
     }
 
-    /**
-     * Handles click on previous icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerIconButtonPrevClick
-     */
     handleCardIconButtonPrevClick(event) {
         if (this.index == 0) {
             this.selection.setFullYear(this.selection.getFullYear() - 10);
@@ -84,12 +63,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerIconButtonPrevClick", event);
     }
 
-    /**
-     * Handles click on next icon button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerIconButtonNextClick
-     */
     handleCardIconButtonNextClick(event) {
         if (this.index == 0) {
             this.selection.setFullYear(this.selection.getFullYear() + 10);
@@ -105,11 +78,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerIconButtonNextClick", event);
     }
 
-    /**
-     * Handles click on label button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerButtonLabelClick
-     */
     handleCardButtonLabelClick(event) {
         if (this.index == 0) {
             this.index = 2;
@@ -122,12 +90,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerButtonLabelClick", event);
     }
 
-    /**
-     * Handles click on cancel button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerButtonCancelClick
-     */
     handleCardButtonCancelClick(event) {
         this.value = this.defaultValue;
         this.updateDate();
@@ -138,12 +100,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerButtonCancelClick", event);
     }
 
-    /**
-     * Handles click on OK button.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerButtonOkClick
-     */
     handleCardButtonOkClick(event) {
         this.selected.setFullYear(this.selection.getFullYear());
         this.selected.setMonth(this.selection.getMonth());
@@ -158,12 +114,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerButtonOkClick", event);
     }
 
-    /**
-     * Handles click on year item in the year selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerYearItemClick
-     */
     handleDatetimePickerYearItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -175,12 +125,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerYearItemClick", event);
     }
 
-    /**
-     * Handles click on month item in the month selector.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerMonthItemClick
-     */
     handleDatetimePickerMonthItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -192,12 +136,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerMonthItemClick", event);
     }
 
-    /**
-     * Handles click on day item in the day grid.
-     * @param {Event} event - Click event.
-     * @fires MDDatetimePickerComponent#onDatePickerSelection
-     * @fires MDDatetimePickerComponent#onDatePickerDayItemClick
-     */
     handleDatetimePickerDayItemClick(event) {
         const data = event.currentTarget.data;
 
@@ -215,10 +153,6 @@ class MDDatePickerComponent extends MDDatetimePickerComponent {
         this.emit("onDatePickerDayItemClick", event);
     }
 
-    /**
-     * Converts the selected date to a string.
-     * @returns {string} String representation of selected date.
-     */
     getValue() {
         return stringifyDate(this.selected);
     }

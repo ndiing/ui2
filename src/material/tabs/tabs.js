@@ -22,7 +22,7 @@ class MDTabsComponent extends MDTreeComponent {
             let width = treeItem.clientWidth;
             let left = treeItem.offsetLeft;
 
-            if (this.variant == "primary") {
+            if (this.variant === "primary") {
                 const treeInner = treeItem.querySelector(".md-tree__inner");
                 width = treeInner.clientWidth;
                 left += treeInner.offsetLeft;

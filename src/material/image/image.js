@@ -82,11 +82,6 @@ class MDIconComponent extends MDComponent {
         this.classList.add("md-image");
     }
 
-    /**
-     * Callback invoked when the element's properties are updated.
-     * Toggles variant classes based on the 'variant' property.
-     * @param {Map<String, any>} changedProperties - The Map of changed properties.
-     */
     updated(changedProperties) {
         super.updated(changedProperties);
 

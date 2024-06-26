@@ -2,21 +2,7 @@ import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
-/**
- * Button component that extends MDComponent.
- * Provides button functionality with optional icon and ripple effect.
- * @extends MDComponent
- */
 class MDButtonComponent extends MDComponent {
-    /**
-     * Static properties for MDButtonComponent.
-     * @type {Object}
-     * @property {String} variant - The variant type of the button.
-     * @property {String} type - The type attribute of the button.
-     * @property {String} icon - The icon name for the button.
-     * @property {String} label - The label text for the button.
-     * @property {Boolean} selected - Reflects the selected state of the button.
-     */
     static properties = {
         variant: { type: String },
         type: { type: String },
@@ -26,16 +12,8 @@ class MDButtonComponent extends MDComponent {
         disabled: { type: Boolean, reflect: true },
     };
 
-    /**
-     * Array of valid button variants.
-     * @type {Array<String>}
-     */
     variants = ["elevated", "filled", "tonal", "outlined", "icon-right"];
 
-    /**
-     * Constructs an instance of MDButtonComponent.
-     * Initializes MDRippleController for ripple effects.
-     */
     constructor() {
         super();
 
@@ -47,10 +25,6 @@ class MDButtonComponent extends MDComponent {
         });
     }
 
-    /**
-     * Renders the HTML template for the button.
-     * @returns {import("lit").TemplateResult} The rendered template result.
-     */
     render() {
         /* prettier-ignore */
         return html`
@@ -61,21 +35,12 @@ class MDButtonComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Callback invoked when the element is connected to the DOM.
-     * Adds the 'md-button' class to the component's class list.
-     */
     connectedCallback() {
         super.connectedCallback();
 
         this.classList.add("md-button");
     }
 
-    /**
-     * Callback invoked when the element's properties are updated.
-     * Toggles variant classes based on the 'variant' property.
-     * @param {Map<String, any>} changedProperties - The Map of changed properties.
-     */
     updated(changedProperties) {
         super.updated(changedProperties);
 

@@ -1,15 +1,4 @@
-/**
- * Controller for managing the positioning of a popover relative to a host element.
- */
 class MDPopperController {
-    /**
-     * Creates an instance of MDPopperController.
-     * @param {HTMLElement} host - The host element to which the popover is attached.
-     * @param {Object} [options] - Optional configuration options.
-     * @param {string[]} [options.placements] - List of valid placement options for the popover.
-     * @param {HTMLElement} [options.boundary=document.documentElement] - The boundary element for the popover.
-     * @param {number} [options.offset=8] - Offset value for positioning the popover relative to the button.
-     */
     constructor(host, options = {}) {
         this.host = host;
         this.options = {
@@ -31,15 +20,6 @@ class MDPopperController {
         };
     }
 
-    /**
-     * Displays the popover relative to a specified button or event.
-     * @param {HTMLElement|Event} button - The button or event triggering the popover.
-     * @param {Object} [options] - Optional configuration options for the popover display.
-     * @param {string[]} [options.placements] - List of placement options for the popover.
-     * @param {HTMLElement} [options.boundary] - The boundary element for the popover.
-     * @param {number} [options.offset] - Offset value for positioning the popover relative to the button.
-     * @returns {void}
-     */
     async setPlacement(button, options = {}) {
         this.button = button;
         this.options = {
@@ -101,11 +81,6 @@ class MDPopperController {
         }
     }
 
-    /**
-     * Retrieves the bounding rectangle of a given button or event.
-     * @param {HTMLElement|Event} button - The button or event to get the bounding rectangle for.
-     * @returns {Object} The bounding rectangle of the button/event.
-     */
     getRect(button) {
         if (button instanceof Event) {
             const { clientX: left, clientY: top, width, height } = button;

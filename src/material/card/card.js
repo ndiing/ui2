@@ -4,22 +4,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { choose } from "lit/directives/choose.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
-/**
- * Card component that extends MDComponent.
- * Provides card functionality with optional actions, icons, and ripple effect.
- * @extends MDComponent
- */
 class MDCardComponent extends MDComponent {
-    /**
-     * Static properties for MDCardComponent.
-     * @type {Object}
-     * @property {String} variant - The variant type of the card.
-     * @property {Array<Object>} leadingActions - Actions displayed at the leading edge of the card header.
-     * @property {String} label - The primary label of the card.
-     * @property {String} subLabel - The secondary label of the card.
-     * @property {Array<Object>} trailingActions - Actions displayed at the trailing edge of the card header.
-     * @property {Array<Object>} actions - Actions displayed in the card footer.
-     */
     static properties = {
         variant: { type: String },
         leadingActions: { type: Array },
@@ -29,16 +14,8 @@ class MDCardComponent extends MDComponent {
         actions: { type: Array },
     };
 
-    /**
-     * Array of valid card variants.
-     * @type {Array<String>}
-     */
     variants = ["elevated", "filled", "outlined"];
 
-    /**
-     * Constructs an instance of MDCardComponent.
-     * Binds methods for rendering buttons and icon buttons.
-     */
     constructor() {
         super();
 
@@ -49,11 +26,6 @@ class MDCardComponent extends MDComponent {
         this.renderFab = this.renderFab.bind(this);
     }
 
-    /**
-     * Renders an icon button.
-     * @param {Object} item - The icon button item configuration.
-     * @returns {import("lit").TemplateResult} The rendered icon button template.
-     */
     renderIconButton(item) {
         /* prettier-ignore */
         return html`
@@ -70,11 +42,6 @@ class MDCardComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Renders an icon button.
-     * @param {Object} item - The icon button item configuration.
-     * @returns {import("lit").TemplateResult} The rendered icon button template.
-     */
     renderIcon(item) {
         /* prettier-ignore */
         return html`
@@ -87,11 +54,6 @@ class MDCardComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Renders a button.
-     * @param {Object} item - The button item configuration.
-     * @returns {import("lit").TemplateResult} The rendered button template.
-     */
     renderButton(item) {
         /* prettier-ignore */
         return html`
@@ -110,11 +72,6 @@ class MDCardComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Renders a button.
-     * @param {Object} item - The button item configuration.
-     * @returns {import("lit").TemplateResult} The rendered button template.
-     */
     renderFab(item) {
         /* prettier-ignore */
         return html`
@@ -130,12 +87,6 @@ class MDCardComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Renders an action based on the item component type.
-     * @param {Object} item - The action item configuration.
-     * @param {Function} defaultAction - The default action render function.
-     * @returns {import("lit").TemplateResult} The rendered action template.
-     */
     renderAction(item, defaultAction = this.renderButton) {
         /* prettier-ignore */
         return choose(item.component, [
@@ -147,10 +98,6 @@ class MDCardComponent extends MDComponent {
         ], () => defaultAction(item));
     }
 
-    /**
-     * Renders the card header.
-     * @returns {import("lit").TemplateResult} The rendered card header template.
-     */
     renderHeader() {
         /* prettier-ignore */
         return this.leadingActions?.length || this.label || this.subLabel || this.trailingActions?.length ? html`
@@ -175,10 +122,6 @@ class MDCardComponent extends MDComponent {
         ` : nothing;
     }
 
-    /**
-     * Renders the card body.
-     * @returns {import("lit").TemplateResult} The rendered card body template.
-     */
     renderBody() {
         /* prettier-ignore */
         return this.body?.length || this.actions?.length ? html`
@@ -193,10 +136,6 @@ class MDCardComponent extends MDComponent {
         ` : nothing;
     }
 
-    /**
-     * Renders the card component.
-     * @returns {import("lit").TemplateResult} The rendered card template.
-     */
     render() {
         /* prettier-ignore */
         return html`
@@ -205,10 +144,6 @@ class MDCardComponent extends MDComponent {
         `;
     }
 
-    /**
-     * Callback invoked when the element is connected to the DOM.
-     * Adds the 'md-card' class and initializes ripple effect if 'interactive' variant is present.
-     */
     connectedCallback() {
         super.connectedCallback();
 
@@ -221,11 +156,6 @@ class MDCardComponent extends MDComponent {
         }
     }
 
-    /**
-     * Callback invoked when the element's properties are updated.
-     * Toggles variant classes based on the 'variant' property.
-     * @param {Map<String, any>} changedProperties - The Map of changed properties.
-     */
     updated(changedProperties) {
         super.updated(changedProperties);
 
@@ -237,32 +167,14 @@ class MDCardComponent extends MDComponent {
         }
     }
 
-    /**
-     * Handles click event on card icon button.
-     * Emits 'onCardIconButtonClick' event.
-     * @param {Event} event - The click event object.
-     * @fires MDCardComponent#onCardIconButtonClick
-     */
     handleCardIconButtonClick(event) {
         this.emit("onCardIconButtonClick", event);
     }
 
-    /**
-     * Handles click event on card button.
-     * Emits 'onCardButtonClick' event.
-     * @param {Event} event - The click event object.
-     * @fires MDCardComponent#onCardButtonClick
-     */
     handleCardButtonClick(event) {
         this.emit("onCardButtonClick", event);
     }
 
-    /**
-     * Handles click event on card button.
-     * Emits 'onCardFabClick' event.
-     * @param {Event} event - The click event object.
-     * @fires MDCardComponent#onCardFabClick
-     */
     handleCardFabClick(event) {
         this.emit("onCardFabClick", event);
     }
