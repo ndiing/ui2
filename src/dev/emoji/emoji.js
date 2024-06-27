@@ -1,22 +1,16 @@
 import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
-import emojis from "../../assets/emojis.json"
+// import emojis from "../../assets/emoji_15_1_ordering.json"
+import emojis from "../../assets/emojis.json";
+// import emojis from "../../assets/emojis.map.json"
+
+// console.log(emojis)
 
 class DevEmojiComponent extends MDComponent {
     render() {
         return html`
             <div class="md-layout-column">
-                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    ${emojis.rows.slice(0,20).map(row => html`
-                        <div>
-                            ${row.map(emoji => emoji.label?html`
-                                <div>${emoji.label}</div>
-                            `:html`
-                                <md-emoji>${emoji.emoji}</md-emoji>
-                            `)}
-                        </div>
-                    `)}
-                </div>
+                <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">${emojis.map((list) => html` ${list.emoji.map((item) => html` <md-emoji>${item.base.map((codePoint) => String.fromCodePoint(codePoint)).join("")}</md-emoji> `)} `)}</div>
             </div>
         `;
     }

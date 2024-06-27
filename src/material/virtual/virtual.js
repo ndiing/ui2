@@ -8,8 +8,8 @@ class MDVirtualController {
         (this.host = host).addController(this);
         this.options = {
             viewportSelector: null,
-            // scrollbarSelector:null,
-            // containerSelector:null,
+            scrollbarSelector: null,
+            containerSelector: null,
 
             rowTotal: 0,
             rowHeight: 52,
@@ -42,6 +42,10 @@ class MDVirtualController {
         await this.host.updateComplete;
 
         this.viewport = this.options.viewportSelector ? this.host.querySelector(this.options.viewportSelector) : this.host;
+
+        this.scrollbar = this.options.scrollbarSelector && this.host.querySelector(this.options.scrollbarSelector);
+
+        this.container = this.options.containerSelector && this.host.querySelector(this.options.containerSelector);
 
         if (this.viewport) {
             this.handleVirtualScroll = this.handleVirtualScroll.bind(this);

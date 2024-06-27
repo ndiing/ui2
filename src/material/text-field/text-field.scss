@@ -1,4 +1,9 @@
 .md-text-field {
+    --md-comp-text-field-density: 0;
+    --md-comp-text-field-density-height: calc(56 + (4 * var(--md-comp-text-field-density)));
+    --md-comp-text-field-density-ratio: calc(var(--md-comp-text-field-density-height) / 56);
+    --md-comp-text-field-height: calc(var(--md-comp-text-field-density-height) * 1px);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -38,11 +43,11 @@
     color: var(--md-sys-color-on-surface-variant);
 }
 .md-text-field__icon {
-    margin: 16px 0;
+    margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 0;
     margin-left: -4px;
 }
 .md-text-field__meta {
-    margin: 16px 0;
+    margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 0;
     @include typescale-body-large();
 
     + .md-text-field__native {
@@ -53,7 +58,7 @@
     appearance: none;
     width: 100%;
     min-height: 24px;
-    margin: 16px 0;
+    margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 0;
     @include typescale-body-large();
     background: transparent;
     color: inherit;
@@ -76,7 +81,7 @@
     }
 }
 .md-text-field__icon-button {
-    margin: 16px 0;
+    margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 0;
 }
 .md-text-field__text {
     padding: 0 16px;
@@ -109,7 +114,7 @@
 .md-text-field--filled {
     .md-text-field__label {
         padding: 0 16px;
-        margin: 16px 0;
+        margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 0;
         @include typescale-body-large();
         position: absolute;
         left: calc(var(--md-comp-text-field-offset-left) - 16px);
@@ -142,19 +147,19 @@
 .md-text-field--filled.md-text-field--focused,
 .md-text-field--filled.md-text-field--populated {
     .md-text-field__label {
-        margin-top: calc(20px - 12px);
-        margin-bottom: calc(20px + 12px);
+        margin-top: calc(((var(--md-comp-text-field-height) - 16px) / 2) - 12px);
+        margin-bottom: calc(((var(--md-comp-text-field-height) - 16px) / 2) + 12px);
         @include typescale-body-small();
 
         + .md-text-field__container {
             .md-text-field__meta {
-                margin-top: calc(16px + 8px);
-                margin-bottom: calc(16px - 8px);
+                margin-top: calc(((var(--md-comp-text-field-height) - 24px) / 2) + 8px);
+                margin-bottom: calc(((var(--md-comp-text-field-height) - 24px) / 2) - 8px);
                 visibility: visible;
             }
             .md-text-field__native {
-                margin-top: calc(16px + 8px);
-                margin-bottom: calc(16px - 8px);
+                margin-top: calc(((var(--md-comp-text-field-height) - 24px) / 2) + 8px);
+                margin-bottom: calc(((var(--md-comp-text-field-height) - 24px) / 2) - 8px);
                 &::placeholder {
                     visibility: visible;
                 }
@@ -169,7 +174,7 @@
 .md-text-field--outlined {
     .md-text-field__label {
         padding: 0 4px;
-        margin: 16px 12px;
+        margin: calc((var(--md-comp-text-field-height) - 24px) / 2) 12px;
         @include typescale-body-large();
         position: absolute;
         left: calc(var(--md-comp-text-field-offset-left) - 16px);
@@ -246,7 +251,7 @@
 
 .md-text-field--rounded {
     .md-text-field__container {
-        border-radius: 28px;
+        border-radius: calc(var(--md-comp-text-field-height) / 2);
     }
 }
 

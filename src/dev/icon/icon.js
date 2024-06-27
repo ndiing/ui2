@@ -1,21 +1,16 @@
 import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
-import icons from "../../assets/icons.json"
+// import data from "../../assets/icons.json"
+import data from "../../assets/icons.map.json";
+
+// console.log(data)
 
 class DevIconComponent extends MDComponent {
     render() {
         return html`
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded12 md-layout-column__item--medium8 md-layout-column__item--compact4">
-                    ${icons.slice(0,20).map(row => html`
-                        <div>
-                            ${row.map(icon => icon.label?html`
-                                <div>${icon.label}</div>
-                            `:html`
-                                <md-icon>${icon.icon}</md-icon>
-                            `)}
-                        </div>
-                    `)}
+                    <md-icon>image</md-icon>
                 </div>
             </div>
         `;

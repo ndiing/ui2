@@ -4,15 +4,16 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
- * {{desc}}
+ * MDChipsComponent is a class that extends MDComponent and represents a collection of chip components.
+ * This component manages an array of chip data and handles their interactions.
  * @extends MDComponent
  * @tagname md-chips
- * @fires MDChipsComponent#onChipClick - {{desc}}
+ * @fires MDChipsComponent#onChipClick - Fires when a chip in the collection is clicked.
  */
 class MDChipsComponent extends MDComponent {
     /**
-     * @property {Array} list - {{desc}}
-     * @property {Boolean} multiSelection - {{desc}}
+     * @property {Array} list - The list of chip data to be rendered.
+     * @property {Boolean} multiSelection - Whether multiple chips can be selected simultaneously.
      */
     static properties = {
         list: { type: Array },
@@ -43,7 +44,7 @@ class MDChipsComponent extends MDComponent {
 
     render() {
         /* prettier-ignore */
-        return this.list?.map(item=>this.renderChip(item))
+        return this.list?.map(item => this.renderChip(item));
     }
 
     connectedCallback() {

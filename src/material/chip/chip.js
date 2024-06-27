@@ -4,20 +4,21 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 
 /**
- * {{desc}}
+ * MDChipComponent is a class that extends MDComponent and represents a custom chip component.
+ * This component provides various visual and interactive states based on its properties.
  * @extends MDComponent
  * @tagname md-chip
- * @fires MDChipComponent#onChipActionClick - {{desc}}
+ * @fires MDChipComponent#onChipActionClick - Fires when the chip action button is clicked.
  */
 class MDChipComponent extends MDComponent {
     /**
-     * @property {String} variant - {{desc}}
-     * @property {String} avatar - {{desc}}
-     * @property {String} icon - {{desc}}
-     * @property {String} label - {{desc}}
-     * @property {String} action - {{desc}}
-     * @property {Boolean} selected - {{desc}}
-     * @property {Boolean} disabled - {{desc}}
+     * @property {String} variant - The variant type of the chip (e.g., "assist", "filter", "input", "suggestion").
+     * @property {String} avatar - The URL of the avatar image to be displayed in the chip.
+     * @property {String} icon - The icon to be displayed in the chip.
+     * @property {String} label - The text label of the chip.
+     * @property {String} action - The icon for the action button in the chip.
+     * @property {Boolean} selected - Whether the chip is in a selected state.
+     * @property {Boolean} disabled - Whether the chip is disabled.
      */
     static properties = {
         variant: { type: String },
@@ -43,8 +44,8 @@ class MDChipComponent extends MDComponent {
         /* prettier-ignore */
         return html`
             ${this.selected ? html`<div class="md-icon md-chip__icon">check</div>` : nothing}
-            ${!this.selected&&this.avatar ? html`<md-image class="md-chip__avatar" .src="${this.avatar}" .alt="${"Avatar"}" .variant="${"rounded"}"></md-image>` : nothing}
-            ${!this.selected&&this.icon ? html`<div class="md-icon md-chip__icon">${this.icon}</div>` : nothing}
+            ${!this.selected && this.avatar ? html`<md-image class="md-chip__avatar" .src="${this.avatar}" .alt="${"Avatar"}" .variant="${"rounded"}"></md-image>` : nothing}
+            ${!this.selected && this.icon ? html`<div class="md-icon md-chip__icon">${this.icon}</div>` : nothing}
             <div class="md-chip__label">${this.label}</div>
             ${this.action ? html`<div-button class="md-icon md-chip__action" .icon="${this.action}" @click="${this.handleChipActionClick}"></div-button>` : nothing}
         `;
