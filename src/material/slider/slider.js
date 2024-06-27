@@ -5,23 +5,23 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { calcDecimal, calcPercentage, isArrayString } from "../functions/functions.js";
 
 /**
- * {{desc}}
+ * MDSliderComponent is a custom component for creating slider controls.
  * @extends MDComponent
  * @tagname md-slider
- * @fires MDSliderComponent#onSliderNativeInput - {{desc}}
- * @fires MDSliderComponent#onSliderNativeReset - {{desc}}
+ * @fires MDSliderComponent#onSliderNativeInput - Fired when the slider's native input value changes.
+ * @fires MDSliderComponent#onSliderNativeReset - Fired when the slider's native input is reset.
  */
 class MDSliderComponent extends MDComponent {
     /**
-     * @property {Array} defaultValue - {{desc}}
-     * @property {Number} min - {{desc}}
-     * @property {Number} max - {{desc}}
-     * @property {Number} step - {{desc}}
-     * @property {Boolean} disabled - {{desc}}
-     * @property {String} form - {{desc}}
-     * @property {String} name - {{desc}}
-     * @property {String} list - {{desc}}
-     * @property {String} autocomplete - {{desc}}
+     * @property {Array} defaultValue - The default value of the slider.
+     * @property {Number} min - The minimum value of the slider.
+     * @property {Number} max - The maximum value of the slider.
+     * @property {Number} step - The step value for the slider.
+     * @property {Boolean} disabled - Indicates if the slider is disabled.
+     * @property {String} form - The form attribute of the slider.
+     * @property {String} name - The name attribute of the slider.
+     * @property {String} list - The list attribute of the slider.
+     * @property {String} autocomplete - The autocomplete attribute of the slider.
      */
     static properties = {
         value: {
@@ -73,7 +73,7 @@ class MDSliderComponent extends MDComponent {
                     <div class="md-slider__indicator" value="${this.step*k}" ?activated="${(this.step*k)<=value}"></div>
                 `)}
             </div>
-        `
+        `;
     }
 
     render() {
@@ -109,7 +109,7 @@ class MDSliderComponent extends MDComponent {
                     .value="${ifDefined(this.value)}"
                 >
             </label>
-        `
+        `;
     }
 
     async connectedCallback() {
@@ -163,7 +163,8 @@ class MDSliderComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Gets the native input elements associated with the slider.
+     * @returns {NodeList} The native input elements.
      */
     get natives() {
         return this.querySelectorAll(".md-slider__native");

@@ -1,5 +1,8 @@
 /* String Formatting Functions */
 
+/**
+ * {{desc}}
+ */
 function toPascalCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + " " + $2)
@@ -8,6 +11,9 @@ function toPascalCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toCamelCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + " " + $2)
@@ -16,6 +22,9 @@ function toCamelCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "_" + $2)
@@ -24,6 +33,9 @@ function toSnakeCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toKebabCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "-" + $2)
@@ -32,6 +44,9 @@ function toKebabCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toFlatCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "" + $2)
@@ -40,6 +55,9 @@ function toFlatCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toUpperFlatCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "" + $2)
@@ -48,6 +66,9 @@ function toUpperFlatCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toPascalSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "_" + $2)
@@ -56,6 +77,9 @@ function toPascalSnakeCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toCamelSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "_" + $2)
@@ -64,6 +88,9 @@ function toCamelSnakeCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toScreamingSnakeCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "_" + $2)
@@ -72,6 +99,9 @@ function toScreamingSnakeCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toTrainCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "-" + $2)
@@ -80,6 +110,9 @@ function toTrainCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toCobolCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + "-" + $2)
@@ -88,6 +121,9 @@ function toCobolCase(string) {
         .replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
 }
 
+/**
+ * {{desc}}
+ */
 function toTitleCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, (_$, $1, $2) => $1 + " " + $2)
@@ -98,34 +134,52 @@ function toTitleCase(string) {
 
 /* Datetime Functions */
 
+/**
+ * {{desc}}
+ */
 function stringifyDatetimeLocal(date) {
     const pad = (n) => String(n).padStart(2, "0");
 
     return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
+/**
+ * {{desc}}
+ */
 function stringifyDate(date) {
     const pad = (n) => String(n).padStart(2, "0");
 
     return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
+/**
+ * {{desc}}
+ */
 function stringifyYear(date) {
     return `${date.getFullYear()}`;
 }
 
+/**
+ * {{desc}}
+ */
 function stringifyMonth(date) {
     const pad = (n) => String(n).padStart(2, "0");
 
     return `${date.getFullYear()}-${pad(date.getMonth() + 1)}`;
 }
 
+/**
+ * {{desc}}
+ */
 function stringifyTime(date) {
     const pad = (n) => String(n).padStart(2, "0");
 
     return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
+/**
+ * {{desc}}
+ */
 function stringifyWeek(date) {
     let year = date.getFullYear();
     let week = date.getWeek();
@@ -134,24 +188,39 @@ function stringifyWeek(date) {
 
 /* Parsing Functions */
 
+/**
+ * {{desc}}
+ */
 function parseDatetimeLocal(datetimeLocal) {
     return new Date(datetimeLocal);
 }
 
+/**
+ * {{desc}}
+ */
 function parseDate(dateString) {
     var [year, month, day] = dateString.split("-").map(Number);
     return new Date(year, month - 1, day);
 }
 
+/**
+ * {{desc}}
+ */
 function parseYear(yearString) {
     return new Date(yearString);
 }
 
+/**
+ * {{desc}}
+ */
 function parseMonth(monthString) {
     var [year, month] = monthString.split("-").map(Number);
     return new Date(year, month - 1);
 }
 
+/**
+ * {{desc}}
+ */
 function parseTime(timeString) {
     var [hours, minutes] = timeString.split(":").map(Number);
     var date = new Date();
@@ -159,6 +228,9 @@ function parseTime(timeString) {
     return date;
 }
 
+/**
+ * {{desc}}
+ */
 function parseWeek(weekStr) {
     let parts = weekStr.split("-W");
     if (parts.length !== 2 || parts[1].length !== 2) {
@@ -176,6 +248,9 @@ function parseWeek(weekStr) {
 
 /* Utility Functions */
 
+/**
+ * {{desc}}
+ */
 function isDefined(value) {
     return value !== undefined && value !== null;
 }
@@ -216,6 +291,9 @@ Date.prototype.getWeek = function () {
     return 1 + Math.round(((tempDate - week1) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7);
 };
 
+/**
+ * {{desc}}
+ */
 function hexToRgba(hex) {
     hex = hex.replace(/^#/, "");
 
@@ -227,6 +305,9 @@ function hexToRgba(hex) {
     return { red, green, blue, alpha };
 }
 
+/**
+ * {{desc}}
+ */
 function hexToHsla(hex) {
     const rgba = hexToRgba(hex);
     const { red, green, blue, alpha } = rgba;
@@ -265,6 +346,9 @@ function hexToHsla(hex) {
     return { hue: Math.round(hue), saturation, lightness, red, green, blue, alpha };
 }
 
+/**
+ * {{desc}}
+ */
 function hslaToRgba(h, s, l, a = 1) {
     h = ((h % 360) + 360) % 360;
     s = Math.max(0, Math.min(1, s));
@@ -306,6 +390,9 @@ function hslaToRgba(h, s, l, a = 1) {
     return { red: r, green: g, blue: b, alpha: a };
 }
 
+/**
+ * {{desc}}
+ */
 function rgbaToHex(r, g, b, a = 1) {
     r = Math.round(Math.min(255, Math.max(0, r)));
     g = Math.round(Math.min(255, Math.max(0, g)));
@@ -320,11 +407,17 @@ function rgbaToHex(r, g, b, a = 1) {
     return a === 1 ? rgbHex : `${rgbHex}${alphaHex}`;
 }
 
+/**
+ * {{desc}}
+ */
 function hslaToHex(h, s, l, a = 1) {
     const { red, green, blue } = hslaToRgba(h, s, l, a);
     return rgbaToHex(red, green, blue, a);
 }
 
+/**
+ * {{desc}}
+ */
 function rgbaToHsla(r, g, b, a = 1) {
     const nr = r / 255;
     const ng = g / 255;
@@ -360,16 +453,25 @@ function rgbaToHsla(r, g, b, a = 1) {
     return { hue: Math.round(hue), saturation, lightness, alpha: a };
 }
 
+/**
+ * {{desc}}
+ */
 function isArrayString(str) {
     const arrayRegex = /^\s*\[.*\]\s*$/;
     return arrayRegex.test(str);
 }
 
+/**
+ * {{desc}}
+ */
 function calcPercentage(min, max, value) {
     let percentage = ((value - min) / (max - min)) * 100;
     return percentage;
 }
 
+/**
+ * {{desc}}
+ */
 function calcDecimal(min, max, value) {
     let decimal = (value - min) / (max - min);
     return decimal;

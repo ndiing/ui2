@@ -1,7 +1,7 @@
 import { MDSheetComponent } from "../sheet/sheet.js";
 
 /**
- * {{desc}}
+ * MDBottomAppBarComponent is a custom bottom app bar element, extending the functionalities of MDSheetComponent.
  * @extends MDSheetComponent
  * @tagname md-bottom-app-bar
  */

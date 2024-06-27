@@ -106,7 +106,7 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
     return code;
 });
 
-content = content.replace(/(function (\w+)\((.*?)\) \{([\s\S]+?)\})/,($,text,methodName,methodParameter,methodBody)=>{
+content = content.replace(/((async )?function (\w+)\((.*?)\) \{([\s\S]+?)\})/gm,($,text,asyncFunction,methodName,methodParameter,methodBody)=>{
     let code = "";
     code += `/**\r\n`;
     code += ` * {{desc}}\r\n`;

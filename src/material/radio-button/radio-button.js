@@ -4,22 +4,22 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * {{desc}}
+ * MDRadioButtonComponent is a custom radio button element with support for ripple effects.
  * @extends MDComponent
  * @tagname md-radio-button
- * @fires MDRadioButtonComponent#onRadioButtonNativeInput - {{desc}}
- * @fires MDRadioButtonComponent#onRadioButtonNativeReset - {{desc}}
+ * @fires MDRadioButtonComponent#onRadioButtonNativeInput - Fired when the radio button's native input value changes.
+ * @fires MDRadioButtonComponent#onRadioButtonNativeReset - Fired when the radio button's native input is reset.
  */
 class MDRadioButtonComponent extends MDComponent {
     /**
-     * @property {Boolean} checked - {{desc}}
-     * @property {Boolean} defaultChecked - {{desc}}
-     * @property {Boolean} disabled - {{desc}}
-     * @property {Boolean} indeterminate - {{desc}}
-     * @property {String} value - {{desc}}
-     * @property {String} name - {{desc}}
-     * @property {Object} form - {{desc}}
-     * @property {String} type - {{desc}}
+     * @property {Boolean} checked - Indicates whether the radio button is checked.
+     * @property {Boolean} defaultChecked - The default checked state of the radio button.
+     * @property {Boolean} disabled - Indicates whether the radio button is disabled.
+     * @property {Boolean} indeterminate - Indicates whether the radio button is in an indeterminate state.
+     * @property {String} value - The value associated with the radio button.
+     * @property {String} name - The name attribute for the radio button.
+     * @property {Object} form - The form element associated with the radio button.
+     * @property {String} type - The type of the radio button, typically "radio".
      */
     static properties = {
         checked: { type: Boolean },
@@ -63,14 +63,14 @@ class MDRadioButtonComponent extends MDComponent {
                 @input="${this.handleRadioButtonNativeInput}"
                 @reset="${this.handleRadioButtonNativeReset}"
             >
-        `
+        `;
     }
 
     renderTrack() {
         /* prettier-ignore */
         return html`
             <div class="md-radio-button__track"><div class="md-radio-button__thumb"></div></div>
-        `
+        `;
     }
 
     renderContainer() {
@@ -80,7 +80,7 @@ class MDRadioButtonComponent extends MDComponent {
                 ${this.renderNative()}
                 ${this.renderTrack()}
             </div>
-        `
+        `;
     }
 
     render() {
@@ -90,7 +90,7 @@ class MDRadioButtonComponent extends MDComponent {
                 <div class="md-radio-button__label">${this.type}</div>
                 ${this.renderContainer()}
             </label>
-        `
+        `;
     }
 
     connectedCallback() {

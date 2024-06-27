@@ -1,10 +1,16 @@
 import { argbFromHex, themeFromSourceColor, applyTheme, themeFromImage } from "@material/material-color-utilities";
 
+/**
+ * {{desc}}
+ */
 function isValidHexColor(color) {
     const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
     return hexColorRegex.test(color);
 }
 
+/**
+ * {{desc}}
+ */
 async function setTheme(colorOrImage, customColors) {
     let theme;
 

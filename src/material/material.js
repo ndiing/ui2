@@ -10,7 +10,7 @@
 /* [ ] */ import "./observer/observer.js";
 /* [ ] */ import "./attribute-observer/attribute-observer.js";
 /* [ ] */ import "./virtual/virtual.js";
-/* [ ] */ import "./store/store.js";
+/* [x] */ import "./store/store.js";
 
 /* [x] */ import "./icon/icon.js";
 /* [x] */ import "./button/button.js";
@@ -32,15 +32,15 @@
 /* [ ] */ import "./week-picker/week-picker.js";
 /* [ ] */ import "./color-picker/color-picker.js";
 /* [ ] */ import "./fab/fab.js";
-/* [ ] */ import "./bottom-app-bar/bottom-app-bar.js";
+/* [x] */ import "./bottom-app-bar/bottom-app-bar.js";
 /* [x] */ import "./image/image.js";
-/* [ ] */ import "./badge/badge.js";
+/* [x] */ import "./badge/badge.js";
 /* [ ] */ import "./form/form.js";
-/* [ ] */ import "./checkbox/checkbox.js";
-/* [ ] */ import "./radio-button/radio-button.js";
-/* [ ] */ import "./switch/switch.js";
-/* [ ] */ import "./slider/slider.js";
-/* [ ] */ import "./progress-indicator/progress-indicator.js";
+/* [x] */ import "./checkbox/checkbox.js";
+/* [x] */ import "./radio-button/radio-button.js";
+/* [x] */ import "./switch/switch.js";
+/* [x] */ import "./slider/slider.js";
+/* [x] */ import "./progress-indicator/progress-indicator.js";
 /* [ ] */ import "./list-item/list-item.js";
 /* [ ] */ import "./list/list.js";
 /* [ ] */ import "./tree-item/tree-item.js";
@@ -54,3 +54,4 @@
 /* [x] */ import "./chips/chips.js";
 /* [ ] */ import "./text-field/text-field.js";
 /* [x] */ import "./emoji/emoji.js";
+/* [ ] */ import "./emoji-picker/emoji-picker.js";

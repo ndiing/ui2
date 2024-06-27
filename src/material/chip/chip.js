@@ -47,7 +47,7 @@ class MDChipComponent extends MDComponent {
             ${!this.selected && this.avatar ? html`<md-image class="md-chip__avatar" .src="${this.avatar}" .alt="${"Avatar"}" .variant="${"rounded"}"></md-image>` : nothing}
             ${!this.selected && this.icon ? html`<div class="md-icon md-chip__icon">${this.icon}</div>` : nothing}
             <div class="md-chip__label">${this.label}</div>
-            ${this.action ? html`<div-button class="md-icon md-chip__action" .icon="${this.action}" @click="${this.handleChipActionClick}"></div-button>` : nothing}
+            ${this.action ? html`<md-icon-button class="md-chip__action" .icon="${this.action}" @click="${this.handleChipActionClick}"></md-icon-button>` : nothing}
         `;
     }
 

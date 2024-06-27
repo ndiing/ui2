@@ -4,23 +4,23 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * {{desc}}
+ * MDSwitchComponent is a custom switch element with support for ripple effects.
  * @extends MDComponent
  * @tagname md-switch
- * @fires MDSwitchComponent#onSwitchNativeInput - {{desc}}
- * @fires MDSwitchComponent#onSwitchNativeReset - {{desc}}
+ * @fires MDSwitchComponent#onSwitchNativeInput - Fired when the switch's native input value changes.
+ * @fires MDSwitchComponent#onSwitchNativeReset - Fired when the switch's native input is reset.
  */
 class MDSwitchComponent extends MDComponent {
     /**
-     * @property {Boolean} checked - {{desc}}
-     * @property {Boolean} defaultChecked - {{desc}}
-     * @property {Boolean} disabled - {{desc}}
-     * @property {Boolean} indeterminate - {{desc}}
-     * @property {String} value - {{desc}}
-     * @property {String} name - {{desc}}
-     * @property {Object} form - {{desc}}
-     * @property {String} type - {{desc}}
-     * @property {Array} icons - {{desc}}
+     * @property {Boolean} checked - Indicates whether the switch is checked.
+     * @property {Boolean} defaultChecked - The default checked state of the switch.
+     * @property {Boolean} disabled - Indicates whether the switch is disabled.
+     * @property {Boolean} indeterminate - Indicates whether the switch is in an indeterminate state.
+     * @property {String} value - The value associated with the switch.
+     * @property {String} name - The name attribute for the switch.
+     * @property {Object} form - The form element associated with the switch.
+     * @property {String} type - The type of the switch, typically "checkbox".
+     * @property {Array} icons - An array of icons to be displayed based on the switch state.
      */
     static properties = {
         checked: { type: Boolean },
@@ -65,14 +65,14 @@ class MDSwitchComponent extends MDComponent {
                 @input="${this.handleSwitchNativeInput}"
                 @reset="${this.handleSwitchNativeReset}"
             >
-        `
+        `;
     }
 
     renderTrack() {
         /* prettier-ignore */
         return html`
-            <div class="md-switch__track"><div class="md-icon md-switch__thumb">${this.icons?.length?this.icons[~~this.checked]:nothing}</div></div>
-        `
+            <div class="md-switch__track"><div class="md-icon md-switch__thumb">${this.icons?.length ? this.icons[~~this.checked] : nothing}</div></div>
+        `;
     }
 
     renderContainer() {
@@ -82,7 +82,7 @@ class MDSwitchComponent extends MDComponent {
                 ${this.renderNative()}
                 ${this.renderTrack()}
             </div>
-        `
+        `;
     }
 
     render() {
@@ -92,7 +92,7 @@ class MDSwitchComponent extends MDComponent {
                 <div class="md-switch__label">${this.type}</div>
                 ${this.renderContainer()}
             </label>
-        `
+        `;
     }
 
     connectedCallback() {

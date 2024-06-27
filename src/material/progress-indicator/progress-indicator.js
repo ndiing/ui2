@@ -3,15 +3,15 @@ import { MDComponent } from "../component/component.js";
 import { calcPercentage } from "../functions/functions.js";
 
 /**
- * {{desc}}
+ * MDProgressIndicatorComponent is a custom component for displaying progress indicators, either circular or linear.
  * @extends MDComponent
  * @tagname md-progress-indicator
  */
 class MDProgressIndicatorComponent extends MDComponent {
     /**
-     * @property {String} variant - {{desc}}
-     * @property {Number} value - {{desc}}
-     * @property {Number} max - {{desc}}
+     * @property {String} variant - Specifies the type of progress indicator (circular or linear).
+     * @property {Number} value - The current progress value.
+     * @property {Number} max - The maximum value that the progress can reach.
      */
     static properties = {
         variant: { type: String },
@@ -34,8 +34,7 @@ class MDProgressIndicatorComponent extends MDComponent {
                 <circle class="md-progress-indicator__track" cx="50" cy="50" r="45.833333333333336" />
                 <circle class="md-progress-indicator__indicator" cx="50" cy="50" r="45.833333333333336" />
             </svg>
-
-        `
+        `;
     }
 
     renderLinear() {
@@ -44,14 +43,14 @@ class MDProgressIndicatorComponent extends MDComponent {
             <div class="md-progress-indicator__track">
                 <div class="md-progress-indicator__indicator"></div>
             </div>
-        `
+        `;
     }
 
     render() {
         /* prettier-ignore */
-        return this.variant&&this.variant.includes('circular')?
-        this.renderCircular():
-        this.renderLinear()
+        return this.variant && this.variant.includes('circular') ?
+        this.renderCircular() :
+        this.renderLinear();
     }
 
     connectedCallback() {
