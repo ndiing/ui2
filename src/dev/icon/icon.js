@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
 // import data from "../../assets/icons.json"
-import data from "../../assets/icons.map.json";
+// import data from "../../assets/icons.map.json";
 
 // console.log(data)
 

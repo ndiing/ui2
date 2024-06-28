@@ -181,6 +181,7 @@ class MDTextFieldComponent extends MDComponent {
                 @focus="${this.handleTextFieldNativeFocus}"
                 @blur="${this.handleTextFieldNativeBlur}"
                 @input="${this.handleTextFieldNativeInput}"
+                @search="${this.handleTextFieldNativeSearch}"
                 @invalid="${this.handleTextFieldNativeInvalid}"
                 @reset="${this.handleTextFieldNativeReset}"
             >
@@ -362,6 +363,10 @@ class MDTextFieldComponent extends MDComponent {
         this.validate();
 
         this.emit("onTextFieldNativeInput", event);
+    }
+
+    handleTextFieldNativeSearch(event) {
+        this.emit("onTextFieldNativeSearch", event);
     }
 
     handleTextFieldNativeInvalid(event) {

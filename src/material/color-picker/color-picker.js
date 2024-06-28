@@ -31,7 +31,6 @@ import { MDPopperController } from "../popper/popper.js";
  */
 class MDColorPickerComponent extends MDSheetComponent {
     /**
-     * @property {Number} index - {{desc}}
      * @property {String} value - {{desc}}
      */
     static properties = {
@@ -44,7 +43,7 @@ class MDColorPickerComponent extends MDSheetComponent {
      */
     get body() {
         /* prettier-ignore */
-        return [this.renderArea()];
+        return [this.renderMain()];
     }
 
     /**
@@ -60,7 +59,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     get leadingActions() {
         let label = this.selection.hex;
 
-        return [{ /* icon: "arrow_drop_down", variant: "icon-right", */ name: "label", component: "button", label }];
+        return [{  name: "label", component: "button", label }];
     }
 
     /**
@@ -83,10 +82,10 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.popper = new MDPopperController(this, {});
     }
 
-    renderArea() {
+    renderMain() {
         /* prettier-ignore */
         return html`
-            <div class="md-color-picker__area">
+            <div class="md-color-picker__main">
                 <div class="md-color-picker__gradient">
                     <canvas 
                         class="md-color-picker__gradient-track"
