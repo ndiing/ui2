@@ -161,40 +161,44 @@ class MDStore {
      * @returns {*} Object containing total count and array of filtered documents.
      */
     getAll(options = {}) {
-        const { _sort, _order, q, _page, _limit, _start, _end, ...rest } = options;
+        let { _sort, _order, q, _page, _limit, _start, _end, sorters, filters, ...rest } = options;
 
-        let filteredDocs = this.docs.slice();
+        let docs = this.docs.slice();
 
-        if (_sort && _order) {
-            const sort = _sort.split(",");
-            const order = _order.split(",");
-            const sorters = sort.map((name, index) => ({ name, order: order[index] }));
-            filteredDocs = this.sort(filteredDocs, sorters);
+        if ((_sort && _order)||sorters) {
+            if(!sorters){
+                const sort = _sort.split(",");
+                const order = _order.split(",");
+                sorters = sort.map((name, index) => ({ name, order: order[index] }));
+            }
+            docs = this.sort(docs, sorters);
         }
         if (q) {
-            filteredDocs = this.search(filteredDocs, q);
+            docs = this.search(docs, q);
         }
-        if (Object.keys(rest).length > 0) {
-            const filters = [];
-            for (const key in rest) {
-                if (Object.prototype.hasOwnProperty.call(rest, key)) {
-                    const value = rest[key];
-                    const [, name, operator = "_eq"] = key.match(/^(.*?)(_eq|_ne|_lt|_lte|_gt|_gte|_like|_in|_nin)?$/) || [];
-                    filters.push({ name, value, operator });
+        if (Object.keys(rest).length > 0||filters) {
+            if(!filters){
+                filters = [];
+                for (const key in rest) {
+                    if (Object.prototype.hasOwnProperty.call(rest, key)) {
+                        const value = rest[key];
+                        const [, name, operator = "_eq"] = key.match(/^(.*?)(_eq|_ne|_lt|_lte|_gt|_gte|_like|_in|_nin)?$/) || [];
+                        filters.push({ name, value, operator });
+                    }
                 }
             }
-            filteredDocs = this.filter(filteredDocs, filters);
+            docs = this.filter(docs, filters);
         }
 
-        let total = filteredDocs.length;
+        let total = docs.length;
 
         if (_page !== undefined && _limit !== undefined) {
-            filteredDocs = this.paginate(filteredDocs, _page, _limit);
+            docs = this.paginate(docs, _page, _limit);
         } else if (_start !== undefined && _end !== undefined) {
-            filteredDocs = this.slice(filteredDocs, _start, _end);
+            docs = this.slice(docs, _start, _end);
         }
 
-        return { total, docs: filteredDocs };
+        return { total, docs: docs };
     }
 
     // Helper methods for handling nested values

@@ -25,6 +25,7 @@ import DevMonthPickerComponent from "./month-picker/month-picker.js";
 import DevTimePickerComponent from "./time-picker/time-picker.js";
 import DevWeekPickerComponent from "./week-picker/week-picker.js";
 import DevColorPickerComponent from "./color-picker/color-picker.js";
+import DevEmojiPickerComponent from "./emoji-picker/emoji-picker.js";
 import DevFabComponent from "./fab/fab.js";
 import DevBottomAppBarComponent from "./bottom-app-bar/bottom-app-bar.js";
 import DevImageComponent from "./image/image.js";
@@ -81,6 +82,7 @@ const routes = [
             { path: "time-picker", component: DevTimePickerComponent },
             { path: "week-picker", component: DevWeekPickerComponent },
             { path: "color-picker", component: DevColorPickerComponent },
+            { path: "emoji-picker", component: DevEmojiPickerComponent },
             { path: "fab", component: DevFabComponent },
             { path: "bottom-app-bar", component: DevBottomAppBarComponent },
             { path: "image", component: DevImageComponent },

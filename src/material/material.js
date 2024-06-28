@@ -13,6 +13,7 @@
 /* [x] */ import "./store/store.js";
 
 /* [x] */ import "./icon/icon.js";
+/* [x] */ import "./emoji/emoji.js";
 /* [x] */ import "./button/button.js";
 /* [x] */ import "./icon-button/icon-button.js";
 /* [x] */ import "./card/card.js";
@@ -31,6 +32,7 @@
 /* [ ] */ import "./time-picker/time-picker.js";
 /* [x] */ import "./week-picker/week-picker.js";
 /* [ ] */ import "./color-picker/color-picker.js";
+/* [ ] */ import "./emoji-picker/emoji-picker.js";
 /* [x] */ import "./fab/fab.js";
 /* [x] */ import "./bottom-app-bar/bottom-app-bar.js";
 /* [x] */ import "./image/image.js";
@@ -53,4 +55,4 @@
 /* [x] */ import "./chip/chip.js";
 /* [x] */ import "./chips/chips.js";
 /* [ ] */ import "./text-field/text-field.js";
-/* [x] */ import "./emoji/emoji.js";
+

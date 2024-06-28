@@ -39,6 +39,7 @@ class DevMainComponent extends MDComponent {
             { icon: "deployed_code", routerLink: "/time-picker", label: "Time Picker" },
             { icon: "deployed_code", routerLink: "/week-picker", label: "Week Picker" },
             { icon: "deployed_code", routerLink: "/color-picker", label: "Color Picker" },
+            { icon: "deployed_code", routerLink: "/emoji-picker", label: "Emoji Picker" },
             { icon: "deployed_code", routerLink: "/fab", label: "Fab" },
             { icon: "deployed_code", routerLink: "/bottom-app-bar", label: "Bottom App Bar" },
             { icon: "deployed_code", routerLink: "/image", label: "Image" },
