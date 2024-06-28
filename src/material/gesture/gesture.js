@@ -17,6 +17,20 @@
  * @fires MDGestureController#onResizeEnd - {{desc}}
  */
 class MDGestureController {
+    /**
+     * {{desc}}
+     * @param {*} host - {{desc}}
+     * @param {*} options - {{desc}}
+     * @property {String} options.containerSelector - {{desc}}
+     * @property {String} options.dragHandleSelector - {{desc}}
+     * @property {Array} options.drag - {{desc}}
+     * @property {Boolean} options.dragAfterLongPress - {{desc}}
+     * @property {Array} options.resize - {{desc}}
+     * @property {Boolean} options.resizeAfterLongPress - {{desc}}
+     * @property {Boolean} options.selection - {{desc}}
+     * @property {Boolean} options.selectionAfterLongPress - {{desc}}
+     * @property {Boolean} options.updateStyle - {{desc}}
+     */
     constructor(host, options) {
         (this.host = host).addController(this);
         this.options = {

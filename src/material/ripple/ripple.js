@@ -2,6 +2,17 @@
  * {{desc}}
  */
 class MDRippleController {
+    /**
+     * {{desc}}
+     * @param {*} host - {{desc}}
+     * @param {*} options - {{desc}}
+     * @property {String} options.buttonSelector - {{desc}}
+     * @property {Boolean} options.centered - {{desc}}
+     * @property {Boolean} options.clipped - {{desc}}
+     * @property {String} options.containerSelector - {{desc}}
+     * @property {Boolean} options.fadeOut - {{desc}}
+     * @property {Number} options.size - {{desc}}
+     */
     constructor(host, options = {}) {
         (this.host = host).addController(this);
 

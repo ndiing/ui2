@@ -4,6 +4,19 @@
  * @fires MDVirtualController#onVirtualScroll - {{desc}}
  */
 class MDVirtualController {
+    /**
+     * {{desc}}
+     * @param {*} host - {{desc}}
+     * @param {*} options - {{desc}}
+     * @property {String} options.viewportSelector - {{desc}}
+     * @property {String} options.scrollbarSelector - {{desc}}
+     * @property {String} options.containerSelector - {{desc}}
+     * @property {Number} options.rowTotal - {{desc}}
+     * @property {Number} options.rowHeight - {{desc}}
+     * @property {Number} options.buffer - {{desc}}
+     * @property {Number} options.columnTotal - {{desc}}
+     * @property {Number} options.columnWidth - {{desc}}
+     */
     constructor(host, options) {
         (this.host = host).addController(this);
         this.options = {

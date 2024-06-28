@@ -2,6 +2,14 @@
  * {{desc}}
  */
 class MDPopperController {
+    /**
+     * {{desc}}
+     * @param {*} host - {{desc}}
+     * @param {*} options - {{desc}}
+     * @param {Array} options.placements - {{desc}}
+     * @param {HTMLElement} options.boundary - {{desc}}
+     * @param {Number} options.offset - {{desc}}
+     */
     constructor(host, options = {}) {
         this.host = host;
         this.options = {

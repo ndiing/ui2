@@ -1,7 +1,7 @@
-/* [ ] */ import "./functions/functions.js";
+/* [x] */ import "./functions/functions.js";
 /* [ ] */ import "./localization/localization.js";
 /* [ ] */ import "./color/color.js";
-/* [ ] */ import "./component/component.js";
+/* [x] */ import "./component/component.js";
 /* [ ] */ import "./router/router.js";
 /* [ ] */ import "./ripple/ripple.js";
 /* [ ] */ import "./popper/popper.js";
@@ -9,8 +9,8 @@
 /* [ ] */ import "./gesture/gesture.js";
 /* [ ] */ import "./observer/observer.js";
 /* [ ] */ import "./attribute-observer/attribute-observer.js";
-/* [ ] */ import "./virtual/virtual.js";
-/* [ ] */ import "./store/store.js";
+/* [x] */ import "./virtual/virtual.js";
+/* [x] */ import "./store/store.js";
 
 /* [x] */ import "./icon/icon.js";
 /* [x] */ import "./button/button.js";
