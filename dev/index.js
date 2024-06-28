@@ -64,6 +64,8 @@ content = content.replace(/(^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) 
             /^emit$/,
             /^createRenderRoot$/,
             /^once$/,
+            /^hostConnected/,
+            /^hostDisconnected/,
         ].some((regexp) => regexp.test(methodName))
     ) {
         return code;

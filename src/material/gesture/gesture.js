@@ -42,9 +42,6 @@ class MDGestureController {
         this.container.dispatchEvent(event);
     }
 
-    /**
-     * {{desc}}
-     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -78,9 +75,6 @@ class MDGestureController {
         this.container.addEventListener("pointerdown", this.handleGesturePointerdown);
     }
 
-    /**
-     * {{desc}}
-     */
     async hostDisconnected() {
         await this.host.updateComplete;
     }

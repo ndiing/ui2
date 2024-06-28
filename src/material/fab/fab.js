@@ -3,17 +3,17 @@ import { MDComponent } from "../component/component.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * {{desc}}
+ * Floating Action Button (FAB) component used for primary actions in an application.
  * @extends MDComponent
  * @tagname md-fab
  */
 class MDFabComponent extends MDComponent {
     /**
-     * @property {String} variant - {{desc}}
-     * @property {String} icon - {{desc}}
-     * @property {String} label - {{desc}}
-     * @property {Boolean} selected - {{desc}}
-     * @property {Boolean} disabled - {{desc}}
+     * @property {String} variant - Specifies the variant of the FAB. Possible values are "small", "large", "surface", "secondary", "tertiary", "unelevated", "extended".
+     * @property {String} icon - Specifies the icon content of the FAB.
+     * @property {String} label - Specifies the label content of the FAB.
+     * @property {Boolean} selected - Indicates whether the FAB is selected.
+     * @property {Boolean} disabled - Indicates whether the FAB is disabled.
      */
     static properties = {
         variant: { type: String },

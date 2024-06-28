@@ -35,9 +35,6 @@ class MDVirtualController {
         }
     }
 
-    /**
-     * {{desc}}
-     */
     async hostConnected() {
         await this.host.updateComplete;
 
@@ -54,9 +51,6 @@ class MDVirtualController {
         }
     }
 
-    /**
-     * {{desc}}
-     */
     async hostDisconnected() {
         await this.host.updateComplete;
         if (this.viewport) {

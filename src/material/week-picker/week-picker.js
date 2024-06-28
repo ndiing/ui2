@@ -3,28 +3,23 @@ import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js
 import { html } from "lit";
 
 /**
- * {{desc}}
+ * Week picker component for selecting a specific week.
  * @extends MDDatetimePickerComponent
  * @tagname md-week-picker
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerIconButtonPrevClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerIconButtonNextClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerButtonLabelClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerYearItemClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerMonthItemClick - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerSelection - {{desc}}
- * @fires MDWeekPickerComponent#onWeekPickerDayItemClick - {{desc}}
+ * @fires MDWeekPickerComponent#onWeekPickerSelection - Fired when a week is selected.
+ * @fires MDWeekPickerComponent#onWeekPickerIconButtonPrevClick - Fired when the previous button is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerIconButtonNextClick - Fired when the next button is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerButtonLabelClick - Fired when the label button is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerButtonCancelClick - Fired when the cancel button is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerButtonOkClick - Fired when the OK button is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerYearItemClick - Fired when a year item is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerMonthItemClick - Fired when a month item is clicked.
+ * @fires MDWeekPickerComponent#onWeekPickerDayItemClick - Fired when a day item is clicked.
  */
 class MDWeekPickerComponent extends MDDatetimePickerComponent {
     /**
-     * {{desc}}
+     * Gets the formatted weekdays.
+     * @returns {Array} An array of weekday objects.
      */
     get weekdays() {
         const rows = [];
@@ -38,26 +33,27 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * {{desc}}
+     * Gets the formatted days of the current selection.
+     * @returns {Array} An array of day objects with their corresponding weeks.
      */
     get days() {
         const rows = [];
         for (let i = 0; i < 6; i++) {
-            const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + 0 + 1 - this.first + 1);
+            const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + 1 - this.first);
             const year = date.getFullYear();
             const month = date.getMonth();
             const week = date.getWeek();
             const children = [];
             const column = {
-                activated: year == this.activated.getFullYear() && week == this.activated.getWeek(),
-                selected: year == this.selected.getFullYear() && week == this.selected.getWeek(),
+                activated: year === this.activated.getFullYear() && week === this.activated.getWeek(),
+                selected: year === this.selected.getFullYear() && week === this.selected.getWeek(),
                 year,
                 month,
                 week,
             };
 
             for (let j = 0; j < 7; j++) {
-                const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + j + 1 - this.first + 1);
+                const date = new Date(this.selection.getFullYear(), this.selection.getMonth(), i * 7 + j + 1 - this.first);
                 children.push({
                     label: this.dayFormat(date),
                 });
@@ -69,7 +65,8 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * {{desc}}
+     * Gets the body of the week picker component.
+     * @returns {Array} An array containing the HTML template for the body.
      */
     get body() {
         /* prettier-ignore */
@@ -83,22 +80,24 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * {{desc}}
+     * Sets the body of the week picker component.
+     * @param {Array} value - The new body value.
      */
     set body(value) {
         this._body = value;
     }
 
     /**
-     * {{desc}}
+     * Gets the leading actions of the week picker component.
+     * @returns {Array} An array containing the leading action buttons.
      */
     get leadingActions() {
         let label;
-        if (this.index == 0) {
+        if (this.index === 0) {
             label = [this.years[0].label, this.years[this.years.length - 1].label].join("-");
-        } else if (this.index == 1) {
+        } else if (this.index === 1) {
             label = stringifyYear(this.selection);
-        } else if (this.index == 2) {
+        } else if (this.index === 2) {
             label = stringifyWeek(this.selection);
         }
 
@@ -136,7 +135,7 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * {{desc}}
+     * Updates the date based on the selected week.
      */
     updateDate() {
         const date = parseWeek(this.value);
@@ -149,11 +148,11 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     handleCardIconButtonPrevClick(event) {
-        if (this.index == 0) {
+        if (this.index === 0) {
             this.selection.setFullYear(this.selection.getFullYear() - 10);
-        } else if (this.index == 1) {
+        } else if (this.index === 1) {
             this.selection.setFullYear(this.selection.getFullYear() - 1);
-        } else if (this.index == 2) {
+        } else if (this.index === 2) {
             this.selection.setMonth(this.selection.getMonth() - 1);
         }
 
@@ -164,11 +163,11 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     handleCardIconButtonNextClick(event) {
-        if (this.index == 0) {
+        if (this.index === 0) {
             this.selection.setFullYear(this.selection.getFullYear() + 10);
-        } else if (this.index == 1) {
+        } else if (this.index === 1) {
             this.selection.setFullYear(this.selection.getFullYear() + 1);
-        } else if (this.index == 2) {
+        } else if (this.index === 2) {
             this.selection.setMonth(this.selection.getMonth() + 1);
         }
 
@@ -179,11 +178,11 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     handleCardButtonLabelClick(event) {
-        if (this.index == 0) {
+        if (this.index === 0) {
             this.index = 2;
-        } else if (this.index == 1) {
+        } else if (this.index === 1) {
             this.index = 0;
-        } else if (this.index == 2) {
+        } else if (this.index === 2) {
             this.index = 1;
         }
 
@@ -251,7 +250,8 @@ class MDWeekPickerComponent extends MDDatetimePickerComponent {
     }
 
     /**
-     * {{desc}}
+     * Gets the stringified value of the selected week.
+     * @returns {String} The stringified week.
      */
     getValue() {
         return stringifyWeek(this.selected);

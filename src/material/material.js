@@ -10,7 +10,7 @@
 /* [ ] */ import "./observer/observer.js";
 /* [ ] */ import "./attribute-observer/attribute-observer.js";
 /* [ ] */ import "./virtual/virtual.js";
-/* [x] */ import "./store/store.js";
+/* [ ] */ import "./store/store.js";
 
 /* [x] */ import "./icon/icon.js";
 /* [x] */ import "./button/button.js";
@@ -29,9 +29,9 @@
 /* [ ] */ import "./date-picker/date-picker.js";
 /* [ ] */ import "./month-picker/month-picker.js";
 /* [ ] */ import "./time-picker/time-picker.js";
-/* [ ] */ import "./week-picker/week-picker.js";
+/* [x] */ import "./week-picker/week-picker.js";
 /* [ ] */ import "./color-picker/color-picker.js";
-/* [ ] */ import "./fab/fab.js";
+/* [x] */ import "./fab/fab.js";
 /* [x] */ import "./bottom-app-bar/bottom-app-bar.js";
 /* [x] */ import "./image/image.js";
 /* [x] */ import "./badge/badge.js";
