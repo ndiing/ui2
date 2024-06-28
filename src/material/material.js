@@ -54,4 +54,3 @@
 /* [x] */ import "./chips/chips.js";
 /* [ ] */ import "./text-field/text-field.js";
 /* [x] */ import "./emoji/emoji.js";
-/* [ ] */ import "./emoji-picker/emoji-picker.js";

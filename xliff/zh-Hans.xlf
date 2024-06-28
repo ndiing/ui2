@@ -5,6 +5,10 @@
 <trans-unit id="se85c64ef6406b6c8">
   <source>The older sisters perched on the window of grandma, her old teeth were only two</source>
 </trans-unit>
+<trans-unit id="sa48f81f001b893d2">
+  <source>User</source>
+  <target>用户</target>
+</trans-unit>
 </body>
 </file>
 </xliff>
