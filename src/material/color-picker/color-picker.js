@@ -59,7 +59,7 @@ class MDColorPickerComponent extends MDSheetComponent {
     get leadingActions() {
         let label = this.selection.hex;
 
-        return [{  name: "label", component: "button", label }];
+        return [{ name: "label", component: "button", label }];
     }
 
     /**
