@@ -81,7 +81,7 @@ class MDSliderComponent extends MDComponent {
                 ${this.value.map((value,index) => html`
                     <div class="md-slider__container md-slider__container${index+1}">
                         <input 
-                            .type="${this.type}" 
+                            type="range" 
                             class="md-slider__native"
                             .value="${ifDefined(this.value?.[index])}"
                             .defaultValue="${ifDefined(this.defaultValue?.[index])}"
