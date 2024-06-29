@@ -9,21 +9,22 @@ class DevEmojiPickerComponent extends MDComponent {
                     <label for="emoji">Select emoji</label>
                     <div
                         contenteditable="true"
-                        style="display:inline-block;min-width:240px;min-height:24px;background:white;"
+                        tabindex="0"
                         id="emoji"
                         name="emoji"
-                        type="text"
-                        value=""
-                        @input="${this.handleEmojiLocalInput}"
+                        @input="${this.handleEmojiInput}"
+                        @focus="${this.saveCursorPosition}"
+                        @click="${this.saveCursorPosition}"
+                        style="min-height:24px;min-width:240px;background:white;display:inline-block;"
                     ></div>
                     <md-emoji-picker
                         id="emojiPicker"
-                        value=""
-                        .frequentlyUsed="${[{ emoji: "😑" }, { emoji: "🥱" }, { emoji: "🫣" }, { emoji: "🧐" }, { emoji: "😵" }, { emoji: "😩" }, { emoji: "😆" }, { emoji: "🤪" }, { emoji: "😁" }, { emoji: "😔" }, { emoji: "😤" }, { emoji: "😮‍💨" }, { emoji: "🥳" }]}"
+                        .rows="${[{ emoji: "😀" }, { emoji: "😚" }, { emoji: "😶" }, { emoji: "🤧" }, { emoji: "😲" }, { emoji: "😡" }, { emoji: "😽" }, { emoji: "❤" }, { emoji: "☺" }, { emoji: "😑" }, { emoji: "🤮" }, { emoji: "😯" }, { emoji: "😤" }]}"
                         @onEmojiPickerButtonCancelClick="${this.handleEmojiPickerButtonCancelClick}"
                         @onEmojiPickerButtonOkClick="${this.handleEmojiPickerButtonOkClick}"
-                        @onEmojiPickerSelection="${this.handleEmojiPickerSelection}"
                         @onEmojiPickerGridColumnClick="${this.handleEmojiPickerGridColumnClick}"
+                        @onEmojiPickerTextFieldNativeInput="${this.handleEmojiPickerTextFieldNativeInput}"
+                        @onTextFieldNativeBlur="${this.handleTextFieldNativeBlur}"
                     ></md-emoji-picker>
                     <md-button
                         variant="tonal"
@@ -55,37 +56,80 @@ class DevEmojiPickerComponent extends MDComponent {
         return this.querySelector("#emojiPicker2");
     }
 
-    // button
-    handleEmojiPickerButtonClick(event) {
-        this.emojiPicker.showModal(event.currentTarget);
-    }
-
-    handleEmojiPickerButtonClick2(event) {
-        this.emojiPicker2.showModal(event.currentTarget);
-    }
-
-    // input
-    handleEmojiLocalInput() {
-        this.emojiPicker.value = this.emoji.value;
-    }
-
-    // emoji-picker
     handleEmojiPickerButtonCancelClick() {
-        // this.emoji.value = this.emojiPicker.value;
         this.emojiPicker.close();
     }
 
     handleEmojiPickerButtonOkClick() {
-        this.emoji.value = this.emojiPicker.value;
         this.emojiPicker.close();
     }
 
-    handleEmojiPickerSelection() {
-        // this.emoji.value = this.emojiPicker.selection.hex.slice(0, 1 + 6);
+    handleEmojiPickerButtonClick(event) {
+        this.saveCursorPosition();
+        this.emojiPicker.showModal(event.currentTarget);
     }
 
+    handleEmojiPickerButtonClick2(event) {
+        this.saveCursorPosition();
+        this.emojiPicker2.showModal(event.currentTarget);
+    }
+
+    // contenteditable
+    handleEmojiInput() {
+    }
+
+    // search emoji
+    handleEmojiPickerTextFieldNativeInput() {
+    }
+    handleTextFieldNativeBlur() {
+        this.restoreCursorPosition()
+    }
+
+    // pick emoji
     handleEmojiPickerGridColumnClick(event) {
         const emoji = event.detail.currentTarget.data.emoji;
+        this.insertEmojiAtCursor(emoji);
+    }
+
+    saveCursorPosition() {
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            this.savedRange = selection.getRangeAt(0);
+        }
+    }
+
+    restoreCursorPosition() {
+        if (this.savedRange) {
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(this.savedRange);
+        }
+    }
+
+    insertEmojiAtCursor(emoji) {
+        const editableDiv = this.emoji;
+        editableDiv.focus();
+
+        this.restoreCursorPosition();
+
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        range.deleteContents();
+
+        const emojiNode = document.createElement('span');
+        emojiNode.textContent = emoji;
+        range.insertNode(emojiNode);
+
+        // Move the cursor to the end of the inserted emoji
+        range.setStartAfter(emojiNode);
+        range.setEndAfter(emojiNode);
+
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        this.saveCursorPosition(); // Save the new cursor position
     }
 }
 

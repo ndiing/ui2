@@ -11,22 +11,14 @@ import { MDPopperController } from "../popper/popper.js";
  * @fires MDColorPickerComponent#onColorPickerButtonClick - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerIconButtonPrevClick - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerIconButtonNextClick - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerButtonLabelClick - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerButtonCancelClick - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerButtonOkClick - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerdown - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerGradientTrackPointermove - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerGradientTrackPointerup - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerHueNativeInput - {{desc}}
- * @fires MDColorPickerComponent#onColorPickerSelection - {{desc}}
  * @fires MDColorPickerComponent#onColorPickerOpacityNativeInput - {{desc}}
  */
 class MDColorPickerComponent extends MDSheetComponent {

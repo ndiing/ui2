@@ -1,18 +1,18 @@
 import { html, nothing } from "lit";
 import { MDSheetComponent } from "../sheet/sheet.js";
 import { MDPopperController } from "../popper/popper.js";
-import data from "../../assets/emojis.json";
-import { MDStore } from "../store/store.js";
-import { MDVirtualController } from "../virtual/virtual.js";
 import { styleMap } from "lit/directives/style-map.js";
+import { MDVirtualController } from "../virtual/virtual.js";
+import { MDStore } from "../store/store.js";
+import data from "../../assets/emojis.json";
 
 /**
  * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-emoji-picker
- * @fires MDEmojiPickerComponent#onEmojiPickerTextFieldNativeInput - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerTabsItemClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerViewportVirtualScroll - {{desc}}
+ * @fires MDEmojiPickerComponent#onEmojiPickerTextFieldNativeInput - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerGridColumnClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerIconButtonClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerButtonClick - {{desc}}
@@ -25,13 +25,13 @@ import { styleMap } from "lit/directives/style-map.js";
  */
 class MDEmojiPickerComponent extends MDSheetComponent {
     /**
-     * @property {String} value - {{desc}}
-     * @property {Array} frequentlyUsed - {{desc}}
+     * @property {Object} tabs - {{desc}}
+     * @property {Array} rows - {{desc}}
      */
     static properties = {
         ...MDSheetComponent.properties,
-        value: { type: String },
-        frequentlyUsed: { type: Array },
+        tabs: { type: Object },
+        rows: { type: Array },
     };
 
     /**
@@ -53,7 +53,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
      * {{desc}}
      */
     get leadingActions() {
-        return [{ name: "label", component: "text-field", type: "search", placeholder: "Search", icon: "search", variant: "rounded" }];
+        return [{ name: "label", component: "text-field", icon: "search", placeholder: "Search", type: "search", variant: "rounded" }];
     }
 
     /**
@@ -66,18 +66,18 @@ class MDEmojiPickerComponent extends MDSheetComponent {
     /**
      * {{desc}}
      */
-    get tabs() {
+    get emojiPickerTabs() {
         return this.querySelector(".md-emoji-picker__tabs");
     }
+    /**
+     * {{desc}}
+     */
+    set emojiPickerTabs(value) {}
 
     constructor() {
         super();
 
-        this.selection = {};
-
-        this.popper = new MDPopperController(this, {});
-
-        this.tabEmojis = {
+        this.tabs = {
             "Frequently Used": "🕛",
             "Smileys and emotions": "😀",
             People: "🙇",
@@ -89,29 +89,17 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             Symbols: "🔴",
             Flags: "🏁",
         };
+        // frequently used
+        this.rows = [];
 
-        this.frequentlyUsed = [
-            // //
-            // { emoji: "😑" },
-            // { emoji: "🥱" },
-            // { emoji: "🫣" },
-            // { emoji: "🧐" },
-            // { emoji: "😵" },
-            // { emoji: "😩" },
-            // { emoji: "😆" },
-            // { emoji: "🤪" },
-            // { emoji: "😁" },
-            // { emoji: "😔" },
-            // { emoji: "😤" },
-            // { emoji: "😮‍💨" },
-            // { emoji: "🥳" },
-        ];
+        this.popper = new MDPopperController(this, {});
     }
 
     renderMain() {
         /* prettier-ignore */
         return html`
             <div class="md-emoji-picker__main">
+
                 <div class="md-emoji-picker__tabs">
                     ${this.dataTabs.map(item=>html`
                         <div 
@@ -119,25 +107,27 @@ class MDEmojiPickerComponent extends MDSheetComponent {
                             .data="${item}"
                             @click="${this.handleEmojiPickerTabsItemClick}"
                         >
-                            <div class="md-emoji-picker__tabs-emoji md-emoji">${item.emoji}</div>
+                            ${item.emoji?html`<div class="md-emoji-picker__tabs-emoji md-emoji">${item.emoji}</div>`:nothing}
                         </div>
                     `)}
-                </div>           
+                </div>
+
                 <div 
                     class="md-emoji-picker__viewport"
                     @onVirtualScroll="${this.handleEmojiPickerViewportVirtualScroll}"
                 >
                     <div class="md-emoji-picker__scrollbar"></div>
                     <div class="md-emoji-picker__container">
+
                         <div class="md-emoji-picker__grid">
                             ${this.virtualRows?.map(row=>html`
                                 <div 
                                     class="md-emoji-picker__grid-row"
                                     style="${styleMap({
                                         ...(!!row[0]?.label&&{
-                                            position: "sticky",
-                                            top: (0-this.virtual.translateY)+"px",
-                                            "z-index": "1",
+                                            "position":"sticky",
+                                            "top":(0-this.virtual.translateY)+"px",
+                                            "z-index":"1",
                                         })
                                     })}"
                                 >
@@ -154,8 +144,10 @@ class MDEmojiPickerComponent extends MDSheetComponent {
                                 </div>
                             `)}
                         </div>
+
                     </div>
-                </div> 
+                </div>
+
             </div>
         `;
     }
@@ -166,14 +158,10 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.classList.add("md-card");
         this.classList.add("md-emoji-picker");
 
-        this.defaultValue = this.value;
-
-        this.on("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
-
         this.store = new MDStore(data);
         const { docs } = this.store.getAll();
 
-        const { dataTabs, dataRows } = this.createTabsAndRows(this.frequentlyUsed.concat(docs), this.tabEmojis);
+        const { dataTabs, dataRows } = this.generateTabsAndRows(this.rows.concat(docs), this.tabs);
         this.dataTabs = dataTabs;
         this.dataRows = dataRows;
 
@@ -186,12 +174,82 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             rowHeight: 48,
             buffer: this.dataTabs.length,
         });
+
+        this.on("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
     }
 
     async disconnectedCallback() {
         super.disconnectedCallback();
 
         this.off("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
+    }
+
+    handleEmojiPickerTabsItemClick(event) {
+        const data = event.currentTarget.data;
+
+        const { viewport } = this.virtual;
+
+        viewport.scrollTop = data.rowIndex * 48 + data.index * 48;
+
+        this.updateEmojiPickerTabsIndicator(data);
+
+        this.emit("onEmojiPickerTabsItemClick", event);
+    }
+
+    /**
+     * {{desc}}
+     */
+    updateEmojiPickerTabsIndicator(data) {
+        if (!data) {
+            return;
+        }
+
+        let left = 12 + 12 + data.index * 48;
+        let scrollWidth = 12 + this.dataTabs.length * 48 + 12;
+        let clientWidth = 360;
+        let right = scrollWidth - left - 24 - (scrollWidth - clientWidth);
+
+        this.emojiPickerTabs.scrollLeft = scrollWidth - clientWidth - right + 24;
+
+        this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-left", left + "px");
+        this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-right", right + "px");
+    }
+
+    handleEmojiPickerViewportVirtualScroll(event) {
+        const {
+            viewport,
+            scrollbar,
+            container,
+            scrollbarHeight,
+            translateY,
+            rowStart,
+            rowEnd,
+            options: { rowHeight },
+        } = this.virtual;
+
+        this.virtualRows = this.dataRows.filter((row, index) => {
+            return (index >= rowStart && index < rowEnd) || !!row[0]?.label;
+        });
+        this.requestUpdate();
+
+        const scrollTop = Math.floor(viewport.scrollTop / rowHeight);
+        const data = this.dataTabs.find((item, index, array) => {
+            if (array[index + 1]) {
+                return scrollTop >= item.rowIndex && scrollTop < array[index + 1].rowIndex;
+            }
+            return scrollTop >= item.rowIndex;
+        });
+
+        if (this.selectedTab !== data) {
+            this.selectedTab = data;
+            this.updateEmojiPickerTabsIndicator(data);
+        }
+
+        // viewport.style
+        scrollbar.style.height = scrollbarHeight + "px";
+        container.style.transform = `translate3d(0,${translateY}px,0)`;
+
+        this.emit("onEmojiPickerViewportVirtualScroll", event);
     }
 
     handleEmojiPickerTextFieldNativeInput(event) {
@@ -201,63 +259,17 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             shortcodes_like: value,
         });
 
-        const { dataTabs, dataRows } = this.createTabsAndRows(value ? docs : this.frequentlyUsed.concat(docs), this.tabEmojis);
+        const data = value ? docs : this.rows.concat(docs);
+        const { dataTabs, dataRows } = this.generateTabsAndRows(data, this.tabs);
         this.dataTabs = dataTabs;
         this.dataRows = dataRows;
 
-        this.virtual.options.buffer = this.dataTabs.length;
         this.virtual.options.rowTotal = this.dataRows.length;
+        this.virtual.options.buffer = this.dataTabs.length;
 
         this.virtual.handleVirtualScroll();
+
         this.emit("onEmojiPickerTextFieldNativeInput", event);
-    }
-
-    handleEmojiPickerTabsItemClick(event) {
-        const data = event.currentTarget.data;
-
-        this.virtual.viewport.scrollTop = data.rowIndex * 48 + data.index * 48;
-
-        this.updateEmojiPickerTabsScrollLeftAndIndicator(data);
-        this.emit("onEmojiPickerTabsItemClick", event);
-    }
-
-    /**
-     * {{desc}}
-     */
-    updateEmojiPickerTabsScrollLeftAndIndicator(data) {
-        if (!data) {
-            return;
-        }
-        const left = 12 + 12 + data.index * 48;
-        const scrollWidth = 12 + this.dataTabs.length * 48 + 12;
-        const clientWidth = 360;
-        const right = scrollWidth - left - (scrollWidth - clientWidth) - 24;
-
-        this.tabs.scrollLeft = scrollWidth - clientWidth - right + 24;
-
-        this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-left", left + "px");
-        this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-right", right + "px");
-    }
-
-    handleEmojiPickerViewportVirtualScroll(event) {
-        this.virtualRows = this.dataRows.filter((row, index) => {
-            return (index >= this.virtual.rowStart && index < this.virtual.rowEnd) || !!row[0]?.label;
-        });
-        this.requestUpdate();
-        const scrollTop = Math.floor(this.virtual.viewport.scrollTop / this.virtual.options.rowHeight);
-        const data = this.dataTabs.find((item, index, array) => {
-            if (array[index + 1]) {
-                return scrollTop >= item.rowIndex && scrollTop < array[index + 1].rowIndex;
-            }
-            return scrollTop >= item.rowIndex;
-        });
-        if (this.data !== data) {
-            this.data = data;
-            this.updateEmojiPickerTabsScrollLeftAndIndicator(data);
-        }
-        this.virtual.scrollbar.style.height = this.virtual.scrollbarHeight + "px";
-        this.virtual.container.style.transform = `translate3d(0,${this.virtual.translateY}px,0)`;
-        this.emit("onEmojiPickerViewportVirtualScroll", event);
     }
 
     handleEmojiPickerGridColumnClick(event) {
@@ -267,7 +279,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
     /**
      * {{desc}}
      */
-    createTabsAndRows(data, tabEmojis) {
+    generateTabsAndRows(data = [], tabs = {}) {
         const grouped = data.reduce((acc, curr) => {
             const { group = "Frequently Used", emoji } = curr;
             if (!acc[group]) {
@@ -276,14 +288,14 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             acc[group].push({ emoji });
             return acc;
         }, {});
-        const dataRows = [];
         const dataTabs = [];
+        const dataRows = [];
         let rowIndex = 0;
         let index = 0;
         for (const name in grouped) {
             const value = grouped[name];
+            dataTabs.push({ label: name, emoji: tabs[name] || value[0].emoji, rowIndex, index });
             dataRows.push([{ label: name }]);
-            dataTabs.push({ label: name, emoji: tabEmojis[name] || value[0].emoji, rowIndex, index });
             ++rowIndex;
             ++index;
             for (let i = 0; i < value.length; i += 7) {

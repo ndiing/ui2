@@ -4,23 +4,23 @@
     background-color: var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface-variant);
     box-shadow: var(--md-sys-elevation-level0);
-    position: absolute;
-    z-index: 7;
-    visibility: hidden;
-    animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
-    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
-    animation-duration: var(--md-sys-motion-duration-short4);
+    // position: absolute;
+    // z-index: 7;
+    // visibility: hidden;
+    // animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
+    // animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    // animation-duration: var(--md-sys-motion-duration-short4);
 
-    &[open] {
-        visibility: visible;
-        animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
+    // &[open] {
+    //     visibility: visible;
+    //     animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
 
-        > * {
-            animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
-            animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
-            animation-duration: var(--md-sys-motion-duration-short4);
-        }
-    }
+    //     > * {
+    //         animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
+    //         animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    //         animation-duration: var(--md-sys-motion-duration-short4);
+    //     }
+    // }
 
     + .md-scrim {
         opacity: 0;
@@ -104,10 +104,11 @@
         transition-property: width, left, right;
         transition-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
         transition-duration: var(--md-sys-motion-duration-short4);
-        transition-delay: 0s, var(--md-comp-emoji-picker-tabs-indicator-transition-left, var(--md-sys-motion-duration-short2)), var(--md-comp-emoji-picker-tabs-indicator-transition-right, var(--md-sys-motion-duration-short2));
+        transition-delay: 0s, var(--md-comp-emoji-picker-tabs-indicator-transition-left, var(--md-sys-motion-duration-short2)), var(--md-comp-tabs-indicator-transition-right, var(--md-sys-motion-duration-short2));
     }
 }
 .md-emoji-picker__tabs-item {
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -174,11 +175,11 @@
     }
 }
 .md-emoji-picker__scrollbar {
-    width: 1px;
-    height: 1px;
     position: absolute;
     left: 0;
     top: 0;
+    width: 1px;
+    height: 1px;
     pointer-events: none;
 }
 .md-emoji-picker__container {

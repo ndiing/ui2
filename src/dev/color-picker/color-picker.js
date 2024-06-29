@@ -12,7 +12,7 @@ class DevColorPickerComponent extends MDComponent {
                         name="color"
                         type="color"
                         value="#6750a4"
-                        @input="${this.handleColorLocalInput}"
+                        @input="${this.handleColorInput}"
                     />
                     <md-color-picker
                         id="colorPicker"
@@ -61,7 +61,7 @@ class DevColorPickerComponent extends MDComponent {
     }
 
     // input
-    handleColorLocalInput() {
+    handleColorInput() {
         this.colorPicker.value = this.color.value;
     }
 
