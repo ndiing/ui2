@@ -233,6 +233,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
     }
 
     updateEmojiPickerTabsScrollLeftAndIndicator(data) {
+        if(!data){return}
         const left = 12 + 12 + data.index * 48;
         const scrollWidth = 12 + this.dataTabs.length * 48 + 12;
         const clientWidth = 360;

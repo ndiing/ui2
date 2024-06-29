@@ -1,14 +1,14 @@
 /* [x] */ import "./functions/functions.js";
-/* [ ] */ import "./localization/localization.js";
-/* [ ] */ import "./color/color.js";
+/* [x] */ import "./localization/localization.js";
+/* [x] */ import "./color/color.js";
 /* [x] */ import "./component/component.js";
-/* [ ] */ import "./router/router.js";
-/* [ ] */ import "./ripple/ripple.js";
-/* [ ] */ import "./popper/popper.js";
-/* [ ] */ import "./progress/progress.js";
-/* [ ] */ import "./gesture/gesture.js";
-/* [ ] */ import "./observer/observer.js";
-/* [ ] */ import "./attribute-observer/attribute-observer.js";
+/* [x] */ import "./router/router.js";
+/* [x] */ import "./ripple/ripple.js";
+/* [x] */ import "./popper/popper.js";
+/* [x] */ import "./progress/progress.js";
+/* [x] */ import "./gesture/gesture.js";
+/* [x] */ import "./observer/observer.js";
+/* [x] */ import "./attribute-observer/attribute-observer.js";
 /* [x] */ import "./virtual/virtual.js";
 /* [x] */ import "./store/store.js";
 
@@ -43,9 +43,9 @@
 /* [x] */ import "./switch/switch.js";
 /* [x] */ import "./slider/slider.js";
 /* [x] */ import "./progress-indicator/progress-indicator.js";
-/* [ ] */ import "./list-item/list-item.js";
+/* [x] */ import "./list-item/list-item.js";
 /* [x] */ import "./list/list.js";
-/* [ ] */ import "./tree-item/tree-item.js";
+/* [x] */ import "./tree-item/tree-item.js";
 /* [x] */ import "./tree/tree.js";
 /* [x] */ import "./navigation-bar/navigation-bar.js";
 /* [x] */ import "./navigation-drawer/navigation-drawer.js";
@@ -54,4 +54,4 @@
 /* [x] */ import "./tabs/tabs.js";
 /* [x] */ import "./chip/chip.js";
 /* [x] */ import "./chips/chips.js";
-/* [ ] */ import "./text-field/text-field.js";
+/* [x] */ import "./text-field/text-field.js";

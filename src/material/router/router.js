@@ -1,14 +1,11 @@
 /**
- * {{desc}}
- * @fires MDRouter#onRouterCurrentEntryChange - {{desc}}
- * @fires MDRouter#onRouterNavigate - {{desc}}
- * @fires MDRouter#onRouterNavigateError - {{desc}}
- * @fires MDRouter#onRouterNavigateSuccess - {{desc}}
+ * Router for managing client-side navigation and routing.
+ * @fires MDRouter#onRouterCurrentEntryChange - Triggered when the current route changes.
+ * @fires MDRouter#onRouterNavigate - Triggered when navigating to a new route.
+ * @fires MDRouter#onRouterNavigateError - Triggered when an error occurs during navigation.
+ * @fires MDRouter#onRouterNavigateSuccess - Triggered when navigation to a route is successful.
  */
 class MDRouter {
-    /**
-     * {{desc}}
-     */
     static setRoutes(routes, parent) {
         return routes.reduce((acc, curr) => {
             curr.parent = parent;
@@ -213,8 +210,9 @@ class MDRouter {
         performance.clearMeasures("measureRouterNavigateSuccess");
     }
 
-    /**
-     * {{desc}}
+     /**
+     * Navigates to a new URL, updating browser history.
+     * @param {String} url - URL to navigate to.
      */
     static navigate(url) {
         if (this.historyApiFallback) {
@@ -244,7 +242,8 @@ class MDRouter {
     }
 
     /**
-     * {{desc}}
+     * Initializes the router with provided route configurations.
+     * @param {Array} routes - List of route configurations.
      */
     static init(routes) {
         this.stacks = this.setRoutes(routes);

@@ -6,27 +6,27 @@ import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
 
 /**
- * {{desc}}
+ * Represents a tree item component in MD framework.
  * @extends MDComponent
  * @tagname md-tree-item
- * @fires MDTreeItemComponent#onTreeItemSelected - {{desc}}
+ * @fires MDTreeItemComponent#onTreeItemSelected - Event fired when the tree item is selected.
  */
 class MDTreeItemComponent extends MDComponent {
     /**
-     * @property {String} icon - {{desc}}
-     * @property {String} label - {{desc}}
-     * @property {Number} badge - {{desc}}
-     * @property {Boolean} selected - {{desc}}
-     * @property {String} routerLink - {{desc}}
-     * @property {Number} indent - {{desc}}
-     * @property {Boolean} isNode - {{desc}}
-     * @property {Boolean} expanded - {{desc}}
-     * @property {Boolean} activated - {{desc}}
-     * @property {String} variant - {{desc}}
-     * @property {Boolean} isParent - {{desc}}
-     * @property {Array} nodeActions - {{desc}}
-     * @property {Array} nodeIcons - {{desc}}
-     * @property {Array} leafIcons - {{desc}}
+     * @property {String} icon - Icon for the tree item.
+     * @property {String} label - Label text for the tree item.
+     * @property {Number} badge - Badge number for the tree item.
+     * @property {Boolean} selected - Indicates if the tree item is selected.
+     * @property {String} routerLink - Link associated with the tree item.
+     * @property {Number} indent - Indentation level of the tree item.
+     * @property {Boolean} isNode - Indicates if the item is a node in the tree.
+     * @property {Boolean} expanded - Indicates if the node is expanded.
+     * @property {Boolean} activated - Indicates if the node is activated.
+     * @property {String} variant - Variant of the tree item (plain, accordion, tree, level).
+     * @property {Boolean} isParent - Indicates if the node has children.
+     * @property {Array} nodeActions - Actions available for the node.
+     * @property {Array} nodeIcons - Icons associated with the node.
+     * @property {Array} leafIcons - Icons associated with the leaf nodes.
      */
     static properties = {
         icon: { type: String },
@@ -46,7 +46,8 @@ class MDTreeItemComponent extends MDComponent {
     };
 
     /**
-     * {{desc}}
+     * Retrieves the node actions based on the variant and node actions property.
+     * @returns {Array} Array of node actions icons.
      */
     get nodeActions_() {
         let icons = [];
@@ -68,7 +69,8 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Retrieves the node icons based on the variant and node icons property.
+     * @returns {Array} Array of node icons.
      */
     get nodeIcons_() {
         let icons = [];
@@ -87,7 +89,8 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Retrieves the leaf icons based on the variant and leaf icons property.
+     * @returns {Array} Array of leaf icons.
      */
     get leafIcons_() {
         let icons = [];
@@ -106,28 +109,32 @@ class MDTreeItemComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Retrieves the current node action based on the expanded state.
+     * @returns {String} Current node action icon.
      */
     get nodeAction() {
         return this.nodeActions_[~~this.expanded];
     }
 
     /**
-     * {{desc}}
+     * Retrieves the current node icon based on the expanded state.
+     * @returns {String} Current node icon.
      */
     get nodeicon() {
         return this.nodeIcons_[~~this.expanded];
     }
 
     /**
-     * {{desc}}
+     * Retrieves the current leaf icon based on the selected state.
+     * @returns {String} Current leaf icon.
      */
     get leafIcon() {
         return this.leafIcons_[~~this.selected];
     }
 
-    /**
-     * {{desc}}
+     /**
+     * Retrieves the appropriate icon based on whether the item is a node or leaf.
+     * @returns {String} Icon associated with the item.
      */
     get icon_() {
         return this.isNode ? this.nodeicon : this.leafIcon;
