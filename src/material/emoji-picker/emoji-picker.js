@@ -40,6 +40,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
     static properties = {
         ...MDSheetComponent.properties,
         value: { type: String },
+        frequentlyUsed: { type: Array },
     };
 
     /**
@@ -114,22 +115,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             // { emoji: "🥳" },
         ];
 
-        this.store = new MDStore(data);
-        const { total, docs } = this.store.getAll();
-
-        const { dataTabs, dataRows } = this.createTabsAndRows(this.frequentlyUsed.concat(docs), this.tabEmojis);
-        this.dataTabs = dataTabs;
-        this.dataRows = dataRows;
-
-        this.virtual = new MDVirtualController(this, {
-            viewportSelector: ".md-emoji-picker__viewport",
-            scrollbarSelector: ".md-emoji-picker__scrollbar",
-            containerSelector: ".md-emoji-picker__container",
-
-            rowTotal: this.dataRows.length,
-            rowHeight: 48,
-            buffer: this.dataTabs.length,
-        });
     }
 
     renderMain() {
@@ -189,6 +174,24 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.defaultValue = this.value;
 
         this.on("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
+
+    
+        this.store = new MDStore(data);
+        const { total, docs } = this.store.getAll();
+
+        const { dataTabs, dataRows } = this.createTabsAndRows(this.frequentlyUsed.concat(docs), this.tabEmojis);
+        this.dataTabs = dataTabs;
+        this.dataRows = dataRows;
+
+        this.virtual = new MDVirtualController(this, {
+            viewportSelector: ".md-emoji-picker__viewport",
+            scrollbarSelector: ".md-emoji-picker__scrollbar",
+            containerSelector: ".md-emoji-picker__container",
+
+            rowTotal: this.dataRows.length,
+            rowHeight: 48,
+            buffer: this.dataTabs.length,
+        });
     }
 
     async disconnectedCallback() {

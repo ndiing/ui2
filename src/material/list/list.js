@@ -5,26 +5,26 @@ import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 
 /**
- * {{desc}}
+ * A custom list component that extends MDComponent to display a list of items with various selection modes.
  * @extends MDComponent
  * @tagname md-list
- * @fires MDListComponent#onListItemClick - {{desc}}
- * @fires MDListComponent#handleListKeydown - {{desc}}
- * @fires MDListComponent#onListItemSelectionStart - {{desc}}
- * @fires MDListComponent#onListItemSelection - {{desc}}
- * @fires MDListComponent#onListItemSelectionEnd - {{desc}}
- * @fires MDListComponent#onListItemCheckboxNativeInput - {{desc}}
- * @fires MDListComponent#onListItemRadioButtonNativeInput - {{desc}}
- * @fires MDListComponent#onListItemSwitchNativeInput - {{desc}}
+ * @fires MDListComponent#onListItemClick - Fires when a list item is clicked.
+ * @fires MDListComponent#handleListKeydown - Fires when a keydown event occurs on the list.
+ * @fires MDListComponent#onListItemSelectionStart - Fires when a list item selection starts.
+ * @fires MDListComponent#onListItemSelection - Fires when a list item is selected.
+ * @fires MDListComponent#onListItemSelectionEnd - Fires when a list item selection ends.
+ * @fires MDListComponent#onListItemCheckboxNativeInput - Fires when a checkbox native input event occurs on a list item.
+ * @fires MDListComponent#onListItemRadioButtonNativeInput - Fires when a radio button native input event occurs on a list item.
+ * @fires MDListComponent#onListItemSwitchNativeInput - Fires when a switch native input event occurs on a list item.
  */
 class MDListComponent extends MDComponent {
     /**
-     * @property {Array} list - {{desc}}
-     * @property {Boolean} selection - {{desc}}
-     * @property {Boolean} rangeSelection - {{desc}}
-     * @property {Boolean} multiSelection - {{desc}}
-     * @property {Boolean} singleSelection - {{desc}}
-     * @property {Boolean} allSelection - {{desc}}
+     * @property {Array} list - The list of items to be rendered in the list component.
+     * @property {Boolean} selection - Enables or disables selection mode.
+     * @property {Boolean} rangeSelection - Enables or disables range selection mode.
+     * @property {Boolean} multiSelection - Enables or disables multi-selection mode.
+     * @property {Boolean} singleSelection - Enables or disables single-selection mode.
+     * @property {Boolean} allSelection - Enables or disables the ability to select all items.
      */
     static properties = {
         list: { type: Array },
@@ -69,12 +69,12 @@ class MDListComponent extends MDComponent {
                 @onSelection="${this.handleListItemSelection}"
                 @onSelectionEnd="${this.handleListItemSelectionEnd}"
             ></md-list-item>
-        `
+        `;
     }
 
     render() {
         /* prettier-ignore */
-        return this.list?.map(item=>this.renderListItem(item))
+        return this.list?.map(item => this.renderListItem(item));
     }
 
     connectedCallback() {
@@ -92,7 +92,8 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Selects a single item in the list.
+     * @param {Object} data - The data item to select.
      */
     select(data) {
         for (let i = 0; i < this.list.length; i++) {
@@ -103,7 +104,8 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Toggles the selection state of an item in the list for multi-selection.
+     * @param {Object} data - The data item to toggle selection.
      */
     multiSelect(data) {
         data.selected = !data.selected;
@@ -114,7 +116,8 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Selects a range of items in the list from the last selected item to the current item.
+     * @param {Object} data - The data item to start the range selection.
      */
     selectRange(data) {
         this.endIndex = this.endIndex || 0;
@@ -136,7 +139,7 @@ class MDListComponent extends MDComponent {
     }
 
     /**
-     * {{desc}}
+     * Selects all items in the list.
      */
     selectAll() {
         for (let i = 0; i < this.list.length; i++) {

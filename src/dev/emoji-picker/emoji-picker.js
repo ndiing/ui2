@@ -12,11 +12,27 @@ class DevEmojiPickerComponent extends MDComponent {
                         name="emoji"
                         type="text"
                         value=""
+                        
                         @input="${this.handleEmojiLocalInput}"
                     />
                     <md-emoji-picker
                         id="emojiPicker"
                         value=""
+                        .frequentlyUsed="${[
+                            { emoji: "😑" },
+                            { emoji: "🥱" },
+                            { emoji: "🫣" },
+                            { emoji: "🧐" },
+                            { emoji: "😵" },
+                            { emoji: "😩" },
+                            { emoji: "😆" },
+                            { emoji: "🤪" },
+                            { emoji: "😁" },
+                            { emoji: "😔" },
+                            { emoji: "😤" },
+                            { emoji: "😮‍💨" },
+                            { emoji: "🥳" },
+                        ]}"
                         @onEmojiPickerButtonCancelClick="${this.handleEmojiPickerButtonCancelClick}"
                         @onEmojiPickerButtonOkClick="${this.handleEmojiPickerButtonOkClick}"
                         @onEmojiPickerSelection="${this.handleEmojiPickerSelection}"
@@ -67,7 +83,7 @@ class DevEmojiPickerComponent extends MDComponent {
 
     // emoji-picker
     handleEmojiPickerButtonCancelClick() {
-        this.emoji.value = this.emojiPicker.value;
+        // this.emoji.value = this.emojiPicker.value;
         this.emojiPicker.close();
     }
 
@@ -77,7 +93,7 @@ class DevEmojiPickerComponent extends MDComponent {
     }
 
     handleEmojiPickerSelection() {
-        this.emoji.value = this.emojiPicker.selection.hex.slice(0, 1 + 6);
+        // this.emoji.value = this.emojiPicker.selection.hex.slice(0, 1 + 6);
     }
 }
 

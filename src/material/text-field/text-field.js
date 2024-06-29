@@ -3,6 +3,7 @@ import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { choose } from "lit/directives/choose.js";
 
+
 /**
  * {{desc}}
  * @extends MDComponent
@@ -10,10 +11,12 @@ import { choose } from "lit/directives/choose.js";
  * @fires MDTextFieldComponent#onTextFieldNativeFocus - {{desc}}
  * @fires MDTextFieldComponent#onTextFieldNativeBlur - {{desc}}
  * @fires MDTextFieldComponent#onTextFieldNativeInput - {{desc}}
+ * @fires MDTextFieldComponent#onTextFieldNativeSearch - {{desc}}
  * @fires MDTextFieldComponent#onTextFieldNativeInvalid - {{desc}}
  * @fires MDTextFieldComponent#onTextFieldNativeReset - {{desc}}
  */
 class MDTextFieldComponent extends MDComponent {
+    
     /**
      * @property {String} label - {{desc}}
      * @property {String} icon - {{desc}}
@@ -138,6 +141,7 @@ class MDTextFieldComponent extends MDComponent {
 
     variants = ["filled", "outlined", "rounded"];
 
+    
     /**
      * {{desc}}
      */
@@ -389,6 +393,7 @@ class MDTextFieldComponent extends MDComponent {
         this.emit("onTextFieldNativeReset", event);
     }
 
+    
     /**
      * {{desc}}
      */
@@ -396,6 +401,7 @@ class MDTextFieldComponent extends MDComponent {
         this.classList.toggle("md-text-field--populated", !!this.value || this.type == "file");
     }
 
+    
     /**
      * {{desc}}
      */
