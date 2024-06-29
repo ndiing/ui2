@@ -10,31 +10,23 @@ import { styleMap } from "lit/directives/style-map.js";
  * {{desc}}
  * @extends MDSheetComponent
  * @tagname md-emoji-picker
+ * @fires MDEmojiPickerComponent#onEmojiPickerTextFieldNativeInput - {{desc}}
+ * @fires MDEmojiPickerComponent#onEmojiPickerTabsItemClick - {{desc}}
+ * @fires MDEmojiPickerComponent#onEmojiPickerViewportVirtualScroll - {{desc}}
+ * @fires MDEmojiPickerComponent#onEmojiPickerGridColumnClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerIconButtonClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerButtonClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerIconButtonPrevClick - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerIconButtonNextClick - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerButtonLabelClick - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerButtonCancelClick - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
  * @fires MDEmojiPickerComponent#onEmojiPickerButtonOkClick - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerGradientTrackPointerdown - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerGradientTrackPointermove - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerGradientTrackPointerup - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerHueNativeInput - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerSelection - {{desc}}
- * @fires MDEmojiPickerComponent#onEmojiPickerOpacityNativeInput - {{desc}}
  */
 class MDEmojiPickerComponent extends MDSheetComponent {
     /**
      * @property {String} value - {{desc}}
+     * @property {Array} frequentlyUsed - {{desc}}
      */
     static properties = {
         ...MDSheetComponent.properties,
@@ -69,10 +61,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
      */
     get actions() {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
-    }
-
-    get tabs() {
-        return this.querySelector(".md-emoji-picker__tabs");
     }
 
     constructor() {
@@ -191,6 +179,8 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             rowHeight: 48,
             buffer: this.dataTabs.length,
         });
+
+        this.tabs = this.querySelector(".md-emoji-picker__tabs");
     }
 
     async disconnectedCallback() {
@@ -226,6 +216,9 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.emit("onEmojiPickerTabsItemClick", event);
     }
 
+    /**
+     * {{desc}}
+     */
     updateEmojiPickerTabsScrollLeftAndIndicator(data) {
         if (!data) {
             return;
@@ -266,6 +259,9 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.emit("onEmojiPickerGridColumnClick", event);
     }
 
+    /**
+     * {{desc}}
+     */
     createTabsAndRows(data, tabEmojis) {
         const grouped = data.reduce((acc, curr) => {
             const { group = "Frequently Used", emoji } = curr;

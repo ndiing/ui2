@@ -29,7 +29,7 @@ content = content.replace(/\/\*\*[\s\S]+?\*\//gm, ($) => {
     return "";
 });
 
-let emits = [];
+let emits = new Set();
 
 content = content.replace(/(^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) \{([\s\S]+?)^    \})/gm, ($, text, staticFunction, asyncFunction, x, accessorFunction, methodName, methodParameter, methodBody) => {
     let fires = [];
@@ -38,10 +38,7 @@ content = content.replace(/(^    (static )?(async )?((get|set) )?(\w+)\((.*?)\) 
             eventName,
             eventParameter,
         });
-        emits.push({
-            eventName,
-            eventParameter,
-        });
+        emits.add(eventName);
     }
     let code = "";
     code += `    /**\r\n`;
@@ -100,8 +97,8 @@ content = content.replace(/(class (\w+))/, ($, text, className) => {
     code += ` * {{desc}}\r\n`;
     if (inheritName) code += ` * @extends ${inheritName}\r\n`;
     if (tagName) code += ` * @tagname ${tagName}\r\n`;
-    for (let doc of emits) {
-        code += ` * @fires ${className}#${doc.eventName} - {{desc}}\r\n`;
+    for (let eventName of emits.keys()) {
+        code += ` * @fires ${className}#${eventName} - {{desc}}\r\n`;
     }
     code += ` */\r\n`;
     code += text;
