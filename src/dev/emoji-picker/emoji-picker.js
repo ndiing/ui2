@@ -12,27 +12,12 @@ class DevEmojiPickerComponent extends MDComponent {
                         name="emoji"
                         type="text"
                         value=""
-                        
                         @input="${this.handleEmojiLocalInput}"
                     />
                     <md-emoji-picker
                         id="emojiPicker"
                         value=""
-                        .frequentlyUsed="${[
-                            { emoji: "😑" },
-                            { emoji: "🥱" },
-                            { emoji: "🫣" },
-                            { emoji: "🧐" },
-                            { emoji: "😵" },
-                            { emoji: "😩" },
-                            { emoji: "😆" },
-                            { emoji: "🤪" },
-                            { emoji: "😁" },
-                            { emoji: "😔" },
-                            { emoji: "😤" },
-                            { emoji: "😮‍💨" },
-                            { emoji: "🥳" },
-                        ]}"
+                        .frequentlyUsed="${[{ emoji: "😑" }, { emoji: "🥱" }, { emoji: "🫣" }, { emoji: "🧐" }, { emoji: "😵" }, { emoji: "😩" }, { emoji: "😆" }, { emoji: "🤪" }, { emoji: "😁" }, { emoji: "😔" }, { emoji: "😤" }, { emoji: "😮‍💨" }, { emoji: "🥳" }]}"
                         @onEmojiPickerButtonCancelClick="${this.handleEmojiPickerButtonCancelClick}"
                         @onEmojiPickerButtonOkClick="${this.handleEmojiPickerButtonOkClick}"
                         @onEmojiPickerSelection="${this.handleEmojiPickerSelection}"

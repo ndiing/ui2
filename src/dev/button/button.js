@@ -1,5 +1,6 @@
 import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 class DevButtonComponent extends MDComponent {
     render() {

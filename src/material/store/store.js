@@ -165,8 +165,8 @@ class MDStore {
 
         let docs = this.docs.slice();
 
-        if ((_sort && _order)||sorters) {
-            if(!sorters){
+        if ((_sort && _order) || sorters) {
+            if (!sorters) {
                 const sort = _sort.split(",");
                 const order = _order.split(",");
                 sorters = sort.map((name, index) => ({ name, order: order[index] }));
@@ -176,8 +176,8 @@ class MDStore {
         if (q) {
             docs = this.search(docs, q);
         }
-        if (Object.keys(rest).length > 0||filters) {
-            if(!filters){
+        if (Object.keys(rest).length > 0 || filters) {
+            if (!filters) {
                 filters = [];
                 for (const key in rest) {
                     if (Object.prototype.hasOwnProperty.call(rest, key)) {

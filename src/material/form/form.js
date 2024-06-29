@@ -10,7 +10,6 @@ import { ifDefined } from "lit/directives/if-defined.js";
  * @fires MDFormComponent#onFormNativeSubmit - Fires when the form is submitted.
  */
 class MDFormComponent extends MDComponent {
-
     /**
      * @property {String} acceptCharset - Character encodings that are to be used for the form submission.
      * @property {String} action - The URL that processes the form submission.

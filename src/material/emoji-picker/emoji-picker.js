@@ -114,7 +114,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             // { emoji: "😮‍💨" },
             // { emoji: "🥳" },
         ];
-
     }
 
     renderMain() {
@@ -134,7 +133,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
                 </div>           
                 <div 
                     class="md-emoji-picker__viewport"
-                    @onVirtualScrollChange="${this.handleEmojiPickerViewportVirtualScrollChange}"
+                    @onVirtualScroll="${this.handleEmojiPickerViewportVirtualScroll}"
                 >
                     <div class="md-emoji-picker__scrollbar"></div>
                     <div class="md-emoji-picker__container">
@@ -175,7 +174,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
 
         this.on("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
 
-    
         this.store = new MDStore(data);
         const { total, docs } = this.store.getAll();
 
@@ -246,17 +244,17 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-right", right + "px");
     }
 
-    handleEmojiPickerViewportVirtualScrollChange() {
+    handleEmojiPickerViewportVirtualScroll() {
         this.virtualRows = this.dataRows.filter((row, index) => {
             return (index >= this.virtual.rowStart && index < this.virtual.rowEnd) || !!row[0]?.label;
         });
         this.requestUpdate();
+        const scrollTop = Math.floor(this.virtual.viewport.scrollTop / this.virtual.options.rowHeight);
         const data = this.dataTabs.find((item, index, array) => {
-            const top = Math.floor(this.virtual.viewport.scrollTop / this.virtual.options.rowHeight);
             if (array[index + 1]) {
-                return top >= item.rowIndex && top < array[index + 1].rowIndex;
+                return scrollTop >= item.rowIndex && scrollTop < array[index + 1].rowIndex;
             }
-            return top >= item.rowIndex;
+            return scrollTop >= item.rowIndex;
         });
         if (this.data !== data) {
             this.data = data;
