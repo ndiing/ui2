@@ -37,12 +37,12 @@
     "prettier:write": "prettier src/material --write",
     "prettier:check": "prettier src/material --check",
     "eslint:fix": "eslint  src/material --fix",
-    "eslint:check": "eslint  src/material",
-    "jsdoc": "jsdoc -r src/material -d docs"
+    "eslint:check": "eslint  src/material"
   },
   "dependencies": {
     "@lit/localize": "^0.12.1",
     "@material/material-color-utilities": "^0.2.7",
-    "lit": "^3.1.4"
+    "lit": "^3.1.4",
+    "marked": "^13.0.1"
   }
 }

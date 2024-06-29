@@ -11,6 +11,7 @@
 /* [x] */ import "./attribute-observer/attribute-observer.js";
 /* [x] */ import "./virtual/virtual.js";
 /* [x] */ import "./store/store.js";
+/* [ ] */ import "./markdown/markdown.js";
 
 /* [x] */ import "./icon/icon.js";
 /* [x] */ import "./emoji/emoji.js";
