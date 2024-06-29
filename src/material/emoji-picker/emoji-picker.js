@@ -63,6 +63,13 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         return [{ component: "spacer" }, { name: "cancel", label: "Cancel" }, { name: "ok", label: "Ok" }];
     }
 
+    /**
+     * {{desc}}
+     */
+    get tabs() {
+        return this.querySelector(".md-emoji-picker__tabs");
+    }
+
     constructor() {
         super();
 
@@ -179,8 +186,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
             rowHeight: 48,
             buffer: this.dataTabs.length,
         });
-
-        this.tabs = this.querySelector(".md-emoji-picker__tabs");
     }
 
     async disconnectedCallback() {
