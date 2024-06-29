@@ -1,6 +1,5 @@
 import { html, nothing } from "lit";
 import { MDSheetComponent } from "../sheet/sheet.js";
-import { hexToHsla, hslaToRgba, rgbaToHex, rgbaToHsla } from "../functions/functions.js";
 import { MDPopperController } from "../popper/popper.js";
 import data from "../../assets/emojis.json";
 import { MDStore } from "../store/store.js";
@@ -62,8 +61,6 @@ class MDEmojiPickerComponent extends MDSheetComponent {
      * {{desc}}
      */
     get leadingActions() {
-        let label = this.selection.hex;
-
         return [{ name: "label", component: "text-field", type: "search", placeholder: "Search", icon: "search", variant: "rounded" }];
     }
 
@@ -150,7 +147,11 @@ class MDEmojiPickerComponent extends MDSheetComponent {
                                     })}"
                                 >
                                     ${row.map(item=>html`
-                                        <div class="md-emoji-picker__grid-column">
+                                        <div 
+                                            class="md-emoji-picker__grid-column"
+                                            .data="${item}"
+                                            @click="${this.handleEmojiPickerGridColumnClick}"
+                                        >
                                             ${item.label?html`<div class="md-emoji-picker__grid-label">${item.label}</div>`:nothing}
                                             ${item.emoji?html`<div class="md-emoji-picker__grid-emoji md-emoji">${item.emoji}</div>`:nothing}
                                         </div>
@@ -175,7 +176,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.on("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
 
         this.store = new MDStore(data);
-        const { total, docs } = this.store.getAll();
+        const { docs } = this.store.getAll();
 
         const { dataTabs, dataRows } = this.createTabsAndRows(this.frequentlyUsed.concat(docs), this.tabEmojis);
         this.dataTabs = dataTabs;
@@ -198,19 +199,10 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.off("onTextFieldNativeInput", this.handleEmojiPickerTextFieldNativeInput);
     }
 
-    async updated(changedProperties) {
-        super.updated(changedProperties);
-
-        if (changedProperties.has("value") && changedProperties.get("value")) {
-            if (this.value) {
-            }
-        }
-    }
-
     handleEmojiPickerTextFieldNativeInput(event) {
         const value = event.detail.currentTarget.value;
 
-        const { total, docs } = this.store.getAll({
+        const { docs } = this.store.getAll({
             shortcodes_like: value,
         });
 
@@ -222,6 +214,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.virtual.options.rowTotal = this.dataRows.length;
 
         this.virtual.handleVirtualScroll();
+        this.emit("onEmojiPickerTextFieldNativeInput", event);
     }
 
     handleEmojiPickerTabsItemClick(event) {
@@ -230,6 +223,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.virtual.viewport.scrollTop = data.rowIndex * 48 + data.index * 48;
 
         this.updateEmojiPickerTabsScrollLeftAndIndicator(data);
+        this.emit("onEmojiPickerTabsItemClick", event);
     }
 
     updateEmojiPickerTabsScrollLeftAndIndicator(data) {
@@ -247,7 +241,7 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         this.style.setProperty("--md-comp-emoji-picker-tabs-indicator-right", right + "px");
     }
 
-    handleEmojiPickerViewportVirtualScroll() {
+    handleEmojiPickerViewportVirtualScroll(event) {
         this.virtualRows = this.dataRows.filter((row, index) => {
             return (index >= this.virtual.rowStart && index < this.virtual.rowEnd) || !!row[0]?.label;
         });
@@ -265,6 +259,11 @@ class MDEmojiPickerComponent extends MDSheetComponent {
         }
         this.virtual.scrollbar.style.height = this.virtual.scrollbarHeight + "px";
         this.virtual.container.style.transform = `translate3d(0,${this.virtual.translateY}px,0)`;
+        this.emit("onEmojiPickerViewportVirtualScroll", event);
+    }
+
+    handleEmojiPickerGridColumnClick(event) {
+        this.emit("onEmojiPickerGridColumnClick", event);
     }
 
     createTabsAndRows(data, tabEmojis) {

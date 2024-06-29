@@ -1,6 +1,5 @@
 import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
-import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { choose } from "lit/directives/choose.js";
 import { isDefined } from "../functions/functions.js";
@@ -52,8 +51,7 @@ class MDTreeItemComponent extends MDComponent {
     get nodeActions_() {
         let icons = [];
 
-        if (this.variant == "plain") {
-        } else if (this.variant == "accordion") {
+        if (this.variant == "accordion") {
             icons = ["keyboard_arrow_down", "keyboard_arrow_up"];
         } else if (this.variant == "tree") {
             icons = ["keyboard_arrow_right", "keyboard_arrow_down"];

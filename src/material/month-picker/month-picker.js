@@ -1,4 +1,4 @@
-import { parseMonth, stringifyMonth, stringifyYear } from "../functions/functions.js";
+import { parseMonth, stringifyMonth } from "../functions/functions.js";
 import { MDDatetimePickerComponent } from "../datetime-picker/datetime-picker.js";
 import { html } from "lit";
 

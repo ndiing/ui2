@@ -1,8 +1,6 @@
-import { html, nothing } from "lit";
+import { html } from "lit";
 import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { MDRippleController } from "../ripple/ripple.js";
-import { MDGestureController } from "../gesture/gesture.js";
 
 /**
  * A custom list component that extends MDComponent to display a list of items with various selection modes.
@@ -209,7 +207,6 @@ class MDListComponent extends MDComponent {
         if (!this.selection) {
             return;
         }
-        const data = event.currentTarget.data;
 
         window.requestAnimationFrame(() => {
             this.selectionMode = true;

@@ -63,7 +63,7 @@ class MDRouter {
      */
     static getRoute(path) {
         return this.stacks.find((route) => {
-            const pattern = `^${route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)")}(?:/?\$)`;
+            const pattern = `^${route.pathname.replace(/:(\w+)/g, "(?<$1>[^/]+)").replace(/\*/, "(?:.*)")}(?:/?$)`;
             const regexp = new RegExp(pattern, "i");
             const matches = path.match(regexp);
 

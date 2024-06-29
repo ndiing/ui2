@@ -254,7 +254,7 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.selection.green = green;
         this.selection.blue = blue;
 
-        const { hue, saturation, lightness } = rgbaToHsla(this.selection.red, this.selection.green, this.selection.blue);
+        const { saturation, lightness } = rgbaToHsla(this.selection.red, this.selection.green, this.selection.blue);
         this.selection.saturation = saturation;
         this.selection.lightness = lightness;
 

@@ -277,7 +277,7 @@ class MDTextFieldComponent extends MDComponent {
         return this.renderIconButton(item);
     }
 
-    renderActions(item) {
+    renderActions() {
         /* prettier-ignore */
         return this.actions?.length || this.error ? html`
             <div class="md-text-field__actions">

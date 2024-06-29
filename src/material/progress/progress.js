@@ -73,8 +73,8 @@ function resume() {
  */
 function stop() {
     if (isAnimating) {
-        let remainingTime = totalDuration - (performance.now() - startTime);
-        let progress = Math.min(100, ((totalDuration - remainingTime) / totalDuration) * 100);
+        // let remainingTime = totalDuration - (performance.now() - startTime);
+        // let progress = Math.min(100, ((totalDuration - remainingTime) / totalDuration) * 100);
 
         if (progressBar) {
             progressBar.setAttribute("value", totalDuration);
@@ -106,7 +106,7 @@ function loop(resolve) {
     let currentTime = performance.now();
     elapsedTime = currentTime - startTime;
 
-    let progress = Math.min(100, (elapsedTime / totalDuration) * 100);
+    // let progress = Math.min(100, (elapsedTime / totalDuration) * 100);
 
     if (progressBar) {
         progressBar.setAttribute("value", elapsedTime);

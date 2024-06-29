@@ -1,6 +1,5 @@
 import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
-import { ifDefined } from "lit/directives/if-defined.js";
 import { MDRippleController } from "../ripple/ripple.js";
 import { MDGestureController } from "../gesture/gesture.js";
 

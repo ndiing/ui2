@@ -1,9 +1,6 @@
 import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { MDRippleController } from "../ripple/ripple.js";
-import { choose } from "lit/directives/choose.js";
-import { isDefined } from "../functions/functions.js";
 
 /**
  * A custom tree component that extends MDComponent to display a tree structure with various variants.

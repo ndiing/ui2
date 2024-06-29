@@ -7,13 +7,15 @@ class DevEmojiPickerComponent extends MDComponent {
             <div class="md-layout-column">
                 <div class="md-layout-column__item md-layout-column__item--expanded3 md-layout-column__item--medium8 md-layout-column__item--compact4">
                     <label for="emoji">Select emoji</label>
-                    <input
+                    <div
+                        contenteditable="true"
+                        style="display:inline-block;min-width:240px;min-height:24px;background:white;"
                         id="emoji"
                         name="emoji"
                         type="text"
                         value=""
                         @input="${this.handleEmojiLocalInput}"
-                    />
+                    ></div>
                     <md-emoji-picker
                         id="emojiPicker"
                         value=""
@@ -21,6 +23,7 @@ class DevEmojiPickerComponent extends MDComponent {
                         @onEmojiPickerButtonCancelClick="${this.handleEmojiPickerButtonCancelClick}"
                         @onEmojiPickerButtonOkClick="${this.handleEmojiPickerButtonOkClick}"
                         @onEmojiPickerSelection="${this.handleEmojiPickerSelection}"
+                        @onEmojiPickerGridColumnClick="${this.handleEmojiPickerGridColumnClick}"
                     ></md-emoji-picker>
                     <md-button
                         variant="tonal"
@@ -79,6 +82,10 @@ class DevEmojiPickerComponent extends MDComponent {
 
     handleEmojiPickerSelection() {
         // this.emoji.value = this.emojiPicker.selection.hex.slice(0, 1 + 6);
+    }
+
+    handleEmojiPickerGridColumnClick(event) {
+        const emoji = event.detail.currentTarget.data.emoji;
     }
 }
 

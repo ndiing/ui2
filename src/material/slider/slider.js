@@ -1,7 +1,6 @@
 import { html } from "lit";
 import { MDComponent } from "../component/component.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import { MDRippleController } from "../ripple/ripple.js";
 import { calcDecimal, calcPercentage, isArrayString } from "../functions/functions.js";
 
 /**
@@ -27,13 +26,13 @@ class MDSliderComponent extends MDComponent {
         value: {
             type: Array,
             converter: {
-                fromAttribute: (value, type) => {
+                fromAttribute: (value) => {
                     if (!isArrayString(value)) {
                         value = `[${value}]`;
                     }
                     return JSON.parse(value);
                 },
-                toAttribute: (value, type) => {
+                toAttribute: (value) => {
                     return JSON.stringify(value);
                 },
             },
@@ -52,15 +51,13 @@ class MDSliderComponent extends MDComponent {
     constructor() {
         super();
 
-        this.type = "range";
-
         this.min = 0;
         this.max = 100;
         this.step = 1;
         this.value = [undefined];
     }
 
-    renderTrack(value, index) {
+    renderTrack(value) {
         let length = 2;
         if (this.step > 1) {
             length = this.max / this.step;
