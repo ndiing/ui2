@@ -4,23 +4,23 @@
     background-color: var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface-variant);
     box-shadow: var(--md-sys-elevation-level0);
-    // position: absolute;
-    // z-index: 7;
-    // visibility: hidden;
-    // animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
-    // animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
-    // animation-duration: var(--md-sys-motion-duration-short4);
+    position: absolute;
+    z-index: 7;
+    visibility: hidden;
+    animation-name: var(--md-comp-sheet-animation, datetimePickerOut);
+    animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+    animation-duration: var(--md-sys-motion-duration-short4);
 
-    // &[open] {
-    //     visibility: visible;
-    //     animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
+    &[open] {
+        visibility: visible;
+        animation-name: var(--md-comp-sheet-animation, datetimePickerIn);
 
-    //     > * {
-    //         animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
-    //         animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
-    //         animation-duration: var(--md-sys-motion-duration-short4);
-    //     }
-    // }
+        > * {
+            animation-name: var(--md-comp-sheet-animation, datetimePickerWrapperIn);
+            animation-timing-function: cubic-bezier(var(--md-sys-motion-easing-emphasized));
+            animation-duration: var(--md-sys-motion-duration-short4);
+        }
+    }
 
     + .md-scrim {
         opacity: 0;
