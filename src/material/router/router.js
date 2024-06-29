@@ -210,7 +210,7 @@ class MDRouter {
         performance.clearMeasures("measureRouterNavigateSuccess");
     }
 
-     /**
+    /**
      * Navigates to a new URL, updating browser history.
      * @param {String} url - URL to navigate to.
      */

@@ -31,7 +31,7 @@ class MDPopperController {
         };
     }
 
-     /**
+    /**
      * Sets the position of the popper container relative to a button or host element.
      * @param {HTMLElement} button - The button or host element triggering the popper.
      * @param {Object} [options] - Additional options to override default placement behavior.

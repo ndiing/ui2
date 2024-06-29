@@ -132,7 +132,7 @@ class MDTreeItemComponent extends MDComponent {
         return this.leafIcons_[~~this.selected];
     }
 
-     /**
+    /**
      * Retrieves the appropriate icon based on whether the item is a node or leaf.
      * @returns {String} Icon associated with the item.
      */
