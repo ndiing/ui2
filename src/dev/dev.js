@@ -54,6 +54,7 @@ import DevTextField2Component from "./text-field2/text-field2.js";
 import DevTextField3Component from "./text-field3/text-field3.js";
 import DevVirtualComponent from "./virtual/virtual.js";
 import DevEmojiComponent from "./emoji/emoji.js";
+import DevDataTableComponent from "./data-table/data-table.js";
 
 const routes = [
     {
@@ -111,6 +112,7 @@ const routes = [
             { path: "text-field3", component: DevTextField3Component },
             { path: "virtual", component: DevVirtualComponent },
             { path: "emoji", component: DevEmojiComponent },
+            { path: "data-table", component: DevDataTableComponent },
         ],
     },
     { path: "*", component: DevMainComponent },
