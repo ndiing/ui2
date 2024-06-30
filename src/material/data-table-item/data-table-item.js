@@ -1,30 +1,32 @@
 import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 
+
 /**
- * Represents a list item component with various configurable properties.
+ * {{desc}}
  * @extends MDComponent
  * @tagname md-data-table-item
  */
 class MDDataTableItemComponent extends MDComponent {
+    
     /**
-     * Properties that can be defined for an MDDataTableItemComponent.
-     * @property {String} avatar - URL for the avatar image.
-     * @property {String} thumbnail - URL for the thumbnail image.
-     * @property {String} video - URL for the video.
-     * @property {String} icon - Icon name or URL.
-     * @property {String} label - Primary label text.
-     * @property {String} subLabel - Secondary label text.
-     * @property {Number} badge - Numeric badge value.
-     * @property {String} text - Additional text content.
-     * @property {Boolean} leadingCheckbox - Whether the item has a leading checkbox.
-     * @property {Boolean} leadingRadioButton - Whether the item has a leading radio button.
-     * @property {Boolean} leadingSwitch - Whether the item has a leading switch.
-     * @property {Boolean} trailingCheckbox - Whether the item has a trailing checkbox.
-     * @property {Boolean} trailingRadioButton - Whether the item has a trailing radio button.
-     * @property {Boolean} trailingSwitch - Whether the item has a trailing switch.
-     * @property {Boolean} selected - Indicates if the item is selected.
-     * @property {String} routerLink - Optional link for routing.
+     * @property {String} avatar - {{desc}}
+     * @property {String} thumbnail - {{desc}}
+     * @property {String} video - {{desc}}
+     * @property {String} icon - {{desc}}
+     * @property {String} label - {{desc}}
+     * @property {String} subLabel - {{desc}}
+     * @property {Number} badge - {{desc}}
+     * @property {String} text - {{desc}}
+     * @property {Boolean} leadingCheckbox - {{desc}}
+     * @property {Boolean} leadingRadioButton - {{desc}}
+     * @property {Boolean} leadingSwitch - {{desc}}
+     * @property {Boolean} trailingCheckbox - {{desc}}
+     * @property {Boolean} trailingRadioButton - {{desc}}
+     * @property {Boolean} trailingSwitch - {{desc}}
+     * @property {Boolean} selected - {{desc}}
+     * @property {String} routerLink - {{desc}}
+     * @property {Boolean} indeterminate - {{desc}}
      */
     static properties = {
         avatar: { type: String },
@@ -50,6 +52,8 @@ class MDDataTableItemComponent extends MDComponent {
 
         selected: { type: Boolean, reflect: true },
         routerLink: { type: String, reflect: true },
+
+        indeterminate: { type: Boolean },
     };
 
     constructor() {
@@ -60,6 +64,7 @@ class MDDataTableItemComponent extends MDComponent {
         /* prettier-ignore */
         return html`<md-checkbox 
             class="md-data-table__checkbox"
+            .indeterminate="${this.indeterminate}"
             .checked="${this.selected}"
         ></md-checkbox>`
     }
@@ -94,15 +99,15 @@ class MDDataTableItemComponent extends MDComponent {
             ${this.icon?html`<div class="md-icon md-data-table__icon">${this.icon}</div>`:nothing}
 
             ${this.label||this.subLabel||this.badge?html`
-                    <div class="md-data-table__inner">
-                        ${this.label||this.subLabel?html`
-                                <div class="md-data-table__label">
-                                    ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
-                                    ${this.subLabel?html`<div class="md-data-table__label-secondary">${this.subLabel}</div>`:nothing}
-                                </div>
-                        `:nothing}
-                        ${this.badge?html`<md-badge class="md-data-table__badge" .label="${this.badge}"></md-badge>`:nothing}
-                    </div>
+                <div class="md-data-table__inner">
+                    ${this.label||this.subLabel?html`
+                        <div class="md-data-table__label">
+                            ${this.label?html`<div class="md-data-table__label-primary">${this.label}</div>`:nothing}
+                            ${this.subLabel?html`<div class="md-data-table__label-secondary">${this.subLabel}</div>`:nothing}
+                        </div>
+                    `:nothing}
+                    ${this.badge?html`<md-badge class="md-data-table__badge" .label="${this.badge}"></md-badge>`:nothing}
+                </div>
             `:nothing}
 
             ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}

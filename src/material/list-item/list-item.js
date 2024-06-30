@@ -109,15 +109,15 @@ class MDListItemComponent extends MDComponent {
             ${this.icon?html`<div class="md-icon md-list__icon">${this.icon}</div>`:nothing}
 
             ${this.label||this.subLabel||this.badge?html`
-                    <div class="md-list__inner">
-                        ${this.label||this.subLabel?html`
-                                <div class="md-list__label">
-                                    ${this.label?html`<div class="md-list__label-primary">${this.label}</div>`:nothing}
-                                    ${this.subLabel?html`<div class="md-list__label-secondary">${this.subLabel}</div>`:nothing}
-                                </div>
-                        `:nothing}
-                        ${this.badge?html`<md-badge class="md-list__badge" .label="${this.badge}"></md-badge>`:nothing}
-                    </div>
+                <div class="md-list__inner">
+                    ${this.label||this.subLabel?html`
+                        <div class="md-list__label">
+                            ${this.label?html`<div class="md-list__label-primary">${this.label}</div>`:nothing}
+                            ${this.subLabel?html`<div class="md-list__label-secondary">${this.subLabel}</div>`:nothing}
+                        </div>
+                    `:nothing}
+                    ${this.badge?html`<md-badge class="md-list__badge" .label="${this.badge}"></md-badge>`:nothing}
+                </div>
             `:nothing}
 
             ${this.text?html`<div class="md-list__text">${this.text}</div>`:nothing}

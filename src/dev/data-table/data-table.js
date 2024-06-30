@@ -1,19 +1,40 @@
 import { html } from "lit";
 import { MDComponent } from "../../material/component/component.js";
-import data from "../../assets/comments.json";
+import data from "../../assets/screener.json";
 
 class DevDataTableComponent extends MDComponent {
     constructor() {
         super();
 
         this.columns = [
-            { name: "postId", label: "postId", width:56*3 },
-            { name: "id", label: "id", width:56*3 },
-            { name: "name", label: "name", width:56*3 },
-            { name: "email", label: "email", width:56*3 },
-            { name: "body", label: "body", width:56*10 },
+            { name: "name", label: "name", sticky:true },
+            { name: "description", label: "description", },
+            { name: "logoid", label: "logoid", sticky:true },
+            { name: "update_mode", label: "update_mode", },
+            { name: "type", label: "type", },
+            { name: "typespecs", label: "typespecs", },
+            { name: "close", label: "close", },
+            { name: "pricescale", label: "pricescale", },
+            { name: "minmov", label: "minmov", },
+            { name: "fractional", label: "fractional", },
+            { name: "minmove2", label: "minmove2", },
+            { name: "currency", label: "currency", },
+            { name: "change", label: "change", },
+            { name: "volume", label: "volume", },
+            { name: "relative_volume_10d_calc", label: "relative_volume_10d_calc", },
+            { name: "market_cap_basic", label: "market_cap_basic", },
+            { name: "fundamental_currency_code", label: "fundamental_currency_code", },
+            { name: "price_earnings_ttm", label: "price_earnings_ttm", },
+            { name: "earnings_per_share_diluted_ttm", label: "earnings_per_share_diluted_ttm", },
+            { name: "earnings_per_share_diluted_yoy_growth_ttm", label: "earnings_per_share_diluted_yoy_growth_ttm", },
+            { name: "dividends_yield_current", label: "dividends_yield_current", },
+            { name: "sector.tr", label: "sector.tr", },
+            { name: "market", label: "market", },
+            { name: "sector", label: "sector", sticky:true },
+            { name: "recommendation_mark", label: "recommendation_mark", },
+            { name: "exchange", label: "exchange", sticky:true },
         ];
-        this.rows = data;
+        this.rows=data
     }
     render() {
         return html`
@@ -28,6 +49,13 @@ class DevDataTableComponent extends MDComponent {
                     <md-data-table
                         .columns="${this.columns}"
                         .rows="${this.rows}"
+                        stickyHeader
+                        checkboxSelection
+                        stickyCheckbox
+                        rangeSelection
+                        multiSelection
+                        singleSelection
+                        allSelection
                     ></md-data-table>
                 </div>
             </div>

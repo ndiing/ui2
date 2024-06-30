@@ -94,11 +94,11 @@
                 }
             }
 
-            &:focus {
-                .md-data-table__item {
-                    @include ripple-focused();
-                }
-            }
+            // &:focus {
+            //     .md-data-table__item {
+            //         @include ripple-focused();
+            //     }
+            // }
             &:hover {
                 .md-data-table__item {
                     @include ripple-hover();
@@ -145,5 +145,6 @@
 .md-data-table__item {
     @include ripple();
     @include ripple-button();
+    &:after{animation: none;}
     --md-comp-ripple-size: 200%;
 }

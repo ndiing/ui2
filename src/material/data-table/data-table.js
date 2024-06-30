@@ -1,17 +1,47 @@
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { MDCardComponent } from "../card/card.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { MDVirtualController } from "../virtual/virtual.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { MDStore } from "../store/store.js";
 
+/**
+ * {{desc}}
+ * @extends MDCardComponent
+ * @tagname md-data-table
+ * @fires MDDataTableComponent#onDataTableViewportVirtualScroll - {{desc}}
+ * @fires MDDataTableComponent#onDataTableColumnCellCheckboxNativeInput - {{desc}}
+ * @fires MDDataTableComponent#onDataTableRowCheckboxNativeInput - {{desc}}
+ * @fires MDDataTableComponent#onDataTableRowClick - {{desc}}
+ */
 class MDDataTableComponent extends MDCardComponent {
+    /**
+     * @property {Array} columns - {{desc}}
+     * @property {Array} rows - {{desc}}
+     * @property {Boolean} stickyHeader - {{desc}}
+     * @property {Boolean} checkboxSelection - {{desc}}
+     * @property {Boolean} stickyCheckbox - {{desc}}
+     * @property {Boolean} rangeSelection - {{desc}}
+     * @property {Boolean} multiSelection - {{desc}}
+     * @property {Boolean} singleSelection - {{desc}}
+     * @property {Boolean} allSelection - {{desc}}
+     */
     static properties = {
         ...MDCardComponent.properties,
         columns: { type: Array },
         rows: { type: Array },
+        stickyHeader: { type: Boolean },
+        checkboxSelection: { type: Boolean },
+        stickyCheckbox: { type: Boolean },
+        rangeSelection: { type: Boolean },
+        multiSelection: { type: Boolean },
+        singleSelection: { type: Boolean },
+        allSelection: { type: Boolean },
     };
 
+    /**
+     * {{desc}}
+     */
     get body() {
         /* prettier-ignore */
         return [html`
@@ -30,6 +60,9 @@ class MDDataTableComponent extends MDCardComponent {
         `];
     }
 
+    /**
+     * {{desc}}
+     */
     set body(value) {}
 
     constructor() {
@@ -57,6 +90,7 @@ class MDDataTableComponent extends MDCardComponent {
                 .trailingSwitch="${ifDefined(item.trailingSwitch)}"
                 .selected="${ifDefined(item.selected)}"
                 .routerLink="${ifDefined(item.routerLink)}"
+                .indeterminate="${ifDefined(item.indeterminate)}"
             ></md-data-table-item>
         `;
     }
@@ -71,16 +105,40 @@ class MDDataTableComponent extends MDCardComponent {
                 <caption></caption>
                 <thead>
                     <tr>
+                        ${this.checkboxSelection?html`
+                            <th
+                                style="${styleMap({
+                                    ...(this.stickyHeader&&({
+                                        position:'sticky',
+                                        top: `${0-this.virtual.translateY+0}px`,
+                                        'z-index':'2',
+                                    })),
+                                    ...(this.stickyCheckbox&&{
+                                        position:'sticky',
+                                        left:`${0-this.virtual.translateX+0}px`,
+                                        'z-index':'3',
+                                    })
+                                })}"
+                                @onCheckboxNativeInput="${this.handleDataTableColumnCellCheckboxNativeInput}"
+                            >${this.renderDataTableItem({
+                                leadingCheckbox:true,
+                                indeterminate:this.partialSelectedRows,
+                                selected:this.selectedAllRows,
+                            })}</th>
+                        `:nothing}
                         ${this.virtualColumns?.map((column) => html`
                             <th
                                 class="md-data-table__column"
                                 .data="${column}"
                                 style="${styleMap({
                                     'min-width': `${column.width}px`,
-                                    position:'sticky',
-                                    top: `${0-this.virtual.translateY+0}px`,
-                                    'z-index':'2',
+                                    ...(this.stickyHeader&&({
+                                        position:'sticky',
+                                        top: `${0-this.virtual.translateY+0}px`,
+                                        'z-index':'2',
+                                    })),
                                     ...(column.sticky&&{
+                                        position:'sticky',
                                         [column.flow]:`${(column.flow=='left'?0-this.virtual.translateX:this.virtual.translateX)+column[column.flow]}px`,
                                         'z-index':'3',
                                     })
@@ -96,7 +154,25 @@ class MDDataTableComponent extends MDCardComponent {
                         <tr
                             class="md-data-table__row"
                             .data="${row}"
+                            .tabIndex="${0}"
+                            ?selected="${row.selected}"
+                            @onCheckboxNativeInput="${this.handleDataTableRowCheckboxNativeInput}"
+                            @click="${this.handleDataTableRowClick}"
                         >
+                            ${this.checkboxSelection?html`
+                                <td
+                                    style="${styleMap({
+                                        ...(this.stickyCheckbox&&{
+                                            position:'sticky',
+                                            left:`${0-this.virtual.translateX+0}px`,
+                                            'z-index':'1',
+                                        })
+                                    })}"
+                                >${this.renderDataTableItem({
+                                    leadingCheckbox:true,
+                                    selected:row.selected
+                                })}</td>
+                            `:nothing}
                             ${this.virtualColumns?.map(column => html`
                                 <td
                                     style="${styleMap({
@@ -136,12 +212,19 @@ class MDDataTableComponent extends MDCardComponent {
 
             rowTotal: total,
             rowHeight: 56,
-            rowBuffer: 1,
+            rowBuffer: 0 + (this.stickyHeader ? 1 : 0),
 
             columnTotal: this.columns.length,
             columnWidth: 200,
             columnBuffer: this.columns.filter((column) => column.sticky).length,
         });
+
+        this.on("keydown",this.handleDataTableKeydown)
+    }
+    
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.off('keydown',this.handleDataTableKeydown)
     }
 
     async updated(changedProperties) {
@@ -150,6 +233,9 @@ class MDDataTableComponent extends MDCardComponent {
         if (changedProperties.has("columns")) {
             await this.updateComplete;
 
+            this.columns.forEach((column, index) => {
+                column.width = column.width || 200;
+            });
             const half = Math.floor(this.columns.length / 2);
             this.columns.forEach((column, index) => {
                 if (column.sticky) {
@@ -157,8 +243,13 @@ class MDDataTableComponent extends MDCardComponent {
                     const from = index <= half ? 0 : index + 1;
                     const to = index <= half ? index : this.columns.length;
                     let value = 0;
+                    if (index <= half) {
+                        value += this.stickyCheckbox ? 56 : 0;
+                    }
                     for (let i = from; i < to; i++) {
-                        value += this.columns[i].width;
+                        if (this.columns[i].sticky) {
+                            value += this.columns[i].width;
+                        }
                     }
                     column.flow = flow;
                     column[flow] = value;
@@ -167,7 +258,7 @@ class MDDataTableComponent extends MDCardComponent {
         }
     }
 
-    handleDataTableViewportVirtualScroll() {
+    handleDataTableViewportVirtualScroll(event) {
         this.virtualColumns = this.columns.filter((column, index) => {
             return (
                 (index >= this.virtual.columnStart && //
@@ -185,6 +276,112 @@ class MDDataTableComponent extends MDCardComponent {
         this.virtual.scrollbar.style.width = `${this.virtual.scrollbarWidth}px`;
         this.virtual.scrollbar.style.height = `${this.virtual.scrollbarHeight}px`;
         this.virtual.container.style.transform = `translate3d(${this.virtual.translateX}px,${this.virtual.translateY}px,0)`;
+        this.emit("onDataTableViewportVirtualScroll", event);
+    }
+
+    /**
+     * {{desc}}
+     */
+    get partialSelectedRows() {
+        if (!this.store.docs.length) {
+            return false;
+        }
+        const selectedTotal = this.store.docs.filter((doc) => doc.selected).length;
+        return selectedTotal && selectedTotal < this.store.docs.length;
+    }
+    /**
+     * {{desc}}
+     */
+    get selectedAllRows() {
+        if (!this.store.docs.length) {
+            return false;
+        }
+        const selectedTotal = this.store.docs.filter((doc) => doc.selected).length;
+        return selectedTotal && selectedTotal == this.store.docs.length;
+    }
+
+    handleDataTableColumnCellCheckboxNativeInput(event) {
+        const checkboxNative = event.detail.currentTarget;
+
+        this.store.docs.forEach((doc) => {
+            doc.selected = checkboxNative.checked;
+        });
+        this.requestUpdate();
+
+        this.emit("onDataTableColumnCellCheckboxNativeInput", event);
+    }
+    handleDataTableRowCheckboxNativeInput(event) {
+        const data = event.currentTarget.data;
+
+        data.selected = !data.selected;
+        this.requestUpdate();
+
+        this.emit("onDataTableRowCheckboxNativeInput", event);
+    }
+    handleDataTableRowClick(event) {
+        const leadingAction = event.target.closest(".md-data-table__checkbox," + ".md-data-table__radio-button," + ".md-data-table__switch");
+        if (leadingAction) {
+            return;
+        }
+
+        const data = event.currentTarget.data;
+
+        if (this.rangeSelection&&event.shiftKey) {
+            this.selectRange(data);
+        } else if (this.multiSelection&&event.ctrlKey) {
+            this.multiSelect(data);
+        } else if(this.singleSelection) {
+            this.select(data);
+        }
+        this.requestUpdate();
+
+        this.emit("onDataTableRowClick", event);
+    }
+
+    handleDataTableKeydown(event){
+        if(this.allSelection&&event.ctrlKey && event.key == "a"){
+            event.preventDefault()
+            this.store.docs.forEach(doc=>{
+                doc.selected=true
+            })
+            this.requestUpdate()
+        }
+        this.emit('onDataTableKeydown',event)
+    }
+
+    /**
+     * {{desc}}
+     */
+    selectRange(data) {
+        this.endIndex = this.endIndex || 0;
+        this.startIndex = this.store.docs.indexOf(data);
+        this.swapIndex = this.endIndex < this.startIndex;
+        if (this.swapIndex) {
+            [this.startIndex, this.endIndex] = [this.endIndex, this.startIndex];
+        }
+        this.store.docs.forEach((doc, index) => {
+            doc.selected = index >= this.startIndex && index <= this.endIndex;
+        });
+        if (this.swapIndex) {
+            [this.endIndex, this.startIndex] = [this.startIndex, this.endIndex];
+        }
+    }
+
+    /**
+     * {{desc}}
+     */
+    multiSelect(data) {
+        data.selected = !data.selected;
+    }
+
+    /**
+     * {{desc}}
+     */
+    select(data) {
+        this.store.docs.forEach((doc) => {
+            doc.selected = doc == data;
+        });
+        this.endIndex = this.store.docs.indexOf(data);
     }
 }
 
