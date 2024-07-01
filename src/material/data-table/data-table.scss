@@ -145,6 +145,14 @@
 .md-data-table__item {
     @include ripple();
     @include ripple-button();
-    &:after{animation: none;}
+    &:after {
+        animation: none;
+    }
     --md-comp-ripple-size: 200%;
+}
+.md-data-table__column--sticky-end {
+    border-right: 1px dashed var(--md-sys-color-outline-variant);
+}
+.md-data-table__column--sticky-start {
+    border-left: 1px dashed var(--md-sys-color-outline-variant);
 }

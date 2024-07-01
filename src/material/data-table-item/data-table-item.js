@@ -1,14 +1,12 @@
 import { html, nothing } from "lit";
 import { MDComponent } from "../component/component.js";
 
-
 /**
  * {{desc}}
  * @extends MDComponent
  * @tagname md-data-table-item
  */
 class MDDataTableItemComponent extends MDComponent {
-    
     /**
      * @property {String} avatar - {{desc}}
      * @property {String} thumbnail - {{desc}}

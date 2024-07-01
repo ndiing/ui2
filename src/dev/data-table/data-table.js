@@ -7,9 +7,9 @@ class DevDataTableComponent extends MDComponent {
         super();
 
         this.columns = [
-            { name: "name", label: "name", sticky:true },
+            { name: "name", label: "name" },
             { name: "description", label: "description", },
-            { name: "logoid", label: "logoid", sticky:true },
+            { name: "logoid", label: "logoid" },
             { name: "update_mode", label: "update_mode", },
             { name: "type", label: "type", },
             { name: "typespecs", label: "typespecs", },
@@ -30,9 +30,9 @@ class DevDataTableComponent extends MDComponent {
             { name: "dividends_yield_current", label: "dividends_yield_current", },
             { name: "sector.tr", label: "sector.tr", },
             { name: "market", label: "market", },
-            { name: "sector", label: "sector", sticky:true },
+            { name: "sector", label: "sector" },
             { name: "recommendation_mark", label: "recommendation_mark", },
-            { name: "exchange", label: "exchange", sticky:true },
+            { name: "exchange", label: "exchange" },
         ];
         this.rows=data
     }

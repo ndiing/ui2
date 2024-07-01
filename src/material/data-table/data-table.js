@@ -4,6 +4,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { MDVirtualController } from "../virtual/virtual.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { MDStore } from "../store/store.js";
+import { classMap } from "lit/directives/class-map.js";
 
 /**
  * {{desc}}
@@ -107,6 +108,9 @@ class MDDataTableComponent extends MDCardComponent {
                     <tr>
                         ${this.checkboxSelection?html`
                             <th
+                                class="${classMap({
+                                    'md-data-table__column--sticky-end':this.stickyEnd,
+                                })}"
                                 style="${styleMap({
                                     ...(this.stickyHeader&&({
                                         position:'sticky',
@@ -128,7 +132,11 @@ class MDDataTableComponent extends MDCardComponent {
                         `:nothing}
                         ${this.virtualColumns?.map((column) => html`
                             <th
-                                class="md-data-table__column"
+                                class="${classMap({
+                                    'md-data-table__column':true,
+                                    'md-data-table__column--sticky-end':column.stickyEnd,
+                                    'md-data-table__column--sticky-start':column.stickyStart,
+                                })}"
                                 .data="${column}"
                                 style="${styleMap({
                                     'min-width': `${column.width}px`,
@@ -161,6 +169,9 @@ class MDDataTableComponent extends MDCardComponent {
                         >
                             ${this.checkboxSelection?html`
                                 <td
+                                    class="${classMap({
+                                        'md-data-table__column--sticky-end':this.stickyEnd,
+                                    })}"
                                     style="${styleMap({
                                         ...(this.stickyCheckbox&&{
                                             position:'sticky',
@@ -175,6 +186,10 @@ class MDDataTableComponent extends MDCardComponent {
                             `:nothing}
                             ${this.virtualColumns?.map(column => html`
                                 <td
+                                    class="${classMap({
+                                        'md-data-table__column--sticky-end':column.stickyEnd,
+                                        'md-data-table__column--sticky-start':column.stickyStart,
+                                    })}"
                                     style="${styleMap({
                                         ...(column.sticky&&{
                                             position:'sticky',
@@ -219,12 +234,12 @@ class MDDataTableComponent extends MDCardComponent {
             columnBuffer: this.columns.filter((column) => column.sticky).length,
         });
 
-        this.on("keydown",this.handleDataTableKeydown)
+        this.on("keydown", this.handleDataTableKeydown);
     }
-    
+
     disconnectedCallback() {
         super.disconnectedCallback();
-        this.off('keydown',this.handleDataTableKeydown)
+        this.off("keydown", this.handleDataTableKeydown);
     }
 
     async updated(changedProperties) {
@@ -233,18 +248,40 @@ class MDDataTableComponent extends MDCardComponent {
         if (changedProperties.has("columns")) {
             await this.updateComplete;
 
-            this.columns.forEach((column, index) => {
+            this.columns.forEach((column) => {
                 column.width = column.width || 200;
             });
             const half = Math.floor(this.columns.length / 2);
+            let maxStickyLeftIndex;
+            let minStickyRightIndex;
             this.columns.forEach((column, index) => {
                 if (column.sticky) {
-                    const flow = index <= half ? "left" : "right";
-                    const from = index <= half ? 0 : index + 1;
-                    const to = index <= half ? index : this.columns.length;
-                    let value = 0;
+                    let flow;
+                    let from;
+                    let to;
+                    let value;
                     if (index <= half) {
-                        value += this.stickyCheckbox ? 56 : 0;
+                        flow = "left";
+                        from = 0;
+                        to = index;
+                        value = this.stickyCheckbox ? 56 : 0;
+                        if (!maxStickyLeftIndex) {
+                            maxStickyLeftIndex = index;
+                        }
+                        if (maxStickyLeftIndex <= index) {
+                            maxStickyLeftIndex = index;
+                        }
+                    } else {
+                        flow = "right";
+                        from = index + 1;
+                        to = this.columns.length;
+                        value = 0;
+                        if (!minStickyRightIndex) {
+                            minStickyRightIndex = index;
+                        }
+                        if (minStickyRightIndex > index) {
+                            minStickyRightIndex = index;
+                        }
                     }
                     for (let i = from; i < to; i++) {
                         if (this.columns[i].sticky) {
@@ -253,8 +290,17 @@ class MDDataTableComponent extends MDCardComponent {
                     }
                     column.flow = flow;
                     column[flow] = value;
+                    column.stickyEnd = false;
+                    column.stickyStart = false;
                 }
             });
+            if (maxStickyLeftIndex) {
+                this.columns[maxStickyLeftIndex].stickyEnd = true;
+            }
+            if (minStickyRightIndex) {
+                this.columns[minStickyRightIndex].stickyStart = true;
+            }
+            this.stickyEnd = this.stickyCheckbox && maxStickyLeftIndex == undefined;
         }
     }
 
@@ -326,11 +372,11 @@ class MDDataTableComponent extends MDCardComponent {
 
         const data = event.currentTarget.data;
 
-        if (this.rangeSelection&&event.shiftKey) {
+        if (this.rangeSelection && event.shiftKey) {
             this.selectRange(data);
-        } else if (this.multiSelection&&event.ctrlKey) {
+        } else if (this.multiSelection && event.ctrlKey) {
             this.multiSelect(data);
-        } else if(this.singleSelection) {
+        } else if (this.singleSelection) {
             this.select(data);
         }
         this.requestUpdate();
@@ -338,15 +384,15 @@ class MDDataTableComponent extends MDCardComponent {
         this.emit("onDataTableRowClick", event);
     }
 
-    handleDataTableKeydown(event){
-        if(this.allSelection&&event.ctrlKey && event.key == "a"){
-            event.preventDefault()
-            this.store.docs.forEach(doc=>{
-                doc.selected=true
-            })
-            this.requestUpdate()
+    handleDataTableKeydown(event) {
+        if (this.allSelection && event.ctrlKey && event.key == "a") {
+            event.preventDefault();
+            this.store.docs.forEach((doc) => {
+                doc.selected = true;
+            });
+            this.requestUpdate();
         }
-        this.emit('onDataTableKeydown',event)
+        this.emit("onDataTableKeydown", event);
     }
 
     /**
