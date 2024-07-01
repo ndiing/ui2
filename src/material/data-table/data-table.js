@@ -227,11 +227,11 @@ class MDDataTableComponent extends MDCardComponent {
 
             rowTotal: total,
             rowHeight: 56,
-            rowBuffer: 0 + (this.stickyHeader ? 1 : 0),
+            rowBuffer: 0 ,//+ (this.stickyHeader ? 1 : 0),
 
             columnTotal: this.columns.length,
             columnWidth: 200,
-            columnBuffer: this.columns.filter((column) => column.sticky).length,
+            columnBuffer: this.columns.filter((column) => column.sticky).length ,//+ (this.stickyCheckbox ? 1 : 0),
         });
 
         this.on("keydown", this.handleDataTableKeydown);
