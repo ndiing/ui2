@@ -258,41 +258,43 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.requestUpdate();
     }
 
+    /**@override*/
     handleCardIconButtonClick(event) {
         if (event.currentTarget.name == "prev") {
-            this.handleCardIconButtonPrevClick(event);
+            this.handleColorPickerIconButtonPrevClick(event);
         } else if (event.currentTarget.name == "next") {
-            this.handleCardIconButtonNextClick(event);
+            this.handleColorPickerIconButtonNextClick(event);
         }
         this.emit("onColorPickerIconButtonClick", event);
     }
 
+    /**@override*/
     handleCardButtonClick(event) {
         if (event.currentTarget.name == "label") {
-            this.handleCardButtonLabelClick(event);
+            this.handleColorPickerButtonLabelClick(event);
         } else if (event.currentTarget.name == "cancel") {
-            this.handleCardButtonCancelClick(event);
+            this.handleColorPickerButtonCancelClick(event);
         } else if (event.currentTarget.name == "ok") {
-            this.handleCardButtonOkClick(event);
+            this.handleColorPickerButtonOkClick(event);
         }
         this.emit("onColorPickerButtonClick", event);
     }
 
-    handleCardIconButtonPrevClick(event) {
+    handleColorPickerIconButtonPrevClick(event) {
         this.emit("onColorPickerSelection", event);
         this.emit("onColorPickerIconButtonPrevClick", event);
     }
 
-    handleCardIconButtonNextClick(event) {
+    handleColorPickerIconButtonNextClick(event) {
         this.emit("onColorPickerSelection", event);
         this.emit("onColorPickerIconButtonNextClick", event);
     }
 
-    handleCardButtonLabelClick(event) {
+    handleColorPickerButtonLabelClick(event) {
         this.emit("onColorPickerButtonLabelClick", event);
     }
 
-    handleCardButtonCancelClick(event) {
+    handleColorPickerButtonCancelClick(event) {
         this.value = this.defaultValue;
         this.updateHsla();
         this.draw();
@@ -303,7 +305,7 @@ class MDColorPickerComponent extends MDSheetComponent {
         this.emit("onColorPickerButtonCancelClick", event);
     }
 
-    handleCardButtonOkClick(event) {
+    handleColorPickerButtonOkClick(event) {
         this.value = this.selection.hex;
 
         this.emit("onColorPickerSelection", event);

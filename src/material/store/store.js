@@ -82,9 +82,9 @@ class MDStore {
 
     /**
      * Sorts an array of documents based on given sorters.
-     * @param {*} docs - The array of documents to sort.
+     * @param {Array} docs - The array of documents to sort.
      * @param {Array<{ name: string, order: 'asc' | 'desc' }>} sorters - Sort configurations.
-     * @returns {*} The sorted array of documents.
+     * @returns {Array} The sorted array of documents.
      */
     sort(docs, sorters) {
         return docs.sort((a, b) => {
@@ -92,12 +92,11 @@ class MDStore {
                 const { name, order } = sorter;
                 const aValue = this.getValue(a, name);
                 const bValue = this.getValue(b, name);
-                if (order === "asc") {
-                    if (aValue < bValue) return -1;
-                    if (aValue > bValue) return 1;
-                } else if (order === "desc") {
-                    if (aValue > bValue) return -1;
-                    if (aValue < bValue) return 1;
+
+                if (aValue !== bValue) {
+                    const comparison = typeof aValue === "string" && typeof bValue === "string" ? aValue.localeCompare(bValue) : aValue < bValue ? -1 : 1;
+
+                    return order === "asc" ? comparison : -comparison;
                 }
             }
             return 0;
@@ -263,7 +262,6 @@ class MDStore {
             const { name, value, operator } = filter;
             const objValue = this.getValue(obj, name);
 
-            // Handle array values
             if (Array.isArray(objValue)) {
                 switch (operator) {
                     case "_eq":

@@ -43,6 +43,7 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     get body() {
         /* prettier-ignore */
         return [html`
@@ -50,13 +51,10 @@ class MDDataTableComponent extends MDCardComponent {
                 class="md-data-table__viewport"
                 @onVirtualScroll="${this.handleDataTableViewportVirtualScroll}"
             >
-                <div class="md-data-table__scrollbar">
-
-                </div>
+                <div class="md-data-table__scrollbar"></div>
                 <div class="md-data-table__container">
                     ${this.renderTable()}
                 </div>
-
             </div>
         `];
     }
@@ -64,6 +62,7 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     set body(value) {}
 
     constructor() {
@@ -92,6 +91,8 @@ class MDDataTableComponent extends MDCardComponent {
                 .selected="${ifDefined(item.selected)}"
                 .routerLink="${ifDefined(item.routerLink)}"
                 .indeterminate="${ifDefined(item.indeterminate)}"
+                .sortable="${ifDefined(item.sortable)}"
+                .sortableIcon="${ifDefined(item.sortableIcon)}"
             ></md-data-table-item>
         `;
     }
@@ -151,8 +152,13 @@ class MDDataTableComponent extends MDCardComponent {
                                         'z-index':'3',
                                     })
                                 })}"
+                                @pointerenter="${this.handleDataTableColumnCellPointerenter}"
+                                @pointerleave="${this.handleDataTableColumnCellPointerleave}"
+                                @click="${this.handleDataTableColumnCellClick}"
                             >${this.renderDataTableItem({
-                                label: column.label
+                                label: column.label,
+                                sortable:column.sortable,
+                                sortableIcon:column.sortableIcon,
                             })}</th>    
                         `)}
                     </tr>
@@ -227,11 +233,11 @@ class MDDataTableComponent extends MDCardComponent {
 
             rowTotal: total,
             rowHeight: 56,
-            rowBuffer: 0 ,//+ (this.stickyHeader ? 1 : 0),
+            rowBuffer: 0, //+ (this.stickyHeader ? 1 : 0),
 
             columnTotal: this.columns.length,
             columnWidth: 200,
-            columnBuffer: this.columns.filter((column) => column.sticky).length ,//+ (this.stickyCheckbox ? 1 : 0),
+            columnBuffer: this.columns.filter((column) => column.sticky).length, //+ (this.stickyCheckbox ? 1 : 0),
         });
 
         this.on("keydown", this.handleDataTableKeydown);
@@ -260,14 +266,17 @@ class MDDataTableComponent extends MDCardComponent {
                     let from;
                     let to;
                     let value;
+
                     if (index <= half) {
                         flow = "left";
                         from = 0;
                         to = index;
                         value = this.stickyCheckbox ? 56 : 0;
+
                         if (!maxStickyLeftIndex) {
                             maxStickyLeftIndex = index;
                         }
+
                         if (maxStickyLeftIndex <= index) {
                             maxStickyLeftIndex = index;
                         }
@@ -276,13 +285,16 @@ class MDDataTableComponent extends MDCardComponent {
                         from = index + 1;
                         to = this.columns.length;
                         value = 0;
+
                         if (!minStickyRightIndex) {
                             minStickyRightIndex = index;
                         }
+
                         if (minStickyRightIndex > index) {
                             minStickyRightIndex = index;
                         }
                     }
+
                     for (let i = from; i < to; i++) {
                         if (this.columns[i].sticky) {
                             value += this.columns[i].width;
@@ -294,9 +306,11 @@ class MDDataTableComponent extends MDCardComponent {
                     column.stickyStart = false;
                 }
             });
+
             if (maxStickyLeftIndex) {
                 this.columns[maxStickyLeftIndex].stickyEnd = true;
             }
+
             if (minStickyRightIndex) {
                 this.columns[minStickyRightIndex].stickyStart = true;
             }
@@ -328,6 +342,7 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     get partialSelectedRows() {
         if (!this.store.docs.length) {
             return false;
@@ -338,6 +353,7 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     get selectedAllRows() {
         if (!this.store.docs.length) {
             return false;
@@ -356,6 +372,7 @@ class MDDataTableComponent extends MDCardComponent {
 
         this.emit("onDataTableColumnCellCheckboxNativeInput", event);
     }
+
     handleDataTableRowCheckboxNativeInput(event) {
         const data = event.currentTarget.data;
 
@@ -364,8 +381,10 @@ class MDDataTableComponent extends MDCardComponent {
 
         this.emit("onDataTableRowCheckboxNativeInput", event);
     }
+
     handleDataTableRowClick(event) {
         const leadingAction = event.target.closest(".md-data-table__checkbox," + ".md-data-table__radio-button," + ".md-data-table__switch");
+
         if (leadingAction) {
             return;
         }
@@ -398,16 +417,19 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     selectRange(data) {
         this.endIndex = this.endIndex || 0;
         this.startIndex = this.store.docs.indexOf(data);
         this.swapIndex = this.endIndex < this.startIndex;
+
         if (this.swapIndex) {
             [this.startIndex, this.endIndex] = [this.endIndex, this.startIndex];
         }
         this.store.docs.forEach((doc, index) => {
             doc.selected = index >= this.startIndex && index <= this.endIndex;
         });
+
         if (this.swapIndex) {
             [this.endIndex, this.startIndex] = [this.startIndex, this.endIndex];
         }
@@ -416,6 +438,7 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     multiSelect(data) {
         data.selected = !data.selected;
     }
@@ -423,11 +446,60 @@ class MDDataTableComponent extends MDCardComponent {
     /**
      * {{desc}}
      */
+
     select(data) {
         this.store.docs.forEach((doc) => {
             doc.selected = doc == data;
         });
         this.endIndex = this.store.docs.indexOf(data);
+    }
+
+    handleDataTableColumnCellPointerenter(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.sortableIcon = "arrow_upward";
+                this.requestUpdate();
+            }
+        }
+
+        this.emit("onDataTableColumnCellPointerenter", event);
+    }
+    handleDataTableColumnCellPointerleave(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.sortableIcon = undefined;
+                this.requestUpdate();
+            }
+        }
+
+        this.emit("onDataTableColumnCellPointerleave", event);
+    }
+    handleDataTableColumnCellClick(event) {
+        const data = event.currentTarget.data;
+
+        if (data.sortable) {
+            if (!data.order) {
+                data.order = "asc";
+                data.sortableIcon = "arrow_upward";
+            } else if (data.order == "asc") {
+                data.order = "desc";
+                data.sortableIcon = "arrow_downward";
+            } else {
+                data.order = undefined;
+                data.sortableIcon = undefined;
+            }
+            const sorters = this.columns.filter((column) => column.order);
+            const { docs } = this.store.getAll({ sorters });
+            this.storeRows = docs;
+            this.virtual.handleVirtualScroll();
+            this.requestUpdate();
+        }
+
+        this.emit("onDataTableColumnCellClick", event);
     }
 }
 

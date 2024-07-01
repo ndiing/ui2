@@ -52,6 +52,9 @@ class MDDataTableItemComponent extends MDComponent {
         routerLink: { type: String, reflect: true },
 
         indeterminate: { type: Boolean },
+
+        sortable: { type: Boolean },
+        sortableIcon: { type: String },
     };
 
     constructor() {
@@ -107,6 +110,8 @@ class MDDataTableItemComponent extends MDComponent {
                     ${this.badge?html`<md-badge class="md-data-table__badge" .label="${this.badge}"></md-badge>`:nothing}
                 </div>
             `:nothing}
+
+            ${this.sortable?html`<md-icon-button class="md-data-table__sortable" .icon="${this.sortableIcon}"></md-icon-button>`:nothing}
 
             ${this.text?html`<div class="md-data-table__text">${this.text}</div>`:nothing}
 

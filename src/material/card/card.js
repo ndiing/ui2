@@ -5,21 +5,28 @@ import { choose } from "lit/directives/choose.js";
 import { MDRippleController } from "../ripple/ripple.js";
 
 /**
- * Represents a card component that extends MDComponent.
+ * MDCardComponent is a versatile card component used to display various types of content in different styles.
  * @extends MDComponent
  * @tagname md-card
- * @fires MDCardComponent#onCardIconButtonClick - Fired when an icon button in the card is clicked.
- * @fires MDCardComponent#onCardButtonClick - Fired when a button in the card is clicked.
- * @fires MDCardComponent#onCardFabClick - Fired when a FAB (Floating Action Button) in the card is clicked.
+ * @fires MDCardComponent#onCardIconButtonClick - Fired when an icon button on the card is clicked.
+ * @fires MDCardComponent#onCardIconClick - Fired when an icon on the card is clicked.
+ * @fires MDCardComponent#onCardButtonClick - Fired when a button on the card is clicked.
+ * @fires MDCardComponent#onCardFabClick - Fired when a FAB (Floating Action Button) on the card is clicked.
+ * @fires MDCardComponent#onCardTextFieldNativeFocus - Fired when a text field on the card receives focus.
+ * @fires MDCardComponent#onCardTextFieldNativeBlur - Fired when a text field on the card loses focus.
+ * @fires MDCardComponent#onCardTextFieldNativeInput - Fired when there is input in a text field on the card.
+ * @fires MDCardComponent#onCardTextFieldNativeSearch - Fired when a search is performed in a text field on the card.
+ * @fires MDCardComponent#onCardTextFieldNativeInvalid - Fired when a text field on the card becomes invalid.
+ * @fires MDCardComponent#onCardTextFieldNativeReset - Fired when a text field on the card is reset.
  */
 class MDCardComponent extends MDComponent {
     /**
-     * @property {String} variant - The variant style of the card (e.g., "elevated", "filled", "outlined").
-     * @property {Array} leadingActions - An array of leading actions displayed in the card.
-     * @property {String} label - The primary label of the card.
-     * @property {String} subLabel - The secondary label of the card.
-     * @property {Array} trailingActions - An array of trailing actions displayed in the card.
-     * @property {Array} actions - An array of actions displayed in the card footer.
+     * @property {String} variant - Specifies the visual variant of the card (e.g., elevated, filled, outlined).
+     * @property {Array} leadingActions - Array of actions placed at the leading end of the card.
+     * @property {String} label - Primary label for the card.
+     * @property {String} subLabel - Secondary label for the card.
+     * @property {Array} trailingActions - Array of actions placed at the trailing end of the card.
+     * @property {Array} actions - Array of actions associated with the card.
      */
     static properties = {
         variant: { type: String },
@@ -38,8 +45,10 @@ class MDCardComponent extends MDComponent {
         this.body = Array.from(this.childNodes);
 
         this.renderIconButton = this.renderIconButton.bind(this);
+        this.renderIcon = this.renderIcon.bind(this);
         this.renderButton = this.renderButton.bind(this);
         this.renderFab = this.renderFab.bind(this);
+        this.renderTextField = this.renderTextField.bind(this);
     }
 
     renderIconButton(item) {
@@ -166,6 +175,12 @@ class MDCardComponent extends MDComponent {
                 .errorText="${ifDefined(item.errorText)}"
                 .error="${ifDefined(item.error)}"
                 .variant="${ifDefined(item.variant)}"
+                @onTextFieldNativeFocus="${this.handleCardTextFieldNativeFocus}"
+                @onTextFieldNativeBlur="${this.handleCardTextFieldNativeBlur}"
+                @onTextFieldNativeInput="${this.handleCardTextFieldNativeInput}"
+                @onTextFieldNativeSearch="${this.handleCardTextFieldNativeSearch}"
+                @onTextFieldNativeInvalid="${this.handleCardTextFieldNativeInvalid}"
+                @onTextFieldNativeReset="${this.handleCardTextFieldNativeReset}"
             ></md-text-field>
         `;
     }
@@ -254,13 +269,32 @@ class MDCardComponent extends MDComponent {
     handleCardIconButtonClick(event) {
         this.emit("onCardIconButtonClick", event);
     }
-
+    handleCardIconClick(event) {
+        this.emit("onCardIconClick", event);
+    }
     handleCardButtonClick(event) {
         this.emit("onCardButtonClick", event);
     }
-
     handleCardFabClick(event) {
         this.emit("onCardFabClick", event);
+    }
+    handleCardTextFieldNativeFocus(event) {
+        this.emit("onCardTextFieldNativeFocus", event);
+    }
+    handleCardTextFieldNativeBlur(event) {
+        this.emit("onCardTextFieldNativeBlur", event);
+    }
+    handleCardTextFieldNativeInput(event) {
+        this.emit("onCardTextFieldNativeInput", event);
+    }
+    handleCardTextFieldNativeSearch(event) {
+        this.emit("onCardTextFieldNativeSearch", event);
+    }
+    handleCardTextFieldNativeInvalid(event) {
+        this.emit("onCardTextFieldNativeInvalid", event);
+    }
+    handleCardTextFieldNativeReset(event) {
+        this.emit("onCardTextFieldNativeReset", event);
     }
 }
 

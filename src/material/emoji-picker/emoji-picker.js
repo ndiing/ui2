@@ -308,44 +308,44 @@ class MDEmojiPickerComponent extends MDSheetComponent {
 
     handleCardIconButtonClick(event) {
         if (event.currentTarget.name == "prev") {
-            this.handleCardIconButtonPrevClick(event);
+            this.handleEmojiPickerIconButtonPrevClick(event);
         } else if (event.currentTarget.name == "next") {
-            this.handleCardIconButtonNextClick(event);
+            this.handleEmojiPickerIconButtonNextClick(event);
         }
         this.emit("onEmojiPickerIconButtonClick", event);
     }
 
     handleCardButtonClick(event) {
         if (event.currentTarget.name == "label") {
-            this.handleCardButtonLabelClick(event);
+            this.handleEmojiPickerButtonLabelClick(event);
         } else if (event.currentTarget.name == "cancel") {
-            this.handleCardButtonCancelClick(event);
+            this.handleEmojiPickerButtonCancelClick(event);
         } else if (event.currentTarget.name == "ok") {
-            this.handleCardButtonOkClick(event);
+            this.handleEmojiPickerButtonOkClick(event);
         }
         this.emit("onEmojiPickerButtonClick", event);
     }
 
-    handleCardIconButtonPrevClick(event) {
+    handleEmojiPickerIconButtonPrevClick(event) {
         this.emit("onEmojiPickerSelection", event);
         this.emit("onEmojiPickerIconButtonPrevClick", event);
     }
 
-    handleCardIconButtonNextClick(event) {
+    handleEmojiPickerIconButtonNextClick(event) {
         this.emit("onEmojiPickerSelection", event);
         this.emit("onEmojiPickerIconButtonNextClick", event);
     }
 
-    handleCardButtonLabelClick(event) {
+    handleEmojiPickerButtonLabelClick(event) {
         this.emit("onEmojiPickerButtonLabelClick", event);
     }
 
-    handleCardButtonCancelClick(event) {
+    handleEmojiPickerButtonCancelClick(event) {
         this.emit("onEmojiPickerSelection", event);
         this.emit("onEmojiPickerButtonCancelClick", event);
     }
 
-    handleCardButtonOkClick(event) {
+    handleEmojiPickerButtonOkClick(event) {
         this.emit("onEmojiPickerSelection", event);
         this.emit("onEmojiPickerButtonOkClick", event);
     }
